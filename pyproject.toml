@@ -1,0 +1,23 @@
+[project]
+name = "quantum-hackathon"
+version = "0.1.0"
+description = "Praxen's entry to the Google Quantum AI Verifiable Quantum Circuit Compilation Kaggle competition"
+readme = "README.md"
+license = "Apache-2.0"
+# P0-4 tightens this to the ABI of the competition kickmix build.
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "numpy",
+    "pyyaml",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

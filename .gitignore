@@ -1,0 +1,20 @@
+# Hook-created toolkit directory (Blender Toolkit session hook)
+.blender-toolkit/
+
+# Competition data and archives: never committed; SHA-256 goes in the ledger
+data/
+*.zip
+
+# Circuit binaries: never committed; SHA-256 goes in the ledger
+*.kmb
+candidates/**/*.kmb
+
+# Large numpy archives under candidates/ (dfthcsos submission.npz and similar)
+candidates/**/*.npz
+tasks/*/candidates/**/*.npz
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
