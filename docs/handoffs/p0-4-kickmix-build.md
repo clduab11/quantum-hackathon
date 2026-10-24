@@ -208,3 +208,62 @@ PYCODE
 `tests/test_gate_contract.py` exercises consumer dispatch through both
 `module:function` paths, refusal before G3 on invalid input, the G3 defense when
 called directly, unchanged summaries, aggregation, and fixed salt/full shots.
+
+## Accepted scope and merge record (2026-10-24)
+
+[Chris accepted the current lineage test](/PRA/issues/PRA-174#comment-3f2e47c2-c474-4fbf-9e51-4252548999ee)
+in interaction `48067d56-b372-4e63-ac9a-9e0073d7d726` (`amend_scope`).
+D-PRA174-13 resolves the acceptance requirement in D-PRA174-07/12: retain the
+47.56 reported-scalar/cost regression and the independently tested reference
+formula. The lineage Lambda/E_gap pair remains unknown, and the test does not
+derive 47.56 or establish lineage verification. This acceptance supersedes the
+earlier pending-scope record without changing its factual limitation.
+
+[John Wick accepted the G0/G3 contract](/PRA/issues/PRA-174#comment-ca956dbe-4240-4401-b1c4-0c9f45ab478a)
+in interaction `a7f61f82-5eb9-4631-8458-30efdb002aff` (`accept`). D-PRA174-14
+resolves D-PRA174-11. His ledger consumer returned `{'status': 'PASS'}` in 1.6 s
+on its deterministic reference build using local head `8b634bc`. The accepted
+contract includes the hooks and metadata above, the default baseline path,
+`PRA171_LOCAL_PUBLIC_FIXED_SALT_0001`, and `shot_divisor=1`. The ledger preserves
+its previous Qualtran pin when this hook returns null; G2 uses a separate
+task-owned proxy. Archive bytes differ between the two reference ZIP builders,
+but the same 13 files satisfy the calibration's per-file identity checks.
+
+[PR #2](https://github.com/clduab11/quantum-hackathon/pull/2) merged at
+2026-10-24 02:14:34 UTC as `a1c0219babc6b6d2976ca0a32592fe2a4578c548`,
+tree `843dad49770a73563be2983e6bfb00a3ee903cbd`, matching the reviewed code tree.
+[Ledger PR #3](https://github.com/clduab11/quantum-hackathon/pull/3) merged at
+02:15:33 UTC as `c0c66aa869450463850474a8bed85b48726a550f`.
+The documentation follow-up uses that combined base. Scoring code, verifier
+inputs and calibration are unchanged, so the recorded full reference score of
+1.0 is reused. Combined-branch `uv sync` and `uv run pytest` results are recorded
+in the [verify-log](/PRA/issues/PRA-174#document-verify-log).
+
+These are accepted test-scope and consumer-contract outcomes. The final
+documentation revision returns to The Adjudicator for review; the board merges
+the follow-up PR. The existing setup/rollback boundaries and public-salt limits
+still apply.
+
+## Combined decision-register recovery (2026-10-24)
+
+The first combined check on `c0c66aa` plus the acceptance records failed:
+`uv sync` exited 0; `uv run pytest` exited 1 with 133 passed and one failure
+at `test_decisions_register_holds_the_rulings` (`AssertionError: R1`).
+The merged register lacked the PR #3 decision rows. This failure remains in
+the [prior evidence](/PRA/issues/PRA-174#comment-55d64bd2-3c1b-4858-8e08-af75fada9ae0).
+
+[Chris cleared continuation](/PRA/issues/PRA-174#comment-df2ebdcc-4a91-43f3-9149-fe0ede850629).
+D-PRA174-15 records the recovery: append the 27 original rows from
+[PR #3 commit 5780602](https://github.com/clduab11/quantum-hackathon/blob/57806026e26e5bee13152894c257f312dcc0b8b7/docs/DECISIONS.md)
+without changing their bytes or any existing row. These include R1–R12,
+PC-1–PC-6, RA/RB, and D-PRA175-01–07, so amendments and negative results are
+preserved along with the rulings. The source blob is
+`6ea789cf7003f8420d5f110ad4f986597ce7abd8`; R1–R12 were cross-checked with
+the board rulings in PRA-169 and the plan corrections with its plan v2.
+
+The follow-up still changes only the decision register and these two handoffs.
+No scoring implementation, test, verifier input, calibration or setup changed.
+The final combined checks and matching published tree are recorded in
+[verify-log](/PRA/issues/PRA-174#document-verify-log); the prior full reference
+score of 1.0 is reused. The Adjudicator reviews the final revision before the
+board merges the documentation PR.

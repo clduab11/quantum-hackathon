@@ -142,3 +142,66 @@ Review evidence hashes (all files are outside git):
 - `reference-calibration-review.stderr.log`: `3f823812a87679db48d2518f49809c7c9c6147693a667ea0f6f91b8e8354d058`
 - `reference-score-review.jsonl`: `4e94f65da689ec45edeeac641ea75416381fc724ade0172d9dc71cac6ed28217`
 - `reference-score-review.stderr.log`: `3f823812a87679db48d2518f49809c7c9c6147693a667ea0f6f91b8e8354d058`
+
+## Acceptance and merge record (2026-10-24)
+
+This addendum supersedes the pending acceptance statements above and preserves
+the verification history. [Chris's scope amendment](/PRA/issues/PRA-174#comment-3f2e47c2-c474-4fbf-9e51-4252548999ee)
+(interaction `48067d56-b372-4e63-ac9a-9e0073d7d726`, option `amend_scope`)
+accepts the existing reported-scalar/cost regression for 47.56 together with the
+independently tested reference formula. D-PRA174-13 resolves D-PRA174-07/12 as
+an acceptance requirement. The lineage Lambda/E_gap pair remains unknown; no
+independent derivation or lineage verification is asserted.
+
+[John Wick's contract acceptance](/PRA/issues/PRA-174#comment-ca956dbe-4240-4401-b1c4-0c9f45ab478a)
+(interaction `a7f61f82-5eb9-4631-8458-30efdb002aff`, option `accept`) resolves
+D-PRA174-11 through D-PRA174-14. His consumer run of G0 on the ledger's
+deterministic reference build returned `{'status': 'PASS'}` in 1.6 s using local
+head `8b634bc`. He accepted the G0/G3 signatures, status and verifier-summary
+shapes, metadata meanings and default baseline path. G3 uses the fixed public
+salt `PRA171_LOCAL_PUBLIC_FIXED_SALT_0001` and `shot_divisor=1`; G2 uses a
+separate proxy. A null Qualtran pin preserves the ledger's existing value.
+
+[PR #2](https://github.com/clduab11/quantum-hackathon/pull/2) merged at
+2026-10-24 02:14:34 UTC as `a1c0219babc6b6d2976ca0a32592fe2a4578c548`,
+tree `843dad49770a73563be2983e6bfb00a3ee903cbd`, the reviewed code tree.
+[PR #3](https://github.com/clduab11/quantum-hackathon/pull/3) merged at
+02:15:33 UTC as `c0c66aa869450463850474a8bed85b48726a550f`, combined tree
+`5a505343453fe613d100ad28ae6182d0b3cd0681`. Governed GitHub reads confirmed
+both merge records and the combined base for this documentation follow-up.
+
+The follow-up changes only `docs/DECISIONS.md` and these two handoff files.
+The required `uv sync` and `uv run pytest` results for the combined code are in
+the [verify-log](/PRA/issues/PRA-174#document-verify-log), with final revision
+and remote tree evidence. The existing full reference score of 1.0 is reused:
+scoring code and inputs have not changed, and no new full scoring run is claimed.
+
+The Adjudicator's final documentation review remains the next gate. Neither the
+scope amendment nor the merge record establishes private-salt acceptance,
+binary source provenance or own-generator provenance for the reference ZIP.
+The local extraction wrapper still has no total expanded-size cap; unattended
+upload-service use remains outside the reviewed scope.
+
+## Combined decision-register recovery (2026-10-24)
+
+The first combined check on `c0c66aa` plus the acceptance records failed:
+`uv sync` exited 0; `uv run pytest` exited 1 with 133 passed and one failure
+at `test_decisions_register_holds_the_rulings` (`AssertionError: R1`).
+The merged register lacked the PR #3 decision rows. This failure remains in
+the [prior evidence](/PRA/issues/PRA-174#comment-55d64bd2-3c1b-4858-8e08-af75fada9ae0).
+
+[Chris cleared continuation](/PRA/issues/PRA-174#comment-df2ebdcc-4a91-43f3-9149-fe0ede850629).
+D-PRA174-15 records the recovery: append the 27 original rows from
+[PR #3 commit 5780602](https://github.com/clduab11/quantum-hackathon/blob/57806026e26e5bee13152894c257f312dcc0b8b7/docs/DECISIONS.md)
+without changing their bytes or any existing row. These include R1–R12,
+PC-1–PC-6, RA/RB, and D-PRA175-01–07, so amendments and negative results are
+preserved along with the rulings. The source blob is
+`6ea789cf7003f8420d5f110ad4f986597ce7abd8`; R1–R12 were cross-checked with
+the board rulings in PRA-169 and the plan corrections with its plan v2.
+
+The follow-up still changes only the decision register and these two handoffs.
+No scoring implementation, test, verifier input, calibration or setup changed.
+The final combined checks and matching published tree are recorded in
+[verify-log](/PRA/issues/PRA-174#document-verify-log); the prior full reference
+score of 1.0 is reused. The Adjudicator reviews the final revision before the
+board merges the documentation PR.
