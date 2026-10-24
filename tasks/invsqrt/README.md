@@ -7,4 +7,4 @@ Cost = Q × (Toffoli + T/4), with rotations priced at 0.56·log₂(1/ε) + 5.3 T
 
 Public lineage on 2026-10-23: 12.61× (92 qubits, 1,472 Toffolis; quadratic signed-digit Horner + 256-entry QROM).
 
-Generator: P0-6. Candidates go in `candidates/`; `.kmb` files are never committed.
+Generator: `generate.py` (P0-6). Parent: Apache-2.0 notebook [Quantum Circuits \| Signed-Digit Memory](https://www.kaggle.com/code/anazemcev/quantum-circuits-signed-digit-memory), v3. The integer mirror is `mirror.py`. Candidates go in `candidates/`; `.kmb` files are never committed.
