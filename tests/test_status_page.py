@@ -10,6 +10,7 @@ from ledger.status_page import (
     Decision,
     build,
     deadline_sentence,
+    featured_candidate,
     gate_cell,
     inline,
     parse_decisions,
@@ -25,6 +26,52 @@ def _candidate(candidate_id: str = "cand"):
     tasks = {t: TaskRecord(task=t, provenance=Provenance(licence="own"), cost=1.0,
                            baseline_cost=2.0, measured=True) for t in TASKS}
     return create_manifest(candidate_id=candidate_id, tasks=tasks, zip_sha256="ab" * 32)
+
+
+def _gated(candidate_id: str, cleared: int, *, kind: str = "candidate",
+           zip_sha256: str | None = None):
+    """A manifest whose first `cleared` gates PASS; `zip_sha256` binds them to another zip."""
+    m = _candidate(candidate_id)
+    m.kind = kind
+    for gate in GATE_IDS[:cleared]:
+        m.gates.append(GateRecord(gate=gate, status="PASS", timestamp_utc="",
+                                  zip_sha256=zip_sha256 or m.zip_sha256))
+    return m
+
+
+def test_featured_candidate_is_none_without_candidates():
+    assert featured_candidate([]) is None
+    assert featured_candidate([_gated("submission-001", 6, kind="submission")]) is None
+
+
+def test_featured_candidate_prefers_the_furthest_gated_over_the_newest():
+    older, newer = _gated("cand-a", 4), _gated("cand-b", 1)
+    assert featured_candidate([older, newer]) is older
+
+
+def test_featured_candidate_breaks_ties_by_recency():
+    older, newer = _gated("cand-a", 2), _gated("cand-b", 2)
+    assert featured_candidate([older, newer]) is newer
+    assert featured_candidate([_gated("cand-a", 0), _gated("cand-b", 0)]).candidate_id == "cand-b"
+
+
+def test_featured_candidate_skips_submissions():
+    candidate = _gated("cand-a", 1)
+    shipped = _gated("submission-001", 6, kind="submission")
+    assert featured_candidate([candidate, shipped]) is candidate
+
+
+def test_featured_candidate_counts_only_gates_cleared_on_the_current_zip():
+    stale = _gated("cand-a", 6, zip_sha256="cd" * 32)  # every PASS is on an earlier zip
+    current = _gated("cand-b", 1)
+    assert featured_candidate([current, stale]) is current
+
+
+def test_page_traces_the_featured_candidate():
+    page = render_page([_gated("cand-a", 3), _gated("cand-b", 1)], load_config(), [], BUILD)
+    assert "Showing cand-a, last cleared gate G2." in page
+    assert '<g class="gate pass"><title>G0, all tasks: Passed</title>' in page
+    assert '<g class="gate notrun"><title>G3, all tasks: Not run</title>' in page
 
 
 def test_gate_cells_follow_the_ledger_rules():

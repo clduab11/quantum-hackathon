@@ -24,6 +24,7 @@ from pathlib import Path
 
 from ledger.gates.runner import DEFAULT_CONFIG, GateConfig, GateSpec, load_config
 from ledger.run_manifest import (
+    GATE_IDS,
     MANIFESTS_DIR,
     REPO_ROOT,
     TASKS,
@@ -88,13 +89,23 @@ def status_tone(status: str) -> str:
 
 
 def featured_candidate(manifests: list[RunManifest]) -> RunManifest | None:
-    """The candidate whose gates the circuit at the top of the page shows; None draws every
-    gate as not run.
+    """The candidate whose gates the circuit at the top of the page shows: the one furthest
+    through the pipeline (highest `last_cleared_gate()`), the most recent on a tie, so the page
+    shows the candidate closest to a shippable zip. Kaggle submissions are copies of candidates
+    that already shipped and are skipped. None (no candidates) draws every gate as not run.
 
-    TODO(board): pick the rule. `manifests` is every ledger record, oldest first, Kaggle
-    submissions included (`kind == "submission"`).
+    `manifests` is oldest first, as `load_manifests` returns it.
     """
-    return None
+    candidates = [m for m in manifests if m.kind == "candidate"]
+    if not candidates:
+        return None
+
+    def progress(item: tuple[int, RunManifest]) -> tuple[int, int]:
+        gate = item[1].last_cleared_gate()
+        # The list position breaks ties in favour of the most recent candidate.
+        return (GATE_IDS.index(gate) + 1 if gate else 0, item[0])
+
+    return max(enumerate(candidates), key=progress)[1]
 
 
 @dataclass
