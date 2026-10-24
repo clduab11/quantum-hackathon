@@ -8,5 +8,4 @@ costs +0.45%. **Q is squared.** Reference: Q 1,893, 5,725,461 Toffolis → cost 
 
 The k256.dev dqi artifact is reference only and is never shipped (R10).
 
-Generator: P0-7 (reference rebuild) and P1 (Berlekamp–Massey + Forney). Candidates go in `candidates/`; `.kmb` files
-are never committed.
+`generate.py` rebuilds the package reference decoder (Apache-2.0). P1 replaces that decoder with Berlekamp–Massey + Forney; the plan is `docs/dqi-bm-forney-design.md`. The k256.dev artifact is not a parent. Candidates go in `candidates/`; `.kmb` files are never committed.

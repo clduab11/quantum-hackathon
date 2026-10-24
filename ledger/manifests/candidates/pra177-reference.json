@@ -1,0 +1,112 @@
+{
+  "candidate_id": "pra177-reference",
+  "cli_command": "uv run python /tmp/pra177_write_manifest.py",
+  "gates": [],
+  "generator_commit": "cc745b1fd1b2337eb4d236336cc24d88731929e2",
+  "geometric_mean": null,
+  "git_branch": "op-vqcc/PRA-177-p0-7-dfthcsos-parity-generator-public-1-44-lineage-dqi-reference-generator-rebuilt-1-0-bm-forney-design-",
+  "kaggle_submission_id": null,
+  "kickmix_build_id": "sha256:c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
+  "kind": "candidate",
+  "manifest_id": "b5c0c310-b9cf-4627-8341-2707c2c69717",
+  "notes": "PRA-177 reference rebuild only. invsqrt is absent (PRA-176), so geometric_mean is null and G0–G5 are not claimed. No candidate zip. Baselines are the measured costs of these same runs under the public local salt, so each ratio is 1.0. This is not the 1.44× factor.",
+  "operator": "584bb41d-d054-474a-b560-d2394375afcf",
+  "parent_candidate_id": null,
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64",
+  "python_version": "3.13.13",
+  "qualtran_pin": "c58703d00b01c346d3e77d3913cf2d6e9e556be3",
+  "salt_label": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+  "schema_version": "1",
+  "source_candidate_id": null,
+  "submitted_at_utc": null,
+  "tasks": {
+    "dfthcsos": {
+      "baseline_cost": 3355599588.3155365,
+      "cost": 3355599588.3155365,
+      "eps_plus": null,
+      "evidence": [
+        "c2823432a75f6c99b0b9b5543b93d35e3b219435d5518f33fcabc142eb6eab27"
+      ],
+      "failures": null,
+      "files": {
+        "dfthcsos/angle_k_0.kmb": "7bfb3983accc6ff97d6ab41a88deae924f1d1c97cf30e60879d0bff5688a8e25",
+        "dfthcsos/angle_k_1.kmb": "a04b6d0d57ce851b123af265066aaab2ab33353ea049d26acd534727466d72b6",
+        "dfthcsos/angle_k_2.kmb": "5c1b8987bc3fa1a4b8607e470f8c8f1392c22e7a7dbcb228f0ce9ec986e18058",
+        "dfthcsos/angle_k_3.kmb": "16ac67cdcaf3e2c6abdd98c4138ff1ae8a56cfc4ae15622bcdb3d3a3ba1e22cf",
+        "dfthcsos/angle_k_4.kmb": "d21cdd4c7e94196654aab15ebcabfe10ce8d343151a5e8dc3672e76684b6628d",
+        "dfthcsos/angle_k_5.kmb": "63b8d4cba36955e6098321f3b2ef3e34401dd276fa629b2e490d043b1743880b",
+        "dfthcsos/angle_k_6.kmb": "5bf740428e661d035fda860142578f421969e35e0df2e4e024fbf01a7340b378",
+        "dfthcsos/angle_k_7.kmb": "606009582111a22bd549b795c8d115ac8bbeb124bc8da24a80380eca6d34163d",
+        "dfthcsos/angle_k_8.kmb": "57c7cc51f5922fff6e95d76e1f723d4c2d029a241da643b95684d6322157a8fe",
+        "dfthcsos/angle_k_9.kmb": "22cbe2828988ff954fc07fd971a25e6bc04a02c302bf2cc642e4c3535daaad65",
+        "dfthcsos/submission.npz": "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69"
+      },
+      "measured": true,
+      "metrics": {
+        "E_gap": 3.965477244291833,
+        "Lambda": 308.4559397330944,
+        "angles_qubits": 119,
+        "batch_size": 8,
+        "brot": 12,
+        "error_1": 0.003185195031799191,
+        "error_2": 0.01863957063097407,
+        "lambda_eff": 49.30136925057438,
+        "num_circuits": 10,
+        "persistent_qubits": 186,
+        "submission_sha256": "276d464ff14da828b6b33e8487d99975494cbdf0c3cb2bd37dd3c3ddc4002695",
+        "temporary_qubits": 544
+      },
+      "num_qubits": 730,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "ANGLE circuits rebuilt by tasks/dfthcsos/generate.py from the package ordinary-QROM builder. submission.npz bytes are the packaged sample, hash-pinned, not recomputed. The Signed-Digit Memory v3 1.44× factor is not used: that notebook copies a k256.dev file (D-PRA177-01).",
+        "parent_url": "https://www.kaggle.com/competitions/google-verifiable-quantum-circuit-compilation/data"
+      },
+      "ratio": 1.0,
+      "rotation_count": null,
+      "shots": 254464,
+      "t_count": null,
+      "task": "dfthcsos",
+      "toffoli_count": 93237.0,
+      "verifier_sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+    },
+    "dqi": {
+      "baseline_cost": 24439465632206.816,
+      "cost": 24439465632206.816,
+      "eps_plus": 0.0008660587301657926,
+      "evidence": [
+        "c2823432a75f6c99b0b9b5543b93d35e3b219435d5518f33fcabc142eb6eab27"
+      ],
+      "failures": 0,
+      "files": {
+        "dqi.kmb": "959471d05a26373b4f14ca0cae2d8639ea25f18170d9f6532139aa51ccc04995"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "959471d05a26373b4f14ca0cae2d8639ea25f18170d9f6532139aa51ccc04995",
+        "empirical_error_rate": 0.0,
+        "log2_delta": -128.0,
+        "max_toffoli_count": 5725461,
+        "mean_error_weight": 31.046737331746634,
+        "phase_errors": 0,
+        "repetition_factor": 1.1912604648115832,
+        "value_errors": 0
+      },
+      "num_qubits": 1893,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Rebuilt from verifiers/dqi/dqi_reference_circuit.py (Apache-2.0, Google Quantum AI). tasks/dqi/generate.py changes only the --out path. Byte-identical to sample_submission/dqi.kmb. The k256.dev artifact is not a parent and is not shipped (D-PRA177-03).",
+        "parent_url": "https://www.kaggle.com/competitions/google-verifiable-quantum-circuit-compilation/data"
+      },
+      "ratio": 1.0,
+      "rotation_count": null,
+      "shots": 102400,
+      "t_count": null,
+      "task": "dqi",
+      "toffoli_count": 5725108.861992188,
+      "verifier_sha256": "f14274bc0943fb9769ddb01131be6063191a15009fe1caf1d4bdd9fd25194e65"
+    }
+  },
+  "timestamp_utc": "2026-10-24T06:08:08.063387+00:00",
+  "zip_sha256": null
+}

@@ -7,6 +7,6 @@ Cost = λ_eff × T_total × Q_total with λ_eff = √(Egap(2Λ − Egap)) (infer
 b_rot 12, J 8, 10 circuits, Λ ≈ 308, λ_eff 49.3 → cost 3,355,599,588. Angle lookups are ≈ 88% of T; Inner-prep
 temporaries are ≈ 75% of Q.
 
-Public lineage on 2026-10-23: 1.44× (681 qubits, 71,958 Toffolis, λ_eff 47.56).
+Public reports on 2026-10-23 gave 1.44× (681 qubits, 71,958 Toffolis, λ_eff 47.56). That factor is not shipped: its generator is not in the Apache-2.0 notebook, and the notebook traces the file to k256.dev (D-PRA177-01).
 
-Generator: P0-7. Candidates go in `candidates/`; `.kmb` and `.npz` files there are never committed.
+`generate.py` rebuilds the package reference instead (10 ordinary-QROM circuits, `b_rot` 12, `J` 8, score 1.0). Candidates go in `candidates/`; `.kmb` and `.npz` files there are never committed.
