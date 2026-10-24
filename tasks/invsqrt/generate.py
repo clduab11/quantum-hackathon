@@ -1,14 +1,23 @@
 """Kickmix generator for the invsqrt task.
 
-Parent (Apache-2.0): Quantum Circuits | Signed-Digit Memory, v3,
-Artem1410 (anazemcev),
-https://www.kaggle.com/code/anazemcev/quantum-circuits-signed-digit-memory
-Source snapshot SHA-256:
-79f6373302cb916a88f65a1b142024d4d2d0b14e41eb58bef3152ebd45ffd0ca
+This generator is a port. It is not independent clean-room authorship.
+Only the coefficient fit is labeled own. The module map is
+tasks/invsqrt/PROVENANCE.md.
 
-The circuit phases |x> by 1/sqrt(x) for x in 1..3,133,452. It uses the
-parent's selected schedule: quadratic signed-digit Horner, a 256-entry QROM,
-and no Newton iteration. The same commit writes a byte-identical invsqrt.kmb.
+Parents (Apache-2.0), reimplemented in this package:
+- anazemcev, Quantum Circuits | Signed-Digit Memory v3
+  https://www.kaggle.com/code/anazemcev/quantum-circuits-signed-digit-memory
+  snapshot SHA-256 79f6373302cb916a88f65a1b142024d4d2d0b14e41eb58bef3152ebd45ffd0ca
+- Kozykorpesh, 90-qubit Gray curvature schedule, V3 run 361677445
+  https://www.kaggle.com/code/kozykappa/quantum-ai-lb-score-6-68108?scriptVersionId=361677445
+- Kozykorpesh, complete-domain affine compilation v2, and anazemcev source &
+  exact compilation v4, for the Toffoli/CSWAP rewrite
+
+Alex Chilton v8 and Mizero Lucky Gall v1 have no notebook-wide licence.
+They are reference-only and are not loaded.
+
+Coefficients are derived by tasks/invsqrt/fit_coefficients.py (provenance own).
+The same commit writes one invsqrt.kmb.
 
     python tasks/invsqrt/generate.py --out DIR
 """
@@ -19,19 +28,21 @@ import argparse
 import hashlib
 import io
 import sys
+from functools import lru_cache
 from pathlib import Path
 
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from tasks.invsqrt import signed_digit as sd  # noqa: E402
+import kickmix as km  # noqa: E402
 
-# Selected public schedule (Cfg in the parent notebook).
-F2 = 8          # fractional bits of the quadratic coefficient
-F1 = 19         # fractional bits of the linear coefficient
-FYR = 27        # fractional bits of the raw phase word before the dropped low bit
-GY = 1          # low bits of the phase word that are computed and then dropped
-DROP2 = (5,)    # signed-digit rows omitted from the quadratic Horner stage
+from tasks.invsqrt import affine, calibrate, schedule90, signed_digit as sd  # noqa: E402
+
+F2 = 8
+F1 = 19
+FYR = 27
+GY = 1
+DROP2 = (5,)
 QROM_ENTRIES = 256
 WIDTH = 22
 MAX_X = 3_133_452
@@ -39,31 +50,105 @@ BETA = 1
 PARENT_URL = "https://www.kaggle.com/code/anazemcev/quantum-circuits-signed-digit-memory"
 PARENT_LICENCE = "Apache-2.0"
 PARENT_SNAPSHOT_SHA256 = "79f6373302cb916a88f65a1b142024d4d2d0b14e41eb58bef3152ebd45ffd0ca"
-# Published selected-circuit hash from the parent notebook (v3).
-SELECTED_KMB_SHA256 = "63f70e623dd995f4f87ca13254f46f991a5ae545d4c20c80e8510f5ff0a49bbd"
+# Affine method parents. Notebook code only; no notebook binary is loaded.
+AFFINE_URL = "https://www.kaggle.com/code/kozykappa/quantum-ai-complete-domain-affine-compilation-v2"
+AFFINE_LICENCE = "Apache-2.0"
+SCHEDULE_URL = "https://www.kaggle.com/code/kozykappa/quantum-ai-lb-score-6-68108?scriptVersionId=361677445"
+# Deterministic bytes of the ported 90-qubit circuit. Coefficients are own.
+CIRCUIT_AUTHORSHIP = "port"
+SELECTED_KMB_SHA256 = "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd"
 
 assert (sd.F2, sd.F1, sd.FYR, sd.GY, sd.DROP2) == (F2, F1, FYR, GY, DROP2)
 
 
+def _resources(circuit) -> dict:
+    stats = circuit.operation_statistics()
+    static = int(stats.num_toffoli_like)
+    discount = sd.conditional_toffoli_discount(circuit)
+    return {
+        "qubits": int(circuit.num_qubits),
+        "static_toffoli": static,
+        "expected_toffoli": static - discount,
+        "conditional_discount": discount,
+        "t_like": int(stats.num_t_like),
+        "rotations": int(stats.num_z_pow(min_clifford_hierarchy_level=4)),
+    }
+
+
+@lru_cache(maxsize=1)
+def compilation_report() -> dict:
+    """Fit, schedule, affine-compile, calibrate, and peephole. Cached per process."""
+    cfg, tables, worst = sd.load_or_build_tables()
+    raw, schedule_report = schedule90.build_raw(cfg, tables)
+    compiled = affine.compile_circuit(raw)
+    phase_report = calibrate.assert_phase_matches(compiled, cfg, tables)
+    compiled_circuit = km.Circuit(compiled.text)
+    before = _resources(compiled_circuit)
+    calibrated = calibrate.calibrate(
+        compiled,
+        {
+            "qubits": before["qubits"],
+            "expected_toffoli": before["expected_toffoli"],
+            "t_like": before["t_like"],
+        },
+    )
+    circuit = km.Circuit(calibrated["text"])
+    final = _resources(circuit)
+    estimate = calibrate._estimate(
+        final["qubits"],
+        final["expected_toffoli"],
+        final["t_like"],
+        final["rotations"],
+        calibrated["margin_units"],
+    )
+    if final["rotations"] != calibrated["rotations"]:
+        raise RuntimeError(
+            f"Rotation count {final['rotations']} != calibrated {calibrated['rotations']}"
+        )
+    buffer = io.BytesIO()
+    circuit.to_file(buffer, format="kmb")
+    data = buffer.getvalue()
+    return {
+        "circuit": circuit,
+        "kmb": data,
+        "sha256": hashlib.sha256(data).hexdigest(),
+        "bytes": len(data),
+        "coefficient_provenance": "own",
+        "circuit_authorship": CIRCUIT_AUTHORSHIP,
+        "table_worst_relative_error": worst,
+        "schedule": schedule_report,
+        "affine_peak_qubits": compiled.peak,
+        "affine_rewrites": compiled.rewrites,
+        "affine_false_candidates": None,
+        "phase": phase_report,
+        "before_calibration": before,
+        "calibration": {
+            "margin_units": calibrated["margin_units"],
+            "worst_x": calibrated["worst_x"],
+            "dropped_rotation_indexes": calibrated["dropped_rotation_indexes"],
+            "peephole_cancelled": calibrated["peephole_cancelled"],
+            "trials": calibrated["trials"],
+        },
+        "final": final,
+        "estimate": estimate,
+    }
+
+
 def build_invsqrt_circuit():
     """Build the selected kickmix circuit. Deterministic."""
-    cfg, tables, _worst = sd.load_or_build_tables()
-    return sd.build_selected(cfg, tables, sd.layout(cfg, tables))
+    return compilation_report()["circuit"]
 
 
 def circuit_kmb_bytes() -> bytes:
     """Canonical .kmb bytes of the selected circuit."""
-    buffer = io.BytesIO()
-    build_invsqrt_circuit().to_file(buffer, format="kmb")
-    return buffer.getvalue()
+    return compilation_report()["kmb"]
 
 
 def write_invsqrt(out_dir: Path) -> Path:
     """Write `invsqrt.kmb` into `out_dir` and return its path."""
     out_dir.mkdir(parents=True, exist_ok=True)
     target = out_dir / "invsqrt.kmb"
-    data = circuit_kmb_bytes()
-    target.write_bytes(data)
+    target.write_bytes(circuit_kmb_bytes())
     return target
 
 
@@ -72,8 +157,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--out", type=Path, required=True, help="Directory for invsqrt.kmb.")
     args = parser.parse_args(argv)
     target = write_invsqrt(args.out)
-    digest = hashlib.sha256(target.read_bytes()).hexdigest()
-    print(f"{target} sha256={digest} bytes={target.stat().st_size}")
+    report = compilation_report()
+    print(f"{target} sha256={report['sha256']} bytes={report['bytes']}")
+    print(
+        f"Q {report['final']['qubits']} expected_toffoli {report['final']['expected_toffoli']} "
+        f"rotations {report['final']['rotations']} ratio {report['estimate']['ratio']:.6f} "
+        f"margin {report['calibration']['margin_units']}"
+    )
     return 0
 
 
