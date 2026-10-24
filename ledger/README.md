@@ -11,6 +11,7 @@ stranger can re-check. Schema and rules: [`docs/ledger-schema.md`](../docs/ledge
 | `scorecard.py` | Table of all manifests; 3-per-UTC-day submission cap |
 | `archive.py` | Safe zip extraction and deterministic zip builds |
 | `gates/runner.py`, `gates/checks.py` | G0–G5 runner, config-driven from `configs/gates/*.yaml` |
+| `status_page.py` | Static status page (gates, scorecard, Kaggle cap, decisions register) that Vercel builds on every push (`vercel.json`) |
 | `examples/` | Sample manifest for the reference submission, with its verifier logs |
 
 ```
@@ -19,6 +20,7 @@ uv run python -m ledger.gates.runner run --manifest ledger/manifests/candidates/
 uv run python -m ledger.scorecard               # table
 uv run python -m ledger.scorecard --check-slot  # before every Kaggle submission
 uv run python -m ledger.benchmark_health        # self-checks
+uv run python -m ledger.status_page             # public/index.html, as Vercel builds it
 ```
 
 `manifests/` (with `index.csv`), `evidence/` and the queue pointers are committed. Zips, `.kmb`, `.npz` and competition data
