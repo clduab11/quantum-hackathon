@@ -1,0 +1,80 @@
+# Gate pipeline for candidate submissions. Read by ledger/gates/runner.py.
+#
+# The gates run in this order and the order is enforced: a gate runs only when every earlier gate
+# is cleared (PASS, or WAIVED where waivable) on the same zip SHA-256. G0, G3 and G5 can never be
+# waived. A hook that is not installed is a FAIL, never a skip.
+#
+# Hooks are "module:function". Owners:
+#   ledger.gates.g0_preflight     P0-4 (PRA-174, aurelio)
+#   harness.score_local           P0-4 (PRA-174, aurelio)
+#   tasks.<task>.gates            the generator owner: P0-6 (invsqrt), P0-7 (dqi, dfthcsos)
+
+schema: 1
+
+# Fixed public local salt (the same label as the PRA-171 inventory recipe). Kaggle's salts are
+# secret; no seed or salt grinding (AGENTS.md).
+salt_label: PRA171_LOCAL_PUBLIC_FIXED_SALT_0001
+
+gates:
+  - id: G0
+    name: pre-flight (metric-only file checks, no simulation)
+    check: ledger.gates.checks:g0_preflight
+    waivable: false
+    params:
+      hook: ledger.gates.g0_preflight:preflight
+
+  - id: G1
+    name: smoke on small instances
+    check: ledger.gates.checks:per_task
+    waivable: true
+    params:
+      hooks:
+        invsqrt: tasks.invsqrt.gates:g1_smoke
+        dqi: tasks.dqi.gates:g1_smoke
+        dfthcsos: tasks.dfthcsos.gates:g1_smoke
+
+  - id: G2
+    name: fast proxy
+    check: ledger.gates.checks:per_task
+    waivable: true
+    params:
+      hooks:
+        # Exhaustive numpy integer mirror over all 3,133,452 inputs.
+        invsqrt: tasks.invsqrt.gates:g2_proxy
+        # Subsampled shots (shot_divisor > 1). Never reported as parity.
+        dqi: tasks.dqi.gates:g2_proxy
+        # heuristic_costs plus the error <= 20 mHa, Lambda > 49.0, E_gap > 3.914898 Ha checks.
+        dfthcsos: tasks.dfthcsos.gates:g2_proxy
+
+  - id: G3
+    name: full local verifier
+    check: ledger.gates.checks:g3_full_verifier
+    waivable: false
+    params:
+      hook: harness.score_local:score_submission
+      expected_shots:
+        invsqrt: 200540928
+        dqi: 102400
+        dfthcsos: 254464
+
+  - id: G4
+    name: strict improvement over parent and archive
+    check: ledger.gates.checks:g4_strict_improvement
+    # Waivable only for pipeline checks that are not meant to improve (e.g. the reference zip).
+    waivable: true
+
+  - id: G5
+    name: byte-identical rebuild from a clean worktree + provenance
+    check: ledger.gates.checks:g5_rebuild_and_provenance
+    waivable: false
+    params:
+      timeout_seconds: 7200
+
+# Generator commands for G5, run from the root of a clean worktree at generator_commit.
+# {out} is an empty output directory per task; outputs must use the same relative paths as the
+# manifest's files (invsqrt.kmb, dqi.kmb, dfthcsos/angle_k_*.kmb, dfthcsos/submission.npz).
+# The generators are delivered by P0-6 / P0-7; until then G5 fails for these tasks.
+generators:
+  invsqrt: ["{python}", "tasks/invsqrt/generate.py", "--out", "{out}"]
+  dqi: ["{python}", "tasks/dqi/generate.py", "--out", "{out}"]
+  dfthcsos: ["{python}", "tasks/dfthcsos/generate.py", "--out", "{out}"]

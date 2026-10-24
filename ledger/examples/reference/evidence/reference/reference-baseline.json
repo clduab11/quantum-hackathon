@@ -1,0 +1,114 @@
+{
+  "candidate_id": "reference",
+  "commands": [
+    "PYTHONPATH=\"$DATA/kickmix:$DATA/verifiers\" python -B \"$DATA/verifiers/invsqrt/verify_submission_invsqrt.py\" \"$DATA/sample_submission/invsqrt.kmb\" --salt PRA171_LOCAL_PUBLIC_FIXED_SALT_0001 --max-workers 8",
+    "PYTHONPATH=\"$DATA/kickmix:$DATA/verifiers\" python -B \"$DATA/verifiers/dfthcsos/verify.py\" \"$DATA/sample_submission/dfthcsos\" --salt PRA171_LOCAL_PUBLIC_FIXED_SALT_0001"
+  ],
+  "gate": "reference-baseline",
+  "logs": [
+    {
+      "bytes": 1515,
+      "path": "reference/logs/dfthcsos.json",
+      "sha256": "19c74562041bf6ba12c5bf43af81af3ec5c2094fe6c356e7abf1c3c7f4b35d61"
+    },
+    {
+      "bytes": 29,
+      "path": "reference/logs/dfthcsos.stderr",
+      "sha256": "ce77bbf74876792c924b99dad090cd3939cc81ab4382d299ab8a0ec4306ee7ee"
+    },
+    {
+      "bytes": 59,
+      "path": "reference/logs/dfthcsos.timing",
+      "sha256": "99e382f37367f1d203e491ea71ae75d10cb371ec9149e5606190c41014291dd1"
+    },
+    {
+      "bytes": 498,
+      "path": "reference/logs/invsqrt.json",
+      "sha256": "26d5ae2238e023b5f1949ac22420be7a0bca98d6a60319c521a5cac9a0a463d6"
+    },
+    {
+      "bytes": 29,
+      "path": "reference/logs/invsqrt.stderr",
+      "sha256": "b65aaf5fe7d0ef593d608bbb82f39dc6bb1007da82807d745386a5b20395bc6c"
+    },
+    {
+      "bytes": 59,
+      "path": "reference/logs/invsqrt.timing",
+      "sha256": "5a7a5a4d7e0242434fa5c6d1409298167c9457c683b34fad965736fc881757a3"
+    }
+  ],
+  "notes": "Run with CPython 3.13.13 and the shipped kickmix.so, numpy and scipy in an ephemeral uv environment, full default shots. dqi not run.",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "summaries": {
+    "dfthcsos": {
+      "batch_size": 8,
+      "brot": 12,
+      "lambda_eff": 49.30136925057438,
+      "metrics": {
+        "E_SOS": -22144.23882724429,
+        "E_gap": 3.965477244291833,
+        "Lambda": 308.4559397330944,
+        "error_1": 0.003185195031799191,
+        "error_2": 0.01863957063097407,
+        "gap_in_domain": true,
+        "lambda_eff": 49.30136925057438
+      },
+      "num_circuits": 10,
+      "num_ops": 2060743,
+      "num_qubits": 730,
+      "reaction_depth": 110,
+      "resources": {
+        "angles_persistent_qubits": 96,
+        "angles_qubits": 119,
+        "angles_selection_qubits": 12,
+        "angles_temporary_qubits": 11,
+        "angles_toffoli": 79480.0,
+        "angles_toffoli_per_pass": 39740.0,
+        "angles_within_cap": true,
+        "brot": 12,
+        "givens_rotations_toffoli": 3450,
+        "heuristic_persistent_qubits": 90,
+        "heuristic_qubits": 634,
+        "heuristic_temporary_qubits": 544,
+        "heuristic_toffoli": 13757,
+        "inner_state_prep_persistent_qubits": 44,
+        "inner_state_prep_qubits": 588,
+        "inner_state_prep_temporary_qubits": 544,
+        "inner_state_prep_toffoli": 9461,
+        "keep_bits": 10,
+        "outer_state_prep_persistent_qubits": 46,
+        "outer_state_prep_qubits": 416,
+        "outer_state_prep_temporary_qubits": 370,
+        "outer_state_prep_toffoli": 846,
+        "persistent_qubits": 186,
+        "qubits": 730,
+        "temporary_qubits": 544,
+        "toffoli": 93237.0
+      },
+      "score": 3355599588.3155365,
+      "status": "PASS",
+      "submission_sha256": "276d464ff14da828b6b33e8487d99975494cbdf0c3cb2bd37dd3c3ddc4002695",
+      "toffoli_count": 93237.0,
+      "verified_shots": 254464
+    },
+    "invsqrt": {
+      "circuit_sha256": "e2bf8eb64350a4460a271fc7f1d591ef125b1e276377e9a0f64b96ab3ca321e1",
+      "max_toffoli_count": 7735,
+      "num_ops": 62160,
+      "num_qubits": 260,
+      "reaction_depth": 4005,
+      "rotation_count": 37.0,
+      "rotation_eps": 1.5289254939242122e-12,
+      "score": 2076774.233715282,
+      "status": "PASS",
+      "t_count": 1.0,
+      "toffoli_count": 7735.0,
+      "toffoli_equivalent": 7987.593206597238,
+      "verified_shots": 200540928,
+      "worst_error_over_tolerance": 0.4769116097939472,
+      "worst_x": 2588411
+    }
+  },
+  "timestamp_utc": "2026-10-24T00:39:21.321373+00:00",
+  "zip_sha256": "6cae8d5c437b772dec78adfd0d744e891aa3eb2612581e13903d3775e3a6d38d"
+}
