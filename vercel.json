@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "python3 -m venv /tmp/status-venv && /tmp/status-venv/bin/pip install --disable-pip-version-check pyyaml==6.0.3",
+  "buildCommand": "/tmp/status-venv/bin/python -m ledger.status_page --out public",
+  "outputDirectory": "public"
+}
