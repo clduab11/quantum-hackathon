@@ -11,7 +11,7 @@ from harness.archive import unpack
 from harness.runtime import load_metric
 
 
-def preflight(root, metric=None):
+def parse_submission(root, metric=None):
     metric = metric or load_metric()
     from dfthcsos import verify as dfthc
     from dfthcsos.scoreinfra.reference import FACTORIZATION_KEYS, ORBITALS
@@ -57,10 +57,19 @@ def preflight(root, metric=None):
             'tree_edges': arrays.pop('tree_edges'), 'factorization': arrays}
 
 
+def preflight(submission_dir: Path) -> dict:
+    """Gate hook: metric-only checks on an extracted directory; no simulation."""
+    try:
+        parse_submission(submission_dir)
+        return {'status': 'PASS'}
+    except Exception as error:
+        return {'status': f'FAIL: {error}'}
+
+
 @contextmanager
 def preflight_zip(path, metric=None):
     with unpack(path) as root:
-        yield preflight(root, metric)
+        yield parse_submission(root, metric)
 
 
 def main():

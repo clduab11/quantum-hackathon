@@ -7,7 +7,8 @@ if __package__ in (None, ''):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from harness.runtime import DATA, load_metric
 from harness.verification import emit, fingerprint, report, verify_all
-from ledger.gates.g0_preflight import preflight
+from ledger.gates.g0_preflight import parse_submission
+from harness.reference_identity import reference_identity
 
 
 def main():
@@ -18,8 +19,9 @@ def main():
     parser.add_argument('--reference', type=Path, default=DATA / 'sample_submission')
     args = parser.parse_args()
     try:
-        checked = preflight(args.reference, load_metric())
-        emit({'environment': fingerprint()})
+        identity = reference_identity(args.reference)
+        checked = parse_submission(args.reference, load_metric())
+        emit({'environment': fingerprint(), 'reference_files': identity})
         for name, result, seconds in verify_all(checked):
             emit(report(name, result, seconds))
         emit({'complete': True})

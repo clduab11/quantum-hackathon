@@ -59,3 +59,55 @@ The independent 47.56 derivation remains unresolved. See decision D-PRA174-07.
 
 This is local public-salt evidence, not a Kaggle acceptance claim or provenance
 approval. The Adjudicator reviews the tooling before use on main; the board merges.
+
+## Review corrections (2026-10-24)
+
+The regression checks first failed on the original implementation: duplicate
+calibration task records raised no error, and the repository-venv boundary helper
+did not exist. After correction:
+
+```text
+uv sync
+Resolved 14 packages; Checked 12 packages
+uv run pytest -q
+74 passed in 1.07s
+```
+
+All five CLI `--help` commands exit 0. Tests now include changed reference bytes,
+relocation of identical bytes, extra/missing reference files, changed baseline
+identity, duplicate/missing task records, missing/failed PASS evidence, missing
+full-shot evidence, changed salt and cost mismatches. They prove rejected
+calibration input never reaches parsing or simulation.
+
+A separate engineer-run check copied the three setup scripts into a new scratch
+repository and created its own CPython 3.13.13 `.venv` with `uv venv`. It used the
+real inventoried data directory and extension. Actual output, with the scratch
+prefix shortened here (the attachment contains full commands and paths):
+
+```text
+install_kickmix.py DATA --dry-run -> Would create: SCRATCH/.venv/.../vqcc_local.pth; exit=0
+install_kickmix.py DATA -> kickmix 0.1; Created: SCRATCH/.venv/.../vqcc_local.pth; exit=0
+install_kickmix.py DATA -> Unchanged: SCRATCH/.venv/.../vqcc_local.pth; exit=0
+uninstall_kickmix.py DATA --dry-run -> Would remove matching path file; exit=0
+uninstall_kickmix.py DATA -> Removed matching path file; exit=0
+uninstall_kickmix.py DATA -> Already absent; exit=0
+install_kickmix.py DATA -> INSTALL REJECT: Existing path file conflicts; exit=1
+uninstall_kickmix.py DATA -> ROLLBACK REJECT: Existing path file conflicts; exit=1
+PASS: conflict bytes preserved; all writes were inside the scratch repository venv.
+wrong interpreter -> INSTALL REJECT: Run with uv run in this repository venv (.venv, CPython 3.13); exit=1
+```
+
+The driver checked that reinstall preserves the file's stat information and that
+both conflict refusals preserve its bytes. Unit tests also reject symbolic links,
+dangling links, hard links, directories, linked parents and outside-venv targets.
+This rollback removes only a matching path file; it does not undo `uv sync`.
+
+The gate contract tests resolve the actual `module:function` hook paths. Valid G0
+input reaches a G3 test consumer; invalid input stops before G3. Direct G3 calls
+also reject malformed files before baseline loading or verification. A controlled
+verifier fixture proves unchanged task summaries and the aggregate result.
+The full scoring runs below use the real package verifiers.
+
+The lineage test is still a reported-value regression. D-PRA174-07 is preserved;
+D-PRA174-12 records the escalation for sourced inputs or a board scope amendment.
+No acceptance or main-use approval is claimed here.

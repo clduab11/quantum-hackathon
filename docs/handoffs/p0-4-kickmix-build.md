@@ -29,15 +29,25 @@ uv run python scripts/install_kickmix.py /home/cld-main/work/vqcc-data/google-ve
 uv run python -c 'import kickmix; print(kickmix.__version__, kickmix.__file__)'
 ```
 
-The installer verifies the known binary hash, probes the import, then writes only
-`.venv/lib/python3.13/site-packages/vqcc_local.pth`. Running it twice has the same
-result. It appends named data paths, so already-installed modules take precedence.
-It fails nonzero on an unexpected binary, missing package or wrong interpreter.
-Undo this venv-only setup with:
+The installer requires this checkout's own `.venv` and CPython 3.13, verifies the
+known binary hash, probes the import, and exclusively creates
+`.venv/lib/python3.13/site-packages/vqcc_local.pth`. Identical existing contents
+are a no-op. Conflicting contents, symbolic/hard links, linked parent directories,
+and targets outside this venv fail nonzero without overwriting anything.
+Named data paths are appended, so already-installed modules take precedence.
+
+Rollback removes only this exact path file after checking that its contents match
+the original data path. Run from this same checkout, using the same data argument:
 
 ```bash
-uv run python -c 'import pathlib, sysconfig; (pathlib.Path(sysconfig.get_path("purelib")) / "vqcc_local.pth").unlink(missing_ok=True)'
+uv run python scripts/uninstall_kickmix.py /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation --dry-run
+uv run python scripts/uninstall_kickmix.py /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation
 ```
+
+An absent file is a no-op. A conflicting or linked file is preserved with exit 1.
+This is a path-file rollback, not a full environment rollback: it leaves all
+`uv sync` dependencies, the venv, supplied data, metric snapshots and logs intact.
+It is valid only for a path file created with the same named data location.
 
 No command here modifies machine settings, the Desktop checkout, or `main`.
 
@@ -76,8 +86,14 @@ if upstream changes; review the new rules first.
 Calibration runs the three full verifiers once on the supplied reference. Its JSONL
 records the actual module paths and hashes, Python/dependency versions, one fixed
 public salt (`PRA171_LOCAL_PUBLIC_FIXED_SALT_0001`), costs and full verifier output.
+Before parsing or simulation, calibration compares the exact file set, sizes and
+SHA-256 values to committed `reference_files` in `ledger/p0-4-artifacts.yaml`.
+Identical files may move to another root; changed bytes, missing or extra files
+are refused. This reference identity is included in the baseline header.
 It emits `complete` only after every task passes. Never use a partial log. The
-scorer refuses a baseline from a different environment. Recalibrate after an
+scorer refuses changed/missing reference identity, duplicate/missing task records,
+records without matching PASS/full-shot evidence, and different environments.
+Old calibration files lacking these fields must be regenerated. Recalibrate after an
 import, binary or dependency change; do not edit baselines to force a score.
 
 ```bash
@@ -158,3 +174,37 @@ reported-value regression, not an independent derivation or lineage acceptance.
 No inherited DQI artifact is downloaded or shipped by these tools.
 
 The completed run is summarized in [verification results](p0-4-verify-results.md).
+
+## Gate runner import contract
+
+`ledger.gates.g0_preflight:preflight(submission_dir: pathlib.Path) -> dict` accepts
+an extracted directory and returns `{"status": "PASS"}` or `{"status": "FAIL: reason"}`.
+The runner owns ZIP safety; the ZIP CLI uses the same safety checks locally.
+`parse_submission` is an internal parser returning objects; it is not the gate hook.
+
+`harness.score_local:score_submission(submission_dir, *, salt_label, shot_divisor=1)`
+returns the status plus `kickmix_build_id` (binary SHA-256), `qualtran_pin` (null,
+because binary source provenance is unknown), the three verifier entry-point
+SHA-256 values in `verifier_hashes`, unchanged verifier summaries in `tasks`,
+`baseline_costs`, and `geometric_mean`. It independently checks G0 before loading
+the baseline or starting simulation. Any exception returns `FAIL: reason`.
+
+Only `salt_label="PRA171_LOCAL_PUBLIC_FIXED_SALT_0001"` and `shot_divisor=1` are
+supported. Other values fail before parsing. There is no reduced-shot G2 mode.
+The hook reads `DATA.parent / "reference-baseline.jsonl"`; `VQCC_DATA` names DATA
+before import. Use the CLI's `--baseline` to select a different calibration file.
+Example (after full calibration in the named default location):
+
+```bash
+uv run python - <<'PYCODE'
+from pathlib import Path
+from harness.score_local import score_submission
+print(score_submission(
+    Path('/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation/sample_submission'),
+    salt_label='PRA171_LOCAL_PUBLIC_FIXED_SALT_0001'))
+PYCODE
+```
+
+`tests/test_gate_contract.py` exercises consumer dispatch through both
+`module:function` paths, refusal before G3 on invalid input, the G3 defense when
+called directly, unchanged summaries, aggregation, and fixed salt/full shots.

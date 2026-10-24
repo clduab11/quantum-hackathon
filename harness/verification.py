@@ -67,6 +67,7 @@ def report(name, result, seconds, baseline=None):
     if not math.isclose(computed, result['score'], rel_tol=1e-12):
         raise ValueError(f'{name}: accounting formula differs from verifier cost')
     return {'task': name, 'status': result['status'], 'Q': result['num_qubits'],
+            'full_verification': {'shot_divisor': 1, 'salt_label': LOCAL_SALT},
             'Toffolis': result['toffoli_count'], 'T': t,
             'T_unit': 'synthesized_T_gates' if name == 'invsqrt' else 'Toffoli_resource',
             'failures': result.get('value_errors', 0) + result.get('phase_errors', 0),
