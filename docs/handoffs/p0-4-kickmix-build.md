@@ -156,3 +156,5 @@ It inherits factor NPZ `c5b4165e7b1dcacf1d287746642414a9ba6086b4279e5ede2bb73e21
 and does not disclose its Lambda/E_gap pair in source. Thus the 47.56 test is a
 reported-value regression, not an independent derivation or lineage acceptance.
 No inherited DQI artifact is downloaded or shipped by these tools.
+
+The completed run is summarized in [verification results](p0-4-verify-results.md).
