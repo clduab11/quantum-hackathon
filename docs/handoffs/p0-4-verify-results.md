@@ -111,3 +111,34 @@ The full scoring runs below use the real package verifiers.
 The lineage test is still a reported-value regression. D-PRA174-07 is preserved;
 D-PRA174-12 records the escalation for sourced inputs or a board scope amendment.
 No acceptance or main-use approval is claimed here.
+
+## Full verification after review corrections
+
+Fresh calibration verified all inventoried reference hashes, then passed all three
+full verifiers. A separate full ZIP scoring run used that new baseline and passed:
+
+```text
+uv run python harness/calibrate_reference.py
+invsqrt PASS cost=2076774.233715282
+dqi PASS cost=24439465632206.816
+dfthcsos PASS cost=3355599588.3155365
+complete=true; exit=0
+uv run python harness/score_local.py /home/cld-main/work/vqcc-data/reference.zip
+all ratios=1.0
+{"geometric_mean": 1.0, "scope": "fixed public local salt"}
+exit=0
+```
+
+The old baseline was preserved as `reference-baseline-before-review.jsonl`. The
+validated new baseline was atomically copied to the default
+`reference-baseline.jsonl`. Both full runs keep the original fixed public salt and
+full shot counts. The values in the original results table still apply.
+
+Review evidence hashes (all files are outside git):
+
+- `pra174-tests-review.log`: `87bfeebc63f0d04d8bd6bc7d5de9bbdd89e3a4a79a2e2c845b4c9bbb83a3e5fe`
+- `pra174-install-review.log`: `e48beba76bbe0c50bd2ca37ca9de4a0a6c1f69ac775e95558b822ce6e9f96568`
+- `reference-baseline-review.jsonl`: `51d069cdfa0f2f41f9b569d26031ca8568555153c60fa12f1ad5ef4cfaa15385`
+- `reference-calibration-review.stderr.log`: `3f823812a87679db48d2518f49809c7c9c6147693a667ea0f6f91b8e8354d058`
+- `reference-score-review.jsonl`: `4e94f65da689ec45edeeac641ea75416381fc724ade0172d9dc71cac6ed28217`
+- `reference-score-review.stderr.log`: `3f823812a87679db48d2518f49809c7c9c6147693a667ea0f6f91b8e8354d058`
