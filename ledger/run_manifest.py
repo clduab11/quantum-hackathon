@@ -397,7 +397,8 @@ def from_dict(data: dict[str, Any]) -> RunManifest:
 
 
 def dumps(manifest: RunManifest) -> str:
-    return json.dumps(to_dict(manifest), indent=2, sort_keys=True, allow_nan=False) + "\n"
+    return json.dumps(to_dict(manifest), indent=2, sort_keys=True, allow_nan=False,
+                      ensure_ascii=False) + "\n"
 
 
 def loads(text: str) -> RunManifest:
@@ -417,7 +418,7 @@ def _atomic_write_text(path: Path, text: str, *, exclusive: bool = False) -> Non
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, tmp = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.", suffix=".tmp")
     try:
-        with os.fdopen(fd, "w") as f:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
             f.write(text)
             f.flush()
             os.fsync(f.fileno())
@@ -444,7 +445,7 @@ def write_manifest(manifest: RunManifest, path: Path | None = None, *,
 
 
 def read_manifest(path: Path) -> RunManifest:
-    return loads(Path(path).read_text())
+    return loads(Path(path).read_text(encoding="utf-8"))
 
 
 def load_manifests(root: Path = MANIFESTS_DIR) -> list[RunManifest]:
