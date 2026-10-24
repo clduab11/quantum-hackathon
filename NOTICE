@@ -1,1 +1,3 @@
 quantum-hackathon — Praxen's entry to the Google Quantum AI "Verifiable Quantum Circuit Compilation" Kaggle competition. Copyright 2026 Praxen / Chris Dukes. Licensed under the Apache License, Version 2.0.
+
+The invsqrt generator under tasks/invsqrt/ is a derivative of "Quantum Circuits | Signed-Digit Memory" v3 by Artem1410 (anazemcev), https://www.kaggle.com/code/anazemcev/quantum-circuits-signed-digit-memory , Apache License 2.0. Source snapshot SHA-256 79f6373302cb916a88f65a1b142024d4d2d0b14e41eb58bef3152ebd45ffd0ca. That notebook retains upstream Apache-2.0 notices for Sumit Chongder, Rudra Bhaskar, Alex Chilton, Kozykorpesh, and Kirill Tymchishin. Those notices are kept in tasks/invsqrt/signed_digit.py.
