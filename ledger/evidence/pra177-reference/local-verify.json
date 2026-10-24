@@ -1,0 +1,118 @@
+{
+  "candidate_id": "pra177-reference",
+  "commands": [
+    "DATA=/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation; /usr/bin/time -f 'elapsed %e sec maxrss %M' uv run python -B \"$DATA/verifiers/dfthcsos/verify.py\" /tmp/pra177-out/dfthcsos --salt PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+    "DATA=/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation; /usr/bin/time -f 'elapsed %e sec maxrss %M' uv run python -B \"$DATA/verifiers/dqi/verify_submission_dqi.py\" /tmp/pra177-out/dqi.kmb --salt PRA171_LOCAL_PUBLIC_FIXED_SALT_0001 --max-workers 2"
+  ],
+  "gate": "local-verify",
+  "logs": [
+    {
+      "bytes": 1515,
+      "path": "ledger/evidence/pra177-reference/logs/dfthcsos.json",
+      "sha256": "19c74562041bf6ba12c5bf43af81af3ec5c2094fe6c356e7abf1c3c7f4b35d61"
+    },
+    {
+      "bytes": 1081,
+      "path": "ledger/evidence/pra177-reference/logs/dqi.json",
+      "sha256": "01ef2683e3c620939e26dfbd9f0b985b99fbf24c9ebe39b78ac164cc8050749f"
+    }
+  ],
+  "notes": "Full default shots, CPython 3.13.13, shipped kickmix 0.1. dfthcsos: exit 0, elapsed 37.26 s, maxrss 1116892 KiB. dqi: exit 0, elapsed 256.42 s, maxrss 9310244 KiB, 2 workers. Generated files are byte-identical to sample_submission. No zip. Gates not recorded.",
+  "operator": "584bb41d-d054-474a-b560-d2394375afcf",
+  "summaries": {
+    "dfthcsos": {
+      "batch_size": 8,
+      "brot": 12,
+      "lambda_eff": 49.30136925057438,
+      "metrics": {
+        "E_SOS": -22144.23882724429,
+        "E_gap": 3.965477244291833,
+        "Lambda": 308.4559397330944,
+        "error_1": 0.003185195031799191,
+        "error_2": 0.01863957063097407,
+        "gap_in_domain": true,
+        "lambda_eff": 49.30136925057438
+      },
+      "num_circuits": 10,
+      "num_ops": 2060743,
+      "num_qubits": 730,
+      "reaction_depth": 110,
+      "resources": {
+        "angles_persistent_qubits": 96,
+        "angles_qubits": 119,
+        "angles_selection_qubits": 12,
+        "angles_temporary_qubits": 11,
+        "angles_toffoli": 79480.0,
+        "angles_toffoli_per_pass": 39740.0,
+        "angles_within_cap": true,
+        "brot": 12,
+        "givens_rotations_toffoli": 3450,
+        "heuristic_persistent_qubits": 90,
+        "heuristic_qubits": 634,
+        "heuristic_temporary_qubits": 544,
+        "heuristic_toffoli": 13757,
+        "inner_state_prep_persistent_qubits": 44,
+        "inner_state_prep_qubits": 588,
+        "inner_state_prep_temporary_qubits": 544,
+        "inner_state_prep_toffoli": 9461,
+        "keep_bits": 10,
+        "outer_state_prep_persistent_qubits": 46,
+        "outer_state_prep_qubits": 416,
+        "outer_state_prep_temporary_qubits": 370,
+        "outer_state_prep_toffoli": 846,
+        "persistent_qubits": 186,
+        "qubits": 730,
+        "temporary_qubits": 544,
+        "toffoli": 93237.0
+      },
+      "score": 3355599588.3155365,
+      "status": "PASS",
+      "submission_sha256": "276d464ff14da828b6b33e8487d99975494cbdf0c3cb2bd37dd3c3ddc4002695",
+      "toffoli_count": 93237.0,
+      "verified_shots": 254464
+    },
+    "dqi": {
+      "circuit_sha256": "959471d05a26373b4f14ca0cae2d8639ea25f18170d9f6532139aa51ccc04995",
+      "degree": 12,
+      "effective_error_rate": 0.0008660587301657926,
+      "empirical_error_rate": 0.0,
+      "log2_delta": -128.0,
+      "m": 4095,
+      "max_toffoli_count": 5725461,
+      "mean_error_weight": 31.046737331746634,
+      "n": 70,
+      "num_bits": 49154,
+      "num_ops": 86051014,
+      "num_qubits": 1893,
+      "phase_errors": 0,
+      "r": 2016,
+      "reaction_depth": 170757,
+      "repetition_factor": 1.1912604648115832,
+      "score": 24439465632206.816,
+      "shot_operation_counts": {
+        "BIT_INVERT": 331738134926,
+        "BIT_STORE0": 70593923688,
+        "BIT_STORE1": 2515936048,
+        "CCX": 466175269068,
+        "CSWAP": 120075878400,
+        "CX": 5515948763388,
+        "CZ": 483331996464,
+        "HMR": 125697602544,
+        "INFO_TAG": 333529702400,
+        "NEG": 66660026,
+        "POP_CONDITION": 4331212800,
+        "PUSH_CONDITION": 4331212800,
+        "R": 125697602544,
+        "SWAP": 320927168256,
+        "X": 84822000064,
+        "Z": 1727636581
+      },
+      "status": "PASS",
+      "toffoli_count": 5725108.861992188,
+      "value_errors": 0,
+      "verified_shots": 102400
+    }
+  },
+  "timestamp_utc": "2026-10-24T06:08:08.068795+00:00",
+  "zip_sha256": null
+}
