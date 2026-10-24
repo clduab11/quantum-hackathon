@@ -43,7 +43,12 @@ def run_mirror() -> dict:
         and place["S"] == 20
         and place["whi"] == 8
     )
-    passed = bool(certificate["pass"]) and split_ok
+    from tasks.invsqrt.generate import compilation_report
+
+    built = compilation_report()
+    phase_ok = built["phase"]["phase_match"] is True
+    calibration_margin = int(built["calibration"]["margin_units"])
+    passed = bool(certificate["pass"]) and split_ok and phase_ok and calibration_margin > 0
     return {
         "pass": passed,
         "tested_inputs": certificate.get("tested_inputs"),
@@ -55,6 +60,17 @@ def run_mirror() -> dict:
         "derivative_split": bounds,
         "layout": {key: place[key] for key in ("w1", "LB", "S", "whi")},
         "first_bad_x": certificate.get("first_bad_x"),
+        "phase_match": phase_ok,
+        "calibration_margin_units": calibration_margin,
+        "calibration_worst_x": built["calibration"]["worst_x"],
+        "qubits": built["final"]["qubits"],
+        "static_toffoli": built["final"]["static_toffoli"],
+        "expected_toffoli": built["final"]["expected_toffoli"],
+        "rotations": built["final"]["rotations"],
+        "estimated_ratio": built["estimate"]["ratio"],
+        "sha256": built["sha256"],
+        "coefficient_provenance": built["coefficient_provenance"],
+        "circuit_authorship": built["circuit_authorship"],
     }
 
 

@@ -1,0 +1,174 @@
+{
+  "candidate_id": "pra200-invsqrt-selected",
+  "cli_command": "uv run python harness/score_local.py /tmp/paperclip-run-pra-200-22ff145e-1c6-pmwVV9/pra200/pra200-invsqrt.zip",
+  "gates": [
+    {
+      "details": {
+        "source": "harness/score_local.py preflight, before simulation"
+      },
+      "evidence_sha256": null,
+      "gate": "G0",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-24T18:37:10.624885+00:00",
+      "zip_sha256": "0f2708bff901d813f5e6f1d367ec9ac6fc9dc97696809169cbfcd8b7f5d29b53"
+    },
+    {
+      "details": {
+        "geometric_mean": 2.3612294080657024,
+        "invsqrt_failures": 0,
+        "invsqrt_ratio": 13.16480863637127,
+        "invsqrt_shots": 200540928,
+        "source": "harness/score_local.py full shots, outside the runner",
+        "why_outside_runner": "G1 and G2 were not run on this zip in the runner. The invsqrt integer mirror for this same SHA-256 is the earlier exhaustive check in D-PRA200-03 and D-PRA200-04. Sample dqi and dfthcsos are companions, not Praxen generators, so zip-wide G4 and G5 stay uncleared. This record is the real verifier run."
+      },
+      "evidence_sha256": "91a52f823507548ba4647a22284d0a8550fcbbb3782643749b2a37ace0c44f8e",
+      "gate": "G3",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-24T18:37:10.630670+00:00",
+      "zip_sha256": "0f2708bff901d813f5e6f1d367ec9ac6fc9dc97696809169cbfcd8b7f5d29b53"
+    }
+  ],
+  "generator_commit": "3b93d8ed567398a84f4e407e70fac82fcf7c99f9",
+  "geometric_mean": 2.3612294080657024,
+  "git_branch": "op-vqcc/PRA-193-regarding-my-quantum-hackathon-project-you-should-know-that-the-highest-score-on-the-hackathon-project-t",
+  "kaggle_submission_id": null,
+  "kickmix_build_id": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
+  "kind": "candidate",
+  "manifest_id": "03dd2f8c-47d0-46da-ac50-aafa3f3712c0",
+  "notes": "PRA-200 local parity bundle. invsqrt.kmb is produced by tasks/invsqrt/generate.py at generator_commit 3b93d8ed567398a84f4e407e70fac82fcf7c99f9 (the fit-recipe commit). HEAD dfea5083b321d37e70ec79e1094918d71925186c has the same tasks/invsqrt bytes; later commits are dqi records only. Untracked .claude/ and Agents.md are not part of the generator, so generator_commit has no -dirty suffix. The circuit is a port. Only the coefficient fit is own (RECIPE row SHA-256 a36d1636d31d6b28a3bd5dce475bb3f8ef451b8b50deefc403853f184d4e6dcc). dqi.kmb and dfthcsos/ are competition-sample companions so the three-task verifier can run. They are not Praxen generators. G0 and G3 are harness/score_local.py at full shots on the fixed public salt. G1, G2, G4 and G5 are not cleared. This candidate is not queued and is not a Kaggle submission. The invsqrt ratio, not the three-task geometric mean, is the PRA-200 result. This record is not shipping approval and not an Adjudicator sign-off.",
+  "operator": "6780c1d8-8ad5-47b0-a70a-b0fe6af42d01",
+  "parent_candidate_id": "pra176-invsqrt-selected",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64",
+  "python_version": "3.13.13",
+  "qualtran_pin": null,
+  "salt_label": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+  "schema_version": "1",
+  "source_candidate_id": null,
+  "submitted_at_utc": null,
+  "tasks": {
+    "dfthcsos": {
+      "baseline_cost": 3355599588.3155365,
+      "cost": 3355599588.3155365,
+      "eps_plus": null,
+      "evidence": [
+        "91a52f823507548ba4647a22284d0a8550fcbbb3782643749b2a37ace0c44f8e"
+      ],
+      "failures": null,
+      "files": {
+        "dfthcsos/angle_k_0.kmb": "7bfb3983accc6ff97d6ab41a88deae924f1d1c97cf30e60879d0bff5688a8e25",
+        "dfthcsos/angle_k_1.kmb": "a04b6d0d57ce851b123af265066aaab2ab33353ea049d26acd534727466d72b6",
+        "dfthcsos/angle_k_2.kmb": "5c1b8987bc3fa1a4b8607e470f8c8f1392c22e7a7dbcb228f0ce9ec986e18058",
+        "dfthcsos/angle_k_3.kmb": "16ac67cdcaf3e2c6abdd98c4138ff1ae8a56cfc4ae15622bcdb3d3a3ba1e22cf",
+        "dfthcsos/angle_k_4.kmb": "d21cdd4c7e94196654aab15ebcabfe10ce8d343151a5e8dc3672e76684b6628d",
+        "dfthcsos/angle_k_5.kmb": "63b8d4cba36955e6098321f3b2ef3e34401dd276fa629b2e490d043b1743880b",
+        "dfthcsos/angle_k_6.kmb": "5bf740428e661d035fda860142578f421969e35e0df2e4e024fbf01a7340b378",
+        "dfthcsos/angle_k_7.kmb": "606009582111a22bd549b795c8d115ac8bbeb124bc8da24a80380eca6d34163d",
+        "dfthcsos/angle_k_8.kmb": "57c7cc51f5922fff6e95d76e1f723d4c2d029a241da643b95684d6322157a8fe",
+        "dfthcsos/angle_k_9.kmb": "22cbe2828988ff954fc07fd971a25e6bc04a02c302bf2cc642e4c3535daaad65",
+        "dfthcsos/submission.npz": "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69"
+      },
+      "measured": true,
+      "metrics": {
+        "E_gap": 3.965477244291833,
+        "Lambda": 308.4559397330944,
+        "angles_qubits": 119,
+        "batch_size": 8,
+        "brot": 12,
+        "error_1": 0.003185195031799191,
+        "error_2": 0.01863957063097407,
+        "lambda_eff": 49.30136925057438,
+        "num_circuits": 10,
+        "persistent_qubits": 186,
+        "submission_sha256": "276d464ff14da828b6b33e8487d99975494cbdf0c3cb2bd37dd3c3ddc4002695",
+        "temporary_qubits": 544
+      },
+      "num_qubits": 730,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Competition sample_submission/dfthcsos (verifiers Apache-2.0). Companion so the three-task verifier can run. Not generated by Praxen code.",
+        "parent_url": "https://www.kaggle.com/competitions/google-verifiable-quantum-circuit-compilation/data"
+      },
+      "ratio": 1.0,
+      "rotation_count": null,
+      "shots": 254464,
+      "t_count": null,
+      "task": "dfthcsos",
+      "toffoli_count": 93237.0,
+      "verifier_sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+    },
+    "dqi": {
+      "baseline_cost": 24439465632206.816,
+      "cost": 24439465632206.816,
+      "eps_plus": 0.0008660587301657926,
+      "evidence": [
+        "91a52f823507548ba4647a22284d0a8550fcbbb3782643749b2a37ace0c44f8e"
+      ],
+      "failures": 0,
+      "files": {
+        "dqi.kmb": "959471d05a26373b4f14ca0cae2d8639ea25f18170d9f6532139aa51ccc04995"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "959471d05a26373b4f14ca0cae2d8639ea25f18170d9f6532139aa51ccc04995",
+        "empirical_error_rate": 0.0,
+        "log2_delta": -128.0,
+        "max_toffoli_count": 5725461,
+        "mean_error_weight": 31.046737331746634,
+        "phase_errors": 0,
+        "repetition_factor": 1.1912604648115832,
+        "value_errors": 0
+      },
+      "num_qubits": 1893,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Competition sample_submission/dqi.kmb (verifiers Apache-2.0). Companion so the three-task verifier can run. Not generated by Praxen code. Not the k256.dev artifact.",
+        "parent_url": "https://www.kaggle.com/competitions/google-verifiable-quantum-circuit-compilation/data"
+      },
+      "ratio": 1.0,
+      "rotation_count": null,
+      "shots": 102400,
+      "t_count": null,
+      "task": "dqi",
+      "toffoli_count": 5725108.861992188,
+      "verifier_sha256": "f14274bc0943fb9769ddb01131be6063191a15009fe1caf1d4bdd9fd25194e65"
+    },
+    "invsqrt": {
+      "baseline_cost": 2076774.233715282,
+      "cost": 157751.94999626835,
+      "eps_plus": null,
+      "evidence": [
+        "91a52f823507548ba4647a22284d0a8550fcbbb3782643749b2a37ace0c44f8e"
+      ],
+      "failures": 0,
+      "files": {
+        "invsqrt.kmb": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+        "max_toffoli_count": 1448,
+        "rotation_eps": 2.8381742236929845e-13,
+        "toffoli_equivalent": 1752.7994444029816,
+        "worst_error_over_tolerance": 0.9996227434818049,
+        "worst_x": 32
+      },
+      "num_qubits": 90,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Port of Signed-Digit Memory v3 plus the Apache-2.0 affine, peephole and 90-qubit schedule methods named in tasks/invsqrt/PROVENANCE.md. Coefficient triples are own, from tasks/invsqrt/fit_coefficients.py RECIPE. Dataset version 21136269 is not an input.",
+        "parent_url": "https://www.kaggle.com/code/anazemcev/quantum-circuits-signed-digit-memory"
+      },
+      "ratio": 13.16480863637127,
+      "rotation_count": 44.0,
+      "shots": 200540928,
+      "t_count": 1.0,
+      "task": "invsqrt",
+      "toffoli_count": 1437.5000155878406,
+      "verifier_sha256": "ddef520dec6b68d1cf0a6f328ddd36d79eb84570b9192cf3f7acaf073f06733a"
+    }
+  },
+  "timestamp_utc": "2026-10-24T18:37:10.618616+00:00",
+  "zip_sha256": "0f2708bff901d813f5e6f1d367ec9ac6fc9dc97696809169cbfcd8b7f5d29b53"
+}
