@@ -1,2 +1,3 @@
 manifest_id,kind,candidate_id,parent_candidate_id,timestamp_utc,operator,generator_commit,salt_label,zip_sha256,invsqrt_ratio,dqi_ratio,dfthcsos_ratio,geometric_mean,last_gate_passed,kaggle_submission_id,submitted_at_utc
+b5c0c310-b9cf-4627-8341-2707c2c69717,candidate,pra177-reference,,2026-10-24T06:08:08.063387+00:00,584bb41d-d054-474a-b560-d2394375afcf,cc745b1fd1b2337eb4d236336cc24d88731929e2,PRA171_LOCAL_PUBLIC_FIXED_SALT_0001,,,1.0,1.0,,,,
 498fed29-836a-40f3-996c-0adc0f6aee73,candidate,pra176-invsqrt-selected,,2026-10-24T06:10:46.903290+00:00,6780c1d8-8ad5-47b0-a70a-b0fe6af42d01,053f7288f8ed271065be1f2db177ab888c488070,PRA171_LOCAL_PUBLIC_FIXED_SALT_0001,dbe2014378076929cfb00007539739231f7dedd6c09b3d1a73769b10b983b1f5,,,,,,,
