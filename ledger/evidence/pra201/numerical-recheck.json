@@ -1,0 +1,1060 @@
+{
+  "source_commit": "3eb0cea1713c317aaec7eeaa30e9cd6769a10608",
+  "source_report_sha256": "4a7465d3fde85fdeabffc17a5f82fb3cdc6713663762809a0943156f55998edb",
+  "checkpoints": [
+    {
+      "path": "/home/cld-main/work/vqcc-data/pra198-curve-02/factors-00.npz",
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "bytes": 4287230
+    },
+    {
+      "path": "/home/cld-main/work/vqcc-data/pra198-curve-02/factors-01.npz",
+      "sha256": "cc7dd377b1c98c1267caac98e64835b516016e4be97392cff791f96fc219a297",
+      "bytes": 3347338
+    },
+    {
+      "path": "/home/cld-main/work/vqcc-data/pra198-curve-02/factors-06.npz",
+      "sha256": "417e53cd7b216280762d2557c3db5d8e7cc2dae09cb2d353d1535e9133b456ae",
+      "bytes": 1660378
+    }
+  ],
+  "input_pins": {
+    "dataset": "sohier/verifiable-circuit-compilation-starter-kit",
+    "version": 4,
+    "license": "Apache-2.0",
+    "files": [
+      {
+        "path": "FeMoCo76o113e.fcidump",
+        "bytes": 128128348,
+        "sha256": "e5a48af746fd075026dec9e8f5df2d363802a121e8c53af9a0b984bde695e1bd",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/FeMoCo76o113e.fcidump?datasetVersionNumber=4"
+      },
+      {
+        "path": "FeMoCo76o113e.fixed_shifts.npz",
+        "bytes": 61028,
+        "sha256": "7b7facf63fe35a9d9d3d00787ffdb700c863fa845fe4724d7f7c54778151cd87",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/FeMoCo76o113e.fixed_shifts.npz?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/__init__.py",
+        "bytes": 292,
+        "sha256": "d78da488e6ca5b913c5ac9f2de605fb920da3d4807b08f2be6a4ddc9c35e3228",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2F__init__.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/build_angle_k.py",
+        "bytes": 4638,
+        "sha256": "82f1cf73adc466ee49894b310e37020e79f36279031f7e2c2ff42ebc053e81ba",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fbuild_angle_k.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/df_thc_sga.py",
+        "bytes": 8917,
+        "sha256": "1e22e79ecf9db19042f042aac5844d404987439493f0152b546e4df1f5432fcc",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fdf_thc_sga.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/dfthc_u_to_tei.py",
+        "bytes": 19784,
+        "sha256": "1e2cd8af4e1ef49c21215dbf5b3f1697a3df4eb76e3987b25445472ce81c0059",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fdfthc_u_to_tei.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/load_integrals.py",
+        "bytes": 8501,
+        "sha256": "14a988da0bb7b55fcc9fda8cae79816bf417b2667319d281d371a6053c1ff667",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fload_integrals.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/spin_free_block_encoding_costs.py",
+        "bytes": 12885,
+        "sha256": "20c3892baa554b379182c72e6024bb15fbf8c16596156bd45519dbdf2af8f6bb",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fspin_free_block_encoding_costs.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/train_df_thc_sga.py",
+        "bytes": 12516,
+        "sha256": "9f3aea602f270d7d596504f0af3ec1f5af44247c2dcf5833795dc10bb55d28e5",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Ftrain_df_thc_sga.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/verify_angle_k.py",
+        "bytes": 19590,
+        "sha256": "00555d552142cd1791c2526de93ff23ea6cc980260f195893f3daa6e4f516b47",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fverify_angle_k.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/verify_dfthc.py",
+        "bytes": 9379,
+        "sha256": "84ded6ae4a63c5f90346c3f3628b420fd496bdb846ef4591d4125926abec6a47",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fverify_dfthc.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/pyproject.toml",
+        "bytes": 1415,
+        "sha256": "4442ba8a2e538d6414cc5ced3049e7d5a70314013d4eb3ba4d4893f5f4f1b401",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fpyproject.toml?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/FeMoco76_65_60_60.npz",
+        "bytes": 2150130,
+        "sha256": "b13120cb62bf4cfcf41a3dc0c78cd6e58e17dacc7d0691834cee2cc6e4bc642b",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2FFeMoco76_65_60_60.npz?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/check_factorization.py",
+        "bytes": 4256,
+        "sha256": "5b897b14bad6e874878d81323ee774afa9508ecce8cd6d870cfeb5d71c9d3f76",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Fcheck_factorization.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/solution_io.py",
+        "bytes": 4432,
+        "sha256": "682be529a8418696100fc51fe773a32f8499a729c6ec7e78f69344b996fcfe84",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Fsolution_io.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/train_df_thc_qaggle.py",
+        "bytes": 17551,
+        "sha256": "e51b7559918ac1734d46514fcae7f0f0d789a6ef113bcaebd1b70a925e3918bc",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Ftrain_df_thc_qaggle.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task2_angles/encode.py",
+        "bytes": 8131,
+        "sha256": "cd8eb31056619b2c85ef9e7a1a3743eb2ef621035cda7dd23e6b47208e683745",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask2_angles%2Fencode.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task2_angles/trees.py",
+        "bytes": 4196,
+        "sha256": "47429502abc75e1a4360a2591f5df6b8ba56f79c0909d90739c38225ce25ea0c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask2_angles%2Ftrees.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task3_circuits/angle_k_kickmix.py",
+        "bytes": 9087,
+        "sha256": "ec90f72a82d3252bdc9bfefaa987ff3c69782aaf1432c7a2358b24d528a1afea",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask3_circuits%2Fangle_k_kickmix.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task3_circuits/build_circuits.py",
+        "bytes": 11146,
+        "sha256": "5ef5f17b0b1c25b56dfea568c895b0b16113a6302c280a7ecc64ae07869d760c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask3_circuits%2Fbuild_circuits.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/circuits.py",
+        "bytes": 24418,
+        "sha256": "fc027b52fdcebe14404f403a089122485d097ed65d03e6d989623d620b1ab68c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fcircuits.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/costs.py",
+        "bytes": 8334,
+        "sha256": "aea5bf44850cd315bfba205498d6ec83231faebdb6a48fe6387cccaf24171e6a",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fcosts.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/dfthc_math.py",
+        "bytes": 17597,
+        "sha256": "bb94c70558557091d8492a9842aef4f94c2130533d3cf5ce460d89bb3e82246d",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fdfthc_math.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/reference.py",
+        "bytes": 15200,
+        "sha256": "e5b75b6731a252224c86fd8878f50553bc56138b837b82e04b4bf946cdaa83ef",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Freference.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/score.py",
+        "bytes": 28282,
+        "sha256": "79c97dbd771c072a92a517d1692dbdd53d80c16bd4772c94a0cc45d7dac167ca",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fscore.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/verify.py",
+        "bytes": 10901,
+        "sha256": "8c35f1a3feaf99c798a9fc8720a54e65a0734d0071af991b3e6ee0c0192ae70a",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fverify.py?datasetVersionNumber=4"
+      }
+    ],
+    "competition_files": [
+      {
+        "path": "kickmix/kickmix.so",
+        "sha256": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e"
+      },
+      {
+        "path": "verifiers/dfthcsos/__init__.py",
+        "sha256": "81915e324cc0cade67f52a54b7a51991fd96abaea94d1f8a4d423dae20e57348"
+      },
+      {
+        "path": "verifiers/dfthcsos/example_submission/angle_k_reference_circuit.py",
+        "sha256": "8daccdca69f2d718b0176cd9281803df84a988ea5ac6c167fbb02e461ac2b371"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/__init__.py",
+        "sha256": "be90e0d503d5c20dcac0102af638b9a4ccad0341daa5baa5d49216a259e4516f"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/circuits.py",
+        "sha256": "fc027b52fdcebe14404f403a089122485d097ed65d03e6d989623d620b1ab68c"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/costs_prepare.py",
+        "sha256": "7f1e190c42fc5325f3e6689fbbef51f95b0cb12f1c828cda92b6c088e72206da"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/dfthc_math.py",
+        "sha256": "ae82898d47a7a86b96378fb906e0f8a9f46003065cf19c7c09952a123b5b5af8"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/reference.py",
+        "sha256": "a2d5a63191d655729e29f0fde1e85fe4630bf896a91a63bb894d8d7daf71ed39"
+      },
+      {
+        "path": "verifiers/dfthcsos/verify.py",
+        "sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+      },
+      {
+        "path": "verifiers/dfthcsos/FeMoCo76o113e.fcidump",
+        "sha256": "e5a48af746fd075026dec9e8f5df2d363802a121e8c53af9a0b984bde695e1bd"
+      },
+      {
+        "path": "verifiers/dfthcsos/FeMoCo76o113e.fixed_shifts.npz",
+        "sha256": "7b7facf63fe35a9d9d3d00787ffdb700c863fa845fe4724d7f7c54778151cd87"
+      }
+    ]
+  },
+  "tree_edges": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      4,
+      12
+    ],
+    [
+      2,
+      10
+    ],
+    [
+      6,
+      14
+    ],
+    [
+      1,
+      9
+    ],
+    [
+      5,
+      13
+    ],
+    [
+      3,
+      11
+    ],
+    [
+      7,
+      15
+    ],
+    [
+      0,
+      16
+    ],
+    [
+      8,
+      24
+    ],
+    [
+      4,
+      20
+    ],
+    [
+      12,
+      28
+    ],
+    [
+      2,
+      18
+    ],
+    [
+      10,
+      26
+    ],
+    [
+      6,
+      22
+    ],
+    [
+      14,
+      30
+    ],
+    [
+      1,
+      17
+    ],
+    [
+      9,
+      25
+    ],
+    [
+      5,
+      21
+    ],
+    [
+      13,
+      29
+    ],
+    [
+      3,
+      19
+    ],
+    [
+      11,
+      27
+    ],
+    [
+      7,
+      23
+    ],
+    [
+      15,
+      31
+    ],
+    [
+      0,
+      32
+    ],
+    [
+      16,
+      48
+    ],
+    [
+      8,
+      40
+    ],
+    [
+      24,
+      56
+    ],
+    [
+      4,
+      36
+    ],
+    [
+      20,
+      52
+    ],
+    [
+      12,
+      44
+    ],
+    [
+      28,
+      60
+    ],
+    [
+      2,
+      34
+    ],
+    [
+      18,
+      50
+    ],
+    [
+      10,
+      42
+    ],
+    [
+      26,
+      58
+    ],
+    [
+      6,
+      38
+    ],
+    [
+      22,
+      54
+    ],
+    [
+      14,
+      46
+    ],
+    [
+      30,
+      62
+    ],
+    [
+      1,
+      33
+    ],
+    [
+      17,
+      49
+    ],
+    [
+      9,
+      41
+    ],
+    [
+      25,
+      57
+    ],
+    [
+      5,
+      37
+    ],
+    [
+      21,
+      53
+    ],
+    [
+      13,
+      45
+    ],
+    [
+      29,
+      61
+    ],
+    [
+      3,
+      35
+    ],
+    [
+      19,
+      51
+    ],
+    [
+      11,
+      43
+    ],
+    [
+      27,
+      59
+    ],
+    [
+      7,
+      39
+    ],
+    [
+      23,
+      55
+    ],
+    [
+      15,
+      47
+    ],
+    [
+      31,
+      63
+    ],
+    [
+      0,
+      64
+    ],
+    [
+      8,
+      72
+    ],
+    [
+      4,
+      68
+    ],
+    [
+      2,
+      66
+    ],
+    [
+      10,
+      74
+    ],
+    [
+      6,
+      70
+    ],
+    [
+      1,
+      65
+    ],
+    [
+      9,
+      73
+    ],
+    [
+      5,
+      69
+    ],
+    [
+      3,
+      67
+    ],
+    [
+      11,
+      75
+    ],
+    [
+      7,
+      71
+    ]
+  ],
+  "numpy": "2.5.4",
+  "python": "3.13.13 (main, Apr 14 2026, 14:28:56) [Clang 22.1.3 ]",
+  "rows": [
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 7,
+      "error_1": 0.11704205045595807,
+      "error_2": 0.30270531703276526,
+      "Lambda": 310.8199925355286,
+      "E_SOS": -22146.602880046725,
+      "E_gap": 6.329530046725267,
+      "lambda_eff": 62.40693882206293,
+      "gap_in_domain": true,
+      "problems": [
+        "error_1 0.11704205045595807 Ha > 0.02 Ha",
+        "error_2 0.30270531703276526 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 846,
+        "inner_state_prep_toffoli": 16989,
+        "givens_rotations_toffoli": 1950,
+        "outer_state_prep_persistent_qubits": 46,
+        "outer_state_prep_temporary_qubits": 370,
+        "outer_state_prep_qubits": 416,
+        "inner_state_prep_persistent_qubits": 44,
+        "inner_state_prep_temporary_qubits": 273,
+        "inner_state_prep_qubits": 317,
+        "persistent_qubits": 90,
+        "temporary_qubits": 370,
+        "toffoli": 19785,
+        "qubits": 460
+      },
+      "seconds": 3.848130072998174
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 8,
+      "error_1": 0.052351053866721405,
+      "error_2": 0.15538255247656943,
+      "Lambda": 309.3314922290727,
+      "E_SOS": -22145.11437974027,
+      "E_gap": 4.841029740269732,
+      "lambda_eff": 54.511744954823605,
+      "gap_in_domain": true,
+      "problems": [
+        "error_1 0.052351053866721405 Ha > 0.02 Ha",
+        "error_2 0.15538255247656943 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 846,
+        "inner_state_prep_toffoli": 9461,
+        "givens_rotations_toffoli": 2250,
+        "outer_state_prep_persistent_qubits": 46,
+        "outer_state_prep_temporary_qubits": 370,
+        "outer_state_prep_qubits": 416,
+        "inner_state_prep_persistent_qubits": 44,
+        "inner_state_prep_temporary_qubits": 544,
+        "inner_state_prep_qubits": 588,
+        "persistent_qubits": 90,
+        "temporary_qubits": 544,
+        "toffoli": 12557,
+        "qubits": 634
+      },
+      "seconds": 3.980769727000734
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 9,
+      "error_1": 0.025159769829696654,
+      "error_2": 0.0766720830694496,
+      "Lambda": 308.7126370736213,
+      "E_SOS": -22144.495524584818,
+      "E_gap": 4.222174584818276,
+      "lambda_eff": 50.88271359021902,
+      "gap_in_domain": true,
+      "problems": [
+        "error_1 0.025159769829696654 Ha > 0.02 Ha",
+        "error_2 0.0766720830694496 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 846,
+        "inner_state_prep_toffoli": 9461,
+        "givens_rotations_toffoli": 2550,
+        "outer_state_prep_persistent_qubits": 46,
+        "outer_state_prep_temporary_qubits": 370,
+        "outer_state_prep_qubits": 416,
+        "inner_state_prep_persistent_qubits": 44,
+        "inner_state_prep_temporary_qubits": 544,
+        "inner_state_prep_qubits": 588,
+        "persistent_qubits": 90,
+        "temporary_qubits": 544,
+        "toffoli": 12857,
+        "qubits": 634
+      },
+      "seconds": 3.7858951369998977
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 10,
+      "error_1": 0.013969398961734547,
+      "error_2": 0.040014621461046423,
+      "Lambda": 308.5073691665378,
+      "E_SOS": -22144.290256677734,
+      "E_gap": 4.016906677734369,
+      "lambda_eff": 49.62212292327917,
+      "gap_in_domain": true,
+      "problems": [
+        "error_2 0.040014621461046423 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 846,
+        "inner_state_prep_toffoli": 9461,
+        "givens_rotations_toffoli": 2850,
+        "outer_state_prep_persistent_qubits": 46,
+        "outer_state_prep_temporary_qubits": 370,
+        "outer_state_prep_qubits": 416,
+        "inner_state_prep_persistent_qubits": 44,
+        "inner_state_prep_temporary_qubits": 544,
+        "inner_state_prep_qubits": 588,
+        "persistent_qubits": 90,
+        "temporary_qubits": 544,
+        "toffoli": 13157,
+        "qubits": 634
+      },
+      "seconds": 4.360065340995789
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 12,
+      "error_1": 0.0031851950317986553,
+      "error_2": 0.018639570630974208,
+      "Lambda": 308.45593973309445,
+      "E_SOS": -22144.23882724429,
+      "E_gap": 3.965477244291833,
+      "lambda_eff": 49.30136925057439,
+      "gap_in_domain": true,
+      "problems": [],
+      "heuristic": {
+        "outer_state_prep_toffoli": 846,
+        "inner_state_prep_toffoli": 9461,
+        "givens_rotations_toffoli": 3450,
+        "outer_state_prep_persistent_qubits": 46,
+        "outer_state_prep_temporary_qubits": 370,
+        "outer_state_prep_qubits": 416,
+        "inner_state_prep_persistent_qubits": 44,
+        "inner_state_prep_temporary_qubits": 544,
+        "inner_state_prep_qubits": 588,
+        "persistent_qubits": 90,
+        "temporary_qubits": 544,
+        "toffoli": 13757,
+        "qubits": 634
+      },
+      "seconds": 4.256402995997632
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 7,
+      "error_1": 0.11336872038795201,
+      "error_2": 0.30288574409151964,
+      "Lambda": 336.3051227364803,
+      "E_SOS": -22146.67125295448,
+      "E_gap": 6.397902954478923,
+      "lambda_eff": 65.28676676409484,
+      "gap_in_domain": true,
+      "problems": [
+        "error_1 0.11336872038795201 Ha > 0.02 Ha",
+        "error_2 0.30288574409151964 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 627,
+        "inner_state_prep_toffoli": 8945,
+        "givens_rotations_toffoli": 1950,
+        "outer_state_prep_persistent_qubits": 44,
+        "outer_state_prep_temporary_qubits": 185,
+        "outer_state_prep_qubits": 229,
+        "inner_state_prep_persistent_qubits": 44,
+        "inner_state_prep_temporary_qubits": 272,
+        "inner_state_prep_qubits": 316,
+        "persistent_qubits": 88,
+        "temporary_qubits": 272,
+        "toffoli": 11522,
+        "qubits": 360
+      },
+      "seconds": 2.399172442004783
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 8,
+      "error_1": 0.054552550541732615,
+      "error_2": 0.15558765140580605,
+      "Lambda": 334.82887011175706,
+      "E_SOS": -22145.195000329753,
+      "E_gap": 4.921650329753902,
+      "lambda_eff": 57.19788978646804,
+      "gap_in_domain": true,
+      "problems": [
+        "error_1 0.054552550541732615 Ha > 0.02 Ha",
+        "error_2 0.15558765140580605 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 627,
+        "inner_state_prep_toffoli": 5317,
+        "givens_rotations_toffoli": 2250,
+        "outer_state_prep_persistent_qubits": 44,
+        "outer_state_prep_temporary_qubits": 185,
+        "outer_state_prep_qubits": 229,
+        "inner_state_prep_persistent_qubits": 44,
+        "inner_state_prep_temporary_qubits": 543,
+        "inner_state_prep_qubits": 587,
+        "persistent_qubits": 88,
+        "temporary_qubits": 543,
+        "toffoli": 8194,
+        "qubits": 631
+      },
+      "seconds": 2.430840597000497
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 9,
+      "error_1": 0.027381342574089772,
+      "error_2": 0.07705891886856564,
+      "Lambda": 334.22049746240594,
+      "E_SOS": -22144.5866276804,
+      "E_gap": 4.31327768040137,
+      "lambda_eff": 53.52165225146014,
+      "gap_in_domain": true,
+      "problems": [
+        "error_1 0.027381342574089772 Ha > 0.02 Ha",
+        "error_2 0.07705891886856564 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 627,
+        "inner_state_prep_toffoli": 5317,
+        "givens_rotations_toffoli": 2550,
+        "outer_state_prep_persistent_qubits": 44,
+        "outer_state_prep_temporary_qubits": 185,
+        "outer_state_prep_qubits": 229,
+        "inner_state_prep_persistent_qubits": 44,
+        "inner_state_prep_temporary_qubits": 543,
+        "inner_state_prep_qubits": 587,
+        "persistent_qubits": 88,
+        "temporary_qubits": 543,
+        "toffoli": 8494,
+        "qubits": 631
+      },
+      "seconds": 2.4722673809956177
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 10,
+      "error_1": 0.013355073699341307,
+      "error_2": 0.040849022563727536,
+      "Lambda": 334.01774757785984,
+      "E_SOS": -22144.383877795855,
+      "E_gap": 4.110527795855887,
+      "lambda_eff": 52.24061669520597,
+      "gap_in_domain": true,
+      "problems": [
+        "error_2 0.040849022563727536 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 627,
+        "inner_state_prep_toffoli": 5317,
+        "givens_rotations_toffoli": 2850,
+        "outer_state_prep_persistent_qubits": 44,
+        "outer_state_prep_temporary_qubits": 185,
+        "outer_state_prep_qubits": 229,
+        "inner_state_prep_persistent_qubits": 44,
+        "inner_state_prep_temporary_qubits": 543,
+        "inner_state_prep_qubits": 587,
+        "persistent_qubits": 88,
+        "temporary_qubits": 543,
+        "toffoli": 8794,
+        "qubits": 631
+      },
+      "seconds": 2.5590170150026097
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 12,
+      "error_1": 0.0031563060202521405,
+      "error_2": 0.020363453060194055,
+      "Lambda": 333.9613239681577,
+      "E_SOS": -22144.327454186154,
+      "E_gap": 4.054104186154291,
+      "lambda_eff": 51.87862991901079,
+      "gap_in_domain": true,
+      "problems": [
+        "error_2 0.020363453060194055 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 627,
+        "inner_state_prep_toffoli": 5317,
+        "givens_rotations_toffoli": 3450,
+        "outer_state_prep_persistent_qubits": 44,
+        "outer_state_prep_temporary_qubits": 185,
+        "outer_state_prep_qubits": 229,
+        "inner_state_prep_persistent_qubits": 44,
+        "inner_state_prep_temporary_qubits": 543,
+        "inner_state_prep_qubits": 587,
+        "persistent_qubits": 88,
+        "temporary_qubits": 543,
+        "toffoli": 9394,
+        "qubits": 631
+      },
+      "seconds": 2.6607271140019293
+    },
+    {
+      "shape": [
+        32,
+        60,
+        30
+      ],
+      "brot": 7,
+      "error_1": 0.19140223119595207,
+      "error_2": 0.7295622356068088,
+      "Lambda": 367.66755097945315,
+      "E_SOS": -22162.951344088477,
+      "E_gap": 22.677994088477135,
+      "lambda_eff": 127.12841413073949,
+      "gap_in_domain": true,
+      "problems": [
+        "error_1 0.19140223119595207 Ha > 0.02 Ha",
+        "error_2 0.7295622356068088 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 472,
+        "inner_state_prep_toffoli": 4737,
+        "givens_rotations_toffoli": 1950,
+        "outer_state_prep_persistent_qubits": 44,
+        "outer_state_prep_temporary_qubits": 185,
+        "outer_state_prep_qubits": 229,
+        "inner_state_prep_persistent_qubits": 42,
+        "inner_state_prep_temporary_qubits": 271,
+        "inner_state_prep_qubits": 313,
+        "persistent_qubits": 86,
+        "temporary_qubits": 271,
+        "toffoli": 7159,
+        "qubits": 357
+      },
+      "seconds": 1.8199193089967594
+    },
+    {
+      "shape": [
+        32,
+        60,
+        30
+      ],
+      "brot": 8,
+      "error_1": 0.08941161369920539,
+      "error_2": 0.6770685681188152,
+      "Lambda": 366.5956099674884,
+      "E_SOS": -22161.879403076513,
+      "E_gap": 21.60605307651349,
+      "lambda_eff": 123.9941405212507,
+      "gap_in_domain": true,
+      "problems": [
+        "error_1 0.08941161369920539 Ha > 0.02 Ha",
+        "error_2 0.6770685681188152 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 472,
+        "inner_state_prep_toffoli": 3089,
+        "givens_rotations_toffoli": 2250,
+        "outer_state_prep_persistent_qubits": 44,
+        "outer_state_prep_temporary_qubits": 185,
+        "outer_state_prep_qubits": 229,
+        "inner_state_prep_persistent_qubits": 42,
+        "inner_state_prep_temporary_qubits": 542,
+        "inner_state_prep_qubits": 584,
+        "persistent_qubits": 86,
+        "temporary_qubits": 542,
+        "toffoli": 5811,
+        "qubits": 628
+      },
+      "seconds": 1.7579811930045253
+    },
+    {
+      "shape": [
+        32,
+        60,
+        30
+      ],
+      "brot": 9,
+      "error_1": 0.044435982411998726,
+      "error_2": 0.6603477276538787,
+      "Lambda": 366.0215423468881,
+      "E_SOS": -22161.305335455912,
+      "E_gap": 21.031985455912945,
+      "lambda_eff": 122.28644691119052,
+      "gap_in_domain": true,
+      "problems": [
+        "error_1 0.044435982411998726 Ha > 0.02 Ha",
+        "error_2 0.6603477276538787 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 472,
+        "inner_state_prep_toffoli": 3089,
+        "givens_rotations_toffoli": 2550,
+        "outer_state_prep_persistent_qubits": 44,
+        "outer_state_prep_temporary_qubits": 185,
+        "outer_state_prep_qubits": 229,
+        "inner_state_prep_persistent_qubits": 42,
+        "inner_state_prep_temporary_qubits": 542,
+        "inner_state_prep_qubits": 584,
+        "persistent_qubits": 86,
+        "temporary_qubits": 542,
+        "toffoli": 6111,
+        "qubits": 628
+      },
+      "seconds": 1.7423695629986469
+    },
+    {
+      "shape": [
+        32,
+        60,
+        30
+      ],
+      "brot": 10,
+      "error_1": 0.02191900249936426,
+      "error_2": 0.6569242772472592,
+      "Lambda": 365.870194499071,
+      "E_SOS": -22161.153987608097,
+      "E_gap": 20.88063760809746,
+      "lambda_eff": 121.83269207793847,
+      "gap_in_domain": true,
+      "problems": [
+        "error_1 0.02191900249936426 Ha > 0.02 Ha",
+        "error_2 0.6569242772472592 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 472,
+        "inner_state_prep_toffoli": 3089,
+        "givens_rotations_toffoli": 2850,
+        "outer_state_prep_persistent_qubits": 44,
+        "outer_state_prep_temporary_qubits": 185,
+        "outer_state_prep_qubits": 229,
+        "inner_state_prep_persistent_qubits": 42,
+        "inner_state_prep_temporary_qubits": 542,
+        "inner_state_prep_qubits": 584,
+        "persistent_qubits": 86,
+        "temporary_qubits": 542,
+        "toffoli": 6411,
+        "qubits": 628
+      },
+      "seconds": 1.8068525939961546
+    },
+    {
+      "shape": [
+        32,
+        60,
+        30
+      ],
+      "brot": 12,
+      "error_1": 0.00526549919136567,
+      "error_2": 0.6555397612021044,
+      "Lambda": 365.8512016086464,
+      "E_SOS": -22161.13499471767,
+      "E_gap": 20.86164471767188,
+      "lambda_eff": 121.77564351979213,
+      "gap_in_domain": true,
+      "problems": [
+        "error_2 0.6555397612021044 Ha > 0.02 Ha"
+      ],
+      "heuristic": {
+        "outer_state_prep_toffoli": 472,
+        "inner_state_prep_toffoli": 3089,
+        "givens_rotations_toffoli": 3450,
+        "outer_state_prep_persistent_qubits": 44,
+        "outer_state_prep_temporary_qubits": 185,
+        "outer_state_prep_qubits": 229,
+        "inner_state_prep_persistent_qubits": 42,
+        "inner_state_prep_temporary_qubits": 542,
+        "inner_state_prep_qubits": 584,
+        "persistent_qubits": 86,
+        "temporary_qubits": 542,
+        "toffoli": 7011,
+        "qubits": 628
+      },
+      "seconds": 1.7976808970051934
+    }
+  ],
+  "total_seconds": 60.07516511600261,
+  "upstream_rows": 48,
+  "upstream_b7_to_b10_rows": 32,
+  "upstream_b7_to_b10_passing": 0,
+  "result": "negative: no accurate 7-10 bit handoff; control only at 12 bits",
+  "limitation": "numerical recheck only; no refit rerun, ANGLE simulation, G3, G4 or G5"
+}
