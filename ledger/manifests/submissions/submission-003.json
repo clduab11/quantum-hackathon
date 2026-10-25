@@ -1,0 +1,357 @@
+{
+  "candidate_id": "submission-003",
+  "cli_command": "/home/cld-main/work/vqcc-data/pra228-572-build/new_candidate.py",
+  "gates": [
+    {
+      "details": {},
+      "evidence_sha256": null,
+      "gate": "G0",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T07:43:16.499597+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "qubits": 9,
+            "status": "PASS"
+          },
+          "dqi": {
+            "modulus": 4179,
+            "primitive_element": 2,
+            "product": 233,
+            "qubits": 36,
+            "status": "PASS",
+            "toffoli": 63
+          },
+          "invsqrt": {
+            "num_qubits": 90,
+            "sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+            "static_toffoli": 1448,
+            "status": "PASS"
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G1",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T07:44:01.784979+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "E_gap": 3.965477244291833,
+            "Lambda": 308.45593973309445,
+            "brot": 12,
+            "error_1": 0.0031851950317986553,
+            "error_2": 0.018639570630974208,
+            "heuristic_qubits": 634,
+            "heuristic_toffoli": 13757,
+            "lambda_eff": 49.30136925057439,
+            "parity": false,
+            "status": "PASS"
+          },
+          "dqi": {
+            "failures": 0,
+            "num_qubits": 1789,
+            "parity": false,
+            "shots": 1536,
+            "status": "PASS",
+            "toffoli_count": 445229.0
+          },
+          "invsqrt": {
+            "calibration_margin_units": 73326605,
+            "calibration_worst_x": 2489983,
+            "circuit_authorship": "port",
+            "coefficient_provenance": "regenerated; dataset-adapted calibration; licence unresolved",
+            "derivative_split": {
+              "max_coarse": 126,
+              "max_residual": 3471,
+              "max_table_residual": 2745,
+              "min_residual": 18,
+              "normalized_addresses_checked": 4194304
+            },
+            "estimated_ratio": 13.164808753447378,
+            "expected_toffoli": 1437.5,
+            "first_bad_x": null,
+            "layout": {
+              "LB": 21,
+              "S": 20,
+              "w1": 18,
+              "whi": 8
+            },
+            "min_margin_units": 40189295,
+            "pass": true,
+            "phase_fraction_bits": 38,
+            "phase_match": true,
+            "qubits": 90,
+            "rotations": 44,
+            "sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+            "static_toffoli": 1448,
+            "status": "PASS",
+            "table_worst_relative_error": 5.73885374645857e-08,
+            "tested_inputs": 3133452,
+            "worst_ratio": 0.9628198916787619,
+            "worst_x": 1034666
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G2",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T07:44:39.315414+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    },
+    {
+      "details": {
+        "geometric_mean": 5.721389477411993
+      },
+      "evidence_sha256": "964ec723f83f13d85d949d177f82f2e2f999c587c6e0ef488e5d46ca8c7de9df",
+      "gate": "G3",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T07:47:43.974900+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    },
+    {
+      "details": {},
+      "evidence_sha256": null,
+      "gate": "G4",
+      "reason": "parent submission-001 has no measured geometric mean in the ledger",
+      "status": "FAIL",
+      "timestamp_utc": "2026-10-25T07:47:44.070319+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    },
+    {
+      "details": {},
+      "evidence_sha256": null,
+      "gate": "G4",
+      "reason": "PRA-228 step 3 permits a G4 waiver when real PASS is unavailable. The real FAIL is retained: G4 searches parent only among kind=candidate and cannot resolve mandated submission-001 (kind=submission). Independent g4-comparison.json verifies measured 5.721389477411993 > parent 1.0. The archive best pra197-dqi-bm-forney is the identical zip with all 13 identical hashes and historical score 5.721389477411995; current dfthcsos ratio 0.9999999999999997 accounts for a -1.7763568394002505e-15 geometric-mean difference. Strict archive improvement is unavailable for this byte-identical rebuild. No gate, generator, parent, or archive record was changed. D-PRA228-01 authorizes this lineage; D-PRA220-01 stays on record. G4 is WAIVED, not PASS.",
+      "status": "WAIVED",
+      "timestamp_utc": "2026-10-25T07:48:46.304735+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "562663a62327ce4d81fdea7d5949ff39ce7667c3",
+          "copied_inputs": {
+            "dfthcsos/submission.npz": "sample_submission/dfthcsos/submission.npz"
+          },
+          "inputs": {
+            "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69": "sample_submission/dfthcsos/submission.npz"
+          },
+          "status": "PASS",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra228-572-bundle/.venv/bin/python3",
+                "tasks/dfthcsos/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-228-0002e303-2a3-ALIxcr/ledger-rebuild-b89nx_84/out/dfthcsos"
+              ],
+              "copied": {
+                "dfthcsos/submission.npz": "sample_submission/dfthcsos/submission.npz"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra228-572-bundle/.venv/bin/python3",
+                "tasks/dqi/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-228-0002e303-2a3-ALIxcr/ledger-rebuild-b89nx_84/out/dqi"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "invsqrt": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra228-572-bundle/.venv/bin/python3",
+                "tasks/invsqrt/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-228-0002e303-2a3-ALIxcr/ledger-rebuild-b89nx_84/out/invsqrt"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T07:52:53.303940+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    }
+  ],
+  "generator_commit": "562663a62327ce4d81fdea7d5949ff39ce7667c3",
+  "geometric_mean": 5.721389477411993,
+  "git_branch": "op-vqcc/pra228-572-bundle",
+  "kaggle_submission_id": "57622960",
+  "kickmix_build_id": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
+  "kind": "submission",
+  "manifest_id": "0b0d251b-c7b7-47ed-bbba-263d227714af",
+  "notes": "Fresh build from published main 562663a62327ce4d81fdea7d5949ff39ce7667c3 on op-vqcc/pra228-572-bundle. Parent submission-001 per John Wick and The High Table. All 13 fixed hashes checked before any gate; deterministic zip matches the historical bundle. invsqrt lineage ships under the board ruling D-PRA228-01; D-PRA220-01 stays on record. PRA-223 continues as risk reduction. PRA-224 is not implemented here. Licence labels identify the recorded code parents; unresolved calibration rights remain explicit in invsqrt provenance. No Kaggle upload by Caine.\nG4 real FAIL is retained, followed by the explicit waiver permitted by PRA-228 step 3. The unchanged gate searches parent only among candidate records and therefore cannot resolve submission-001 (kind=submission); the exact same zip also belongs to the historical archive best pra197-dqi-bm-forney, so strict archive improvement is impossible. Independent comparison in g4-comparison.json proves improvement over submission-001 (1.0), agreement within 1e-14 relative tolerance with the historical score (actual 5.721389477411993 vs historical 5.721389477411995; dfthcsos ratio 0.9999999999999997), and equality of all task hashes. G0/G1/G2/G3/G5 are real PASS; G4 is WAIVED, not PASS. No gate, generator or historical record changed. Durable zip: /home/cld-main/work/vqcc-data/queue/pra228-dqi-invsqrt-572.zip; 91399451 bytes. No Kaggle upload by Caine.",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "parent_candidate_id": "submission-001",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64",
+  "python_version": "3.13.13",
+  "qualtran_pin": null,
+  "salt_label": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+  "schema_version": "1",
+  "source_candidate_id": "pra228-dqi-invsqrt-572",
+  "submitted_at_utc": "2026-10-25T08:23:09.966366+00:00",
+  "tasks": {
+    "dfthcsos": {
+      "baseline_cost": 3355599588.3155365,
+      "cost": 3355599588.3155375,
+      "eps_plus": null,
+      "evidence": [
+        "964ec723f83f13d85d949d177f82f2e2f999c587c6e0ef488e5d46ca8c7de9df"
+      ],
+      "failures": null,
+      "files": {
+        "dfthcsos/angle_k_0.kmb": "7bfb3983accc6ff97d6ab41a88deae924f1d1c97cf30e60879d0bff5688a8e25",
+        "dfthcsos/angle_k_1.kmb": "a04b6d0d57ce851b123af265066aaab2ab33353ea049d26acd534727466d72b6",
+        "dfthcsos/angle_k_2.kmb": "5c1b8987bc3fa1a4b8607e470f8c8f1392c22e7a7dbcb228f0ce9ec986e18058",
+        "dfthcsos/angle_k_3.kmb": "16ac67cdcaf3e2c6abdd98c4138ff1ae8a56cfc4ae15622bcdb3d3a3ba1e22cf",
+        "dfthcsos/angle_k_4.kmb": "d21cdd4c7e94196654aab15ebcabfe10ce8d343151a5e8dc3672e76684b6628d",
+        "dfthcsos/angle_k_5.kmb": "63b8d4cba36955e6098321f3b2ef3e34401dd276fa629b2e490d043b1743880b",
+        "dfthcsos/angle_k_6.kmb": "5bf740428e661d035fda860142578f421969e35e0df2e4e024fbf01a7340b378",
+        "dfthcsos/angle_k_7.kmb": "606009582111a22bd549b795c8d115ac8bbeb124bc8da24a80380eca6d34163d",
+        "dfthcsos/angle_k_8.kmb": "57c7cc51f5922fff6e95d76e1f723d4c2d029a241da643b95684d6322157a8fe",
+        "dfthcsos/angle_k_9.kmb": "22cbe2828988ff954fc07fd971a25e6bc04a02c302bf2cc642e4c3535daaad65",
+        "dfthcsos/submission.npz": "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69"
+      },
+      "measured": true,
+      "metrics": {
+        "E_gap": 3.965477244291833,
+        "Lambda": 308.45593973309445,
+        "angles_qubits": 119,
+        "batch_size": 8,
+        "brot": 12,
+        "error_1": 0.0031851950317986553,
+        "error_2": 0.018639570630974208,
+        "lambda_eff": 49.30136925057439,
+        "num_circuits": 10,
+        "persistent_qubits": 186,
+        "submission_sha256": "276d464ff14da828b6b33e8487d99975494cbdf0c3cb2bd37dd3c3ddc4002695",
+        "temporary_qubits": 544
+      },
+      "num_qubits": 730,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Google competition reference construction, ported in tasks/dfthcsos/generate.py. Ten ANGLE circuits freshly regenerated from the declared SHA-256-pinned sample_submission/dfthcsos/submission.npz. The non-circuit factorization is a recorded copy under D-PRA211-05; SHA-256 14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69. No 1.44x or k256.dev factorization used.",
+        "parent_url": "https://www.kaggle.com/competitions/google-verifiable-quantum-circuit-compilation/data"
+      },
+      "ratio": 0.9999999999999997,
+      "rotation_count": null,
+      "shots": 254464,
+      "t_count": null,
+      "task": "dfthcsos",
+      "toffoli_count": 93237.0,
+      "verifier_sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+    },
+    "dqi": {
+      "baseline_cost": 24439465632206.816,
+      "cost": 1717915181875.0806,
+      "eps_plus": 0.000983909102617945,
+      "evidence": [
+        "964ec723f83f13d85d949d177f82f2e2f999c587c6e0ef488e5d46ca8c7de9df"
+      ],
+      "failures": 3,
+      "files": {
+        "dqi.kmb": "529b075009f7758abeda83a63407f0c1feeb51dd70631ae4335dfd28721b7e08"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "529b075009f7758abeda83a63407f0c1feeb51dd70631ae4335dfd28721b7e08",
+        "empirical_error_rate": 2.9296875e-05,
+        "log2_delta": -128.0,
+        "max_toffoli_count": 445229,
+        "mean_error_weight": 31.046737331746634,
+        "phase_errors": 3,
+        "repetition_factor": 1.2055843238398525,
+        "value_errors": 0
+      },
+      "num_qubits": 1789,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "BM+Forney decoder port of Gu et al. andigu/uncompute commit 64b5a13aa249f1360846657392e6c66817b26d0f, through anazemcev v4 / kozykappa v2 Apache-2.0 notebook embeds. Full parent, file and inherited attribution map: tasks/dqi/PROVENANCE.md and notices/20-dqi.txt at generator_commit. GF(2^12) constants regenerated with modulus 4179, primitive 2. No circuit or factorization input. No k256.dev-derived file. This candidate regenerates dqi.kmb from committed source.",
+        "parent_url": "https://github.com/andigu/uncompute/tree/64b5a13aa249f1360846657392e6c66817b26d0f"
+      },
+      "ratio": 14.22623531711937,
+      "rotation_count": null,
+      "shots": 102400,
+      "t_count": null,
+      "task": "dqi",
+      "toffoli_count": 445229.0,
+      "verifier_sha256": "f14274bc0943fb9769ddb01131be6063191a15009fe1caf1d4bdd9fd25194e65"
+    },
+    "invsqrt": {
+      "baseline_cost": 2076774.233715282,
+      "cost": 157751.94999626835,
+      "eps_plus": null,
+      "evidence": [
+        "964ec723f83f13d85d949d177f82f2e2f999c587c6e0ef488e5d46ca8c7de9df"
+      ],
+      "failures": 0,
+      "files": {
+        "invsqrt.kmb": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+        "max_toffoli_count": 1448,
+        "rotation_eps": 2.8381742236929845e-13,
+        "toffoli_equivalent": 1752.7994444029816,
+        "worst_error_over_tolerance": 0.9996227434818049,
+        "worst_x": 32
+      },
+      "num_qubits": 90,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Port, not independent clean-room authorship. Apache-2.0 labels the notebook code parents, not the disputed calibration rights. Full parent/module map: tasks/invsqrt/PROVENANCE.md at generator_commit. Other method parents: https://www.kaggle.com/code/kozykappa/quantum-ai-complete-domain-affine-compilation-v2 and https://www.kaggle.com/code/kozykappa/quantum-ai-lb-score-6-68108?scriptVersionId=361677445 (Apache-2.0). Coefficient provenance remains regenerated; dataset-adapted calibration; licence unresolved. Calibration lineage: https://www.kaggle.com/datasets/kozykappa/quantum-ai-dataset?datasetVersionId=21136269 ; code/domain_tables.py SHA-256 59cf4d98899433dcc49d9ce512293be20d33da5334211c20e35323555994a4fb and code/coefficients.json SHA-256 98bd211f22b158bf05a4d2d934ab966e5e97e54d8307b82e2ca58910c6830763. invsqrt lineage ships under the board ruling D-PRA228-01; D-PRA220-01 stays on record. The board ruling permits this shipment; it is not a third-party licence grant.",
+        "parent_url": "https://www.kaggle.com/code/anazemcev/quantum-circuits-signed-digit-memory?scriptVersionId=361502374"
+      },
+      "ratio": 13.16480863637127,
+      "rotation_count": 44.0,
+      "shots": 200540928,
+      "t_count": 1.0,
+      "task": "invsqrt",
+      "toffoli_count": 1437.5000155878406,
+      "verifier_sha256": "ddef520dec6b68d1cf0a6f328ddd36d79eb84570b9192cf3f7acaf073f06733a"
+    }
+  },
+  "timestamp_utc": "2026-10-25T08:23:09.966366+00:00",
+  "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+}

@@ -1,0 +1,14 @@
+{
+  "candidate_id": "pra228-dqi-invsqrt-572",
+  "error": "",
+  "kaggle_submission_id": "57622960",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "outcome": "recorded",
+  "reservation_id": "3f38f54b-df34-4e92-a26b-975367e2da23",
+  "reserved_at_utc": "2026-10-25T08:21:48.185516+00:00",
+  "resolved_at_utc": "2026-10-25T08:23:09.975030+00:00",
+  "slot": 2,
+  "submission_id": "submission-003",
+  "utc_day": "2026-10-25",
+  "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+}
