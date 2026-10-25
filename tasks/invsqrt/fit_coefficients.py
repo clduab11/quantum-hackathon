@@ -1,8 +1,10 @@
-"""Derive the invsqrt QROM coefficient table from the specification.
+"""Regenerate the invsqrt QROM table with dataset-adapted calibration.
 
 The 256 triples are the output of the Lawson weighted minimax followed by the
 exact-domain integer search in `signed_digit.regenerate_tables_exact`. No
-external dataset is read. The SHA-256 below is a drift check: if the numeric
+external dataset is read, but the calibration lineage has unresolved rights.
+See RECIPE["calibration_lineage"] for the version-pinned source and hashes.
+The SHA-256 below is a drift check: if the numeric
 libraries move a coefficient, generation stops instead of silently changing
 the scored circuit.
 
@@ -24,13 +26,20 @@ from tasks.invsqrt import signed_digit as sd  # noqa: E402
 
 # Digest of the integer rows this environment derives. Not a dataset pin.
 EXPECTED_ROW_SHA256 = "a36d1636d31d6b28a3bd5dce475bb3f8ef451b8b50deefc403853f184d4e6dcc"
-PROVENANCE = "own"
+PROVENANCE = "regenerated; dataset-adapted calibration; licence unresolved"
 
 # Committed fitting recipe. The integer search starts at the rounded Lawson
 # coefficient of the mathematical target. No external table is read, and none
 # is the optimiser start. Historical P0 copies stay in the old records.
 RECIPE = {
     "provenance": PROVENANCE,
+    "calibration_lineage": {
+        "dataset_url": "https://www.kaggle.com/datasets/kozykappa/quantum-ai-dataset?datasetVersionId=21136269",
+        "dataset_version": 1,
+        "dataset_version_id": 21136269,
+        "domain_tables_module_sha256": "59cf4d98899433dcc49d9ce512293be20d33da5334211c20e35323555994a4fb",
+        "coefficient_table_sha256": "98bd211f22b158bf05a4d2d934ab966e5e97e54d8307b82e2ca58910c6830763",
+    },
     "target": (
         "For each segment, y = 2**((e - 1) / 2) / sqrt(M) with M in [1, 2). "
         "The emitted phase is beta / sqrt(x) at beta = 1."

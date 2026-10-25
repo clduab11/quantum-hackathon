@@ -1,16 +1,22 @@
 # invsqrt generator provenance
 
 This generator is a **port**. It is not independent clean-room authorship.
-Only the coefficient fit is labeled `own`. Nothing in this map is a shipment.
+Coefficient provenance is `regenerated; dataset-adapted calibration; licence unresolved`.
+Nothing in this map is a shipment.
 A ledger candidate still needs G0–G5, the full-shot verifier, and a
 candidate-specific Adjudicator sign-off (D-PRA202-05). Historical P0 rows
 stay unchanged.
 
-## Coefficient fit (`own`)
+## Coefficient fit (dataset-adapted calibration; licence unresolved)
 
 | Field | Value |
 | --- | --- |
 | Module | `tasks/invsqrt/fit_coefficients.py` |
+| Provenance | `regenerated; dataset-adapted calibration; licence unresolved` |
+| Calibration lineage | [kozykappa/quantum-ai-dataset version 1](https://www.kaggle.com/datasets/kozykappa/quantum-ai-dataset?datasetVersionId=21136269), datasetVersionId 21136269; Kaggle licence label "Other (specified in description)" |
+| Calibration source | `code/domain_tables.py`, SHA-256 `59cf4d98899433dcc49d9ce512293be20d33da5334211c20e35323555994a4fb`; `valid_residuals`, `calibrate_segment` and `regenerate_tables_exact` follow lines 8–43 |
+| Dataset table | `code/coefficients.json`, SHA-256 `98bd211f22b158bf05a4d2d934ab966e5e97e54d8307b82e2ca58910c6830763`; locally regenerated output equals 256 of 256 rows |
+| Rights evidence | README SHA-256 `fc19f8538dfbbfe9c8342d6fea10edc2ca178e66cd14eef14c12c3b648cdae70`; `catalog/license_map.csv` SHA-256 `5badf60ae5dc035f890b00e262f8e87345c3f13d323a405e89077b42a4d3fac8`. Neither names the two files; file-specific rights unresolved |
 | Caller | `signed_digit.regenerate_tables_exact` |
 | Target | `2**((e-1)/2) / sqrt(M)` on each segment, then the phase `1/sqrt(x)` |
 | Precision | float64 Lawson (`numpy.linalg.lstsq`, `rcond=None`), then Python ints. Error is in units of `2^-24` |
@@ -21,7 +27,7 @@ stay unchanged.
 | Optimiser start | the rounded Lawson coefficient. Not an imported table |
 | Determinism | no random seed. A second in-process fit must match. Drift fails closed on the row digest |
 | Output | 256 `[K2, K1, K0]` triples, row-major `(e, a)`, JSON with separators `(',', ':')` |
-| Row SHA-256 | `a36d1636d31d6b28a3bd5dce475bb3f8ef451b8b50deefc403853f184d4e6dcc` |
+| Row SHA-256 | `a36d1636d31d6b28a3bd5dce475bb3f8ef451b8b50deefc403853f184d4e6dcc`; different serialization, not the dataset file hash |
 
 The committed recipe object is `RECIPE` in `fit_coefficients.py`.
 
@@ -42,7 +48,7 @@ inputs. Sumit v1 versus v2, and Gluzdov v6, stay second-hand until
 
 | Person | What is credited | Version named by the notebooks | Licence on this record |
 | --- | --- | --- | --- |
-| Sumit Chongder | centered signed-digit generator and integer pipeline | run 361357149 **is v1** (public version metadata, PRA-218). The inherited "latest version 2" remark in the `signed_digit.py` header comments is unsupported; this map supersedes it, and the comment is corrected with the next change to that pinned file | second-hand; no licence declaration in that snapshot: open. Not loaded |
+| Sumit Chongder | centered signed-digit generator and integer pipeline | run 361357149 **is v1** (public version metadata, PRA-218). The inherited "latest version 2" remark is corrected in `signed_digit.py` by D-PRA220-01 | second-hand; no licence declaration in that snapshot: open. Not loaded |
 | Rudra Bhaskar | derivative split, top-carry reuse, static-high checkpoint | run 361445283 = v7 (public, PRA-218) | retained notice in the Apache-2.0 v3 parent; no publisher licence label retrieved: open. Not loaded |
 | Alex Chilton | shared prefix flags and empty-target shifts | v8 reviewed by PRA-194; the run the parent cites, 361472684, is v3 (public, PRA-218) | **reference-only**. PRA-194 found no notebook-wide licence; PRA-218 found none on v3 either. Not loaded |
 | Kirill Tymchishin | integration of the Rudra/Alex schedule | run 361491814 = v11 (public, PRA-218) | credited by the v3 parent; its cell 1 retains upstream Apache material, no licence field for its own integration: open. Not loaded |
@@ -58,13 +64,13 @@ these files are ports and new code, not verbatim notebook cells.
 
 | Module | Source | Licence | Copied material | Modifications |
 | --- | --- | --- | --- | --- |
-| `signed_digit.py` | anazemcev Signed-Digit Memory v3 | Apache-2.0 | none verbatim | Port of the quadratic signed-digit body, derivative split, borrowed carry, and promised-input rewrite. Coefficient integers come from the fit below. Retained upstream notices stay in the header. SHA-256 `f106ea0a6f3a5d37d3e44cbe79d8f2f4777c86636d52ee9888ede09595db0c72` |
-| `schedule90.py` | Kozykorpesh V3 run 361677445; Davio orders from anazemcev v4 | Apache-2.0 | none verbatim | Port. Gluzdov V6 is the named boundary rule only. SHA-256 `48adbc9ae7adb0e40f0290ef8d0b5ecb467c510288c887bb1324cca856439f2d` |
+| `signed_digit.py` | anazemcev Signed-Digit Memory v3; dataset domain-tables calibration | Apache-2.0 for the notebook parent; dataset-adapted calibration licence unresolved | none verbatim | Port of the quadratic signed-digit body, derivative split, borrowed carry, and promised-input rewrite. Coefficient integers come from the fit below. Retained upstream notices stay in the header. SHA-256 `ab08c1f178405cae9872281fbe73ca41c5de160bea4b5ddeece41b55ac708cd5` |
+| `schedule90.py` | Kozykorpesh V3 run 361677445; Davio orders from anazemcev v4 | Apache-2.0 | none verbatim | Port. Gluzdov V6 is the named boundary rule only. SHA-256 `58c88937e18e2c96e5e92f3a2576b3d32661de0d93221d4f288e314bb4c81edb` |
 | `affine.py` | Kozykorpesh affine v2 and anazemcev v4 | Apache-2.0 | none verbatim | Port of the exact-domain Toffoli/CSWAP rewrite. SHA-256 `aa351a287c507c264a8aa7d172e1c7b9bfc1d0dcb78c8fa61b92996947eba290` |
 | `peephole.py` | Kozykorpesh affine v2 involution pass | Apache-2.0 | none verbatim | Port. SHA-256 `d5ed02b0d28392cc637111fc94fb1760c71feda4f8ca7aad6f73944e81fff54c` |
 | `calibrate.py` | our scipy linprog search | Apache-2.0 (this repository) | none | Not a Mizero port. Method credit only. SHA-256 `7fc0c1cac6ff45753c25d98dfa7cd82fb4803332c37fb616af18fabe47cef309` |
-| `fit_coefficients.py` | the mathematical target and `RECIPE` | `own` | none | The fit. SHA-256 `1e97f77e6d3498e8dde2fe9312bfbf5c505c62e5c68938c846e0c8fc0d39aba3` |
-| `generate.py` | the modules above | port, with an `own` table | none | Entry point. Writes only `invsqrt.kmb`. SHA-256 `c6248e89382cacd193123da35188c63b9b5e7cf390b1182eccdb588c171a14a1` |
+| `fit_coefficients.py` | the mathematical target and dataset-adapted calibration in `RECIPE` | `regenerated; dataset-adapted calibration; licence unresolved` | none | The fit. SHA-256 `35d36f95aa4bb7c63bf8cd24d72df594abdd679a3ed770cb2fcced0200cda839` |
+| `generate.py` | the modules above | port; coefficient provenance: `regenerated; dataset-adapted calibration; licence unresolved` | none | Entry point. Writes only `invsqrt.kmb`. SHA-256 `9ccdffd0cba53a097c78d99d833b9bcc37e9be387f62ed723a8173cd2cdf498c` |
 | `reference.py` | Google's `verifiers/invsqrt/nr_reference_circuit.py` (competition package) | Apache-2.0 (Google) | the script, attributed | Port with `--out DIR`; builds the reference circuit shipped as submission-001, SHA-256 `e2bf8eb64350a4460a271fc7f1d591ef125b1e276377e9a0f64b96ab3ca321e1`. G5 generator for `configs/gates/reference.yaml` only (PRA-211). Not a parent of the candidate and not used by `generate.py` |
 | `mirror.py` | the integer model | Apache-2.0 (this repository) | none | G2 certificate. SHA-256 `44f9928fe54f84c45977e9cfe637e7ad2068ab7cda7dd9fb2949a6666cd1513d` |
 | `gates.py` | the ledger hook contract | Apache-2.0 (this repository) | none | G1/G2 hooks. Not a method parent. SHA-256 `3f569d70c97f3c41f7b627050e7a40494d54c546da196788c1bc08f55162890d` |
@@ -80,16 +86,17 @@ without credentials and pinned it by hash and UTC time. John Wick re-ran its ver
 | --- | --- | --- |
 | Immediate parent and attribution | v3 = 361502374, public, snapshot equal to the committed pin, Apache-2.0 declared in its own source, extraction diff recorded | Kaggle's version-specific licence field (public `GetKernelVersion` returns 403) |
 | Transitive code | Sumit 361357149 = v1, Rudra 361445283 = v7, Alex 361472684 = v3, Kirill 361491814 = v11, Kozykorpesh 361456406 = v2 (slug now `quantum-ai-lb-score-6-68108`); all public, cell-level AST comparison recorded | a publisher licence declaration for each of the five versions |
-| Numeric table and calibration dataset | `kozykappa/quantum-ai-dataset`, dataset id 12801707, datasetVersionId 21136269 = version 1, public; licence label **"Other (specified in description)"**; README: "New atlas tooling and derived numerical generation code: Apache-2.0"; `catalog/license_map.csv` does not name `code/coefficients.json` or `code/domain_tables.py` | whether those terms cover the table and `domain_tables.py` |
+| Numeric table and calibration dataset | `kozykappa/quantum-ai-dataset`, dataset id 12801707, datasetVersionId 21136269 = version 1, public; licence label **"Other (specified in description)"**; README: "New atlas tooling and derived numerical generation code: Apache-2.0"; `catalog/license_map.csv` does not name `code/coefficients.json` or `code/domain_tables.py` | file-specific rights for both files unresolved; affected candidate held (D-PRA220-01) |
 | Public-source inventory | every listed source is anonymously retrievable today | historical absence of private sharing cannot be proved from present public access |
 
-Finding recorded on PRA-211: the `own` fit (`fit_coefficients.py`, D-PRA200-01) reproduces the
-dataset's `code/coefficients.json` (SHA-256 `98bd211f22b158bf05a4d2d934ab966e5e97e54d8307b82e2ca58910c6830763`)
-exactly, 256 of 256 rows in order, and the calibration it runs (`valid_residuals`,
-`calibrate_segment`, `regenerate_tables_exact`) is adapted from the dataset's `code/domain_tables.py`
-(SHA-256 `59cf4d98899433dcc49d9ce512293be20d33da5334211c20e35323555994a4fb`). Whether `own` is the
-right label for a table that equals the dataset's is a board and Adjudicator call (D-PRA211-04); it
-is not changed here.
+Finding recorded on PRA-211, now ruled by [D-PRA220-01](../../docs/decisions/D-PRA220-01.md):
+the locally regenerated fit reproduces the dataset table 256 of 256 rows, and the calibration
+is adapted from its domain-tables module (version and file hashes above). The
+[Adjudicator verdict](/PRA/issues/PRA-220#document-adjudicator-verdict), revision
+`a70476a7-9756-406e-abdb-f7985a26c96e`, supersedes D-PRA200-01's `own` and
+licence-closure conclusion and resolves D-PRA211-04(b) as **unresolved rights; affected candidate held**.
+No Kaggle upload of a zip whose `invsqrt.kmb` comes from `tasks/invsqrt/generate.py`'s current coefficient lineage until the Adjudicator accepts file-specific rights evidence for both files ([PRA-222](/PRA/issues/PRA-222)) or clears an independently implemented replacement ([PRA-223](/PRA/issues/PRA-223)). Ledger enforcement is [PRA-224](/PRA/issues/PRA-224); this correction records the hold and does not implement it.
+Historical decisions and manifests remain unchanged.
 
 ## Forbidden inputs (not loaded)
 
