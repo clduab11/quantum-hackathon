@@ -1,0 +1,207 @@
+{
+  "kind": "factor-experiment",
+  "issue": "PRA-198",
+  "label": "own-generated, derived from Google baseline",
+  "input_manifest": "ledger/manifests/inputs/pra198-google-v4.json",
+  "run_evidence": "ledger/evidence/pra198/rank-curve.json",
+  "floor_met": false,
+  "chosen": {
+    "shape": [
+      65,
+      60,
+      60
+    ],
+    "brot": 12,
+    "ratio": 0.9999999999953697,
+    "sha256": "0c445e647cb7b9f8268a9de955c574fad2d1dfd9b516e84b02e9d104f127fab2",
+    "g2": {
+      "status": "PASS",
+      "error_1": 0.0031851950317986553,
+      "error_2": 0.018639570630974208,
+      "Lambda": 308.45593973309445,
+      "E_gap": 3.965477244291833,
+      "lambda_eff": 49.30136925057439,
+      "heuristic_toffoli": 13757,
+      "heuristic_qubits": 634,
+      "brot": 12,
+      "parity": false
+    }
+  },
+  "checkpoints": [
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "structure": null,
+      "offsets": null,
+      "refit_seconds": 0.007964429001731332,
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "file": "factors-00.npz"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 26,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.020014348322691663
+      },
+      "offsets": {
+        "iterations": 50,
+        "converged": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "objective": 51.81671153456954
+      },
+      "refit_seconds": 40.51324634000048,
+      "sha256": "cc7dd377b1c98c1267caac98e64835b516016e4be97392cff791f96fc219a297",
+      "file": "factors-01.npz"
+    },
+    {
+      "shape": [
+        55,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 23,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.08458718372811518
+      },
+      "offsets": {
+        "iterations": 100,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 60.18616192063118
+      },
+      "refit_seconds": 35.93351763499959,
+      "sha256": "ef47c52951c4154e46af3b645211b70c77272cb836c348b311ce801868cab876",
+      "file": "factors-02.npz"
+    },
+    {
+      "shape": [
+        48,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 23,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.1959184865238289
+      },
+      "offsets": {
+        "iterations": 100,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 72.94809091818573
+      },
+      "refit_seconds": 27.589844175003236,
+      "sha256": "b1d431e3fe7a4a519b1d1094675d751c02848660b94db72ecef3581cb06e683f",
+      "file": "factors-03.npz"
+    },
+    {
+      "shape": [
+        42,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 24,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.2636676283368889
+      },
+      "offsets": {
+        "iterations": 100,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 79.21862675626446
+      },
+      "refit_seconds": 25.04615840099723,
+      "sha256": "6658d6b5b8ddc6dec47553f92eb406b9099a4949966d4e536fa8b6953e4b51ad",
+      "file": "factors-04.npz"
+    },
+    {
+      "shape": [
+        36,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 22,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.5238392047803622
+      },
+      "offsets": {
+        "iterations": 100,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 100.63348165938548
+      },
+      "refit_seconds": 22.688748905995453,
+      "sha256": "c518c7cf845f67599560290b64bea987692ed2926a3ee42c751501d53c5ee5f0",
+      "file": "factors-05.npz"
+    },
+    {
+      "shape": [
+        32,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 22,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.6581105660651188
+      },
+      "offsets": {
+        "iterations": 100,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 121.76546500214815
+      },
+      "refit_seconds": 21.25936462899699,
+      "sha256": "417e53cd7b216280762d2557c3db5d8e7cc2dae09cb2d353d1535e9133b456ae",
+      "file": "factors-06.npz"
+    },
+    {
+      "shape": [
+        32,
+        32,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 22,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 2.503695393872568
+      },
+      "offsets": {
+        "iterations": 100,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 298.54098429773677
+      },
+      "refit_seconds": 14.820716931004426,
+      "sha256": "40b1c3000e30636a35cb57231e7264d8f7eba9af584490ce23f63df4a784ac92",
+      "file": "factors-07.npz"
+    }
+  ],
+  "run_seconds": 299.8596945210011,
+  "shipping_authorized": false
+}

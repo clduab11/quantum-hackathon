@@ -10,3 +10,8 @@ temporaries are ≈ 75% of Q.
 Public reports on 2026-10-23 gave 1.44× (681 qubits, 71,958 Toffolis, λ_eff 47.56). That factor is not shipped: its generator is not in the Apache-2.0 notebook, and the notebook traces the file to k256.dev (D-PRA177-01).
 
 `generate.py` rebuilds the package reference instead (10 ordinary-QROM circuits, `b_rot` 12, `J` 8, score 1.0). Candidates go in `candidates/`; `.kmb` and `.npz` files there are never committed.
+
+`factor_pipeline.py` refits the pinned Google baseline on CPU and measures a
+rank/precision curve without generating circuits. See [run instructions,
+failure behavior and provenance](FACTOR_PIPELINE.md). A passing factor proxy
+does not authorize a submission.
