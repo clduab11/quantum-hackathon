@@ -1,0 +1,68 @@
+{
+  "seconds": 286.2823199679988,
+  "generator_commit": "f2e9bb695d499546268be57ca774534d89d4bdc7",
+  "gate": {
+    "gate": "G5",
+    "status": "PASS",
+    "timestamp_utc": "2026-10-25T01:54:53.305732+00:00",
+    "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba",
+    "reason": "",
+    "evidence_sha256": null,
+    "details": {
+      "rebuild": {
+        "status": "PASS",
+        "commit": "f2e9bb695d499546268be57ca774534d89d4bdc7",
+        "tasks": {
+          "invsqrt": {
+            "identical": true,
+            "returncode": 0,
+            "argv": [
+              "/tmp/paperclip-run-pra-202-3eb083cb-cab-0C781G/dqi-only/.venv/bin/python3",
+              "tasks/invsqrt/generate.py",
+              "--out",
+              "/tmp/paperclip-run-pra-202-3eb083cb-cab-0C781G/ledger-rebuild-v_v_gogd/out/invsqrt"
+            ],
+            "diffs": {
+              "missing": [],
+              "extra": [],
+              "changed": []
+            },
+            "stderr_tail": ""
+          },
+          "dqi": {
+            "identical": true,
+            "returncode": 0,
+            "argv": [
+              "/tmp/paperclip-run-pra-202-3eb083cb-cab-0C781G/dqi-only/.venv/bin/python3",
+              "tasks/dqi/generate.py",
+              "--out",
+              "/tmp/paperclip-run-pra-202-3eb083cb-cab-0C781G/ledger-rebuild-v_v_gogd/out/dqi"
+            ],
+            "diffs": {
+              "missing": [],
+              "extra": [],
+              "changed": []
+            },
+            "stderr_tail": ""
+          },
+          "dfthcsos": {
+            "identical": true,
+            "returncode": 0,
+            "argv": [
+              "/tmp/paperclip-run-pra-202-3eb083cb-cab-0C781G/dqi-only/.venv/bin/python3",
+              "tasks/dfthcsos/generate.py",
+              "--out",
+              "/tmp/paperclip-run-pra-202-3eb083cb-cab-0C781G/ledger-rebuild-v_v_gogd/out/dfthcsos"
+            ],
+            "diffs": {
+              "missing": [],
+              "extra": [],
+              "changed": []
+            },
+            "stderr_tail": ""
+          }
+        }
+      }
+    }
+  }
+}

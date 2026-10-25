@@ -261,9 +261,73 @@
       "status": "PASS",
       "timestamp_utc": "2026-10-25T01:14:16.830300+00:00",
       "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "f2e9bb695d499546268be57ca774534d89d4bdc7",
+          "status": "PASS",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "/tmp/paperclip-run-pra-202-3eb083cb-cab-0C781G/dqi-only/.venv/bin/python3",
+                "tasks/dfthcsos/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-202-3eb083cb-cab-0C781G/ledger-rebuild-v_v_gogd/out/dfthcsos"
+              ],
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "/tmp/paperclip-run-pra-202-3eb083cb-cab-0C781G/dqi-only/.venv/bin/python3",
+                "tasks/dqi/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-202-3eb083cb-cab-0C781G/ledger-rebuild-v_v_gogd/out/dqi"
+              ],
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "invsqrt": {
+              "argv": [
+                "/tmp/paperclip-run-pra-202-3eb083cb-cab-0C781G/dqi-only/.venv/bin/python3",
+                "tasks/invsqrt/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-202-3eb083cb-cab-0C781G/ledger-rebuild-v_v_gogd/out/invsqrt"
+              ],
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T01:54:53.305732+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
     }
   ],
-  "generator_commit": "47a337db74ca533639e23f06516ef0d87117428f",
+  "generator_commit": "f2e9bb695d499546268be57ca774534d89d4bdc7",
   "geometric_mean": 5.721389477411995,
   "git_branch": "op-vqcc/PRA-193-regarding-my-quantum-hackathon-project-you-should-know-that-the-highest-score-on-the-hackathon-project-t",
   "kaggle_submission_id": null,
