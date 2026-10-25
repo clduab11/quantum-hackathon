@@ -1,0 +1,413 @@
+{
+  "baseline": {
+    "timings": {
+      "KT12_s": 0.02044057846069336,
+      "KT6_s": 0.0009300708770751953,
+      "KT3_s": 9.059906005859375e-06,
+      "CUBE3Q_s": 0.0008256435394287109,
+      "PAIR3_s": 2.5510787963867188e-05
+    },
+    "modulus": 4179,
+    "primitive": 2,
+    "build_seconds": 163.26056495000012,
+    "counted_toffoli_like": 396089,
+    "num_qubits": 1789,
+    "static_toffoli_like": 445229,
+    "num_ops": 93898574,
+    "num_bits": 49142,
+    "elapsed_seconds": 163.75522004899904,
+    "sha256": "529b075009f7758abeda83a63407f0c1feeb51dd70631ae4335dfd28721b7e08",
+    "size_bytes": 823297489,
+    "selected_phases": {
+      "bm/r64": {
+        "peak": 1776,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 408,
+          "bb": 444,
+          "stk": 18,
+          "ctl": 1,
+          "pq": 12,
+          "dinv": 12,
+          "nqd": 6,
+          "m3d": 3,
+          "s3d": 3,
+          "yd": 6
+        },
+        "allocation_id_at_peak": 1775
+      },
+      "bm/r65": {
+        "peak": 1777,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 408,
+          "bb": 444,
+          "stk": 19,
+          "ctl": 1,
+          "pq": 12,
+          "dinv": 12,
+          "nqd": 6,
+          "m3d": 3,
+          "s3d": 3,
+          "yd": 6
+        },
+        "allocation_id_at_peak": 1776
+      },
+      "bm/r66": {
+        "peak": 1789,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 420,
+          "bb": 444,
+          "stk": 19,
+          "ctl": 1,
+          "pq": 12,
+          "dinv": 12,
+          "nqd": 6,
+          "m3d": 3,
+          "s3d": 3,
+          "yd": 6
+        },
+        "allocation_id_at_peak": 1788
+      },
+      "bm/r67": {
+        "peak": 1789,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 420,
+          "bb": 444,
+          "stk": 19,
+          "ctl": 1,
+          "pq": 12,
+          "dinv": 12,
+          "nqd": 6,
+          "m3d": 3,
+          "s3d": 3,
+          "yd": 6
+        },
+        "allocation_id_at_peak": 1788
+      },
+      "bm/r68": {
+        "peak": 1789,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 420,
+          "bb": 444,
+          "stk": 19,
+          "ctl": 1,
+          "pq": 12,
+          "dinv": 12,
+          "nqd": 6,
+          "m3d": 3,
+          "s3d": 3,
+          "yd": 6
+        },
+        "allocation_id_at_peak": 964
+      },
+      "euclid/F": {
+        "peak": 1777,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 432,
+          "bb": 420,
+          "stk": 19,
+          "qh": 12,
+          "inv": 12,
+          "zprec": 6,
+          "pre": 1,
+          "one": 12
+        },
+        "allocation_id_at_peak": 1235
+      },
+      "euclid/R": {
+        "peak": 1789,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 432,
+          "bb": 420,
+          "stk": 19,
+          "psipool": 24,
+          "ext": 12,
+          "zprec": 6,
+          "pre": 1,
+          "one": 12
+        },
+        "allocation_id_at_peak": 1596
+      },
+      "euclid_inv/R": {
+        "peak": 1789,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 432,
+          "bb": 420,
+          "stk": 19,
+          "psipool": 24,
+          "ext": 12,
+          "zprec": 6,
+          "pre": 1,
+          "one": 12
+        },
+        "allocation_id_at_peak": 1783
+      },
+      "reverse/r68": {
+        "peak": 1789,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 432,
+          "bb": 420,
+          "stk": 19,
+          "jscratch": 31,
+          "borrowed_template": 24
+        },
+        "allocation_id_at_peak": 1718
+      }
+    },
+    "compact_from": 70
+  },
+  "compact64": {
+    "timings": {
+      "KT12_s": 0.022788047790527344,
+      "KT6_s": 0.0010802745819091797,
+      "KT3_s": 1.6450881958007812e-05,
+      "CUBE3Q_s": 0.0015783309936523438,
+      "PAIR3_s": 5.173683166503906e-05
+    },
+    "modulus": 4179,
+    "primitive": 2,
+    "build_seconds": 168.70750591099932,
+    "counted_toffoli_like": 396431,
+    "num_qubits": 1789,
+    "static_toffoli_like": 445571,
+    "num_ops": 93927108,
+    "num_bits": 49142,
+    "compact_from": 64,
+    "elapsed_seconds": 169.1820528779972,
+    "sha256": "ef9b40df92c49305d1db7b948050f50319237dea557f0d18b37e301ce912b0cd",
+    "size_bytes": 823532055,
+    "selected_phases": {
+      "bm/r64": {
+        "peak": 1765,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 408,
+          "bb": 444,
+          "stk": 19,
+          "ctl": 1,
+          "wreg": 12,
+          "m3d": 3,
+          "s3d": 3,
+          "yd": 6,
+          "nqd": 6
+        },
+        "allocation_id_at_peak": 1512
+      },
+      "bm/r65": {
+        "peak": 1765,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 408,
+          "bb": 444,
+          "stk": 19,
+          "ctl": 1,
+          "pq": 12,
+          "m3d": 3,
+          "s3d": 3,
+          "yd": 6,
+          "nqd": 6
+        },
+        "allocation_id_at_peak": 966
+      },
+      "bm/r66": {
+        "peak": 1777,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 420,
+          "bb": 444,
+          "stk": 19,
+          "ctl": 1,
+          "pq": 12,
+          "inv": 12,
+          "yd_un": 6
+        },
+        "allocation_id_at_peak": 1776
+      },
+      "bm/r67": {
+        "peak": 1777,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 420,
+          "bb": 444,
+          "stk": 19,
+          "ctl": 1,
+          "pq": 12,
+          "m3d": 3,
+          "s3d": 3,
+          "yd": 6,
+          "nqd": 6
+        },
+        "allocation_id_at_peak": 966
+      },
+      "bm/r68": {
+        "peak": 1789,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 432,
+          "bb": 444,
+          "stk": 19,
+          "ctl": 1,
+          "pq": 12,
+          "inv": 12,
+          "yd_un": 6
+        },
+        "allocation_id_at_peak": 1788
+      },
+      "euclid/F": {
+        "peak": 1777,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 432,
+          "bb": 420,
+          "stk": 19,
+          "qh": 12,
+          "inv": 12,
+          "zprec": 6,
+          "pre": 1,
+          "one": 12
+        },
+        "allocation_id_at_peak": 1476
+      },
+      "euclid/R": {
+        "peak": 1789,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 432,
+          "bb": 420,
+          "stk": 19,
+          "psipool": 24,
+          "ext": 12,
+          "zprec": 6,
+          "pre": 1,
+          "one": 12
+        },
+        "allocation_id_at_peak": 966
+      },
+      "euclid_inv/R": {
+        "peak": 1789,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 432,
+          "bb": 420,
+          "stk": 19,
+          "psipool": 24,
+          "ext": 12,
+          "zprec": 6,
+          "pre": 1,
+          "one": 12
+        },
+        "allocation_id_at_peak": 1715
+      },
+      "reverse/r68": {
+        "peak": 1789,
+        "owners": {
+          "syn": 840,
+          "dw": 12,
+          "dcount": 8,
+          "pivA": 1,
+          "pivB": 1,
+          "fanT": 1,
+          "sig": 432,
+          "bb": 420,
+          "stk": 19,
+          "jscratch": 31,
+          "borrowed_template": 24
+        },
+        "allocation_id_at_peak": 1718
+      }
+    }
+  }
+}
