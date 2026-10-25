@@ -146,7 +146,7 @@ def test_register_rows_parse_with_escaped_pipes_and_skip_the_header():
 
 | date | id | decision | evidence | status |
 | --- | --- | --- | --- | --- |
-| 2026-10-24 | D-X-01 | Use `a \\\\| b` | PRA-1 | accepted |
+| 2026-10-24 | D-X-01 | Use `a \\| b` | PRA-1 | accepted |
 | 2026-10-24 | D-X-02 | Revisit D-X-01 | review | unresolved |
 """
     rows = registers.parse_decisions(text)
