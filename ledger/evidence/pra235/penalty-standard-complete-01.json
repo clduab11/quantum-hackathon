@@ -1,0 +1,711 @@
+{
+  "label": "own-generated, derived from Google baseline",
+  "rows": [
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 12,
+      "error_1": 0.0031851950317986553,
+      "error_2": 0.018639570630974208,
+      "Lambda": 308.45593973309445,
+      "E_SOS": -22144.23882724429,
+      "E_gap": 3.965477244291833,
+      "lambda_eff": 49.30136925057439,
+      "gap_in_domain": true,
+      "T": 93237,
+      "Q": 730,
+      "angle_qubits": 119,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3355599588.3155375,
+      "ratio": 0.9999999999953697,
+      "seconds": 4.628473685996141,
+      "problems": [],
+      "margin_19mHa": true,
+      "factor_file": "factors-00.npz",
+      "factor_sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-00-12.npz",
+      "encoded_sha256": "0c445e647cb7b9f8268a9de955c574fad2d1dfd9b516e84b02e9d104f127fab2"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 11,
+      "error_1": 0.006480494833029553,
+      "error_2": 0.025035371586624014,
+      "Lambda": 308.45874138217346,
+      "E_SOS": -22144.24162889337,
+      "E_gap": 3.968278893371462,
+      "lambda_eff": 49.31889484193693,
+      "gap_in_domain": true,
+      "T": 92937,
+      "Q": 722,
+      "angle_qubits": 111,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3309323193.805917,
+      "ratio": 1.0139836431149123,
+      "seconds": 4.6606635179923614,
+      "problems": [
+        "error_2 0.025035371586624014 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "factor_file": "factors-00.npz",
+      "factor_sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-00-11.npz",
+      "encoded_sha256": "885bf7bfc34f62abc1fffd10290dab7590c64d396dcb042c334cf3ee51f9d2d5"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 10,
+      "error_1": 0.013969398961734547,
+      "error_2": 0.040014621461046423,
+      "Lambda": 308.5073691665378,
+      "E_SOS": -22144.290256677734,
+      "E_gap": 4.016906677734369,
+      "lambda_eff": 49.62212292327917,
+      "gap_in_domain": true,
+      "T": 92637,
+      "Q": 714,
+      "angle_qubits": 103,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3282147045.288082,
+      "ratio": 1.0223794187153705,
+      "seconds": 4.275751056993613,
+      "problems": [
+        "error_2 0.040014621461046423 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "factor_file": "factors-00.npz",
+      "factor_sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-00-10.npz",
+      "encoded_sha256": "aac27e0c13ee38f7d34436e793f6654dc54dfa645d130627039beee2900f3869"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 9,
+      "error_1": 0.025159769829696654,
+      "error_2": 0.0766720830694496,
+      "Lambda": 308.7126370736213,
+      "E_SOS": -22144.495524584818,
+      "E_gap": 4.222174584818276,
+      "lambda_eff": 50.88271359021902,
+      "gap_in_domain": true,
+      "T": 92337,
+      "Q": 706,
+      "angle_qubits": 95,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3317040130.0947175,
+      "ratio": 1.0116246583378483,
+      "seconds": 4.443604033993324,
+      "problems": [
+        "error_1 0.025159769829696654 Ha > 0.02 Ha",
+        "error_2 0.0766720830694496 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "factor_file": "factors-00.npz",
+      "factor_sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-00-9.npz",
+      "encoded_sha256": "4bb3168a3adc4933f365d20ed8a4e008c316d0e284334547f26832cf9ea0030e"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 8,
+      "error_1": 0.052351053866721405,
+      "error_2": 0.15538255247656943,
+      "Lambda": 309.3314922290727,
+      "E_SOS": -22145.11437974027,
+      "E_gap": 4.841029740269732,
+      "lambda_eff": 54.511744954823605,
+      "gap_in_domain": true,
+      "T": 92037,
+      "Q": 698,
+      "angle_qubits": 87,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3501934034.3441563,
+      "ratio": 0.958213248847915,
+      "seconds": 4.6452968119992875,
+      "problems": [
+        "error_1 0.052351053866721405 Ha > 0.02 Ha",
+        "error_2 0.15538255247656943 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "factor_file": "factors-00.npz",
+      "factor_sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-00-8.npz",
+      "encoded_sha256": "e189630260f34eed73e74da0ea1a6604d2fa43a779de00662554f8a320bb933a"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 12,
+      "error_1": 0.0031408428372436824,
+      "error_2": 0.0177292827805231,
+      "Lambda": 333.15308420167565,
+      "E_SOS": -22144.337589181105,
+      "E_gap": 4.064239181105222,
+      "lambda_eff": 51.879760948907276,
+      "gap_in_domain": true,
+      "T": 88874,
+      "Q": 727,
+      "angle_qubits": 119,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3352023882.8147054,
+      "ratio": 1.0010667303128795,
+      "seconds": 249.91589682699123,
+      "problems": [],
+      "margin_19mHa": true,
+      "factor_file": "factors-01-q12.npz",
+      "factor_sha256": "c54bdf748a8931ffb612f5abbb937ee2c7761c9741e43b4af27982a293fb10d6",
+      "quantized_fit": {
+        "iterations": 200,
+        "evaluations": 214,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.01966926479797097,
+        "initial_objective": 0.020860731579153583,
+        "maxcor": 20,
+        "method": "fixed-rounded-U weight L-BFGS-B"
+      },
+      "quantized_offsets": {
+        "iterations": 7,
+        "converged": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "objective": 51.87976094891232
+      },
+      "encoded_file": "encoded-01-12.npz",
+      "encoded_sha256": "573ff6ac9136ea1ad3a2cb05e20fb6e0ae9dda2c40bf34fcbf0643794d6dc745"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 11,
+      "error_1": 0.006488235284281515,
+      "error_2": 0.025273859438064598,
+      "Lambda": 333.39875302729877,
+      "E_SOS": -22144.354135850877,
+      "E_gap": 4.080785850877874,
+      "lambda_eff": 52.00389422867801,
+      "gap_in_domain": true,
+      "T": 88574,
+      "Q": 719,
+      "angle_qubits": 111,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3311852714.8084555,
+      "ratio": 1.0132091844833369,
+      "seconds": 2.9387683780078078,
+      "problems": [
+        "error_2 0.025273859438064598 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "factor_file": "factors-01.npz",
+      "factor_sha256": "199956acac37b8eb9b87840510821fa69990c47bb05924e43f012e546981346e",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-01-11.npz",
+      "encoded_sha256": "cac1f211bb3b31f41288c51e092902f987e6bbe71263718852290cc774eb96b2"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 10,
+      "error_1": 0.013815798318909805,
+      "error_2": 0.040262531604273684,
+      "Lambda": 333.4452264106134,
+      "E_SOS": -22144.40060923419,
+      "E_gap": 4.1272592341920245,
+      "lambda_eff": 52.30100869787011,
+      "gap_in_domain": true,
+      "T": 88274,
+      "Q": 711,
+      "angle_qubits": 103,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3282558480.916804,
+      "ratio": 1.0222512737572909,
+      "seconds": 2.9465263390011387,
+      "problems": [
+        "error_2 0.040262531604273684 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "factor_file": "factors-01.npz",
+      "factor_sha256": "199956acac37b8eb9b87840510821fa69990c47bb05924e43f012e546981346e",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-01-10.npz",
+      "encoded_sha256": "3b903bf7853b522aa83d158b15560208fc98d3f3d6403dec40214a333d60764f"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 9,
+      "error_1": 0.026536221745755272,
+      "error_2": 0.0766171697944848,
+      "Lambda": 333.6446660010275,
+      "E_SOS": -22144.600048824606,
+      "E_gap": 4.326698824606865,
+      "lambda_eff": 53.557815916326696,
+      "gap_in_domain": true,
+      "T": 87974,
+      "Q": 703,
+      "angle_qubits": 95,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3312321794.0883164,
+      "ratio": 1.0130656973875316,
+      "seconds": 2.768013112989138,
+      "problems": [
+        "error_1 0.026536221745755272 Ha > 0.02 Ha",
+        "error_2 0.0766171697944848 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "factor_file": "factors-01.npz",
+      "factor_sha256": "199956acac37b8eb9b87840510821fa69990c47bb05924e43f012e546981346e",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-01-9.npz",
+      "encoded_sha256": "982e64f6edeb9022e94e5ca4a7cfce3854981efba9c57f903d43ed71ae4b5d64"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 8,
+      "error_1": 0.05362515901455315,
+      "error_2": 0.15528931392506826,
+      "Lambda": 334.2730177755332,
+      "E_SOS": -22145.22840059911,
+      "E_gap": 4.955050599110109,
+      "lambda_eff": 57.34219133892826,
+      "gap_in_domain": true,
+      "T": 87674,
+      "Q": 695,
+      "angle_qubits": 87,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3494056401.9971914,
+      "ratio": 0.9603736180051216,
+      "seconds": 3.254599779000273,
+      "problems": [
+        "error_1 0.05362515901455315 Ha > 0.02 Ha",
+        "error_2 0.15528931392506826 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "factor_file": "factors-01.npz",
+      "factor_sha256": "199956acac37b8eb9b87840510821fa69990c47bb05924e43f012e546981346e",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-01-8.npz",
+      "encoded_sha256": "ec5a756ea10e133e6bc6db225304d375f8dd7ada24f966d65c0ca851e1279717"
+    }
+  ],
+  "stages": [
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "structure": null,
+      "offsets": null,
+      "refit_seconds": 0.007285892992513254,
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "file": "factors-00.npz"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 300,
+        "evaluations": 316,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.018435489658376332,
+        "optimizer": "lbfgs",
+        "maxcor": 20,
+        "learning_rate": null
+      },
+      "offsets": {
+        "iterations": 79,
+        "converged": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "objective": 51.91274364400518
+      },
+      "refit_seconds": 580.0280771639955,
+      "sha256": "199956acac37b8eb9b87840510821fa69990c47bb05924e43f012e546981346e",
+      "file": "factors-01.npz"
+    }
+  ],
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "python": "3.13.13 (main, Apr 14 2026, 14:28:56) [Clang 22.1.3 ]",
+  "threads": 1,
+  "initialization": "pinned Google baseline; deterministic SVD and norm pruning",
+  "settings": {
+    "starter": "/home/cld-main/work/vqcc-data/starter-kit",
+    "competition": "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation",
+    "out": "/home/cld-main/work/vqcc-data/pra235-batch-floor-01/penalty-standard",
+    "shapes": [
+      [
+        65,
+        60,
+        30
+      ]
+    ],
+    "bits": [
+      12,
+      11,
+      10,
+      9,
+      8
+    ],
+    "steps": 300,
+    "offset_steps": 100,
+    "penalty": 2e-05,
+    "maxcor": 20,
+    "optimizer": "lbfgs",
+    "learning_rate": 0.0001,
+    "quantize_bits": [
+      12
+    ],
+    "quantized_steps": 200,
+    "checkpoint_every": 100,
+    "dry_run": false
+  },
+  "input_pins": {
+    "dataset": "sohier/verifiable-circuit-compilation-starter-kit",
+    "version": 4,
+    "license": "Apache-2.0",
+    "files": [
+      {
+        "path": "FeMoCo76o113e.fcidump",
+        "bytes": 128128348,
+        "sha256": "e5a48af746fd075026dec9e8f5df2d363802a121e8c53af9a0b984bde695e1bd",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/FeMoCo76o113e.fcidump?datasetVersionNumber=4"
+      },
+      {
+        "path": "FeMoCo76o113e.fixed_shifts.npz",
+        "bytes": 61028,
+        "sha256": "7b7facf63fe35a9d9d3d00787ffdb700c863fa845fe4724d7f7c54778151cd87",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/FeMoCo76o113e.fixed_shifts.npz?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/__init__.py",
+        "bytes": 292,
+        "sha256": "d78da488e6ca5b913c5ac9f2de605fb920da3d4807b08f2be6a4ddc9c35e3228",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2F__init__.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/build_angle_k.py",
+        "bytes": 4638,
+        "sha256": "82f1cf73adc466ee49894b310e37020e79f36279031f7e2c2ff42ebc053e81ba",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fbuild_angle_k.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/df_thc_sga.py",
+        "bytes": 8917,
+        "sha256": "1e22e79ecf9db19042f042aac5844d404987439493f0152b546e4df1f5432fcc",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fdf_thc_sga.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/dfthc_u_to_tei.py",
+        "bytes": 19784,
+        "sha256": "1e2cd8af4e1ef49c21215dbf5b3f1697a3df4eb76e3987b25445472ce81c0059",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fdfthc_u_to_tei.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/load_integrals.py",
+        "bytes": 8501,
+        "sha256": "14a988da0bb7b55fcc9fda8cae79816bf417b2667319d281d371a6053c1ff667",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fload_integrals.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/spin_free_block_encoding_costs.py",
+        "bytes": 12885,
+        "sha256": "20c3892baa554b379182c72e6024bb15fbf8c16596156bd45519dbdf2af8f6bb",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fspin_free_block_encoding_costs.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/train_df_thc_sga.py",
+        "bytes": 12516,
+        "sha256": "9f3aea602f270d7d596504f0af3ec1f5af44247c2dcf5833795dc10bb55d28e5",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Ftrain_df_thc_sga.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/verify_angle_k.py",
+        "bytes": 19590,
+        "sha256": "00555d552142cd1791c2526de93ff23ea6cc980260f195893f3daa6e4f516b47",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fverify_angle_k.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/verify_dfthc.py",
+        "bytes": 9379,
+        "sha256": "84ded6ae4a63c5f90346c3f3628b420fd496bdb846ef4591d4125926abec6a47",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fverify_dfthc.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/pyproject.toml",
+        "bytes": 1415,
+        "sha256": "4442ba8a2e538d6414cc5ced3049e7d5a70314013d4eb3ba4d4893f5f4f1b401",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fpyproject.toml?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/FeMoco76_65_60_60.npz",
+        "bytes": 2150130,
+        "sha256": "b13120cb62bf4cfcf41a3dc0c78cd6e58e17dacc7d0691834cee2cc6e4bc642b",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2FFeMoco76_65_60_60.npz?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/check_factorization.py",
+        "bytes": 4256,
+        "sha256": "5b897b14bad6e874878d81323ee774afa9508ecce8cd6d870cfeb5d71c9d3f76",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Fcheck_factorization.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/solution_io.py",
+        "bytes": 4432,
+        "sha256": "682be529a8418696100fc51fe773a32f8499a729c6ec7e78f69344b996fcfe84",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Fsolution_io.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/train_df_thc_qaggle.py",
+        "bytes": 17551,
+        "sha256": "e51b7559918ac1734d46514fcae7f0f0d789a6ef113bcaebd1b70a925e3918bc",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Ftrain_df_thc_qaggle.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task2_angles/encode.py",
+        "bytes": 8131,
+        "sha256": "cd8eb31056619b2c85ef9e7a1a3743eb2ef621035cda7dd23e6b47208e683745",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask2_angles%2Fencode.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task2_angles/trees.py",
+        "bytes": 4196,
+        "sha256": "47429502abc75e1a4360a2591f5df6b8ba56f79c0909d90739c38225ce25ea0c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask2_angles%2Ftrees.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task3_circuits/angle_k_kickmix.py",
+        "bytes": 9087,
+        "sha256": "ec90f72a82d3252bdc9bfefaa987ff3c69782aaf1432c7a2358b24d528a1afea",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask3_circuits%2Fangle_k_kickmix.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task3_circuits/build_circuits.py",
+        "bytes": 11146,
+        "sha256": "5ef5f17b0b1c25b56dfea568c895b0b16113a6302c280a7ecc64ae07869d760c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask3_circuits%2Fbuild_circuits.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/circuits.py",
+        "bytes": 24418,
+        "sha256": "fc027b52fdcebe14404f403a089122485d097ed65d03e6d989623d620b1ab68c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fcircuits.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/costs.py",
+        "bytes": 8334,
+        "sha256": "aea5bf44850cd315bfba205498d6ec83231faebdb6a48fe6387cccaf24171e6a",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fcosts.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/dfthc_math.py",
+        "bytes": 17597,
+        "sha256": "bb94c70558557091d8492a9842aef4f94c2130533d3cf5ce460d89bb3e82246d",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fdfthc_math.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/reference.py",
+        "bytes": 15200,
+        "sha256": "e5b75b6731a252224c86fd8878f50553bc56138b837b82e04b4bf946cdaa83ef",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Freference.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/score.py",
+        "bytes": 28282,
+        "sha256": "79c97dbd771c072a92a517d1692dbdd53d80c16bd4772c94a0cc45d7dac167ca",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fscore.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/verify.py",
+        "bytes": 10901,
+        "sha256": "8c35f1a3feaf99c798a9fc8720a54e65a0734d0071af991b3e6ee0c0192ae70a",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fverify.py?datasetVersionNumber=4"
+      }
+    ],
+    "competition_files": [
+      {
+        "path": "kickmix/kickmix.so",
+        "sha256": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e"
+      },
+      {
+        "path": "verifiers/dfthcsos/__init__.py",
+        "sha256": "81915e324cc0cade67f52a54b7a51991fd96abaea94d1f8a4d423dae20e57348"
+      },
+      {
+        "path": "verifiers/dfthcsos/example_submission/angle_k_reference_circuit.py",
+        "sha256": "8daccdca69f2d718b0176cd9281803df84a988ea5ac6c167fbb02e461ac2b371"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/__init__.py",
+        "sha256": "be90e0d503d5c20dcac0102af638b9a4ccad0341daa5baa5d49216a259e4516f"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/circuits.py",
+        "sha256": "fc027b52fdcebe14404f403a089122485d097ed65d03e6d989623d620b1ab68c"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/costs_prepare.py",
+        "sha256": "7f1e190c42fc5325f3e6689fbbef51f95b0cb12f1c828cda92b6c088e72206da"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/dfthc_math.py",
+        "sha256": "ae82898d47a7a86b96378fb906e0f8a9f46003065cf19c7c09952a123b5b5af8"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/reference.py",
+        "sha256": "a2d5a63191d655729e29f0fde1e85fe4630bf896a91a63bb894d8d7daf71ed39"
+      },
+      {
+        "path": "verifiers/dfthcsos/verify.py",
+        "sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+      },
+      {
+        "path": "verifiers/dfthcsos/FeMoCo76o113e.fcidump",
+        "sha256": "e5a48af746fd075026dec9e8f5df2d363802a121e8c53af9a0b984bde695e1bd"
+      },
+      {
+        "path": "verifiers/dfthcsos/FeMoCo76o113e.fixed_shifts.npz",
+        "sha256": "7b7facf63fe35a9d9d3d00787ffdb700c863fa845fe4724d7f7c54778151cd87"
+      }
+    ],
+    "method_source": {
+      "url": "https://www.kaggle.com/code/ahmedberatozer/quantum-ai-df-thc-group-compression",
+      "version": 2,
+      "license": "Apache-2.0",
+      "sha256": "2f9b22ad81fa4094485234a853208da7e15937137ded600d3a20b12d84382121",
+      "role": "method reference only; never executed; no factor data loaded"
+    }
+  },
+  "source_hashes": {
+    "factor_pipeline.py": "869992a11475e35d2fdd2f959748a0e373f361790b27cbd15bec9d1f8dd2a3cb",
+    "factor_math.py": "87a57c98cfa99929fbae020b88057969639c922c29dfb6603a50fc81115ddcb5",
+    "factor_offsets.py": "9742882769d86b88ec1510186864dd2ceeca212f0e76f70215c2be85ee9888e3",
+    "factor_support.py": "001f5092b9e9ca5a4b66c94b6a24795bd2b38a506fdf523f671560a7e5aadc65",
+    "checks.py": "7ae0e60b60d2c5f4869b0d3e89221e2be5acc4337bd47a1af75354be9d8ce362",
+    "gates.py": "0941c12d48a980c7d9a5a0124d9378740bd1bd9ba39f498d844736c1662dda0e",
+    "factor_reseed.py": "9ab7f6bbfa414413934a3d0828108f3b3c48f8f1bdc96aa53993c069a471307d",
+    "factor_quantized.py": "33a853accb51a5919581cb8ac4d1b10ecaae9040cfd615e025d86d05c066b6c6",
+    "factor_progress.py": "b5e887990b83d673fc505ba354f76dabcc8ab50ae6a5e205e5eef77ee623e56a",
+    "factor_optimizers.py": "60ad52c929f82a36dbad70191bc7a0b4653d9010f2cf537da9e08f9689b58f00"
+  },
+  "total_seconds": 871.6352870559931,
+  "chosen": {
+    "shape": [
+      65,
+      60,
+      30
+    ],
+    "brot": 12,
+    "ratio": 1.0010667303128795,
+    "sha256": "573ff6ac9136ea1ad3a2cb05e20fb6e0ae9dda2c40bf34fcbf0643794d6dc745",
+    "g2": {
+      "status": "PASS",
+      "error_1": 0.0031408428372436824,
+      "error_2": 0.0177292827805231,
+      "Lambda": 333.15308420167565,
+      "E_gap": 4.064239181105222,
+      "lambda_eff": 51.879760948907276,
+      "heuristic_toffoli": 9394,
+      "heuristic_qubits": 631,
+      "brot": 12,
+      "parity": false
+    }
+  },
+  "floor_met": true,
+  "floor_65_met": true,
+  "floor_32_met": false,
+  "independent_candidate_reload": {
+    "status": "PASS",
+    "error_1": 0.0031408428372436824,
+    "error_2": 0.0177292827805231,
+    "Lambda": 333.15308420167565,
+    "E_gap": 4.064239181105222,
+    "lambda_eff": 51.879760948907276,
+    "heuristic_toffoli": 9394,
+    "heuristic_qubits": 631,
+    "brot": 12,
+    "parity": false
+  }
+}

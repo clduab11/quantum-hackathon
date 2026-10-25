@@ -1,0 +1,83 @@
+[
+  {
+    "name": "floor",
+    "pid": 13988,
+    "command": [
+      "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra235-factor-refit-v2/.venv/bin/python",
+      "-m",
+      "tasks.dfthcsos.run_experiments",
+      "--plan",
+      "/home/cld-main/work/vqcc-data/pra235-source-961357b/ledger/evidence/pra235/plan-floor.json",
+      "--out",
+      "/home/cld-main/work/vqcc-data/pra235-batch-floor-01"
+    ],
+    "cwd": "/home/cld-main/work/vqcc-data/pra235-source-961357b",
+    "log": "/home/cld-main/work/vqcc-data/pra235-batch-floor-01.log",
+    "out": "/home/cld-main/work/vqcc-data/pra235-batch-floor-01",
+    "source_commit": "961357b20e7272e4b22bfb6f0c31482820e28e65",
+    "source_tree": "433e4a1154187a3b21fabaa43d734af1510be968",
+    "plan_sha256": "a7410dd20a300f92a6fb420e9f3889866d5e01ab98fbe901d8f41a813010f3c3",
+    "started_at": "2026-10-25T18:14:25.316570Z",
+    "environment": {
+      "PATH": "/bin:/usr/bin",
+      "LANG": "C.UTF-8",
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    }
+  },
+  {
+    "name": "gradual",
+    "pid": 13990,
+    "command": [
+      "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra235-factor-refit-v2/.venv/bin/python",
+      "-m",
+      "tasks.dfthcsos.run_experiments",
+      "--plan",
+      "/home/cld-main/work/vqcc-data/pra235-source-961357b/ledger/evidence/pra235/plan-gradual.json",
+      "--out",
+      "/home/cld-main/work/vqcc-data/pra235-batch-gradual-01"
+    ],
+    "cwd": "/home/cld-main/work/vqcc-data/pra235-source-961357b",
+    "log": "/home/cld-main/work/vqcc-data/pra235-batch-gradual-01.log",
+    "out": "/home/cld-main/work/vqcc-data/pra235-batch-gradual-01",
+    "source_commit": "961357b20e7272e4b22bfb6f0c31482820e28e65",
+    "source_tree": "433e4a1154187a3b21fabaa43d734af1510be968",
+    "plan_sha256": "3bfde93c473f139d13efdc8f6a332cd11411d5da668f5006b3d9e518efef2920",
+    "started_at": "2026-10-25T18:14:25.319057Z",
+    "environment": {
+      "PATH": "/bin:/usr/bin",
+      "LANG": "C.UTF-8",
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    }
+  },
+  {
+    "name": "public",
+    "pid": 13992,
+    "command": [
+      "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra235-factor-refit-v2/.venv/bin/python",
+      "-m",
+      "tasks.dfthcsos.run_experiments",
+      "--plan",
+      "/home/cld-main/work/vqcc-data/pra235-source-961357b/ledger/evidence/pra235/plan-public.json",
+      "--out",
+      "/home/cld-main/work/vqcc-data/pra235-batch-public-01"
+    ],
+    "cwd": "/home/cld-main/work/vqcc-data/pra235-source-961357b",
+    "log": "/home/cld-main/work/vqcc-data/pra235-batch-public-01.log",
+    "out": "/home/cld-main/work/vqcc-data/pra235-batch-public-01",
+    "source_commit": "961357b20e7272e4b22bfb6f0c31482820e28e65",
+    "source_tree": "433e4a1154187a3b21fabaa43d734af1510be968",
+    "plan_sha256": "0fab0229bd25755b44e4443ab685aecfc7efbdcb05c439a5b54b29fb21e6292a",
+    "started_at": "2026-10-25T18:14:25.320920Z",
+    "environment": {
+      "PATH": "/bin:/usr/bin",
+      "LANG": "C.UTF-8",
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    }
+  }
+]

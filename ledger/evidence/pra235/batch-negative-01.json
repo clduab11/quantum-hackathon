@@ -1,0 +1,22 @@
+[
+  {
+    "name": "baseline-control",
+    "command": [
+      "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra235-factor-refit-v2/.venv/bin/python3",
+      "-m",
+      "tasks.dfthcsos.factor_pipeline",
+      "--starter",
+      "/home/cld-main/work/vqcc-data/starter-kit",
+      "--competition",
+      "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation",
+      "--out",
+      "/home/cld-main/work/vqcc-data/pra235-batch-negative-01/baseline-control",
+      "--bits",
+      "6"
+    ],
+    "status": "error",
+    "plan_sha256": "7bff064de0e64fb4ce1243239d5302ac5806fd9aacc04cff745d5527558a4a72",
+    "exit_code": 2,
+    "seconds": 0.4133042839966947
+  }
+]

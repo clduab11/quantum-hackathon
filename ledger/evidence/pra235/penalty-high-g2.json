@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "error_1": 0.0032244216694538716,
+  "error_2": 0.018299842110362396,
+  "Lambda": 325.2850293524232,
+  "E_gap": 4.067613184750371,
+  "lambda_eff": 51.280813871962884,
+  "heuristic_toffoli": 9394,
+  "heuristic_qubits": 631,
+  "brot": 12,
+  "parity": false
+}

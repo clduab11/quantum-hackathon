@@ -1,0 +1,33 @@
+{
+  "starter": "/home/cld-main/work/vqcc-data/starter-kit",
+  "competition": "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation",
+  "jobs": [
+    {
+      "name": "repeat-adam",
+      "args": [
+        "--bits",
+        "12",
+        "11",
+        "10",
+        "9",
+        "8",
+        "--offset-steps",
+        "100",
+        "--checkpoint-every",
+        "100",
+        "--shapes",
+        "65,60,30",
+        "--steps",
+        "300",
+        "--optimizer",
+        "adam",
+        "--maxcor",
+        "20",
+        "--quantize-bits",
+        "12",
+        "--quantized-steps",
+        "200"
+      ]
+    }
+  ]
+}

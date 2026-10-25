@@ -25,7 +25,8 @@ experiment use `--steps 20 --offset-steps 100`. For a narrower run use
 (65,60,60) as a control, then (65,60,30), (55,60,30), (48,60,30),
 (42,60,30), (36,60,30), (32,60,30), (32,32,30); bits 7 through 12.
 Increase iterations for longer refits; a short floor miss does not establish
-that a shape is infeasible. Schedule dimensions must only decrease.
+that a shape is infeasible. R must not grow. The v2 regrouping initializer permits
+larger B/C within the available merged rank; see [REFIT_V2.md](REFIT_V2.md).
 
 The public archive endpoint returned 404 during acquisition. Individual files
 worked without credentials, using each `url` in `ledger/manifests/inputs/pra198-google-v4.json`. The
@@ -54,8 +55,8 @@ optimizer success flag never substitutes for the verifier's strict gates.
 Google's pinned encoder uses nearest rounding on its log-depth Givens tree,
 then rebuilds the one-body eigenvectors from the decoded two-body vectors.
 Every row is measured with the unmodified competition `evaluate_words`.
-There is no progressive quantization or Gram-gauge optimization in this first
-implementation. The run reports optimizer termination, including iteration
+Optional v2 fits hold decoded vectors fixed at each requested bit width and
+refit weights and offsets. Gram-gauge optimization is not implemented. The run reports optimizer termination, including iteration
 limits; it does not relabel those as convergence.
 
 **Cost is a conservative ordinary-QROM prediction.** The package's
@@ -81,8 +82,9 @@ authorize shipping: this task produces no ANGLE circuits and has no G3/G5 or
 candidate-specific shipping sign-off. A control-only winner is not a P1-2b
 performance candidate.
 
-Exit **0** means a dry run passed or the requested compressed 2.5x floor was
-met. Exit **3** means a complete measured sweep missed the floor; inspect the
+Exit **0** means a dry run passed or the final requested shape has a point with
+both errors at most 19 mHa and all numerical acceptance checks passing (PRA-235).
+This replaces the original PRA-198 compressed 2.5x exit criterion for new runs. Exit **3** means a complete measured sweep missed the floor; inspect the
 curve and failed constraints. Exit **1** means an input, write or numerical
 error; stderr identifies the problem. Existing runs are never overwritten.
 An interrupted run is partial evidence and must not be called complete.

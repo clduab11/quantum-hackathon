@@ -1,0 +1,19 @@
+{
+  "starter": "/home/cld-main/work/vqcc-data/starter-kit",
+  "competition": "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation",
+  "jobs": [
+    {
+      "name": "baseline-control",
+      "args": [
+        "--shapes",
+        "65,60,60",
+        "--steps",
+        "1",
+        "--offset-steps",
+        "1",
+        "--bits",
+        "12"
+      ]
+    }
+  ]
+}

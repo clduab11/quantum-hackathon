@@ -1,0 +1,160 @@
+{
+  "rows": [
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 12,
+      "error_1": 0.0031851950317986553,
+      "error_2": 0.018639570630974208,
+      "Lambda": 308.45593973309445,
+      "E_SOS": -22144.23882724429,
+      "E_gap": 3.965477244291833,
+      "lambda_eff": 49.30136925057439,
+      "gap_in_domain": true,
+      "T": 93237,
+      "Q": 730,
+      "angle_qubits": 119,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3355599588.3155375,
+      "ratio": 0.9999999999953697,
+      "seconds": 5.205407294997713,
+      "problems": []
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 11,
+      "error_1": 0.006480494833029553,
+      "error_2": 0.025035371586624014,
+      "Lambda": 308.45874138217346,
+      "E_SOS": -22144.24162889337,
+      "E_gap": 3.968278893371462,
+      "lambda_eff": 49.31889484193693,
+      "gap_in_domain": true,
+      "T": 92937,
+      "Q": 722,
+      "angle_qubits": 111,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3309323193.805917,
+      "ratio": 1.0139836431149123,
+      "seconds": 4.4492055750015425,
+      "problems": [
+        "error_2 0.025035371586624014 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 10,
+      "error_1": 0.013969398961734547,
+      "error_2": 0.040014621461046423,
+      "Lambda": 308.5073691665378,
+      "E_SOS": -22144.290256677734,
+      "E_gap": 4.016906677734369,
+      "lambda_eff": 49.62212292327917,
+      "gap_in_domain": true,
+      "T": 92637,
+      "Q": 714,
+      "angle_qubits": 103,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3282147045.288082,
+      "ratio": 1.0223794187153705,
+      "seconds": 4.37993244700192,
+      "problems": [
+        "error_2 0.040014621461046423 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 9,
+      "error_1": 0.025159769829696654,
+      "error_2": 0.0766720830694496,
+      "Lambda": 308.7126370736213,
+      "E_SOS": -22144.495524584818,
+      "E_gap": 4.222174584818276,
+      "lambda_eff": 50.88271359021902,
+      "gap_in_domain": true,
+      "T": 92337,
+      "Q": 706,
+      "angle_qubits": 95,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3317040130.0947175,
+      "ratio": 1.0116246583378483,
+      "seconds": 4.212821863009594,
+      "problems": [
+        "error_1 0.025159769829696654 Ha > 0.02 Ha",
+        "error_2 0.0766720830694496 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 8,
+      "error_1": 0.052351053866721405,
+      "error_2": 0.15538255247656943,
+      "Lambda": 309.3314922290727,
+      "E_SOS": -22145.11437974027,
+      "E_gap": 4.841029740269732,
+      "lambda_eff": 54.511744954823605,
+      "gap_in_domain": true,
+      "T": 92037,
+      "Q": 698,
+      "angle_qubits": 87,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3501934034.3441563,
+      "ratio": 0.958213248847915,
+      "seconds": 4.899541809994844,
+      "problems": [
+        "error_1 0.052351053866721405 Ha > 0.02 Ha",
+        "error_2 0.15538255247656943 Ha > 0.02 Ha"
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "structure": null,
+      "offsets": null,
+      "refit_seconds": 0.009942924996721558,
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "file": "factors-00.npz"
+    }
+  ],
+  "disposition": "interrupted; no compressed result",
+  "requested_steps": 1000
+}

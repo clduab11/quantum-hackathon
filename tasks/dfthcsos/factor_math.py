@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """CPU DF-THC structure refit; method provenance is in FACTOR_PIPELINE.md."""
 import numpy as np
-from scipy.optimize import minimize
+from tasks.dfthcsos.factor_optimizers import optimize
 
 
 def packed_target(tei, shift):
@@ -44,19 +44,27 @@ def structure_value_grad(x, ushape, wshape, target, penalty):
     return float(error + penalty * d), np.concatenate([gu.ravel(), gw.ravel()])
 
 
-def refit(params, target, steps, penalty):
+def refit(params, target, steps, penalty, maxcor=5, method='lbfgs',
+          callback=None, learning_rate=1e-4):
     u, w = params['U'], params['W']
     start = np.concatenate([u.ravel(), w.ravel()])
-    result = minimize(structure_value_grad, start,
-                      args=(u.shape, w.shape, target, penalty), jac=True,
-                      method='L-BFGS-B', options=dict(maxiter=steps, maxls=20,
-                                                    ftol=1e-12, gtol=1e-8, maxcor=5))
-    output = {k: np.array(v, copy=True) for k, v in params.items()}
-    output['U'] = result.x[:u.size].reshape(u.shape)
-    output['W'] = result.x[u.size:].reshape(w.shape)
-    return output, dict(iterations=int(result.nit), evaluations=int(result.nfev),
+    def unpack(x):
+        output = {k: np.array(v, copy=True) for k, v in params.items()}
+        output['U'] = x[:u.size].reshape(u.shape).copy()
+        output['W'] = x[u.size:].reshape(w.shape).copy()
+        return output
+    evaluations = 0
+    def fun(x):
+        nonlocal evaluations
+        evaluations += 1
+        return structure_value_grad(x, u.shape, w.shape, target, penalty)
+    result = optimize(fun, start, steps, method, maxcor,
+                      (lambda x: callback(unpack(x))) if callback else None,
+                      learning_rate)
+    return unpack(result.x), dict(iterations=int(result.nit), evaluations=evaluations,
                         converged=bool(result.success), message=str(result.message),
-                        objective=float(result.fun))
+                        objective=float(result.fun), optimizer=method, maxcor=maxcor,
+                        learning_rate=learning_rate if method == 'adam' else None)
 
 
 def compress(params, r, b, c):

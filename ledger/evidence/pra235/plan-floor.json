@@ -1,0 +1,133 @@
+{
+  "starter": "/home/cld-main/work/vqcc-data/starter-kit",
+  "competition": "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation",
+  "jobs": [
+    {
+      "name": "long-1000",
+      "args": [
+        "--bits",
+        "12",
+        "11",
+        "10",
+        "9",
+        "8",
+        "--offset-steps",
+        "100",
+        "--checkpoint-every",
+        "100",
+        "--shapes",
+        "65,60,30",
+        "--steps",
+        "1000"
+      ]
+    },
+    {
+      "name": "penalty-zero",
+      "args": [
+        "--bits",
+        "12",
+        "11",
+        "10",
+        "9",
+        "8",
+        "--offset-steps",
+        "100",
+        "--checkpoint-every",
+        "100",
+        "--shapes",
+        "65,60,30",
+        "--steps",
+        "300",
+        "--maxcor",
+        "20",
+        "--penalty",
+        "0",
+        "--quantize-bits",
+        "12",
+        "--quantized-steps",
+        "200"
+      ]
+    },
+    {
+      "name": "penalty-low",
+      "args": [
+        "--bits",
+        "12",
+        "11",
+        "10",
+        "9",
+        "8",
+        "--offset-steps",
+        "100",
+        "--checkpoint-every",
+        "100",
+        "--shapes",
+        "65,60,30",
+        "--steps",
+        "300",
+        "--maxcor",
+        "20",
+        "--penalty",
+        "2e-6",
+        "--quantize-bits",
+        "12",
+        "--quantized-steps",
+        "200"
+      ]
+    },
+    {
+      "name": "penalty-standard",
+      "args": [
+        "--bits",
+        "12",
+        "11",
+        "10",
+        "9",
+        "8",
+        "--offset-steps",
+        "100",
+        "--checkpoint-every",
+        "100",
+        "--shapes",
+        "65,60,30",
+        "--steps",
+        "300",
+        "--maxcor",
+        "20",
+        "--penalty",
+        "2e-5",
+        "--quantize-bits",
+        "12",
+        "--quantized-steps",
+        "200"
+      ]
+    },
+    {
+      "name": "penalty-high",
+      "args": [
+        "--bits",
+        "12",
+        "11",
+        "10",
+        "9",
+        "8",
+        "--offset-steps",
+        "100",
+        "--checkpoint-every",
+        "100",
+        "--shapes",
+        "65,60,30",
+        "--steps",
+        "300",
+        "--maxcor",
+        "20",
+        "--penalty",
+        "2e-4",
+        "--quantize-bits",
+        "12",
+        "--quantized-steps",
+        "200"
+      ]
+    }
+  ]
+}

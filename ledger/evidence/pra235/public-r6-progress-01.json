@@ -1,0 +1,262 @@
+{
+  "status": "partial; batch still running",
+  "captured_at": "2026-10-25T18:28:53.889205Z",
+  "source_commit": "961357b20e7272e4b22bfb6f0c31482820e28e65",
+  "source_progress": "/home/cld-main/work/vqcc-data/pra235-batch-public-01/public-r6/progress.json",
+  "plan": "ledger/evidence/pra235/plan-public.json",
+  "python": "3.13.13",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "rows": [
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 12,
+      "error_1": 0.0031851950317986553,
+      "error_2": 0.018639570630974208,
+      "Lambda": 308.45593973309445,
+      "E_SOS": -22144.23882724429,
+      "E_gap": 3.965477244291833,
+      "lambda_eff": 49.30136925057439,
+      "gap_in_domain": true,
+      "T": 93237,
+      "Q": 730,
+      "angle_qubits": 119,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3355599588.3155375,
+      "ratio": 0.9999999999953697,
+      "seconds": 5.675326476994087,
+      "problems": [],
+      "margin_19mHa": true,
+      "factor_file": "factors-00.npz",
+      "factor_sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-00-12.npz",
+      "encoded_sha256": "0c445e647cb7b9f8268a9de955c574fad2d1dfd9b516e84b02e9d104f127fab2"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 11,
+      "error_1": 0.006480494833029553,
+      "error_2": 0.025035371586624014,
+      "Lambda": 308.45874138217346,
+      "E_SOS": -22144.24162889337,
+      "E_gap": 3.968278893371462,
+      "lambda_eff": 49.31889484193693,
+      "gap_in_domain": true,
+      "T": 92937,
+      "Q": 722,
+      "angle_qubits": 111,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3309323193.805917,
+      "ratio": 1.0139836431149123,
+      "seconds": 4.773858804997872,
+      "problems": [
+        "error_2 0.025035371586624014 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "factor_file": "factors-00.npz",
+      "factor_sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-00-11.npz",
+      "encoded_sha256": "885bf7bfc34f62abc1fffd10290dab7590c64d396dcb042c334cf3ee51f9d2d5"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 10,
+      "error_1": 0.013969398961734547,
+      "error_2": 0.040014621461046423,
+      "Lambda": 308.5073691665378,
+      "E_SOS": -22144.290256677734,
+      "E_gap": 4.016906677734369,
+      "lambda_eff": 49.62212292327917,
+      "gap_in_domain": true,
+      "T": 92637,
+      "Q": 714,
+      "angle_qubits": 103,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3282147045.288082,
+      "ratio": 1.0223794187153705,
+      "seconds": 5.284204299008707,
+      "problems": [
+        "error_2 0.040014621461046423 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "factor_file": "factors-00.npz",
+      "factor_sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-00-10.npz",
+      "encoded_sha256": "aac27e0c13ee38f7d34436e793f6654dc54dfa645d130627039beee2900f3869"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 9,
+      "error_1": 0.025159769829696654,
+      "error_2": 0.0766720830694496,
+      "Lambda": 308.7126370736213,
+      "E_SOS": -22144.495524584818,
+      "E_gap": 4.222174584818276,
+      "lambda_eff": 50.88271359021902,
+      "gap_in_domain": true,
+      "T": 92337,
+      "Q": 706,
+      "angle_qubits": 95,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3317040130.0947175,
+      "ratio": 1.0116246583378483,
+      "seconds": 5.066388761013513,
+      "problems": [
+        "error_1 0.025159769829696654 Ha > 0.02 Ha",
+        "error_2 0.0766720830694496 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "factor_file": "factors-00.npz",
+      "factor_sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-00-9.npz",
+      "encoded_sha256": "4bb3168a3adc4933f365d20ed8a4e008c316d0e284334547f26832cf9ea0030e"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 8,
+      "error_1": 0.052351053866721405,
+      "error_2": 0.15538255247656943,
+      "Lambda": 309.3314922290727,
+      "E_SOS": -22145.11437974027,
+      "E_gap": 4.841029740269732,
+      "lambda_eff": 54.511744954823605,
+      "gap_in_domain": true,
+      "T": 92037,
+      "Q": 698,
+      "angle_qubits": 87,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3501934034.3441563,
+      "ratio": 0.958213248847915,
+      "seconds": 5.153862295002909,
+      "problems": [
+        "error_1 0.052351053866721405 Ha > 0.02 Ha",
+        "error_2 0.15538255247656943 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "factor_file": "factors-00.npz",
+      "factor_sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-00-8.npz",
+      "encoded_sha256": "e189630260f34eed73e74da0ea1a6604d2fa43a779de00662554f8a320bb933a"
+    },
+    {
+      "shape": [
+        6,
+        144,
+        127
+      ],
+      "brot": 12,
+      "error_1": 0.0031543094436955192,
+      "error_2": 0.2770818525640453,
+      "Lambda": 424.8089749251784,
+      "E_SOS": -22145.42911348479,
+      "E_gap": 5.15576348479226,
+      "lambda_eff": 65.98368968731147,
+      "gap_in_domain": true,
+      "T": 27882,
+      "Q": 789,
+      "angle_qubits": 115,
+      "angle_toffoli": 18760,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 1451568459.094817,
+      "ratio": 2.3117060496013515,
+      "seconds": 4.723664662989904,
+      "problems": [
+        "error_2 0.2770818525640453 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "factor_file": "factors-01.npz",
+      "factor_sha256": "f5437682a4b02aafc6d11f58bcf3924f7386092e2d650f67562a7d1dbeb93129",
+      "quantized_fit": null,
+      "quantized_offsets": null,
+      "encoded_file": "encoded-01-12.npz",
+      "encoded_sha256": "c1d90564b48b7934eb9b5d3285d2287d58c56cbab77aba0177911c17c1fb4a23"
+    }
+  ],
+  "stages": [
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "structure": null,
+      "offsets": null,
+      "refit_seconds": 0.011708197998814285,
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "file": "factors-00.npz"
+    },
+    {
+      "shape": [
+        6,
+        144,
+        127
+      ],
+      "structure": {
+        "iterations": 1000,
+        "evaluations": 1034,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.2811826220555332,
+        "optimizer": "lbfgs",
+        "maxcor": 20,
+        "learning_rate": null
+      },
+      "offsets": {
+        "iterations": 100,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 66.00239981342159
+      },
+      "refit_seconds": 744.0144499360031,
+      "sha256": "f5437682a4b02aafc6d11f58bcf3924f7386092e2d650f67562a7d1dbeb93129",
+      "file": "factors-01.npz"
+    }
+  ]
+}
