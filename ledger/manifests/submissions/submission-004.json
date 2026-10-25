@@ -1,0 +1,384 @@
+{
+  "candidate_id": "submission-004",
+  "cli_command": "/tmp/pra236-logs/new_candidate.py",
+  "gates": [
+    {
+      "details": {},
+      "evidence_sha256": null,
+      "gate": "G0",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T22:48:47.679623+00:00",
+      "zip_sha256": "9498078459176333dc05c8bf1ec8538134afd9fea1b937caf59a0133882492d3"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "qubits": 9,
+            "status": "PASS"
+          },
+          "dqi": {
+            "inverse_cleanup_shots": 80,
+            "parity": false,
+            "projection": "GF8 two-point interpolation",
+            "status": "PASS"
+          },
+          "invsqrt": {
+            "num_qubits": 90,
+            "sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+            "static_toffoli": 1448,
+            "status": "PASS"
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G1",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T22:50:22.536914+00:00",
+      "zip_sha256": "9498078459176333dc05c8bf1ec8538134afd9fea1b937caf59a0133882492d3"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "E_gap": 3.965477244291833,
+            "Lambda": 308.45593973309445,
+            "brot": 12,
+            "error_1": 0.0031851950317986553,
+            "error_2": 0.018639570630974208,
+            "estimated_cost": 3355599588.3155375,
+            "estimated_qubits": 730,
+            "estimated_toffoli": 93237,
+            "heuristic_qubits": 634,
+            "heuristic_toffoli": 13757,
+            "lambda_eff": 49.30136925057439,
+            "parity": false,
+            "resources": {
+              "angles_persistent_qubits": 96,
+              "angles_qubits": 119,
+              "angles_selection_qubits": 12,
+              "angles_temporary_qubits": 11,
+              "angles_toffoli": 79480,
+              "angles_toffoli_per_pass": 39740.0,
+              "angles_within_cap": true,
+              "brot": 12,
+              "givens_rotations_toffoli": 3450,
+              "heuristic_persistent_qubits": 90,
+              "heuristic_qubits": 634,
+              "heuristic_temporary_qubits": 544,
+              "heuristic_toffoli": 13757,
+              "inner_state_prep_persistent_qubits": 44,
+              "inner_state_prep_qubits": 588,
+              "inner_state_prep_temporary_qubits": 544,
+              "inner_state_prep_toffoli": 9461,
+              "keep_bits": 10,
+              "outer_state_prep_persistent_qubits": 46,
+              "outer_state_prep_qubits": 416,
+              "outer_state_prep_temporary_qubits": 370,
+              "outer_state_prep_toffoli": 846,
+              "persistent_qubits": 186,
+              "qubits": 730,
+              "temporary_qubits": 544,
+              "toffoli": 93237
+            },
+            "status": "PASS"
+          },
+          "dqi": {
+            "failures": 0,
+            "num_qubits": 881,
+            "parity": false,
+            "shots": 1536,
+            "status": "PASS",
+            "toffoli_count": 1116990.8326822917
+          },
+          "invsqrt": {
+            "calibration_margin_units": 73326605,
+            "calibration_worst_x": 2489983,
+            "circuit_authorship": "port",
+            "coefficient_provenance": "regenerated; dataset-adapted calibration; licence unresolved",
+            "derivative_split": {
+              "max_coarse": 126,
+              "max_residual": 3471,
+              "max_table_residual": 2745,
+              "min_residual": 18,
+              "normalized_addresses_checked": 4194304
+            },
+            "estimated_ratio": 13.164808753447378,
+            "expected_toffoli": 1437.5,
+            "first_bad_x": null,
+            "layout": {
+              "LB": 21,
+              "S": 20,
+              "w1": 18,
+              "whi": 8
+            },
+            "min_margin_units": 40189295,
+            "pass": true,
+            "phase_fraction_bits": 38,
+            "phase_match": true,
+            "qubits": 90,
+            "rotations": 44,
+            "sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+            "static_toffoli": 1448,
+            "status": "PASS",
+            "table_worst_relative_error": 5.73885374645857e-08,
+            "tested_inputs": 3133452,
+            "worst_ratio": 0.9628198916787619,
+            "worst_x": 1034666
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G2",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T22:51:03.741010+00:00",
+      "zip_sha256": "9498078459176333dc05c8bf1ec8538134afd9fea1b937caf59a0133882492d3"
+    },
+    {
+      "details": {
+        "geometric_mean": 6.76865313085382
+      },
+      "evidence_sha256": "a4350175a1d4d7c3f02bee73ef3f1352b86324cc71f484bb6fc213d1587240d5",
+      "gate": "G3",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T22:55:44.717200+00:00",
+      "zip_sha256": "9498078459176333dc05c8bf1ec8538134afd9fea1b937caf59a0133882492d3"
+    },
+    {
+      "details": {
+        "archive_best": {
+          "candidate_id": "pra197-dqi-bm-forney",
+          "geometric_mean": 5.721389477411995
+        },
+        "geometric_mean": 6.76865313085382,
+        "parent": 5.721389477411993
+      },
+      "evidence_sha256": null,
+      "gate": "G4",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T22:55:44.831967+00:00",
+      "zip_sha256": "9498078459176333dc05c8bf1ec8538134afd9fea1b937caf59a0133882492d3"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "905794dbbac4528b603f5254f34e4b82f9a373bd",
+          "copied_inputs": {
+            "dfthcsos/submission.npz": "sample_submission/dfthcsos/submission.npz"
+          },
+          "inputs": {
+            "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69": "sample_submission/dfthcsos/submission.npz"
+          },
+          "status": "PASS",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/PRA-236-dqi-compression/.venv/bin/python3",
+                "tasks/dfthcsos/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-236-57d85468-c23-p2tu3L/ledger-rebuild-4__123tm/out/dfthcsos"
+              ],
+              "copied": {
+                "dfthcsos/submission.npz": "sample_submission/dfthcsos/submission.npz"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/PRA-236-dqi-compression/.venv/bin/python3",
+                "tasks/dqi/generate_jfraction.py",
+                "--out",
+                "/tmp/paperclip-run-pra-236-57d85468-c23-p2tu3L/ledger-rebuild-4__123tm/out/dqi"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "invsqrt": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/PRA-236-dqi-compression/.venv/bin/python3",
+                "tasks/invsqrt/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-236-57d85468-c23-p2tu3L/ledger-rebuild-4__123tm/out/invsqrt"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T22:59:04.971365+00:00",
+      "zip_sha256": "9498078459176333dc05c8bf1ec8538134afd9fea1b937caf59a0133882492d3"
+    }
+  ],
+  "generator_commit": "905794dbbac4528b603f5254f34e4b82f9a373bd",
+  "geometric_mean": 6.76865313085382,
+  "git_branch": "op-vqcc/PRA-236-dqi-compression",
+  "kaggle_submission_id": "57644742",
+  "kickmix_build_id": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
+  "kind": "submission",
+  "manifest_id": "347ed49f-3b94-455b-8fd6-95dc4c798ccf",
+  "notes": "PRA-236 first paired-v6 source port. G0-G5 PASS on the exact zip; shipping_problems=[]; no upload or machine sign-off claimed. Fixed salt, no seed override or salt selection. Published generator 905794dbbac4528b603f5254f34e4b82f9a373bd has tree d4a4c28616c9ff6839d4da8ab7d65d358d039616, identical to local source commit 03a04e3. Companion tasks unchanged from pra228-dqi-invsqrt-572.",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "parent_candidate_id": "pra228-dqi-invsqrt-572",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64",
+  "python_version": "3.13.13",
+  "qualtran_pin": null,
+  "salt_label": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+  "schema_version": "1",
+  "source_candidate_id": "pra233-2-dqi-q881",
+  "submitted_at_utc": "2026-10-25T23:06:58.361119+00:00",
+  "tasks": {
+    "dfthcsos": {
+      "baseline_cost": 3355599588.3155365,
+      "cost": 3355599588.3155375,
+      "eps_plus": null,
+      "evidence": [
+        "a4350175a1d4d7c3f02bee73ef3f1352b86324cc71f484bb6fc213d1587240d5"
+      ],
+      "failures": null,
+      "files": {
+        "dfthcsos/angle_k_0.kmb": "7bfb3983accc6ff97d6ab41a88deae924f1d1c97cf30e60879d0bff5688a8e25",
+        "dfthcsos/angle_k_1.kmb": "a04b6d0d57ce851b123af265066aaab2ab33353ea049d26acd534727466d72b6",
+        "dfthcsos/angle_k_2.kmb": "5c1b8987bc3fa1a4b8607e470f8c8f1392c22e7a7dbcb228f0ce9ec986e18058",
+        "dfthcsos/angle_k_3.kmb": "16ac67cdcaf3e2c6abdd98c4138ff1ae8a56cfc4ae15622bcdb3d3a3ba1e22cf",
+        "dfthcsos/angle_k_4.kmb": "d21cdd4c7e94196654aab15ebcabfe10ce8d343151a5e8dc3672e76684b6628d",
+        "dfthcsos/angle_k_5.kmb": "63b8d4cba36955e6098321f3b2ef3e34401dd276fa629b2e490d043b1743880b",
+        "dfthcsos/angle_k_6.kmb": "5bf740428e661d035fda860142578f421969e35e0df2e4e024fbf01a7340b378",
+        "dfthcsos/angle_k_7.kmb": "606009582111a22bd549b795c8d115ac8bbeb124bc8da24a80380eca6d34163d",
+        "dfthcsos/angle_k_8.kmb": "57c7cc51f5922fff6e95d76e1f723d4c2d029a241da643b95684d6322157a8fe",
+        "dfthcsos/angle_k_9.kmb": "22cbe2828988ff954fc07fd971a25e6bc04a02c302bf2cc642e4c3535daaad65",
+        "dfthcsos/submission.npz": "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69"
+      },
+      "measured": true,
+      "metrics": {
+        "E_gap": 3.965477244291833,
+        "Lambda": 308.45593973309445,
+        "angles_qubits": 119,
+        "batch_size": 8,
+        "brot": 12,
+        "error_1": 0.0031851950317986553,
+        "error_2": 0.018639570630974208,
+        "lambda_eff": 49.30136925057439,
+        "num_circuits": 10,
+        "persistent_qubits": 186,
+        "submission_sha256": "276d464ff14da828b6b33e8487d99975494cbdf0c3cb2bd37dd3c3ddc4002695",
+        "temporary_qubits": 544
+      },
+      "num_qubits": 730,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Google competition reference construction, ported in tasks/dfthcsos/generate.py. Ten ANGLE circuits freshly regenerated from the declared SHA-256-pinned sample_submission/dfthcsos/submission.npz. The non-circuit factorization is a recorded copy under D-PRA211-05; SHA-256 14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69. No 1.44x or k256.dev factorization used.",
+        "parent_url": "https://www.kaggle.com/competitions/google-verifiable-quantum-circuit-compilation/data"
+      },
+      "ratio": 0.9999999999999997,
+      "rotation_count": null,
+      "shots": 254464,
+      "t_count": null,
+      "task": "dfthcsos",
+      "toffoli_count": 93237.0,
+      "verifier_sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+    },
+    "dqi": {
+      "baseline_cost": 24439465632206.816,
+      "cost": 1037527174785.328,
+      "eps_plus": 0.0009104197583220583,
+      "evidence": [
+        "a4350175a1d4d7c3f02bee73ef3f1352b86324cc71f484bb6fc213d1587240d5"
+      ],
+      "failures": 1,
+      "files": {
+        "dqi.kmb": "dec77920d4b9f5964b6cd52c947aa0c91468d56b7ed28cd475fdfc18d067729d"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "dec77920d4b9f5964b6cd52c947aa0c91468d56b7ed28cd475fdfc18d067729d",
+        "empirical_error_rate": 9.765625e-06,
+        "log2_delta": -128.0,
+        "max_toffoli_count": 1147675,
+        "mean_error_weight": 31.046737331746634,
+        "phase_errors": 1,
+        "repetition_factor": 1.1967314991687559,
+        "value_errors": 0
+      },
+      "num_qubits": 881,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Audited paired-v6 source port; SomeJoint code, Phuc Thai pairing idea, ViberTeam additions, Google primitives; new Praxen Lagrange/trace projection credits Manwithacat method. See tasks/dqi/jfraction/PROVENANCE.md and SOURCE_MAP.json. No compiled DQI input.",
+        "parent_url": "https://www.kaggle.com/code/anazemcev/quantum-circuits-881q-paired-dqi-r6-df-thc"
+      },
+      "ratio": 23.55549447392886,
+      "rotation_count": null,
+      "shots": 102400,
+      "t_count": null,
+      "task": "dqi",
+      "toffoli_count": 1116994.2602050782,
+      "verifier_sha256": "f14274bc0943fb9769ddb01131be6063191a15009fe1caf1d4bdd9fd25194e65"
+    },
+    "invsqrt": {
+      "baseline_cost": 2076774.233715282,
+      "cost": 157751.94999626835,
+      "eps_plus": null,
+      "evidence": [
+        "a4350175a1d4d7c3f02bee73ef3f1352b86324cc71f484bb6fc213d1587240d5"
+      ],
+      "failures": 0,
+      "files": {
+        "invsqrt.kmb": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+        "max_toffoli_count": 1448,
+        "rotation_eps": 2.8381742236929845e-13,
+        "toffoli_equivalent": 1752.7994444029816,
+        "worst_error_over_tolerance": 0.9996227434818049,
+        "worst_x": 32
+      },
+      "num_qubits": 90,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Port, not independent clean-room authorship. Apache-2.0 labels the notebook code parents, not the disputed calibration rights. Full parent/module map: tasks/invsqrt/PROVENANCE.md at generator_commit. Other method parents: https://www.kaggle.com/code/kozykappa/quantum-ai-complete-domain-affine-compilation-v2 and https://www.kaggle.com/code/kozykappa/quantum-ai-lb-score-6-68108?scriptVersionId=361677445 (Apache-2.0). Coefficient provenance remains regenerated; dataset-adapted calibration; licence unresolved. Calibration lineage: https://www.kaggle.com/datasets/kozykappa/quantum-ai-dataset?datasetVersionId=21136269 ; code/domain_tables.py SHA-256 59cf4d98899433dcc49d9ce512293be20d33da5334211c20e35323555994a4fb and code/coefficients.json SHA-256 98bd211f22b158bf05a4d2d934ab966e5e97e54d8307b82e2ca58910c6830763. invsqrt lineage ships under the board ruling D-PRA228-01; D-PRA220-01 stays on record. The board ruling permits this shipment; it is not a third-party licence grant.",
+        "parent_url": "https://www.kaggle.com/code/anazemcev/quantum-circuits-signed-digit-memory?scriptVersionId=361502374"
+      },
+      "ratio": 13.16480863637127,
+      "rotation_count": 44.0,
+      "shots": 200540928,
+      "t_count": 1.0,
+      "task": "invsqrt",
+      "toffoli_count": 1437.5000155878406,
+      "verifier_sha256": "ddef520dec6b68d1cf0a6f328ddd36d79eb84570b9192cf3f7acaf073f06733a"
+    }
+  },
+  "timestamp_utc": "2026-10-25T23:06:58.361119+00:00",
+  "zip_sha256": "9498078459176333dc05c8bf1ec8538134afd9fea1b937caf59a0133882492d3"
+}
