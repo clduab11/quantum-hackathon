@@ -1,0 +1,259 @@
+{
+  "schema": 1,
+  "issue": "PRA-237",
+  "verdict": "measured_negative",
+  "generator": "tasks.dfthcsos.circuit",
+  "base_commit": "73d6e49ea7289dd7a55c7001cfd37de7658a0d8f",
+  "source_provenance": "PRA-235 PR #29, numerical source snapshot 961357b; factor files are declared non-circuit inputs",
+  "salt": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+  "shots_per_address": 64,
+  "reference": {
+    "cost": 3355599588.3155365,
+    "T": 93237,
+    "Q": 730,
+    "lambda_eff": 49.30136925057438
+  },
+  "floor_ratio": 2.8,
+  "target_ratio": 5.0,
+  "factor_inputs": {
+    "high_penalty": {
+      "sha256": "44e55a6b70d3da5618e9006b27350cd197e16f18aa256024c90cb19c3bfae4f1",
+      "attachment": "/api/attachments/ec8b6949-d30a-4367-9553-52fbd4584ab6/content?download=1"
+    },
+    "adam": {
+      "sha256": "ec864ac608d42a5e0a3c816aff353ccf8383e6472e3a4ddf88f35f45ce24c371",
+      "attachment": "/api/attachments/0cb84a32-b5b4-4732-af00-42745e8dbd09/content?download=1"
+    }
+  },
+  "heuristic": {
+    "outer_toffoli": 627,
+    "inner_toffoli": 5317,
+    "givens_toffoli": 3450,
+    "persistent_qubits": 88,
+    "temporary_qubits": 543
+  },
+  "rows": [
+    {
+      "name": "high-direct12-j9",
+      "factorization_sha256": "44e55a6b70d3da5618e9006b27350cd197e16f18aa256024c90cb19c3bfae4f1",
+      "parameters": {
+        "brot": 12,
+        "batch_size": 9,
+        "bank_bits": 0,
+        "scratch": 8,
+        "pebble_degree": 4
+      },
+      "g2_status": "PASS",
+      "angle_qubits": 128,
+      "T": 80746,
+      "Q": 739,
+      "cost": 3059992521.1131754,
+      "ratio": 1.0966038528404063,
+      "error_1": 0.003224421669454646,
+      "error_2": 0.01829984211036259,
+      "build_failure": null,
+      "seconds": 8.481968530002632
+    },
+    {
+      "name": "high-direct12-six",
+      "factorization_sha256": "44e55a6b70d3da5618e9006b27350cd197e16f18aa256024c90cb19c3bfae4f1",
+      "parameters": {
+        "batch_size": 9,
+        "bank_bits": 0,
+        "scratch": 6,
+        "pebble_degree": 5,
+        "brot": 12
+      },
+      "g2_status": "PASS",
+      "angle_qubits": 126,
+      "T": 81232,
+      "Q": 739,
+      "cost": 3078410230.538546,
+      "ratio": 1.0900430212410313,
+      "error_1": 0.003224421669454646,
+      "error_2": 0.01829984211036259,
+      "build_failure": null,
+      "seconds": 8.649464467991493
+    },
+    {
+      "name": "high-bank2-j4",
+      "factorization_sha256": "44e55a6b70d3da5618e9006b27350cd197e16f18aa256024c90cb19c3bfae4f1",
+      "parameters": {
+        "brot": 12,
+        "batch_size": 4,
+        "bank_bits": 1,
+        "scratch": 6,
+        "pebble_degree": 5
+      },
+      "g2_status": "PASS",
+      "angle_qubits": 114,
+      "T": 89602,
+      "Q": 679,
+      "cost": 3119912306.0132647,
+      "ratio": 1.0755429188980767,
+      "error_1": 0.003224421669454646,
+      "error_2": 0.01829984211036259,
+      "build_failure": null,
+      "seconds": 9.36111488500319
+    },
+    {
+      "name": "high-bank2-j5",
+      "factorization_sha256": "44e55a6b70d3da5618e9006b27350cd197e16f18aa256024c90cb19c3bfae4f1",
+      "parameters": {
+        "batch_size": 5,
+        "bank_bits": 1,
+        "scratch": 6,
+        "pebble_degree": 5,
+        "brot": 12
+      },
+      "g2_status": null,
+      "angle_qubits": null,
+      "T": null,
+      "Q": null,
+      "cost": null,
+      "ratio": null,
+      "error_1": null,
+      "error_2": null,
+      "build_failure": "ANGLE qubit cap exceeded by requested layout",
+      "seconds": 0.5419038270047167
+    },
+    {
+      "name": "high-bank4-j2",
+      "factorization_sha256": "44e55a6b70d3da5618e9006b27350cd197e16f18aa256024c90cb19c3bfae4f1",
+      "parameters": {
+        "brot": 12,
+        "batch_size": 2,
+        "bank_bits": 2,
+        "scratch": 5,
+        "pebble_degree": 4
+      },
+      "g2_status": "PASS",
+      "angle_qubits": 113,
+      "T": 93686,
+      "Q": 655,
+      "cost": 3146812785.107708,
+      "ratio": 1.066348657344953,
+      "error_1": 0.003224421669454646,
+      "error_2": 0.01829984211036259,
+      "build_failure": null,
+      "seconds": 9.575889868006925
+    },
+    {
+      "name": "high-bank4-six",
+      "factorization_sha256": "44e55a6b70d3da5618e9006b27350cd197e16f18aa256024c90cb19c3bfae4f1",
+      "parameters": {
+        "batch_size": 2,
+        "bank_bits": 2,
+        "scratch": 6,
+        "pebble_degree": 4,
+        "brot": 12
+      },
+      "g2_status": "PASS",
+      "angle_qubits": 114,
+      "T": 93306,
+      "Q": 655,
+      "cost": 3134048990.534976,
+      "ratio": 1.0706914915655936,
+      "error_1": 0.003224421669454646,
+      "error_2": 0.01829984211036259,
+      "build_failure": null,
+      "seconds": 9.260905430986895
+    },
+    {
+      "name": "high-bank4-j3",
+      "factorization_sha256": "44e55a6b70d3da5618e9006b27350cd197e16f18aa256024c90cb19c3bfae4f1",
+      "parameters": {
+        "batch_size": 3,
+        "bank_bits": 2,
+        "scratch": 6,
+        "pebble_degree": 4,
+        "brot": 12
+      },
+      "g2_status": null,
+      "angle_qubits": null,
+      "T": null,
+      "Q": null,
+      "cost": null,
+      "ratio": null,
+      "error_1": null,
+      "error_2": null,
+      "build_failure": "ANGLE qubit cap exceeded by requested layout",
+      "seconds": 0.012397111000609584
+    },
+    {
+      "name": "adam-direct12-j9",
+      "factorization_sha256": "ec864ac608d42a5e0a3c816aff353ccf8383e6472e3a4ddf88f35f45ce24c371",
+      "parameters": {
+        "brot": 12,
+        "batch_size": 9,
+        "bank_bits": 0,
+        "scratch": 8,
+        "pebble_degree": 4
+      },
+      "g2_status": "PASS",
+      "angle_qubits": 128,
+      "T": 80746,
+      "Q": 739,
+      "cost": 3100570536.216396,
+      "ratio": 1.0822522981239289,
+      "error_1": 0.003383503313688713,
+      "error_2": 0.017459501284535668,
+      "build_failure": null,
+      "seconds": 8.339808878998156
+    }
+  ],
+  "selected": "high-direct12-j9",
+  "selected_files": {
+    "dfthcsos/submission.npz": {
+      "sha256": "44e55a6b70d3da5618e9006b27350cd197e16f18aa256024c90cb19c3bfae4f1",
+      "size": 5734832
+    },
+    "dfthcsos/angle_k_0.kmb": {
+      "sha256": "0bcfe522337616e0ae48ef05a12cec1c8470ec87a7d10c23ad18f6f4b12bdf7c",
+      "size": 2504871
+    },
+    "dfthcsos/angle_k_1.kmb": {
+      "sha256": "a4b64a56734bb540bb71f82916d78314016cc567d309449681c309a282bf951d",
+      "size": 2510519
+    },
+    "dfthcsos/angle_k_2.kmb": {
+      "sha256": "f3ef115a8d3824bbb605681946a54a1db768aad9e9a572605195c79a296a9222",
+      "size": 2510060
+    },
+    "dfthcsos/angle_k_3.kmb": {
+      "sha256": "6ac1fb050275f76de5e09c75e25dd241915efa878541e8196dd8807e7a55d9a1",
+      "size": 2776457
+    },
+    "dfthcsos/angle_k_4.kmb": {
+      "sha256": "b98a758d6c21c311cdb6299123b98e14780cd4fce1e67b95b98dcff756279957",
+      "size": 3009327
+    },
+    "dfthcsos/angle_k_5.kmb": {
+      "sha256": "d120255ccef1098d1c391f8b92f8657a9bdf610feab1c520e9fb72256fb2b741",
+      "size": 2995507
+    },
+    "dfthcsos/angle_k_6.kmb": {
+      "sha256": "9885bfd95fdbf5e0624214318d58444f6d56d8d195647e887429153b70ea406e",
+      "size": 2995743
+    },
+    "dfthcsos/angle_k_7.kmb": {
+      "sha256": "4c631e3be92c2854df06ef834595b5447c5ee56bcd5086b80b09711e28fd007e",
+      "size": 3004700
+    },
+    "dfthcsos/angle_k_8.kmb": {
+      "sha256": "74b597d61b77f38a4202e37e29ece4cefceaa337de7ef2c19ad09ef0c790a1f7",
+      "size": 2991647
+    }
+  },
+  "same_environment_rebuild": {
+    "file_count": 10,
+    "files_match": true,
+    "packaged_circuit_hash_matches": []
+  },
+  "full_verifier_file": "verify.json",
+  "full_verifier_status": "PASS",
+  "full_verifier_cost": 3059992521.1131754,
+  "full_verifier_ratio": 1.0966038528404063,
+  "full_verifier_seconds": 39.477545378002105,
+  "limits": "G2 rows use exact static ANGLE counts and verifier heuristics; only the selected row ran the full circuit verifier. No full three-task zip or G0-G5 candidate was made because the measured floor failed."
+}
