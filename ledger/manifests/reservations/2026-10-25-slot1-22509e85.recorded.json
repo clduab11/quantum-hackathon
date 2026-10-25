@@ -1,0 +1,14 @@
+{
+  "candidate_id": "pra226-dqi-only",
+  "error": "",
+  "kaggle_submission_id": "57620928",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "outcome": "recorded",
+  "reservation_id": "22509e85-000b-4d18-aa2d-fb8c38b8966c",
+  "reserved_at_utc": "2026-10-25T07:09:53.407519+00:00",
+  "resolved_at_utc": "2026-10-25T07:10:47.681354+00:00",
+  "slot": 1,
+  "submission_id": "submission-002",
+  "utc_day": "2026-10-25",
+  "zip_sha256": "b367a976f70f84c3251cbf916780a38f2e3c0e289ab365937bc67e07896e4fed"
+}
