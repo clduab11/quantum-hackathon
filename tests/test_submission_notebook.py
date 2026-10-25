@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 """Exercise the helper cell itself; never run the expensive build in pytest."""
 import hashlib
 import json
@@ -69,15 +70,40 @@ def test_embedded_sources_and_expected_outputs_match_pinned_commit():
     config = pinned['CONFIG']
     assert re.fullmatch('[0-9a-f]{40}', config['commit'])
 
-    def at_commit(path):
-        return subprocess.check_output(['git', 'show', f"{config['commit']}:{path}"], cwd=NOTEBOOK.parent)
+    def at_commit(path, commit=None):
+        return subprocess.check_output(['git', 'show', f"{commit or config['commit']}:{path}"], cwd=NOTEBOOK.parent)
 
     for name, source in pinned['SOURCES'].items():
         original = at_commit(name)
         assert source.encode() == original, name
         assert hashlib.sha256(original).hexdigest() == pinned['SOURCE_HASHES'][name]
-    manifest_bytes = at_commit(config['manifest'])
+    manifest_bytes = at_commit(config['manifest'], config['manifest_commit'])
     assert hashlib.sha256(manifest_bytes).hexdigest() == config['manifest_sha256']
     manifest = json.loads(manifest_bytes)
     assert config['files'] == {p: h for t in manifest['tasks'].values() for p, h in t['files'].items()}
     assert config['zip_sha256'] == manifest['zip_sha256']
+
+
+def test_competition_root_uses_only_explicit_candidates(tmp_path):
+    resolve = helpers()['competition_root']
+    valid = tmp_path / 'competition'
+    for name in ('kickmix', 'verifiers', 'sample_submission'):
+        (valid / name).mkdir(parents=True)
+    assert resolve(None, [tmp_path / 'missing', valid]) == valid.resolve()
+    with pytest.raises(FileNotFoundError):
+        resolve(str(tmp_path / 'bad-override'), [valid])
+
+
+def test_container_mismatch_is_reported_as_r2(tmp_path):
+    check = helpers()['check_archive']
+    path = tmp_path / 'submission.zip'
+    path.write_bytes(b'changed container')
+    with pytest.raises(ValueError, match='R2: member-identical, container differs'):
+        check(path, '0' * 64)
+
+
+def test_all_generated_code_cells_compile():
+    notebook = json.loads(NOTEBOOK.read_text())
+    for cell in notebook['cells']:
+        if cell['cell_type'] == 'code':
+            compile(''.join(cell['source']), cell['id'], 'exec')

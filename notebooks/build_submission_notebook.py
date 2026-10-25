@@ -13,11 +13,13 @@ import textwrap
 import nbformat as nbf
 
 ROOT = Path(__file__).resolve().parents[1]
-COMMIT = 'c8bbfbde18bb27f4f89aac90f4b62437877b60f4'
+COMMIT = '562663a62327ce4d81fdea7d5949ff39ce7667c3'
+MANIFEST_COMMIT = 'c8bbfbde18bb27f4f89aac90f4b62437877b60f4'
 MANIFEST = 'ledger/manifests/candidates/pra228-dqi-invsqrt-572.json'
 REPO_URL = 'https://github.com/clduab11/quantum-hackathon'
 
 HELPERS = '''\
+# SPDX-License-Identifier: Apache-2.0
 import hashlib
 from pathlib import Path, PurePosixPath
 
@@ -62,6 +64,27 @@ def restore_sources(root, sources, hashes):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(source.encode('utf-8'))
         print(f'{name}: SHA-256 {hashes[name]}')
+
+
+def competition_root(override=None, candidates=None):
+    if candidates is None:
+        candidates = [Path('/kaggle/input/competitions/google-verifiable-quantum-circuit-compilation'),
+                      Path('/kaggle/input/google-verifiable-quantum-circuit-compilation'),
+                      Path('/kaggle/input')]
+    roots = [Path(override)] if override is not None else candidates
+    for root in roots:
+        root = Path(root).resolve()
+        if all((root / name).is_dir() for name in ('kickmix', 'verifiers', 'sample_submission')):
+            return root
+    raise FileNotFoundError('No competition root with kickmix/, verifiers/ and sample_submission/; set VQCC_DATA')
+
+
+def check_archive(path, expected):
+    # Call only after every member hash has passed.
+    try:
+        return check_hash(path, expected)
+    except ValueError as error:
+        raise ValueError('R2: member-identical, container differs; check zlib versions') from error
 '''
 
 
@@ -73,24 +96,25 @@ def main():
     commit = git('rev-parse', COMMIT + '^{commit}')
     subprocess.run(['git', 'merge-base', '--is-ancestor', commit, 'origin/main'], cwd=ROOT, check=True)
 
-    def read(name):
-        return subprocess.check_output(['git', 'show', f'{commit}:{name}'], cwd=ROOT).decode()
+    def read(name, ref=commit):
+        return subprocess.check_output(['git', 'show', f'{ref}:{name}'], cwd=ROOT).decode()
 
-    paths = ['LICENSE', 'tasks/__init__.py', 'tasks/invsqrt/__init__.py',
+    paths = ['LICENSE', 'NOTICE', 'tasks/__init__.py', 'tasks/invsqrt/__init__.py',
              'tasks/dfthcsos/generate.py', 'tasks/dqi/generate.py',
              'ledger/__init__.py', 'ledger/archive.py']
     paths += ['tasks/invsqrt/' + name + '.py' for name in
               ['generate', 'affine', 'calibrate', 'fit_coefficients', 'schedule90', 'signed_digit', 'peephole']]
     paths += [p for p in git('ls-tree', '-r', '--name-only', commit, 'tasks/dqi/bm_forney').splitlines()
               if p.endswith(('.py', '.json')) or p.endswith('/LICENSE')]
-    paths += ['notices/10-invsqrt.txt', 'notices/20-dqi.txt', 'notices/30-dfthcsos.txt',
-              'tasks/invsqrt/PROVENANCE.md', 'tasks/dqi/PROVENANCE.md']
+    paths += git('ls-tree', '-r', '--name-only', commit, 'notices').splitlines()
+    paths += ['tasks/invsqrt/PROVENANCE.md', 'tasks/dqi/PROVENANCE.md']
     sources = {p: read(p) for p in sorted(paths)}
     hashes = {p: hashlib.sha256(v.encode()).hexdigest() for p, v in sources.items()}
-    manifest_text = read(MANIFEST)
+    manifest_text = read(MANIFEST, MANIFEST_COMMIT)
     manifest = json.loads(manifest_text)
     expected = {p: h for task in manifest['tasks'].values() for p, h in task['files'].items()}
     config = {'commit': commit, 'repository': REPO_URL, 'manifest': MANIFEST,
+              'manifest_commit': MANIFEST_COMMIT,
               'manifest_sha256': hashlib.sha256(manifest_text.encode()).hexdigest(),
               'files': expected, 'zip_sha256': manifest['zip_sha256'], 'zip_bytes': 91399451,
               'kickmix_sha256': manifest['kickmix_build_id'],
@@ -101,10 +125,16 @@ def main():
         cells.append(nbf.v4.new_markdown_cell(textwrap.dedent(text).strip(), id=id))
 
     def code(id, text):
-        cells.append(nbf.v4.new_code_cell(textwrap.dedent(text).strip(), id=id))
+        source = textwrap.dedent(text).strip()
+        if not source.startswith('# SPDX-License-Identifier: Apache-2.0'):
+            source = '# SPDX-License-Identifier: Apache-2.0\n' + source
+        cells.append(nbf.v4.new_code_cell(source, id=id))
 
     md('introduction', '''
         # Rebuild our quantum circuit submission
+
+        **Released under the Apache License 2.0.** Third-party notices and the existing
+        calibration-rights limitation are retained below.
 
         Google Quantum AI's [Verifiable Quantum Circuit Compilation competition](https://www.kaggle.com/competitions/google-verifiable-quantum-circuit-compilation)
         asks us to make three quantum calculations cheaper while preserving their answers.
@@ -124,7 +154,9 @@ def main():
         ## Run this notebook
 
         Attach only the competition data. The default path is
-        `/kaggle/input/google-verifiable-quantum-circuit-compilation`.
+        `/kaggle/input/competitions/google-verifiable-quantum-circuit-compilation`.
+        Two exact-layout fallbacks are checked: `/kaggle/input/google-verifiable-quantum-circuit-compilation`
+        and `/kaggle/input`. No other directory is searched or read.
         For a local run, set **VQCC_DATA** to the extracted competition package root (the directory
         containing `kickmix`, `verifiers`, and `sample_submission`). This is the only data-root setting.
         The packaged native library requires **CPython 3.13 on Linux**. NumPy and SciPy must be
@@ -142,11 +174,14 @@ def main():
         prevents full verification, set `VQCC_VERIFY_MODE=sample` before execution: it uses
         1 invsqrt shot per input, 1,536 dqi shots and 1 dfthcsos shot per address. A sample PASS
         is only a smoke check, not full verification or a submission clearance. The public salt
-        is fixed once; no seed or salt search occurs. Four verifier workers bound CPU use.
+        is fixed once; no seed or salt search occurs. At most two verifier workers and one
+        BLAS thread bound CPU use. The confirmed kernel budget is 540 CPU-minutes; full
+        verification fits the measured local budget. The first Kaggle run still must confirm
+        native-library and zlib identity.
         ''')
     code('hash-helpers', HELPERS)
     code('pinned-source', 'CONFIG = ' + repr(config) + '\nSOURCES = ' + repr(sources) + '\nSOURCE_HASHES = ' + repr(hashes))
-    code('prepare', '''
+    code('prepare', r'''
         import importlib.metadata
         import json
         import os
@@ -155,9 +190,14 @@ def main():
         import sys
         import tempfile
         import time
+        import zlib
 
-        DATA = Path(os.environ.get('VQCC_DATA', '/kaggle/input/google-verifiable-quantum-circuit-compilation')).resolve()
+        STARTED = time.monotonic()
+        DATA = competition_root(os.environ.get('VQCC_DATA'))
         MODE = os.environ.get('VQCC_VERIFY_MODE', 'full')
+        WORKERS = min(2, os.cpu_count() or 1)
+        for variable in ('OMP_NUM_THREADS', 'OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS'):
+            os.environ[variable] = '1'
         if MODE not in ('full', 'sample'):
             raise ValueError('VQCC_VERIFY_MODE must be full or sample')
         if sys.version_info[:2] != (3, 13) or platform.system() != 'Linux':
@@ -166,9 +206,15 @@ def main():
             if not (DATA / name).is_dir():
                 raise FileNotFoundError(f'VQCC_DATA must contain {name}/')
         print('Source commit:', CONFIG['commit'])
-        print('Manifest:', CONFIG['manifest'], 'SHA-256', CONFIG['manifest_sha256'])
-        print('Python:', platform.python_version())
-        print('Packages:', {p: importlib.metadata.version(p) for p in ('numpy', 'scipy')})
+        print('Manifest:', CONFIG['manifest'], 'at', CONFIG['manifest_commit'], 'SHA-256', CONFIG['manifest_sha256'])
+        memory = next(line for line in Path('/proc/meminfo').read_text().splitlines() if line.startswith('MemTotal:'))
+        environment = {'python': sys.version, 'platform': platform.platform(),
+                       'packages': {p: importlib.metadata.version(p) for p in ('numpy', 'scipy')},
+                       'cpu_count': os.cpu_count(), 'memory': memory,
+                       'zlib_runtime_version': zlib.ZLIB_RUNTIME_VERSION,
+                       'workers': WORKERS, 'blas_threads': 1, 'mode': MODE,
+                       'source_commit': CONFIG['commit'], 'kickmix_sha256': CONFIG['kickmix_sha256']}
+        print(json.dumps(environment, indent=2))
         print('Verification mode:', MODE)
         check_hash(DATA / 'kickmix/kickmix.so', CONFIG['kickmix_sha256'])
         for task, relative in {'invsqrt': 'invsqrt/verify_submission_invsqrt.py',
@@ -180,7 +226,21 @@ def main():
         SOURCE = WORK / 'source'
         OUTPUT = WORK / 'submission'
         OUTPUT.mkdir()
+        if any(OUTPUT.iterdir()):
+            raise ValueError('Submission output directory must start empty')
+        REPORTS = WORK / 'reports'
+        REPORTS.mkdir()
+        for name in ('submission.zip', 'LICENSE', 'NOTICE', 'reports'):
+            if (Path.cwd() / name).exists():
+                raise FileExistsError(f'Prior output {name} exists; use a fresh working directory')
+        (REPORTS / 'environment.json').write_text(json.dumps(environment, indent=2) + '\n')
+        (REPORTS / 'sources.json').write_text(json.dumps(
+            {'commit': CONFIG['commit'], 'files': SOURCE_HASHES, 'expected': CONFIG}, indent=2) + '\n')
         restore_sources(SOURCE, SOURCES, SOURCE_HASHES)
+        (Path.cwd() / 'LICENSE').write_text(SOURCES['LICENSE'])
+        notice = SOURCES['NOTICE'].rstrip() + '\n\n' + ''.join(
+            text for name, text in sorted(SOURCES.items()) if name.startswith('notices/'))
+        (Path.cwd() / 'NOTICE').write_text(notice)
         sys.path[:0] = [str(SOURCE), str(DATA / 'kickmix'), str(DATA / 'verifiers')]
         import kickmix as km
         check_hash(Path(km.__file__), CONFIG['kickmix_sha256'])
@@ -216,7 +276,7 @@ def main():
         Reduced-shot mode, if selected, is labelled in each result and never presented as a
         leaderboard score. No stored verifier receipts are consulted.
         ''')
-    code('verify-setup', '''
+    code('verify-setup', r'''
         import math
         from invsqrt import verify_submission_invsqrt as inv
         from dqi import verify_submission_dqi as dqi
@@ -231,38 +291,44 @@ def main():
             receipt = {'task': task, 'mode': MODE, 'salt': SALT,
                        'seconds': round(time.monotonic() - started, 2), 'result': result}
             receipts[task] = receipt
+            (REPORTS / (task + '.json')).write_text(json.dumps(receipt, indent=2, allow_nan=False) + '\n')
             print(json.dumps(receipt, indent=2, allow_nan=False))
     ''')
     code('verify-invsqrt', '''
         started = time.monotonic()
         spec = inv.ProblemSpecInvSqrt.for_n_p(10, shots_per_x=64 if MODE == 'full' else 1)
         record('invsqrt', inv.verify(km.Circuit.from_file(OUTPUT / 'invsqrt.kmb'), spec,
-                                    salt=SALT, max_workers=4), started)
+                                    seed=None, salt=SALT, max_workers=WORKERS), started)
     ''')
     code('verify-dqi', '''
         started = time.monotonic()
         spec = dqi.ProblemSpecDQI.benchmark_instance(num_shots=102400 if MODE == 'full' else 1536)
         record('dqi', dqi.verify(km.Circuit.from_file(OUTPUT / 'dqi.kmb'), spec,
-                                salt=SALT, max_workers=4), started)
+                                seed=None, salt=SALT, log2_delta=-128, max_workers=WORKERS), started)
     ''')
     code('verify-dfthcsos', '''
         started = time.monotonic()
-        record('dfthcsos', df.verify(OUTPUT / 'dfthcsos', salt=SALT,
+        record('dfthcsos', df.verify(OUTPUT / 'dfthcsos', seed=None, salt=SALT,
                                      shots_per_address=64 if MODE == 'full' else 1), started)
     ''')
-    code('archive', '''
+    code('archive', r'''
         from ledger.archive import build_zip
 
         if set(receipts) != {'invsqrt', 'dqi', 'dfthcsos'}:
             raise RuntimeError('All three fresh verifier results are required')
         check_files(OUTPUT, CONFIG['files'])
         archive = build_zip(OUTPUT, WORK / 'submission.zip')
-        check_hash(archive, CONFIG['zip_sha256'])
+        check_archive(archive, CONFIG['zip_sha256'])
         if archive.stat().st_size != CONFIG['zip_bytes']:
             raise ValueError('Archive size differs from the ledger')
         # Publish the local output name only after all checks have passed.
         import shutil
         shutil.copyfile(archive, Path.cwd() / 'submission.zip')
+        (REPORTS / 'reproduction.json').write_text(json.dumps(
+            {'files': CONFIG['files'], 'zip_sha256': CONFIG['zip_sha256'],
+             'zip_bytes': archive.stat().st_size, 'verification_mode': MODE,
+             'wall_seconds': round(time.monotonic() - STARTED, 2)}, indent=2) + '\n')
+        shutil.copytree(REPORTS, Path.cwd() / 'reports')
         print('submission.zip:', archive.stat().st_size, 'bytes; SHA-256', CONFIG['zip_sha256'])
         print('Verification:', MODE, '; Kaggle hidden-score equivalence is not asserted.')
     ''')
@@ -281,7 +347,7 @@ def main():
         commit. Some describe other experiments or reference implementations: those are identified
         in the notices and are not claims that this notebook uses those inputs.
         ''')
-    for area in ('10-invsqrt', '20-dqi', '30-dfthcsos'):
+    for area in ('10-invsqrt', '20-dqi', '30-dfthcsos', '90-not-included'):
         md('notices-' + area, sources['notices/' + area + '.txt'])
     nb = nbf.v4.new_notebook(cells=cells, metadata={
         'kernelspec': {'display_name': 'Python 3', 'language': 'python', 'name': 'python3'},
