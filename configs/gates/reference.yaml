@@ -80,11 +80,11 @@ gates:
       timeout_seconds: 7200
 
 # G5 generator commands: committed builders only. tasks/invsqrt/reference.py and
-# tasks/dqi/generate.py are attributed ports of the package's reference circuit scripts;
+# tasks/dqi/reference_circuit.py are attributed ports of the package's reference circuit scripts;
 # tasks/dfthcsos/generate.py rebuilds the ten ANGLE circuits from the declared factorization.
 generators:
   invsqrt: ["{python}", "tasks/invsqrt/reference.py", "--out", "{out}"]
-  dqi: ["{python}", "tasks/dqi/generate.py", "--out", "{out}"]
+  dqi: ["{python}", "tasks/dqi/reference_circuit.py", "--out", "{out}"]
   dfthcsos: ["{python}", "tasks/dfthcsos/generate.py", "--out", "{out}"]
 
 # Declared competition-package inputs, relative to the package root and SHA-256 pinned. G5 stages

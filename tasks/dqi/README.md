@@ -8,4 +8,4 @@ costs +0.45%. **Q is squared.** Reference: Q 1,893, 5,725,461 Toffolis → cost 
 
 The k256.dev dqi artifact is reference only and is never shipped (R10).
 
-`generate.py` rebuilds the package reference decoder (Apache-2.0). P1 replaces that decoder with Berlekamp–Massey + Forney; the plan is `docs/dqi-bm-forney-design.md`. The k256.dev artifact is not a parent. Candidates go in `candidates/`; `.kmb` files are never committed.
+`generate.py --out DIR` writes the Berlekamp–Massey + Forney decoder (`dqi.kmb` only). It is a port of Gu et al. through the anazemcev v4 and kozykappa v2 notebook embed, not an independent clean-room authorship. Parents, paths and hashes are in `PROVENANCE.md`. It regenerates the GF(2^12) tables for modulus 4179. `reference_circuit.py` is the package extended-Euclidean decoder (ratio 1.0). The design note is `docs/dqi-bm-forney-design.md`. The k256.dev artifact is not a parent. Candidates go in `candidates/`; `.kmb` files are never committed.
