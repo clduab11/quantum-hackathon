@@ -2,8 +2,9 @@
 
 PRA-235 extends the Google-only pipeline with larger-group initialization and
 weight fitting against rounded vectors. These helpers are tested; CLI integration
-and the full experiment matrix are still pending. No passing compressed factor
-or shipping claim is made by the construction probes.
+and the full experiment matrix are still pending. The 12-bit floor has passed
+and was handed to PRA-237 (details below). Construction probes alone do not
+establish accuracy; no shipping claim is made.
 
 ## Long-fit control
 
@@ -95,8 +96,8 @@ weight gradient with zero was observed to fail the gradient test; restoring the
 implementation passes. Tests also cover deterministic construction, invalid
 shapes, fixed rounded vectors and objective reduction.
 
-Pending: CLI wiring; long-fit results; gradual pruning to R=32; penalty and
-optimizer variants; real quantized fits; fitted larger-shape measurements at
+Pending: main pipeline CLI wiring; long-fit results; gradual pruning to R=32;
+penalty and optimizer variants; further quantized fits; larger-shape measurements at
 11/10/9/8 bits; repeatability of new fitted checkpoints; final decisions and
 review. Existing method notices remain in `notices/30-dfthcsos.txt`. These new
 helpers are own NumPy/SciPy implementations extending the already attributed
@@ -114,3 +115,32 @@ uv run python -m ledger.registers check
 The first plain `uv run pytest` had three subprocess import failures (260 passed,
 one skipped). With this explicit pinned module path: **263 passed, 1 skipped**.
 No repository dependency, gate or test was bypassed or changed for that rerun.
+
+## First passing floor (quantized weight probe)
+
+The (65,60,30) 12-bit probe passes: error1 3.252195718 mHa,
+error2 18.318496686 mHa, Lambda 333.813304464, gap 4.05725366724.
+An independent reload through `proxy_submission` also passes. Archive SHA-256:
+`574099ebd6800473adce47d524ff484886c1b2782a9195d56ad8c0fa1a3d89ef`.
+It was handed to PRA-237 immediately. Re-encoding at 11/10/9/8 bits fails; it
+was fitted specifically for 12 bits. Both 100-iteration optimizers reached their
+caps. This is verifier acceptance, not optimizer convergence.
+
+Reproduce after creating the `pra235-determinism-01` short-run checkpoint with
+the long-fit command above changed to `--steps 20 --bits 12`. The probe verifies
+its exact cc7dd377 hash as well as all original Google/competition input hashes:
+
+```sh
+PYTHONPATH=. uv run python ledger/evidence/pra235/run_quantized_probe.py \
+  --out /home/cld-main/work/vqcc-data/pra235-quantized-probe-02 --dry-run
+```
+
+Dry-run output: `pinned_files: 26, fit_bits: 12, steps: 100, maxcor: 20`.
+Remove `--dry-run` to fit. Existing output paths fail with exit 2 and
+`output exists; choose a new --out directory`. Measured 19 mHa success exits 0;
+a completed margin miss exits 3. Output includes raw factors, one encoded archive
+per measured bit width, progress, settings/optimizer evidence and the final JSON
+report. Only `--out` is written. No circuit generation or upload takes place.
+The first probe's core source revision is preserved at local 59d3864; the later
+CLI change adds dry-run/explicit output and replaces assertion-based input checks
+with unconditional errors. Numerical fitting is unchanged.

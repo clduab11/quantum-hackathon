@@ -1,6 +1,6 @@
 """Reproduce the first fixed-rounded-U probe from the hash-checked own short refit.
 
-Run from the repository root with `uv run python ledger/evidence/pra235/run_quantized_probe.py`.
+Run from the repository root with `PYTHONPATH=. uv run python ledger/evidence/pra235/run_quantized_probe.py --out NEW_DIR`.
 Requires the PRA-235 deterministic rerun at the explicit path below; writes a new
 probe directory and refuses overwrite. Exits 3 for a 19 mHa miss, 0 for a pass.
 """
@@ -15,15 +15,27 @@ from dataclasses import replace
 import numpy as np
 import sys
 import time
+import argparse
 
 starter = Path('/home/cld-main/work/vqcc-data/starter-kit')
 competition = Path('/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation')
 checkpoint = Path('/home/cld-main/work/vqcc-data/pra235-determinism-01/factors-01.npz')
-out = Path('/home/cld-main/work/vqcc-data/pra235-quantized-probe-01')
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--out', type=Path, required=True, help='new output directory; never overwritten')
+parser.add_argument('--dry-run', action='store_true', help='verify pinned inputs; write nothing')
+args = parser.parse_args()
+out = args.out
+if out.exists():
+    parser.error('output exists; choose a new --out directory')
 pins = checked_inputs(starter)
 for entry in pins['competition_files']:
-    assert sha256(competition/entry['path']) == entry['sha256'], entry['path']
-assert sha256(checkpoint) == 'cc7dd377b1c98c1267caac98e64835b516016e4be97392cff791f96fc219a297'
+    if sha256(competition/entry['path']) != entry['sha256']:
+        parser.error('competition input hash mismatch: '+entry['path'])
+if sha256(checkpoint) != 'cc7dd377b1c98c1267caac98e64835b516016e4be97392cff791f96fc219a297':
+    parser.error('own short-refit checkpoint hash mismatch; reproduce the documented control')
+if args.dry_run:
+    print(json_text(dict(out=str(out), pinned_files=len(pins['files']), fit_bits=12, steps=100, maxcor=20)))
+    raise SystemExit(0)
 out.mkdir()
 sys.path[:0] = [str(competition/'kickmix'), str(competition/'verifiers'), str(starter/'starter_kit')]
 from dfthcsos.verify import load_inputs, native_inputs, evaluate_words, heuristic_costs
