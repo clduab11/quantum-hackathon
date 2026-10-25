@@ -59,12 +59,14 @@ def proxy_submission(submission_dir: Path) -> dict:
         if "angle_words" not in archive.files:
             return {"status": "FAIL: submission.npz has no angle_words; G2 cannot check the Hamiltonian error without simulation"}
         words = np.array(archive["angle_words"])
-    # The reference family uses 12-bit words. The width is the smallest brot
-    # that holds every word, and the packaged reference is exactly 12.
-    # The packaged reference uses 12-bit words. Widen only if a word does not fit.
-    brot = 12
-    if words.size and int(words.max()) >= (1 << brot):
-        brot = int(words.max()).bit_length()
+        # Width is a scale, not inferable from the largest word. Legacy inputs
+        # are the 12-bit reference; a precision sweep must declare its width.
+        width = np.asarray(archive['brot']) if 'brot' in archive.files else np.array(12)
+    if width.shape != () or not np.issubdtype(width.dtype, np.integer) or not 1 <= int(width) <= 63:
+        raise ValueError('brot must be an integer scalar in [1, 63]')
+    brot = int(width)
+    if not np.issubdtype(words.dtype, np.integer) or np.any(words < 0) or np.any(words >= (1 << brot)):
+        raise ValueError('angle_words must be integers in [0, 2**brot)')
     metrics = evaluate_words(inputs, words, edges, brot)
     rank_r, bases_b, ensemble_c = inputs.w.shape
     heuristic = heuristic_costs(inputs.num_orbitals, rank_r, bases_b, ensemble_c, brot)

@@ -1,0 +1,1841 @@
+{
+  "label": "own-generated, derived from Google baseline",
+  "rows": [
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 7,
+      "error_1": 0.11704205045595807,
+      "error_2": 0.30270531703276526,
+      "Lambda": 310.8199925355286,
+      "E_SOS": -22146.602880046725,
+      "E_gap": 6.329530046725267,
+      "lambda_eff": 62.40693882206293,
+      "gap_in_domain": true,
+      "T": 99265,
+      "Q": 516,
+      "angle_qubits": 79,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3196529587.600792,
+      "ratio": 1.0497633437576284,
+      "seconds": 3.7620531690045027,
+      "problems": [
+        "error_1 0.11704205045595807 Ha > 0.02 Ha",
+        "error_2 0.30270531703276526 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 8,
+      "error_1": 0.052351053866721405,
+      "error_2": 0.15538255247656943,
+      "Lambda": 309.3314922290727,
+      "E_SOS": -22145.11437974027,
+      "E_gap": 4.841029740269732,
+      "lambda_eff": 54.511744954823605,
+      "gap_in_domain": true,
+      "T": 92037,
+      "Q": 698,
+      "angle_qubits": 87,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3501934034.3441563,
+      "ratio": 0.958213248847915,
+      "seconds": 3.727322250000725,
+      "problems": [
+        "error_1 0.052351053866721405 Ha > 0.02 Ha",
+        "error_2 0.15538255247656943 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 9,
+      "error_1": 0.025159769829696654,
+      "error_2": 0.0766720830694496,
+      "Lambda": 308.7126370736213,
+      "E_SOS": -22144.495524584818,
+      "E_gap": 4.222174584818276,
+      "lambda_eff": 50.88271359021902,
+      "gap_in_domain": true,
+      "T": 92337,
+      "Q": 706,
+      "angle_qubits": 95,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3317040130.0947175,
+      "ratio": 1.0116246583378483,
+      "seconds": 3.7242524929970386,
+      "problems": [
+        "error_1 0.025159769829696654 Ha > 0.02 Ha",
+        "error_2 0.0766720830694496 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 10,
+      "error_1": 0.013969398961734547,
+      "error_2": 0.040014621461046423,
+      "Lambda": 308.5073691665378,
+      "E_SOS": -22144.290256677734,
+      "E_gap": 4.016906677734369,
+      "lambda_eff": 49.62212292327917,
+      "gap_in_domain": true,
+      "T": 92637,
+      "Q": 714,
+      "angle_qubits": 103,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3282147045.288082,
+      "ratio": 1.0223794187153705,
+      "seconds": 3.756934006996744,
+      "problems": [
+        "error_2 0.040014621461046423 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 11,
+      "error_1": 0.006480494833029553,
+      "error_2": 0.025035371586624014,
+      "Lambda": 308.45874138217346,
+      "E_SOS": -22144.24162889337,
+      "E_gap": 3.968278893371462,
+      "lambda_eff": 49.31889484193693,
+      "gap_in_domain": true,
+      "T": 92937,
+      "Q": 722,
+      "angle_qubits": 111,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3309323193.805917,
+      "ratio": 1.0139836431149123,
+      "seconds": 3.813287400000263,
+      "problems": [
+        "error_2 0.025035371586624014 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "brot": 12,
+      "error_1": 0.0031851950317986553,
+      "error_2": 0.018639570630974208,
+      "Lambda": 308.45593973309445,
+      "E_SOS": -22144.23882724429,
+      "E_gap": 3.965477244291833,
+      "lambda_eff": 49.30136925057439,
+      "gap_in_domain": true,
+      "T": 93237,
+      "Q": 730,
+      "angle_qubits": 119,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3355599588.3155375,
+      "ratio": 0.9999999999953697,
+      "seconds": 3.8033363870054018,
+      "problems": []
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 7,
+      "error_1": 0.11336872038795201,
+      "error_2": 0.30288574409151964,
+      "Lambda": 336.3051227364803,
+      "E_SOS": -22146.67125295448,
+      "E_gap": 6.397902954478923,
+      "lambda_eff": 65.28676676409484,
+      "gap_in_domain": true,
+      "T": 91002,
+      "Q": 416,
+      "angle_qubits": 79,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 2471550161.2115216,
+      "ratio": 1.3576902629623868,
+      "seconds": 2.27926287700393,
+      "problems": [
+        "error_1 0.11336872038795201 Ha > 0.02 Ha",
+        "error_2 0.30288574409151964 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 8,
+      "error_1": 0.054552550541732615,
+      "error_2": 0.15558765140580605,
+      "Lambda": 334.82887011175706,
+      "E_SOS": -22145.195000329753,
+      "E_gap": 4.921650329753902,
+      "lambda_eff": 57.19788978646804,
+      "gap_in_domain": true,
+      "T": 87674,
+      "Q": 695,
+      "angle_qubits": 87,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3485263613.451465,
+      "ratio": 0.9627964941730596,
+      "seconds": 2.2698788390043774,
+      "problems": [
+        "error_1 0.054552550541732615 Ha > 0.02 Ha",
+        "error_2 0.15558765140580605 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 9,
+      "error_1": 0.027381342574089772,
+      "error_2": 0.07705891886856564,
+      "Lambda": 334.22049746240594,
+      "E_SOS": -22144.5866276804,
+      "E_gap": 4.31327768040137,
+      "lambda_eff": 53.52165225146014,
+      "gap_in_domain": true,
+      "T": 87974,
+      "Q": 703,
+      "angle_qubits": 95,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3310085226.124478,
+      "ratio": 1.013750208549407,
+      "seconds": 2.286534232000122,
+      "problems": [
+        "error_1 0.027381342574089772 Ha > 0.02 Ha",
+        "error_2 0.07705891886856564 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 10,
+      "error_1": 0.013355073699341307,
+      "error_2": 0.040849022563727536,
+      "Lambda": 334.01774757785984,
+      "E_SOS": -22144.383877795855,
+      "E_gap": 4.110527795855887,
+      "lambda_eff": 52.24061669520597,
+      "gap_in_domain": true,
+      "T": 88274,
+      "Q": 711,
+      "angle_qubits": 103,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3278768108.886507,
+      "ratio": 1.0234330324261893,
+      "seconds": 2.300606140997843,
+      "problems": [
+        "error_2 0.040849022563727536 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 11,
+      "error_1": 0.006588622551925476,
+      "error_2": 0.026208717526716243,
+      "Lambda": 333.9626918926442,
+      "E_SOS": -22144.32882211064,
+      "E_gap": 4.055472110641858,
+      "lambda_eff": 51.88743500974781,
+      "gap_in_domain": true,
+      "T": 88574,
+      "Q": 719,
+      "angle_qubits": 111,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3304436043.6898966,
+      "ratio": 1.0154832909257858,
+      "seconds": 2.3870539630006533,
+      "problems": [
+        "error_2 0.026208717526716243 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 12,
+      "error_1": 0.0031563060202521405,
+      "error_2": 0.020363453060194055,
+      "Lambda": 333.9613239681577,
+      "E_SOS": -22144.327454186154,
+      "E_gap": 4.054104186154291,
+      "lambda_eff": 51.87862991901079,
+      "gap_in_domain": true,
+      "T": 88874,
+      "Q": 727,
+      "angle_qubits": 119,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3351950805.3919144,
+      "ratio": 1.0010885550295716,
+      "seconds": 2.4399177040031645,
+      "problems": [
+        "error_2 0.020363453060194055 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        55,
+        60,
+        30
+      ],
+      "brot": 7,
+      "error_1": 0.12204148257898814,
+      "error_2": 0.31397706879756626,
+      "Lambda": 338.13065735850125,
+      "E_SOS": -22148.05604301944,
+      "E_gap": 7.782693019438739,
+      "lambda_eff": 72.12880078532888,
+      "gap_in_domain": true,
+      "T": 77679,
+      "Q": 415,
+      "angle_qubits": 79,
+      "angle_toffoli": 67480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 2325200643.224478,
+      "ratio": 1.4431440994470972,
+      "seconds": 2.526914954003587,
+      "problems": [
+        "error_1 0.12204148257898814 Ha > 0.02 Ha",
+        "error_2 0.31397706879756626 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        55,
+        60,
+        30
+      ],
+      "brot": 8,
+      "error_1": 0.05651405930714896,
+      "error_2": 0.1760347405892814,
+      "Lambda": 336.70055844476155,
+      "E_SOS": -22146.625944105697,
+      "E_gap": 6.35259410569779,
+      "lambda_eff": 65.09599460835472,
+      "gap_in_domain": true,
+      "T": 74951,
+      "Q": 694,
+      "angle_qubits": 87,
+      "angle_toffoli": 67480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3386032864.972211,
+      "ratio": 0.9910121142098068,
+      "seconds": 2.3618040759974974,
+      "problems": [
+        "error_1 0.05651405930714896 Ha > 0.02 Ha",
+        "error_2 0.1760347405892814 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        55,
+        60,
+        30
+      ],
+      "brot": 9,
+      "error_1": 0.02706878027709291,
+      "error_2": 0.11143318384828864,
+      "Lambda": 336.07783712671704,
+      "E_SOS": -22146.00322278765,
+      "E_gap": 5.729872787651402,
+      "lambda_eff": 61.79429637763961,
+      "gap_in_domain": true,
+      "T": 75251,
+      "Q": 702,
+      "angle_qubits": 95,
+      "angle_toffoli": 67480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3264357982.8930583,
+      "ratio": 1.0279508576832246,
+      "seconds": 2.3060634619978373,
+      "problems": [
+        "error_1 0.02706878027709291 Ha > 0.02 Ha",
+        "error_2 0.11143318384828864 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        55,
+        60,
+        30
+      ],
+      "brot": 10,
+      "error_1": 0.01277147845747489,
+      "error_2": 0.09030955725206218,
+      "Lambda": 335.85521483559705,
+      "E_SOS": -22145.78060049653,
+      "E_gap": 5.507250496531924,
+      "lambda_eff": 60.57183990354598,
+      "gap_in_domain": true,
+      "T": 75551,
+      "Q": 710,
+      "angle_qubits": 103,
+      "angle_toffoli": 67480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3249146784.3524895,
+      "ratio": 1.0327633101896705,
+      "seconds": 2.3189229980052914,
+      "problems": [
+        "error_2 0.09030955725206218 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        55,
+        60,
+        30
+      ],
+      "brot": 11,
+      "error_1": 0.0070307557936727955,
+      "error_2": 0.08450644788329396,
+      "Lambda": 335.7947264190665,
+      "E_SOS": -22145.720112080002,
+      "E_gap": 5.446762080002372,
+      "lambda_eff": 60.23554389139466,
+      "gap_in_domain": true,
+      "T": 75851,
+      "Q": 718,
+      "angle_qubits": 111,
+      "angle_toffoli": 67480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3280489040.1090345,
+      "ratio": 1.0228961436153645,
+      "seconds": 2.2619204119982896,
+      "problems": [
+        "error_2 0.08450644788329396 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        55,
+        60,
+        30
+      ],
+      "brot": 12,
+      "error_1": 0.003617304734227243,
+      "error_2": 0.0831452939308398,
+      "Lambda": 335.79428118838155,
+      "E_SOS": -22145.719666849316,
+      "E_gap": 5.446316849316645,
+      "lambda_eff": 60.233061817059884,
+      "gap_in_domain": true,
+      "T": 76151,
+      "Q": 726,
+      "angle_qubits": 119,
+      "angle_toffoli": 67480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3330022528.452853,
+      "ratio": 1.007680746790332,
+      "seconds": 2.3004023839966976,
+      "problems": [
+        "error_2 0.0831452939308398 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        48,
+        60,
+        30
+      ],
+      "brot": 7,
+      "error_1": 0.12950308060699914,
+      "error_2": 0.36205338845220264,
+      "Lambda": 342.13336464800625,
+      "E_SOS": -22150.461688114046,
+      "E_gap": 10.188338114046928,
+      "lambda_eff": 82.87182008822212,
+      "gap_in_domain": true,
+      "T": 68354,
+      "Q": 415,
+      "angle_qubits": 79,
+      "angle_toffoli": 59080,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 2350817461.978789,
+      "ratio": 1.4274181822162582,
+      "seconds": 1.8750532479971298,
+      "problems": [
+        "error_1 0.12950308060699914 Ha > 0.02 Ha",
+        "error_2 0.36205338845220264 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        48,
+        60,
+        30
+      ],
+      "brot": 8,
+      "error_1": 0.059521777924148714,
+      "error_2": 0.248968170286142,
+      "Lambda": 340.77506883670486,
+      "E_SOS": -22149.103392302746,
+      "E_gap": 8.830042302746733,
+      "lambda_eff": 77.0723484787558,
+      "gap_in_domain": true,
+      "T": 66046,
+      "Q": 694,
+      "angle_qubits": 87,
+      "angle_toffoli": 59080,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3532682307.3737664,
+      "ratio": 0.9498730132896067,
+      "seconds": 1.8270116919957218,
+      "problems": [
+        "error_1 0.059521777924148714 Ha > 0.02 Ha",
+        "error_2 0.248968170286142 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        48,
+        60,
+        30
+      ],
+      "brot": 9,
+      "error_1": 0.030884284656239037,
+      "error_2": 0.2077369881517124,
+      "Lambda": 340.1068980948007,
+      "E_SOS": -22148.43522156084,
+      "E_gap": 8.161871560841973,
+      "lambda_eff": 74.0621461411738,
+      "gap_in_domain": true,
+      "T": 66346,
+      "Q": 702,
+      "angle_qubits": 95,
+      "angle_toffoli": 59080,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3449436457.8133864,
+      "ratio": 0.9727964638105351,
+      "seconds": 1.8742670799983898,
+      "problems": [
+        "error_1 0.030884284656239037 Ha > 0.02 Ha",
+        "error_2 0.2077369881517124 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        48,
+        60,
+        30
+      ],
+      "brot": 10,
+      "error_1": 0.015324806051399254,
+      "error_2": 0.19731476048781874,
+      "Lambda": 339.935267551994,
+      "E_SOS": -22148.263591018032,
+      "E_gap": 7.990241018032975,
+      "lambda_eff": 73.26994939955709,
+      "gap_in_domain": true,
+      "T": 66646,
+      "Q": 710,
+      "angle_qubits": 103,
+      "angle_toffoli": 59080,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3467035823.8548465,
+      "ratio": 0.9678583547397716,
+      "seconds": 1.85262110199983,
+      "problems": [
+        "error_2 0.19731476048781874 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        48,
+        60,
+        30
+      ],
+      "brot": 11,
+      "error_1": 0.007746125270090098,
+      "error_2": 0.19475399476915245,
+      "Lambda": 339.8688327582633,
+      "E_SOS": -22148.1971562243,
+      "E_gap": 7.923806224302098,
+      "lambda_eff": 72.96110497951729,
+      "gap_in_domain": true,
+      "T": 66946,
+      "Q": 718,
+      "angle_qubits": 111,
+      "angle_toffoli": 59080,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3507038068.1823926,
+      "ratio": 0.9568186951672073,
+      "seconds": 1.8715718079984072,
+      "problems": [
+        "error_2 0.19475399476915245 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        48,
+        60,
+        30
+      ],
+      "brot": 12,
+      "error_1": 0.0036703480682783525,
+      "error_2": 0.1940734321380808,
+      "Lambda": 339.8755721050996,
+      "E_SOS": -22148.20389557114,
+      "E_gap": 7.930545571140101,
+      "lambda_eff": 72.99249189565788,
+      "gap_in_domain": true,
+      "T": 67246,
+      "Q": 726,
+      "angle_qubits": 119,
+      "angle_toffoli": 59080,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3563536957.8711877,
+      "ratio": 0.9416486002447954,
+      "seconds": 1.9503966869961005,
+      "problems": [
+        "error_2 0.1940734321380808 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        42,
+        60,
+        30
+      ],
+      "brot": 7,
+      "error_1": 0.1284402052560137,
+      "error_2": 0.40547795884836296,
+      "Lambda": 345.2668701723396,
+      "E_SOS": -22151.854438751223,
+      "E_gap": 11.581088751223433,
+      "lambda_eff": 88.6736201808762,
+      "gap_in_domain": true,
+      "T": 60360,
+      "Q": 415,
+      "angle_qubits": 79,
+      "angle_toffoli": 51880,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 2221220981.35884,
+      "ratio": 1.5107004735058824,
+      "seconds": 1.8179149179995875,
+      "problems": [
+        "error_1 0.1284402052560137 Ha > 0.02 Ha",
+        "error_2 0.40547795884836296 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        42,
+        60,
+        30
+      ],
+      "brot": 8,
+      "error_1": 0.06452426793453853,
+      "error_2": 0.30679763059645937,
+      "Lambda": 343.83757078021193,
+      "E_SOS": -22150.425139359097,
+      "E_gap": 10.151789359097165,
+      "lambda_eff": 82.93415675954793,
+      "gap_in_domain": true,
+      "T": 58412,
+      "Q": 694,
+      "angle_qubits": 87,
+      "angle_toffoli": 51880,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3361978875.459267,
+      "ratio": 0.9981025201538795,
+      "seconds": 1.9067154570002458,
+      "problems": [
+        "error_1 0.06452426793453853 Ha > 0.02 Ha",
+        "error_2 0.30679763059645937 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        42,
+        60,
+        30
+      ],
+      "brot": 9,
+      "error_1": 0.029498192190631913,
+      "error_2": 0.2722231663845756,
+      "Lambda": 343.1622270415905,
+      "E_SOS": -22149.749795620475,
+      "E_gap": 9.476445620475715,
+      "lambda_eff": 80.08815983354914,
+      "gap_in_domain": true,
+      "T": 58712,
+      "Q": 702,
+      "angle_qubits": 95,
+      "angle_toffoli": 51880,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3300899500.1834307,
+      "ratio": 1.016571267351075,
+      "seconds": 2.0006165350059746,
+      "problems": [
+        "error_1 0.029498192190631913 Ha > 0.02 Ha",
+        "error_2 0.2722231663845756 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        42,
+        60,
+        30
+      ],
+      "brot": 10,
+      "error_1": 0.014589704089526085,
+      "error_2": 0.26428033063497336,
+      "Lambda": 343.0395468753648,
+      "E_SOS": -22149.62711545425,
+      "E_gap": 9.353765454248787,
+      "lambda_eff": 79.56085719645554,
+      "gap_in_domain": true,
+      "T": 59012,
+      "Q": 710,
+      "angle_qubits": 103,
+      "angle_toffoli": 51880,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3333482166.4628367,
+      "ratio": 1.0066349303019169,
+      "seconds": 1.898317742998188,
+      "problems": [
+        "error_2 0.26428033063497336 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        42,
+        60,
+        30
+      ],
+      "brot": 11,
+      "error_1": 0.007210973861098195,
+      "error_2": 0.2623231841429494,
+      "Lambda": 342.9667484147796,
+      "E_SOS": -22149.554316993665,
+      "E_gap": 9.28096699366506,
+      "lambda_eff": 79.24638664057117,
+      "gap_in_domain": true,
+      "T": 59312,
+      "Q": 718,
+      "angle_qubits": 111,
+      "angle_toffoli": 51880,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3374787889.41755,
+      "ratio": 0.9943142201091454,
+      "seconds": 1.9481005300040124,
+      "problems": [
+        "error_2 0.2623231841429494 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        42,
+        60,
+        30
+      ],
+      "brot": 12,
+      "error_1": 0.0037066309682767516,
+      "error_2": 0.26171924688519294,
+      "Lambda": 342.97391975668114,
+      "E_SOS": -22149.561488335567,
+      "E_gap": 9.288138335567055,
+      "lambda_eff": 79.2774174064899,
+      "gap_in_domain": true,
+      "T": 59612,
+      "Q": 726,
+      "angle_qubits": 119,
+      "angle_toffoli": 51880,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3430992805.072301,
+      "ratio": 0.978025830698088,
+      "seconds": 2.0294277150023845,
+      "problems": [
+        "error_2 0.26171924688519294 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        36,
+        60,
+        30
+      ],
+      "brot": 7,
+      "error_1": 0.1584948004087653,
+      "error_2": 0.6124854884344276,
+      "Lambda": 355.5738092382136,
+      "E_SOS": -22156.889027518868,
+      "E_gap": 16.615677518868324,
+      "lambda_eff": 107.42494476379541,
+      "gap_in_domain": true,
+      "T": 52368,
+      "Q": 415,
+      "angle_qubits": 79,
+      "angle_toffoli": 44680,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 2334636245.567032,
+      "ratio": 1.437311527511644,
+      "seconds": 2.2261362969948095,
+      "problems": [
+        "error_1 0.1584948004087653 Ha > 0.02 Ha",
+        "error_2 0.6124854884344276 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        36,
+        60,
+        30
+      ],
+      "brot": 8,
+      "error_1": 0.0739202769555764,
+      "error_2": 0.547025109830219,
+      "Lambda": 354.3632200785007,
+      "E_SOS": -22155.678438359155,
+      "E_gap": 15.405088359155343,
+      "lambda_eff": 103.3473593554032,
+      "gap_in_domain": true,
+      "T": 50780,
+      "Q": 694,
+      "angle_qubits": 87,
+      "angle_toffoli": 44680,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3642097362.198758,
+      "ratio": 0.9213371457687234,
+      "seconds": 2.039085286996851,
+      "problems": [
+        "error_1 0.0739202769555764 Ha > 0.02 Ha",
+        "error_2 0.547025109830219 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        36,
+        60,
+        30
+      ],
+      "brot": 9,
+      "error_1": 0.03705271783710628,
+      "error_2": 0.5271613195799775,
+      "Lambda": 353.68473276865916,
+      "E_SOS": -22154.999951049314,
+      "E_gap": 14.726601049314922,
+      "lambda_eff": 100.99641149550574,
+      "gap_in_domain": true,
+      "T": 51080,
+      "Q": 702,
+      "angle_qubits": 95,
+      "angle_toffoli": 44680,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3621545482.831684,
+      "ratio": 0.9265656345357449,
+      "seconds": 2.0962163570002303,
+      "problems": [
+        "error_1 0.03705271783710628 Ha > 0.02 Ha",
+        "error_2 0.5271613195799775 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        36,
+        60,
+        30
+      ],
+      "brot": 10,
+      "error_1": 0.01652099203102235,
+      "error_2": 0.5230880624407181,
+      "Lambda": 353.6496506430415,
+      "E_SOS": -22154.964868923696,
+      "E_gap": 14.691518923697004,
+      "lambda_eff": 100.87348681034482,
+      "gap_in_domain": true,
+      "T": 51380,
+      "Q": 710,
+      "angle_qubits": 103,
+      "angle_toffoli": 44680,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3679844624.1440167,
+      "ratio": 0.9118862155981815,
+      "seconds": 1.9934892259989283,
+      "problems": [
+        "error_2 0.5230880624407181 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        36,
+        60,
+        30
+      ],
+      "brot": 11,
+      "error_1": 0.009134803932163291,
+      "error_2": 0.5219839188724843,
+      "Lambda": 353.5843184363698,
+      "E_SOS": -22154.899536717025,
+      "E_gap": 14.62618671702512,
+      "lambda_eff": 100.64420095287926,
+      "gap_in_domain": true,
+      "T": 51680,
+      "Q": 718,
+      "angle_qubits": 111,
+      "angle_toffoli": 44680,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3734527875.1657662,
+      "ratio": 0.8985338175179783,
+      "seconds": 2.237762519005628,
+      "problems": [
+        "error_2 0.5219839188724843 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        36,
+        60,
+        30
+      ],
+      "brot": 12,
+      "error_1": 0.004170765527870418,
+      "error_2": 0.5214404962459904,
+      "Lambda": 353.57812584372226,
+      "E_SOS": -22154.893344124375,
+      "E_gap": 14.619994124375808,
+      "lambda_eff": 100.62244290658658,
+      "gap_in_domain": true,
+      "T": 51980,
+      "Q": 726,
+      "angle_qubits": 119,
+      "angle_toffoli": 44680,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3797237426.738453,
+      "ratio": 0.8836949632570679,
+      "seconds": 2.046438550998573,
+      "problems": [
+        "error_2 0.5214404962459904 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        32,
+        60,
+        30
+      ],
+      "brot": 7,
+      "error_1": 0.19140223119595207,
+      "error_2": 0.7295622356068088,
+      "Lambda": 367.66755097945315,
+      "E_SOS": -22162.951344088477,
+      "E_gap": 22.677994088477135,
+      "lambda_eff": 127.12841413073949,
+      "gap_in_domain": true,
+      "T": 47039,
+      "Q": 413,
+      "angle_qubits": 77,
+      "angle_toffoli": 39880,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 2469737304.058188,
+      "ratio": 1.3586868460812385,
+      "seconds": 1.751726875998429,
+      "problems": [
+        "error_1 0.19140223119595207 Ha > 0.02 Ha",
+        "error_2 0.7295622356068088 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        32,
+        60,
+        30
+      ],
+      "brot": 8,
+      "error_1": 0.08941161369920539,
+      "error_2": 0.6770685681188152,
+      "Lambda": 366.5956099674884,
+      "E_SOS": -22161.879403076513,
+      "E_gap": 21.60605307651349,
+      "lambda_eff": 123.9941405212507,
+      "gap_in_domain": true,
+      "T": 45691,
+      "Q": 692,
+      "angle_qubits": 85,
+      "angle_toffoli": 39880,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3920468061.993074,
+      "ratio": 0.8559181034608638,
+      "seconds": 1.620360373002768,
+      "problems": [
+        "error_1 0.08941161369920539 Ha > 0.02 Ha",
+        "error_2 0.6770685681188152 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        32,
+        60,
+        30
+      ],
+      "brot": 9,
+      "error_1": 0.044435982411998726,
+      "error_2": 0.6603477276538787,
+      "Lambda": 366.0215423468881,
+      "E_SOS": -22161.305335455912,
+      "E_gap": 21.031985455912945,
+      "lambda_eff": 122.28644691119052,
+      "gap_in_domain": true,
+      "T": 45991,
+      "Q": 700,
+      "angle_qubits": 93,
+      "angle_toffoli": 39880,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3936853185.924794,
+      "ratio": 0.8523557851476614,
+      "seconds": 1.6817270210012794,
+      "problems": [
+        "error_1 0.044435982411998726 Ha > 0.02 Ha",
+        "error_2 0.6603477276538787 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        32,
+        60,
+        30
+      ],
+      "brot": 10,
+      "error_1": 0.02191900249936426,
+      "error_2": 0.6569242772472592,
+      "Lambda": 365.870194499071,
+      "E_SOS": -22161.153987608097,
+      "E_gap": 20.88063760809746,
+      "lambda_eff": 121.83269207793847,
+      "gap_in_domain": true,
+      "T": 46291,
+      "Q": 708,
+      "angle_qubits": 101,
+      "angle_toffoli": 39880,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3992948061.477734,
+      "ratio": 0.8403814767022388,
+      "seconds": 1.8720346769987373,
+      "problems": [
+        "error_1 0.02191900249936426 Ha > 0.02 Ha",
+        "error_2 0.6569242772472592 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        32,
+        60,
+        30
+      ],
+      "brot": 11,
+      "error_1": 0.011078199782292273,
+      "error_2": 0.6556542834208118,
+      "Lambda": 365.8463051999558,
+      "E_SOS": -22161.13009830898,
+      "E_gap": 20.85674830897915,
+      "lambda_eff": 121.76093242344521,
+      "gap_in_domain": true,
+      "T": 46591,
+      "Q": 716,
+      "angle_qubits": 109,
+      "angle_toffoli": 39880,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 4061841939.419167,
+      "ratio": 0.8261275643778109,
+      "seconds": 1.741875195002649,
+      "problems": [
+        "error_2 0.6556542834208118 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        32,
+        60,
+        30
+      ],
+      "brot": 12,
+      "error_1": 0.00526549919136567,
+      "error_2": 0.6555397612021044,
+      "Lambda": 365.8512016086464,
+      "E_SOS": -22161.13499471767,
+      "E_gap": 20.86164471767188,
+      "lambda_eff": 121.77564351979213,
+      "gap_in_domain": true,
+      "T": 46891,
+      "Q": 724,
+      "angle_qubits": 117,
+      "angle_toffoli": 39880,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 4134171551.0074787,
+      "ratio": 0.8116740069681568,
+      "seconds": 1.686181242002931,
+      "problems": [
+        "error_2 0.6555397612021044 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        32,
+        32,
+        30
+      ],
+      "brot": 7,
+      "error_1": 0.5912123670893924,
+      "error_2": 2.5214029129316087,
+      "Lambda": 406.9795876746848,
+      "E_SOS": -22271.43919207135,
+      "E_gap": 131.1658420713502,
+      "lambda_eff": 299.26436894511096,
+      "gap_in_domain": true,
+      "T": 27326,
+      "Q": 652,
+      "angle_qubits": 77,
+      "angle_toffoli": 21960,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 5331859191.0577545,
+      "ratio": 0.6293488758907573,
+      "seconds": 1.6732700549982837,
+      "problems": [
+        "error_1 0.5912123670893924 Ha > 0.02 Ha",
+        "error_2 2.5214029129316087 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        32,
+        32,
+        30
+      ],
+      "brot": 8,
+      "error_1": 0.30581824184882556,
+      "error_2": 2.505650735105114,
+      "Lambda": 406.71011142490045,
+      "E_SOS": -22271.169715821565,
+      "E_gap": 130.89636582156527,
+      "lambda_eff": 298.89779602986977,
+      "gap_in_domain": true,
+      "T": 27626,
+      "Q": 660,
+      "angle_qubits": 85,
+      "angle_toffoli": 21960,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 5449851338.65998,
+      "ratio": 0.6157231417481347,
+      "seconds": 1.4064154820007388,
+      "problems": [
+        "error_1 0.30581824184882556 Ha > 0.02 Ha",
+        "error_2 2.505650735105114 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        32,
+        32,
+        30
+      ],
+      "brot": 9,
+      "error_1": 0.14926482306244943,
+      "error_2": 2.503479969670453,
+      "Lambda": 406.4198797395388,
+      "E_SOS": -22270.879484136203,
+      "E_gap": 130.60613413620376,
+      "lambda_eff": 298.502757749003,
+      "gap_in_domain": true,
+      "T": 27926,
+      "Q": 668,
+      "angle_qubits": 93,
+      "angle_toffoli": 21960,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 5568439992.616303,
+      "ratio": 0.6026103527647765,
+      "seconds": 1.3767411380031263,
+      "problems": [
+        "error_1 0.14926482306244943 Ha > 0.02 Ha",
+        "error_2 2.503479969670453 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        32,
+        32,
+        30
+      ],
+      "brot": 10,
+      "error_1": 0.07223731719181872,
+      "error_2": 2.5022422298804696,
+      "Lambda": 406.4761530082827,
+      "E_SOS": -22270.935757404946,
+      "E_gap": 130.66240740494686,
+      "lambda_eff": 298.5793708558433,
+      "gap_in_domain": true,
+      "T": 28226,
+      "Q": 676,
+      "angle_qubits": 101,
+      "angle_toffoli": 21960,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 5697126093.521275,
+      "ratio": 0.5889986518142825,
+      "seconds": 1.4522847150001326,
+      "problems": [
+        "error_1 0.07223731719181872 Ha > 0.02 Ha",
+        "error_2 2.5022422298804696 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        32,
+        32,
+        30
+      ],
+      "brot": 11,
+      "error_1": 0.03740153189540429,
+      "error_2": 2.5011861815767196,
+      "Lambda": 406.44191600251554,
+      "E_SOS": -22270.90152039918,
+      "E_gap": 130.62817039918082,
+      "lambda_eff": 298.5327600449486,
+      "gap_in_domain": true,
+      "T": 28526,
+      "Q": 684,
+      "angle_qubits": 109,
+      "angle_toffoli": 21960,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 5824906730.920868,
+      "ratio": 0.5760778229267044,
+      "seconds": 1.6088884539931314,
+      "problems": [
+        "error_1 0.03740153189540429 Ha > 0.02 Ha",
+        "error_2 2.5011861815767196 Ha > 0.02 Ha"
+      ]
+    },
+    {
+      "shape": [
+        32,
+        32,
+        30
+      ],
+      "brot": 12,
+      "error_1": 0.01846939878024642,
+      "error_2": 2.5016045860343863,
+      "Lambda": 406.4508355934419,
+      "E_SOS": -22270.910439990108,
+      "E_gap": 130.6370899901085,
+      "lambda_eff": 298.5449036424283,
+      "gap_in_domain": true,
+      "T": 28826,
+      "Q": 692,
+      "angle_qubits": 117,
+      "angle_toffoli": 21960,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 5955251931.538474,
+      "ratio": 0.5634689559528202,
+      "seconds": 1.4491339560045162,
+      "problems": [
+        "error_2 2.5016045860343863 Ha > 0.02 Ha"
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "structure": null,
+      "offsets": null,
+      "refit_seconds": 0.007964429001731332,
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0",
+      "file": "factors-00.npz"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 26,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.020014348322691663
+      },
+      "offsets": {
+        "iterations": 50,
+        "converged": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "objective": 51.81671153456954
+      },
+      "refit_seconds": 40.51324634000048,
+      "sha256": "cc7dd377b1c98c1267caac98e64835b516016e4be97392cff791f96fc219a297",
+      "file": "factors-01.npz"
+    },
+    {
+      "shape": [
+        55,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 23,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.08458718372811518
+      },
+      "offsets": {
+        "iterations": 100,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 60.18616192063118
+      },
+      "refit_seconds": 35.93351763499959,
+      "sha256": "ef47c52951c4154e46af3b645211b70c77272cb836c348b311ce801868cab876",
+      "file": "factors-02.npz"
+    },
+    {
+      "shape": [
+        48,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 23,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.1959184865238289
+      },
+      "offsets": {
+        "iterations": 100,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 72.94809091818573
+      },
+      "refit_seconds": 27.589844175003236,
+      "sha256": "b1d431e3fe7a4a519b1d1094675d751c02848660b94db72ecef3581cb06e683f",
+      "file": "factors-03.npz"
+    },
+    {
+      "shape": [
+        42,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 24,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.2636676283368889
+      },
+      "offsets": {
+        "iterations": 100,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 79.21862675626446
+      },
+      "refit_seconds": 25.04615840099723,
+      "sha256": "6658d6b5b8ddc6dec47553f92eb406b9099a4949966d4e536fa8b6953e4b51ad",
+      "file": "factors-04.npz"
+    },
+    {
+      "shape": [
+        36,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 22,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.5238392047803622
+      },
+      "offsets": {
+        "iterations": 100,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 100.63348165938548
+      },
+      "refit_seconds": 22.688748905995453,
+      "sha256": "c518c7cf845f67599560290b64bea987692ed2926a3ee42c751501d53c5ee5f0",
+      "file": "factors-05.npz"
+    },
+    {
+      "shape": [
+        32,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 22,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.6581105660651188
+      },
+      "offsets": {
+        "iterations": 100,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 121.76546500214815
+      },
+      "refit_seconds": 21.25936462899699,
+      "sha256": "417e53cd7b216280762d2557c3db5d8e7cc2dae09cb2d353d1535e9133b456ae",
+      "file": "factors-06.npz"
+    },
+    {
+      "shape": [
+        32,
+        32,
+        30
+      ],
+      "structure": {
+        "iterations": 20,
+        "evaluations": 22,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 2.503695393872568
+      },
+      "offsets": {
+        "iterations": 100,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 298.54098429773677
+      },
+      "refit_seconds": 14.820716931004426,
+      "sha256": "40b1c3000e30636a35cb57231e7264d8f7eba9af584490ce23f63df4a784ac92",
+      "file": "factors-07.npz"
+    }
+  ],
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "python": "3.13.13 (main, Apr 14 2026, 14:28:56) [Clang 22.1.3 ]",
+  "threads": 1,
+  "initialization": "pinned Google baseline; deterministic SVD and norm pruning",
+  "settings": {
+    "starter": "/home/cld-main/work/vqcc-data/starter-kit",
+    "competition": "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation",
+    "out": "/home/cld-main/work/vqcc-data/pra198-curve-02",
+    "shapes": [
+      [
+        65,
+        60,
+        30
+      ],
+      [
+        55,
+        60,
+        30
+      ],
+      [
+        48,
+        60,
+        30
+      ],
+      [
+        42,
+        60,
+        30
+      ],
+      [
+        36,
+        60,
+        30
+      ],
+      [
+        32,
+        60,
+        30
+      ],
+      [
+        32,
+        32,
+        30
+      ]
+    ],
+    "bits": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "steps": 20,
+    "offset_steps": 100,
+    "penalty": 2e-05,
+    "dry_run": false
+  },
+  "input_pins": {
+    "dataset": "sohier/verifiable-circuit-compilation-starter-kit",
+    "version": 4,
+    "license": "Apache-2.0",
+    "files": [
+      {
+        "path": "FeMoCo76o113e.fcidump",
+        "bytes": 128128348,
+        "sha256": "e5a48af746fd075026dec9e8f5df2d363802a121e8c53af9a0b984bde695e1bd",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/FeMoCo76o113e.fcidump?datasetVersionNumber=4"
+      },
+      {
+        "path": "FeMoCo76o113e.fixed_shifts.npz",
+        "bytes": 61028,
+        "sha256": "7b7facf63fe35a9d9d3d00787ffdb700c863fa845fe4724d7f7c54778151cd87",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/FeMoCo76o113e.fixed_shifts.npz?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/__init__.py",
+        "bytes": 292,
+        "sha256": "d78da488e6ca5b913c5ac9f2de605fb920da3d4807b08f2be6a4ddc9c35e3228",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2F__init__.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/build_angle_k.py",
+        "bytes": 4638,
+        "sha256": "82f1cf73adc466ee49894b310e37020e79f36279031f7e2c2ff42ebc053e81ba",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fbuild_angle_k.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/df_thc_sga.py",
+        "bytes": 8917,
+        "sha256": "1e22e79ecf9db19042f042aac5844d404987439493f0152b546e4df1f5432fcc",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fdf_thc_sga.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/dfthc_u_to_tei.py",
+        "bytes": 19784,
+        "sha256": "1e2cd8af4e1ef49c21215dbf5b3f1697a3df4eb76e3987b25445472ce81c0059",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fdfthc_u_to_tei.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/load_integrals.py",
+        "bytes": 8501,
+        "sha256": "14a988da0bb7b55fcc9fda8cae79816bf417b2667319d281d371a6053c1ff667",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fload_integrals.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/spin_free_block_encoding_costs.py",
+        "bytes": 12885,
+        "sha256": "20c3892baa554b379182c72e6024bb15fbf8c16596156bd45519dbdf2af8f6bb",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fspin_free_block_encoding_costs.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/train_df_thc_sga.py",
+        "bytes": 12516,
+        "sha256": "9f3aea602f270d7d596504f0af3ec1f5af44247c2dcf5833795dc10bb55d28e5",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Ftrain_df_thc_sga.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/verify_angle_k.py",
+        "bytes": 19590,
+        "sha256": "00555d552142cd1791c2526de93ff23ea6cc980260f195893f3daa6e4f516b47",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fverify_angle_k.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/verify_dfthc.py",
+        "bytes": 9379,
+        "sha256": "84ded6ae4a63c5f90346c3f3628b420fd496bdb846ef4591d4125926abec6a47",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fverify_dfthc.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/pyproject.toml",
+        "bytes": 1415,
+        "sha256": "4442ba8a2e538d6414cc5ced3049e7d5a70314013d4eb3ba4d4893f5f4f1b401",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fpyproject.toml?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/FeMoco76_65_60_60.npz",
+        "bytes": 2150130,
+        "sha256": "b13120cb62bf4cfcf41a3dc0c78cd6e58e17dacc7d0691834cee2cc6e4bc642b",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2FFeMoco76_65_60_60.npz?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/check_factorization.py",
+        "bytes": 4256,
+        "sha256": "5b897b14bad6e874878d81323ee774afa9508ecce8cd6d870cfeb5d71c9d3f76",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Fcheck_factorization.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/solution_io.py",
+        "bytes": 4432,
+        "sha256": "682be529a8418696100fc51fe773a32f8499a729c6ec7e78f69344b996fcfe84",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Fsolution_io.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/train_df_thc_qaggle.py",
+        "bytes": 17551,
+        "sha256": "e51b7559918ac1734d46514fcae7f0f0d789a6ef113bcaebd1b70a925e3918bc",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Ftrain_df_thc_qaggle.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task2_angles/encode.py",
+        "bytes": 8131,
+        "sha256": "cd8eb31056619b2c85ef9e7a1a3743eb2ef621035cda7dd23e6b47208e683745",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask2_angles%2Fencode.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task2_angles/trees.py",
+        "bytes": 4196,
+        "sha256": "47429502abc75e1a4360a2591f5df6b8ba56f79c0909d90739c38225ce25ea0c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask2_angles%2Ftrees.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task3_circuits/angle_k_kickmix.py",
+        "bytes": 9087,
+        "sha256": "ec90f72a82d3252bdc9bfefaa987ff3c69782aaf1432c7a2358b24d528a1afea",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask3_circuits%2Fangle_k_kickmix.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task3_circuits/build_circuits.py",
+        "bytes": 11146,
+        "sha256": "5ef5f17b0b1c25b56dfea568c895b0b16113a6302c280a7ecc64ae07869d760c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask3_circuits%2Fbuild_circuits.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/circuits.py",
+        "bytes": 24418,
+        "sha256": "fc027b52fdcebe14404f403a089122485d097ed65d03e6d989623d620b1ab68c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fcircuits.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/costs.py",
+        "bytes": 8334,
+        "sha256": "aea5bf44850cd315bfba205498d6ec83231faebdb6a48fe6387cccaf24171e6a",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fcosts.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/dfthc_math.py",
+        "bytes": 17597,
+        "sha256": "bb94c70558557091d8492a9842aef4f94c2130533d3cf5ce460d89bb3e82246d",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fdfthc_math.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/reference.py",
+        "bytes": 15200,
+        "sha256": "e5b75b6731a252224c86fd8878f50553bc56138b837b82e04b4bf946cdaa83ef",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Freference.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/score.py",
+        "bytes": 28282,
+        "sha256": "79c97dbd771c072a92a517d1692dbdd53d80c16bd4772c94a0cc45d7dac167ca",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fscore.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/verify.py",
+        "bytes": 10901,
+        "sha256": "8c35f1a3feaf99c798a9fc8720a54e65a0734d0071af991b3e6ee0c0192ae70a",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fverify.py?datasetVersionNumber=4"
+      }
+    ],
+    "competition_files": [
+      {
+        "path": "kickmix/kickmix.so",
+        "sha256": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e"
+      },
+      {
+        "path": "verifiers/dfthcsos/__init__.py",
+        "sha256": "81915e324cc0cade67f52a54b7a51991fd96abaea94d1f8a4d423dae20e57348"
+      },
+      {
+        "path": "verifiers/dfthcsos/example_submission/angle_k_reference_circuit.py",
+        "sha256": "8daccdca69f2d718b0176cd9281803df84a988ea5ac6c167fbb02e461ac2b371"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/__init__.py",
+        "sha256": "be90e0d503d5c20dcac0102af638b9a4ccad0341daa5baa5d49216a259e4516f"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/circuits.py",
+        "sha256": "fc027b52fdcebe14404f403a089122485d097ed65d03e6d989623d620b1ab68c"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/costs_prepare.py",
+        "sha256": "7f1e190c42fc5325f3e6689fbbef51f95b0cb12f1c828cda92b6c088e72206da"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/dfthc_math.py",
+        "sha256": "ae82898d47a7a86b96378fb906e0f8a9f46003065cf19c7c09952a123b5b5af8"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/reference.py",
+        "sha256": "a2d5a63191d655729e29f0fde1e85fe4630bf896a91a63bb894d8d7daf71ed39"
+      },
+      {
+        "path": "verifiers/dfthcsos/verify.py",
+        "sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+      },
+      {
+        "path": "verifiers/dfthcsos/FeMoCo76o113e.fcidump",
+        "sha256": "e5a48af746fd075026dec9e8f5df2d363802a121e8c53af9a0b984bde695e1bd"
+      },
+      {
+        "path": "verifiers/dfthcsos/FeMoCo76o113e.fixed_shifts.npz",
+        "sha256": "7b7facf63fe35a9d9d3d00787ffdb700c863fa845fe4724d7f7c54778151cd87"
+      }
+    ]
+  },
+  "total_seconds": 299.8596945210011,
+  "chosen": {
+    "shape": [
+      65,
+      60,
+      60
+    ],
+    "brot": 12,
+    "ratio": 0.9999999999953697,
+    "sha256": "0c445e647cb7b9f8268a9de955c574fad2d1dfd9b516e84b02e9d104f127fab2",
+    "g2": {
+      "status": "PASS",
+      "error_1": 0.0031851950317986553,
+      "error_2": 0.018639570630974208,
+      "Lambda": 308.45593973309445,
+      "E_gap": 3.965477244291833,
+      "lambda_eff": 49.30136925057439,
+      "heuristic_toffoli": 13757,
+      "heuristic_qubits": 634,
+      "brot": 12,
+      "parity": false
+    }
+  },
+  "floor_met": false
+}

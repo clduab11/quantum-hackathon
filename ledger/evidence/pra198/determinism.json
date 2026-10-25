@@ -1,0 +1,29 @@
+{
+  "same_environment_only": true,
+  "refit_sha256": "cc7dd377b1c98c1267caac98e64835b516016e4be97392cff791f96fc219a297",
+  "chosen_sha256": "0c445e647cb7b9f8268a9de955c574fad2d1dfd9b516e84b02e9d104f127fab2",
+  "runs": [
+    {
+      "path": "/home/cld-main/work/vqcc-data/pra198-curve-02",
+      "seconds": 299.8596945210011,
+      "refit_sha256": "cc7dd377b1c98c1267caac98e64835b516016e4be97392cff791f96fc219a297",
+      "chosen_sha256": "0c445e647cb7b9f8268a9de955c574fad2d1dfd9b516e84b02e9d104f127fab2"
+    },
+    {
+      "path": "/home/cld-main/work/vqcc-data/pra198-determinism-01",
+      "seconds": 65.10656405700138,
+      "refit_sha256": "cc7dd377b1c98c1267caac98e64835b516016e4be97392cff791f96fc219a297",
+      "chosen_sha256": "0c445e647cb7b9f8268a9de955c574fad2d1dfd9b516e84b02e9d104f127fab2"
+    },
+    {
+      "path": "/home/cld-main/work/vqcc-data/pra198-final-smoke",
+      "seconds": 66.08220879700093,
+      "refit_sha256": "cc7dd377b1c98c1267caac98e64835b516016e4be97392cff791f96fc219a297",
+      "chosen_sha256": "0c445e647cb7b9f8268a9de955c574fad2d1dfd9b516e84b02e9d104f127fab2"
+    }
+  ],
+  "numerical_core_hashes": {
+    "factor_math.py": "01b4a28e03ac44610356952e15d81a398ee837c66315452042ecc3aff1a44eb6",
+    "factor_offsets.py": "9742882769d86b88ec1510186864dd2ceeca212f0e76f70215c2be85ee9888e3"
+  }
+}
