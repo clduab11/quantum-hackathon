@@ -1,0 +1,10 @@
+{
+  "candidate_id": "pra228-dqi-invsqrt-572",
+  "generator_commit": "562663a62327ce4d81fdea7d5949ff39ce7667c3",
+  "geometric_mean": 5.721389477411993,
+  "manifest_path": "ledger/manifests/candidates/pra228-dqi-invsqrt-572.json",
+  "queued_at_utc": "2026-10-25T07:52:53.545021+00:00",
+  "zip_bytes": 91399451,
+  "zip_path": "/home/cld-main/work/vqcc-data/queue/pra228-dqi-invsqrt-572.zip",
+  "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+}

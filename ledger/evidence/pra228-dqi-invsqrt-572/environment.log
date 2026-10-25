@@ -1,0 +1,12 @@
+Base: 562663a62327ce4d81fdea7d5949ff39ce7667c3
+Branch: op-vqcc/pra228-572-bundle
+$ uv sync
+Using CPython 3.13.13
+Creating virtual environment at: .venv
+Resolved 50 packages in 1ms
+Installed 12 packages in 50ms
+Exit 0
+$ uv run python scripts/install_kickmix.py /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation
+kickmix 0.1 /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation/kickmix/kickmix.so
+Created: /home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra228-572-bundle/.venv/lib/python3.13/site-packages/vqcc_local.pth
+Exit 0

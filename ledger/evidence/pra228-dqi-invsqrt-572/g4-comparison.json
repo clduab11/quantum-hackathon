@@ -1,0 +1,20 @@
+{
+  "candidate": "pra228-dqi-invsqrt-572",
+  "geometric_mean": 5.721389477411993,
+  "parent": "submission-001",
+  "parent_kind": "submission",
+  "parent_geometric_mean": 1.0,
+  "improves_parent": true,
+  "archive_best": [
+    "pra197-dqi-bm-forney",
+    5.721389477411995
+  ],
+  "geometric_mean_delta_from_archive": -1.7763568394002505e-15,
+  "dfthcsos_ratio": 0.9999999999999997,
+  "comparison_tolerance_relative": 1e-14,
+  "same_zip_as_archive": true,
+  "all_task_hashes_equal_to_archive": true,
+  "real_g4_status": "FAIL",
+  "real_g4_reason": "parent submission-001 has no measured geometric mean in the ledger",
+  "scope": "Independent comparison only; not a G4 PASS. Existing G4 looks for parent only among candidates and requires strict improvement over the historical archive; current full-shot dfthcsos arithmetic differs at the final floating-point bits. No gate code or archive record changed."
+}

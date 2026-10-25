@@ -1,0 +1,35 @@
+[
+  {
+    "task": "invsqrt",
+    "argv": [
+      "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra228-572-bundle/.venv/bin/python3",
+      "tasks/invsqrt/generate.py",
+      "--out",
+      "/home/cld-main/work/vqcc-data/pra228-572-build/generated"
+    ],
+    "exit_code": 0,
+    "seconds": 58.87641930580139
+  },
+  {
+    "task": "dqi",
+    "argv": [
+      "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra228-572-bundle/.venv/bin/python3",
+      "tasks/dqi/generate.py",
+      "--out",
+      "/home/cld-main/work/vqcc-data/pra228-572-build/generated"
+    ],
+    "exit_code": 0,
+    "seconds": 147.9498233795166
+  },
+  {
+    "task": "dfthcsos",
+    "argv": [
+      "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra228-572-bundle/.venv/bin/python3",
+      "tasks/dfthcsos/generate.py",
+      "--out",
+      "/home/cld-main/work/vqcc-data/pra228-572-build/generated"
+    ],
+    "exit_code": 0,
+    "seconds": 1.8920369148254395
+  }
+]
