@@ -1,0 +1,208 @@
+{
+  "original": "/home/cld-main/work/vqcc-data/pra235-batch-public-01/optimizer-adam",
+  "repeat": "/home/cld-main/work/vqcc-data/pra235-batch-repeat-adam-01/repeat-adam",
+  "comparisons": [
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 12,
+      "kind": "factor",
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 12,
+      "kind": "encoded",
+      "sha256": "0c445e647cb7b9f8268a9de955c574fad2d1dfd9b516e84b02e9d104f127fab2"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 11,
+      "kind": "factor",
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 11,
+      "kind": "encoded",
+      "sha256": "885bf7bfc34f62abc1fffd10290dab7590c64d396dcb042c334cf3ee51f9d2d5"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 10,
+      "kind": "factor",
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 10,
+      "kind": "encoded",
+      "sha256": "aac27e0c13ee38f7d34436e793f6654dc54dfa645d130627039beee2900f3869"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 9,
+      "kind": "factor",
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 9,
+      "kind": "encoded",
+      "sha256": "4bb3168a3adc4933f365d20ed8a4e008c316d0e284334547f26832cf9ea0030e"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 8,
+      "kind": "factor",
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 8,
+      "kind": "encoded",
+      "sha256": "e189630260f34eed73e74da0ea1a6604d2fa43a779de00662554f8a320bb933a"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 12,
+      "kind": "factor",
+      "sha256": "33ff12e091444a9889d3c7ae9e3cf588a6cbcb82efc2321937fec37f2114101c"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 12,
+      "kind": "encoded",
+      "sha256": "ec864ac608d42a5e0a3c816aff353ccf8383e6472e3a4ddf88f35f45ce24c371"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 11,
+      "kind": "factor",
+      "sha256": "016ce96428333adaf75efe9f1f4a364119d15128589181d920372afae71f6616"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 11,
+      "kind": "encoded",
+      "sha256": "470d6e839d98ae0eeaa714258546e54bbf9cec4facf7d17dc6303a81edb429d3"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 10,
+      "kind": "factor",
+      "sha256": "016ce96428333adaf75efe9f1f4a364119d15128589181d920372afae71f6616"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 10,
+      "kind": "encoded",
+      "sha256": "d8a21b8e7bfec8132101a9cfa90afdf265e15af81897a42111e564deec11ce5d"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 9,
+      "kind": "factor",
+      "sha256": "016ce96428333adaf75efe9f1f4a364119d15128589181d920372afae71f6616"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 9,
+      "kind": "encoded",
+      "sha256": "88decac88685c4e07942f1544ad6dee59ef4e96cb8e843a1a96d79802890b111"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 8,
+      "kind": "factor",
+      "sha256": "016ce96428333adaf75efe9f1f4a364119d15128589181d920372afae71f6616"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 8,
+      "kind": "encoded",
+      "sha256": "5a6031c80f87d002164324e73557e4ffce8f936e1b5db5843d6255ab4f7e5c98"
+    }
+  ],
+  "all_match": true,
+  "total_seconds": 963.6275136320037
+}
