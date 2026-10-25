@@ -102,3 +102,15 @@ review. Existing method notices remain in `notices/30-dfthcsos.txt`. These new
 helpers are own NumPy/SciPy implementations extending the already attributed
 PRA-198 normalization, D(w), augmented-SVD and Google-encoder methods; no new
 public notebook or factor file was read.
+
+The full suite invokes circuit subprocesses that need the competition module on
+its import path. The reproducible check in this worktree is:
+
+```sh
+PYTHONPATH=/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation/kickmix uv run pytest -q
+uv run python -m ledger.registers check
+```
+
+The first plain `uv run pytest` had three subprocess import failures (260 passed,
+one skipped). With this explicit pinned module path: **263 passed, 1 skipped**.
+No repository dependency, gate or test was bypassed or changed for that rerun.
