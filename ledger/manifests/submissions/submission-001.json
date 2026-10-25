@@ -118,6 +118,78 @@
       "status": "PASS",
       "timestamp_utc": "2026-10-24T06:16:14.976733+00:00",
       "zip_sha256": "6cae8d5c437b772dec78adfd0d744e891aa3eb2612581e13903d3775e3a6d38d"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "2be017dad1867732e5fe749dc53edef0969c78e1",
+          "inputs": {
+            "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69": "sample_submission/dfthcsos/submission.npz"
+          },
+          "status": "FAIL: copied competition-package files, not generated (R10): dfthcsos/submission.npz (dfthcsos, copy of package sample_submission/dfthcsos/submission.npz)",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-211-p0-repair-3-per-day-cap-enforced-before-upload-npz-ignored-invsqrt-licence-evidence-and-submission-001-r/.venv/bin/python3",
+                "tasks/dfthcsos/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-211-6b0645de-32f-nCVI1B/ledger-rebuild-betok_np/out/dfthcsos"
+              ],
+              "copied": {
+                "dfthcsos/submission.npz": "sample_submission/dfthcsos/submission.npz"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-211-p0-repair-3-per-day-cap-enforced-before-upload-npz-ignored-invsqrt-licence-evidence-and-submission-001-r/.venv/bin/python3",
+                "tasks/dqi/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-211-6b0645de-32f-nCVI1B/ledger-rebuild-betok_np/out/dqi"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "invsqrt": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-211-p0-repair-3-per-day-cap-enforced-before-upload-npz-ignored-invsqrt-licence-evidence-and-submission-001-r/.venv/bin/python3",
+                "tasks/invsqrt/reference.py",
+                "--out",
+                "/tmp/paperclip-run-pra-211-6b0645de-32f-nCVI1B/ledger-rebuild-betok_np/out/invsqrt"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "copied competition-package files, not generated (R10): dfthcsos/submission.npz (dfthcsos, copy of package sample_submission/dfthcsos/submission.npz)",
+      "status": "FAIL",
+      "timestamp_utc": "2026-10-25T03:36:54.528877+00:00",
+      "zip_sha256": "6cae8d5c437b772dec78adfd0d744e891aa3eb2612581e13903d3775e3a6d38d"
     }
   ],
   "generator_commit": "2e53716d9a1af7b209befcddd5b587ec05fbd18c",
@@ -127,7 +199,7 @@
   "kickmix_build_id": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
   "kind": "submission",
   "manifest_id": "8b375a38-f74e-4d7d-94d9-4799a963abc1",
-  "notes": "",
+  "notes": "PRA-211 (D-PRA211-02): G5 re-run on 2026-10-25 from committed source at commit 2be017dad1867732e5fe749dc53edef0969c78e1 (branch op-vqcc/PRA-211-..., tree 5031352b298a9bba862d0512f8e92b5d620e59aa) with configs/gates/reference.yaml naming tasks/invsqrt/reference.py, tasks/dqi/generate.py and tasks/dfthcsos/generate.py; the rebuild commit is recorded in that G5 record's details.rebuild.commit. The 2026-10-24 G5 PASS at generator_commit 2e53716d9a1af7b209befcddd5b587ec05fbd18c used the retired copier ledger/examples/reference_generator.py and is kept above as history. generator_commit itself is unchanged: it is part of the frozen legacy index identity (PRA-210).",
   "operator": "0da39449-8391-4207-b508-56ca43ec725e",
   "parent_candidate_id": null,
   "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64",
