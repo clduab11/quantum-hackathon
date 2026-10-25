@@ -1,0 +1,18 @@
+{
+  "action": "withdrawn from the queue and from further uploads",
+  "candidate_id": "pra226-dqi-only",
+  "decision": "D-PRA226-03",
+  "mechanism": "Append G5 FAIL on the same zip. RunManifest.shipping_problems, enqueue, reserve_slot and submit use the latest gate record. Retain the queue pointer as historical evidence; it is not shipping authority.",
+  "prior_gates_sha256": "cdfa6ac4fa6aaf1606eea7fdc5851441442f95cef837ea3864cb6d27f1612c82",
+  "queue_pointer_sha256": "a45880a29be827373da04a7988fcbbb12ea9d673259a87ab624b9edef9c96c1d",
+  "reason": "D-PRA226-03 / PRA-231: withdrawn from the queue and from further uploads when this recovery is applied; Route A gate config/hooks and BM+Forney generator are removed. Recovery withdrawal record, not a new verifier result. Earlier PASS records and measured evidence remain historical. Uploaded as submission-002 (Kaggle 57620928) per John Wick; that submission record is never rewritten.",
+  "reviewed_base": "5e894bbd6368d90f259e8d62936e9d4082fc9eff",
+  "submission_history": {
+    "candidate": "submission-002",
+    "kaggle_id": "57620928",
+    "reported_uploaded_at_utc": "2026-10-25T07:10Z",
+    "scope": "Not present at reviewed base; never created or rewritten by this recovery.",
+    "source": "John Wick PRA-231 comment bfc852d6-95eb-4ed8-a9ab-689b635dd412; D-PRA202-07; PR #22"
+  },
+  "zip_sha256": "b367a976f70f84c3251cbf916780a38f2e3c0e289ab365937bc67e07896e4fed"
+}

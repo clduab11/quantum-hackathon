@@ -1,4 +1,4 @@
-"""Gate hooks for the DQI Berlekamp–Massey generator.
+"""Gate hooks for the rebuilt DQI reference generator.
 
 G2 may simulate a short shot prefix. That result is not a parity score:
 parity is the full 102,400-shot verifier log.
@@ -15,14 +15,16 @@ SALT = "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001"
 
 
 def g1_smoke(submission_dir) -> dict:
-    """Tiny-field algebra, then one reversible multiply on the simulator.
-
-    Does not read the submission and does not build the 4,095-point circuit.
-    """
+    """Build a tiny RS decoder. Does not read the submission."""
     del submission_dir
-    from tasks.dqi.algebra import smoke
+    from tasks.dqi.generate import build_reference_circuit
 
-    return smoke()
+    circuit = build_reference_circuit(7, 2, 3)
+    qubits = int(circuit.num_qubits)
+    toffoli = int(circuit.operation_statistics().num_toffoli_like)
+    if qubits < 1 or toffoli < 1:
+        return {"status": "FAIL: smoke decoder did not build", "qubits": qubits, "toffoli": toffoli}
+    return {"status": "PASS", "qubits": qubits, "toffoli": toffoli}
 
 
 def g2_proxy(submission_dir) -> dict:

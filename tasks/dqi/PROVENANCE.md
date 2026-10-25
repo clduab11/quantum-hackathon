@@ -1,3 +1,5 @@
+> PRA-231 recovery status: the BM+Forney implementation described below is removed from this recovered tree. This map is retained unchanged below as historical evidence for PR #18 and the candidate records. The source and its corrected PR #21 notices remain available at reviewed base `5e894bbd6368d90f259e8d62936e9d4082fc9eff`. Current `generate.py` is the restored pre-#18 Google reference decoder; `reference_circuit.py` is retained for `reference.yaml`. No historical measurement below is a claim about the recovered generator. See D-PRA231-01 and D-PRA226-03.
+
 # DQI decoder provenance
 
 This generator is a **port**. It is not an independent clean-room authorship.

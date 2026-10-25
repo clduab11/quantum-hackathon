@@ -178,6 +178,19 @@
       "status": "PASS",
       "timestamp_utc": "2026-10-25T06:33:41.082388+00:00",
       "zip_sha256": "b367a976f70f84c3251cbf916780a38f2e3c0e289ab365937bc67e07896e4fed"
+    },
+    {
+      "details": {
+        "decision": "D-PRA226-03",
+        "verification_run": false,
+        "withdrawal_evidence": "ledger/evidence/pra231-recovery/withdrawal.json"
+      },
+      "evidence_sha256": "217a34e622718a60fa2dd4e0faab4608cd36aae5674f83967e8e1fb4d6598e5a",
+      "gate": "G5",
+      "reason": "D-PRA226-03 / PRA-231: withdrawn from the queue and from further uploads when this recovery is applied; Route A gate config/hooks and BM+Forney generator are removed. Recovery withdrawal record, not a new verifier result. Earlier PASS records and measured evidence remain historical. Uploaded as submission-002 (Kaggle 57620928) per John Wick; that submission record is never rewritten.",
+      "status": "FAIL",
+      "timestamp_utc": "2026-10-25T07:37:06.465537+00:00",
+      "zip_sha256": "b367a976f70f84c3251cbf916780a38f2e3c0e289ab365937bc67e07896e4fed"
     }
   ],
   "generator_commit": "2443ead343b48f860374df589a76d579baf3efcd",
