@@ -21,7 +21,7 @@ docstring. `tasks/invsqrt/generate.py` is the entry point. It writes only
 # Alex Chilton: shared prefix and empty-target temporary-AND shifts,361472684.
 # Kirill Tymchishin: exact Rudra/Alex integration used as the95Q source baseline,361491814.
 # https://www.kaggle.com/code/kirilltym/quantum-circuits-qrom-tower42?scriptVersionId=361491814
-# Kozykorpesh: explicit8,19,27,1 coefficient model,datasetVersionId21136269.
+# Kozykorpesh: explicit 8,19,27,1 coefficient widths. The integers are our fit.
 # Our changes: generic exact coefficient widths/left shifts, normalized-input
 # borrowing on this derivative schedule, and the proven original-input rewrite.
 # The derivative split and its precision calibrations are credited upstream.
@@ -32,11 +32,14 @@ docstring. `tasks/invsqrt/generate.py` is the entry point. It writes only
 # https://www.kaggle.com/code/sumitchongder/notebook2f196e646b?scriptVersionId=361357149
 # anazemcev / Artem1410: early high-word phase, folded carry and normalized-input borrowing.
 # https://www.kaggle.com/code/anazemcev/quantum-circuits-signed-digit-memory?scriptVersionId=361422248
-# Kozykorpesh: exact reachable-domain calibration, Cfg(8,19,27,1), explicit table.
+# Kozykorpesh: exact reachable-domain calibration, Cfg(8,19,27,1).
 # https://www.kaggle.com/code/kozykappa/quantum-ai-compact-arithmetic-banked-qrom?scriptVersionId=361456406
-# Quantum Circuit Toolbox datasetVersionId 21136269, code/domain_tables.py and coefficients.json.
+# Coefficient integers are derived by tasks/invsqrt/fit_coefficients.py (provenance own).
 # Alex Chilton: shared prefix flags and temporary-AND moves into zero destinations.
 # https://www.kaggle.com/code/alexchilton/where-the-toffolis-go-anatomy-a-cheaper-invsqrt?scriptVersionId=361472684
+# Alex v8 has no notebook-wide licence. It is reference-only and is not loaded.
+# The Apache-2.0 parent of this file is anazemcev Signed-Digit Memory v3, which
+# retains the Alex notice. Sumit v1 versus v2 is not pinned here (see PRA-205).
 # This revision combines credited methods. No upstream gain is claimed as original.
 # Added own exact rewrite: the original input bound proves x[21]&x[20]==0.
 # Linearize the first conjunction in normalization and the final input phase fixup.
@@ -44,6 +47,8 @@ docstring. `tasks/invsqrt/generate.py` is the entry point. It writes only
 # Attribution: Sumit Chongder, Apache-2.0 as published.
 # https://www.kaggle.com/code/sumitchongder/notebook2f196e646b
 # Read-only source downloaded from latest version 2. Kirill's v9 cites v1.
+# The Sumit sentences above are the parent notebook's notice. This tree does
+# not load that notebook. v1 versus v2 stays unpinned until PRA-205.
 # This isolated lab regenerates the circuit from readable source; no binaries or
 # remote notebook outputs are inputs. Our added exact integer certificate and
 # reporting helpers and memory-schedule adaptations follow the original generator.
@@ -128,6 +133,7 @@ def calibrate_segment(cfg,e,a,c_radius=1,b_radius=3):
     d=valid_residuals(e,a);lo=1+a*2.**(DB-MB);mid=lo+((1<<DB)-1)/2**(MB+1)
     scale=2**((e-1)/2);co=fitc(lo,lo+2.**(DB-MB),mid,scale)
     f=scale/np.sqrt(lo+d*2.**-MB);target=f*2**cfg.fy;w=1/f
+    # Start is the rounded Lawson coefficient, not an imported table.
     K2c=round(co[2]*2**cfg.f2);K1c=round(-co[1]*2**cfg.f1);best=None;quant=1<<cfg.gy
     for K2 in range(max(0,K2c-c_radius),min((1<<cfg.w2)-1,K2c+c_radius)+1):
         for K1 in range(K1c-b_radius,K1c+b_radius+1):
@@ -146,6 +152,11 @@ def calibrate_segment(cfg,e,a,c_radius=1,b_radius=3):
     return best
 
 def regenerate_tables_exact(cfg,refine_threshold=.95):
+    """Fit every segment from the mathematical target.
+
+    The integer search is centred on the rounded Lawson coefficient.
+    No coefficient file is read.
+    """
     tabs={};ratios=[]
     for e in(0,1):
         for a in range(128):
@@ -157,11 +168,10 @@ def regenerate_tables_exact(cfg,refine_threshold=.95):
     return tabs,dict(worst_ratio=max(ratios),worst_key=[int(np.argmax(ratios))//128,int(np.argmax(ratios))%128],reachable_normalized_inputs=sum(len(valid_residuals(e,a)) for e in(0,1) for a in range(128)))
 
 def build_tables(cfg, search=2):
-    """Optional credited exact-domain coefficient regeneration.
+    """Regenerate coefficients with the exact-domain radius policy.
 
-    The radius policy is the published Kozykorpesh calibration, rather than
-    the old continuous-domain fitter. The default selected build uses the
-    explicitly published numeric table below, checked on every original x.
+    The radius policy is the published Kozykorpesh calibration. The selected
+    build calls this through `fit_coefficients.derived_tables`.
     """
     tables, report = regenerate_tables_exact(cfg)
     return tables, report['worst_ratio'] / 2**24
@@ -459,38 +469,37 @@ def config_record(cfg):
     return dict(f2=cfg.f2,f1=cfg.f1,fyr=cfg.fyr,gy=cfg.gy,drop2=sorted(cfg.drop2))
 
 
-_PUBLISHED_COEFFICIENT_ROWS = ((67, 184284, 189442910), (66, 182154, 188710050), (65, 180064, 187985630), (63, 178014, 187269499), (62, 176002, 186561483), (61, 174029, 185861435), (60, 172092, 185169210), (59, 170191, 184484662), (58, 168323, 183807650), (57, 166490, 183138038), (56, 164690, 182475692), (55, 162923, 181820481), (54, 161186, 181172277), (53, 159480, 180530959), (52, 157805, 179896401), (51, 156158, 179268491), (50, 154540, 178647108), (49, 152949, 178032144), (48, 151386, 177423486), (48, 149849, 176821020), (47, 148338, 176224658), (46, 146852, 175634293), (45, 145391, 175049819), (44, 143954, 174471143), (44, 142540, 173898157), (43, 141150, 173330791), (42, 139782, 172768943), (42, 138435, 172212512), (41, 137110, 171661436), (40, 135806, 171115614), (40, 134523, 170574956), (39, 133260, 170039402), (39, 132016, 169508850), (38, 130792, 168983243), (37, 129587, 168462497), (37, 128400, 167946525), (36, 127231, 167435275), (36, 126080, 166928657), (35, 124945, 166426619), (35, 123828, 165929073), (34, 122728, 165435976), (34, 121643, 164947236), (33, 120574, 164462814), (33, 119521, 163982624), (32, 118483, 163506626), (32, 117460, 163034740), (31, 116452, 162566926), (31, 115458, 162103106), (30, 114478, 161643244), (30, 113512, 161187263), (29, 112560, 160735129), (29, 111621, 160286771), (29, 110694, 159842141), (28, 109781, 159401203), (28, 108879, 158963885), (28, 107991, 158530145), (27, 107114, 158099945), (27, 106249, 157673220), (26, 105396, 157249942), (26, 104554, 156830046), (26, 103723, 156413494), (25, 102902, 156000254), (25, 102094, 155590262), (25, 101295, 155183486), (24, 100506, 154779894), (24, 99729, 154379426), (24, 98960, 153982048), (23, 98202, 153587734), (23, 97454, 153196425), (23, 96715, 152808089), (23, 95985, 152422695), (22, 95263, 152040209), (22, 94552, 151660581), (22, 93849, 151283781), (22, 93155, 150909775), (21, 92468, 150538541), (21, 91791, 150170021), (21, 91122, 149804197), (20, 90461, 149441041), (20, 89807, 149080504), (20, 89162, 148722566), (20, 88525, 148367192), (20, 87894, 148014354), (19, 87272, 147664030), (19, 86657, 147316174), (19, 86048, 146970764), (19, 85447, 146627772), (18, 84854, 146287182), (18, 84266, 145948942), (18, 83686, 145613040), (18, 83112, 145279444), (18, 82544, 144948132), (17, 81983, 144619086), (17, 81429, 144292261), (17, 80881, 143967641), (17, 80338, 143645203), (17, 79802, 143324921), (16, 79272, 143006783), (16, 78748, 142690743), (16, 78229, 142376789), (16, 77716, 142064901), (16, 77208, 141755051), (16, 76707, 141447221), (15, 76210, 141141395), (15, 75719, 140837537), (15, 75233, 140535633), (15, 74753, 140235661), (15, 74277, 139937603), (15, 73806, 139641437), (14, 73340, 139347152), (14, 72880, 139054712), (14, 72424, 138764106), (14, 71973, 138475312), (14, 71526, 138188314), (14, 71084, 137903096), (14, 70647, 137619634), (13, 70214, 137337922), (13, 69785, 137057924), (13, 69361, 136779634), (13, 68941, 136503030), (13, 68525, 136228098), (13, 68113, 135954820), (13, 67707, 135683180), (13, 67303, 135413164), (12, 66903, 135144762), (12, 66508, 134877938), (12, 66116, 134612690), (12, 65728, 134349002), (95, 260618, 267912731), (93, 257604, 266876315), (91, 254649, 265851837), (90, 251750, 264839056), (88, 248905, 263837774), (86, 246114, 262847765), (85, 243374, 261868805), (83, 240685, 260900715), (82, 238045, 259943272), (80, 235453, 258996304), (79, 232907, 258059600), (77, 230407, 257133000), (76, 227952, 256216297), (75, 225540, 255309329), (73, 223170, 254411937), (72, 220841, 253523932), (71, 218553, 252645160), (70, 216303, 251775464), (68, 214093, 250914700), (67, 211918, 250062693), (66, 209782, 249219307), (65, 207680, 248384399), (64, 205614, 247557825), (63, 203581, 246739448), (62, 201582, 245929136), (61, 199616, 245126756), (60, 197681, 244332176), (59, 195777, 243545275), (58, 193903, 242765929), (57, 192059, 241994017), (56, 190245, 241229423), (55, 188459, 240472030), (54, 186700, 239721726), (54, 184968, 238978392), (53, 183264, 238241942), (52, 181585, 237512258), (51, 179932, 236789237), (51, 178303, 236072769), (50, 176700, 235362777), (49, 175120, 234659153), (48, 173563, 233961801), (47, 172029, 233270629), (47, 170518, 232585538), (46, 169029, 231906458), (45, 167561, 231233292), (45, 166114, 230565944), (44, 164688, 229904352), (44, 163283, 229248411), (43, 161897, 228598063), (42, 160531, 227953219), (42, 159184, 227313793), (41, 157855, 226679725), (41, 156545, 226050925), (40, 155253, 225427340), (39, 153979, 224808886), (39, 152722, 224195486), (38, 151482, 223587090), (38, 150259, 222983610), (37, 149052, 222385000), (37, 147861, 221791176), (37, 146686, 221202083), (36, 145526, 220617669), (35, 144382, 220037861), (35, 143252, 219462595), (35, 142138, 218891815), (34, 141037, 218325477), (34, 139951, 217763501), (33, 138878, 217205852), (33, 137820, 216652456), (32, 136775, 216103278), (32, 135742, 215558246), (32, 134723, 215017318), (31, 133716, 214480450), (31, 132722, 213947574), (31, 131741, 213418652), (30, 130770, 212893641), (30, 129812, 212372477), (29, 128866, 211855133), (29, 127931, 211341539), (29, 127007, 210831665), (28, 126095, 210325473), (28, 125193, 209822899), (28, 124302, 209323909), (27, 123422, 208828473), (27, 122551, 208336530), (27, 121691, 207848046), (26, 120841, 207362994), (26, 120001, 206881310), (26, 119170, 206402968), (26, 118350, 205927930), (25, 117538, 205456166), (25, 116736, 204987618), (25, 115943, 204522262), (24, 115158, 204060072), (24, 114383, 203600991), (24, 113616, 203144995), (24, 112858, 202692049), (23, 112108, 202242127), (23, 111366, 201795179), (23, 110632, 201351183), (23, 109907, 200910105), (22, 109189, 200471921), (22, 108480, 200036585), (22, 107778, 199604069), (22, 107083, 199174349), (21, 106395, 198747401), (21, 105716, 198323176), (21, 105044, 197901658), (21, 104377, 197482814), (20, 103720, 197066632), (20, 103068, 196653058), (20, 102423, 196242078), (20, 101785, 195833664), (20, 101154, 195427788), (19, 100528, 195024434), (19, 99910, 194623560), (19, 99297, 194225148), (19, 98691, 193829172), (19, 98092, 193435607), (19, 97497, 193044431), (18, 96909, 192655627), (18, 96328, 192269155), (18, 95751, 191884999), (18, 95180, 191503135), (18, 94616, 191123543), (17, 94056, 190746209), (17, 93502, 190371093), (17, 92954, 189998179))
 
 
 def load_or_build_tables(path=None, regenerate=False):
-    """Read explicit public numeric coefficients; optional open regeneration.
+    """Derive the 256 coefficient triples. No dataset is read.
 
-    No circuit binary is reused. The 256-row table is Kozykorpesh's published
-    exact-domain calibration, pinned to datasetVersionId 21136269. Keeping
-    these ordinary integer triples explicit avoids numerical-environment
-    changes silently modifying the scored model. The notebook independently
-    certifies all 3,133,452 original inputs before building circuits.
+    `tasks/invsqrt/fit_coefficients.py` is the source. `regenerate=True` fits
+    a second time and requires the same integers. A digest check inside the
+    fitter stops a numeric-library change from silently changing the circuit.
     """
     import json
     from pathlib import Path
-    cfg = selected_cfg()
-    expected_rows = [list(row) for row in _PUBLISHED_COEFFICIENT_ROWS]
-    worst = 0.9628198889674466 / 2**24
+    from tasks.invsqrt.fit_coefficients import coefficient_rows, derived_tables
+    cfg, tables, worst, _report = derived_tables()
+    rows = coefficient_rows(tables)
     if regenerate:
-        tables, worst = build_tables(cfg)
-        regenerated = [list(tables[(e,a)]) for e in range(2) for a in range(128)]
-        assert regenerated == expected_rows, 'Regenerated numeric coefficients differ from the explicit public table.'
-    else:
-        tables = {(i//128, i%128):tuple(row) for i,row in enumerate(expected_rows)}
+        again, _again_report = regenerate_tables_exact(cfg)
+        assert coefficient_rows(again) == rows, 'A second fit disagreed with the cached coefficients.'
     path = Path(path) if path else None
     if path and path.exists():
         saved = json.loads(path.read_text())
         assert saved['config'] == config_record(cfg)
-        assert saved['rows'] == expected_rows, 'Cached coefficient table differs from the explicitly selected model.'
+        assert saved['rows'] == rows, 'Cached coefficient table differs from the derived model.'
+        assert saved.get('provenance') == 'own'
     elif path:
-        path.write_text(json.dumps({'source':'Kozykorpesh exact-domain calibration; Atlas datasetVersionId21136269',
-            'config':config_record(cfg), 'normalized_worst_relative_error':worst,
-            'regeneration_is_optional':True, 'rows':expected_rows},indent=2))
+        path.write_text(json.dumps({
+            'provenance': 'own',
+            'source': 'tasks/invsqrt/fit_coefficients.py',
+            'config': config_record(cfg),
+            'normalized_worst_relative_error': worst,
+            'rows': rows,
+        }, indent=2))
     return cfg, tables, worst
 
 
@@ -1004,22 +1013,25 @@ def selected_descriptor():
     return {
         'variant':'kozy_table_rudra_split_alex_schedule_borrow_and_domain',
         'source_author':'Sumit Chongder; Rudra Bhaskar; Alex Chilton; Kozykorpesh; Kirill Tymchishin; anazemcev / Artem1410',
-        'source_url':'https://www.kaggle.com/code/kirilltym/quantum-circuits-qrom-tower42?scriptVersionId=361491814',
-        'coefficient_source':'Kozykorpesh Quantum Circuit Toolbox datasetVersionId21136269, code/coefficients.json; same256-row model as our preceding91Q revision',
+        'source_url':'https://www.kaggle.com/code/anazemcev/quantum-circuits-signed-digit-memory',
+        'coefficient_source':'own Lawson minimax and exact-domain integer search in tasks/invsqrt/fit_coefficients.py',
         'configuration':{'f2':8,'f1':19,'fyr':27,'gy':1,'drop2':[5]},
-        'license_as_published':'Apache-2.0, subject to retained upstream notices',
+        'license_as_published':'Apache-2.0 for the anazemcev v3 parent. Alex v8 and Mizero v1 are reference-only and are not this licence.',
+        'circuit_authorship':'port',
+        'coefficient_provenance':'own',
         'baseline_definition':'Same fixed Kozykorpesh table with the Rudra derivative split and Alex normalization/shifts, before normalized-input carry borrowing:93Q',
         'baseline_canonical_sha256':'9e67c00941ff0623cfaf22f133fe7f70740f8b0a163a4ba64c6fdcd1c9446295',
         'borrowed_canonical_sha256':'f3f8457058aecdcf2650e00b411234899cb01933b79a1f6519c0bf28b49591bc',
-        'selected_canonical_sha256':'63f70e623dd995f4f87ca13254f46f991a5ae545d4c20c80e8510f5ff0a49bbd',
+        'parent_92q_sha256':'63f70e623dd995f4f87ca13254f46f991a5ae545d4c20c80e8510f5ff0a49bbd',
+        'selected_canonical_sha256':'75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd',
         'historical_kirill95_sha256':'497b161bc468654b5b2570cfaa006ce336dec9b8c89f82f048fcca4e6e8f7919',
         'previous_same_table91_sha256':'e3db0cc65b4771b640fbcd73d770d2015c232e9f54bd69479786fb5445ca76b9',
-        'measured_counts':{'qubits':92,'static_toffoli':1472,'rotations':45},
-        'expected_mean_toffoli':1461.5,
-        'estimated_cost':164645.89641938862,
+        'measured_counts':{'qubits':90,'static_toffoli':1448,'rotations':44},
+        'expected_mean_toffoli':1437.5,
+        'estimated_cost':157751.9485933627,
         'own_changes_in_this_revision':[
-            'Combine the published derivative-split representation with the previously selected explicit Kozykorpesh coefficient model',
-            'Parameterize curvature storage and exact left-shift rows without changing the integer pipeline',
+            'Fit the 256 coefficient triples with regenerate_tables_exact; the Kaggle dataset is not a source',
+            '90-qubit Gray curvature schedule, exact-domain affine rewrite, and one calibrated rotation drop',
             'Borrow normalized x[21] as clean adder carry, restoring it before inverse normalization',
             'Retain our exact original-input top-bit mutual-exclusion rewrite'],
         'upstream_contributions':'Rudra derivative split/top-carry/static-high phase checkpoint; Alex prefix flags/empty-target shift; Kirill exact integration; Sumit model; Kozykorpesh precision calibration',
