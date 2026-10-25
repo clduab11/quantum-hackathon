@@ -108,6 +108,30 @@ def decisions_text(root: Path = REPO_ROOT) -> str:
     return "\n".join(head + [r.line for r in decision_rows(root)]) + "\n"
 
 
+@dataclass
+class Decision:
+    date: str
+    id: str
+    decision: str
+    evidence: str
+    status: str
+
+
+def parse_decisions(text: str) -> list[Decision]:
+    """Rows of a register table (`decisions_text`), in order. Cells may contain escaped pipes
+    (`\\|`); the header and separator rows are skipped."""
+    rows = []
+    for line in text.splitlines():
+        line = line.strip()
+        if not (line.startswith("|") and line.endswith("|")):
+            continue
+        cells = [c.strip().replace("\\|", "|") for c in re.split(r"(?<!\\)\|", line[1:-1])]
+        if len(cells) != 5 or cells[0] == "date" or set(cells[0]) <= set("-: "):
+            continue
+        rows.append(Decision(*cells))
+    return rows
+
+
 def notice_files(root: Path = REPO_ROOT) -> list[Path]:
     return sorted((root / NOTICES_DIR).glob("*.txt"))
 
