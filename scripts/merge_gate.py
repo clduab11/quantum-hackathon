@@ -61,6 +61,7 @@ class Head:
     sha: str = ""
     title: str = ""
     draft: bool = False
+    base: str = ""      # the PR's base branch, when it is not the gate's base (stacked PR)
 
 
 @dataclass
@@ -92,15 +93,16 @@ def origin_repo(cwd: Path) -> str:
     return match.group(1)
 
 
-def open_pulls(repo: str, base: str) -> list[dict]:
-    """Open pull requests against `base`, from the GitHub REST API (all pages)."""
+def open_pulls(repo: str) -> list[dict]:
+    """Every open pull request, whatever its base, from the GitHub REST API (all pages). A PR
+    stacked on another PR's branch is still squashed onto the gate's base: that is where it
+    lands once its parent merges and it is retargeted, and it is the case that conflicts."""
     pulls, page = [], 1
     headers = {"Accept": "application/vnd.github+json", "User-Agent": "praxen-merge-gate"}
     if os.environ.get("GITHUB_TOKEN"):
         headers["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
     while True:
-        url = (f"https://api.github.com/repos/{repo}/pulls?state=open&base={base}"
-               f"&per_page=100&page={page}")
+        url = f"https://api.github.com/repos/{repo}/pulls?state=open&per_page=100&page={page}"
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=headers),
                                         timeout=30) as resp:
@@ -190,14 +192,16 @@ def gate(args: argparse.Namespace, work: Path) -> tuple[bool, str]:
     elif args.no_open_prs:
         pulls = []
     else:
-        pulls = open_pulls(repo_name, args.base)
+        pulls = open_pulls(repo_name)
     for pull in pulls:
         label = f"#{pull['number']}"
         if pull["number"] in args.exclude or (args.exclude_drafts and pull.get("draft")):
             excluded.append(f"{label}{' (draft)' if pull.get('draft') else ''}")
             continue
+        base_ref = (pull.get("base") or {}).get("ref", args.base)
         heads[label] = Head(label, f"refs/gate/pr/{pull['number']}", title=pull.get("title", ""),
-                            draft=bool(pull.get("draft")))
+                            draft=bool(pull.get("draft")),
+                            base="" if base_ref == args.base else base_ref)
     refspecs = [f"+refs/heads/{args.base}:refs/gate/base"] + [
         f"+refs/pull/{h.ref.rsplit('/', 1)[1]}/head:{h.ref}" for h in heads.values()]
     git(work, "fetch", "-q", "--no-tags", source, *refspecs)
@@ -239,7 +243,8 @@ def gate(args: argparse.Namespace, work: Path) -> tuple[bool, str]:
     out = [f"### Merge-order gate: {'PASS' if ok else 'FAIL'}", "",
            f"- repository `{repo_name}`, base `{args.base}` at `{base_sha}`",
            f"- heads ({len(labels)}): " + (", ".join(
-               f"{h.label} `{h.sha[:12]}`{' draft' if h.draft else ''}" for h in heads.values())
+               f"{h.label} `{h.sha[:12]}`{' draft' if h.draft else ''}"
+               f"{f' (stacked on `{h.base}`)' if h.base else ''}" for h in heads.values())
                or "none"),
            f"- excluded: {', '.join(excluded) or 'none'}",
            f"- heads already in the base (they prove nothing): {', '.join(empty) or 'none'}",
