@@ -1,0 +1,236 @@
+{
+  "notebook": "https://www.kaggle.com/code/anazemcev/quantum-circuits-881q-paired-dqi-r6-df-thc",
+  "version": 6,
+  "source_sha256": "d4a147523ac07cb2dc5fe4bd5dc9c7da48719e34dfc847402628723b37930682",
+  "files": [
+    {
+      "file": "compact_euclid.py",
+      "upstream_path": "upstream/dqi/compact_euclid.py",
+      "upstream_sha256": "02e78391cde317b1de1bc7f60193560990c9a47640d4d20a119d58fbdb09b1fc",
+      "port_sha256": "bd1dbd65dd9b66cc5bba6b2812584f0eaf14685cec6bf246b151c03132d91e60",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "compact_gap_variant.py",
+      "upstream_path": "compact_gap_variant.py",
+      "upstream_sha256": "5206a2d109071dc3c9dd275249ea93c17b3c77f6e3b5cbac359d545e8a98ea8a",
+      "port_sha256": "c0a8101f7c0dd2ac69d79f6337e3b10c909f2bd875039a6aed63fb45cf12bbaf",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis. Removed unused alternative decoder/build entry points; paired-v6 is the only supported driver."
+    },
+    {
+      "file": "compact_lifetime_kernels.py",
+      "upstream_path": "compact_lifetime_kernels.py",
+      "upstream_sha256": "f47670b0b7c912055a55edba3153a0690473f71e7f31e03204f3b2f39bd90805",
+      "port_sha256": "44ac39d6407ef8905d4d178e37a9396152a1e620e5b274c063b3943e3362f683",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "counter.py",
+      "upstream_path": "upstream/dqi/counter.py",
+      "upstream_sha256": "13950281035350b8a4336da90f1d7a9bda453223af02ae78f9b3e1bd7bbd3380",
+      "port_sha256": "0b4a693d47f9c852382e3bae91eb540694f6c8785f2650f82cf529072394ef09",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "cubic.py",
+      "upstream_path": "upstream/dqi/cubic.py",
+      "upstream_sha256": "c74e40a0f0ec1d93bf1bd6a64b71794002bc8db62baf05ffbefa2efda174f58a",
+      "port_sha256": "1f543b26610a865e8696dc78db29ed512d06119133febca9f3a9e9831f95cd59",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "early_a.py",
+      "upstream_path": "upstream/dqi/early_a.py",
+      "upstream_sha256": "3336ddb6e634437d7f328de78fdfce1acd0cf2090e1ccb69b11390f2970b2cf2",
+      "port_sha256": "a340390b40e4f45a7f4a9ecf80eba66a5d845cd667c969a50d7fe74ce8786d85",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "evaluation.py",
+      "upstream_path": "upstream/dqi/evaluation.py",
+      "upstream_sha256": "499cb9faf95027d3c9cecca317d251ebaaf309d7aee7e2de4c9b115a2295bc76",
+      "port_sha256": "deacdd8a185365199cda60b767d9e61e04cb760814bbfcd1d1fa4360ed55403e",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "forney_control.py",
+      "upstream_path": "upstream/dqi/forney_control.py",
+      "upstream_sha256": "2c343b082f9d5700453f479fd69049e82c5f5e27c9d25962fbead43422fb1e29",
+      "port_sha256": "6ecd37ad53c3045158cdc84e8790de1c4e607f92dd2e2ed63bb10e51794dc327",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "jfraction_decoder.py",
+      "upstream_path": "upstream/dqi/continued_fraction/jfraction_decoder.py",
+      "upstream_sha256": "532d21556fa7981e73e68bd91f2fdb49ca7091a4daca0267be35ffe8fa563ee3",
+      "port_sha256": "7627895a7b71e69cd551d79ad6c79afd5d84c8fe2d0da302b8efb893b1a7ce61",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "jfraction_gap_decoder.py",
+      "upstream_path": "upstream/dqi/continued_fraction/jfraction_gap_decoder.py",
+      "upstream_sha256": "c41f980ff7778234f4a098c15a3d52657a33f5a9748d8dbc31d4c646675c3ed6",
+      "port_sha256": "665c0357fa3b6c969d45d1aefbdf742d96a8cc48097ac6371866ec8b26b686c4",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "matrix_pair_kernels.py",
+      "upstream_path": "matrix_pair_kernels.py",
+      "upstream_sha256": "262ccbc491950b82c9eea5ff6f66983888997b3f15122c91825ec6d1c6dca81d",
+      "port_sha256": "e7f4e4f42a09ba801b10d5047d092370ed949f6e41feee07eaeb4345ffa8d96d",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis. Fixed BORROW_ZERO_META=True (paired-v6)."
+    },
+    {
+      "file": "mc4_inverse.py",
+      "upstream_path": "mc4_inverse.py",
+      "upstream_sha256": "ec1e66bcd1ba8723792238be68f91dfc887170cc8a11f81d81420d25d26b5ce4",
+      "port_sha256": "c175ff1cfd509e5e50e78672cdf450d737f4c4c5aff4a6c8ca6533fb667be538",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "merge_kernels.py",
+      "upstream_path": "merge_kernels.py",
+      "upstream_sha256": "e6b5053fcbdf60bc72a96c4c4c2923f666296059f7e08e56da3fff8a11c4d75e",
+      "port_sha256": "6f0943d11881051e4664e85abe0b6375dc99fbf972d3140b01aa4ba7a0933bfa",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "model_fast_extraction.py",
+      "upstream_path": "upstream/dqi/continued_fraction/keyeq/model_fast_extraction.py",
+      "upstream_sha256": "77fb085f1bf0a1a22167d5010e9ad327295c83555d9c539ca0a5187d82ef0336",
+      "port_sha256": "6f67925b7479190d4124f304e4e411f7dae84c22dd98b7f490172455f32b6142",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "model_jfraction.py",
+      "upstream_path": "upstream/dqi/continued_fraction/keyeq/model_jfraction.py",
+      "upstream_sha256": "e3c3b83a76b520b1720eee865aca20b72433211dbb5c10f422e2abf08be4d1b9",
+      "port_sha256": "60372595870d44be98de33372efeff3ae7ce54b64a91dbc1bbb3765545c494a8",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "narrow.py",
+      "upstream_path": "upstream/dqi/narrow.py",
+      "upstream_sha256": "3ede87c02962ddf3827fbabfa47bcbe14a455318838b531a3649fac727f56dcf",
+      "port_sha256": "5d277f3f8f3e046123ad8146b5a6982f0d6c92c892d10cd03727787aaa72064f",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "norm_recycle_inverse.py",
+      "upstream_path": "norm_recycle_inverse.py",
+      "upstream_sha256": "a2d136d74ac0acebe48023a73d9b0583a3cfc85fac809c1a757fbee30b8e239e",
+      "port_sha256": "3f1b9dcb273097bb3c9fc83242eaa4cbe8e594821fefbf5938cc5bc1595d8185",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "paired_kernels.py",
+      "upstream_path": "paired_kernels.py",
+      "upstream_sha256": "acbe7508ee68330666c6dd640b8b255de06fff61d8e3b9d847391aa925020016",
+      "port_sha256": "2e8c34a46beb1b49accadd7cf7122dc304b638afac195362c7afb1c80b4e7cce",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "phase_tensor.py",
+      "upstream_path": "phase_tensor.py",
+      "upstream_sha256": "433ebd7a9e392aa2dbf4483142e997ecb6d96b6ed6957d0de5b227722cfa2856",
+      "port_sha256": "491068e3a46b8e574169272dfc01b3881fd1257bddfa9839be35ade9e63bd5ab",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "poly_arithmetic.py",
+      "upstream_path": "upstream/dqi/continued_fraction/poly_arithmetic.py",
+      "upstream_sha256": "f26338b25b7c9623e3690fb4e571e87c47391943fe9742016d52a644dfe4a975",
+      "port_sha256": "8695becec4c508e306d969b9bd39c582f1e2eac3462e08173c5cf49169efdf16",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "quadratic_cube.py",
+      "upstream_path": "quadratic_cube.py",
+      "upstream_sha256": "9d8dac8a7fb88169923e0defe7f467fef606437b67add35182e1d85b0e9252ba",
+      "port_sha256": "945f21c80af78313aa6ccd45580de8feb7164b2d73f28bfecb5ae177e4cd14ea",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "quotient.py",
+      "upstream_path": "upstream/dqi/quotient.py",
+      "upstream_sha256": "47b87ca6306ba6a4866e84d434570a8fb2bb0035ff166e3f29088cfdf772405f",
+      "port_sha256": "87f0fd3f8cabc05c9ce4007b2246a24768f16150047c468b97da83e3ca28f079",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "quotient_hmr.py",
+      "upstream_path": "upstream/dqi/quotient_hmr.py",
+      "upstream_sha256": "155ff7954c10bc25708c8e6fce9f0dd6d73a973d581f5e8978c367c4f1652651",
+      "port_sha256": "86349c90de7cce4e19d18670186c4640c7844ac3116fd5c2313f82d552b2ea11",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "recursive.py",
+      "upstream_path": "upstream/dqi/recursive.py",
+      "upstream_sha256": "d8fb02e40c042e2c84df11fc0d29bb0a7cb583eac773e0c063e1c13ad96d80d7",
+      "port_sha256": "784e6b797a47161cd72e775a6cc819cef392b7a16fcfdba916728f408b79346c",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "smallspace_inverse.py",
+      "upstream_path": "smallspace_inverse.py",
+      "upstream_sha256": "669bbb035cdc0eef5f113cf1c6627f23464c6dd8c0c38c4cc36042c2614a7173",
+      "port_sha256": "3dae6e1290cc67ba93260559c07bb18f1fc48838c7354b037c6fe6a5ffb23267",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis. Direct norm-recycle call replaces runtime monkey-patching."
+    },
+    {
+      "file": "static_divisions.py",
+      "upstream_path": "upstream/dqi/static_divisions.py",
+      "upstream_sha256": "7bc9f4d8a4517158c5a62dc657de8d1e27d8f5b4d294bbb28256773e0cb8670d",
+      "port_sha256": "eed9e277add21c18176e8c24e41d7eb5f9c4a5806a8fff04c49a412d55529955",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "sweep.py",
+      "upstream_path": "upstream/dqi/sweep.py",
+      "upstream_sha256": "019fb28b0144d65ec3004426c5f512e1ce743e355ab9d2c04961c16559153ca0",
+      "port_sha256": "bc6e360960169f4647f958e74bc78feee60c06a49da610d18e28eca6a714406f",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "tower.py",
+      "upstream_path": "upstream/dqi/tower.py",
+      "upstream_sha256": "9e7bd85201a783be5eedbecb2161f425df5c7815dae4fd367a01677366dddcc5",
+      "port_sha256": "9bd6d6235a14e996e89812fdb9621b65a5001db5922e2d32a210b611d1eebc93",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "zero_chain.py",
+      "upstream_path": "upstream/dqi/zero_chain.py",
+      "upstream_sha256": "dd4e7c3e8edbe2fb0c33ebb12b12ff4c5ab0315ca47b2c7d94f25c66e7917021",
+      "port_sha256": "b0eea7c1340efea11af0b384adc41be8d354ba7ca7f6643dc03e9469fc413060",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "zero_mask_inverse.py",
+      "upstream_path": "zero_mask_inverse.py",
+      "upstream_sha256": "610a6b2ea677489d3ae856ca9c9c051b14dacd2d4b1226c531243bc8ef1413bc",
+      "port_sha256": "19aa9673ee0672f59af0129f669dc32882e0b08cf6751f7a9b5841065ac397fc",
+      "modifications": "Package imports; removed notebook sys.path configuration and standalone CLI; model import made relative; phase_tensor uses new projection.dual_basis."
+    },
+    {
+      "file": "common.py",
+      "upstream_path": "upstream/dqi/common.py",
+      "upstream_sha256": "f21e9ff6fb5b6f2e665deb546c2751e4ae826cd305931a37a2e328906abea0d7",
+      "port_sha256": "bf8801395c561076cf95b546591f5e65ece0b3c0c925adea408cf6b7375fa64f",
+      "modifications": "Replaced notebook/runtime path setup with package import of committed Google reference source; field validation; no verifier import."
+    },
+    {
+      "file": "decoder.py",
+      "upstream_path": "build_paired_dqi.py",
+      "upstream_sha256": "43829ded2d556d824590b6408a44ace06b6a8b4a0399c8f30341673a53838a1c",
+      "port_sha256": "f83287252f88283e45b8155ecd0e5ee4a58db6a3efb113e3075905c9565358b1",
+      "modifications": "Selected paired-v6 only; new projection; fixed schedule; no runtime monkey-patching; package imports; no build/verification wrapper."
+    }
+  ],
+  "new_files": [
+    "projection.py",
+    "gates.py"
+  ],
+  "projection": "New Lagrange interpolation and binary trace-matrix implementation of Manwithacat method; original file not copied."
+}

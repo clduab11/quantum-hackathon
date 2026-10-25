@@ -1,0 +1,73 @@
+{
+  "sha256": "dec77920d4b9f5964b6cd52c947aa0c91468d56b7ed28cd475fdfc18d067729d",
+  "byte_identical": true,
+  "note": "Source rebuild with allocation observations and an enforced native cap.\n\nThe observed peak covers explicit Python allocation/free boundaries. Native\noperations may use internal scratch; their total allocation is bounded by the\n881-qubit cap enforced inside Kickmix. Byte identity checks instrumentation.\n",
+  "phases": [
+    {
+      "boundary": "initialization",
+      "toffolis_cumulative": 0,
+      "toffolis_since_previous": 0,
+      "peak_qubits": 840,
+      "live_qubits": 852,
+      "ops_cumulative": 20741142,
+      "observed_allocation_peak": 852,
+      "native_allocation_upper_bound": 881,
+      "explicit_allocation_calls": 2
+    },
+    {
+      "boundary": "moment_to_fraction",
+      "toffolis_cumulative": 320804,
+      "toffolis_since_previous": 320804,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 34342820,
+      "observed_allocation_peak": 881,
+      "native_allocation_upper_bound": 881,
+      "explicit_allocation_calls": 3976
+    },
+    {
+      "boundary": "fraction_to_polynomials",
+      "toffolis_cumulative": 399800,
+      "toffolis_since_previous": 78996,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 35908631,
+      "observed_allocation_peak": 877,
+      "native_allocation_upper_bound": 881,
+      "explicit_allocation_calls": 443
+    },
+    {
+      "boundary": "phase_correction",
+      "toffolis_cumulative": 747875,
+      "toffolis_since_previous": 348075,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 98703353,
+      "observed_allocation_peak": 881,
+      "native_allocation_upper_bound": 881,
+      "explicit_allocation_calls": 40952
+    },
+    {
+      "boundary": "polynomials_to_fraction",
+      "toffolis_cumulative": 826871,
+      "toffolis_since_previous": 78996,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 100269164,
+      "observed_allocation_peak": 877,
+      "native_allocation_upper_bound": 881,
+      "explicit_allocation_calls": 443
+    },
+    {
+      "boundary": "fraction_to_moments",
+      "toffolis_cumulative": 1147675,
+      "toffolis_since_previous": 320804,
+      "peak_qubits": 881,
+      "live_qubits": 840,
+      "ops_cumulative": 113870810,
+      "observed_allocation_peak": 881,
+      "native_allocation_upper_bound": 881,
+      "explicit_allocation_calls": 3961
+    }
+  ]
+}

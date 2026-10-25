@@ -1,0 +1,32 @@
+Paired J-fraction DQI port (PRA-236)
+
+SomeJoint / Agniv Banerjee supplies the in-place J-fraction decoder and field /
+polynomial arithmetic, Apache-2.0:
+https://www.kaggle.com/code/somejoint/quantum-circuits-8-95-lb-cost-breakdown (v3)
+
+anazemcev / Artem1410 / ViberTeam supplies the paired-v6 implementation,
+trace-tensor phase, norm recycling, four-AND controlled inverse, zero-metadata
+loan, and lifetime schedules, Apache-2.0:
+https://www.kaggle.com/code/anazemcev/quantum-circuits-881q-paired-dqi-r6-df-thc (v6)
+
+Phuc Thai / phucthaiv02: EXP-118c gap-pointer and workspace ideas; EXP-119a
+paired-extraction idea. Method attribution only; no binary or unpublished
+generator used:
+https://www.kaggle.com/code/phucthaiv02/qcc-verified-portfolio-df-thc-retraining-study
+
+Manwithacat: classical-mask projection method:
+https://www.kaggle.com/code/manwithacat/dqi-classical-mask-projection-9-13909
+Praxen wrote projection.py from the mathematical specification using Lagrange
+interpolation and a binary trace map. The original mask_projection.py was read
+but is not copied or transliterated. This is not a strict clean room.
+
+Google Quantum AI / competition authors: Kickmix and the committed reference
+source retain their own Apache-2.0 terms and attribution. No endorsement is
+implied. The reference source documents the Proos-Zalka decoder / Khattar et al.
+(arXiv:2510.10967); no Zenodo code or circuit artifact is used by this port.
+
+Praxen modifications: package imports, explicit reference-source dependency,
+removal of notebook path and standalone CLI code, fixed paired-v6 schedule,
+new projection, source-only output driver and validation checks. Source hashes
+and changes are recorded in SOURCE_MAP.json and PROVENANCE.md. The parent
+algorithms are not claimed as Praxen inventions. Full Apache text: LICENSE.
