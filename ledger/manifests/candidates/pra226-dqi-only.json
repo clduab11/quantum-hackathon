@@ -187,7 +187,7 @@
   "kickmix_build_id": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
   "kind": "candidate",
   "manifest_id": "1591a9e3-07e7-40c7-bf01-9488f00a279e",
-  "notes": "",
+  "notes": "Generator pin history (PRA-215 required change 3). Current pin: generator_commit 2443ead343b48f860374df589a76d579baf3efcd, published on GitHub as refs/pull/20/head; its tree 5d2c9848c09823a865692c8338ad9e88150083cf equals squash commit ded6b169c69f3210f3b875e12c88639d60a2a63a on main (git diff 2443ead ded6b16 is empty), so the code that built this zip is the code on main. Historical only, not the pin for this candidate: 0b5858532fbef2ff3ce0be0b9e6e2c6d2cb8a28e (unreachable: on no GitHub branch or pull-request head), 47a337db74ca533639e23f06516ef0d87117428f (PR #12 head), f2e9bb695d499546268be57ca774534d89d4bdc7 (PR #14 history). Uploaded unchanged as submission-002 (Kaggle 57620928) under D-PRA202-07; this note is metadata only and no circuit was rebuilt.",
   "operator": "6780c1d8-8ad5-47b0-a70a-b0fe6af42d01",
   "parent_candidate_id": "reference-002",
   "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64",
