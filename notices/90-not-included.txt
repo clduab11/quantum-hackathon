@@ -1,0 +1,1 @@
+- The k256.dev decoder and the Signed-Digit Memory v3 chemistry factor are not included. See `docs/DECISIONS.md` D-PRA177-01.

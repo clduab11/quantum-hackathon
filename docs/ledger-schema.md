@@ -18,7 +18,8 @@ submission, rebuilt by `ledger/examples/make_reference_manifest.py`.
 | `ledger/manifests/candidates/<candidate_id>.json` | One manifest per candidate; rewritten after each gate | yes |
 | `ledger/manifests/submissions/submission-NNN.json` | One manifest per Kaggle submission; never rewritten | yes |
 | `ledger/evidence/<candidate_id>/<gate>.json` | Evidence record: verifier summaries, log hashes, commands | yes |
-| `ledger/manifests/index.csv` | Append-only index: one row per new candidate (`runner new`) and per submission | yes |
+| `ledger/manifests/index.csv` | Derived index, one row per manifest, rewritten from the manifests by `runner new`, every submission and `python -m ledger.registers index` (PRA-210) | **no** (derived) |
+| `ledger/manifests/index-legacy.csv` | The rows appended before PRA-210, frozen byte for byte | yes |
 | `ledger/queue/<candidate_id>.json` | Queue pointer for a G5-passed zip | yes |
 | `ledger/queue/<candidate_id>.zip`, `.kmb`, `.npz`, data | Binaries | **no** (SHA-256 only) |
 
@@ -143,8 +144,8 @@ Only john-wick submits. Hard cap **3 per UTC day**. Procedure:
 
 1. `uv run python -m ledger.scorecard --check-slot` — exits 1 if today's cap is used up.
 2. Submit the queued zip (`ledger/queue/<candidate_id>.zip`).
-3. `ledger.scorecard.record_submission(candidate, kaggle_submission_id)` writes `submission-NNN.json` and its index
-   row. It refuses a fourth submission on the same UTC day, a candidate that fails the shipping rule, and a duplicate
+3. `ledger.scorecard.record_submission(candidate, kaggle_submission_id)` writes `submission-NNN.json` and rewrites
+   the derived index. It refuses a fourth submission on the same UTC day, a candidate that fails the shipping rule, and a duplicate
    Kaggle id.
 
 Known limit: the ledger cannot stop an upload made without step 1, and it does not lock across processes (the

@@ -1,7 +1,12 @@
 # Decisions register
 
-Append-only. This file is also the negative-results memory: failed hypotheses are recorded here and never deleted.
-To correct a row, append a new row that supersedes it and set the old row's status by reference in the new row.
+Append-only. This register is also the negative-results memory: failed hypotheses are recorded and never deleted.
+To correct a row, add a new row that supersedes it and set the old row's status by reference in the new row.
+
+This file is closed: it keeps the rows up to D-PRA206-01 and takes no new rows (PRA-210, D-PRA210-01). Each new
+decision is one file, `docs/decisions/<id>.md`, holding one table row in the format below. The register is the
+rows here in file order, then those files by date and id. `uv run python -m ledger.registers decisions` prints it
+whole; the status page shows it; `uv run python -m ledger.registers check` fails on a changed row or a repeated id.
 
 | date | id | decision | evidence | status |
 | --- | --- | --- | --- | --- |

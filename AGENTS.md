@@ -10,6 +10,25 @@ the board through The High Table before you go on.
 - Open a pull request for every branch and register it on the Paperclip ticket.
 - Commit trailer: `Co-Authored-By: Paperclip <noreply@paperclip.ing>`.
 
+## Merge queue (PRA-210)
+
+The board squash-merges pull requests one after another and never resolves a conflict.
+
+- One candidate, one pull request, cut from current `main`. No pull request bundles two tasks.
+- Never cut a branch from another unmerged pull request. A squash merge drops that ancestry, so the stacked branch
+  then conflicts with its own parent's changes.
+- Before you hand a pull request to the board, run the merge-order gate over every open head and paste its
+  report in the pull request body: `uv run python scripts/merge_gate.py` (add `--ref mine=HEAD` if your branch has
+  no pull request yet). CI runs the same gate on every pull request and on every push to `main`.
+- No pull request is reported to the board as ready unless the whole open queue passes the gate.
+- If two open pull requests touch the same register entry, the second one rebases onto `main` after the first
+  merges. The author resolves it, never the board.
+- Registers are one file per entry, so ordinary work never shares a file:
+  - a decision is a new file `docs/decisions/<id>.md` holding one table row; `docs/DECISIONS.md` is closed;
+  - a third-party notice is a bullet in `notices/NN-<area>.txt` (one file per task area), not in `NOTICE`;
+  - `ledger/manifests/index.csv` is derived from the manifests and is not committed.
+- `uv run python -m ledger.registers check` must pass; `uv run pytest` runs it.
+
 ## Secrets
 
 - Never read, print or copy secrets.
@@ -34,8 +53,9 @@ the board through The High Table before you go on.
 
 ## Decisions and negative results
 
-- `docs/DECISIONS.md` is append-only. It is also the negative-results memory: failed hypotheses are recorded and
-  never deleted. Correct an old row by appending a new row that supersedes it.
+- The decisions register is append-only: the closed rows in `docs/DECISIONS.md` plus one file per new decision in
+  `docs/decisions/<id>.md`. It is also the negative-results memory: failed hypotheses are recorded and never
+  deleted. Correct an old row by adding a new decision file that supersedes it.
 
 ## Submissions
 

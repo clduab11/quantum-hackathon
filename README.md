@@ -19,7 +19,10 @@ tasks/dfthcsos/    generator, verifier wrapper and candidates for the dfthcsos t
 ledger/            submission ledger: run manifests, evidence, scorecard, gates G0–G5
 harness/           local search loop and verifier wrappers
 notebooks/         public Kaggle notebook source
-docs/DECISIONS.md  append-only decision and negative-results register
+docs/DECISIONS.md  decision and negative-results register (closed rows; new rows in docs/decisions/)
+docs/decisions/    one file per new decision (python -m ledger.registers decisions prints all)
+notices/           third-party notices, one file per task area (part of NOTICE)
+scripts/merge_gate.py  merge-order gate: squash every open PR in every order (see AGENTS.md)
 docs/handoffs/     hand-off notes between work sessions
 docs/ledger-schema.md  ledger manifest schema
 tests/             pytest suite

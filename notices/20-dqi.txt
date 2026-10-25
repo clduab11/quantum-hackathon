@@ -1,0 +1,1 @@
+- `tasks/dqi/generate.py` is the competition package's reference Reed–Solomon decoder (`verifiers/dqi/dqi_reference_circuit.py`), Apache-2.0, Copyright Google Quantum AI authors of that package. Praxen changed the command line (`--out` writes `dqi.kmb`). https://www.kaggle.com/competitions/google-verifiable-quantum-circuit-compilation/data

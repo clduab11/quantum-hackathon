@@ -45,11 +45,11 @@ from ledger.run_manifest import (
     RunManifest,
     TaskRecord,
     _atomic_write_text,
-    append_to_index,
     create_manifest,
     read_manifest,
     sha256_file,
     utc_now,
+    write_index,
     write_manifest,
 )
 
@@ -377,7 +377,7 @@ def main(argv: list[str] | None = None) -> int:
                                    parent_candidate_id=args.parent, salt_label=config.salt_label)
         # Never overwrite an existing candidate's gate history.
         path = write_manifest(manifest, exclusive=True)
-        append_to_index(manifest)
+        write_index(path.parent.parent)  # derived, not committed (PRA-210)
         print(path)
         return 0
     manifest = read_manifest(args.manifest)
