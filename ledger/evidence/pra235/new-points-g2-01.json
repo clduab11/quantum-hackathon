@@ -1,0 +1,36 @@
+[
+  {
+    "name": "penalty-zero",
+    "path": "/home/cld-main/work/vqcc-data/pra235-handoff-penalty-zero-01/submission.npz",
+    "sha256": "21d0febd96cdeecd73822eeb6251817fa4ba31209c6912b0b1f3d32a53b033cb",
+    "g2": {
+      "status": "PASS",
+      "error_1": 0.0033507061651737464,
+      "error_2": 0.017743562928455296,
+      "Lambda": 333.9841309512438,
+      "E_gap": 4.063223815919628,
+      "lambda_eff": 51.93837465942085,
+      "heuristic_toffoli": 9394,
+      "heuristic_qubits": 631,
+      "brot": 12,
+      "parity": false
+    }
+  },
+  {
+    "name": "r64",
+    "path": "/home/cld-main/work/vqcc-data/pra235-handoff-r64-01/submission.npz",
+    "sha256": "cd0023a0a3c0ff0717ea1f9cd66cdd3a136a4cca23729bafe58cb2de3b1aae6a",
+    "g2": {
+      "status": "PASS",
+      "error_1": 0.0032726546712676568,
+      "error_2": 0.019567859182676468,
+      "Lambda": 331.6270886722317,
+      "E_gap": 4.133367454211111,
+      "lambda_eff": 52.19567514644904,
+      "heuristic_toffoli": 9321,
+      "heuristic_qubits": 630,
+      "brot": 12,
+      "parity": false
+    }
+  }
+]

@@ -1,0 +1,208 @@
+{
+  "result": "PASS: every control and first-stage raw/encoded row hash matches",
+  "original": "/home/cld-main/work/vqcc-data/pra235-batch-gradual-01/gradual-r32",
+  "repeat": "/home/cld-main/work/vqcc-data/pra235-batch-repeat-01/repeat-floor-500",
+  "repeat_seconds": 2056.8471416820103,
+  "pairs": [
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 12,
+      "kind": "factor",
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 12,
+      "kind": "encoded",
+      "sha256": "0c445e647cb7b9f8268a9de955c574fad2d1dfd9b516e84b02e9d104f127fab2"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 11,
+      "kind": "factor",
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 11,
+      "kind": "encoded",
+      "sha256": "885bf7bfc34f62abc1fffd10290dab7590c64d396dcb042c334cf3ee51f9d2d5"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 10,
+      "kind": "factor",
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 10,
+      "kind": "encoded",
+      "sha256": "aac27e0c13ee38f7d34436e793f6654dc54dfa645d130627039beee2900f3869"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 9,
+      "kind": "factor",
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 9,
+      "kind": "encoded",
+      "sha256": "4bb3168a3adc4933f365d20ed8a4e008c316d0e284334547f26832cf9ea0030e"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 8,
+      "kind": "factor",
+      "sha256": "d818505696858be0298621102765671ca348caddaa77b33bf9a7f2788db435b0"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        60
+      ],
+      "bits": 8,
+      "kind": "encoded",
+      "sha256": "e189630260f34eed73e74da0ea1a6604d2fa43a779de00662554f8a320bb933a"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 12,
+      "kind": "factor",
+      "sha256": "29366e0f19bdb67906dfc81d3b2dcfc3c72fe08f9bef16e4ba48bec4f687366b"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 12,
+      "kind": "encoded",
+      "sha256": "423cc0ccc04878b27c4a2ee829cdccf387f7e1ffb2eb7889581650d83d30e203"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 11,
+      "kind": "factor",
+      "sha256": "982378bf383bc39e4d6769b255de2ed336dd7d3aae23a4c16eb087aea7518bdf"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 11,
+      "kind": "encoded",
+      "sha256": "0984c5c99d8e9c84c531ead428272e2bb2fb39757552467035dd236ced52b4d5"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 10,
+      "kind": "factor",
+      "sha256": "a6a687feb73991c6974a52166a633c3c02a53803bd0895e7a49c2eaaaa47c338"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 10,
+      "kind": "encoded",
+      "sha256": "acb4adfcdd390c1616f45c2f7b6aaae72f6787b673c1ba5904659e28c58203c8"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 9,
+      "kind": "factor",
+      "sha256": "982378bf383bc39e4d6769b255de2ed336dd7d3aae23a4c16eb087aea7518bdf"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 9,
+      "kind": "encoded",
+      "sha256": "64da0813356220ece15fc01db02a8ad93f1715ebc40f559040b3b1c308f01899"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 8,
+      "kind": "factor",
+      "sha256": "982378bf383bc39e4d6769b255de2ed336dd7d3aae23a4c16eb087aea7518bdf"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "bits": 8,
+      "kind": "encoded",
+      "sha256": "29347e7fd3b1ff3e873cd225403bc5873490bbf9e63b07b5629bc80cb3ff5d6d"
+    }
+  ]
+}
