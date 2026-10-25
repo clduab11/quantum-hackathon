@@ -1,0 +1,53 @@
+{
+  "rows": [
+    {
+      "shape": [
+        6,
+        144,
+        127
+      ],
+      "sha256": "6b8293c1b6914b28cc6a257693b6b5bac43fff3c44052318ab5c794c463f88ad",
+      "seconds": 0.07388905598782003,
+      "U_shape": [
+        6,
+        144,
+        76
+      ],
+      "W_shape": [
+        6,
+        144,
+        127
+      ],
+      "H2_I_shape": [
+        6,
+        127
+      ],
+      "verdict": "shape construction only; not fitted or verifier-evaluated"
+    },
+    {
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "sha256": "512473b23ddc6ddaa77a7bf425d12a54bd16c9da65a702d3509150d62ee0e78c",
+      "seconds": 0.5513185890013119,
+      "U_shape": [
+        1,
+        496,
+        76
+      ],
+      "W_shape": [
+        1,
+        496,
+        384
+      ],
+      "H2_I_shape": [
+        1,
+        384
+      ],
+      "verdict": "shape construction only; not fitted or verifier-evaluated"
+    }
+  ],
+  "source_sha256": "9ab7f6bbfa414413934a3d0828108f3b3c48f8f1bdc96aa53993c069a471307d"
+}
