@@ -3,9 +3,10 @@
 # are Google's and are not meant to improve on anything, and G5 is the same check as for a
 # Praxen candidate. Every file is rebuilt in a clean worktree from the committed generators
 # below with only the declared `inputs` visible, and compared byte for byte with the manifest.
-# A generator output that is a byte copy of a competition-package file fails G5 (R10; Chris's
-# ruling on PRA-169, 2026-10-25: "build it from source"; D-PRA211-01). The copier
-# ledger/examples/reference_generator.py that cleared G5 for submission-001 is retired.
+# A generator output that is a byte copy of a competition-package circuit fails G5 (R10; Chris's
+# ruling on PRA-169, 2026-10-25: "build it from source"; D-PRA211-01); a declared non-circuit
+# input copied into the zip is recorded, not failed (Chris's ruling on PRA-211; D-PRA211-05). The
+# copier ledger/examples/reference_generator.py that cleared G5 for submission-001 is retired.
 # Never use this config for a Praxen candidate.
 #
 # The gates run in this order and the order is enforced: a gate runs only when every earlier gate
@@ -88,8 +89,9 @@ generators:
 
 # Declared competition-package inputs, relative to the package root and SHA-256 pinned. G5 stages
 # exactly these files into an otherwise empty VQCC_DATA for the generators, so nothing else from
-# the package can be read or copied. An output byte-identical to a declared input is a copied
-# package file and fails G5; it is recorded per task as a divergence, not adjusted away.
+# the package can be read or copied. A circuit (.kmb) can never be declared here (R10). An output
+# byte-identical to a declared input is recorded per task as `copied`; the factorization below is
+# the one input that may ship as a recorded copy (Chris's ruling on PRA-211; D-PRA211-05).
 inputs:
   dfthcsos:
     - path: sample_submission/dfthcsos/submission.npz

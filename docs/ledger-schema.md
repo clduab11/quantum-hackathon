@@ -16,7 +16,7 @@ submission, rebuilt by `ledger/examples/make_reference_manifest.py`.
 | Path | Content | Committed |
 | --- | --- | --- |
 | `ledger/manifests/candidates/<candidate_id>.json` | One manifest per candidate; rewritten after each gate | yes |
-| `ledger/manifests/submissions/submission-NNN.json` | One manifest per Kaggle submission; never rewritten, except that a gate re-run ordered by a decision appends a gate record (PRA-211 re-ran G5 on submission-001, D-PRA211-02) | yes |
+| `ledger/manifests/submissions/submission-NNN.json` | One manifest per Kaggle submission; never rewritten, except that a gate re-run ordered by a decision appends a gate record with `uv run python -m ledger.gates.runner rerun --generator-commit <sha>` (PRA-211 re-ran G5 on submission-001, D-PRA211-02 and D-PRA211-05) | yes |
 | `ledger/manifests/reservations/<day>-slot<k>.json` | A pending submission-slot reservation (PRA-211); renamed `…-<id>.recorded.json` or `…-<id>.failed.json` once resolved | resolved ones yes; a pending one only if it outlives the session |
 | `ledger/evidence/<candidate_id>/<gate>.json` | Evidence record: verifier summaries, log hashes, commands | yes |
 | `ledger/manifests/index.csv` | Derived index, one row per manifest, rewritten from the manifests by `runner new`, every submission and `python -m ledger.registers index` (PRA-210) | **no** (derived) |
@@ -116,7 +116,7 @@ its cost and baseline.
 | G2 | Fast proxy: invsqrt exhaustive numpy mirror; dqi subsampled shots; dfthcsos `heuristic_costs` + error/Λ/E_gap (`tasks.<task>.gates:g2_proxy`) | yes, with reason | generator owner |
 | G3 | Full local verifier at full shots (`harness.score_local:score_submission`); folds results into the manifest as evidence | no | P0-4 |
 | G4 | Measured geometric mean strictly beats the parent and the best measured archived candidate | yes, with reason | ledger |
-| G5 | Provenance shippable; clean 40-hex generator commit; zip holds exactly the manifest's files and is their deterministic build; clean `git worktree` at `generator_commit` regenerates every file byte for byte with `VQCC_DATA` pointing at a staging directory that holds only the config's declared, SHA-256-pinned `inputs`; an output byte-identical to a declared input is a copied competition-package file and fails (R10, PRA-211) | no | ledger |
+| G5 | Provenance shippable; clean 40-hex generator commit; zip holds exactly the manifest's files and is their deterministic build; clean `git worktree` at `generator_commit` regenerates every file byte for byte with `VQCC_DATA` pointing at a staging directory that holds only the config's declared, SHA-256-pinned `inputs`; an output byte-identical to a declared input is recorded as `copied`: a copied circuit fails and a circuit can never be a declared input, a copied non-circuit input (the declared dfthcsos factorization) is accepted (R10, PRA-211, D-PRA211-05) | no | ledger |
 
 Rules enforced by the runner:
 
@@ -139,9 +139,12 @@ Hook contracts:
 - G5 generator command per task (`generators:` in the config), run from the worktree root; `{out}` is an empty output
   directory, `{python}` this interpreter. Outputs use the manifest's relative paths. The generator's `VQCC_DATA` is a
   staging directory holding only the config's `inputs:` (`{task: [{path, sha256}]}`, paths relative to the package
-  root), copied there after a hash check; nothing else from the competition package is visible. The rebuild record lists
-  per task `identical` (every file matches the manifest) and `copied` (outputs whose bytes equal a declared input);
-  a copied file is a recorded divergence and a FAIL, even when every byte matches the manifest.
+  root), copied there after a hash check; nothing else from the competition package is visible. A circuit (`.kmb`) can
+  never be a declared input. The rebuild record lists per task `identical` (every file matches the manifest) and
+  `copied` (outputs whose bytes equal a declared input), and `copied_inputs` overall. A copied circuit is a FAIL even
+  when every byte matches the manifest; a copied non-circuit input is accepted and stays visible in the record
+  (Chris's ruling on PRA-211; D-PRA211-05). `uv run python -m ledger.gates.runner rerun --generator-commit <sha>` repeats G5 on a recorded
+  manifest with the generators at that commit and appends the record; the manifest's `generator_commit` is unchanged.
 
 ## Submissions (R6)
 

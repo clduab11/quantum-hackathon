@@ -11,7 +11,10 @@ the SHA-256 of every output file with the hashes recorded in the manifest. The g
 with `VQCC_DATA` pointing at a staging directory that holds only the config's declared,
 SHA-256-pinned inputs (PRA-211), so a generator cannot read any other competition-package file.
 An output byte-identical to a declared input is a copied package file, not a generated one, and
-fails the check (R10: every submitted circuit is regenerated from our committed source).
+is recorded per task as `copied`. R10 is about circuits: a copied circuit (`.kmb`) fails the
+check and a circuit can never be a declared input; a declared non-circuit input (the dfthcsos
+factorization `.npz`) may ship as a recorded copy (Chris's ruling on PRA-211, 2026-10-25;
+D-PRA211-05).
 """
 
 from __future__ import annotations
@@ -48,6 +51,16 @@ EXAMPLES_DIR = Path(__file__).resolve().parent / "examples"
 # and the generators). The generators never see this path during G5: they get the staging copy.
 PACKAGE_ROOT = Path(os.environ.get(
     "VQCC_DATA", "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation"))
+
+# Submitted circuits are kickmix binaries. R10 requires every one of them to be generated, so a
+# circuit can never be a declared input, and a generator output with this suffix whose bytes equal
+# a declared input fails G5. A non-circuit declared input may be copied (D-PRA211-05).
+CIRCUIT_SUFFIXES = (".kmb",)
+
+
+def is_circuit(path: str | Path) -> bool:
+    """True for a submitted circuit file (by suffix); these must always be generated (R10)."""
+    return Path(path).suffix.lower() in CIRCUIT_SUFFIXES
 
 
 class InputError(ValueError):
@@ -89,6 +102,10 @@ def stage_inputs(
             rel = str(entry["path"])
             if Path(rel).is_absolute() or ".." in Path(rel).parts:
                 raise InputError(f"{task}: input path {rel!r} must be relative, without '..'")
+            if is_circuit(rel):
+                raise InputError(f"{task}: declared input {rel!r} is a circuit file; R10 requires "
+                                 "every submitted circuit to be generated, so a circuit cannot be "
+                                 "a declared input (D-PRA211-05)")
             src = Path(package_root) / rel
             if not src.is_file():
                 raise InputError(f"{task}: declared input {src} is missing")
@@ -121,8 +138,9 @@ def rebuild_in_clean_worktree(
 
     The generators run with `VQCC_DATA` set to a staging directory holding only the declared
     `inputs` (see `stage_inputs`). Each task's record lists `copied`: the outputs whose bytes
-    equal a declared input. A task passes only if every file is identical to the manifest *and*
-    nothing was copied; a copied competition-package file is recorded as a divergence and fails.
+    equal a declared input. Every file must be identical to the manifest. A copied output that
+    is a circuit (`is_circuit`) fails: R10 requires every submitted circuit to be generated. A
+    copied non-circuit input is accepted and listed in `copied_inputs` (D-PRA211-05).
     """
     if not re.fullmatch(r"[0-9a-f]{40}", commit or ""):
         return {"status": f"FAIL: generator commit {commit!r} is not a clean 40-hex commit"}
@@ -180,13 +198,17 @@ def rebuild_in_clean_worktree(
     bad = [t for t, r in tasks.items() if not r["identical"]]
     if bad:
         problems.append(f"rebuild differs for {', '.join(bad)}")
-    copied = [f"{rel} ({task}, copy of package {src})"
-              for task, r in tasks.items() for rel, src in r["copied"].items()]
-    if copied:
-        problems.append("copied competition-package files, not generated (R10): "
-                        + "; ".join(copied))
+    copied_circuits = [f"{rel} ({task}, copy of package {src})"
+                       for task, r in tasks.items() for rel, src in r["copied"].items()
+                       if is_circuit(rel)]
+    if copied_circuits:
+        problems.append("copied competition-package circuits, not generated (R10): "
+                        + "; ".join(copied_circuits))
+    copied_inputs = {rel: src for r in tasks.values() for rel, src in r["copied"].items()
+                     if not is_circuit(rel)}
     status = "PASS" if not problems else "FAIL: " + "; ".join(problems)
-    return {"status": status, "commit": commit, "inputs": staged, "tasks": tasks}
+    return {"status": status, "commit": commit, "inputs": staged, "copied_inputs": copied_inputs,
+            "tasks": tasks}
 
 
 # --- Ledger self-checks -----------------------------------------------------------------------

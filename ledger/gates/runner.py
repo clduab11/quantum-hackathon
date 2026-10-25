@@ -17,6 +17,7 @@ Rules the runner enforces:
 from __future__ import annotations
 
 import argparse
+import dataclasses
 import importlib
 import json
 import math
@@ -33,7 +34,7 @@ from typing import Any
 import yaml
 
 from ledger.archive import UnsafeArchive, safe_extract
-from ledger.benchmark_health import PACKAGE_ROOT
+from ledger.benchmark_health import PACKAGE_ROOT, is_circuit
 from ledger.evidence import EVIDENCE_DIR, classify_submission
 from ledger.run_manifest import (
     GATE_IDS,
@@ -153,6 +154,10 @@ def load_config(path: Path = DEFAULT_CONFIG) -> GateConfig:
                                  "package root and contain no '..'")
             if not re.fullmatch(r"[0-9a-f]{64}", str(entry.get("sha256", ""))):
                 raise ValueError(f"{path}: {task} input {rel} needs a 64-hex sha256 pin")
+            if is_circuit(rel):
+                raise ValueError(f"{path}: {task} input {rel} is a circuit file; R10 requires every "
+                                 "submitted circuit to be generated, so a circuit cannot be a "
+                                 "declared input (D-PRA211-05)")
     return GateConfig(path=path, gates=gates, salt_label=raw.get("salt_label"),
                       generators=generators, inputs=inputs)
 
@@ -324,6 +329,48 @@ def run_pipeline(
     return records
 
 
+def rerun_gate(
+    manifest: RunManifest,
+    gate_id: str,
+    zip_path: Path,
+    config: GateConfig,
+    *,
+    generator_commit: str,
+    note: str = "",
+    manifest_file: Path | None = None,
+    **context: Any,
+) -> GateRecord:
+    """Re-run one gate that has already run on a recorded manifest; append the record (PRA-211).
+
+    Only G5 can be re-run: a decision may order the rebuild check to be repeated with the
+    committed generators at `generator_commit`, which is recorded in the new record's
+    `details.rebuild.commit`. The manifest's own `generator_commit` is never changed (it is part
+    of the frozen index identity, PRA-210), earlier records stay as history, and nothing is
+    queued. `note` is appended to the manifest notes. The order rule still applies: G0 to G4 must
+    be cleared on this zip.
+    """
+    if gate_id != "G5":
+        raise GateOrderError(f"only G5 can be re-run, not {gate_id}")
+    if manifest.latest_gate(gate_id) is None:
+        raise GateOrderError(f"{manifest.candidate_id}: {gate_id} has never run; use `run`")
+    if not re.fullmatch(r"[0-9a-f]{40}", generator_commit or ""):
+        raise ManifestError(f"generator commit {generator_commit!r} is not a clean 40-hex commit")
+    _bind_zip(manifest, zip_path)
+    # The check reads the generator commit from the manifest it is given; run it on a copy so the
+    # recorded manifest keeps its identity and only gains the new record.
+    probe = dataclasses.replace(manifest, generator_commit=generator_commit,
+                                gates=list(manifest.gates))
+    with tempfile.TemporaryDirectory(prefix="ledger-rerun-") as tmp:
+        submission_dir = Path(tmp) / "submission"
+        safe_extract(zip_path, submission_dir)
+        record = run_gate(probe, gate_id, zip_path, submission_dir, config, **context)
+    manifest.gates.append(record)
+    if note:
+        manifest.notes = f"{manifest.notes}\n{note}".strip()
+    _persist(manifest, manifest_file)
+    return record
+
+
 def enqueue(manifest: RunManifest, zip_path: Path, queue_dir: Path = QUEUE_DIR) -> Path:
     """Copy a fully gated zip into the submission queue with a pointer file."""
     problems = manifest.shipping_problems()
@@ -387,6 +434,16 @@ def main(argv: list[str] | None = None) -> int:
     run.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     run.add_argument("--waive", action="append", default=[], metavar="GATE=REASON")
     run.add_argument("--stop-after", default=None)
+    rerun = sub.add_parser("rerun", help="re-run G5 on a recorded manifest with the generators at "
+                                         "a named commit and append the record (PRA-211)")
+    rerun.add_argument("--manifest", type=Path, required=True)
+    rerun.add_argument("--zip", type=Path, required=True)
+    rerun.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
+    rerun.add_argument("--gate", default="G5", choices=["G5"])
+    rerun.add_argument("--generator-commit", required=True,
+                       help="40-hex commit whose committed generators rebuild the files; recorded "
+                            "in the new record, the manifest's generator_commit is unchanged")
+    rerun.add_argument("--note", default="", help="appended to the manifest notes")
     args = parser.parse_args(argv)
 
     config = load_config(args.config)
@@ -399,6 +456,13 @@ def main(argv: list[str] | None = None) -> int:
         print(path)
         return 0
     manifest = read_manifest(args.manifest)
+    if args.command == "rerun":
+        record = rerun_gate(manifest, args.gate, args.zip, config,
+                            generator_commit=args.generator_commit, note=args.note,
+                            manifest_file=args.manifest)
+        print(f"{record.gate} {record.status} {record.reason}".rstrip())
+        print(json.dumps(record.details.get("rebuild", {}), indent=2, sort_keys=True, default=str))
+        return 1 if record.status == "FAIL" else 0
     waivers = dict(w.split("=", 1) for w in args.waive)
     records = run_pipeline(manifest, args.zip, config, waivers=waivers,
                            stop_after=args.stop_after, manifest_file=args.manifest)

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import hashlib
 import json
+import subprocess
 import tempfile
 from pathlib import Path
 
@@ -15,11 +17,12 @@ from ledger.gates.runner import (
     GateOrderError,
     enqueue,
     load_config,
+    rerun_gate,
     run_gate,
     run_pipeline,
     waive_gate,
 )
-from ledger.run_manifest import GateRecord, ManifestError, write_manifest
+from ledger.run_manifest import GateRecord, ManifestError, read_manifest, write_manifest
 
 
 def _run(ws, manifest, gate):
@@ -287,7 +290,7 @@ def test_new_candidate_never_overwrites_an_existing_one(workspace, tmp_path, mon
     assert runner.read_manifest(path) == manifest
 
 
-# --- G5 declared inputs and copied package files (PRA-211) --------------------------------------
+# --- G5 declared inputs and copied package files (PRA-211, D-PRA211-05) ------------------------
 
 
 def _g5(ws, config, zip_path, candidate_id="copier-001"):
@@ -303,32 +306,111 @@ def _g5(ws, config, zip_path, candidate_id="copier-001"):
     return manifest, records
 
 
-def test_g5_fails_a_generator_that_copies_a_declared_package_file(workspace, fakes):
-    """Byte-identical output is not enough: a file copied from the competition package is a
-    divergence, recorded per task, and the gate fails (R10, PRA-211)."""
+def test_g5_records_a_copied_declared_input_and_passes(workspace, fakes):
+    """A declared, pinned, non-circuit input copied into the zip is not a divergence: it is
+    recorded per task as `copied` and the gate passes (Chris's ruling on PRA-211; D-PRA211-05).
+    Every circuit is still rebuilt and compared byte for byte."""
     config = workspace.copier_config()
     manifest, records = _g5(workspace, config, workspace.copier_zip("copied"))
-    assert records[-1].gate == "G5" and records[-1].status == "FAIL", records
-    assert "copied competition-package files, not generated (R10)" in records[-1].reason
-    assert "dfthcsos/submission.npz (dfthcsos, copy of package sample_submission/dfthcsos/" \
-           "submission.npz)" in records[-1].reason
+    assert [(r.gate, r.status) for r in records] == [(g, "PASS") for g in GATE_IDS], records
     rebuild = manifest.latest_gate("G5").details["rebuild"]
     dfthcsos = rebuild["tasks"]["dfthcsos"]
-    # The divergence is honest and specific: every file matched, one of them was copied.
+    # The copy is visible and specific: every file matched, the factorization was a copied input.
     assert dfthcsos["identical"] is True
     assert dfthcsos["copied"] == {"dfthcsos/submission.npz": "sample_submission/dfthcsos/submission.npz"}
+    assert rebuild["copied_inputs"] == {"dfthcsos/submission.npz":
+                                        "sample_submission/dfthcsos/submission.npz"}
     assert rebuild["tasks"]["invsqrt"]["copied"] == {} and rebuild["tasks"]["invsqrt"]["identical"]
     assert rebuild["inputs"] == {config.inputs["dfthcsos"][0]["sha256"]:
                                  "sample_submission/dfthcsos/submission.npz"}
+    assert (workspace.queue_dir / "copier-001.zip").exists()
+
+
+def test_g5_fails_a_generator_that_copies_a_declared_input_as_a_circuit(workspace, fakes):
+    """R10 is about circuits: a .kmb output whose bytes equal a declared input is a copied
+    competition-package circuit, recorded per task, and the gate fails even though every byte
+    matches the manifest."""
+    config = workspace.copier_config(copy_as_circuit=True)
+    manifest, records = _g5(workspace, config,
+                            workspace.copier_zip("circuit", copy_as_circuit=True))
+    assert records[-1].gate == "G5" and records[-1].status == "FAIL", records
+    assert "copied competition-package circuits, not generated (R10)" in records[-1].reason
+    assert "dfthcsos/angle_k_0.kmb (dfthcsos, copy of package sample_submission/dfthcsos/" \
+           "submission.npz)" in records[-1].reason
+    rebuild = manifest.latest_gate("G5").details["rebuild"]
+    dfthcsos = rebuild["tasks"]["dfthcsos"]
+    assert dfthcsos["identical"] is True
+    assert dfthcsos["copied"] == {
+        "dfthcsos/angle_k_0.kmb": "sample_submission/dfthcsos/submission.npz",
+        "dfthcsos/submission.npz": "sample_submission/dfthcsos/submission.npz"}
+    assert rebuild["copied_inputs"] == {"dfthcsos/submission.npz":
+                                        "sample_submission/dfthcsos/submission.npz"}
     assert not (workspace.queue_dir / "copier-001.zip").exists()
+
+
+def test_a_circuit_can_never_be_a_declared_input(tmp_path):
+    """Declaring a .kmb as an input would let a generator copy a circuit; stage_inputs refuses
+    it before any generator runs (load_config refuses it in the committed configs)."""
+    from ledger.benchmark_health import InputError, stage_inputs
+
+    package = tmp_path / "package"
+    (package / "sample_submission").mkdir(parents=True)
+    (package / "sample_submission" / "invsqrt.kmb").write_bytes(b"circuit")
+    digest = hashlib.sha256(b"circuit").hexdigest()
+    with pytest.raises(InputError, match="circuit file"):
+        stage_inputs({"invsqrt": [{"path": "sample_submission/invsqrt.kmb", "sha256": digest}]},
+                     tmp_path / "staging", package)
+    assert not (tmp_path / "staging" / "sample_submission" / "invsqrt.kmb").exists()
+
+
+def test_rerun_appends_a_g5_record_at_a_named_commit_and_keeps_the_identity(workspace, fakes,
+                                                                            tmp_path):
+    """`rerun` repeats G5 with the generators at another commit, appends the record with that
+    commit in details.rebuild.commit, leaves generator_commit and the earlier records alone, and
+    queues nothing (PRA-211)."""
+    config = workspace.copier_config()
+    zip_path = workspace.copier_zip("rerun")
+    manifest, records = _g5(workspace, config, zip_path)
+    assert records[-1].status == "PASS"
+    identity, history = manifest.generator_commit, len(manifest.gates)
+    path = write_manifest(manifest, tmp_path / "m.json")
+    pointer = workspace.queue_dir / "copier-001.json"
+    queued = pointer.read_text()
+    (workspace.repo / "LATER").write_text("same generators, later commit\n")
+    subprocess.run(["git", "-c", "user.name=t", "-c", "user.email=t@example.invalid",
+                    "add", "LATER"], cwd=workspace.repo, check=True)
+    subprocess.run(["git", "-c", "user.name=t", "-c", "user.email=t@example.invalid",
+                    "commit", "-q", "-m", "later"], cwd=workspace.repo, check=True)
+    later = subprocess.run(["git", "rev-parse", "HEAD"], cwd=workspace.repo, check=True,
+                           capture_output=True, text=True).stdout.strip()
+    assert later != identity
+
+    record = rerun_gate(manifest, "G5", zip_path, config, generator_commit=later,
+                        note="re-run ordered by D-TEST", manifest_file=path, **workspace.context())
+    assert record.gate == "G5" and record.status == "PASS", record
+    assert record.details["rebuild"]["commit"] == later
+    reread = read_manifest(path)
+    assert reread.generator_commit == identity
+    assert len(reread.gates) == history + 1 and reread.gates[-1] == record
+    assert reread.notes.endswith("re-run ordered by D-TEST")
+    assert pointer.read_text() == queued  # nothing was re-queued
+    with pytest.raises(GateOrderError, match="only G5"):
+        rerun_gate(manifest, "G3", zip_path, config, generator_commit=later, **workspace.context())
+    with pytest.raises(ManifestError, match="40-hex"):
+        rerun_gate(manifest, "G5", zip_path, config, generator_commit="abc", **workspace.context())
+    fresh = workspace.candidate("never-ran")
+    with pytest.raises(GateOrderError, match="never run"):
+        rerun_gate(fresh, "G5", workspace.zip_path, config, generator_commit=later,
+                   **workspace.context())
 
 
 def test_g5_passes_a_generator_that_only_reads_a_declared_input(workspace, fakes):
     config = workspace.copier_config(derive_only=True)
     manifest, records = _g5(workspace, config, workspace.copier_zip("derived", derive_only=True))
     assert [(r.gate, r.status) for r in records] == [(g, "PASS") for g in GATE_IDS], records
-    dfthcsos = manifest.latest_gate("G5").details["rebuild"]["tasks"]["dfthcsos"]
-    assert dfthcsos["identical"] and dfthcsos["copied"] == {}
+    rebuild = manifest.latest_gate("G5").details["rebuild"]
+    dfthcsos = rebuild["tasks"]["dfthcsos"]
+    assert dfthcsos["identical"] and dfthcsos["copied"] == {} and rebuild["copied_inputs"] == {}
 
 
 def test_g5_generators_see_only_the_declared_inputs(workspace, fakes):
@@ -355,6 +437,7 @@ def test_g5_refuses_a_declared_input_whose_pin_does_not_match(workspace, fakes):
     ({"dfthcsos": [{"path": "../etc/passwd", "sha256": "a" * 64}]}, "no '..'"),
     ({"dfthcsos": [{"path": "/abs/file", "sha256": "a" * 64}]}, "relative"),
     ({"dfthcsos": [{"path": "sample_submission/x.npz", "sha256": "short"}]}, "64-hex"),
+    ({"invsqrt": [{"path": "sample_submission/invsqrt.kmb", "sha256": "a" * 64}]}, "circuit file"),
 ])
 def test_bad_input_declarations_are_rejected(tmp_path, inputs, message):
     raw = yaml.safe_load(DEFAULT_CONFIG.read_text())

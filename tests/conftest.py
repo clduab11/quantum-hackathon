@@ -31,13 +31,15 @@ for name in files:
     path.write_bytes(("generated " + name).encode() * 64)
 '''
 # A toy generator that reads a declared package input: it copies the dfthcsos factorization from
-# $VQCC_DATA into the output (a copied competition-package file) and derives the two ANGLE
-# circuits from its bytes. With --derive-only it writes a derived factorization instead of a copy.
+# $VQCC_DATA into the output (a copied declared input) and derives the two ANGLE circuits from
+# its bytes. With --derive-only it writes a derived factorization instead of a copy. With
+# --copy-as-circuit it also writes angle_k_0.kmb as a byte copy of the input (a copied circuit).
 COPIER = '''\
 import os, shutil, sys
 from pathlib import Path
 task, out = sys.argv[1], Path(sys.argv[2])
 derive_only = "--derive-only" in sys.argv
+copy_as_circuit = "--copy-as-circuit" in sys.argv
 if task != "dfthcsos":
     path = out / f"{task}.kmb"
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -52,6 +54,8 @@ else:
     shutil.copyfile(source, out / "dfthcsos" / "submission.npz")
 for k in range(2):
     (out / "dfthcsos" / f"angle_k_{k}.kmb").write_bytes(bytes(b ^ k for b in words) * 4)
+if copy_as_circuit:
+    shutil.copyfile(source, out / "dfthcsos" / "angle_k_0.kmb")
 '''
 TASKS = ("invsqrt", "dqi", "dfthcsos")
 PACKAGE_INPUT = "sample_submission/dfthcsos/submission.npz"
@@ -91,21 +95,27 @@ class Workspace:
         return {"repo": self.repo, "manifests_root": self.manifests_root,
                 "evidence_root": self.evidence_root, "package_root": self.package_root}
 
-    def copier_zip(self, name: str, *, derive_only: bool = False) -> Path:
+    def copier_zip(self, name: str, *, derive_only: bool = False,
+                   copy_as_circuit: bool = False) -> Path:
         """A candidate zip built by `copier.py` against this workspace's fake package."""
         built = self.root / name
-        extra = ["--derive-only"] if derive_only else []
+        extra = self._copier_flags(derive_only, copy_as_circuit)
         for task in TASKS:
             subprocess.run([sys.executable, "copier.py", task, str(built), *extra], cwd=self.repo,
                            check=True, env={**os.environ, "VQCC_DATA": str(self.package_root)})
         return build_zip(built, self.root / f"{name}.zip")
 
+    @staticmethod
+    def _copier_flags(derive_only: bool, copy_as_circuit: bool) -> list[str]:
+        return ((["--derive-only"] if derive_only else [])
+                + (["--copy-as-circuit"] if copy_as_circuit else []))
+
     def copier_config(self, *, inputs: bool = True, sha256: str | None = None,
-                      derive_only: bool = False) -> GateConfig:
+                      derive_only: bool = False, copy_as_circuit: bool = False) -> GateConfig:
         """The workspace config with copier.py as the dfthcsos generator and, by default, the
         package factorization declared as its input."""
         raw = yaml.safe_load(self.config.path.read_text())
-        extra = ["--derive-only"] if derive_only else []
+        extra = self._copier_flags(derive_only, copy_as_circuit)
         raw["generators"]["dfthcsos"] = ["{python}", "copier.py", "dfthcsos", "{out}", *extra]
         if inputs:
             digest = sha256 or hashlib.sha256(
