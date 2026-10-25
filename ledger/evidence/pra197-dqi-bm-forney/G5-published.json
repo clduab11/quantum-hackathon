@@ -1,0 +1,68 @@
+{
+  "seconds": 266.35838903900003,
+  "generator_commit": "47a337db74ca533639e23f06516ef0d87117428f",
+  "gate": {
+    "gate": "G5",
+    "status": "PASS",
+    "timestamp_utc": "2026-10-25T01:14:16.830300+00:00",
+    "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba",
+    "reason": "",
+    "evidence_sha256": null,
+    "details": {
+      "rebuild": {
+        "status": "PASS",
+        "commit": "47a337db74ca533639e23f06516ef0d87117428f",
+        "tasks": {
+          "invsqrt": {
+            "identical": true,
+            "returncode": 0,
+            "argv": [
+              "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-193-regarding-my-quantum-hackathon-project-you-should-know-that-the-highest-score-on-the-hackathon-project-t/.venv/bin/python3",
+              "tasks/invsqrt/generate.py",
+              "--out",
+              "/tmp/paperclip-run-pra-197-cb416359-638-dqjlZR/ledger-rebuild-xur_vg66/out/invsqrt"
+            ],
+            "diffs": {
+              "missing": [],
+              "extra": [],
+              "changed": []
+            },
+            "stderr_tail": ""
+          },
+          "dqi": {
+            "identical": true,
+            "returncode": 0,
+            "argv": [
+              "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-193-regarding-my-quantum-hackathon-project-you-should-know-that-the-highest-score-on-the-hackathon-project-t/.venv/bin/python3",
+              "tasks/dqi/generate.py",
+              "--out",
+              "/tmp/paperclip-run-pra-197-cb416359-638-dqjlZR/ledger-rebuild-xur_vg66/out/dqi"
+            ],
+            "diffs": {
+              "missing": [],
+              "extra": [],
+              "changed": []
+            },
+            "stderr_tail": ""
+          },
+          "dfthcsos": {
+            "identical": true,
+            "returncode": 0,
+            "argv": [
+              "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-193-regarding-my-quantum-hackathon-project-you-should-know-that-the-highest-score-on-the-hackathon-project-t/.venv/bin/python3",
+              "tasks/dfthcsos/generate.py",
+              "--out",
+              "/tmp/paperclip-run-pra-197-cb416359-638-dqjlZR/ledger-rebuild-xur_vg66/out/dfthcsos"
+            ],
+            "diffs": {
+              "missing": [],
+              "extra": [],
+              "changed": []
+            },
+            "stderr_tail": ""
+          }
+        }
+      }
+    }
+  }
+}
