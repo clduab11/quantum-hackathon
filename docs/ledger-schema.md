@@ -16,7 +16,8 @@ submission, rebuilt by `ledger/examples/make_reference_manifest.py`.
 | Path | Content | Committed |
 | --- | --- | --- |
 | `ledger/manifests/candidates/<candidate_id>.json` | One manifest per candidate; rewritten after each gate | yes |
-| `ledger/manifests/submissions/submission-NNN.json` | One manifest per Kaggle submission; never rewritten | yes |
+| `ledger/manifests/submissions/submission-NNN.json` | One manifest per Kaggle submission; never rewritten, except that a gate re-run ordered by a decision appends a gate record with `uv run python -m ledger.gates.runner rerun --generator-commit <sha>` (PRA-211 re-ran G5 on submission-001, D-PRA211-02 and D-PRA211-05) | yes |
+| `ledger/manifests/reservations/<day>-slot<k>.json` | A pending submission-slot reservation (PRA-211); renamed `…-<id>.recorded.json` or `…-<id>.failed.json` once resolved | resolved ones yes; a pending one only if it outlives the session |
 | `ledger/evidence/<candidate_id>/<gate>.json` | Evidence record: verifier summaries, log hashes, commands | yes |
 | `ledger/manifests/index.csv` | Derived index, one row per manifest, rewritten from the manifests by `runner new`, every submission and `python -m ledger.registers index` (PRA-210) | **no** (derived) |
 | `ledger/manifests/index-legacy.csv` | The rows appended before PRA-210, frozen byte for byte | yes |
@@ -115,7 +116,7 @@ its cost and baseline.
 | G2 | Fast proxy: invsqrt exhaustive numpy mirror; dqi subsampled shots; dfthcsos `heuristic_costs` + error/Λ/E_gap (`tasks.<task>.gates:g2_proxy`) | yes, with reason | generator owner |
 | G3 | Full local verifier at full shots (`harness.score_local:score_submission`); folds results into the manifest as evidence | no | P0-4 |
 | G4 | Measured geometric mean strictly beats the parent and the best measured archived candidate | yes, with reason | ledger |
-| G5 | Provenance shippable; clean 40-hex generator commit; zip holds exactly the manifest's files and is their deterministic build; clean `git worktree` at `generator_commit` regenerates every file byte for byte | no | ledger |
+| G5 | Provenance shippable; clean 40-hex generator commit; zip holds exactly the manifest's files and is their deterministic build; clean `git worktree` at `generator_commit` regenerates every file byte for byte with `VQCC_DATA` pointing at a staging directory that holds only the config's declared, SHA-256-pinned `inputs`; an output byte-identical to a declared input is recorded as `copied`: a copied circuit fails and a circuit can never be a declared input, a copied non-circuit input (the declared dfthcsos factorization) is accepted (R10, PRA-211, D-PRA211-05) | no | ledger |
 
 Rules enforced by the runner:
 
@@ -136,23 +137,43 @@ Hook contracts:
   summary, unchanged>}, "baseline_costs": {task: float}, "verifier_hashes": {task: sha256}, "kickmix_build_id",
   "qualtran_pin", "commands"}`.
 - G5 generator command per task (`generators:` in the config), run from the worktree root; `{out}` is an empty output
-  directory, `{python}` this interpreter. Outputs use the manifest's relative paths.
+  directory, `{python}` this interpreter. Outputs use the manifest's relative paths. The generator's `VQCC_DATA` is a
+  staging directory holding only the config's `inputs:` (`{task: [{path, sha256}]}`, paths relative to the package
+  root), copied there after a hash check; nothing else from the competition package is visible. A circuit (`.kmb`) can
+  never be a declared input. The rebuild record lists per task `identical` (every file matches the manifest) and
+  `copied` (outputs whose bytes equal a declared input), and `copied_inputs` overall. A copied circuit is a FAIL even
+  when every byte matches the manifest; a copied non-circuit input is accepted and stays visible in the record
+  (Chris's ruling on PRA-211; D-PRA211-05). `uv run python -m ledger.gates.runner rerun --generator-commit <sha>` repeats G5 on a recorded
+  manifest with the generators at that commit and appends the record; the manifest's `generator_commit` is unchanged.
 
 ## Submissions (R6)
 
-Only john-wick submits. Hard cap **3 per UTC day**. Procedure:
+Only john-wick submits. Hard cap **3 per UTC day**, enforced *before* the upload (PRA-211, D-PRA211-03). The only
+sanctioned upload path is `ledger.scorecard.submit`, or its two halves `reserve` and `record`:
 
-1. `uv run python -m ledger.scorecard --check-slot` — exits 1 if today's cap is used up.
-2. Submit the queued zip (`ledger/queue/<candidate_id>.zip`).
-3. `ledger.scorecard.record_submission(candidate, kaggle_submission_id)` writes `submission-NNN.json` and rewrites
-   the derived index. It refuses a fourth submission on the same UTC day, a candidate that fails the shipping rule, and a duplicate
-   Kaggle id.
+1. `uv run python -m ledger.scorecard --check-slot` — exits 1 if today's cap is used up, counting recorded submissions
+   and pending reservations.
+2. `uv run python -m ledger.scorecard submit --candidate <manifest> --zip ledger/queue/<id>.zip --upload-command '<cmd>'`
+   — `reserve_slot` first: with three slots already recorded or reserved it refuses, writes nothing and the upload
+   command never runs. Otherwise it creates `ledger/manifests/reservations/<day>-slot<k>.json` exclusively (a hard-link
+   create, so two racing reservers cannot share a slot), runs the command with the zip path appended, takes the Kaggle
+   submission id from its last stdout line and records it.
+   For an upload made elsewhere (the Composio sandbox route of D-PRA178-03): `reserve --candidate <manifest>` before
+   the upload, then `record --candidate <manifest> --kaggle-id <id> --reservation <file>` after it.
+3. `record_submission(candidate, kaggle_submission_id, reservation=…)` writes `submission-NNN.json` (exclusive create),
+   marks the reservation `.recorded.json` and rewrites the derived index. It refuses a candidate that fails the shipping
+   rule and a duplicate Kaggle id. Called without a reservation it also refuses when the day is full.
+4. An upload that raised or returned no id leaves its reservation **pending**, with the error written into it. A pending
+   reservation keeps counting against the cap until it is reconciled: `record … --reservation` if Kaggle did receive
+   the submission, or `reconcile --reservation <file> --failed --reason '<why no submission exists>'`, which renames it
+   `.failed.json`. Uncertain attempts are never silently dropped.
 
-Known limit: the ledger cannot stop an upload made without step 1, and it does not lock across processes (the
-exclusive create makes a racing second writer fail rather than overwrite). Only john-wick submits, one at a time.
+`DAILY_CAP` is a constant and no function takes a cap parameter. The day boundary is 00:00 UTC, taken from the
+reservation or record time; naive timestamps are rejected. Known limit: an upload made outside `submit`/`reserve` is
+invisible to the ledger. AGENTS.md forbids that path; the ledger cannot see it.
 
 `uv run python -m ledger.scorecard` prints the table: ratio per task, geometric mean, measured flag, last gate,
-best measured ratio per task, and submissions per UTC day.
+best measured ratio per task, submissions per UTC day and pending reservations.
 
 ## Health and reproducibility
 

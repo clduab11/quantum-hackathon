@@ -1,8 +1,13 @@
-# Gate pipeline for the reference submission only (PRA-178). Identical to default.yaml except
-# `generators`: G5 rebuilds Google's sample_submission files with
-# ledger/examples/reference_generator.py, which refuses any file that differs from its pinned
-# SHA-256. Never use this config for a Praxen candidate.
-#
+# Gate pipeline for the reference submission only (PRA-178; G5 repaired by PRA-211). Identical to
+# default.yaml: G1, G2 and G4 are waived with a written reason because the reference circuits
+# are Google's and are not meant to improve on anything, and G5 is the same check as for a
+# Praxen candidate. Every file is rebuilt in a clean worktree from the committed generators
+# below with only the declared `inputs` visible, and compared byte for byte with the manifest.
+# A generator output that is a byte copy of a competition-package circuit fails G5 (R10; Chris's
+# ruling on PRA-169, 2026-10-25: "build it from source"; D-PRA211-01); a declared non-circuit
+# input copied into the zip is recorded, not failed (Chris's ruling on PRA-211; D-PRA211-05). The
+# copier ledger/examples/reference_generator.py that cleared G5 for submission-001 is retired.
+# Never use this config for a Praxen candidate.
 #
 # The gates run in this order and the order is enforced: a gate runs only when every earlier gate
 # is cleared (PASS, or WAIVED where waivable) on the same zip SHA-256. G0, G3 and G5 can never be
@@ -74,9 +79,20 @@ gates:
     params:
       timeout_seconds: 7200
 
-# G5 generator commands for the reference: copy the pinned upstream files (Apache-2.0) from the
-# competition package ($VQCC_DATA, default /home/cld-main/work/vqcc-data/...) into {out}.
+# G5 generator commands: committed builders only. tasks/invsqrt/reference.py and
+# tasks/dqi/generate.py are attributed ports of the package's reference circuit scripts;
+# tasks/dfthcsos/generate.py rebuilds the ten ANGLE circuits from the declared factorization.
 generators:
-  invsqrt: ["{python}", "ledger/examples/reference_generator.py", "--task", "invsqrt", "--out", "{out}"]
-  dqi: ["{python}", "ledger/examples/reference_generator.py", "--task", "dqi", "--out", "{out}"]
-  dfthcsos: ["{python}", "ledger/examples/reference_generator.py", "--task", "dfthcsos", "--out", "{out}"]
+  invsqrt: ["{python}", "tasks/invsqrt/reference.py", "--out", "{out}"]
+  dqi: ["{python}", "tasks/dqi/generate.py", "--out", "{out}"]
+  dfthcsos: ["{python}", "tasks/dfthcsos/generate.py", "--out", "{out}"]
+
+# Declared competition-package inputs, relative to the package root and SHA-256 pinned. G5 stages
+# exactly these files into an otherwise empty VQCC_DATA for the generators, so nothing else from
+# the package can be read or copied. A circuit (.kmb) can never be declared here (R10). An output
+# byte-identical to a declared input is recorded per task as `copied`; the factorization below is
+# the one input that may ship as a recorded copy (Chris's ruling on PRA-211; D-PRA211-05).
+inputs:
+  dfthcsos:
+    - path: sample_submission/dfthcsos/submission.npz
+      sha256: 14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69
