@@ -1,0 +1,244 @@
+[
+  {
+    "name": "penalty-low",
+    "path": "/home/cld-main/work/vqcc-data/pra235-handoff-penalty-low-01/submission.npz",
+    "row": {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 12,
+      "error_1": 0.0032755184431519585,
+      "error_2": 0.017743778278860957,
+      "Lambda": 333.9085799019611,
+      "E_SOS": -22144.33611120649,
+      "E_gap": 4.0627612064890855,
+      "lambda_eff": 51.929525525062765,
+      "gap_in_domain": true,
+      "T": 88874,
+      "Q": 727,
+      "angle_qubits": 119,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3355239241.650989,
+      "ratio": 1.0001073981981785,
+      "seconds": 242.9004836709937,
+      "problems": [],
+      "margin_19mHa": true,
+      "factor_file": "factors-01-q12.npz",
+      "factor_sha256": "9d077c0342ac6fa411d893da56b7f3654271d0785941c8ce34f8c6819cdb54f5",
+      "quantized_fit": {
+        "iterations": 200,
+        "evaluations": 210,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.01794057892772452,
+        "initial_objective": 0.019141713822476213,
+        "maxcor": 20,
+        "method": "fixed-rounded-U weight L-BFGS-B"
+      },
+      "quantized_offsets": {
+        "iterations": 7,
+        "converged": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "objective": 51.9295255250707
+      },
+      "encoded_file": "encoded-01-12.npz",
+      "encoded_sha256": "d3e8260589f02938a2f8ecd86bf70799fbbfa9b16e062f8d921fed007f3d7f15"
+    },
+    "g2": {
+      "status": "PASS",
+      "error_1": 0.0032755184431519585,
+      "error_2": 0.017743778278860957,
+      "Lambda": 333.9085799019611,
+      "E_gap": 4.0627612064890855,
+      "lambda_eff": 51.929525525062765,
+      "heuristic_toffoli": 9394,
+      "heuristic_qubits": 631,
+      "brot": 12,
+      "parity": false
+    },
+    "settings": {
+      "starter": "/home/cld-main/work/vqcc-data/starter-kit",
+      "competition": "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation",
+      "out": "/home/cld-main/work/vqcc-data/pra235-batch-floor-01/penalty-low",
+      "shapes": [
+        [
+          65,
+          60,
+          30
+        ]
+      ],
+      "bits": [
+        12,
+        11,
+        10,
+        9,
+        8
+      ],
+      "steps": 300,
+      "offset_steps": 100,
+      "penalty": 2e-06,
+      "maxcor": 20,
+      "optimizer": "lbfgs",
+      "learning_rate": 0.0001,
+      "quantize_bits": [
+        12
+      ],
+      "quantized_steps": 200,
+      "checkpoint_every": 100,
+      "dry_run": false
+    },
+    "stages": {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 300,
+        "evaluations": 318,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.016687322438901895,
+        "optimizer": "lbfgs",
+        "maxcor": 20,
+        "learning_rate": null
+      },
+      "offsets": {
+        "iterations": 69,
+        "converged": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "objective": 51.948700362516796
+      },
+      "refit_seconds": 677.4599006589997,
+      "sha256": "64a317310f523fcd0ba3e2152bd723b8da1580f9568b27d75a7d681e6bd037de",
+      "file": "factors-01.npz"
+    },
+    "runtime": 964.8739631549979
+  },
+  {
+    "name": "optimizer-adam",
+    "path": "/home/cld-main/work/vqcc-data/pra235-handoff-optimizer-adam-01/submission.npz",
+    "row": {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 12,
+      "error_1": 0.0033835033136882125,
+      "error_2": 0.017459501284535328,
+      "Lambda": 332.6685417256943,
+      "E_SOS": -22144.356393259866,
+      "E_gap": 4.083043259866827,
+      "lambda_eff": 51.96083959929536,
+      "gap_in_domain": true,
+      "T": 88874,
+      "Q": 727,
+      "angle_qubits": 119,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 3357262487.764233,
+      "ratio": 0.9995046858950429,
+      "seconds": 245.91051035201235,
+      "problems": [],
+      "margin_19mHa": true,
+      "factor_file": "factors-01-q12.npz",
+      "factor_sha256": "33ff12e091444a9889d3c7ae9e3cf588a6cbcb82efc2321937fec37f2114101c",
+      "quantized_fit": {
+        "iterations": 200,
+        "evaluations": 213,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "objective": 0.019376070304841397,
+        "initial_objective": 0.02057342593223383,
+        "maxcor": 20,
+        "method": "fixed-rounded-U weight L-BFGS-B"
+      },
+      "quantized_offsets": {
+        "iterations": 7,
+        "converged": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "objective": 51.960839599290324
+      },
+      "encoded_file": "encoded-01-12.npz",
+      "encoded_sha256": "ec864ac608d42a5e0a3c816aff353ccf8383e6472e3a4ddf88f35f45ce24c371"
+    },
+    "g2": {
+      "status": "PASS",
+      "error_1": 0.0033835033136882125,
+      "error_2": 0.017459501284535328,
+      "Lambda": 332.6685417256943,
+      "E_gap": 4.083043259866827,
+      "lambda_eff": 51.96083959929536,
+      "heuristic_toffoli": 9394,
+      "heuristic_qubits": 631,
+      "brot": 12,
+      "parity": false
+    },
+    "settings": {
+      "starter": "/home/cld-main/work/vqcc-data/starter-kit",
+      "competition": "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation",
+      "out": "/home/cld-main/work/vqcc-data/pra235-batch-public-01/optimizer-adam",
+      "shapes": [
+        [
+          65,
+          60,
+          30
+        ]
+      ],
+      "bits": [
+        12,
+        11,
+        10,
+        9,
+        8
+      ],
+      "steps": 300,
+      "offset_steps": 100,
+      "penalty": 2e-05,
+      "maxcor": 20,
+      "optimizer": "adam",
+      "learning_rate": 0.0001,
+      "quantize_bits": [
+        12
+      ],
+      "quantized_steps": 200,
+      "checkpoint_every": 100,
+      "dry_run": false
+    },
+    "stages": {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "structure": {
+        "iterations": 300,
+        "evaluations": 301,
+        "converged": false,
+        "message": "Adam fixed iteration budget exhausted",
+        "objective": 0.018033158845932346,
+        "optimizer": "adam",
+        "maxcor": 20,
+        "learning_rate": 0.0001
+      },
+      "offsets": {
+        "iterations": 74,
+        "converged": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "objective": 51.85014171248246
+      },
+      "refit_seconds": 579.8610411909904,
+      "sha256": "016ce96428333adaf75efe9f1f4a364119d15128589181d920372afae71f6616",
+      "file": "factors-01.npz"
+    },
+    "runtime": 872.1331368690007
+  }
+]
