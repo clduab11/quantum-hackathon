@@ -1,10 +1,11 @@
-# Factor refit v2: experiment in progress
+# Factor refit v2: completed experiment matrix
 
 PRA-235 extends the Google-only pipeline with larger-group initialization and
 weight fitting against rounded vectors. The integrated CLI is tested;
-the full experiment matrix is still in progress. The 12-bit floor has passed
-and was handed to PRA-237 (details below). Construction probes alone do not
-establish accuracy; no shipping claim is made.
+the scheduled experiment matrix is complete. The 12-bit R65 floor passed and
+was handed to PRA-237. The R32, public-style and lower-bit targets missed
+accuracy at these budgets. See `ledger/evidence/pra235/final-summary.md` for
+final lever verdicts and the complete-report index. No circuit shipping claim is made.
 
 ## Long-fit control
 
@@ -83,7 +84,7 @@ hard accuracy, Lambda, gap and domain checks. Optimizer termination, iteration
 count, initial/final objective, and maxcor are returned as evidence. The helper
 performs no file, network, circuit, credential or submission operations.
 
-## Verification and remaining work
+## Verification
 
 ```sh
 uv run pytest tests/test_factor_refit_v2.py -q
@@ -96,8 +97,8 @@ implementation passes. Tests also cover deterministic construction, invalid
 shapes, fixed rounded vectors and objective reduction.
 
 The long-fit, penalty, optimizer and larger-shape precision experiments are complete.
-Gradual pruning has completed through R36; final R32 precision measurements and
-the consolidated verdict remain pending. Best-margin Adam and best-modeled-cost
+Gradual pruning is complete through R32; the final 10-bit error2 is 243.531672 mHa,
+a measured target miss. Final decisions are D-PRA235-31/32. Best-margin Adam and best-modeled-cost
 high-penalty floor checkpoints each reproduce byte-for-byte in the same environment.
 See the measured-result summary below. Existing method notices remain in `notices/30-dfthcsos.txt`. These new
 helpers are own NumPy/SciPy implementations extending the already attributed
@@ -215,7 +216,7 @@ from the recorded committed snapshot in a separate process session and record
 the PID, source commit, plan hash and log paths on the issue. A scheduled issue
 monitor must collect results and hand off any passing checkpoint.
 
-## Measured results through R36
+## Final measured results
 
 The 12-bit (65,60,30) floor passes with multiple methods. Best error margin is
 17.459501285 mHa from Adam300 followed by 200 fixed rounded-U weight steps.
@@ -231,7 +232,7 @@ source/environment. They were handed to PRA-237; factors remain outside Git.
 The 1,000-step continuous fit passes at 18.668749 mHa, establishing the long-fit
 lever at the floor. Adam, trust-ncg, and all four tested penalty weights pass
 at 12 bits. No compressed point below 12 bits passes. R64 reaches 19.567859 mHa,
-passing the competition limit but missing our 19 mHa margin. R60 through R36
+passing the competition limit but missing our 19 mHa margin. R60 through R32
 fail all measured widths. Larger public-style shapes also miss accuracy:
 
 | Shape | 11-bit error2 mHa | 10-bit | 9-bit | 8-bit |

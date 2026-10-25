@@ -1,0 +1,77 @@
+{
+  "scope": "10 scheduled primary experiments; actual archive SHA-256, source snapshot/worktree hashes, control hashes",
+  "checks": [
+    {
+      "report": "floor-long-complete-01.json",
+      "rows": 10,
+      "actual_file_comparisons": 20,
+      "source_and_control_match": true,
+      "seconds": 2343.4326301060064
+    },
+    {
+      "report": "penalty-zero-complete-01.json",
+      "rows": 10,
+      "actual_file_comparisons": 20,
+      "source_and_control_match": true,
+      "seconds": 1197.4881537750043
+    },
+    {
+      "report": "penalty-low-complete-01.json",
+      "rows": 10,
+      "actual_file_comparisons": 20,
+      "source_and_control_match": true,
+      "seconds": 964.8739631549979
+    },
+    {
+      "report": "penalty-standard-complete-01.json",
+      "rows": 10,
+      "actual_file_comparisons": 20,
+      "source_and_control_match": true,
+      "seconds": 871.6352870559931
+    },
+    {
+      "report": "penalty-high-complete-01.json",
+      "rows": 10,
+      "actual_file_comparisons": 20,
+      "source_and_control_match": true,
+      "seconds": 1041.9175648170058
+    },
+    {
+      "report": "optimizer-adam-complete-01.json",
+      "rows": 10,
+      "actual_file_comparisons": 20,
+      "source_and_control_match": true,
+      "seconds": 872.1331368690007
+    },
+    {
+      "report": "trust-ncg-complete-01.json",
+      "rows": 10,
+      "actual_file_comparisons": 20,
+      "source_and_control_match": true,
+      "seconds": 3103.282713309003
+    },
+    {
+      "report": "public-r6-complete-01.json",
+      "rows": 10,
+      "actual_file_comparisons": 20,
+      "source_and_control_match": true,
+      "seconds": 2035.3326002139947
+    },
+    {
+      "report": "public-r1-complete-01.json",
+      "rows": 10,
+      "actual_file_comparisons": 20,
+      "source_and_control_match": true,
+      "seconds": 1722.0387426359957
+    },
+    {
+      "report": "gradual-complete-01.json",
+      "rows": 55,
+      "actual_file_comparisons": 110,
+      "source_and_control_match": true,
+      "seconds": 12271.408480953003
+    }
+  ],
+  "all_match": true,
+  "reproducibility_scope": "Fresh repeats separately documented for Adam, high penalty, improved floor; same source/environment only."
+}
