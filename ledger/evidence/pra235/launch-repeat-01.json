@@ -1,0 +1,27 @@
+{
+  "name": "repeat",
+  "pid": 41239,
+  "command": [
+    "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra235-factor-refit-v2/.venv/bin/python",
+    "-m",
+    "tasks.dfthcsos.run_experiments",
+    "--plan",
+    "/home/cld-main/work/vqcc-data/pra235-repeat-plan-67aa8b8.json",
+    "--out",
+    "/home/cld-main/work/vqcc-data/pra235-batch-repeat-01"
+  ],
+  "cwd": "/home/cld-main/work/vqcc-data/pra235-source-961357b",
+  "log": "/home/cld-main/work/vqcc-data/pra235-batch-repeat-01.log",
+  "out": "/home/cld-main/work/vqcc-data/pra235-batch-repeat-01",
+  "source_commit": "961357b20e7272e4b22bfb6f0c31482820e28e65",
+  "plan_commit": "67aa8b892ca67deadc76755a99ded2a3a9902b4e",
+  "plan_sha256": "8f2c3413c40cc1704b467db0cff452d901fcaf9c7fc52f14a8117a9d439571d4",
+  "started_at": "2026-10-25T18:48:18.371366Z",
+  "environment": {
+    "PATH": "/bin:/usr/bin",
+    "LANG": "C.UTF-8",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  }
+}
