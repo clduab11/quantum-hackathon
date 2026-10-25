@@ -69,9 +69,7 @@ def test_decision_files_follow_the_closed_rows_by_date_then_id(tmp_path: Path):
 
 
 def test_whole_register_holds_each_ruling_once():
-    from ledger.status_page import parse_decisions
-
-    rows = parse_decisions(registers.decisions_text(REPO_ROOT))
+    rows = registers.parse_decisions(registers.decisions_text(REPO_ROOT))
     ids = [r.id for r in rows]
     assert len(rows) == len(registers.decision_rows(REPO_ROOT))
     for n in range(1, 13):
@@ -141,3 +139,23 @@ def test_write_index_derives_every_manifest(tmp_path: Path):
 def test_check_command_reports(capsys: pytest.CaptureFixture[str]):
     assert registers.main(["check"]) == 0
     assert capsys.readouterr().out.startswith("OK registers:")
+
+
+def test_register_rows_parse_with_escaped_pipes_and_skip_the_header():
+    text = """# Decisions register
+
+| date | id | decision | evidence | status |
+| --- | --- | --- | --- | --- |
+| 2026-10-24 | D-X-01 | Use `a \\| b` | PRA-1 | accepted |
+| 2026-10-24 | D-X-02 | Revisit D-X-01 | review | unresolved |
+"""
+    rows = registers.parse_decisions(text)
+    assert [r.id for r in rows] == ["D-X-01", "D-X-02"]
+    assert rows[0].decision == "Use `a | b`"
+
+
+def test_committed_register_parses_completely():
+    text = (REPO_ROOT / "docs" / "DECISIONS.md").read_text()
+    rows = registers.parse_decisions(text)
+    table_lines = [ln for ln in text.splitlines() if ln.startswith("| 20")]
+    assert len(rows) == len(table_lines) > 0

@@ -1,0 +1,39 @@
+# Our public standing on the Kaggle leaderboard, as john-wick last read it (PRA-241).
+#
+# Read by the status page (ledger/status_page.py) and nothing else. Update the leaderboard block
+# with every `leaderboard-snapshot`, and add a one-line note for every new submission. Our own
+# scores are not here: the public score comes from ledger/evidence/<submission>/
+# kaggle-public-score.json and the per-task ratios from the submission manifests.
+#
+# The page shows these notes and numbers to readers who know nothing about the project: plain
+# English, no ticket ids, no ledger words.
+
+schema: 1
+
+leaderboard:
+  # PRA-202 `leaderboard-snapshot` revision 3: top-20 read (Composio log log_IXTGhqv-rutr) and
+  # our rank from KAGGLE_LIST_COMPETITIONS userRank (log log_MCDUu4vgIscn).
+  read_at_utc: "2026-10-25T15:54:00+00:00"
+  our_score: 5.68935          # our public score when the rank was read
+  rank: 585
+  teams: 893
+  leader_score: 20.48324
+  prize_line_place: 6         # last paid place (D-PRA202-14)
+  prize_line_score: 17.33338
+
+best_public_per_task:
+  # PRA-202 `leaderboard-snapshot` revision 4, per-task scoreboard. Kaggle publishes no per-task
+  # scores; these are the best figures authors state in public notebooks, so they are a floor on
+  # the true best, not the true best.
+  read_at_utc: "2026-10-25T15:11:00+00:00"
+  invsqrt: 15.04
+  dqi: 23.66
+  dfthcsos: 4.09
+
+submission_notes:
+  submission-001: The unchanged reference circuits, to prove our upload pipeline end to end.
+  submission-002: A cheaper error-correcting decoder (dqi); the other two circuits unchanged.
+  submission-003: Adds a cheaper square-root circuit (invsqrt) to the new decoder.
+
+# The public Kaggle notebook, once it is published. null hides the link.
+notebook_url: null
