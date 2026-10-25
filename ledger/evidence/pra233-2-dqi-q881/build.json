@@ -1,0 +1,60 @@
+{
+  "variant": "paired-v6",
+  "num_qubits": 881,
+  "static_toffoli_like": 1147675,
+  "num_ops": 113870810,
+  "num_bits": 99133,
+  "build_seconds": 169.93177865100733,
+  "sha256": "dec77920d4b9f5964b6cd52c947aa0c91468d56b7ed28cd475fdfc18d067729d",
+  "bytes": 1040771980,
+  "stages": [
+    {
+      "boundary": "initialization",
+      "toffolis_cumulative": 0,
+      "toffolis_since_previous": 0,
+      "peak_qubits": 840,
+      "live_qubits": 852,
+      "ops_cumulative": 20741142
+    },
+    {
+      "boundary": "moment_to_fraction",
+      "toffolis_cumulative": 320804,
+      "toffolis_since_previous": 320804,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 34342820
+    },
+    {
+      "boundary": "fraction_to_polynomials",
+      "toffolis_cumulative": 399800,
+      "toffolis_since_previous": 78996,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 35908631
+    },
+    {
+      "boundary": "phase_correction",
+      "toffolis_cumulative": 747875,
+      "toffolis_since_previous": 348075,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 98703353
+    },
+    {
+      "boundary": "polynomials_to_fraction",
+      "toffolis_cumulative": 826871,
+      "toffolis_since_previous": 78996,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 100269164
+    },
+    {
+      "boundary": "fraction_to_moments",
+      "toffolis_cumulative": 1147675,
+      "toffolis_since_previous": 320804,
+      "peak_qubits": 881,
+      "live_qubits": 840,
+      "ops_cumulative": 113870810
+    }
+  ]
+}
