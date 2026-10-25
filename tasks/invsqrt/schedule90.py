@@ -9,7 +9,8 @@ signed-digit generator. The pruned shift is the Dmitrii Gluzdov V6 boundary
 rule as that schedule names it (run 361592338). His notebook is not attached
 and is not loaded. Direct reuse waits on PRA-205. This file is a port.
 
-Coefficients are the caller's own fitted table.
+Coefficients are supplied by the caller. The selected generator regenerates them
+with dataset-adapted calibration; licence unresolved (D-PRA220-01).
 """
 
 from __future__ import annotations

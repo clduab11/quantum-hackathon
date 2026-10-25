@@ -1,4 +1,4 @@
-"""The invsqrt generator is deterministic. The circuit is a port. The coefficients are own."""
+"""The invsqrt generator is deterministic. The circuit is a port. The coefficient calibration has unresolved rights."""
 
 import hashlib
 import io
@@ -35,7 +35,7 @@ def test_selected_circuit_is_deterministic():
     circuit.to_file(buffer, format="kmb")
     assert buffer.getvalue() == first
     built = compilation_report()
-    assert built["coefficient_provenance"] == "own"
+    assert built["coefficient_provenance"] == "regenerated; dataset-adapted calibration; licence unresolved"
     assert built["circuit_authorship"] == "port"
     assert built["phase"]["phase_match"] is True
     assert built["calibration"]["margin_units"] > 0

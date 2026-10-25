@@ -12,10 +12,10 @@ INV = ROOT / "tasks" / "invsqrt"
 
 # Committed bytes. A drift here is a provenance change and must update PROVENANCE.md.
 PINNED = {
-    "fit_coefficients.py": "1e97f77e6d3498e8dde2fe9312bfbf5c505c62e5c68938c846e0c8fc0d39aba3",
-    "signed_digit.py": "f106ea0a6f3a5d37d3e44cbe79d8f2f4777c86636d52ee9888ede09595db0c72",
-    "generate.py": "c6248e89382cacd193123da35188c63b9b5e7cf390b1182eccdb588c171a14a1",
-    "schedule90.py": "48adbc9ae7adb0e40f0290ef8d0b5ecb467c510288c887bb1324cca856439f2d",
+    "fit_coefficients.py": "35d36f95aa4bb7c63bf8cd24d72df594abdd679a3ed770cb2fcced0200cda839",
+    "signed_digit.py": "ab08c1f178405cae9872281fbe73ca41c5de160bea4b5ddeece41b55ac708cd5",
+    "generate.py": "9ccdffd0cba53a097c78d99d833b9bcc37e9be387f62ed723a8173cd2cdf498c",
+    "schedule90.py": "58c88937e18e2c96e5e92f3a2576b3d32661de0d93221d4f288e314bb4c81edb",
     "affine.py": "aa351a287c507c264a8aa7d172e1c7b9bfc1d0dcb78c8fa61b92996947eba290",
     "peephole.py": "d5ed02b0d28392cc637111fc94fb1760c71feda4f8ca7aad6f73944e81fff54c",
     "calibrate.py": "7fc0c1cac6ff45753c25d98dfa7cd82fb4803332c37fb616af18fabe47cef309",
@@ -42,9 +42,10 @@ def test_pinned_module_bytes_match_the_provenance_map():
 
 
 def test_recipe_records_the_fit_and_excludes_the_old_table():
-    assert PROVENANCE == "own"
+    assert PROVENANCE == "regenerated; dataset-adapted calibration; licence unresolved"
     assert CIRCUIT_AUTHORSHIP == "port"
     for key in (
+        "calibration_lineage",
         "precision",
         "domain",
         "objective",
@@ -54,7 +55,7 @@ def test_recipe_records_the_fit_and_excludes_the_old_table():
         "row_sha256",
     ):
         assert RECIPE[key], key
-    assert RECIPE["provenance"] == "own"
+    assert RECIPE["provenance"] == "regenerated; dataset-adapted calibration; licence unresolved"
     assert RECIPE["row_sha256"] == EXPECTED_ROW_SHA256
     start = RECIPE["optimiser_start"].lower()
     assert "lawson" in start
