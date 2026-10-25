@@ -67,3 +67,62 @@ def test_quantized_weight_gradient_and_fit():
     assert info['iterations'] > 0
     with pytest.raises(ValueError, match='positive'):
         refit_quantized(p, np.eye(10), 0, 0., rounded)
+
+
+@pytest.mark.parametrize('method', ['lbfgs', 'adam', 'trust-ncg'])
+def test_optimizer_variants_reduce_same_objective(method):
+    from tasks.dfthcsos.factor_optimizers import optimize
+    seen = []
+    fun = lambda x: (float(np.sum(x*x)), 2*x)
+    x = np.array([1., -2.])
+    result = optimize(fun, x, 100, method, 7, lambda x: seen.append(x.copy()), .05)
+    assert result.fun < .01 * fun(x)[0]
+    assert seen
+    with pytest.raises(ValueError, match='positive'):
+        optimize(fun, x, 0, method, 7, None, .05)
+
+
+def test_intermediate_checkpoints_are_exclusive_and_marked_unverified(tmp_path):
+    import json
+    from tasks.dfthcsos.factor_progress import checkpoint_callback
+    p = factors()
+    callback = checkpoint_callback(tmp_path, 2, 2)
+    callback(p)
+    assert not list(tmp_path.iterdir())
+    callback(p)
+    record = json.loads((tmp_path/'inflight-02.json').read_text())[0]
+    assert record['iteration'] == 2 and record['verified'] is False
+    from tasks.dfthcsos.factor_support import sha256
+    assert sha256(tmp_path/record['file']) == record['sha256']
+    other = checkpoint_callback(tmp_path, 2, 1)
+    other(p)
+    with pytest.raises(FileExistsError):
+        other(p)
+    with pytest.raises(ValueError, match='positive'):
+        checkpoint_callback(tmp_path, 0, 0)
+
+
+def test_structural_callback_has_independent_full_factor_arrays():
+    from tasks.dfthcsos.factor_math import refit
+    p = factors()
+    snapshots = []
+    q, info = refit(p, np.eye(10), 2, .0, callback=snapshots.append, maxcor=7)
+    assert len(snapshots) == info['iterations'] == 2
+    assert info['maxcor'] == 7
+    for snapshot in snapshots:
+        assert snapshot['U'].shape == p['U'].shape
+        assert snapshot['W'].shape == p['W'].shape
+        assert not np.shares_memory(snapshot['U'], q['U'])
+
+
+def test_batch_plan_refuses_path_escape_and_output_overrides():
+    from tasks.dfthcsos.run_experiments import validate
+    plan = dict(starter='/inputs/starter', competition='/inputs/competition',
+                jobs=[dict(name='floor-long', args=['--steps','1000'])])
+    validate(plan)
+    for job in [dict(name='../escape', args=[]),
+                dict(name='safe', args=['--out=/elsewhere']),
+                dict(name='safe', args=['--competition','/unapproved']),
+                dict(name='safe', args=['--dry-run'])]:
+        with pytest.raises(ValueError):
+            validate(plan | {'jobs':[job]})

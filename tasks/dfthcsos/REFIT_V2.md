@@ -1,8 +1,8 @@
 # Factor refit v2: experiment in progress
 
 PRA-235 extends the Google-only pipeline with larger-group initialization and
-weight fitting against rounded vectors. These helpers are tested; CLI integration
-and the full experiment matrix are still pending. The 12-bit floor has passed
+weight fitting against rounded vectors. The integrated CLI is tested;
+the full experiment matrix is still in progress. The 12-bit floor has passed
 and was handed to PRA-237 (details below). Construction probes alone do not
 establish accuracy; no shipping claim is made.
 
@@ -21,16 +21,14 @@ uv run python -m tasks.dfthcsos.factor_pipeline \
 ```
 
 Remove `--dry-run` only for a new output path. The CLI refuses overwrite and
-checks input hashes before imports. It writes only that output directory. The
-current CLI retains its PRA-198 exit criterion (compressed ratio at least 2.5),
-so exit 3 is not by itself the PRA-235 floor verdict. For PRA-235, inspect both
-errors against 0.019 Ha and the strict Lambda/gap floors. Every bit width is
+checks input hashes before imports. It writes only that output directory. Exit 0 means the final requested shape has a point with both errors at most
+0.019 Ha and the strict Lambda/gap floors passing. Exit 3 is a measured miss. Every bit width is
 independently encoded and evaluated by the unmodified competition verifier.
 The resource prediction already uses `heuristic_costs`, which calls the pinned
 `costs_prepare.py` `SpinFreeData_V1`, and adds ordinary-QROM ANGLE lookup costs.
 It does not claim the public banked lookup costs.
 
-Do not edit the six source modules hashed by a running pipeline: the completion
+Do not edit the source modules hashed by a running pipeline: the completion
 check will reject a changed source. For later long jobs, use a source snapshot
 from a committed revision and record that revision and output path.
 
@@ -62,7 +60,8 @@ PY
 ```
 
 Real construction probes produced (6,144,127) and (1,496,384), recorded in
-`ledger/evidence/pra235/regroup-probe.json`. These have no measured accuracy yet.
+`ledger/evidence/pra235/regroup-probe.json`. The integrated two-iteration smoke measurement is also recorded; it misses accuracy
+and is a wiring check, not an adequate optimization budget.
 The helper raises `ValueError` for nonpositive dimensions, growth in R, or B/C
 beyond the available merged basis/SVD rank. It never reads a checkpoint or writes
 files itself; the explicit `write_npz` call writes one exclusive archive.
@@ -96,7 +95,7 @@ weight gradient with zero was observed to fail the gradient test; restoring the
 implementation passes. Tests also cover deterministic construction, invalid
 shapes, fixed rounded vectors and objective reduction.
 
-Pending: main pipeline CLI wiring; long-fit results; gradual pruning to R=32;
+Pending: long-fit results; gradual pruning to R=32;
 penalty and optimizer variants; further quantized fits; larger-shape measurements at
 11/10/9/8 bits; repeatability of new fitted checkpoints; final decisions and
 review. Existing method notices remain in `notices/30-dfthcsos.txt`. These new
@@ -144,3 +143,71 @@ report. Only `--out` is written. No circuit generation or upload takes place.
 The first probe's core source revision is preserved at local 59d3864; the later
 CLI change adds dry-run/explicit output and replaces assertion-based input checks
 with unconditional errors. Numerical fitting is unchanged.
+
+## Integrated v2 pipeline
+
+The main `factor_pipeline` now accepts regrouped shapes, independent rounded-U
+fits, and optimizer variants. Example (validate first, then remove `--dry-run`):
+
+```sh
+uv run python -m tasks.dfthcsos.factor_pipeline \
+  --starter /home/cld-main/work/vqcc-data/starter-kit \
+  --competition /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation \
+  --out /home/cld-main/work/vqcc-data/pra235-public-6-example \
+  --shapes 6,144,127 --steps 1000 --maxcor 20 --offset-steps 200 \
+  --bits 12 11 10 9 8 --quantize-bits 11 10 9 8 --quantized-steps 500 \
+  --checkpoint-every 25 --dry-run
+```
+
+`--quantize-bits` must be a subset of measured `--bits`. Each selected width
+gets an independent fit from that stage's continuous factors, followed by offset
+refinement; it does not inherit a fit trained at another width. The untouched
+(65,60,60) control is always measured first. Larger B/C triggers the documented
+regrouping initializer; R never grows. Ordinary pruning uses the original method.
+
+`--optimizer lbfgs` remains the default and `--maxcor` selects its memory size.
+`--optimizer adam --learning-rate 0.0001` runs the stated fixed number of Adam
+updates (beta1=.9, beta2=.999, epsilon=1e-8); it does not claim convergence.
+`--optimizer trust-ncg` uses central finite differences of the analytic gradient
+for Hessian-vector products, without materializing a dense Hessian. This is an
+experimental variant for a nonsmooth D(w) term, not a convergence guarantee.
+Diagnostics count all objective/gradient evaluations including Hessian probes.
+
+Every 25 structural iterations by default, an exclusive
+`inflight-STAGE-ITERATION.npz` is written with a hash and elapsed time in the
+stage's `inflight-STAGE.json`. These are explicitly **unverified**, have not had
+final offset refinement, and cannot be handed off. Completed stages and each
+finished bit-width evaluation write `progress.json`; every measured point has
+its own encoded archive and hash. Existing output is still refused. A source
+change during a run remains an error. Run long jobs from a committed source
+snapshot rather than the editable worktree.
+
+The v2 exit criterion is now explicit: exit 0 if the last requested shape has a
+point with both errors ≤19 mHa and all acceptance checks passing; exit 3 for a
+complete miss. `floor_65_met` and `floor_32_met` separately report the specified
+12-bit and 10-bit floor points. This supersedes the legacy compressed 2.5x exit
+criterion for new runs, while old evidence remains tied to its committed source.
+Intermediate or interrupted runs are never a numerical failure verdict.
+
+## Sequential experiment batches
+
+`run_experiments` runs a committed JSON plan with one fixed starter root, one
+fixed competition root, and named jobs containing pipeline arguments. Each job
+starts from the pinned Google baseline and includes the untouched control.
+Use the same WSL Python environment and input prerequisites as the pipeline:
+
+```sh
+uv run python -m tasks.dfthcsos.run_experiments --plan ledger/evidence/pra235/plan-floor.json --out /home/cld-main/work/vqcc-data/pra235-batch-floor-01 --dry-run
+```
+
+Remove `--dry-run` to execute from a committed source snapshot. The runner writes
+only the new output directory: a copy of the plan, `jobs.json`, per-job logs and
+pipeline outputs. It invokes the current Python executable without a shell.
+It refuses existing output, duplicate/path-like job names, and path overrides.
+Exit 2 means invalid input; exit 1 means a job had an operational error (read its
+log); exit 0 means all jobs completed, including numerical misses. Scientific
+acceptance always comes from each job's report. No job is silently skipped.
+The runner does not detach or schedule itself. For multi-heartbeat runs, launch
+from the recorded committed snapshot in a separate process session and record
+the PID, source commit, plan hash and log paths on the issue. A scheduled issue
+monitor must collect results and hand off any passing checkpoint.
