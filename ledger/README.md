@@ -23,5 +23,5 @@ uv run python -m ledger.benchmark_health        # self-checks
 uv run python -m ledger.status_page             # public/index.html, as Vercel builds it
 ```
 
-`manifests/` (with `index.csv`), `evidence/` and the queue pointers are committed. Zips, `.kmb`, `.npz` and competition data
+`manifests/` (without the derived `index.csv`, PRA-210), `evidence/` and the queue pointers are committed. Zips, `.kmb`, `.npz` and competition data
 are never committed; their SHA-256 is.
