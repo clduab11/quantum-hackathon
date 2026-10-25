@@ -1,0 +1,1042 @@
+[
+  {
+    "run": "r6",
+    "file": "gauss-newton.npz",
+    "bytes": 1422062,
+    "sha256": "ffc470c6780857832fe542da06da888b415ec7160cbb76b8f1c9923062850d60",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-00-000001.npz",
+    "bytes": 1422062,
+    "sha256": "a78bc00645bc541512d4626835224b3dd4a518861f8aea38c67324542c32ffc7",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-00-000002.npz",
+    "bytes": 1422062,
+    "sha256": "8f0d00fb43c797a7b5f5c10dd527ffd83f34f88951ece96b27e5127d6af5b4c2",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-00-000003.npz",
+    "bytes": 1422062,
+    "sha256": "4434635b0d01000017f0214bb7d9b86c4dc9cc22977b96a91159ac442ff01483",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-00-000004.npz",
+    "bytes": 1422062,
+    "sha256": "41da59749a0aad9fcad64da92c323a17dcf5514e67471ee0fd85c07cc494e51b",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-00-000005.npz",
+    "bytes": 1422062,
+    "sha256": "e13ca447bb0ee1b4b3c7e016a05292334c8a9b1a1b8dfd4926a114d1ed10df02",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-00-000006.npz",
+    "bytes": 1422062,
+    "sha256": "98ec4126261664fed913da87d0042984b1ee347855493d9a263bab58e976732a",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-00-000007.npz",
+    "bytes": 1422062,
+    "sha256": "663a451ffadfacd9449cbf81394512495d80a1ca1919840739793d8f2f61e5ca",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-00-000008.npz",
+    "bytes": 1422062,
+    "sha256": "26b80d7b40448f0e7d48d3a919aeb8d4265eb4a5f578983c44bb343a3373d69e",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000025.npz",
+    "bytes": 1422062,
+    "sha256": "ac28fa1913fee59163ced516261dcea55a8c87f0b656d057798aa5030b8599b5",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000050.npz",
+    "bytes": 1422062,
+    "sha256": "225f66c70e0136c4e70bd9923ab6251e1ee8cbb6a169a8adc77ffb597ee95ac3",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000075.npz",
+    "bytes": 1422062,
+    "sha256": "08b174e9ec0e6185277c0968793722d4a1ee8f419eea8292eacc49bdd48873f2",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000100.npz",
+    "bytes": 1422062,
+    "sha256": "4517d5e109a8ea814783d19265b363cdb9cbec8d8a5e91cd60901603595eeba0",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000125.npz",
+    "bytes": 1422062,
+    "sha256": "4fe2568c72417a93706dbbae773763c4b136aa4e43d5b1ba141ff66e954b93dd",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000150.npz",
+    "bytes": 1422062,
+    "sha256": "7266208b36540eea0c996ac1180eae9faf187a2e46345658bfa2472ae6d0c346",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000175.npz",
+    "bytes": 1422062,
+    "sha256": "7f3a98c1ae8b2ffc15475670955fe50a45939c2015af721561bad673db462cad",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000200.npz",
+    "bytes": 1422062,
+    "sha256": "580ce5c17e46b000dd846e9be6cf2445ff4318a9878d316dcf06fa2c478f50c0",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000225.npz",
+    "bytes": 1422062,
+    "sha256": "8225dcdacb7c645bd9103cf6c57941c7cd12a8a74aed4331dfbe1f91d44d9533",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000250.npz",
+    "bytes": 1422062,
+    "sha256": "7f20f23310ced72aeb2b4534f06221f034d39afcc15b80002f8a001ebcbc2367",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000275.npz",
+    "bytes": 1422062,
+    "sha256": "b1279d4ec9035230f829a56b3f293fde5e7a42bd215345ff05e6a352c8e4de8e",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000300.npz",
+    "bytes": 1422062,
+    "sha256": "823dcbc0ab806a11972614c1572765877797620856e73c2d7bd40bc0ea977ed0",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000325.npz",
+    "bytes": 1422062,
+    "sha256": "0ecad5b102a21d47cafeb7fbc2aef4d7d2ddfec3b6d2f5006bfdc755fae041db",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000350.npz",
+    "bytes": 1422062,
+    "sha256": "936268bb087145bb4dffe56749cf479272d35898eec2fc0e1ef54a1480154115",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000375.npz",
+    "bytes": 1422062,
+    "sha256": "3f92c11e90f86c2f72e2775114a5a973104a9cdf7d8c4dc1422770d270bc6f88",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000400.npz",
+    "bytes": 1422062,
+    "sha256": "3c5e7506b0f294d9f31a4a7161391b418781ffea8920cff49a72c74389513aeb",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000425.npz",
+    "bytes": 1422062,
+    "sha256": "b3c64fb9989b74bd2d3548f38c07dd43a935e98360fc3d69d909df81e9a2ed04",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000450.npz",
+    "bytes": 1422062,
+    "sha256": "75ccc290918c30f20a42cf7a7249543f20928a5febe2006ddcd35ecb639fbdc4",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000475.npz",
+    "bytes": 1422062,
+    "sha256": "9357d1aa1789a48699284e6e225e31109e3d2baff051412c371b4be114addab2",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-01-000500.npz",
+    "bytes": 1422062,
+    "sha256": "d7b0eb3ac9e8b56c1252b4f70c3e96279dcda5205319d3e1152841ff3251320a",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000001.npz",
+    "bytes": 1422062,
+    "sha256": "d7b0eb3ac9e8b56c1252b4f70c3e96279dcda5205319d3e1152841ff3251320a",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000002.npz",
+    "bytes": 1422062,
+    "sha256": "d7b0eb3ac9e8b56c1252b4f70c3e96279dcda5205319d3e1152841ff3251320a",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000003.npz",
+    "bytes": 1422062,
+    "sha256": "d7b0eb3ac9e8b56c1252b4f70c3e96279dcda5205319d3e1152841ff3251320a",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000004.npz",
+    "bytes": 1422062,
+    "sha256": "d7b0eb3ac9e8b56c1252b4f70c3e96279dcda5205319d3e1152841ff3251320a",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000005.npz",
+    "bytes": 1422062,
+    "sha256": "dc98da679665fd51360c0247165414cf6bb35389a1ea344d74151491a1df26b4",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000006.npz",
+    "bytes": 1422062,
+    "sha256": "d29b58caa875d0c1cd50bc15e0e1ee8f65d144390a88c961fd86cb99b7ed8055",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000007.npz",
+    "bytes": 1422062,
+    "sha256": "13cb61a71a06f247c7fb53a0e50a6e75afe419b3814f6da656b6ba1f5c1de980",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000008.npz",
+    "bytes": 1422062,
+    "sha256": "6d3117fcfd594ce1f48a95406967a7dd79f83151d3eb17151589c4aba64f0bdc",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000009.npz",
+    "bytes": 1422062,
+    "sha256": "4004aa278332a51bcc33cd649488c6862ae5c54ce2e30d40ad5440fba7c311a7",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000010.npz",
+    "bytes": 1422062,
+    "sha256": "b6df47f9cfedd5face6c476aa9057a54745119e41276c3ffa226a3dad689532a",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000011.npz",
+    "bytes": 1422062,
+    "sha256": "1168984518085f5045b83b08ba009f76ef36f5901843acbb61739375d573ecbc",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000012.npz",
+    "bytes": 1422062,
+    "sha256": "93797339f971169608c9b5c86606f930fc4ad0a19501c90ba8f3214f3a40a9e5",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000013.npz",
+    "bytes": 1422062,
+    "sha256": "cbdf087628a1025766491340d7e04393b82a1885350dfb52979f3ba62f012725",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000014.npz",
+    "bytes": 1422062,
+    "sha256": "0f4e1c9c51e89f84e61915cf019418de3e397330c8735fff709d3f6ef30b569b",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000015.npz",
+    "bytes": 1422062,
+    "sha256": "1fc5e8794d46138f44b290ffd2734ecc5132a5415228f4f70050fad418a70f7e",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000016.npz",
+    "bytes": 1422062,
+    "sha256": "b2cf411f563acae3041acc2c051351ce4ca59e0c753aa481d5c13b9eb0722dbb",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000017.npz",
+    "bytes": 1422062,
+    "sha256": "8093433d82f0389cacaaddb4177329ceb69ce26dc5b40b48b04bcafe48564286",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000018.npz",
+    "bytes": 1422062,
+    "sha256": "204112415b72613ee834173a5958c341fd9e66f25853389146b8fa77c71da9df",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000019.npz",
+    "bytes": 1422062,
+    "sha256": "a8bcaa9b768016c01ae20349616e8f291296447b3b842b61cd95345293e7f878",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000020.npz",
+    "bytes": 1422062,
+    "sha256": "570faa22eff0e9da4dd060b3ee04f0e633f26e71f4506cf8a34dabd7be9da38d",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000021.npz",
+    "bytes": 1422062,
+    "sha256": "ac20dc9c691c2f90e940b5914ffbad18e2b0da4f9f322be195ec0da4ab7e7622",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000022.npz",
+    "bytes": 1422062,
+    "sha256": "15bf999c8d1f95ebdcbbb2f9e59810cbe065ca9c0f48269c0a75383381e97573",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000023.npz",
+    "bytes": 1422062,
+    "sha256": "1c34b9e6068e929d91bd808715ea3095c39a8b067a0c1d0ecd89aafd88417528",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000024.npz",
+    "bytes": 1422062,
+    "sha256": "53646e1f392dab3036d0b05ec80edb139f07101363c3359aa09a2696d8cee58b",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000025.npz",
+    "bytes": 1422062,
+    "sha256": "c0c9afebb865678aa7c4f221e486e7dfbc5877c593f06dcb25914ac31b0482d7",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000026.npz",
+    "bytes": 1422062,
+    "sha256": "7c92fc013abde310b8fb839f2c792cd77ac17ad4784b5c4f18aae66931282134",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000027.npz",
+    "bytes": 1422062,
+    "sha256": "6a9b8540c51de1cc8b2e72df198aa54c96c0ad54eca34670e2664bc769529585",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000028.npz",
+    "bytes": 1422062,
+    "sha256": "01a5d1b65ac38f977c2a59802551850b6789483d1e2b4eda53fa9feb9f11aee4",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000029.npz",
+    "bytes": 1422062,
+    "sha256": "0edfe846a50e3164e47dbb65003d412e55ebfb376e3702afd2119e572f40719a",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "inflight-02-000030.npz",
+    "bytes": 1422062,
+    "sha256": "ffc470c6780857832fe542da06da888b415ec7160cbb76b8f1c9923062850d60",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "merge.npz",
+    "bytes": 1422062,
+    "sha256": "26b80d7b40448f0e7d48d3a919aeb8d4265eb4a5f578983c44bb343a3373d69e",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "offsets.npz",
+    "bytes": 1422062,
+    "sha256": "88791b9449270b2572aa9adb6818d5d356ee86648c90fc45e482f692866f79f5",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "rounded-diagnostic-b10.npz",
+    "bytes": 1987956,
+    "sha256": "2d57a24f9d5c2f1a6255ab9d3263d7badb95cde5dad4cc227370e4c06bd10151",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "rounded-diagnostic-b11.npz",
+    "bytes": 1987956,
+    "sha256": "4d45cc15c4eb537f229660791cd16a4891d4ad3be5345da1522ae94b942fbefc",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "rounded-diagnostic-b12.npz",
+    "bytes": 1987956,
+    "sha256": "aa5e7b33fabdb4647b0775785b180b2306299bfb90a173ea50b1fba97d5a18fa",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "r6",
+    "file": "structural.npz",
+    "bytes": 1422062,
+    "sha256": "d7b0eb3ac9e8b56c1252b4f70c3e96279dcda5205319d3e1152841ff3251320a",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "gauss-newton.npz",
+    "bytes": 1841182,
+    "sha256": "d16b9eb5d66a102542b1cf27e66739880adc62031e24c04b3899de455dae6dbb",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-00-000001.npz",
+    "bytes": 1841182,
+    "sha256": "b8a00fc30fb2f6fde5db2a842b2a851d3121cce1525d1adad007e90727e633d9",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-00-000002.npz",
+    "bytes": 1841182,
+    "sha256": "b8a00fc30fb2f6fde5db2a842b2a851d3121cce1525d1adad007e90727e633d9",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-00-000003.npz",
+    "bytes": 1841182,
+    "sha256": "b8a00fc30fb2f6fde5db2a842b2a851d3121cce1525d1adad007e90727e633d9",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-00-000004.npz",
+    "bytes": 1841182,
+    "sha256": "b8a00fc30fb2f6fde5db2a842b2a851d3121cce1525d1adad007e90727e633d9",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-00-000005.npz",
+    "bytes": 1841182,
+    "sha256": "b8a00fc30fb2f6fde5db2a842b2a851d3121cce1525d1adad007e90727e633d9",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-00-000006.npz",
+    "bytes": 1841182,
+    "sha256": "b8a00fc30fb2f6fde5db2a842b2a851d3121cce1525d1adad007e90727e633d9",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-00-000007.npz",
+    "bytes": 1841182,
+    "sha256": "b8a00fc30fb2f6fde5db2a842b2a851d3121cce1525d1adad007e90727e633d9",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-00-000008.npz",
+    "bytes": 1841182,
+    "sha256": "b8a00fc30fb2f6fde5db2a842b2a851d3121cce1525d1adad007e90727e633d9",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000025.npz",
+    "bytes": 1841182,
+    "sha256": "19d94ab4ef8ca4608ceabd4447b19577fb21e6b24bbff4d4e648c74e4e898cf0",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000050.npz",
+    "bytes": 1841182,
+    "sha256": "804169211cc55836869f5495680e29e9d9121d3a4bc56a6e182ccca9b5639ef2",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000075.npz",
+    "bytes": 1841182,
+    "sha256": "92dcee15cd5117bd85dfecad35f036d0711e5bd62569e4a17bbcd39452ea048f",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000100.npz",
+    "bytes": 1841182,
+    "sha256": "5b62724b86a3a229ab82e78bf06bdeaea2cc44ded9aa0a15b7991459834127c4",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000125.npz",
+    "bytes": 1841182,
+    "sha256": "6134faf6c2557540ba423fde9be9506497d1accf44ff8d5fcd3fb71128eb55f6",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000150.npz",
+    "bytes": 1841182,
+    "sha256": "33fec2d28f11a2eb1f919aef7135153b4fe965b3242a93577da1d40efcf81efa",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000175.npz",
+    "bytes": 1841182,
+    "sha256": "37080bc11ba31bda8faca90511836f30adbedec4bf7a3153fdee0029441963c3",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000200.npz",
+    "bytes": 1841182,
+    "sha256": "adb73ddb139e43d77d8fa392c8f38fb5202e2721fac7d8da5601df9a8358ef1a",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000225.npz",
+    "bytes": 1841182,
+    "sha256": "0c9256ae8091b3440faef74cb1c7ecdb79942d8ff856a8ed916ae4cc4037e376",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000250.npz",
+    "bytes": 1841182,
+    "sha256": "05d885583d527b682d74b6fef24a928bea3e7b2946cc9e6dcc2cb07e0ea85d14",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000275.npz",
+    "bytes": 1841182,
+    "sha256": "d9777e38aad9734ec7e1f4103105a42a15a669b8c536fc5147173a88ef5c499d",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000300.npz",
+    "bytes": 1841182,
+    "sha256": "4ecbc45bec0597326ce5e27db2374ae0537d9d088117291a0d41311c5097c6b7",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000325.npz",
+    "bytes": 1841182,
+    "sha256": "5085c149b3744e42f61a4b03f5e686efbf5ee3f7044765b97838d0291d5eea61",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000350.npz",
+    "bytes": 1841182,
+    "sha256": "435f08d48df8a90193e9a200596227c730a1418838f59e056290f1572b2521bd",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000375.npz",
+    "bytes": 1841182,
+    "sha256": "e7fea1029c0695dc46b1a08b3b693d05ea8d17c421eeb25d099201ee5ee28d1c",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000400.npz",
+    "bytes": 1841182,
+    "sha256": "fbdc41f7438009637c928620ae71f2ccdc648e624f5642721e66ce88c7880794",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000425.npz",
+    "bytes": 1841182,
+    "sha256": "8885b0dd46ed40deefff8cc28966fcf20eca3bb40514ed7e15decb1da262a0cf",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000450.npz",
+    "bytes": 1841182,
+    "sha256": "519559e7cd4cd6ba0a5ba5f13109485a1a1487b20537746f8547f64a6a23faa6",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000475.npz",
+    "bytes": 1841182,
+    "sha256": "5563ee40130384f4287ba5d843dff6759bc76525610be23b1fc446393ff20602",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-01-000500.npz",
+    "bytes": 1841182,
+    "sha256": "31e3e667cbc27d91e648fcd2acf8c5cd77aae74969143e8d4345ebb4a68611d4",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000001.npz",
+    "bytes": 1841182,
+    "sha256": "07aa9d0495a734b67976bae2558bff9cb5b6e701ae6a375a5ff8d17c3b03e42b",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000002.npz",
+    "bytes": 1841182,
+    "sha256": "3fc08ebfde48a51dc316a6987c07b6eb2e89839b44b944df3cfdf31e3e3651c7",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000003.npz",
+    "bytes": 1841182,
+    "sha256": "4591907c72c48d79b207a0b092f0a5953a551f01bcee96b3afeaaaef75582987",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000004.npz",
+    "bytes": 1841182,
+    "sha256": "0f6d6dcb67ea9a8197731e4a0967e97570eefc7bb7daaddff87225b9444acccc",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000005.npz",
+    "bytes": 1841182,
+    "sha256": "cbf63b370adc462f4541ee9676d18dd0e200317d562026770319e8e21a63180b",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000006.npz",
+    "bytes": 1841182,
+    "sha256": "976afa6159a723389178b69403a461d3fd965ebe7e89970bfa84a84793dc2cda",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000007.npz",
+    "bytes": 1841182,
+    "sha256": "f0bb450f57443c8d7812bfe92ac53882257e18249382d1c0301f5a9939cd0365",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000008.npz",
+    "bytes": 1841182,
+    "sha256": "259c9eebf5168391e987fa890db5bd3ed376b5a1907b8b34843ed4b629f28647",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000009.npz",
+    "bytes": 1841182,
+    "sha256": "2f60e044621d50f25dc68075e114c89bd5c33448c3ab56026687aa89d3da9002",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000010.npz",
+    "bytes": 1841182,
+    "sha256": "b4f04f9a6d3498ba0d282405137a31f0531f89ca34246d1e0948553f978684a0",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000011.npz",
+    "bytes": 1841182,
+    "sha256": "68d89af01fd793079cf1f9d4acaf26f570ba127c9f6ce600d7dba44d46c4f1a1",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000012.npz",
+    "bytes": 1841182,
+    "sha256": "64c5cbfd2256ff598c9d81c544c4b80711bc14d383c27f2bcf6fb372de23921e",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000013.npz",
+    "bytes": 1841182,
+    "sha256": "5d49b180821f1bb28355233aa40e3946a73f2e4b8b896a55f196cd96a43971bc",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000014.npz",
+    "bytes": 1841182,
+    "sha256": "23297811478b80bab04e9dd9a6daa572a1dbbad495c2c368122aa10a4890516c",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000015.npz",
+    "bytes": 1841182,
+    "sha256": "0013aa3979b0244ca0e76300e2c8dff762bb2ee017f7df47922d24a2f318c4ab",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000016.npz",
+    "bytes": 1841182,
+    "sha256": "3153d301781a5723075afd740831ed0f3680ee215ed762e7af9f02422b25edb3",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000017.npz",
+    "bytes": 1841182,
+    "sha256": "d1f64216bd57e7a4a95ecdd7ce367e9f70897de12935dbfa55f49003ea3c7160",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000018.npz",
+    "bytes": 1841182,
+    "sha256": "42abe1e71933ec31b9f59c16a6b02998322b34c498aa0e772d1bc3db47676f92",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000019.npz",
+    "bytes": 1841182,
+    "sha256": "ec85988beda02c382c5d0fa0cf01cb89348da3035925ba257bfa5a582cbb11cc",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000020.npz",
+    "bytes": 1841182,
+    "sha256": "d227f4a3dbe99458e527273780182f2153cc1dbffee7633adee30f1a7a3287b0",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000021.npz",
+    "bytes": 1841182,
+    "sha256": "8b2e6021de892aeec8388037600bfd5f89b960bd95e124b9fa404e12ba5288a0",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000022.npz",
+    "bytes": 1841182,
+    "sha256": "ec4ffc31da247bb683fc9d18bcadba5adff460d5a5b7a3c08074c5f934330a89",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000023.npz",
+    "bytes": 1841182,
+    "sha256": "8d4420ecd3b99c3fbb49ce6a5e17b9461273cfef12856ccf63f5e41c6212efe4",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000024.npz",
+    "bytes": 1841182,
+    "sha256": "bd5f77ebd88de8ce77be96f2f9081ed351700aad0fcaedbe3b5ea2a979ed1f09",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000025.npz",
+    "bytes": 1841182,
+    "sha256": "d79363820009948111b14b17af7bac01dc3cb3b80451248b51ad0c677efd51cc",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000026.npz",
+    "bytes": 1841182,
+    "sha256": "6f13b2a5f9e4cb55a138742abe837abd729e9c8b134eb4c6efe628943b35322b",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000027.npz",
+    "bytes": 1841182,
+    "sha256": "2d386baaaac66a3406a5deb5acf223c724a5a94609dfe9fb3ccb6f08073fa6f1",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000028.npz",
+    "bytes": 1841182,
+    "sha256": "48b1c748e6062143fbb5e297c972fa36a6dead7027f965afbc637266acfebfd0",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000029.npz",
+    "bytes": 1841182,
+    "sha256": "86b618733db9d2ddf4ed273abb82638cd7f48c087f88b520be2361e3dd52d065",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "inflight-02-000030.npz",
+    "bytes": 1841182,
+    "sha256": "d16b9eb5d66a102542b1cf27e66739880adc62031e24c04b3899de455dae6dbb",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "merge.npz",
+    "bytes": 1841182,
+    "sha256": "b8a00fc30fb2f6fde5db2a842b2a851d3121cce1525d1adad007e90727e633d9",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "offsets.npz",
+    "bytes": 1841182,
+    "sha256": "2315a25a2b20883362630b0e5dca6a1bfea4b3be647cf250497617e618689a9b",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "rounded-diagnostic-b10.npz",
+    "bytes": 2186276,
+    "sha256": "6b4b14f836ce41c155ec664afc15be3d3c245e04e56148fcab2e082f6ab8e268",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "rounded-diagnostic-b11.npz",
+    "bytes": 2186276,
+    "sha256": "d269afd68c5cdb61b93e5578789a95e2c56ae2a4dd6133d9439d2c13cac5e460",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "rounded-diagnostic-b12.npz",
+    "bytes": 2186276,
+    "sha256": "832b07485229e055223dd3df1c064b47f88db1097ecf8d9e1f1946918dfca887",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  },
+  {
+    "run": "thc",
+    "file": "structural.npz",
+    "bytes": 1841182,
+    "sha256": "31e3e667cbc27d91e648fcd2acf8c5cd77aae74969143e8d4345ebb4a68611d4",
+    "passing_candidate": false,
+    "full_circuit_verified": false
+  }
+]

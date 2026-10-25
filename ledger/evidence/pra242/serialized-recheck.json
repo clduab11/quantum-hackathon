@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "checked": [
+    {
+      "run": "r6",
+      "bits": 10,
+      "max_metric_difference": 0.0,
+      "sha256": "2d57a24f9d5c2f1a6255ab9d3263d7badb95cde5dad4cc227370e4c06bd10151"
+    },
+    {
+      "run": "r6",
+      "bits": 11,
+      "max_metric_difference": 0.0,
+      "sha256": "4d45cc15c4eb537f229660791cd16a4891d4ad3be5345da1522ae94b942fbefc"
+    },
+    {
+      "run": "r6",
+      "bits": 12,
+      "max_metric_difference": 0.0,
+      "sha256": "aa5e7b33fabdb4647b0775785b180b2306299bfb90a173ea50b1fba97d5a18fa"
+    },
+    {
+      "run": "thc",
+      "bits": 10,
+      "max_metric_difference": 0.0,
+      "sha256": "6b4b14f836ce41c155ec664afc15be3d3c245e04e56148fcab2e082f6ab8e268"
+    },
+    {
+      "run": "thc",
+      "bits": 11,
+      "max_metric_difference": 0.0,
+      "sha256": "d269afd68c5cdb61b93e5578789a95e2c56ae2a4dd6133d9439d2c13cac5e460"
+    },
+    {
+      "run": "thc",
+      "bits": 12,
+      "max_metric_difference": 0.0,
+      "sha256": "832b07485229e055223dd3df1c064b47f88db1097ecf8d9e1f1946918dfca887"
+    }
+  ]
+}

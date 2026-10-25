@@ -1,0 +1,1355 @@
+{
+  "shape": [
+    1,
+    496,
+    384
+  ],
+  "initialization": "pinned Google baseline only",
+  "seed": null,
+  "deterministic": true,
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "python": "3.13.13 (main, Apr 14 2026, 14:28:56) [Clang 22.1.3 ]",
+  "threads": 2,
+  "input_pins": {
+    "dataset": "sohier/verifiable-circuit-compilation-starter-kit",
+    "version": 4,
+    "license": "Apache-2.0",
+    "files": [
+      {
+        "path": "FeMoCo76o113e.fcidump",
+        "bytes": 128128348,
+        "sha256": "e5a48af746fd075026dec9e8f5df2d363802a121e8c53af9a0b984bde695e1bd",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/FeMoCo76o113e.fcidump?datasetVersionNumber=4"
+      },
+      {
+        "path": "FeMoCo76o113e.fixed_shifts.npz",
+        "bytes": 61028,
+        "sha256": "7b7facf63fe35a9d9d3d00787ffdb700c863fa845fe4724d7f7c54778151cd87",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/FeMoCo76o113e.fixed_shifts.npz?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/__init__.py",
+        "bytes": 292,
+        "sha256": "d78da488e6ca5b913c5ac9f2de605fb920da3d4807b08f2be6a4ddc9c35e3228",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2F__init__.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/build_angle_k.py",
+        "bytes": 4638,
+        "sha256": "82f1cf73adc466ee49894b310e37020e79f36279031f7e2c2ff42ebc053e81ba",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fbuild_angle_k.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/df_thc_sga.py",
+        "bytes": 8917,
+        "sha256": "1e22e79ecf9db19042f042aac5844d404987439493f0152b546e4df1f5432fcc",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fdf_thc_sga.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/dfthc_u_to_tei.py",
+        "bytes": 19784,
+        "sha256": "1e2cd8af4e1ef49c21215dbf5b3f1697a3df4eb76e3987b25445472ce81c0059",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fdfthc_u_to_tei.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/load_integrals.py",
+        "bytes": 8501,
+        "sha256": "14a988da0bb7b55fcc9fda8cae79816bf417b2667319d281d371a6053c1ff667",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fload_integrals.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/spin_free_block_encoding_costs.py",
+        "bytes": 12885,
+        "sha256": "20c3892baa554b379182c72e6024bb15fbf8c16596156bd45519dbdf2af8f6bb",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fspin_free_block_encoding_costs.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/train_df_thc_sga.py",
+        "bytes": 12516,
+        "sha256": "9f3aea602f270d7d596504f0af3ec1f5af44247c2dcf5833795dc10bb55d28e5",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Ftrain_df_thc_sga.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/verify_angle_k.py",
+        "bytes": 19590,
+        "sha256": "00555d552142cd1791c2526de93ff23ea6cc980260f195893f3daa6e4f516b47",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fverify_angle_k.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/verify_dfthc.py",
+        "bytes": 9379,
+        "sha256": "84ded6ae4a63c5f90346c3f3628b420fd496bdb846ef4591d4125926abec6a47",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fverify_dfthc.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/pyproject.toml",
+        "bytes": 1415,
+        "sha256": "4442ba8a2e538d6414cc5ced3049e7d5a70314013d4eb3ba4d4893f5f4f1b401",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fpyproject.toml?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/FeMoco76_65_60_60.npz",
+        "bytes": 2150130,
+        "sha256": "b13120cb62bf4cfcf41a3dc0c78cd6e58e17dacc7d0691834cee2cc6e4bc642b",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2FFeMoco76_65_60_60.npz?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/check_factorization.py",
+        "bytes": 4256,
+        "sha256": "5b897b14bad6e874878d81323ee774afa9508ecce8cd6d870cfeb5d71c9d3f76",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Fcheck_factorization.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/solution_io.py",
+        "bytes": 4432,
+        "sha256": "682be529a8418696100fc51fe773a32f8499a729c6ec7e78f69344b996fcfe84",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Fsolution_io.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/train_df_thc_qaggle.py",
+        "bytes": 17551,
+        "sha256": "e51b7559918ac1734d46514fcae7f0f0d789a6ef113bcaebd1b70a925e3918bc",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Ftrain_df_thc_qaggle.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task2_angles/encode.py",
+        "bytes": 8131,
+        "sha256": "cd8eb31056619b2c85ef9e7a1a3743eb2ef621035cda7dd23e6b47208e683745",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask2_angles%2Fencode.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task2_angles/trees.py",
+        "bytes": 4196,
+        "sha256": "47429502abc75e1a4360a2591f5df6b8ba56f79c0909d90739c38225ce25ea0c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask2_angles%2Ftrees.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task3_circuits/angle_k_kickmix.py",
+        "bytes": 9087,
+        "sha256": "ec90f72a82d3252bdc9bfefaa987ff3c69782aaf1432c7a2358b24d528a1afea",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask3_circuits%2Fangle_k_kickmix.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task3_circuits/build_circuits.py",
+        "bytes": 11146,
+        "sha256": "5ef5f17b0b1c25b56dfea568c895b0b16113a6302c280a7ecc64ae07869d760c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask3_circuits%2Fbuild_circuits.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/circuits.py",
+        "bytes": 24418,
+        "sha256": "fc027b52fdcebe14404f403a089122485d097ed65d03e6d989623d620b1ab68c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fcircuits.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/costs.py",
+        "bytes": 8334,
+        "sha256": "aea5bf44850cd315bfba205498d6ec83231faebdb6a48fe6387cccaf24171e6a",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fcosts.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/dfthc_math.py",
+        "bytes": 17597,
+        "sha256": "bb94c70558557091d8492a9842aef4f94c2130533d3cf5ce460d89bb3e82246d",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fdfthc_math.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/reference.py",
+        "bytes": 15200,
+        "sha256": "e5b75b6731a252224c86fd8878f50553bc56138b837b82e04b4bf946cdaa83ef",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Freference.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/score.py",
+        "bytes": 28282,
+        "sha256": "79c97dbd771c072a92a517d1692dbdd53d80c16bd4772c94a0cc45d7dac167ca",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fscore.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/verify.py",
+        "bytes": 10901,
+        "sha256": "8c35f1a3feaf99c798a9fc8720a54e65a0734d0071af991b3e6ee0c0192ae70a",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fverify.py?datasetVersionNumber=4"
+      }
+    ],
+    "competition_files": [
+      {
+        "path": "kickmix/kickmix.so",
+        "sha256": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e"
+      },
+      {
+        "path": "verifiers/dfthcsos/__init__.py",
+        "sha256": "81915e324cc0cade67f52a54b7a51991fd96abaea94d1f8a4d423dae20e57348"
+      },
+      {
+        "path": "verifiers/dfthcsos/example_submission/angle_k_reference_circuit.py",
+        "sha256": "8daccdca69f2d718b0176cd9281803df84a988ea5ac6c167fbb02e461ac2b371"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/__init__.py",
+        "sha256": "be90e0d503d5c20dcac0102af638b9a4ccad0341daa5baa5d49216a259e4516f"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/circuits.py",
+        "sha256": "fc027b52fdcebe14404f403a089122485d097ed65d03e6d989623d620b1ab68c"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/costs_prepare.py",
+        "sha256": "7f1e190c42fc5325f3e6689fbbef51f95b0cb12f1c828cda92b6c088e72206da"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/dfthc_math.py",
+        "sha256": "ae82898d47a7a86b96378fb906e0f8a9f46003065cf19c7c09952a123b5b5af8"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/reference.py",
+        "sha256": "a2d5a63191d655729e29f0fde1e85fe4630bf896a91a63bb894d8d7daf71ed39"
+      },
+      {
+        "path": "verifiers/dfthcsos/verify.py",
+        "sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+      },
+      {
+        "path": "verifiers/dfthcsos/FeMoCo76o113e.fcidump",
+        "sha256": "e5a48af746fd075026dec9e8f5df2d363802a121e8c53af9a0b984bde695e1bd"
+      },
+      {
+        "path": "verifiers/dfthcsos/FeMoCo76o113e.fixed_shifts.npz",
+        "sha256": "7b7facf63fe35a9d9d3d00787ffdb700c863fa845fe4724d7f7c54778151cd87"
+      }
+    ],
+    "method_source": {
+      "url": "https://www.kaggle.com/code/ahmedberatozer/quantum-ai-df-thc-group-compression",
+      "version": 2,
+      "license": "Apache-2.0",
+      "sha256": "2f9b22ad81fa4094485234a853208da7e15937137ded600d3a20b12d84382121",
+      "role": "method reference only; never executed; no factor data loaded"
+    }
+  },
+  "source_hashes": {
+    "factor_fit_v3.py": "b171d507726a8e2b9f5770cdd30dd7da8c5fff11e5839569c162c46556274b68",
+    "factor_gauss_newton.py": "28fba89ad1736aaee7aaaca7bb176108e9a5c0382d86dc847ff69541d0fb8784",
+    "factor_math.py": "87a57c98cfa99929fbae020b88057969639c922c29dfb6603a50fc81115ddcb5",
+    "factor_measure.py": "bf45169440c49e107a989e761e43d28609c00111584ad61c9d0037fbb3fefab9",
+    "factor_merge.py": "95cdeeb3cd45cde456bad93726c04f5109971aa4bce9b9c9bff56bd24559ea69",
+    "factor_offsets.py": "9742882769d86b88ec1510186864dd2ceeca212f0e76f70215c2be85ee9888e3",
+    "factor_optimizers.py": "60ad52c929f82a36dbad70191bc7a0b4653d9010f2cf537da9e08f9689b58f00",
+    "factor_pipeline.py": "869992a11475e35d2fdd2f959748a0e373f361790b27cbd15bec9d1f8dd2a3cb",
+    "factor_progress.py": "b5e887990b83d673fc505ba354f76dabcc8ab50ae6a5e205e5eef77ee623e56a",
+    "factor_quantized.py": "33a853accb51a5919581cb8ac4d1b10ecaae9040cfd615e025d86d05c066b6c6",
+    "factor_reseed.py": "9ab7f6bbfa414413934a3d0828108f3b3c48f8f1bdc96aa53993c069a471307d",
+    "factor_support.py": "001f5092b9e9ca5a4b66c94b6a24795bd2b38a506fdf523f671560a7e5aadc65"
+  },
+  "settings": {
+    "starter": "/home/cld-main/work/vqcc-data/starter-kit",
+    "competition": "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation",
+    "out": "/home/cld-main/work/vqcc-data/pra242-thc-v3",
+    "shape": "thc",
+    "sweeps": 8,
+    "steps": 500,
+    "gn_steps": 30,
+    "cg_steps": 30,
+    "offset_steps": 400,
+    "checkpoint_every": 25,
+    "dry_run": false
+  },
+  "stages": [
+    {
+      "stage": "merge",
+      "continuous_error": 0.40370284069499196,
+      "file": "merge.npz",
+      "sha256": "b8a00fc30fb2f6fde5db2a842b2a851d3121cce1525d1adad007e90727e633d9",
+      "details": {
+        "groups": [
+          [
+            0,
+            62,
+            33,
+            37,
+            15,
+            31,
+            32,
+            47,
+            8,
+            24,
+            27,
+            14,
+            46,
+            20,
+            41,
+            23,
+            40,
+            6,
+            60,
+            13,
+            26,
+            34,
+            44,
+            39,
+            42,
+            10,
+            22,
+            54,
+            56,
+            28,
+            51,
+            35,
+            58,
+            1,
+            11,
+            12,
+            43,
+            25,
+            49,
+            29,
+            45,
+            3,
+            18,
+            7,
+            21,
+            5,
+            38,
+            19,
+            48,
+            2,
+            57,
+            55,
+            59,
+            17,
+            63,
+            53,
+            64,
+            4,
+            50,
+            36,
+            61,
+            9,
+            16,
+            30,
+            52
+          ]
+        ],
+        "selected_projectors": [
+          [
+            507,
+            3683,
+            2766,
+            2748,
+            3698,
+            1380,
+            2203,
+            317,
+            860,
+            736,
+            2478,
+            2197,
+            2695,
+            2477,
+            2182,
+            2719,
+            556,
+            628,
+            2706,
+            332,
+            3691,
+            1465,
+            2020,
+            3689,
+            2472,
+            686,
+            2787,
+            802,
+            863,
+            265,
+            2492,
+            2692,
+            735,
+            883,
+            1890,
+            2699,
+            3538,
+            303,
+            3674,
+            2778,
+            2282,
+            43,
+            2004,
+            1159,
+            465,
+            2686,
+            1882,
+            1999,
+            236,
+            2869,
+            690,
+            1379,
+            692,
+            3568,
+            1870,
+            1072,
+            1206,
+            841,
+            423,
+            3451,
+            3705,
+            3541,
+            3625,
+            2008,
+            48,
+            308,
+            136,
+            2212,
+            2836,
+            705,
+            1869,
+            866,
+            18,
+            2556,
+            3259,
+            1236,
+            2887,
+            2487,
+            445,
+            2206,
+            792,
+            2708,
+            1158,
+            2656,
+            2553,
+            2619,
+            252,
+            2742,
+            675,
+            3801,
+            459,
+            726,
+            2537,
+            305,
+            2558,
+            3420,
+            2175,
+            3818,
+            3571,
+            3596,
+            3688,
+            369,
+            2547,
+            1438,
+            425,
+            2709,
+            2211,
+            2674,
+            741,
+            2791,
+            843,
+            861,
+            129,
+            3714,
+            1896,
+            1446,
+            1569,
+            2022,
+            3702,
+            3684,
+            1891,
+            2480,
+            2747,
+            3678,
+            871,
+            2765,
+            2852,
+            3706,
+            758,
+            856,
+            850,
+            2180,
+            2165,
+            2000,
+            269,
+            336,
+            2205,
+            2544,
+            292,
+            2774,
+            2727,
+            2213,
+            2666,
+            2462,
+            2496,
+            287,
+            477,
+            1199,
+            706,
+            2779,
+            3180,
+            2193,
+            320,
+            307,
+            708,
+            2128,
+            3221,
+            855,
+            2746,
+            296,
+            2528,
+            246,
+            469,
+            3547,
+            2311,
+            1574,
+            749,
+            2899,
+            467,
+            3572,
+            3198,
+            279,
+            862,
+            1565,
+            2183,
+            2617,
+            3679,
+            172,
+            149,
+            152,
+            672,
+            2201,
+            885,
+            3197,
+            3685,
+            3707,
+            1391,
+            145,
+            2025,
+            2625,
+            2812,
+            271,
+            709,
+            436,
+            2713,
+            2512,
+            2822,
+            78,
+            3821,
+            3442,
+            3200,
+            2284,
+            670,
+            2099,
+            2017,
+            169,
+            1194,
+            354,
+            294,
+            710,
+            3226,
+            147,
+            154,
+            355,
+            315,
+            3575,
+            2007,
+            985,
+            2800,
+            3215,
+            1983,
+            1078,
+            738,
+            2489,
+            742,
+            3580,
+            3185,
+            521,
+            2023,
+            3614,
+            473,
+            281,
+            235,
+            2912,
+            2321,
+            2010,
+            3558,
+            3569,
+            468,
+            1886,
+            358,
+            295,
+            3630,
+            777,
+            0,
+            1152,
+            2541,
+            1993,
+            3489,
+            3204,
+            2090,
+            1892,
+            2,
+            2734,
+            5,
+            2038,
+            124,
+            2561,
+            3512,
+            3549,
+            3562,
+            139,
+            3646,
+            2702,
+            463,
+            446,
+            3591,
+            47,
+            685,
+            688,
+            2024,
+            452,
+            3711,
+            3715,
+            775,
+            2896,
+            2866,
+            3695,
+            46,
+            2216,
+            341,
+            1848,
+            298,
+            3515,
+            1898,
+            3820,
+            2716,
+            3196,
+            314,
+            2032,
+            27,
+            3341,
+            127,
+            2566,
+            2012,
+            1770,
+            1614,
+            3599,
+            2030,
+            2299,
+            876,
+            3214,
+            2011,
+            567,
+            771,
+            1820,
+            3520,
+            3718,
+            3536,
+            462,
+            3245,
+            2618,
+            158,
+            3600,
+            441,
+            761,
+            3557,
+            2815,
+            356,
+            3716,
+            2285,
+            1989,
+            1164,
+            3481,
+            316,
+            2698,
+            730,
+            432,
+            2538,
+            1981,
+            83,
+            1984,
+            667,
+            3514,
+            2546,
+            2560,
+            2485,
+            309,
+            845,
+            3590,
+            2215,
+            2811,
+            1990,
+            3191,
+            176,
+            2751,
+            1079,
+            3799,
+            2710,
+            2690,
+            2691,
+            679,
+            3244,
+            311,
+            3566,
+            1599,
+            2565,
+            619,
+            630,
+            437,
+            681,
+            312,
+            3825,
+            2005,
+            2359,
+            682,
+            2207,
+            752,
+            170,
+            1875,
+            773,
+            2526,
+            1995,
+            42,
+            104,
+            3495,
+            714,
+            302,
+            683,
+            326,
+            2750,
+            1897,
+            2707,
+            878,
+            494,
+            2572,
+            725,
+            3637,
+            1991,
+            1998,
+            134,
+            1370,
+            2513,
+            1980,
+            264,
+            770,
+            49,
+            1166,
+            3560,
+            3267,
+            2297,
+            299,
+            466,
+            345,
+            337,
+            2018,
+            2817,
+            3247,
+            734,
+            707,
+            3448,
+            6,
+            2758,
+            2722,
+            2797,
+            3719,
+            434,
+            1986,
+            2741,
+            2542,
+            448,
+            2737,
+            428,
+            2554,
+            255,
+            3701,
+            694,
+            954,
+            220,
+            2313,
+            1071,
+            762,
+            3476,
+            1832,
+            743,
+            3710,
+            349,
+            3249,
+            3518,
+            750,
+            3248,
+            2755,
+            2739,
+            1371,
+            3601,
+            2013,
+            3775,
+            306,
+            3513,
+            2465,
+            2715,
+            3597,
+            2720,
+            2036,
+            2759,
+            1900,
+            475,
+            3712,
+            81,
+            820,
+            450,
+            453,
+            2219,
+            3627,
+            3795,
+            34,
+            3616,
+            720,
+            3523,
+            2569,
+            2185,
+            177,
+            1384,
+            3669,
+            331,
+            2452,
+            2016,
+            2171,
+            3510,
+            662,
+            3595,
+            3229,
+            28,
+            873,
+            1992,
+            731,
+            2756,
+            757,
+            426,
+            1982,
+            140,
+            1073,
+            2725,
+            928,
+            2738,
+            2687
+          ]
+        ],
+        "initial_error": 0.40381184529633085,
+        "sweeps": [
+          {
+            "sweep": 1,
+            "accepted": 1,
+            "error": 0.40370284069499196
+          },
+          {
+            "sweep": 2,
+            "accepted": 0,
+            "error": 0.40370284069499196
+          },
+          {
+            "sweep": 3,
+            "accepted": 0,
+            "error": 0.40370284069499196
+          },
+          {
+            "sweep": 4,
+            "accepted": 0,
+            "error": 0.40370284069499196
+          },
+          {
+            "sweep": 5,
+            "accepted": 0,
+            "error": 0.40370284069499196
+          },
+          {
+            "sweep": 6,
+            "accepted": 0,
+            "error": 0.40370284069499196
+          },
+          {
+            "sweep": 7,
+            "accepted": 0,
+            "error": 0.40370284069499196
+          },
+          {
+            "sweep": 8,
+            "accepted": 0,
+            "error": 0.40370284069499196
+          }
+        ]
+      },
+      "elapsed": 164.59796042199014
+    },
+    {
+      "stage": "structural",
+      "continuous_error": 0.08940150751101779,
+      "file": "structural.npz",
+      "sha256": "31e3e667cbc27d91e648fcd2acf8c5cd77aae74969143e8d4345ebb4a68611d4",
+      "details": {
+        "iterations": 500,
+        "evaluations": 517,
+        "objective": 94.04185617686976,
+        "converged": false,
+        "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+        "method": "SciPy L-BFGS-B; no bounds"
+      },
+      "elapsed": 290.93473424899275
+    },
+    {
+      "stage": "gauss-newton",
+      "continuous_error": 0.03516004413625665,
+      "file": "gauss-newton.npz",
+      "sha256": "d16b9eb5d66a102542b1cf27e66739880adc62031e24c04b3899de455dae6dbb",
+      "details": {
+        "iterations": 30,
+        "history": [
+          {
+            "iteration": 1,
+            "error": 0.07340974930486463,
+            "accepted": true,
+            "alpha": 0.5,
+            "damping": 0.0005,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.9329886856754539
+            }
+          },
+          {
+            "iteration": 2,
+            "error": 0.062786323372094,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 0.00025,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.10984607064097027
+            }
+          },
+          {
+            "iteration": 3,
+            "error": 0.054593219994396196,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 0.000125,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.07289405265463493
+            }
+          },
+          {
+            "iteration": 4,
+            "error": 0.049605546771694806,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 6.25e-05,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.07406136313550976
+            }
+          },
+          {
+            "iteration": 5,
+            "error": 0.046970451390027874,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 3.125e-05,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.16543768871567543
+            }
+          },
+          {
+            "iteration": 6,
+            "error": 0.045265922837738046,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1.5625e-05,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.26315842981368076
+            }
+          },
+          {
+            "iteration": 7,
+            "error": 0.04402662295855398,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 7.8125e-06,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.3610142413751466
+            }
+          },
+          {
+            "iteration": 8,
+            "error": 0.043025316812106994,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 3.90625e-06,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.45753983916949903
+            }
+          },
+          {
+            "iteration": 9,
+            "error": 0.04222811368837554,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1.953125e-06,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.5070699341699535
+            }
+          },
+          {
+            "iteration": 10,
+            "error": 0.04153156632602155,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 9.765625e-07,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.4759193902332477
+            }
+          },
+          {
+            "iteration": 11,
+            "error": 0.040931465195656824,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 4.8828125e-07,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.6282141586865087
+            }
+          },
+          {
+            "iteration": 12,
+            "error": 0.04039109556899413,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 2.44140625e-07,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.624905717633388
+            }
+          },
+          {
+            "iteration": 13,
+            "error": 0.039896612995755754,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1.220703125e-07,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.5822449697762531
+            }
+          },
+          {
+            "iteration": 14,
+            "error": 0.03945427186894783,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 6.103515625e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.7386256357605546
+            }
+          },
+          {
+            "iteration": 15,
+            "error": 0.03904167315891503,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 3.0517578125e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.5528456272978116
+            }
+          },
+          {
+            "iteration": 16,
+            "error": 0.03866611789592528,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1.52587890625e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.7334355560807843
+            }
+          },
+          {
+            "iteration": 17,
+            "error": 0.038314491398364896,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.7397720435775751
+            }
+          },
+          {
+            "iteration": 18,
+            "error": 0.037982826258431274,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.7043954644865157
+            }
+          },
+          {
+            "iteration": 19,
+            "error": 0.03767373950411856,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.7589343660081473
+            }
+          },
+          {
+            "iteration": 20,
+            "error": 0.037379642124719045,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.6550814219130019
+            }
+          },
+          {
+            "iteration": 21,
+            "error": 0.037107528504353365,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.7423330754678252
+            }
+          },
+          {
+            "iteration": 22,
+            "error": 0.03684582623709556,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.7458981695526742
+            }
+          },
+          {
+            "iteration": 23,
+            "error": 0.03659852116390983,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.9050785655499499
+            }
+          },
+          {
+            "iteration": 24,
+            "error": 0.036360462182498735,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.6641064326827762
+            }
+          },
+          {
+            "iteration": 25,
+            "error": 0.03613634908628608,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.8054267860028229
+            }
+          },
+          {
+            "iteration": 26,
+            "error": 0.03592226511546133,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.7723768648972527
+            }
+          },
+          {
+            "iteration": 27,
+            "error": 0.035718194902483714,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.7986675166812033
+            }
+          },
+          {
+            "iteration": 28,
+            "error": 0.035524163404491764,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.8061544904246238
+            }
+          },
+          {
+            "iteration": 29,
+            "error": 0.035337234717315424,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.873129887449843
+            }
+          },
+          {
+            "iteration": 30,
+            "error": 0.035160044136256584,
+            "accepted": true,
+            "alpha": 1.0,
+            "damping": 1e-08,
+            "cg": {
+              "iterations": 30,
+              "relative_residual": 0.7791130647570306
+            }
+          }
+        ]
+      },
+      "elapsed": 420.89033123898844
+    },
+    {
+      "stage": "offsets",
+      "continuous_error": 0.03516004413625665,
+      "file": "offsets.npz",
+      "sha256": "2315a25a2b20883362630b0e5dca6a1bfea4b3be647cf250497617e618689a9b",
+      "details": {
+        "iterations": 46,
+        "converged": true,
+        "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+        "objective": 113.81510184155337
+      },
+      "elapsed": 423.9957857510017
+    }
+  ],
+  "rows": [
+    {
+      "label": "rounded-diagnostic",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "brot": 10,
+      "error_1": 0.01256175987400025,
+      "error_2": 0.07379647532327795,
+      "Lambda": 1593.0826348052794,
+      "E_SOS": -22144.722333637084,
+      "E_gap": 4.448983637084893,
+      "lambda_eff": 118.97648378626133,
+      "gap_in_domain": true,
+      "T": 22410,
+      "Q": 803,
+      "angle_qubits": 99,
+      "angle_toffoli": 11400,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 2141009190.3250434,
+      "ratio": 1.5672980776838983,
+      "file": "rounded-diagnostic-b10.npz",
+      "sha256": "6b4b14f836ce41c155ec664afc15be3d3c245e04e56148fcab2e082f6ab8e268",
+      "problems": [
+        "error_2 0.07379647532327795 Ha > 0.02 Ha",
+        "error_2 misses 19.5 mHa margin",
+        "modelled ratio below 3.0x or nonfinite"
+      ],
+      "full_circuit_verified": false
+    },
+    {
+      "label": "rounded-diagnostic",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "brot": 11,
+      "error_1": 0.006126400645917796,
+      "error_2": 0.04709399266461134,
+      "Lambda": 1592.747533259861,
+      "E_SOS": -22144.387232091667,
+      "E_gap": 4.1138820916676195,
+      "lambda_eff": 114.40204142141386,
+      "gap_in_domain": true,
+      "T": 22710,
+      "Q": 811,
+      "angle_qubits": 107,
+      "angle_toffoli": 11400,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 2107035062.5117304,
+      "ratio": 1.5925694109237534,
+      "file": "rounded-diagnostic-b11.npz",
+      "sha256": "d269afd68c5cdb61b93e5578789a95e2c56ae2a4dd6133d9439d2c13cac5e460",
+      "problems": [
+        "error_2 0.04709399266461134 Ha > 0.02 Ha",
+        "error_2 misses 19.5 mHa margin",
+        "modelled ratio below 3.0x or nonfinite"
+      ],
+      "full_circuit_verified": false
+    },
+    {
+      "label": "rounded-diagnostic",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "brot": 12,
+      "error_1": 0.0032957389523562194,
+      "error_2": 0.03856897521823278,
+      "Lambda": 1592.7585034497854,
+      "E_SOS": -22144.39820228159,
+      "E_gap": 4.124852281591302,
+      "lambda_eff": 114.55467117325527,
+      "gap_in_domain": true,
+      "T": 23010,
+      "Q": 819,
+      "angle_qubits": 115,
+      "angle_toffoli": 11400,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "cost": 2158804543.6475186,
+      "ratio": 1.554378601886012,
+      "file": "rounded-diagnostic-b12.npz",
+      "sha256": "832b07485229e055223dd3df1c064b47f88db1097ecf8d9e1f1946918dfca887",
+      "problems": [
+        "error_2 0.03856897521823278 Ha > 0.02 Ha",
+        "error_2 misses 19.5 mHa margin",
+        "modelled ratio below 3.0x or nonfinite"
+      ],
+      "full_circuit_verified": false
+    }
+  ],
+  "complete": true,
+  "quantisation_training": "SKIPPED_CONTINUOUS_ABOVE_30mHa",
+  "seconds": 439.6207887789933,
+  "floor_met": false
+}

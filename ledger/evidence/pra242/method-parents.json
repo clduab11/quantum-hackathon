@@ -1,0 +1,202 @@
+{
+  "captured_utc": "2026-10-25",
+  "notebooks": [
+    {
+      "name": "anazemcev",
+      "url": "https://www.kaggle.com/code/anazemcev/quantum-circuits-881q-paired-dqi-r6-df-thc",
+      "pull_url": "https://www.kaggle.com/api/v1/kernels/pull/anazemcev/quantum-circuits-881q-paired-dqi-r6-df-thc",
+      "version": 6,
+      "public": true,
+      "source_sha256": "d4a147523ac07cb2dc5fe4bd5dc9c7da48719e34dfc847402628723b37930682",
+      "response_sha256": "801fa7a0eaee07c7e2f5cd7b1da5514eb157973489a7e6c4f1879365d5a9835a",
+      "cells": 71
+    },
+    {
+      "name": "gluzdov",
+      "url": "https://www.kaggle.com/code/dmitriigluzdov/quantum-circuit-compilation-from-source",
+      "pull_url": "https://www.kaggle.com/api/v1/kernels/pull/dmitriigluzdov/quantum-circuit-compilation-from-source",
+      "version": 14,
+      "public": true,
+      "source_sha256": "c3ba0bdde177b5fa159fc641d065c08870020fd773fa0947675675101eb2f52a",
+      "response_sha256": "9023303eac18f6ff2e21588d17e691ee37241a7e6542b84c36daa55ccf9456e0",
+      "cells": 76
+    }
+  ],
+  "dataset_version": 2,
+  "dataset": "anazemcev/vqcc-viberteam-verified-circuits",
+  "package_manifest_sha256": "dab4a28a37ca2b314603846e739be596dc10b755a1e1d49d3e727671c503fb89",
+  "sources": [
+    {
+      "path": "rebuild_source/dct_initialize.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fdct_initialize.py?datasetVersionNumber=2",
+      "bytes": 2897,
+      "sha256": "7a3f8eda30ca655dbde493988c488600f6c7be7898123744001aef92f582ed64",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/structural_train.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fstructural_train.py?datasetVersionNumber=2",
+      "bytes": 8857,
+      "sha256": "cd2cb5be4b7f532ccdd8e618701eff55d6be4e958d55a3af97b28ac79364817f",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/learned_qrom.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Flearned_qrom.py?datasetVersionNumber=2",
+      "bytes": 12649,
+      "sha256": "ec253e4ae38f39d4d87e15b37331cf0e6da08a1f3b43d54a806f13e01bbf7f12",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/build_rescue_notebooks.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fbuild_rescue_notebooks.py?datasetVersionNumber=2",
+      "bytes": 4890,
+      "sha256": "46869c8eb7ceb12dbc13ca713d1a07dbb497bb121db0fff6b530496be5ef6d19",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/one_body_polish.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fone_body_polish.py?datasetVersionNumber=2",
+      "bytes": 3072,
+      "sha256": "bfb5a9ca1fa55d3de1b1487a5d192ae0fb57bdc7e5faa750f7c39eeca867f97a",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/gauss_newton.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fgauss_newton.py?datasetVersionNumber=2",
+      "bytes": 7863,
+      "sha256": "9e34705e8702fe8fdbd2b3c660e51f7ec10f87115226b47af72f08ddf1096d95",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/structural_post.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fstructural_post.py?datasetVersionNumber=2",
+      "bytes": 9012,
+      "sha256": "8ffd89ba15b7de5f653ed9ff98089544dd1395cd7b7e95db3076921973db1186",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/fit_grid_candidate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Ffit_grid_candidate.py?datasetVersionNumber=2",
+      "bytes": 20432,
+      "sha256": "dfdd7e9e4de4d81a769773996da4d6cd0b74b4f4838673b1b9aa00daa37c87c4",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/r26_refine.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fr26_refine.py?datasetVersionNumber=2",
+      "bytes": 10611,
+      "sha256": "04524b33df42ac3c7f06babd1d219c0d794ca91e76648e08871e99100088931d",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/ahmed_quantize.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fahmed_quantize.py?datasetVersionNumber=2",
+      "bytes": 9746,
+      "sha256": "036f53d7952f3aefe19f35d111435aa25f909703b7cf3082f10e3cb4bee0dae3",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/chemistry.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fchemistry.py?datasetVersionNumber=2",
+      "bytes": 36108,
+      "sha256": "b644e557c0068b696630cb9c7ad764d3888f1d04ed68384042380443836c53c0",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/fixed_grid_core.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Ffixed_grid_core.py?datasetVersionNumber=2",
+      "bytes": 3577,
+      "sha256": "ca005bee7f256019fc98981cb1128d3312ceacc8fbf573c42e111d60acbf6861",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/build_qat_notebook.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fbuild_qat_notebook.py?datasetVersionNumber=2",
+      "bytes": 4090,
+      "sha256": "0de8ce116fd362bf89e085ff43b0e6c27b985684328397321469105d823d0a93",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/learned_factor_compile.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Flearned_factor_compile.py?datasetVersionNumber=2",
+      "bytes": 10895,
+      "sha256": "f246c54d84c671ae5bba44138490aab93789a6f2848545a62abf65b2f3e81fcd",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/run_gpu_rescue.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Frun_gpu_rescue.py?datasetVersionNumber=2",
+      "bytes": 3769,
+      "sha256": "2433ec0bd244f5e9aa1e1a437ce32f45e095b2f2c381ca616b946d3ead08adb1",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/run_cpu_handoff.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Frun_cpu_handoff.py?datasetVersionNumber=2",
+      "bytes": 5045,
+      "sha256": "a961b94bb278d75deeed61c32506fd44620a16805fcc08d47b0dba433654d826",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/build_tail_notebooks.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fbuild_tail_notebooks.py?datasetVersionNumber=2",
+      "bytes": 2578,
+      "sha256": "ee0d03c1870b4b9cd2064f1d4f6d073b5406b3f0ef42692cab02c98032b6af4d",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/qat_pipeline.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fqat_pipeline.py?datasetVersionNumber=2",
+      "bytes": 2699,
+      "sha256": "9c7c198a59fb2d2330e7b1927c6356c303795cd5d87ef1d272343a2cf16d6096",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/curriculum.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fcurriculum.py?datasetVersionNumber=2",
+      "bytes": 5585,
+      "sha256": "72d009b849ade2a776eda73a3c8e3a28a69f6eb861069026ee25a36b50b29f22",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/run_gpu_qat.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Frun_gpu_qat.py?datasetVersionNumber=2",
+      "bytes": 11380,
+      "sha256": "240d58b582447953c2b136d29f949e8a45fbad7de51706e2ca73780529fbb5fc",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/run_gpu_tail.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Frun_gpu_tail.py?datasetVersionNumber=2",
+      "bytes": 2776,
+      "sha256": "42cade858149366d909fbd1781a569e81b0144339917b95182eef6ff773a87fb",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/grid_polish.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fgrid_polish.py?datasetVersionNumber=2",
+      "bytes": 2955,
+      "sha256": "d9e9fb6f1cd01cd8c001c2c312d7ef7d021e401b96aaf3328b136abc336129ce",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/merge_initialize.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fmerge_initialize.py?datasetVersionNumber=2",
+      "bytes": 4181,
+      "sha256": "562af2ff5761e85acc0dd6bab00f0b1f6b404d7648bc262e0cb4a5095f894b7b",
+      "matched": true
+    },
+    {
+      "path": "rebuild_source/discrete_polish.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/chem_rebuild_source%2Frebuild_source%2Fdiscrete_polish.py?datasetVersionNumber=2",
+      "bytes": 24531,
+      "sha256": "3fc9b10f2d46bdafe4efced8b46c6876bbd67307fd731af84877c66021476dc1",
+      "matched": true
+    }
+  ],
+  "excluded": "All numerical arrays, public factor archives and circuits. Notebook cells not executed, encoded unrelated circuit payload not decoded.",
+  "scope": "Method-only source parents; no public numerical factors loaded or permitted",
+  "licence": "Apache-2.0; source declarations and dataset metadata reviewed on PRA-242",
+  "evidence_archive_sha256": "8bd6da377b1509aff1c03ae9c5bd77d567d646ec46e834a85283af394b0ac692"
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "max_covariance_difference": 0.0,
+  "upstream_source_sha256": {
+    "structural_train.py": "cd2cb5be4b7f532ccdd8e618701eff55d6be4e958d55a3af97b28ac79364817f",
+    "merge_initialize.py": "562af2ff5761e85acc0dd6bab00f0b1f6b404d7648bc262e0cb4a5095f894b7b"
+  },
+  "scope": "AST-selected pure math definitions on seeded synthetic arrays; no upstream loader/import or factor data"
+}

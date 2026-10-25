@@ -15,3 +15,10 @@ Public reports on 2026-10-23 gave 1.44× (681 qubits, 71,958 Toffolis, λ_eff 47
 rank/precision curve without generating circuits. See [run instructions,
 failure behavior and provenance](FACTOR_PIPELINE.md). A passing factor proxy
 does not authorize a submission.
+
+## Public-method factor feasibility
+
+For the Google-only balanced group merge, structural fit and tangent
+Gauss–Newton experiment, see [FIT_V3.md](FIT_V3.md). It documents the bounded
+CPU schedule, source provenance, independent evaluator, and the boundary
+between a continuous-stage negative and an unfinished quantisation run.
