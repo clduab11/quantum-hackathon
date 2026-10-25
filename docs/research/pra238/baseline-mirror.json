@@ -1,0 +1,34 @@
+{
+  "calibration_margin_units": 73326605,
+  "calibration_worst_x": 2489983,
+  "circuit_authorship": "port",
+  "coefficient_provenance": "regenerated; dataset-adapted calibration; licence unresolved",
+  "derivative_split": {
+    "max_coarse": 126,
+    "max_residual": 3471,
+    "max_table_residual": 2745,
+    "min_residual": 18,
+    "normalized_addresses_checked": 4194304
+  },
+  "estimated_ratio": 13.164808753447378,
+  "expected_toffoli": 1437.5,
+  "first_bad_x": null,
+  "layout": {
+    "LB": 21,
+    "S": 20,
+    "w1": 18,
+    "whi": 8
+  },
+  "min_margin_units": 40189295,
+  "pass": true,
+  "phase_fraction_bits": 38,
+  "phase_match": true,
+  "qubits": 90,
+  "rotations": 44,
+  "sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+  "static_toffoli": 1448,
+  "table_worst_relative_error": 5.73885374645857e-08,
+  "tested_inputs": 3133452,
+  "worst_ratio": 0.9628198916787619,
+  "worst_x": 1034666
+}

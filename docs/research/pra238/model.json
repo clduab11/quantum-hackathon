@@ -1,0 +1,87 @@
+{
+  "carry_certificate": {
+    "final_max_carry": 1,
+    "final_min_carry": -1,
+    "first_overflow_x": null,
+    "integer_failures": 0,
+    "max_abs_term": 32672,
+    "max_prefix_carry": 1,
+    "min_prefix_carry": -1,
+    "narrow_rows": 11,
+    "tested_inputs": 3133452,
+    "two_bit_overflow_inputs": 0,
+    "two_signed_bits_suffice": true,
+    "width": 16
+  },
+  "gate_cost": 138451.6,
+  "models": {
+    "baseline": {
+      "clears_gate": false,
+      "cost": 157747.5,
+      "qubits": 90,
+      "ratio": 13.165178528978272,
+      "rotations": 44,
+      "synthesized_t": 1261,
+      "toffoli": 1437.5
+    },
+    "carry_parity_prefix_assumed": {
+      "clears_gate": false,
+      "cost": 149314.0,
+      "qubits": 88,
+      "ratio": 13.908769438900572,
+      "rotations": 44,
+      "synthesized_t": 1261,
+      "toffoli": 1381.5
+    },
+    "carry_save_only": {
+      "clears_gate": false,
+      "cost": 155917.0,
+      "qubits": 92,
+      "ratio": 13.319740631233284,
+      "rotations": 44,
+      "synthesized_t": 1261,
+      "toffoli": 1379.5
+    },
+    "combined_with_public_phase_credit_assumed": {
+      "clears_gate": false,
+      "cost": 145700.63414634147,
+      "qubits": 88,
+      "ratio": 14.253705978479761,
+      "rotations": 44,
+      "synthesized_t": 1261,
+      "toffoli": 1340.439024390244
+    },
+    "public_comparison_only": {
+      "clears_gate": true,
+      "cost": 138096.19999999998,
+      "qubits": 82,
+      "ratio": 15.038603524209936,
+      "rotations": 44,
+      "synthesized_t": 1276.4,
+      "toffoli": 1365
+    },
+    "public_equivalent_at_our_assumed_peak": {
+      "clears_gate": false,
+      "cost": 148200.8,
+      "qubits": 88,
+      "ratio": 14.013244193013804,
+      "rotations": 44,
+      "synthesized_t": 1276.4,
+      "toffoli": 1365
+    }
+  },
+  "rejected_15_bit": {
+    "final_max_carry": 2,
+    "final_min_carry": -2,
+    "first_overflow_x": 5,
+    "integer_failures": 0,
+    "max_abs_term": 32672,
+    "max_prefix_carry": 2,
+    "min_prefix_carry": -2,
+    "narrow_rows": 11,
+    "tested_inputs": 3133452,
+    "two_bit_overflow_inputs": 38871,
+    "two_signed_bits_suffice": false,
+    "width": 15
+  }
+}

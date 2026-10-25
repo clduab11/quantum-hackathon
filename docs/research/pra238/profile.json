@@ -1,0 +1,86 @@
+{
+  "groups": {
+    "init_anf": {
+      "peak": 87,
+      "rotations": 0,
+      "toffoli": 247
+    },
+    "inner forward": {
+      "peak": 90,
+      "rotations": 0,
+      "toffoli": 85
+    },
+    "inner inverse": {
+      "peak": 62,
+      "rotations": 0,
+      "toffoli": 85
+    },
+    "normalize": {
+      "peak": 46,
+      "rotations": 0,
+      "toffoli": 98
+    },
+    "other": {
+      "peak": 82,
+      "rotations": 0,
+      "toffoli": 12
+    },
+    "outer forward": {
+      "peak": 90,
+      "rotations": 0,
+      "toffoli": 280
+    },
+    "outer inverse": {
+      "peak": 90,
+      "rotations": 0,
+      "toffoli": 280
+    },
+    "phase high": {
+      "peak": 89,
+      "rotations": 18,
+      "toffoli": 66
+    },
+    "phase low": {
+      "peak": 81,
+      "rotations": 30,
+      "toffoli": 162
+    },
+    "phase_from_records": {
+      "peak": 41,
+      "rotations": 0,
+      "toffoli": 22
+    },
+    "restore_boolean": {
+      "peak": 63,
+      "rotations": 0,
+      "toffoli": 17
+    },
+    "unnormalize": {
+      "peak": 41,
+      "rotations": 0,
+      "toffoli": 100
+    }
+  },
+  "peak": 90,
+  "raw_toffoli": 1454,
+  "schedule": {
+    "boolean_reload_toffoli": 17,
+    "options": {
+      "curve_count": 2,
+      "delay_high": true,
+      "gray_checkpoint": true,
+      "late_coarse": 0
+    },
+    "provenance_method": "Apache-2.0 Kozykorpesh V3 run 361677445, port",
+    "qubits": 90,
+    "split_bounds": {
+      "max_coarse": 126,
+      "max_residual": 3471,
+      "max_table_residual": 2745,
+      "min_residual": 18,
+      "normalized_addresses_checked": 4194304
+    },
+    "static_toffoli": 1454,
+    "variant": "deferred_feedforward_gray_checkpoint"
+  }
+}
