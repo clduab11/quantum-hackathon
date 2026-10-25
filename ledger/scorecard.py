@@ -28,9 +28,9 @@ from ledger.run_manifest import (
     TASKS,
     ManifestError,
     RunManifest,
-    append_to_index,
     load_manifests,
     operator_id,
+    write_index,
     write_manifest,
 )
 
@@ -94,8 +94,8 @@ def record_submission(
     Refuses (and writes nothing) if the candidate may not ship (`shipping_problems`: every gate
     cleared on the current zip, G0/G3/G5 real PASS, every task measured), if the Kaggle id is
     already recorded, or if the UTC day already holds `cap` submissions. The file is created
-    exclusively, so a concurrent writer fails instead of overwriting. The row also goes to
-    `index_csv` (default `<root>/index.csv`).
+    exclusively, so a concurrent writer fails instead of overwriting. The derived index
+    `index_csv` (default `<root>/index.csv`, not committed) is then rewritten from `root`.
     """
     if candidate.kind != "candidate":
         raise ManifestError(f"{candidate.candidate_id} is a {candidate.kind}, not a candidate")
@@ -123,7 +123,7 @@ def record_submission(
     record.kaggle_submission_id = kaggle_submission_id
     write_manifest(record, Path(root) / "submissions" / f"{record.candidate_id}.json",
                    exclusive=True)
-    append_to_index(record, index_csv or Path(root) / "index.csv")
+    write_index(Path(root), index_csv)
     return record
 
 
