@@ -1,0 +1,34 @@
+{
+  "actual": {
+    "dfthcsos/angle_k_0.kmb": "7bfb3983accc6ff97d6ab41a88deae924f1d1c97cf30e60879d0bff5688a8e25",
+    "dfthcsos/angle_k_1.kmb": "a04b6d0d57ce851b123af265066aaab2ab33353ea049d26acd534727466d72b6",
+    "dfthcsos/angle_k_2.kmb": "5c1b8987bc3fa1a4b8607e470f8c8f1392c22e7a7dbcb228f0ce9ec986e18058",
+    "dfthcsos/angle_k_3.kmb": "16ac67cdcaf3e2c6abdd98c4138ff1ae8a56cfc4ae15622bcdb3d3a3ba1e22cf",
+    "dfthcsos/angle_k_4.kmb": "d21cdd4c7e94196654aab15ebcabfe10ce8d343151a5e8dc3672e76684b6628d",
+    "dfthcsos/angle_k_5.kmb": "63b8d4cba36955e6098321f3b2ef3e34401dd276fa629b2e490d043b1743880b",
+    "dfthcsos/angle_k_6.kmb": "5bf740428e661d035fda860142578f421969e35e0df2e4e024fbf01a7340b378",
+    "dfthcsos/angle_k_7.kmb": "606009582111a22bd549b795c8d115ac8bbeb124bc8da24a80380eca6d34163d",
+    "dfthcsos/angle_k_8.kmb": "57c7cc51f5922fff6e95d76e1f723d4c2d029a241da643b95684d6322157a8fe",
+    "dfthcsos/angle_k_9.kmb": "22cbe2828988ff954fc07fd971a25e6bc04a02c302bf2cc642e4c3535daaad65",
+    "dfthcsos/submission.npz": "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69",
+    "dqi.kmb": "529b075009f7758abeda83a63407f0c1feeb51dd70631ae4335dfd28721b7e08",
+    "invsqrt.kmb": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd"
+  },
+  "dqi_bytes": 823297489,
+  "expected": {
+    "dfthcsos/angle_k_0.kmb": "7bfb3983accc6ff97d6ab41a88deae924f1d1c97cf30e60879d0bff5688a8e25",
+    "dfthcsos/angle_k_1.kmb": "a04b6d0d57ce851b123af265066aaab2ab33353ea049d26acd534727466d72b6",
+    "dfthcsos/angle_k_2.kmb": "5c1b8987bc3fa1a4b8607e470f8c8f1392c22e7a7dbcb228f0ce9ec986e18058",
+    "dfthcsos/angle_k_3.kmb": "16ac67cdcaf3e2c6abdd98c4138ff1ae8a56cfc4ae15622bcdb3d3a3ba1e22cf",
+    "dfthcsos/angle_k_4.kmb": "d21cdd4c7e94196654aab15ebcabfe10ce8d343151a5e8dc3672e76684b6628d",
+    "dfthcsos/angle_k_5.kmb": "63b8d4cba36955e6098321f3b2ef3e34401dd276fa629b2e490d043b1743880b",
+    "dfthcsos/angle_k_6.kmb": "5bf740428e661d035fda860142578f421969e35e0df2e4e024fbf01a7340b378",
+    "dfthcsos/angle_k_7.kmb": "606009582111a22bd549b795c8d115ac8bbeb124bc8da24a80380eca6d34163d",
+    "dfthcsos/angle_k_8.kmb": "57c7cc51f5922fff6e95d76e1f723d4c2d029a241da643b95684d6322157a8fe",
+    "dfthcsos/angle_k_9.kmb": "22cbe2828988ff954fc07fd971a25e6bc04a02c302bf2cc642e4c3535daaad65",
+    "dfthcsos/submission.npz": "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69",
+    "dqi.kmb": "529b075009f7758abeda83a63407f0c1feeb51dd70631ae4335dfd28721b7e08",
+    "invsqrt.kmb": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd"
+  },
+  "matches": true
+}

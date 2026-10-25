@@ -1,0 +1,174 @@
+{
+  "candidate_id": "pra228-dqi-invsqrt-572",
+  "g5_rebuild": {
+    "rebuild": {
+      "commit": "562663a62327ce4d81fdea7d5949ff39ce7667c3",
+      "copied_inputs": {
+        "dfthcsos/submission.npz": "sample_submission/dfthcsos/submission.npz"
+      },
+      "inputs": {
+        "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69": "sample_submission/dfthcsos/submission.npz"
+      },
+      "status": "PASS",
+      "tasks": {
+        "dfthcsos": {
+          "argv": [
+            "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra228-572-bundle/.venv/bin/python3",
+            "tasks/dfthcsos/generate.py",
+            "--out",
+            "/tmp/paperclip-run-pra-228-0002e303-2a3-ALIxcr/ledger-rebuild-b89nx_84/out/dfthcsos"
+          ],
+          "copied": {
+            "dfthcsos/submission.npz": "sample_submission/dfthcsos/submission.npz"
+          },
+          "diffs": {
+            "changed": [],
+            "extra": [],
+            "missing": []
+          },
+          "identical": true,
+          "returncode": 0,
+          "stderr_tail": ""
+        },
+        "dqi": {
+          "argv": [
+            "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra228-572-bundle/.venv/bin/python3",
+            "tasks/dqi/generate.py",
+            "--out",
+            "/tmp/paperclip-run-pra-228-0002e303-2a3-ALIxcr/ledger-rebuild-b89nx_84/out/dqi"
+          ],
+          "copied": {},
+          "diffs": {
+            "changed": [],
+            "extra": [],
+            "missing": []
+          },
+          "identical": true,
+          "returncode": 0,
+          "stderr_tail": ""
+        },
+        "invsqrt": {
+          "argv": [
+            "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra228-572-bundle/.venv/bin/python3",
+            "tasks/invsqrt/generate.py",
+            "--out",
+            "/tmp/paperclip-run-pra-228-0002e303-2a3-ALIxcr/ledger-rebuild-b89nx_84/out/invsqrt"
+          ],
+          "copied": {},
+          "diffs": {
+            "changed": [],
+            "extra": [],
+            "missing": []
+          },
+          "identical": true,
+          "returncode": 0,
+          "stderr_tail": ""
+        }
+      }
+    }
+  },
+  "gates": [
+    {
+      "gate": "G0",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T07:43:16.499597+00:00"
+    },
+    {
+      "gate": "G1",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T07:44:01.784979+00:00"
+    },
+    {
+      "gate": "G2",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T07:44:39.315414+00:00"
+    },
+    {
+      "gate": "G3",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T07:47:43.974900+00:00"
+    },
+    {
+      "gate": "G4",
+      "reason": "parent submission-001 has no measured geometric mean in the ledger",
+      "status": "FAIL",
+      "timestamp_utc": "2026-10-25T07:47:44.070319+00:00"
+    },
+    {
+      "gate": "G4",
+      "reason": "PRA-228 step 3 permits a G4 waiver when real PASS is unavailable. The real FAIL is retained: G4 searches parent only among kind=candidate and cannot resolve mandated submission-001 (kind=submission). Independent g4-comparison.json verifies measured 5.721389477411993 > parent 1.0. The archive best pra197-dqi-bm-forney is the identical zip with all 13 identical hashes and historical score 5.721389477411995; current dfthcsos ratio 0.9999999999999997 accounts for a -1.7763568394002505e-15 geometric-mean difference. Strict archive improvement is unavailable for this byte-identical rebuild. No gate, generator, parent, or archive record was changed. D-PRA228-01 authorizes this lineage; D-PRA220-01 stays on record. G4 is WAIVED, not PASS.",
+      "status": "WAIVED",
+      "timestamp_utc": "2026-10-25T07:48:46.304735+00:00"
+    },
+    {
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-25T07:52:53.303940+00:00"
+    }
+  ],
+  "generator_commit": "562663a62327ce4d81fdea7d5949ff39ce7667c3",
+  "geometric_mean": 5.721389477411993,
+  "historical_zip_identical": true,
+  "parent_candidate_id": "submission-001",
+  "shipping_problems": [],
+  "tasks": {
+    "dfthcsos": {
+      "failures": null,
+      "metrics": {
+        "E_gap": 3.965477244291833,
+        "Lambda": 308.45593973309445,
+        "angles_qubits": 119,
+        "batch_size": 8,
+        "brot": 12,
+        "error_1": 0.0031851950317986553,
+        "error_2": 0.018639570630974208,
+        "lambda_eff": 49.30136925057439,
+        "num_circuits": 10,
+        "persistent_qubits": 186,
+        "submission_sha256": "276d464ff14da828b6b33e8487d99975494cbdf0c3cb2bd37dd3c3ddc4002695",
+        "temporary_qubits": 544
+      },
+      "qubits": 730,
+      "ratio": 0.9999999999999997,
+      "shots": 254464
+    },
+    "dqi": {
+      "failures": 3,
+      "metrics": {
+        "circuit_sha256": "529b075009f7758abeda83a63407f0c1feeb51dd70631ae4335dfd28721b7e08",
+        "empirical_error_rate": 2.9296875e-05,
+        "log2_delta": -128.0,
+        "max_toffoli_count": 445229,
+        "mean_error_weight": 31.046737331746634,
+        "phase_errors": 3,
+        "repetition_factor": 1.2055843238398525,
+        "value_errors": 0
+      },
+      "qubits": 1789,
+      "ratio": 14.22623531711937,
+      "shots": 102400
+    },
+    "invsqrt": {
+      "failures": 0,
+      "metrics": {
+        "circuit_sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+        "max_toffoli_count": 1448,
+        "rotation_eps": 2.8381742236929845e-13,
+        "toffoli_equivalent": 1752.7994444029816,
+        "worst_error_over_tolerance": 0.9996227434818049,
+        "worst_x": 32
+      },
+      "qubits": 90,
+      "ratio": 13.16480863637127,
+      "shots": 200540928
+    }
+  },
+  "zip_bytes": 91399451,
+  "zip_path": "/home/cld-main/work/vqcc-data/queue/pra228-dqi-invsqrt-572.zip",
+  "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+}
