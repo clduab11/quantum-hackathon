@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "commit": "2367006c81e0fd020c41960ebe7fb828690695b8",
+  "inputs": {
+    "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69": "sample_submission/dfthcsos/submission.npz"
+  },
+  "copied_inputs": {
+    "dfthcsos/submission.npz": "sample_submission/dfthcsos/submission.npz"
+  },
+  "tasks": {
+    "dfthcsos": {
+      "identical": true,
+      "copied": {
+        "dfthcsos/submission.npz": "sample_submission/dfthcsos/submission.npz"
+      },
+      "returncode": 0,
+      "argv": [
+        "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra232-dfthcsos-circuit-v1/.venv/bin/python3",
+        "-m",
+        "tasks.dfthcsos.circuit",
+        "--out",
+        "/tmp/paperclip-run-pra-232-d2a8bcb0-b9b-AE2RL3/ledger-rebuild-gayxrpwa/out/dfthcsos",
+        "--b-rot",
+        "12",
+        "--batch-size",
+        "9",
+        "--bank-bits",
+        "0",
+        "--scratch",
+        "8",
+        "--pebble-degree",
+        "4"
+      ],
+      "diffs": {
+        "missing": [],
+        "extra": [],
+        "changed": []
+      },
+      "stderr_tail": ""
+    }
+  }
+}

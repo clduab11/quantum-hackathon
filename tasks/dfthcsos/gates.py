@@ -22,6 +22,11 @@ def g1_smoke(submission_dir) -> dict:
 
 def g2_proxy(submission_dir) -> dict:
     try:
+        from tasks.dfthcsos.checks import _chemistry_dir
+        chemistry = _chemistry_dir(Path(submission_dir))
+        if any((chemistry / f"angle_k_0.{suffix}").is_file() for suffix in ("kmb", "kmx")):
+            from tasks.dfthcsos.circuit_checks import proxy_circuits
+            return proxy_circuits(chemistry)
         return proxy_submission(Path(submission_dir))
     except Exception as exc:
         return {"status": f"FAIL: {type(exc).__name__}: {exc}"}
