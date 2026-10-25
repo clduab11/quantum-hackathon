@@ -78,3 +78,12 @@ generators:
   invsqrt: ["{python}", "tasks/invsqrt/generate.py", "--out", "{out}"]
   dqi: ["{python}", "tasks/dqi/generate.py", "--out", "{out}"]
   dfthcsos: ["{python}", "tasks/dfthcsos/generate.py", "--out", "{out}"]
+
+# Declared competition-package inputs (PRA-211). G5 runs every generator with VQCC_DATA pointing
+# at a staging directory that holds only these SHA-256-pinned files; an output byte-identical to
+# a declared input is a copied package file and fails G5 (R10). The dfthcsos factorization below
+# is the package's sample input that tasks/dfthcsos/generate.py reads to build the ANGLE circuits.
+inputs:
+  dfthcsos:
+    - path: sample_submission/dfthcsos/submission.npz
+      sha256: 14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69

@@ -9,9 +9,9 @@ data/
 *.kmb
 candidates/**/*.kmb
 
-# Large numpy archives under candidates/ (dfthcsos submission.npz and similar)
-candidates/**/*.npz
-tasks/*/candidates/**/*.npz
+# Numpy archives (dfthcsos submission.npz, factorizations, toolbox files): never committed anywhere
+# in the tree, whatever the output root; SHA-256 goes in the ledger (PRA-211, PRA-179 item 13)
+*.npz
 
 # Python
 .venv/
