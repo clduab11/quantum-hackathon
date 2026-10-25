@@ -16,6 +16,11 @@ dependencies = [
 dev = [
     "pytest",
 ]
+notebooks = [
+    "ipykernel",
+    "nbclient",
+    "nbformat",
+]
 
 [tool.uv]
 package = false

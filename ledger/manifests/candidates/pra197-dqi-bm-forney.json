@@ -1,0 +1,343 @@
+{
+  "candidate_id": "pra197-dqi-bm-forney",
+  "cli_command": "-",
+  "gates": [
+    {
+      "details": {},
+      "evidence_sha256": null,
+      "gate": "G0",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-24T18:40:51.213615+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "qubits": 9,
+            "status": "PASS"
+          },
+          "dqi": {
+            "modulus": 4179,
+            "primitive_element": 2,
+            "product": 233,
+            "qubits": 36,
+            "status": "PASS",
+            "toffoli": 63
+          },
+          "invsqrt": {
+            "num_qubits": 90,
+            "sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+            "static_toffoli": 1448,
+            "status": "PASS"
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G1",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-24T18:41:47.135958+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "E_gap": 3.965477244291833,
+            "Lambda": 308.4559397330944,
+            "brot": 12,
+            "error_1": 0.003185195031799191,
+            "error_2": 0.01863957063097407,
+            "heuristic_qubits": 634,
+            "heuristic_toffoli": 13757,
+            "lambda_eff": 49.30136925057438,
+            "parity": false,
+            "status": "PASS"
+          },
+          "dqi": {
+            "failures": 0,
+            "num_qubits": 1789,
+            "parity": false,
+            "shots": 1536,
+            "status": "PASS",
+            "toffoli_count": 445229.0
+          },
+          "invsqrt": {
+            "calibration_margin_units": 73326605,
+            "calibration_worst_x": 2489983,
+            "circuit_authorship": "port",
+            "coefficient_provenance": "own",
+            "derivative_split": {
+              "max_coarse": 126,
+              "max_residual": 3471,
+              "max_table_residual": 2745,
+              "min_residual": 18,
+              "normalized_addresses_checked": 4194304
+            },
+            "estimated_ratio": 13.164808753447378,
+            "expected_toffoli": 1437.5,
+            "first_bad_x": null,
+            "layout": {
+              "LB": 21,
+              "S": 20,
+              "w1": 18,
+              "whi": 8
+            },
+            "min_margin_units": 40189295,
+            "pass": true,
+            "phase_fraction_bits": 38,
+            "phase_match": true,
+            "qubits": 90,
+            "rotations": 44,
+            "sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+            "static_toffoli": 1448,
+            "status": "PASS",
+            "table_worst_relative_error": 5.73885374645857e-08,
+            "tested_inputs": 3133452,
+            "worst_ratio": 0.9628198916787619,
+            "worst_x": 1034666
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G2",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-24T18:42:16.483918+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    },
+    {
+      "details": {
+        "geometric_mean": 5.721389477411995
+      },
+      "evidence_sha256": "fa58872d19f01b4513500c4bd9c8ba25fb0d369215ccce5fa4c3579e787454d9",
+      "gate": "G3",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-24T18:45:37.787483+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    },
+    {
+      "details": {
+        "archive_best": {
+          "candidate_id": "pra200-invsqrt-selected",
+          "geometric_mean": 2.3612294080657024
+        },
+        "geometric_mean": 5.721389477411995
+      },
+      "evidence_sha256": null,
+      "gate": "G4",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-24T18:47:08.855653+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "0b5858532fbef2ff3ce0be0b9e6e2c6d2cb8a28e",
+          "status": "PASS",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-193-regarding-my-quantum-hackathon-project-you-should-know-that-the-highest-score-on-the-hackathon-project-t/.venv/bin/python3",
+                "tasks/dfthcsos/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-197-6ef8a64d-41f-v9H4Xt/ledger-rebuild-zaxzyw8p/out/dfthcsos"
+              ],
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-193-regarding-my-quantum-hackathon-project-you-should-know-that-the-highest-score-on-the-hackathon-project-t/.venv/bin/python3",
+                "tasks/dqi/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-197-6ef8a64d-41f-v9H4Xt/ledger-rebuild-zaxzyw8p/out/dqi"
+              ],
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "invsqrt": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-193-regarding-my-quantum-hackathon-project-you-should-know-that-the-highest-score-on-the-hackathon-project-t/.venv/bin/python3",
+                "tasks/invsqrt/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-197-6ef8a64d-41f-v9H4Xt/ledger-rebuild-zaxzyw8p/out/invsqrt"
+              ],
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-24T18:54:49.652605+00:00",
+      "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+    }
+  ],
+  "generator_commit": "0b5858532fbef2ff3ce0be0b9e6e2c6d2cb8a28e",
+  "geometric_mean": 5.721389477411995,
+  "git_branch": "op-vqcc/PRA-193-regarding-my-quantum-hackathon-project-you-should-know-that-the-highest-score-on-the-hackathon-project-t",
+  "kaggle_submission_id": null,
+  "kickmix_build_id": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
+  "kind": "candidate",
+  "manifest_id": "2d6a2147-19fb-4cad-8405-6e01cdc5a97d",
+  "notes": "PRA-197 three-task bundle. Salt is PRA171_LOCAL_PUBLIC_FIXED_SALT_0001 only. dqi.kmb SHA-256 529b075009f7758abeda83a63407f0c1feeb51dd70631ae4335dfd28721b7e08, size 823297489, not committed. Generator Python is unchanged from e1842978a78a485a1ae8c7fb9803c27a08dbbd2d. generator_commit is 0b5858532fbef2ff3ce0be0b9e6e2c6d2cb8a28e. The manifest was first written from a dirty worktree. The recorded commit does not include that suffix. invsqrt.kmb SHA-256 75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd. dfthcsos files match REFERENCE_ANGLE_SHA256 and REFERENCE_NPZ_SHA256. G0, G1, G2, G3, G4 and G5 PASS. G3 geometric mean is 5.721389477411995. G2 dqi used 1536 shots and is not parity. G4 beats archive best pra200-invsqrt-selected at 2.3612294080657024. There is no parent. G5 rebuilt invsqrt, dqi and dfthcsos from the recorded commit in a clean worktree. All three matched. The runner enqueue was not called. This candidate is not queued, not shipped, and not a Kaggle submission. PRA-203 and PRA-204 remain open.",
+  "operator": "584bb41d-d054-474a-b560-d2394375afcf",
+  "parent_candidate_id": null,
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64",
+  "python_version": "3.13.13",
+  "qualtran_pin": null,
+  "salt_label": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+  "schema_version": "1",
+  "source_candidate_id": null,
+  "submitted_at_utc": null,
+  "tasks": {
+    "dfthcsos": {
+      "baseline_cost": 3355599588.3155365,
+      "cost": 3355599588.3155365,
+      "eps_plus": null,
+      "evidence": [
+        "fa58872d19f01b4513500c4bd9c8ba25fb0d369215ccce5fa4c3579e787454d9"
+      ],
+      "failures": null,
+      "files": {
+        "dfthcsos/angle_k_0.kmb": "7bfb3983accc6ff97d6ab41a88deae924f1d1c97cf30e60879d0bff5688a8e25",
+        "dfthcsos/angle_k_1.kmb": "a04b6d0d57ce851b123af265066aaab2ab33353ea049d26acd534727466d72b6",
+        "dfthcsos/angle_k_2.kmb": "5c1b8987bc3fa1a4b8607e470f8c8f1392c22e7a7dbcb228f0ce9ec986e18058",
+        "dfthcsos/angle_k_3.kmb": "16ac67cdcaf3e2c6abdd98c4138ff1ae8a56cfc4ae15622bcdb3d3a3ba1e22cf",
+        "dfthcsos/angle_k_4.kmb": "d21cdd4c7e94196654aab15ebcabfe10ce8d343151a5e8dc3672e76684b6628d",
+        "dfthcsos/angle_k_5.kmb": "63b8d4cba36955e6098321f3b2ef3e34401dd276fa629b2e490d043b1743880b",
+        "dfthcsos/angle_k_6.kmb": "5bf740428e661d035fda860142578f421969e35e0df2e4e024fbf01a7340b378",
+        "dfthcsos/angle_k_7.kmb": "606009582111a22bd549b795c8d115ac8bbeb124bc8da24a80380eca6d34163d",
+        "dfthcsos/angle_k_8.kmb": "57c7cc51f5922fff6e95d76e1f723d4c2d029a241da643b95684d6322157a8fe",
+        "dfthcsos/angle_k_9.kmb": "22cbe2828988ff954fc07fd971a25e6bc04a02c302bf2cc642e4c3535daaad65",
+        "dfthcsos/submission.npz": "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69"
+      },
+      "measured": true,
+      "metrics": {
+        "E_gap": 3.965477244291833,
+        "Lambda": 308.4559397330944,
+        "angles_qubits": 119,
+        "batch_size": 8,
+        "brot": 12,
+        "error_1": 0.003185195031799191,
+        "error_2": 0.01863957063097407,
+        "lambda_eff": 49.30136925057438,
+        "num_circuits": 10,
+        "persistent_qubits": 186,
+        "submission_sha256": "276d464ff14da828b6b33e8487d99975494cbdf0c3cb2bd37dd3c3ddc4002695",
+        "temporary_qubits": 544
+      },
+      "num_qubits": 730,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Reference 1.0 files that tasks/dfthcsos/generate.py reproduces. ANGLE SHA-256 values are REFERENCE_ANGLE_SHA256. submission.npz SHA-256 14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69. Copied from the competition sample after that hash check. The 1.44x factor file is not used.",
+        "parent_url": "https://www.kaggle.com/competitions/google-verifiable-quantum-circuit-compilation/data"
+      },
+      "ratio": 1.0,
+      "rotation_count": null,
+      "shots": 254464,
+      "t_count": null,
+      "task": "dfthcsos",
+      "toffoli_count": 93237.0,
+      "verifier_sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+    },
+    "dqi": {
+      "baseline_cost": 24439465632206.816,
+      "cost": 1717915181875.0806,
+      "eps_plus": 0.000983909102617945,
+      "evidence": [
+        "fa58872d19f01b4513500c4bd9c8ba25fb0d369215ccce5fa4c3579e787454d9"
+      ],
+      "failures": 3,
+      "files": {
+        "dqi.kmb": "529b075009f7758abeda83a63407f0c1feeb51dd70631ae4335dfd28721b7e08"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "529b075009f7758abeda83a63407f0c1feeb51dd70631ae4335dfd28721b7e08",
+        "empirical_error_rate": 2.9296875e-05,
+        "log2_delta": -128.0,
+        "max_toffoli_count": 445229,
+        "mean_error_weight": 31.046737331746634,
+        "phase_errors": 3,
+        "repetition_factor": 1.2055843238398525,
+        "value_errors": 0
+      },
+      "num_qubits": 1789,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Port of andigu/uncompute commit 64b5a13aa249f1360846657392e6c66817b26d0f. Immediate embed is anazemcev v4 and kozykappa v2. Map is tasks/dqi/PROVENANCE.md. dqi.kmb SHA-256 529b075009f7758abeda83a63407f0c1feeb51dd70631ae4335dfd28721b7e08, 823297489 bytes. Not committed. Not a shipment.",
+        "parent_url": "https://github.com/andigu/uncompute"
+      },
+      "ratio": 14.22623531711937,
+      "rotation_count": null,
+      "shots": 102400,
+      "t_count": null,
+      "task": "dqi",
+      "toffoli_count": 445229.0,
+      "verifier_sha256": "f14274bc0943fb9769ddb01131be6063191a15009fe1caf1d4bdd9fd25194e65"
+    },
+    "invsqrt": {
+      "baseline_cost": 2076774.233715282,
+      "cost": 157751.94999626835,
+      "eps_plus": null,
+      "evidence": [
+        "fa58872d19f01b4513500c4bd9c8ba25fb0d369215ccce5fa4c3579e787454d9"
+      ],
+      "failures": 0,
+      "files": {
+        "invsqrt.kmb": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+        "max_toffoli_count": 1448,
+        "rotation_eps": 2.8381742236929845e-13,
+        "toffoli_equivalent": 1752.7994444029816,
+        "worst_error_over_tolerance": 0.9996227434818049,
+        "worst_x": 32
+      },
+      "num_qubits": 90,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Port in tasks/invsqrt (PROVENANCE.md). Snapshot SHA-256 79f6373302cb916a88f65a1b142024d4d2d0b14e41eb58bef3152ebd45ffd0ca. Selected invsqrt.kmb SHA-256 75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd. Coefficient fit is own. Not a shipment.",
+        "parent_url": "https://www.kaggle.com/code/anazemcev/quantum-circuits-signed-digit-memory"
+      },
+      "ratio": 13.16480863637127,
+      "rotation_count": 44.0,
+      "shots": 200540928,
+      "t_count": 1.0,
+      "task": "invsqrt",
+      "toffoli_count": 1437.5000155878406,
+      "verifier_sha256": "ddef520dec6b68d1cf0a6f328ddd36d79eb84570b9192cf3f7acaf073f06733a"
+    }
+  },
+  "timestamp_utc": "2026-10-24T18:40:23.239663+00:00",
+  "zip_sha256": "b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba"
+}

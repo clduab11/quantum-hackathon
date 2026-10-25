@@ -115,3 +115,11 @@ Reference dqi cost used for the ratio: 24439465632206.816. Salt 0001 is the ledg
 ## Clean worktree rebuild of the dqi file
 
 `ledger.benchmark_health.rebuild_in_clean_worktree` checked out commit `e1842978a78a485a1ae8c7fb9803c27a08dbbd2d` into a fresh worktree and ran `tasks/dqi/generate.py`. The output `dqi.kmb` matched SHA-256 `529b075009f7758abeda83a63407f0c1feeb51dd70631ae4335dfd28721b7e08`. Diffs: none. This is the dqi half of the G5 check. It is not a ledger G5: there is no submission zip, invsqrt and dfthcsos were not rebuilt, and this commit is not on GitHub. `git push` cannot authenticate here. The configured helper path does not exist, SSH public-key auth is denied, and the GitHub connection cannot publish an existing commit.
+
+## Ledger G0–G4 (not a shipment)
+
+Candidate `pra197-dqi-bm-forney`. Salt `PRA171_LOCAL_PUBLIC_FIXED_SALT_0001` only. Zip SHA-256 `b6709a4692802091f169332630ef54f0c0d9ffe3a6bcd26179e278c2189975ba`, 91,399,451 bytes, built with `ledger.archive.build_zip`. The zip is not committed.
+
+`dqi.kmb` in that zip is the file above. `invsqrt.kmb` is the current `tasks/invsqrt/generate.py` output, SHA-256 `75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd`. The dfthcsos files match `REFERENCE_ANGLE_SHA256` and `REFERENCE_NPZ_SHA256`. They were copied from the competition sample after that hash check. This run did not rebuild them.
+
+G0, G1, G2, G3, G4 and G5 PASS. G3 reports dqi value errors 0, phase errors 3, ratio 14.22623531711937, and a three-task geometric mean 5.721389477411995. G2 dqi used 1,536 shots and is not parity. G4 beats archive best `pra200-invsqrt-selected` (2.3612294080657024). G5 checked out `0b5858532fbef2ff3ce0be0b9e6e2c6d2cb8a28e` and rebuilt invsqrt, dqi and dfthcsos. All three file sets matched. The runner's enqueue step was not called. The candidate is not queued and is not shipped. PRA-203 and PRA-204 remain open. Decision rows: D-PRA197-12 and D-PRA197-13.
