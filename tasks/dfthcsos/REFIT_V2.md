@@ -95,10 +95,11 @@ weight gradient with zero was observed to fail the gradient test; restoring the
 implementation passes. Tests also cover deterministic construction, invalid
 shapes, fixed rounded vectors and objective reduction.
 
-Pending: long-fit results; gradual pruning to R=32;
-penalty and optimizer variants; further quantized fits; larger-shape measurements at
-11/10/9/8 bits; repeatability of new fitted checkpoints; final decisions and
-review. Existing method notices remain in `notices/30-dfthcsos.txt`. These new
+The long-fit, penalty, optimizer and larger-shape precision experiments are complete.
+Gradual pruning has completed through R36; final R32 precision measurements and
+the consolidated verdict remain pending. Best-margin Adam and best-modeled-cost
+high-penalty floor checkpoints each reproduce byte-for-byte in the same environment.
+See the measured-result summary below. Existing method notices remain in `notices/30-dfthcsos.txt`. These new
 helpers are own NumPy/SciPy implementations extending the already attributed
 PRA-198 normalization, D(w), augmented-SVD and Google-encoder methods; no new
 public notebook or factor file was read.
@@ -112,7 +113,9 @@ uv run python -m ledger.registers check
 ```
 
 The first plain `uv run pytest` had three subprocess import failures (260 passed,
-one skipped). With this explicit pinned module path: **263 passed, 1 skipped**.
+one skipped). The initial helper suite passed **263 tests, 1 skipped** with this explicit pinned
+module path. The integrated v2 suite subsequently passed **269 tests, 1 skipped**
+(`ledger/evidence/pra235/verification-02.md`).
 No repository dependency, gate or test was bypassed or changed for that rerun.
 
 ## First passing floor (quantized weight probe)
@@ -211,3 +214,33 @@ The runner does not detach or schedule itself. For multi-heartbeat runs, launch
 from the recorded committed snapshot in a separate process session and record
 the PID, source commit, plan hash and log paths on the issue. A scheduled issue
 monitor must collect results and hand off any passing checkpoint.
+
+## Measured results through R36
+
+The 12-bit (65,60,30) floor passes with multiple methods. Best error margin is
+17.459501285 mHa from Adam300 followed by 200 fixed rounded-U weight steps.
+Its encoded SHA-256 is
+`ec864ac608d42a5e0a3c816aff353ccf8383e6472e3a4ddf88f35f45ce24c371`.
+The best accepted modeled cost is the D(w)=2e-4 point at 18.299842110 mHa,
+lambda_eff 51.280813872, predicted T/Q 88874/727 and ratio 1.012759x.
+Its encoded SHA-256 is
+`44e55a6b70d3da5618e9006b27350cd197e16f18aa256024c90cb19c3bfae4f1`.
+Both pass independent saved-file reloads and fresh byte repeats in the same
+source/environment. They were handed to PRA-237; factors remain outside Git.
+
+The 1,000-step continuous fit passes at 18.668749 mHa, establishing the long-fit
+lever at the floor. Adam, trust-ncg, and all four tested penalty weights pass
+at 12 bits. No compressed point below 12 bits passes. R64 reaches 19.567859 mHa,
+passing the competition limit but missing our 19 mHa margin. R60 through R36
+fail all measured widths. Larger public-style shapes also miss accuracy:
+
+| Shape | 11-bit error2 mHa | 10-bit | 9-bit | 8-bit |
+| --- | ---: | ---: | ---: | ---: |
+| (6,144,127) | 275.480077 | 277.529710 | 285.552127 | 313.274957 |
+| (1,496,384) | 132.788108 | 137.904962 | 156.802953 | 205.156343 |
+
+These runs use 1,000 structural steps and independent 500-step rounded-U weight
+fits per width. Failed points' resource predictions are not performance results.
+The results describe the tested initializers and budgets, not infeasibility.
+Complete reports, settings, versions, runtimes, diagnostics and hashes are in
+`ledger/evidence/pra235/`; append-only decisions retain every negative result.
