@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import io
 import json
 import logging
 import math
@@ -457,14 +458,8 @@ def load_manifests(root: Path = MANIFESTS_DIR) -> list[RunManifest]:
     return sorted(manifests, key=lambda m: m.timestamp_utc)
 
 
-def append_to_index(manifest: RunManifest, csv_path: Path = INDEX_CSV) -> None:
-    """Append one summary row to the append-only CSV index.
-
-    As in qrc-thresher, this opens in append mode and writes one row; it does not lock across
-    processes, so concurrent writers must serialize externally.
-    """
-    csv_path.parent.mkdir(parents=True, exist_ok=True)
-    write_header = not csv_path.exists() or csv_path.stat().st_size == 0
+def index_row(manifest: RunManifest) -> dict[str, Any]:
+    """One manifest's summary row in the CSV index (`INDEX_FIELDNAMES`)."""
     row = {
         "manifest_id": manifest.manifest_id,
         "kind": manifest.kind,
@@ -483,8 +478,35 @@ def append_to_index(manifest: RunManifest, csv_path: Path = INDEX_CSV) -> None:
     for task in TASKS:
         record = manifest.tasks.get(task)
         row[f"{task}_ratio"] = record.ratio if record else None
+    return row
+
+
+def append_to_index(manifest: RunManifest, csv_path: Path = INDEX_CSV) -> None:
+    """Append one summary row to a CSV index file.
+
+    As in qrc-thresher, this opens in append mode and writes one row; it does not lock across
+    processes, so concurrent writers must serialize externally. The committed ledger no longer
+    appends: `write_index` derives `index.csv` from the manifests (PRA-210).
+    """
+    csv_path.parent.mkdir(parents=True, exist_ok=True)
+    write_header = not csv_path.exists() or csv_path.stat().st_size == 0
     with csv_path.open("a", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=INDEX_FIELDNAMES)
         if write_header:
             writer.writeheader()
-        writer.writerow(row)
+        writer.writerow(index_row(manifest))
+
+
+def write_index(root: Path = MANIFESTS_DIR, csv_path: Path | None = None) -> Path:
+    """Rewrite the derived index (default `root/index.csv`) from every manifest under `root`,
+    oldest first, so it always matches the manifests. The file is not committed (.gitignore):
+    two branches that each add a candidate would otherwise conflict on it (PRA-210). The rows
+    appended before PRA-210 are kept unchanged in `index-legacy.csv`."""
+    csv_path = csv_path or Path(root) / "index.csv"
+    rows = [index_row(m) for m in load_manifests(root)]
+    buffer = io.StringIO(newline="")
+    writer = csv.DictWriter(buffer, fieldnames=INDEX_FIELDNAMES)
+    writer.writeheader()
+    writer.writerows(rows)
+    _atomic_write_text(csv_path, buffer.getvalue())
+    return csv_path
