@@ -1,0 +1,34 @@
+# Merge-order gate (PRA-210). Squashes every open pull request onto main in every order in a
+# throwaway repository and fails if any order conflicts or a merged tree breaks the registers.
+# Read-only: it never pushes, comments or merges. See AGENTS.md "Merge queue".
+name: merge-gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: merge-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  merge-order:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Registers on this commit
+        run: python -m ledger.registers check
+      - name: Every open pull request, every order
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/merge_gate.py --repo "${{ github.repository }}" --summary "$GITHUB_STEP_SUMMARY"

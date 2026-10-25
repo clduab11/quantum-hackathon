@@ -1,0 +1,1 @@
+- `tasks/dfthcsos/generate.py` ports the package's ordinary-QROM ANGLE builder (`verifiers/dfthcsos/example_submission/angle_k_reference_circuit.py`), Apache-2.0, same authors and URL. The factorization bytes are the package's `sample_submission/dfthcsos/submission.npz` and are not committed.

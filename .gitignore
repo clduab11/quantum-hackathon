@@ -21,3 +21,6 @@ __pycache__/
 
 # Status page build output (python -m ledger.status_page; served by Vercel)
 public/
+
+# Derived manifest index (python -m ledger.registers index); index-legacy.csv is the frozen log
+ledger/manifests/index.csv
