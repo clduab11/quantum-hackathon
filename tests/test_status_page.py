@@ -1,162 +1,163 @@
 from __future__ import annotations
 
-from datetime import date, datetime, timezone
+import copy
+import json
+import re
 from pathlib import Path
 
-from ledger.gates.runner import load_config
-from ledger.run_manifest import GATE_IDS, TASKS, GateRecord, Provenance, TaskRecord, create_manifest
+import pytest
+import yaml
+
+from ledger.run_manifest import (
+    GATE_IDS,
+    TASKS,
+    GateRecord,
+    Provenance,
+    TaskRecord,
+    create_manifest,
+    load_manifests,
+)
+from ledger.scorecard import submissions
 from ledger.status_page import (
-    BuildInfo,
-    Decision,
+    STANDING_PATH,
+    StandingError,
     build,
-    deadline_sentence,
-    featured_candidate,
-    gate_cell,
-    inline,
-    parse_decisions,
+    checks_sentence,
+    load_standing,
+    parse_standing,
+    public_scores,
     render_page,
-    status_tone,
 )
 
-NOON = datetime(2026, 10, 24, 12, 0, tzinfo=timezone.utc)
-BUILD = BuildInfo(commit="ab" * 20, branch="main", built_at=NOON)
+STANDING = yaml.safe_load(STANDING_PATH.read_text(encoding="utf-8"))
 
 
-def _candidate(candidate_id: str = "cand"):
+def _submission(candidate_id: str, submitted: str, *, gates: dict[str, str] | None = None):
     tasks = {t: TaskRecord(task=t, provenance=Provenance(licence="own"), cost=1.0,
                            baseline_cost=2.0, measured=True) for t in TASKS}
-    return create_manifest(candidate_id=candidate_id, tasks=tasks, zip_sha256="ab" * 32)
-
-
-def _gated(candidate_id: str, cleared: int, *, kind: str = "candidate",
-           zip_sha256: str | None = None):
-    """A manifest whose first `cleared` gates PASS; `zip_sha256` binds them to another zip."""
-    m = _candidate(candidate_id)
-    m.kind = kind
-    for gate in GATE_IDS[:cleared]:
-        m.gates.append(GateRecord(gate=gate, status="PASS", timestamp_utc="",
-                                  zip_sha256=zip_sha256 or m.zip_sha256))
+    m = create_manifest(candidate_id=candidate_id, tasks=tasks, zip_sha256="ab" * 32)
+    m.kind, m.submitted_at_utc = "submission", submitted
+    for gate, status in (gates or {g: "PASS" for g in GATE_IDS}).items():
+        m.gates.append(GateRecord(gate=gate, status=status, timestamp_utc="",
+                                  zip_sha256=m.zip_sha256))
     return m
 
 
-def test_featured_candidate_is_none_without_candidates():
-    assert featured_candidate([]) is None
-    assert featured_candidate([_gated("submission-001", 6, kind="submission")]) is None
+def _standing(**changes):
+    data = copy.deepcopy(STANDING)
+    for path, value in changes.items():
+        *parents, key = path.split("__")
+        node = data
+        for p in parents:
+            node = node[p]
+        node[key] = value
+    return parse_standing(data)
 
 
-def test_featured_candidate_prefers_the_furthest_gated_over_the_newest():
-    older, newer = _gated("cand-a", 4), _gated("cand-b", 1)
-    assert featured_candidate([older, newer]) is older
+def _text(page: str) -> str:
+    """The words a reader sees: no tags, no style sheet."""
+    page = re.sub(r"<style>.*?</style>", "", page, flags=re.DOTALL)
+    return re.sub(r" ([.,)])", r"\1", re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", page)))
 
 
-def test_featured_candidate_breaks_ties_by_recency():
-    older, newer = _gated("cand-a", 2), _gated("cand-b", 2)
-    assert featured_candidate([older, newer]) is newer
-    assert featured_candidate([_gated("cand-a", 0), _gated("cand-b", 0)]).candidate_id == "cand-b"
+def test_committed_standing_parses_and_names_every_submission():
+    standing = load_standing()
+    shipped = submissions(load_manifests())
+    assert shipped, "the ledger has submissions"
+    for m in shipped:
+        assert standing.submission_notes.get(m.candidate_id), f"no note for {m.candidate_id}"
+    assert set(standing.best_public) == set(TASKS)
 
 
-def test_featured_candidate_skips_submissions():
-    candidate = _gated("cand-a", 1)
-    shipped = _gated("submission-001", 6, kind="submission")
-    assert featured_candidate([candidate, shipped]) is candidate
+@pytest.mark.parametrize("change", [
+    {"schema": 2},
+    {"leaderboard__rank": "585"},
+    {"leaderboard__rank": True},
+    {"leaderboard__read_at_utc": "yesterday"},
+    {"best_public_per_task__dqi": None},
+    {"notebook_url": "javascript:alert(1)"},
+])
+def test_malformed_standing_fails_the_build(change):
+    with pytest.raises(StandingError):
+        _standing(**change)
 
 
-def test_featured_candidate_counts_only_gates_cleared_on_the_current_zip():
-    stale = _gated("cand-a", 6, zip_sha256="cd" * 32)  # every PASS is on an earlier zip
-    current = _gated("cand-b", 1)
-    assert featured_candidate([current, stale]) is current
+def test_page_reads_the_ledger_and_the_standing_file(tmp_path: Path):
+    page = build(tmp_path / "public").read_text(encoding="utf-8")
+    text = _text(page)
+    assert "Our public score is 5.68935, rank 585 of 893 teams on 25 October 2026." in text
+    assert "The leader scores 20.48324." in text
+    assert "(6th) scores 17.33338" in text
+    assert "invsqrt 13.16 15.04 1.0" in text      # ours, best public, reference
+    assert "dqi 14.23 23.66 1.0" in text
+    assert "dfthcsos 1.00 4.09 1.0" in text
+    assert text.count("waiting for Kaggle") == 0
+    for score in ("1.00000", "2.40948", "5.68935"):
+        assert score in text
+    assert "20 January 2027" in text
 
 
-def test_page_traces_the_featured_candidate():
-    page = render_page([_gated("cand-a", 3), _gated("cand-b", 1)], load_config(), [], BUILD)
-    assert "Showing cand-a, last cleared gate G2." in page
-    assert '<g class="gate pass"><title>G0, all tasks: Passed</title>' in page
-    assert '<g class="gate notrun"><title>G3, all tasks: Not run</title>' in page
+def test_page_is_one_plain_screen(tmp_path: Path):
+    page = build(tmp_path / "public").read_text(encoding="utf-8")
+    text = _text(page)
+    assert "<script" not in page and "<svg" not in page
+    assert "fonts.googleapis.com" not in page          # one request, no web fonts
+    assert len(text.split()) < 450
+    for jargon in ("manifest", "salt", "merge gate", "G3", "PRA-", "D-PRA", "candidate"):
+        assert jargon not in text, jargon
+    assert 'href="https://github.com/clduab11/quantum-hackathon"' in page
+    assert "kaggle.com/competitions/google-verifiable-quantum-circuit-compilation" in page
 
 
-def test_gate_cells_follow_the_ledger_rules():
-    m = _candidate()
-    m.gates.append(GateRecord(gate="G0", status="PASS", timestamp_utc="", zip_sha256=m.zip_sha256))
-    m.gates.append(GateRecord(
-        gate="G1", status="FAIL", timestamp_utc="", zip_sha256=m.zip_sha256,
-        details={"tasks": {"invsqrt": {"status": "PASS"}, "dqi": {"status": "FAIL: smoke"},
-                           "dfthcsos": {"status": "PASS"}}}))
-    m.gates.append(GateRecord(gate="G2", status="PASS", timestamp_utc="", zip_sha256="cd" * 32))
-    assert gate_cell(m, "G0").status == "PASS"
-    assert gate_cell(m, "G1", "invsqrt").status == "PASS"
-    assert (gate_cell(m, "G1", "dqi").status, gate_cell(m, "G1", "dqi").reason) == (
-        "FAIL", "FAIL: smoke")
-    assert gate_cell(m, "G2", "dqi").status == "stale"  # bound to an earlier zip: not cleared
-    assert gate_cell(m, "G3").status == "not run"
-    assert gate_cell(None, "G0").status == "not run"
+def test_notebook_link_appears_only_when_set():
+    shipped = [_submission("s-1", "2026-10-24T07:00:00+00:00")]
+    without = render_page(shipped, _standing(), {"s-1": 1.0})
+    with_link = render_page(shipped, _standing(notebook_url="https://www.kaggle.com/code/x/y"),
+                            {"s-1": 1.0})
+    assert "Our public notebook" not in without
+    assert 'href="https://www.kaggle.com/code/x/y">Our public notebook' in with_link
 
 
-def test_waived_per_task_gate_stays_waived_on_every_wire():
-    m = _candidate()
-    m.gates.append(GateRecord(gate="G1", status="WAIVED", timestamp_utc="",
-                              zip_sha256=m.zip_sha256, reason="board waiver"))
-    assert {gate_cell(m, "G1", t).status for t in TASKS} == {"WAIVED"}
+def test_unscored_upload_waits_and_the_rank_says_when_it_is_stale():
+    shipped = [_submission("s-1", "2026-10-24T07:00:00+00:00"),
+               _submission("s-2", "2026-10-26T07:00:00+00:00")]
+    text = _text(render_page(shipped, _standing(), {"s-1": 9.5}))
+    assert "waiting for Kaggle" in text
+    # The latest scored upload is s-1, whose score differs from the one the rank was read at.
+    assert "Our public score is 9.50000, rank 585 of 893 teams on 25 October 2026, before this " \
+           "score came in." in text
 
 
-def test_register_rows_parse_with_escaped_pipes_and_skip_the_header():
-    text = """# Decisions register
-
-| date | id | decision | evidence | status |
-| --- | --- | --- | --- | --- |
-| 2026-10-24 | D-X-01 | Use `a \\| b` | PRA-1 | accepted |
-| 2026-10-24 | D-X-02 | Revisit D-X-01 | review | unresolved |
-"""
-    rows = parse_decisions(text)
-    assert [r.id for r in rows] == ["D-X-01", "D-X-02"]
-    assert rows[0].decision == "Use `a | b`"
+def test_no_public_score_yet():
+    text = _text(render_page([], _standing(), {}))
+    assert "We have not had a public score back from Kaggle yet." in text
+    assert "No uploads yet." in text
 
 
-def test_committed_register_parses_completely():
-    text = (Path(__file__).resolve().parent.parent / "docs" / "DECISIONS.md").read_text()
-    rows = parse_decisions(text)
-    table_lines = [ln for ln in text.splitlines() if ln.startswith("| 20")]
-    assert len(rows) == len(table_lines) > 0
+def test_checks_sentence_counts_only_the_uploaded_zip():
+    assert checks_sentence(_submission("s", "2026-10-24T07:00:00+00:00")) == (
+        "For the latest upload, all six of our automatic checks passed.")
+    waived = _submission("s", "2026-10-24T07:00:00+00:00",
+                         gates={"G0": "PASS", "G1": "PASS", "G2": "PASS", "G3": "PASS",
+                                "G4": "WAIVED", "G5": "PASS"})
+    assert checks_sentence(waived) == ("For the latest upload, five of our six automatic checks "
+                                       "passed and one was waived, with the reason on record.")
+    stale = _submission("s", "2026-10-24T07:00:00+00:00")
+    stale.gates[-1].zip_sha256 = "cd" * 32
+    assert checks_sentence(stale).startswith("For the latest upload, five of our six")
 
 
-def test_status_tones():
-    assert status_tone("unresolved") == "open"
-    assert status_tone("independent lineage derivation unresolved") == "open"
-    assert status_tone("implemented, review pending") == "pending"
-    assert status_tone("accepted") == "settled"
-    assert status_tone("corrected by subsequent test run") == "settled"
-    assert status_tone("parked") == "neutral"
+def test_page_escapes_standing_text():
+    shipped = [_submission("s-1", "2026-10-24T07:00:00+00:00")]
+    standing = _standing(submission_notes={"s-1": "<script>alert(1)</script>"})
+    page = render_page(shipped, standing, {"s-1": 1.0})
+    assert "<script>" not in page and "&lt;script&gt;" in page
 
 
-def test_inline_escapes_and_links_only_known_ids():
-    out = inline("See D-X-01 and D-X-99 <b>`x<y`</b>", frozenset({"D-X-01"}))
-    assert '<a href="#D-X-01">D-X-01</a>' in out
-    assert "D-X-99" in out and 'href="#D-X-99"' not in out
-    assert "&lt;b&gt;" in out and "<code>x&lt;y</code>" in out
-
-
-def test_page_escapes_ledger_text():
-    m = _candidate()
-    m.kaggle_submission_id = "<script>alert(1)</script>"
-    page = render_page([m], load_config(), [Decision("2026-10-24", "D-1", "<i>x</i>", "e", "accepted")],
-                       BUILD)
-    assert "<script>alert(1)</script>" not in page
-    assert "&lt;i&gt;x&lt;/i&gt;" in page
-
-
-def test_deadline_sentence():
-    assert deadline_sentence(date(2026, 10, 24)) == (
-        "88 days to the final deadline, 20 January 2027.")
-    assert deadline_sentence(date(2027, 1, 19)).startswith("1 day ")
-    assert deadline_sentence(date(2027, 1, 20)) == "The final deadline is today, 20 January 2027."
-    assert deadline_sentence(date(2027, 1, 21)).startswith("The final deadline passed")
-
-
-def test_build_writes_the_page_from_the_committed_repo(tmp_path: Path):
-    path = build(tmp_path / "public", manifests_root=tmp_path / "no-manifests", now=NOON)
-    page = path.read_text(encoding="utf-8")
-    assert path.name == "index.html"
-    for gate in GATE_IDS:
-        assert f">{gate}<" in page
-    assert "No candidates in the ledger yet" in page
-    assert 'id="D-PRA174-12"' in page
-    assert "3</span> of 3 submissions left" in page
+def test_public_scores_read_the_evidence_files(tmp_path: Path):
+    shipped = [_submission("s-1", "2026-10-24T07:00:00+00:00"),
+               _submission("s-2", "2026-10-25T07:00:00+00:00")]
+    (tmp_path / "s-1").mkdir()
+    (tmp_path / "s-1" / "kaggle-public-score.json").write_text(
+        json.dumps({"kaggle": {"publicScore": "2.40948"}}))
+    assert public_scores(shipped, tmp_path) == {"s-1": 2.40948}
