@@ -1,0 +1,167 @@
+{
+  "rows": [
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 12,
+      "error_1": 0.0032521957180263266,
+      "error_2": 0.018318496686130933,
+      "Lambda": 333.8133044638633,
+      "E_SOS": -22144.330603667237,
+      "E_gap": 4.057253667237092,
+      "lambda_eff": 51.88708124472578,
+      "gap_in_domain": true,
+      "T": 88874,
+      "Q": 727,
+      "angle_qubits": 119,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "problems": [],
+      "margin_19mHa": true,
+      "encoded_sha256": "574099ebd6800473adce47d524ff484886c1b2782a9195d56ad8c0fa1a3d89ef"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 11,
+      "error_1": 0.006695239914049795,
+      "error_2": 0.038122858801019475,
+      "Lambda": 333.8258839007444,
+      "E_SOS": -22144.343183104116,
+      "E_gap": 4.069833104116697,
+      "lambda_eff": 51.967949017881864,
+      "gap_in_domain": true,
+      "T": 88574,
+      "Q": 719,
+      "angle_qubits": 111,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "problems": [
+        "error_2 0.038122858801019475 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "encoded_sha256": "412003aed52644f3137a7332533d528a1fa33504674c251d5a0610446ab8a1a8"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 10,
+      "error_1": 0.012665891287406014,
+      "error_2": 0.047144792821906596,
+      "Lambda": 333.843407854292,
+      "E_SOS": -22144.360707057665,
+      "E_gap": 4.08735705766594,
+      "lambda_eff": 52.08039871948109,
+      "gap_in_domain": true,
+      "T": 88274,
+      "Q": 711,
+      "angle_qubits": 103,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "problems": [
+        "error_2 0.047144792821906596 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "encoded_sha256": "60affe761a1d115644f84588c67371c34f88c7501f4422d41f48b9260ac08a84"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 9,
+      "error_1": 0.02786696569840732,
+      "error_2": 0.08246149875900403,
+      "Lambda": 334.14529426129286,
+      "E_SOS": -22144.662593464665,
+      "E_gap": 4.389243464665924,
+      "lambda_eff": 53.981706530809035,
+      "gap_in_domain": true,
+      "T": 87974,
+      "Q": 703,
+      "angle_qubits": 95,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "problems": [
+        "error_1 0.02786696569840732 Ha > 0.02 Ha",
+        "error_2 0.08246149875900403 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "encoded_sha256": "f29c06c009022ff7f9842111c20ba69f0ee374108ab8160324fbec4ad373baee"
+    },
+    {
+      "shape": [
+        65,
+        60,
+        30
+      ],
+      "brot": 8,
+      "error_1": 0.05308793277718296,
+      "error_2": 0.15692061976199945,
+      "Lambda": 334.71442310264604,
+      "E_SOS": -22145.23172230602,
+      "E_gap": 4.958372306020465,
+      "lambda_eff": 57.399407627173666,
+      "gap_in_domain": true,
+      "T": 87674,
+      "Q": 695,
+      "angle_qubits": 87,
+      "angle_toffoli": 79480,
+      "batch": 8,
+      "families": 10,
+      "model": "ordinary-QROM-upper-bound",
+      "problems": [
+        "error_1 0.05308793277718296 Ha > 0.02 Ha",
+        "error_2 0.15692061976199945 Ha > 0.02 Ha"
+      ],
+      "margin_19mHa": false,
+      "encoded_sha256": "f5017bac1b62d6b0445ad95839f80ccfe617ecf2b88a05a834f9dc086cf1c229"
+    }
+  ],
+  "structure": {
+    "iterations": 100,
+    "evaluations": 107,
+    "converged": false,
+    "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "objective": 0.020286307944542833,
+    "initial_objective": 0.02233433236760569,
+    "maxcor": 20,
+    "method": "fixed-rounded-U weight L-BFGS-B"
+  },
+  "offsets": {
+    "iterations": 100,
+    "converged": false,
+    "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "objective": 51.887081244725046
+  },
+  "fit_bits": 12,
+  "penalty": 2e-05,
+  "seconds": 159.30998042901047,
+  "factor_sha256": "d18189eb27795bb75279ba642d63483397d8e7f8c9c6a33c4018f7c6f22fa1f0",
+  "input_sha256": "cc7dd377b1c98c1267caac98e64835b516016e4be97392cff791f96fc219a297",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "source_hashes": {
+    "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/pra235-factor-refit-v2/ledger/evidence/pra235/run_quantized_probe.py": "2905bb481e00985dc5653e7552e43af40a67eecee966cb4aa335b47f2c105d41",
+    "tasks/dfthcsos/factor_quantized.py": "33a853accb51a5919581cb8ac4d1b10ecaae9040cfd615e025d86d05c066b6c6",
+    "tasks/dfthcsos/factor_offsets.py": "9742882769d86b88ec1510186864dd2ceeca212f0e76f70215c2be85ee9888e3"
+  }
+}
