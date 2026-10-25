@@ -285,3 +285,94 @@ def test_new_candidate_never_overwrites_an_existing_one(workspace, tmp_path, mon
     with pytest.raises(FileExistsError):
         write_manifest(workspace.candidate(), path, exclusive=True)
     assert runner.read_manifest(path) == manifest
+
+
+# --- G5 declared inputs and copied package files (PRA-211) --------------------------------------
+
+
+def _g5(ws, config, zip_path, candidate_id="copier-001"):
+    from ledger.run_manifest import Provenance
+
+    provenance = {t: Provenance(licence="Apache-2.0", parent_url="https://example.invalid/p")
+                  for t in ("invsqrt", "dqi", "dfthcsos")}
+    from ledger.gates.runner import start_candidate
+
+    manifest = start_candidate(zip_path, candidate_id, provenance, salt_label=config.salt_label,
+                               repo=ws.repo)
+    records = run_pipeline(manifest, zip_path, config, queue_dir=ws.queue_dir, **ws.context())
+    return manifest, records
+
+
+def test_g5_fails_a_generator_that_copies_a_declared_package_file(workspace, fakes):
+    """Byte-identical output is not enough: a file copied from the competition package is a
+    divergence, recorded per task, and the gate fails (R10, PRA-211)."""
+    config = workspace.copier_config()
+    manifest, records = _g5(workspace, config, workspace.copier_zip("copied"))
+    assert records[-1].gate == "G5" and records[-1].status == "FAIL", records
+    assert "copied competition-package files, not generated (R10)" in records[-1].reason
+    assert "dfthcsos/submission.npz (dfthcsos, copy of package sample_submission/dfthcsos/" \
+           "submission.npz)" in records[-1].reason
+    rebuild = manifest.latest_gate("G5").details["rebuild"]
+    dfthcsos = rebuild["tasks"]["dfthcsos"]
+    # The divergence is honest and specific: every file matched, one of them was copied.
+    assert dfthcsos["identical"] is True
+    assert dfthcsos["copied"] == {"dfthcsos/submission.npz": "sample_submission/dfthcsos/submission.npz"}
+    assert rebuild["tasks"]["invsqrt"]["copied"] == {} and rebuild["tasks"]["invsqrt"]["identical"]
+    assert rebuild["inputs"] == {config.inputs["dfthcsos"][0]["sha256"]:
+                                 "sample_submission/dfthcsos/submission.npz"}
+    assert not (workspace.queue_dir / "copier-001.zip").exists()
+
+
+def test_g5_passes_a_generator_that_only_reads_a_declared_input(workspace, fakes):
+    config = workspace.copier_config(derive_only=True)
+    manifest, records = _g5(workspace, config, workspace.copier_zip("derived", derive_only=True))
+    assert [(r.gate, r.status) for r in records] == [(g, "PASS") for g in GATE_IDS], records
+    dfthcsos = manifest.latest_gate("G5").details["rebuild"]["tasks"]["dfthcsos"]
+    assert dfthcsos["identical"] and dfthcsos["copied"] == {}
+
+
+def test_g5_generators_see_only_the_declared_inputs(workspace, fakes):
+    """With nothing declared, VQCC_DATA is an empty staging directory: a generator that reads
+    the package cannot, so the rebuild fails instead of silently copying."""
+    config = workspace.copier_config(inputs=False)
+    manifest, records = _g5(workspace, config, workspace.copier_zip("hidden"))
+    assert records[-1].gate == "G5" and records[-1].status == "FAIL"
+    assert "rebuild differs for dfthcsos" in records[-1].reason
+    dfthcsos = manifest.latest_gate("G5").details["rebuild"]["tasks"]["dfthcsos"]
+    assert dfthcsos["returncode"] != 0 and "submission.npz" in dfthcsos["stderr_tail"]
+
+
+def test_g5_refuses_a_declared_input_whose_pin_does_not_match(workspace, fakes):
+    config = workspace.copier_config(sha256="0" * 64)
+    manifest, records = _g5(workspace, config, workspace.copier_zip("badpin"))
+    assert records[-1].gate == "G5" and records[-1].status == "FAIL"
+    assert "declared input" in records[-1].reason and "pinned 000" in records[-1].reason
+    assert manifest.latest_gate("G5").details["rebuild"]["tasks"] == {}  # no generator ran
+
+
+@pytest.mark.parametrize("inputs, message", [
+    ({"nope": []}, "unknown tasks"),
+    ({"dfthcsos": [{"path": "../etc/passwd", "sha256": "a" * 64}]}, "no '..'"),
+    ({"dfthcsos": [{"path": "/abs/file", "sha256": "a" * 64}]}, "relative"),
+    ({"dfthcsos": [{"path": "sample_submission/x.npz", "sha256": "short"}]}, "64-hex"),
+])
+def test_bad_input_declarations_are_rejected(tmp_path, inputs, message):
+    raw = yaml.safe_load(DEFAULT_CONFIG.read_text())
+    raw["inputs"] = inputs
+    path = tmp_path / "inputs.yaml"
+    path.write_text(yaml.safe_dump(raw))
+    with pytest.raises(ValueError, match=message):
+        load_config(path)
+
+
+def test_committed_configs_declare_only_the_pinned_factorization_input():
+    from ledger.gates.runner import CONFIG_DIR
+
+    for name in ("default.yaml", "reference.yaml"):
+        config = load_config(CONFIG_DIR / name)
+        assert config.inputs == {"dfthcsos": [{
+            "path": "sample_submission/dfthcsos/submission.npz",
+            "sha256": "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69"}]}, name
+        for task, argv in config.generators.items():
+            assert argv[1].startswith("tasks/"), (name, task, argv)
+            assert "reference_generator" not in argv[1], (name, task)

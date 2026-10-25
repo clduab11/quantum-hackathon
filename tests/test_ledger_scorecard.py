@@ -174,3 +174,243 @@ def test_check_slot_cli(tmp_path: Path, capsys):
         record_submission(candidate, f"k{i}", root=tmp_path, now=now)
     assert main(["--root", str(tmp_path), "--check-slot"]) == 1
     assert "0 submission slot(s) left" in capsys.readouterr().out
+
+
+# --- The cap is enforced before the upload (PRA-211) -----------------------------------------
+
+
+import inspect  # noqa: E402
+import sys  # noqa: E402
+import threading  # noqa: E402
+
+from ledger.run_manifest import read_manifest, sha256_file  # noqa: E402
+from ledger.scorecard import (  # noqa: E402
+    Reservation,
+    pending_reservations,
+    reconcile_reservation,
+    reserve_slot,
+    submit,
+)
+
+
+def _shippable(tmp_path: Path, candidate_id: str = "cand"):
+    """A fully gated candidate bound to a real zip file on disk."""
+    zip_path = tmp_path / f"{candidate_id}.zip"
+    zip_path.write_bytes(b"PK gated bytes " + candidate_id.encode())
+    tasks = {t: TaskRecord(task=t, provenance=Provenance(licence="own"), cost=1.0,
+                           baseline_cost=2.0, measured=True) for t in TASKS}
+    manifest = create_manifest(candidate_id=candidate_id, tasks=tasks,
+                               zip_sha256=sha256_file(zip_path))
+    for gate in GATE_IDS:
+        manifest.gates.append(GateRecord(gate=gate, status="PASS", timestamp_utc="",
+                                         zip_sha256=manifest.zip_sha256))
+    return manifest, zip_path
+
+
+class _Spy:
+    def __init__(self, ids=None, raises: Exception | None = None):
+        self.calls: list[Path] = []
+        self.ids = list(ids or [])
+        self.raises = raises
+
+    def __call__(self, zip_path: Path) -> str:
+        self.calls.append(Path(zip_path))
+        if self.raises is not None:
+            raise self.raises
+        return self.ids.pop(0) if self.ids else ""
+
+
+def _reservation_files(root: Path) -> list[str]:
+    return sorted(p.name for p in (root / "reservations").glob("*.json"))
+
+
+def test_submit_reserves_then_uploads_then_records(tmp_path: Path):
+    candidate, zip_path = _shippable(tmp_path)
+    spy = _Spy(ids=["kaggle-1"])
+    record = submit(candidate, zip_path, spy, root=tmp_path, now=NOON)
+    assert spy.calls == [zip_path]
+    assert record.candidate_id == "submission-001" and record.kaggle_submission_id == "kaggle-1"
+    assert pending_reservations(tmp_path) == []
+    (resolved,) = _reservation_files(tmp_path)
+    assert resolved.startswith("2026-10-24-slot1-") and resolved.endswith(".recorded.json")
+    assert slots_left(load_manifests(tmp_path), NOON, pending_reservations(tmp_path)) == 2
+
+
+def test_fourth_upload_is_refused_before_the_uploader_runs(tmp_path: Path):
+    """The test that fails if the pre-upload check is removed: the fourth call must raise before
+    the uploader is invoked, and leave no reservation behind."""
+    candidate, zip_path = _shippable(tmp_path)
+    spy = _Spy(ids=["k1", "k2", "k3", "k4-must-never-be-used"])
+    for i in range(DAILY_CAP):
+        submit(candidate, zip_path, spy, root=tmp_path, now=NOON + timedelta(hours=i))
+    assert len(spy.calls) == DAILY_CAP
+    with pytest.raises(SubmissionCapExceeded, match="recorded or reserved on 2026-10-24"):
+        submit(candidate, zip_path, spy, root=tmp_path, now=NOON + timedelta(hours=5))
+    assert len(spy.calls) == DAILY_CAP  # the uploader did not run a fourth time
+    assert spy.ids == ["k4-must-never-be-used"]
+    assert pending_reservations(tmp_path) == []
+    assert _files(tmp_path) == ["submission-001.json", "submission-002.json",
+                                "submission-003.json"]
+    # The next UTC day opens again, with the uploader called.
+    submit(candidate, zip_path, spy, root=tmp_path, now=NOON + timedelta(days=1))
+    assert len(spy.calls) == DAILY_CAP + 1
+
+
+def test_a_failed_upload_keeps_its_reservation_and_counts_against_the_cap(tmp_path: Path):
+    candidate, zip_path = _shippable(tmp_path)
+    boom = _Spy(raises=RuntimeError("connection reset"))
+    with pytest.raises(RuntimeError, match="connection reset"):
+        submit(candidate, zip_path, boom, root=tmp_path, now=NOON)
+    (held,) = pending_reservations(tmp_path)
+    assert held.path.name == "2026-10-24-slot1.json" and held.slot == 1
+    assert held.error == "upload raised RuntimeError: connection reset"
+    assert held.candidate_id == "cand" and held.zip_sha256 == candidate.zip_sha256
+    assert slots_left(load_manifests(tmp_path), NOON, pending_reservations(tmp_path)) == 2
+    assert _files(tmp_path) == []  # nothing was recorded for the uncertain attempt
+
+    # An uploader that returns no id is treated the same way.
+    silent = _Spy(ids=[""])
+    with pytest.raises(ManifestError, match="no Kaggle submission id"):
+        submit(candidate, zip_path, silent, root=tmp_path, now=NOON)
+    assert [r.slot for r in pending_reservations(tmp_path)] == [1, 2]
+
+    # Two pending plus one recorded fill the day; the fourth attempt never uploads.
+    ok = _Spy(ids=["k-ok", "k-never"])
+    submit(candidate, zip_path, ok, root=tmp_path, now=NOON)
+    with pytest.raises(SubmissionCapExceeded):
+        submit(candidate, zip_path, ok, root=tmp_path, now=NOON)
+    assert ok.calls == [zip_path]
+    # The legacy direct record also sees the pending reservations.
+    with pytest.raises(SubmissionCapExceeded):
+        record_submission(candidate, "k-direct", root=tmp_path, now=NOON)
+
+    # Reconciling the first failure (no Kaggle submission exists) frees exactly one slot.
+    with pytest.raises(ValueError, match="written reason"):
+        reconcile_reservation(tmp_path / "reservations" / "2026-10-24-slot1.json", reason="  ")
+    closed = reconcile_reservation(tmp_path / "reservations" / "2026-10-24-slot1.json",
+                                   reason="Kaggle shows no submission; socket reset before upload")
+    assert closed.name.endswith(".failed.json")
+    assert "socket reset" in closed.read_text()
+    assert [r.slot for r in pending_reservations(tmp_path)] == [2]
+    submit(candidate, zip_path, ok, root=tmp_path, now=NOON)
+    assert ok.calls == [zip_path, zip_path]
+    with pytest.raises(ManifestError, match="not pending"):
+        reconcile_reservation(closed, reason="twice")
+
+
+def test_a_recorded_reservation_cannot_be_reused(tmp_path: Path):
+    candidate, zip_path = _shippable(tmp_path)
+    held = reserve_slot(candidate, root=tmp_path, now=NOON)
+    record_submission(candidate, "k1", root=tmp_path, now=NOON, reservation=held)
+    assert not held.pending
+    with pytest.raises(ManifestError, match="not pending"):
+        record_submission(candidate, "k2", root=tmp_path, now=NOON, reservation=held)
+    other, _ = _shippable(tmp_path, "other")
+    held = reserve_slot(candidate, root=tmp_path, now=NOON)
+    with pytest.raises(ManifestError, match="belongs to cand, not other"):
+        record_submission(other, "k3", root=tmp_path, now=NOON, reservation=held)
+    assert _files(tmp_path) == ["submission-001.json"]
+
+
+def test_racing_reservers_never_exceed_the_cap(tmp_path: Path):
+    """Eight reservers start together; exactly three hold a slot, the rest are refused."""
+    candidate, _ = _shippable(tmp_path)
+    outcomes: list[str] = []
+    lock = threading.Lock()
+    start = threading.Barrier(8)
+
+    def reserve():
+        start.wait()
+        try:
+            held = reserve_slot(candidate, root=tmp_path, now=NOON)
+            result = f"slot{held.slot}"
+        except SubmissionCapExceeded:
+            result = "refused"
+        with lock:
+            outcomes.append(result)
+
+    threads = [threading.Thread(target=reserve) for _ in range(8)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+    assert sorted(outcomes) == ["refused"] * 5 + ["slot1", "slot2", "slot3"]
+    assert _reservation_files(tmp_path) == ["2026-10-24-slot1.json", "2026-10-24-slot2.json",
+                                            "2026-10-24-slot3.json"]
+    with pytest.raises(SubmissionCapExceeded):
+        assert_slot_available(load_manifests(tmp_path), NOON, pending_reservations(tmp_path))
+
+
+def test_reservations_follow_the_utc_day_boundary(tmp_path: Path):
+    candidate, zip_path = _shippable(tmp_path)
+    late = datetime(2026, 10, 24, 23, 59, 59, tzinfo=timezone.utc)
+    for _ in range(DAILY_CAP):
+        reserve_slot(candidate, root=tmp_path, now=late)
+    with pytest.raises(SubmissionCapExceeded):
+        reserve_slot(candidate, root=tmp_path, now=late)
+    # One second later the day has turned: three fresh slots, the old reservations still pending.
+    midnight = late + timedelta(seconds=1)
+    assert slots_left(load_manifests(tmp_path), midnight, pending_reservations(tmp_path)) == 3
+    held = reserve_slot(candidate, root=tmp_path, now=midnight)
+    assert held.path.name == "2026-10-25-slot1.json"
+    # A reservation taken in UTC-05:00 evening lands on the UTC day, not the local one.
+    evening = datetime(2026, 10, 25, 21, 0, tzinfo=timezone(timedelta(hours=-5)))
+    assert reserve_slot(candidate, root=tmp_path, now=evening).utc_day == "2026-10-26"
+    assert len(pending_reservations(tmp_path)) == 5
+
+
+def test_the_cap_is_a_constant_no_caller_can_raise():
+    assert DAILY_CAP == 3
+    for fn in (submit, reserve_slot, record_submission, slots_left, assert_slot_available):
+        assert "cap" not in inspect.signature(fn).parameters, fn.__name__
+
+
+def test_submit_cli_runs_the_upload_command_only_while_a_slot_is_free(tmp_path: Path, capsys):
+    candidate, zip_path = _shippable(tmp_path)
+    manifest_path = tmp_path / "candidates" / "cand.json"
+    write_manifest(candidate, manifest_path)
+    marker = tmp_path / "uploads.log"
+    # The fake uploader appends the zip path it was given and prints a Kaggle id last.
+    command = (f"{sys.executable} -c \"import sys; open({str(marker)!r}, 'a').write(sys.argv[1] "
+               f"+ chr(10)); print('starting'); print('kaggle-cli-' + str(len(open({str(marker)!r})"
+               f".read().splitlines())))\"")
+    for i in range(DAILY_CAP):
+        assert main(["--root", str(tmp_path), "submit", "--candidate", str(manifest_path),
+                     "--zip", str(zip_path), "--upload-command", command]) == 0, i
+    assert marker.read_text().splitlines() == [str(zip_path)] * DAILY_CAP
+    assert main(["--root", str(tmp_path), "submit", "--candidate", str(manifest_path),
+                 "--zip", str(zip_path), "--upload-command", command]) == 1
+    captured = capsys.readouterr()
+    assert "REFUSED (cap)" in captured.err
+    assert marker.read_text().splitlines() == [str(zip_path)] * DAILY_CAP  # no fourth upload
+    assert main(["--root", str(tmp_path), "--check-slot"]) == 1
+    assert "0 submission slot(s) left" in capsys.readouterr().out
+    recorded = [read_manifest(p).kaggle_submission_id
+                for p in sorted((tmp_path / "submissions").glob("*.json"))]
+    assert recorded == ["kaggle-cli-1", "kaggle-cli-2", "kaggle-cli-3"]
+
+
+def test_reserve_record_and_reconcile_cli(tmp_path: Path, capsys):
+    candidate, zip_path = _shippable(tmp_path)
+    manifest_path = tmp_path / "candidates" / "cand.json"
+    write_manifest(candidate, manifest_path)
+    assert main(["--root", str(tmp_path), "reserve", "--candidate", str(manifest_path)]) == 0
+    out = capsys.readouterr().out
+    assert "reserved slot 1 of 3" in out
+    held = Reservation.from_path(pending_reservations(tmp_path)[0].path)
+    assert main(["--root", str(tmp_path), "--check-slot"]) == 0
+    assert "2 submission slot(s) left today (UTC); 1 pending reservation(s)" in capsys.readouterr().out
+    assert main(["--root", str(tmp_path), "record", "--candidate", str(manifest_path),
+                 "--kaggle-id", "k-sandbox", "--reservation", str(held.path)]) == 0
+    assert pending_reservations(tmp_path) == [] and _files(tmp_path) == ["submission-001.json"]
+    assert main(["--root", str(tmp_path), "reserve", "--candidate", str(manifest_path)]) == 0
+    capsys.readouterr()
+    pending = pending_reservations(tmp_path)[0].path
+    assert main(["--root", str(tmp_path), "reconcile", "--reservation", str(pending),
+                 "--failed", "--reason", "sandbox never started the upload"]) == 0
+    assert "closed as failed" in capsys.readouterr().out
+    # The CLI records at the real clock, so read the table for the real UTC day.
+    today = utc_day(datetime.now(timezone.utc))
+    table = render_markdown(load_manifests(tmp_path), reservations=pending_reservations(tmp_path))
+    assert f"- pending reservations today ({today}): 0" in table
+    assert f"slots left today ({today}): 2" in table
