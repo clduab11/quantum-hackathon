@@ -20,6 +20,7 @@ import argparse
 import importlib
 import json
 import math
+import re
 import shutil
 import tempfile
 import traceback
@@ -32,6 +33,7 @@ from typing import Any
 import yaml
 
 from ledger.archive import UnsafeArchive, safe_extract
+from ledger.benchmark_health import PACKAGE_ROOT
 from ledger.evidence import EVIDENCE_DIR, classify_submission
 from ledger.run_manifest import (
     GATE_IDS,
@@ -87,6 +89,9 @@ class GateConfig:
     gates: list[GateSpec]
     salt_label: str | None = None
     generators: dict[str, list[str]] = field(default_factory=dict)
+    # Declared competition-package inputs per task (`{"path": <relative>, "sha256": <hex>}`).
+    # G5 stages only these into the generators' VQCC_DATA (PRA-211).
+    inputs: dict[str, list[dict[str, str]]] = field(default_factory=dict)
 
     def spec(self, gate_id: str) -> GateSpec:
         for spec in self.gates:
@@ -109,6 +114,7 @@ class GateContext:
     repo: Path = REPO_ROOT
     manifests_root: Path = MANIFESTS_DIR
     evidence_root: Path = EVIDENCE_DIR
+    package_root: Path = PACKAGE_ROOT  # where G5 stages the declared inputs from
 
     @property
     def params(self) -> dict[str, Any]:
@@ -135,8 +141,20 @@ def load_config(path: Path = DEFAULT_CONFIG) -> GateConfig:
     unknown = set(generators) - set(TASKS)
     if unknown:
         raise ValueError(f"{path}: generators for unknown tasks {sorted(unknown)}")
+    inputs = raw.get("inputs") or {}
+    unknown = set(inputs) - set(TASKS)
+    if unknown:
+        raise ValueError(f"{path}: inputs for unknown tasks {sorted(unknown)}")
+    for task, entries in inputs.items():
+        for entry in entries:
+            rel = str(entry.get("path", ""))
+            if not rel or rel.startswith(("/", "\\")) or ".." in Path(rel).parts:
+                raise ValueError(f"{path}: {task} input path {rel!r} must be relative to the "
+                                 "package root and contain no '..'")
+            if not re.fullmatch(r"[0-9a-f]{64}", str(entry.get("sha256", ""))):
+                raise ValueError(f"{path}: {task} input {rel} needs a 64-hex sha256 pin")
     return GateConfig(path=path, gates=gates, salt_label=raw.get("salt_label"),
-                      generators=generators)
+                      generators=generators, inputs=inputs)
 
 
 def resolve(ref: str) -> Callable[..., Any]:

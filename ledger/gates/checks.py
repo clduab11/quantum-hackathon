@@ -145,7 +145,9 @@ def provenance_problems(ctx: GateContext) -> list[str]:
 def g5_rebuild_and_provenance(ctx: GateContext) -> dict[str, Any]:
     """R10: provenance is shippable, the zip holds exactly the manifest's files, the zip is the
     deterministic build of those files, and a clean worktree at `generator_commit` regenerates
-    every file byte for byte."""
+    every file byte for byte. The generators see only the config's declared `inputs` (staged
+    into an otherwise empty VQCC_DATA); an output that is a byte copy of a declared input is a
+    copied competition-package file and fails the gate (PRA-211)."""
     manifest = ctx.manifest
     problems = provenance_problems(ctx)
     expected = {t: manifest.tasks[t].files for t in TASKS if t in manifest.tasks}
@@ -160,7 +162,8 @@ def g5_rebuild_and_provenance(ctx: GateContext) -> dict[str, Any]:
     if not problems:
         rebuild = rebuild_in_clean_worktree(
             manifest.generator_commit, ctx.config.generators, expected, repo=ctx.repo,
-            timeout_seconds=ctx.params.get("timeout_seconds"),
+            timeout_seconds=ctx.params.get("timeout_seconds"), inputs=ctx.config.inputs,
+            package_root=ctx.package_root,
         )
         if rebuild["status"] != "PASS":
             problems.append(rebuild["status"].removeprefix("FAIL: "))

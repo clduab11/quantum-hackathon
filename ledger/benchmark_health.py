@@ -7,7 +7,11 @@ Replaced: the reservoir-computing checks, with ledger checks and the R10 reprodu
 
 The reproducibility check (`rebuild_in_clean_worktree`) is the core of G5: it checks out
 `generator_commit` into a fresh `git worktree`, runs each task's generator there, and compares
-the SHA-256 of every output file with the hashes recorded in the manifest.
+the SHA-256 of every output file with the hashes recorded in the manifest. The generators run
+with `VQCC_DATA` pointing at a staging directory that holds only the config's declared,
+SHA-256-pinned inputs (PRA-211), so a generator cannot read any other competition-package file.
+An output byte-identical to a declared input is a copied package file, not a generated one, and
+fails the check (R10: every submitted circuit is regenerated from our committed source).
 """
 
 from __future__ import annotations
@@ -40,6 +44,15 @@ from ledger.run_manifest import (
 
 EXAMPLES_DIR = Path(__file__).resolve().parent / "examples"
 
+# The competition package the declared inputs are staged from (same default as harness/runtime.py
+# and the generators). The generators never see this path during G5: they get the staging copy.
+PACKAGE_ROOT = Path(os.environ.get(
+    "VQCC_DATA", "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation"))
+
+
+class InputError(ValueError):
+    """A declared input is missing from the package or its SHA-256 does not match the pin."""
+
 
 def _hash_tree(root: Path) -> dict[str, str]:
     return {
@@ -61,6 +74,34 @@ def diff_hashes(expected: dict[str, str], actual: dict[str, str]) -> dict[str, l
     }
 
 
+def stage_inputs(
+    inputs: dict[str, list[dict[str, str]]],
+    staging: Path,
+    package_root: Path = PACKAGE_ROOT,
+) -> dict[str, str]:
+    """Copy every declared input from `package_root` into `staging` at the same relative path,
+    refusing any file whose SHA-256 differs from its pin. Returns `{sha256: relative path}` so the
+    rebuild can recognise an output that is a byte copy of an input. `staging` holds nothing else,
+    so the generators can read only what the config declares."""
+    staged: dict[str, str] = {}
+    for task, entries in (inputs or {}).items():
+        for entry in entries:
+            rel = str(entry["path"])
+            if Path(rel).is_absolute() or ".." in Path(rel).parts:
+                raise InputError(f"{task}: input path {rel!r} must be relative, without '..'")
+            src = Path(package_root) / rel
+            if not src.is_file():
+                raise InputError(f"{task}: declared input {src} is missing")
+            actual = sha256_file(src)
+            if actual != entry["sha256"]:
+                raise InputError(f"{task}: {rel} has SHA-256 {actual}, pinned {entry['sha256']}")
+            dest = Path(staging) / rel
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(src, dest)
+            staged[actual] = rel
+    return staged
+
+
 def rebuild_in_clean_worktree(
     commit: str,
     generators: dict[str, list[str]],
@@ -68,6 +109,8 @@ def rebuild_in_clean_worktree(
     *,
     repo: Path = REPO_ROOT,
     timeout_seconds: float | None = None,
+    inputs: dict[str, list[dict[str, str]]] | None = None,
+    package_root: Path = PACKAGE_ROOT,
 ) -> dict[str, Any]:
     """Re-run each task's generator at `commit` in a fresh worktree and compare file hashes.
 
@@ -75,6 +118,11 @@ def rebuild_in_clean_worktree(
     output directory for that task, `{python}` to this interpreter and `{worktree}` to the
     worktree root. Output paths are compared relative to `{out}`, so a generator must write the
     same relative paths that appear in the manifest's `files` (for example `dfthcsos/angle_k_0.kmb`).
+
+    The generators run with `VQCC_DATA` set to a staging directory holding only the declared
+    `inputs` (see `stage_inputs`). Each task's record lists `copied`: the outputs whose bytes
+    equal a declared input. A task passes only if every file is identical to the manifest *and*
+    nothing was copied; a copied competition-package file is recorded as a divergence and fails.
     """
     if not re.fullmatch(r"[0-9a-f]{40}", commit or ""):
         return {"status": f"FAIL: generator commit {commit!r} is not a clean 40-hex commit"}
@@ -83,8 +131,12 @@ def rebuild_in_clean_worktree(
         return {"status": f"FAIL: no generator configured for {', '.join(missing)}"}
     tmp = Path(tempfile.mkdtemp(prefix="ledger-rebuild-"))
     worktree = tmp / "worktree"
+    staging = tmp / "package"
     tasks: dict[str, Any] = {}
+    staged: dict[str, str] = {}
     try:
+        staging.mkdir()
+        staged = stage_inputs(inputs or {}, staging, package_root)
         subprocess.run(
             ["git", "worktree", "add", "--detach", str(worktree), commit],
             cwd=repo, capture_output=True, text=True, check=True,
@@ -96,18 +148,24 @@ def rebuild_in_clean_worktree(
                            worktree=str(worktree))
             proc = subprocess.run(
                 argv, cwd=worktree, capture_output=True, text=True, timeout=timeout_seconds,
-                env={**os.environ, "PYTHONHASHSEED": "0"}, check=False,
+                env={**os.environ, "PYTHONHASHSEED": "0", "VQCC_DATA": str(staging)},
+                check=False,
             )
             actual = _hash_tree(out)
             diffs = diff_hashes(expected[task], actual)
+            copied = {rel: staged[digest] for rel, digest in sorted(actual.items())
+                      if digest in staged}
             identical = proc.returncode == 0 and not any(diffs.values())
             tasks[task] = {
                 "identical": identical,
+                "copied": copied,
                 "returncode": proc.returncode,
                 "argv": argv,
                 "diffs": diffs,
                 "stderr_tail": proc.stderr[-2000:],
             }
+    except InputError as exc:
+        return {"status": f"FAIL: declared input: {exc}", "commit": commit, "tasks": tasks}
     except (OSError, subprocess.SubprocessError) as exc:
         detail = getattr(exc, "stderr", "") or ""
         return {"status": f"FAIL: {exc} {detail}".strip(), "commit": commit, "tasks": tasks}
@@ -118,9 +176,17 @@ def rebuild_in_clean_worktree(
         # If the remove failed, drop the stale .git/worktrees entry too.
         subprocess.run(["git", "worktree", "prune"], cwd=repo, capture_output=True, text=True,
                        check=False)
+    problems = []
     bad = [t for t, r in tasks.items() if not r["identical"]]
-    status = "PASS" if not bad else f"FAIL: rebuild differs for {', '.join(bad)}"
-    return {"status": status, "commit": commit, "tasks": tasks}
+    if bad:
+        problems.append(f"rebuild differs for {', '.join(bad)}")
+    copied = [f"{rel} ({task}, copy of package {src})"
+              for task, r in tasks.items() for rel, src in r["copied"].items()]
+    if copied:
+        problems.append("copied competition-package files, not generated (R10): "
+                        + "; ".join(copied))
+    status = "PASS" if not problems else "FAIL: " + "; ".join(problems)
+    return {"status": status, "commit": commit, "inputs": staged, "tasks": tasks}
 
 
 # --- Ledger self-checks -----------------------------------------------------------------------
