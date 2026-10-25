@@ -23,6 +23,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 from ledger.gates.runner import DEFAULT_CONFIG, GateConfig, GateSpec, load_config
+from ledger.registers import decisions_text
 from ledger.run_manifest import (
     GATE_IDS,
     MANIFESTS_DIR,
@@ -43,7 +44,6 @@ from ledger.scorecard import (
     submissions_per_utc_day,
 )
 
-DECISIONS_MD = REPO_ROOT / "docs" / "DECISIONS.md"
 DEADLINE = date(2027, 1, 20)  # final Kaggle deadline (README)
 REPO_URL = "https://github.com/clduab11/quantum-hackathon"
 
@@ -61,7 +61,7 @@ class Decision:
 
 
 def parse_decisions(text: str) -> list[Decision]:
-    """Rows of the register table in `docs/DECISIONS.md`, in file order. Cells may contain
+    """Rows of a register table (`ledger.registers.decisions_text`), in order. Cells may contain
     escaped pipes (`\\|`); the header and separator rows are skipped."""
     rows = []
     for line in text.splitlines():
@@ -547,10 +547,10 @@ SCRIPT = """
 
 
 def build(out: Path, *, manifests_root: Path = MANIFESTS_DIR, config_path: Path = DEFAULT_CONFIG,
-          decisions_md: Path = DECISIONS_MD, now: datetime | None = None) -> Path:
+          registers_root: Path = REPO_ROOT, now: datetime | None = None) -> Path:
     now = now or datetime.now(timezone.utc)
     page = render_page(load_manifests(manifests_root), load_config(config_path),
-                       parse_decisions(decisions_md.read_text(encoding="utf-8")), build_info(now))
+                       parse_decisions(decisions_text(registers_root)), build_info(now))
     out.mkdir(parents=True, exist_ok=True)
     path = out / "index.html"
     path.write_text(page, encoding="utf-8")
