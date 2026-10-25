@@ -43,7 +43,7 @@ def test_reference_config_rebuilds_every_task_from_committed_builders():
     config = load_config(CONFIG_DIR / "reference.yaml")
     assert config.generators == {
         "invsqrt": ["{python}", "tasks/invsqrt/reference.py", "--out", "{out}"],
-        "dqi": ["{python}", "tasks/dqi/generate.py", "--out", "{out}"],
+        "dqi": ["{python}", "tasks/dqi/reference_circuit.py", "--out", "{out}"],
         "dfthcsos": ["{python}", "tasks/dfthcsos/generate.py", "--out", "{out}"],
     }
     for argv in config.generators.values():
