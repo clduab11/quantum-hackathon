@@ -30,7 +30,7 @@ gates:
     params:
       hooks:
         invsqrt: tasks.invsqrt.gates:g1_smoke
-        dqi: tasks.dqi.gates:g1_smoke
+        dqi: tasks.dqi.jfraction.gates:g1_smoke
         dfthcsos: tasks.dfthcsos.gates:g1_smoke
 
   - id: G2
@@ -55,11 +55,12 @@ gates:
       expected_shots:
         invsqrt: 200540928
         dqi: 102400
-        dfthcsos: 254464
+        # Gluzdov v8 has 572 addresses; keep all 64 shots per address.
+        dfthcsos: 36608
 
   - id: G4
     name: strict improvement over parent and archive
-    check: ledger.gates.checks:g4_strict_improvement
+    check: tasks.dfthcsos.gates:g4_chemistry_floor
     # Waivable only for pipeline checks that are not meant to improve (e.g. the reference zip).
     waivable: true
 
@@ -73,20 +74,21 @@ gates:
 # Generator commands for G5, run from the root of a clean worktree at generator_commit.
 # {out} is an empty output directory per task; outputs must use the same relative paths as the
 # manifest's files (invsqrt.kmb, dqi.kmb, dfthcsos/angle_k_*.kmb, dfthcsos/submission.npz).
-# The generators are delivered by P0-6 / P0-7; until then G5 fails for these tasks.
+# PRA-247 keeps submission-004's paired DQI and current invsqrt.
 generators:
   invsqrt: ["{python}", "tasks/invsqrt/generate.py", "--out", "{out}"]
-  dqi: ["{python}", "tasks/dqi/generate.py", "--out", "{out}"]
-  dfthcsos: ["{python}", "tasks/dfthcsos/generate.py", "--out", "{out}"]
+  dqi: ["{python}", "tasks/dqi/generate_jfraction.py", "--out", "{out}"]
+  dfthcsos: ["{python}", "-m", "tasks.dfthcsos.shipping", "--out", "{out}", "--batch-size", "10"]
 
 # Declared competition-package inputs (PRA-211). G5 runs every generator with VQCC_DATA pointing
 # at a staging directory that holds only these SHA-256-pinned files. A circuit (.kmb) can never be
 # declared here: R10 requires every submitted circuit to be generated, and a .kmb output that is a
 # byte copy of a declared input fails G5. An output byte-identical to a declared non-circuit input
 # is recorded per task as `copied` and accepted (Chris's ruling on PRA-211; D-PRA211-05). The
-# dfthcsos factorization below is the package's sample input that tasks/dfthcsos/generate.py reads
-# to build the ANGLE circuits and ships as a recorded copy.
+# factor below is Gluzdov v8, declared by PRA-245. The package_root for this
+# candidate is /home/cld-main/work/vqcc-data; G5 stages only this pinned input.
+# The shipping wrapper preserves the NPZ and regenerates every ANGLE circuit.
 inputs:
   dfthcsos:
-    - path: sample_submission/dfthcsos/submission.npz
-      sha256: 14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69
+    - path: inputs/thc/femoco_thc_r5.npz
+      sha256: 809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5

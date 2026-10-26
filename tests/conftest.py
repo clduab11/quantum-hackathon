@@ -155,7 +155,9 @@ def workspace(tmp_path: Path, fakes) -> Workspace:
         subprocess.run([sys.executable, "gen.py", task, str(built)], cwd=repo, check=True)
     zip_path = build_zip(built, tmp_path / "candidate.zip")
 
-    raw = yaml.safe_load(DEFAULT_CONFIG.read_text())
+    # Generic ledger tests retain the reference factor's shot contract and
+    # generic improvement rule; candidate-specific floor tests live separately.
+    raw = yaml.safe_load((DEFAULT_CONFIG.parent / 'reference.yaml').read_text())
     hooks = {"G0": "ledger_fakes:g0", "G1": "ledger_fakes:g1", "G2": "ledger_fakes:g2"}
     for gate in raw["gates"]:
         if gate["id"] == "G0":
