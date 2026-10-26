@@ -21,9 +21,15 @@ notebooks = [
     "nbclient",
     "nbformat",
 ]
+search = [
+    "openevolve==0.4.0",
+]
 
 [tool.uv]
 package = false
+# The search loop (search/) needs openevolve; make it a default group so a plain `uv sync` or
+# `uv run pytest` never prunes it from the venv while a loop is running.
+default-groups = ["dev", "search"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

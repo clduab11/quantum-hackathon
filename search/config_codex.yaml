@@ -1,0 +1,64 @@
+# OpenEvolve configuration: dfthcsos search on the ChatGPT/Codex subscription through the Codex
+# app-server (`codex app-server`, ChatGPT login, no API key). Launch with
+# `uv run python search/run.py --provider codex`. This provider carries the volume.
+# search/run.py replaces prompt.system_message with prompts/system_message.txt + DISCOVERY.md and installs
+# the codex_app_server provider from search/providers.py (OpenEvolve 0.4.0 ships no such provider).
+
+max_iterations: 100000
+checkpoint_interval: 5
+log_level: INFO
+# null: a seeded sampler makes every worker draw the same model sequence (all four picked the 0.2-weight
+# ideation model first in the dry run). Parent sampling stays seeded through database.random_seed (42).
+random_seed: null
+language: python
+diff_based_evolution: true
+enforce_evolve_blocks: true
+max_code_length: 24000
+
+llm:
+  provider: codex_app_server
+  timeout: 900
+  retries: 2
+  retry_delay: 30
+  reasoning_effort: medium      # per turn; the catalog advertises low|medium|high|xhigh|max(|ultra)
+  models:
+    # The account's Codex catalog on 2026-10-25 lists gpt-6-* as current and gpt-5.6-* as "older
+    # generation"; it has no gpt-5.x-codex slug. Change `name:` to move; `codex` prints the catalog
+    # under ~/.codex/models_cache.json.
+    - name: gpt-6-sol           # rewrites: the current workhorse Codex model
+      weight: 0.8
+    - name: gpt-6-astra         # ideation
+      weight: 0.2
+
+prompt:
+  template_dir: prompts
+  system_message: system_message   # replaced at launch by run.py
+  num_top_programs: 3
+  num_diverse_programs: 2
+  include_artifacts: true
+  max_artifact_bytes: 16384
+  suggest_simplification_after_chars: 20000
+
+database:
+  population_size: 200
+  archive_size: 50
+  num_islands: 3
+  migration_interval: 20
+  migration_rate: 0.1
+  elite_selection_ratio: 0.1
+  exploration_ratio: 0.3
+  exploitation_ratio: 0.6
+  feature_dimensions: [q_bin, t_bin]
+  feature_bins: 10
+  log_prompts: true
+  max_snapshot_artifacts: null  # OpenEvolve's default (100) is below population_size: parents past the first
+                                # 100 programs would lose their evaluator artifacts in the prompt
+
+evaluator:
+  timeout: 900
+  max_retries: 0
+  cascade_evaluation: true
+  cascade_thresholds: [0.05, 0.3]
+  parallel_evaluations: 4       # = concurrent Codex turns and verifier runs (16 cores, 27 GB)
+  enable_artifacts: true
+  use_llm_feedback: false

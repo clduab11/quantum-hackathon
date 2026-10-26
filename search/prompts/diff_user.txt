@@ -1,0 +1,34 @@
+# Current Program Information
+- Fitness (combined_score): {fitness_score}
+- Feature coordinates: {feature_coords}
+- Focus areas: {improvement_areas}
+- Current metrics:
+{metrics}
+
+{artifacts}
+
+# Program Evolution History
+{evolution_history}
+
+# Current Program
+```{language}
+{current_program}
+```
+
+# Task
+Propose ONE structural improvement to the EVOLVE block that lowers T_total * Q_total while keeping every
+verifier contract above (register layout, exact XOR loading on all 3976 addresses, clean ancillas, unflipped
+phase, no Z_POW, at most 128 qubits per circuit). The system keeps diverse (Q, T) trade-offs across these
+dimensions: {feature_dimensions}.
+
+First write 3-8 lines: what the artifacts say about the current program, your hypothesis, and the expected
+T_total and Q_total. Then give the change in the exact SEARCH/REPLACE format:
+
+<<<<<<< SEARCH
+# original code (must match the current program exactly, including indentation)
+=======
+# replacement code
+>>>>>>> REPLACE
+
+Each SEARCH section must match the current program verbatim. Several blocks are fine. Include a block that
+appends your NOTES line. Do not rewrite the whole program and do not touch code outside the EVOLVE block.
