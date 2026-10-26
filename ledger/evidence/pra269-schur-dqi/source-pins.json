@@ -1,0 +1,67 @@
+{
+ "read_at_utc": "2026-10-26T17:20Z/17:35Z (anonymous public GET only; no credentials, no notebook execution)",
+ "github": {
+  "repo": "jday96314/QuantumAI",
+  "default_branch": "main",
+  "private": false,
+  "head_commit": "2b9227095bf2c76f9f64a572645d7dce54998298",
+  "head_commit_date": "2026-10-26T00:14:45Z",
+  "head_commit_message": "Codex optimizations, round 6, 15.2227",
+  "api_license_field": null,
+  "api_license_endpoint_http": 404,
+  "tree_entries": 2379,
+  "tree_truncated": false,
+  "root_entries": [
+   ".gitignore",
+   "README.md",
+   "docs",
+   "initial_experiments",
+   "scripts"
+  ],
+  "licence_like_files_anywhere": [
+   "initial_experiments/3/vendor/published_thc/LICENSE",
+   "initial_experiments/5/dqi-census/reference/LICENSE-uncompute",
+   "initial_experiments/5/dqi-phase/reference/UNCOMPUTE_LICENSE",
+   "initial_experiments/5/inv-census/LICENSE.kickmix.txt",
+   "initial_experiments/6/agent20/public/ahmed_v3/dqi_root/LICENSE"
+  ],
+  "licence_like_files_note": "No repository-level licence: no LICENSE/COPYING at the root, GitHub licence API 404, README has no licence or copyright statement. The licence-named files above sit inside vendored third-party subfolders (initial_experiments/3, 5 and 6/agent20) and cover that vendored code only; none is under initial_experiments/6/agent14, the folder the notebook credits for the Schur decoder.",
+  "decoder_folder_cited_by_notebook": "initial_experiments/6/agent14"
+ },
+ "kaggle": {
+  "slug_on_card": "alexchilton/toffolis-go-17-9-schur-dqi-at-883-qubits",
+  "slug_now": "alexchilton/toffolis-go-15-05-verified-portfolio-llm-gauge",
+  "slug_note": "old slug: kernels/pull 404; the old web URL serves the page whose canonical link is the new slug",
+  "latest_version": {
+   "scriptVersionId": 362573669,
+   "title": "Schur DQI at 883 Qubits: a Verified Three-Task Portfolio",
+   "changelog_top": "v36",
+   "ran_utc": "2026-10-26T17:23:19Z..17:24:24Z",
+   "source_sha256": "28e0f08476df85323f9d25589f3cf781f13b5df105233193edfe8a5d1cff149c",
+   "source_route": "https://www.kaggle.com/kernels/scriptcontent/362573669/download"
+  },
+  "earlier_version": {
+   "scriptVersionId": 362530183,
+   "note": "version linked from the page HTML; header notes up to v29, pre-v33 text layout; ran 2026-10-26T14:46Z",
+   "source_sha256": "f5cbe0f58ecb965eeb745c432b6740bb3c8f57a13be8c2344cfc52f7d086c183",
+   "source_route": "https://www.kaggle.com/kernels/scriptcontent/362530183/download"
+  },
+  "v33": "not separately addressable anonymously (no public version list); the changelog states v33 = \"text rewritten\" and the dqi circuit is unchanged from v29 (883-qubit Schur) through v36; both versions read pin it by SHA-256 26369ae8...3d3e",
+  "output_route": "anonymous GET https://www.kaggle.com/api/v1/kernels/output?userName=alexchilton&kernelSlug=toffolis-go-15-05-verified-portfolio-llm-gauge (latest run 362573669 only; signed URLs not recorded)",
+  "output_submission_zip_sha256": "86e2773425a4acda644d4cfc1e103495792a91781166b50956befa1166454a5d",
+  "dqi_kmb": {
+   "sha256": "26369ae8dfaa62dd5963e4ce16c5bb6b3ba6dd1fa090ee322810a0bb78803d3e",
+   "bytes": 809488921,
+   "notebook_stated": {
+    "score": 500874373991.25,
+    "num_qubits": 883,
+    "ratio": 48.793599,
+    "value_errors": 1,
+    "phase_errors": 0,
+    "shots": 102400,
+    "toffolis": 536804
+   }
+  }
+ },
+ "boundaries": "The public circuit is measurement-only evidence: never committed, never in a bundle, never a declared input (D-PRA211-01). Large binaries stay outside git under /home/cld-main/work/vqcc-data/pra269-schur."
+}
