@@ -1,0 +1,195 @@
+{
+ "date": "2026-10-26",
+ "kind": "section-8 reproduction (Windows, evaluate_words + cost model; NOT a verifier run)",
+ "hardware": "Windows 10, 16 CPUs, 48 GiB RAM, numpy 2.4.6",
+ "timing_s": {
+  "load_reference": 28.7,
+  "evaluate_baseline": 4.1,
+  "evaluate_v7": 5.3
+ },
+ "harness": {
+  "path": "out/harness/vqcc_eval.py",
+  "sha256": "0c51e59580976ebab596ebdad6d9321e636b6636e9b5cb08a3cf65e2b038163e",
+  "verify_py_sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+ },
+ "metrics": {
+  "baseline": {
+   "error_1": 0.003185195031797757,
+   "error_2": 0.018639570630974153,
+   "Lambda": 308.4559397330944,
+   "E_SOS": -22144.23882724429,
+   "E_gap": 3.965477244291833,
+   "lambda_eff": 49.30136925057438,
+   "gap_in_domain": true
+  },
+  "v7": {
+   "error_1": 0.01781309054237248,
+   "error_2": 0.019720875120464228,
+   "Lambda": 289.87363312436327,
+   "E_SOS": -22144.188415221666,
+   "E_gap": 3.9150652216667368,
+   "lambda_eff": 47.48073950305377,
+   "gap_in_domain": true
+  }
+ },
+ "gates": {
+  "baseline": {
+   "error_1_mHa": 3.185195031797757,
+   "error_2_mHa": 18.639570630974152,
+   "error_1_margin_mHa": 16.814804968202242,
+   "error_2_margin_mHa": 1.360429369025848,
+   "Lambda_margin": 259.4559397330944,
+   "E_gap_margin_mHa": 50.579244291832914,
+   "passes_accuracy": true
+  },
+  "v7": {
+   "error_1_mHa": 17.813090542372482,
+   "error_2_mHa": 19.72087512046423,
+   "error_1_margin_mHa": 2.18690945762752,
+   "error_2_margin_mHa": 0.2791248795357727,
+   "Lambda_margin": 240.87363312436327,
+   "E_gap_margin_mHa": 0.16722166673677208,
+   "passes_accuracy": true
+  }
+ },
+ "cost_model": {
+  "baseline": {
+   "brot": 12,
+   "J": 8,
+   "outer_state_prep_toffoli": 846,
+   "inner_state_prep_toffoli": 9461,
+   "givens_rotations_toffoli": 3450,
+   "outer_state_prep_persistent_qubits": 46,
+   "outer_state_prep_temporary_qubits": 370,
+   "outer_state_prep_qubits": 416,
+   "inner_state_prep_persistent_qubits": 44,
+   "inner_state_prep_temporary_qubits": 544,
+   "inner_state_prep_qubits": 588,
+   "persistent_qubits": 90,
+   "temporary_qubits": 544,
+   "toffoli": 13757,
+   "qubits": 634,
+   "persistent_with_words": 186,
+   "T_total": 93237.0,
+   "Q_total": 730,
+   "score_recomputed": 3355599588.3155365
+  },
+  "v7": {
+   "brot": 8,
+   "J": 4,
+   "outer_state_prep_toffoli": 378,
+   "inner_state_prep_toffoli": 11032,
+   "givens_rotations_toffoli": 2250,
+   "outer_state_prep_persistent_qubits": 42,
+   "outer_state_prep_temporary_qubits": 96,
+   "outer_state_prep_qubits": 138,
+   "inner_state_prep_persistent_qubits": 45,
+   "inner_state_prep_temporary_qubits": 321,
+   "inner_state_prep_qubits": 366,
+   "persistent_qubits": 87,
+   "temporary_qubits": 321,
+   "toffoli": 13660,
+   "qubits": 408,
+   "persistent_with_words": 119,
+   "T_total": 23692.0,
+   "Q_total": 440,
+   "score_recomputed": 494962019.3347939
+  }
+ },
+ "v7_chem_verify_json": {
+  "status": "PASS",
+  "score": 494962019.3347939,
+  "lambda_eff": 47.48073950305377,
+  "toffoli_count": 23692.0,
+  "num_qubits": 440,
+  "brot": 8,
+  "batch_size": 4,
+  "num_circuits": 19,
+  "reaction_depth": 209,
+  "num_ops": 694710,
+  "verified_shots": 82432,
+  "submission_sha256": "00a7429b1b68387dc13444e1e41ea9215cc6103d7c3826a7008802c326ac4549",
+  "resources": {
+   "brot": 8,
+   "keep_bits": 10,
+   "angles_toffoli_per_pass": 5016.0,
+   "angles_toffoli": 10032.0,
+   "angles_qubits": 127,
+   "angles_selection_qubits": 11,
+   "angles_persistent_qubits": 32,
+   "angles_temporary_qubits": 84,
+   "outer_state_prep_toffoli": 378,
+   "inner_state_prep_toffoli": 11032,
+   "givens_rotations_toffoli": 2250,
+   "outer_state_prep_persistent_qubits": 42,
+   "outer_state_prep_temporary_qubits": 96,
+   "outer_state_prep_qubits": 138,
+   "inner_state_prep_persistent_qubits": 45,
+   "inner_state_prep_temporary_qubits": 321,
+   "inner_state_prep_qubits": 366,
+   "heuristic_persistent_qubits": 87,
+   "heuristic_temporary_qubits": 321,
+   "heuristic_toffoli": 13660,
+   "heuristic_qubits": 408,
+   "persistent_qubits": 119,
+   "temporary_qubits": 321,
+   "toffoli": 23692.0,
+   "qubits": 440,
+   "angles_within_cap": true
+  },
+  "metrics": {
+   "error_1": 0.01781309054237232,
+   "error_2": 0.019720875120464217,
+   "Lambda": 289.87363312436327,
+   "E_SOS": -22144.188415221666,
+   "E_gap": 3.9150652216667368,
+   "lambda_eff": 47.48073950305377,
+   "gap_in_domain": true
+  },
+  "ratio": 6.7795092496699185
+ },
+ "cost_model_comparison_v7": {
+  "statement": "11 of 14 fields match chem_verify.json directly; the other 3 differ only by the ANGLE terms (10,032 ANGLE Toffolis; 32 = J*brot word-register qubits). Both scores match the verifier exactly.",
+  "note": "heuristic_costs uses toffoli/persistent_qubits/qubits/temporary_qubits for state prep + Givens only; verify.resource_costs uses the same names for totals. temporary_qubits is among the 11 direct matches only because max(321 inner, 84 ANGLE) = 321.",
+  "check": "vqcc_eval.check_resources_against_verifier",
+  "result": {
+   "n_shared_fields": 14,
+   "direct_fields": [
+    "brot",
+    "givens_rotations_toffoli",
+    "inner_state_prep_persistent_qubits",
+    "inner_state_prep_qubits",
+    "inner_state_prep_temporary_qubits",
+    "inner_state_prep_toffoli",
+    "outer_state_prep_persistent_qubits",
+    "outer_state_prep_qubits",
+    "outer_state_prep_temporary_qubits",
+    "outer_state_prep_toffoli"
+   ],
+   "differing_same_name_fields": [
+    "persistent_qubits",
+    "qubits",
+    "toffoli"
+   ],
+   "mapped_heuristic_plus_term_equals_total": {
+    "toffoli": [
+     13660,
+     10032.0,
+     23692.0
+    ],
+    "persistent_qubits": [
+     87,
+     32,
+     119
+    ],
+    "qubits": [
+     408,
+     32,
+     440
+    ]
+   },
+   "temporary_qubits_agree_because": "max(heuristic 321, ANGLE 84) = 321",
+   "all_assertions_passed": true
+  }
+ }
+}
