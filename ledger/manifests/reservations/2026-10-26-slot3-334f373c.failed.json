@@ -1,0 +1,13 @@
+{
+  "candidate_id": "pra261-schur",
+  "error": "",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "outcome": "failed",
+  "reason": "Composio remote workbench call for StartSubmissionUpload failed (mcp_remote_fetch_failed), then Composio tools dropped (tool_not_found). No upload PUT, KAGGLE_COMPETITION_SUBMIT never called. Retry on a later wake.",
+  "reservation_id": "334f373c-438a-4688-b6e2-2998072a5d9f",
+  "reserved_at_utc": "2026-10-26T22:00:34.508736+00:00",
+  "resolved_at_utc": "2026-10-26T22:01:28.227488+00:00",
+  "slot": 3,
+  "utc_day": "2026-10-26",
+  "zip_sha256": "9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5"
+}
