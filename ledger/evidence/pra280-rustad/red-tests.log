@@ -1,0 +1,16 @@
+
+==================================== ERRORS ====================================
+________________ ERROR collecting tests/test_rustad_compiler.py ________________
+ImportError while importing test module '/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-280-chem-catchup/tests/test_rustad_compiler.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/cld-main/.local/share/uv/python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_rustad_compiler.py:5: in <module>
+    from tasks.dfthcsos.paired_qrom import build_qrom
+E   ModuleNotFoundError: No module named 'tasks.dfthcsos.paired_qrom'
+=========================== short test summary info ============================
+ERROR tests/test_rustad_compiler.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.28s

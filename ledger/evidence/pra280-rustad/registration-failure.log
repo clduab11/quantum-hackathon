@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-280-chem-catchup/ledger/evidence/pra280-rustad/run_candidate.py", line 76, in <module>
+    main()
+    ~~~~^^
+  File "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-280-chem-catchup/ledger/evidence/pra280-rustad/run_candidate.py", line 57, in main
+    manifest = start_candidate(ZIP, CANDIDATE, provenance,
+        parent_candidate_id=parent.candidate_id, salt_label=config.salt_label,
+        notes='PRA-280 public parity candidate. No salt/seed search, GPU work or upload. Adjudicator review required before merge/submission.')
+  File "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-280-chem-catchup/ledger/gates/runner.py", line 200, in start_candidate
+    return create_manifest(
+        candidate_id=candidate_id,
+    ...<5 lines>...
+        notes=notes,
+    )
+  File "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-280-chem-catchup/ledger/run_manifest.py", line 335, in create_manifest
+    validate(manifest)
+    ~~~~~~~~^^^^^^^^^^
+  File "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-280-chem-catchup/ledger/run_manifest.py", line 372, in validate
+    raise ManifestError("; ".join(problems))
+ledger.run_manifest.ManifestError: dqi: licence 'not-stated' not in ('Apache-2.0', 'CC-BY-4.0', 'own', 'no-licence', 'reference-only'); dfthcsos: licence 'Other (specified in description)' not in ('Apache-2.0', 'CC-BY-4.0', 'own', 'no-licence', 'reference-only')
