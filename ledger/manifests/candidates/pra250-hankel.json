@@ -252,6 +252,84 @@
       "status": "PASS",
       "timestamp_utc": "2026-10-26T16:43:56.640851+00:00",
       "zip_sha256": "459b2f11778f5bbd576ce69b9f85156ca2c301bd2a3f74752adca5c2dadcbec7"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "8e53362324fef5816baf58e699fa002a08596d7a",
+          "copied_inputs": {
+            "dfthcsos/submission.npz": "inputs/thc/femoco_thc_r5.npz"
+          },
+          "inputs": {
+            "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5": "inputs/thc/femoco_thc_r5.npz"
+          },
+          "status": "PASS",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/PRA-250-dqi-public-port/.venv/bin/python3",
+                "-m",
+                "tasks.dfthcsos.shipping",
+                "--out",
+                "/tmp/paperclip-run-pra-250-88abc402-6e5-chspdN/ledger-rebuild-xcn7zjae/out/dfthcsos",
+                "--batch-size",
+                "10"
+              ],
+              "copied": {
+                "dfthcsos/submission.npz": "inputs/thc/femoco_thc_r5.npz"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/PRA-250-dqi-public-port/.venv/bin/python3",
+                "tasks/dqi/generate_hankel.py",
+                "--out",
+                "/tmp/paperclip-run-pra-250-88abc402-6e5-chspdN/ledger-rebuild-xcn7zjae/out/dqi"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "invsqrt": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/PRA-250-dqi-public-port/.venv/bin/python3",
+                "tasks/invsqrt/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-250-88abc402-6e5-chspdN/ledger-rebuild-xcn7zjae/out/invsqrt"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-26T16:56:37.434647+00:00",
+      "zip_sha256": "459b2f11778f5bbd576ce69b9f85156ca2c301bd2a3f74752adca5c2dadcbec7"
     }
   ],
   "generator_commit": "4305da8c289684e122c4a7fc8e604e5c5ab86ae7",
@@ -261,7 +339,7 @@
   "kickmix_build_id": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
   "kind": "candidate",
   "manifest_id": "cbfeb58e-15f1-4282-90f7-f0050d0bcebf",
-  "notes": "PRA-250 fixed Hankel source port; no Phuc wrapper output or seed/salt selection. Local generator commit pending governed publication; not upload approval. G4 parent corrected from the submission id to its candidate id, proven identical zip SHA256; failed G4 record retained.",
+  "notes": "PRA-250 fixed Hankel source port; no Phuc wrapper output or seed/salt selection. Local generator commit pending governed publication; not upload approval. G4 parent corrected from the submission id to its candidate id, proven identical zip SHA256; failed G4 record retained.\nD-PRA250-03: repeat G5 against the published, tree-identical generator; original generator identity retained.",
   "operator": "584bb41d-d054-474a-b560-d2394375afcf",
   "parent_candidate_id": "pra233-2-dqi-q881",
   "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64",

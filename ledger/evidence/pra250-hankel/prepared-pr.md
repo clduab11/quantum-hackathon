@@ -2,7 +2,7 @@
 
 Port SomeJoint submission-9 DQI to a new source-only Hankel/cyclic Gold path. The existing #33 decoder remains available. Retain the independently written mask projection and the audited arithmetic lineage.
 
-The fixed-salt full verifier measures 26.295712807× against 2.4439e13, with Q883, mean T996048.1979785156, zero value errors and one phase error in 102400 shots. This clears the 25× floor; the matching public phase-error baseline is still requested on PRA-250. Do not treat this PR as accepted or ready to merge until that condition and the whole queue gate are resolved.
+The fixed-salt full verifier measures 26.295712807× against 2.4439e13, with Q883, mean T996048.1979785156, zero value errors and one phase error in 102400 shots. This clears the 25× floor; John Wick accepts the phase condition under D-PRA202-23. This is task-owner acceptance, not a same-sample statistical comparison. The whole-queue gate must pass before merge readiness.
 
 ## Implementation notes
 
@@ -19,8 +19,9 @@ A task-specific gate config combines this DQI with the current invsqrt and the a
 - `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 uv run pytest -q`: 356passed,7skipped in256.57s. Optional GPU/notebook dependencies account for the skips.
 - `uv run python -m ledger.registers check`: passes.
 - Full fixed-salt verifier: PASS,102400shots,0value errors,1phase error.
-- Exact-zip G0–G5: all PASS, no waivers, shipping_problems=[]. Local GM11.283239253337468. G5 rebuild from4305da8 matches every file. A G4 parent-id error was corrected; its failed receipt is retained. See docs/reports/pra250-dqi.md and ledger/evidence/pra250-hankel.
-- `uv run python scripts/merge_gate.py --ref mine=HEAD`: could not run; GitHub open-PR enumeration returned HTTP403 rate-limit exceeded. Governed tool discovery separately returned gateway_token_revoked. No whole-queue PASS is claimed.
+- Exact-zip G0–G5: all PASS, no waivers, shipping_problems=[]. Local GM11.283239253337468. G5 first rebuilt local commit 4305da8; an appended G5 receipt also rebuilds published source commit 8e53362324fef5816baf58e699fa002a08596d7a byte-for-byte. Original identity and receipts are retained. A G4 parent-id error was corrected; its failed receipt is retained. See docs/reports/pra250-dqi.md and ledger/evidence/pra250-hankel.
+- Governed publication is restored. Published source tree a3a31943a218b7447b66bc44d0efb29793a5dc42 equals the local source/evidence tree.
+- Whole open queue: `uv run python scripts/merge_gate.py --pr 43 --pr 44 --pr 45 --pr 46 --ref mine=HEAD` completed: FAIL, 120 permutations, 0 clean. Existing PR #43 conflicts with main in notices/30-dfthcsos.txt, pyproject.toml and uv.lock. Queue repair belongs to PRA-260. This PR stays draft pending queue repair. PR #47 appeared after that snapshot; the six-head report in the PR body supersedes this initial snapshot.
 
 ## Risk and rollback
 

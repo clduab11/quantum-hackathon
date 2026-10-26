@@ -136,3 +136,19 @@ Durable zip: `/home/cld-main/work/vqcc-data/queue/pra250-hankel.zip`.
 GitHub publication, pull_request registration, remote/local tree comparison and whole-queue merge-gate PASS remain incomplete. Tool discovery returned `gateway_token_revoked`; connection discovery returned `HTTP 403: Runtime tool token is no longer active`. The ordinary merge-gate command failed its anonymous open-PR enumeration with HTTP403 rate limiting. John Wick owns arranging restoration of the governed session and supplying the public phase baseline through saved question 65ae1ed2-b894-47e0-8d76-2a9d435b83d1. Sofia then publishes one PR and reruns the whole queue gate. No alternative access or credentials were used.
 
 This bundle is not an acceptance or upload recommendation while the phase condition is unresolved. John Wick alone uploads; the board merges; the separate sign-off/re-check process remains intact. The unchanged #33 generator and its frozen config remain the fallback. No production setting, live stack or main branch was changed.
+
+
+## Publication follow-up, 2026-10-26
+
+Governed GitHub access recovered. Published source commit `8e53362324fef5816baf58e699fa002a08596d7a` has tree `a3a31943a218b7447b66bc44d0efb29793a5dc42`, identical to local `fe8ec72`. An appended G5 receipt rebuilds that publicly reachable commit byte-for-byte: PASS; `shipping_problems=[]`. The original generator identity, previous G5 receipt and candidate bytes are retained. See `D-PRA250-03` and `ledger/evidence/pra250-hankel/published-g5.log`.
+
+The full queue check now runs, but fails: all 120 permutations conflict, with PR43 itself conflicting against main in `notices/30-dfthcsos.txt`, `pyproject.toml`, and `uv.lock`. PRA-260 owns that repair. The full report is retained in `merge-gate-publication.log`; no unrelated conflict fix is included here.
+
+The baseline question was answered with only the option `report`; no count or report was supplied. Follow-up interaction `07c8a2f8-fa98-4411-88ef-6d09846471a1` requests that missing content from John Wick. No comparison or acceptance is inferred. Source and candidate are unchanged; prior full-suite results remain applicable. This follow-up changes only verification evidence and documentation.
+
+
+John Wick subsequently posted D-PRA202-23 in PRA-250 comment `ddfe523f-9f73-4523-83c2-3b7e61745631`: he accepts the phase check using the unchanged fixed-salt result and source resource census. This resolves the task-owner acceptance question; it does not create a same-sample report or establish statistical noninferiority. Interaction `07c8a2f8-fa98-4411-88ef-6d09846471a1` was withdrawn as obsolete. No more salts or circuit variants were run.
+
+Draft PR: https://github.com/clduab11/quantum-hackathon/pull/48, registered as a pull_request work product. The ledger's `rerun_gate` contract preserves the immutable original `generator_commit`; the newest G5 receipt pins the reachable published source in `details.rebuild.commit`. This supported repin is the public source reviewers should rebuild.
+
+Six-head follow-up (PR43–47 plus this branch): 720 permutations, 0 clean, 720 conflicting. All reported failures reach PR43 conflicts; this short-circuit result does not prove the remaining heads mutually compatible. Full report: `ledger/evidence/pra250-hankel/merge-gate-six-heads.log`.
