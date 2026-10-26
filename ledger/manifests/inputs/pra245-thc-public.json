@@ -1,0 +1,87 @@
+{
+  "task": "PRA-245",
+  "decision": "D-PRA245-12",
+  "ruling": "D-PRA245-01",
+  "note": "Declared, SHA-256-pinned, non-circuit dfthcsos inputs (D-PRA211-05). Bytes are never committed (*.npz is ignored); staged read-only under /home/cld-main/work/vqcc-data/inputs/thc/. Kaggle exposes no numeric datasetVersionId through its public API; the pin is datasetId + version number + file SHA-256.",
+  "shipping": {
+    "dataset": "dmitriigluzdov/vqcc-femoco-public-factorization",
+    "dataset_id": 12805185,
+    "version": 8,
+    "license": "apache-2.0",
+    "path": "femoco_thc_r5.npz",
+    "staged": "/home/cld-main/work/vqcc-data/inputs/thc/femoco_thc_r5.npz",
+    "bytes": 1871575,
+    "sha256": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5",
+    "url": "https://www.kaggle.com/api/v1/datasets/download/dmitriigluzdov/vqcc-femoco-public-factorization/femoco_thc_r5.npz?datasetVersionNumber=8",
+    "shape_RBC": [
+      1,
+      496,
+      384
+    ],
+    "brot": 11,
+    "brot_declared_in_file": false
+  },
+  "fallback": {
+    "dataset": "anazemcev/vqcc-viberteam-verified-circuits",
+    "dataset_id": 12845740,
+    "version": 2,
+    "license": "apache-2.0",
+    "path": "thc_submission.npz",
+    "staged": "/home/cld-main/work/vqcc-data/inputs/thc/thc_submission.npz",
+    "bytes": 1842734,
+    "sha256": "9b98b6284b2a846a6a8aa229f4c5a1da62aeba780b57c7341e49b8c3bfd53576",
+    "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/thc_submission.npz?datasetVersionNumber=2",
+    "words_from": {
+      "path": "thc_selected_compact.npz",
+      "bytes": 1884386,
+      "sha256": "141d368ebd6517d3875a38e4e416b4886adb1efc7bd3df901e69436a96af49a9",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/anazemcev/vqcc-viberteam-verified-circuits/thc_selected_compact.npz?datasetVersionNumber=2"
+    },
+    "shape_RBC": [
+      1,
+      496,
+      384
+    ],
+    "brot": 11,
+    "brot_declared_in_file": false
+  },
+  "measured_not_shipped": [
+    {
+      "dataset": "dmitriigluzdov/vqcc-femoco-public-factorization",
+      "version": 4,
+      "path": "femoco_thc_r5.npz",
+      "bytes": 2186188,
+      "sha256": "a29cb868d59906bebcda50c1c44c14090d503665700d725027e25016544782fd",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/dmitriigluzdov/vqcc-femoco-public-factorization/femoco_thc_r5.npz?datasetVersionNumber=4"
+    },
+    {
+      "dataset": "dmitriigluzdov/vqcc-femoco-public-factorization",
+      "version": 5,
+      "path": "femoco_thc_r5.npz",
+      "bytes": 1865792,
+      "sha256": "a0da3225ba2047f43ae24f31881f2a71500d3f73eda24fadc73e9f67da68e13f",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/dmitriigluzdov/vqcc-femoco-public-factorization/femoco_thc_r5.npz?datasetVersionNumber=5"
+    },
+    {
+      "dataset": "dmitriigluzdov/vqcc-femoco-public-factorization",
+      "version": 6,
+      "path": "femoco_thc_r5.npz",
+      "bytes": 1868988,
+      "sha256": "1b97a9aec279618b9cf66f28960b3c85fae98d73dde31cd01febe2bc30352778",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/dmitriigluzdov/vqcc-femoco-public-factorization/femoco_thc_r5.npz?datasetVersionNumber=6"
+    },
+    {
+      "dataset": "dmitriigluzdov/vqcc-femoco-public-factorization",
+      "version": 7,
+      "path": "femoco_thc_r5.npz",
+      "bytes": 1871589,
+      "sha256": "7db33b3eb951ac9c332aa4f7df8da106f9a7627e5b17a1c6f537e4f9b5e3084f",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/dmitriigluzdov/vqcc-femoco-public-factorization/femoco_thc_r5.npz?datasetVersionNumber=7"
+    }
+  ],
+  "verifier": {
+    "package": "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation",
+    "verify_py_sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d",
+    "costs_prepare_py_sha256": "7f1e190c42fc5325f3e6689fbbef51f95b0cb12f1c828cda92b6c088e72206da"
+  }
+}
