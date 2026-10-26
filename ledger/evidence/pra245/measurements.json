@@ -1,0 +1,198 @@
+{
+ "note": "Summary of measure_declared_factors.py output (full output: /home/cld-main/work/vqcc-data/inputs/thc/pra245-measure.json). Mod-2^11 metrics equal the as-shipped ones (words_changed 0); by_J is reproduced by re-running the script.",
+ "verifier_sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d",
+ "costs_prepare_sha256": "7f1e190c42fc5325f3e6689fbbef51f95b0cb12f1c828cda92b6c088e72206da",
+ "results": [
+  {
+   "file": "femoco_thc_r5.gluzdov-v4.npz",
+   "bytes": 2186188,
+   "sha256": "a29cb868d59906bebcda50c1c44c14090d503665700d725027e25016544782fd",
+   "R_B_C": [
+    1,
+    496,
+    384
+   ],
+   "brot": 11,
+   "words_source": null,
+   "metrics": {
+    "error_1": 0.006931188714667171,
+    "error_2": 0.01998999899444552,
+    "Lambda": 303.74823977050306,
+    "E_gap": 3.914948810746864,
+    "lambda_eff": 48.61060373952581
+   },
+   "problems": [],
+   "passes_accuracy": true,
+   "words_changed": 0,
+   "heuristic_toffoli": 11310,
+   "heuristic_persistent": 83,
+   "heuristic_temporary": 640,
+   "best": {
+    "J": 9,
+    "T": 21570,
+    "Q": 822,
+    "ratio": 3.893293590490628
+   }
+  },
+  {
+   "file": "femoco_thc_r5.gluzdov-v5.npz",
+   "bytes": 1865792,
+   "sha256": "a0da3225ba2047f43ae24f31881f2a71500d3f73eda24fadc73e9f67da68e13f",
+   "R_B_C": [
+    1,
+    496,
+    384
+   ],
+   "brot": 11,
+   "words_source": null,
+   "metrics": {
+    "error_1": 0.0067170893149977005,
+    "error_2": 0.019998747754455752,
+    "Lambda": 297.83186501614983,
+    "E_gap": 3.914913107182656,
+    "lambda_eff": 48.13154058972111
+   },
+   "problems": [],
+   "passes_accuracy": true,
+   "words_changed": 0,
+   "heuristic_toffoli": 11310,
+   "heuristic_persistent": 83,
+   "heuristic_temporary": 640,
+   "best": {
+    "J": 9,
+    "T": 21570,
+    "Q": 822,
+    "ratio": 3.9320443445226565
+   }
+  },
+  {
+   "file": "femoco_thc_r5.gluzdov-v6.npz",
+   "bytes": 1868988,
+   "sha256": "1b97a9aec279618b9cf66f28960b3c85fae98d73dde31cd01febe2bc30352778",
+   "R_B_C": [
+    1,
+    496,
+    384
+   ],
+   "brot": 11,
+   "words_source": null,
+   "metrics": {
+    "error_1": 0.0063834409985791905,
+    "error_2": 0.019999496917408318,
+    "Lambda": 294.45338907759395,
+    "E_gap": 3.914898049999465,
+    "lambda_eff": 47.855862448495515
+   },
+   "problems": [],
+   "passes_accuracy": true,
+   "words_changed": 0,
+   "heuristic_toffoli": 11310,
+   "heuristic_persistent": 83,
+   "heuristic_temporary": 640,
+   "best": {
+    "J": 9,
+    "T": 21570,
+    "Q": 822,
+    "ratio": 3.9546952512382387
+   }
+  },
+  {
+   "file": "femoco_thc_r5.gluzdov-v7.npz",
+   "bytes": 1871589,
+   "sha256": "7db33b3eb951ac9c332aa4f7df8da106f9a7627e5b17a1c6f537e4f9b5e3084f",
+   "R_B_C": [
+    1,
+    496,
+    384
+   ],
+   "brot": 11,
+   "words_source": null,
+   "metrics": {
+    "error_1": 0.006383440998581673,
+    "error_2": 0.019999496917408287,
+    "Lambda": 294.4533178186652,
+    "E_gap": 3.914898049999465,
+    "lambda_eff": 47.855856619085195
+   },
+   "problems": [],
+   "passes_accuracy": true,
+   "words_changed": 0,
+   "heuristic_toffoli": 11310,
+   "heuristic_persistent": 83,
+   "heuristic_temporary": 640,
+   "best": {
+    "J": 9,
+    "T": 21570,
+    "Q": 822,
+    "ratio": 3.9546957329669743
+   }
+  },
+  {
+   "file": "femoco_thc_r5.gluzdov-v8.npz",
+   "bytes": 1871575,
+   "sha256": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5",
+   "R_B_C": [
+    1,
+    496,
+    384
+   ],
+   "brot": 11,
+   "words_source": null,
+   "metrics": {
+    "error_1": 0.006383440998581308,
+    "error_2": 0.01999949691740823,
+    "Lambda": 294.45331358012606,
+    "E_gap": 3.914898049999465,
+    "lambda_eff": 47.855856272347104
+   },
+   "problems": [],
+   "passes_accuracy": true,
+   "words_changed": 0,
+   "heuristic_toffoli": 11310,
+   "heuristic_persistent": 83,
+   "heuristic_temporary": 640,
+   "best": {
+    "J": 9,
+    "T": 21570,
+    "Q": 822,
+    "ratio": 3.9546957616205973
+   }
+  },
+  {
+   "file": "thc_submission.viberteam-v2.npz",
+   "bytes": 1842734,
+   "sha256": "9b98b6284b2a846a6a8aa229f4c5a1da62aeba780b57c7341e49b8c3bfd53576",
+   "R_B_C": [
+    1,
+    496,
+    384
+   ],
+   "brot": 11,
+   "words_source": {
+    "file": "thc_selected_compact.viberteam-v2.npz",
+    "sha256": "141d368ebd6517d3875a38e4e416b4886adb1efc7bd3df901e69436a96af49a9",
+    "max_abs_U_difference": 0.0,
+    "max_abs_U_difference_up_to_sign": 0.0
+   },
+   "metrics": {
+    "error_1": 0.0063259734830890015,
+    "error_2": 0.019998999999999933,
+    "Lambda": 294.93632694523865,
+    "E_gap": 3.914917999998579,
+    "lambda_eff": 47.895474603307235
+   },
+   "problems": [],
+   "passes_accuracy": true,
+   "words_changed": 0,
+   "heuristic_toffoli": 11310,
+   "heuristic_persistent": 83,
+   "heuristic_temporary": 640,
+   "best": {
+    "J": 9,
+    "T": 21570,
+    "Q": 822,
+    "ratio": 3.9514245038070315
+   }
+  }
+ ]
+}
