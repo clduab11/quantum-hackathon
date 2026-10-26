@@ -13,11 +13,12 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = [
-    "pytest",
-]
 gpu = [
     "jax[cuda12]==0.12.0.1",
+    "torch==2.8.0+cu128; sys_platform == 'linux' and platform_machine == 'x86_64'",
+]
+dev = [
+    "pytest",
 ]
 notebooks = [
     "ipykernel",
@@ -33,6 +34,14 @@ package = false
 # The search loop (search/) needs openevolve; make it a default group so a plain `uv sync` or
 # `uv run pytest` never prunes it from the venv while a loop is running.
 default-groups = ["dev", "search"]
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu128" }]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

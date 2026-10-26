@@ -36,8 +36,11 @@ CUDA-12 spelling of the brief's `jax[cuda]`. Package wheels are hash-locked in
 and [memory allocation](https://github.com/jax-ml/jax/blob/main/docs/201/gpu-memory.md)
 explain the extra and preallocation switch. TPU execution has not been tested; B2 owns that validation. This worktree has its own venv;
 preallocation is disabled so it does not reserve 75% of the GPU beside T3.
-The gpu group from T3 is not merged into this branch's base yet; the merge gate
-must check the shared dependency files before either branch is called ready.
+The optional gpu group now includes the pinned T3 PyTorch runtime. Ten shared
+NVIDIA versions differ from the measured JAX run04 environment. See
+[the dependency reconciliation and historical replay instructions](../../../docs/PRA260-DEPENDENCIES.md).
+Historical scores remain tied to their recorded environment. This candidate
+requires scoped review and a passing full merge-order gate before readiness.
 
 ## Loss specification
 
