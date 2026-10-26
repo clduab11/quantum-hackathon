@@ -1,10 +1,18 @@
 # GPU fit v4 (PRA-246)
 
-Status: run04 resumes full QAT from the hash-verified completed continuous
-stages of run03, with persistent temporary and compiler-cache directories.
-Numerical completion and final acceptance are pending. The public factor handed off by PRA-245 is pinned in the CLI.
-The separate Google-only run follows the ship-lane run. Results are written by
-the unmodified competition evaluator, not by the optimization loss.
+Status: the declared-input run04 completed with exit 3 on 2026-10-26 at
+07:42 UTC. Final 8-bit errors are 22.091251207 and 63.720988762 mHa, both
+above 20 mHa. This is a measured negative for the full published-method
+schedule at the declared THC shape, not a proof that all 8-bit fits are impossible.
+The separate Google-only run01 started at 07:51 UTC with no public-factor
+checkpoint or completed-stage resume. It remains incomplete.
+
+Final declared report and every checkpoint hash are in
+`ledger/evidence/pra246/declared-v4-04-report.json`; the result summary records
+all source gates. The 8-bit joint barrier and two-body integer repair were
+ineligible under their published error-entry gates. One-body repair used all
+2000 steps and reduced error1 from 50.268023166 to 22.091251207 mHa.
+The unmodified competition evaluator measured every saved point.
 
 ## Run the declared factor
 
