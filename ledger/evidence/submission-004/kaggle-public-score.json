@@ -1,0 +1,23 @@
+{
+  "candidate_id": "submission-004",
+  "commands": [
+    "Composio proxy_execute POST https://www.kaggle.com/api/v1/competitions.CompetitionApiService/ListSubmissions {competitionName: google-verifiable-quantum-circuit-compilation, pageSize: 20}"
+  ],
+  "kaggle": {
+    "competition": "google-verifiable-quantum-circuit-compilation",
+    "date": "2026-10-25T23:06:54.073Z",
+    "description": "pra233-2-dqi-q881 paired-v6 DQI Q881 (PRA-236); zip sha256 94980784...92d3",
+    "fileName": "submission.zip",
+    "publicScore": "6.77899",
+    "ref": 57644742,
+    "status": "COMPLETE",
+    "totalBytes": 107550448
+  },
+  "kind": "kaggle_public_score",
+  "local_geometric_mean": 6.76865313085382,
+  "notes": "Public score read back from Kaggle ListSubmissions (Composio log log_7gL4WPZbBHxO) by the PRA-202 issue monitor. submission-NNN.json manifests are never rewritten (docs/ledger-schema.md), so the score is recorded here and in D-PRA202-16. Kaggle public 6.77899 is 1.00153x the local fixed-salt G3 geometric mean 6.76865313085382 (+0.15%); submissions 002 and 003 were 0.99440x. totalBytes equals the local zip size. No salt grinding follows.",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "source_candidate_id": "pra233-2-dqi-q881",
+  "timestamp_utc": "2026-10-26T00:21:30+00:00",
+  "zip_sha256": "9498078459176333dc05c8bf1ec8538134afd9fea1b937caf59a0133882492d3"
+}

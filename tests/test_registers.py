@@ -60,7 +60,7 @@ def test_a_repeated_decision_id_fails(tmp_path: Path):
 
 def test_decision_files_follow_the_closed_rows_by_date_then_id(tmp_path: Path):
     root = copy_registers(tmp_path)
-    for ident, date in [("D-Z-10", "2026-10-26"), ("D-Z-9", "2026-10-26"), ("D-Y-01", "2026-10-25")]:
+    for ident, date in [("D-Z-10", "2099-12-31"), ("D-Z-9", "2099-12-31"), ("D-Y-01", "2099-12-30")]:
         (root / "docs" / "decisions" / f"{ident}.md").write_text(row(ident, date))
     ids = [r.id for r in registers.decision_rows(root)]
     assert ids[0] == "D-001"

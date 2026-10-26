@@ -85,14 +85,14 @@ def test_malformed_standing_fails_the_build(change):
 def test_page_reads_the_ledger_and_the_standing_file(tmp_path: Path):
     page = build(tmp_path / "public").read_text(encoding="utf-8")
     text = _text(page)
-    assert "Our public score is 5.68935, rank 585 of 893 teams on 25 October 2026." in text
-    assert "The leader scores 20.48324." in text
-    assert "(6th) scores 17.33338" in text
+    assert "Our public score is 6.77899, rank 534 of 953 teams on 26 October 2026." in text
+    assert "The leader scores 20.74782." in text
+    assert "(6th) scores 18.66384" in text
     assert "invsqrt 13.16 15.04 1.0" in text      # ours, best public, reference
-    assert "dqi 14.23 23.66 1.0" in text
+    assert "dqi 23.56 23.66 1.0" in text
     assert "dfthcsos 1.00 4.09 1.0" in text
     assert text.count("waiting for Kaggle") == 0
-    for score in ("1.00000", "2.40948", "5.68935"):
+    for score in ("1.00000", "2.40948", "5.68935", "6.77899"):
         assert score in text
     assert "20 January 2027" in text
 
@@ -124,7 +124,7 @@ def test_unscored_upload_waits_and_the_rank_says_when_it_is_stale():
     text = _text(render_page(shipped, _standing(), {"s-1": 9.5}))
     assert "waiting for Kaggle" in text
     # The latest scored upload is s-1, whose score differs from the one the rank was read at.
-    assert "Our public score is 9.50000, rank 585 of 893 teams on 25 October 2026, before this " \
+    assert "Our public score is 9.50000, rank 534 of 953 teams on 26 October 2026, before this " \
            "score came in." in text
 
 
