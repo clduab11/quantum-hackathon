@@ -1,0 +1,178 @@
+{
+  "jax": "0.12.0.1",
+  "device": "cuda:0",
+  "device_kind": "NVIDIA GeForce RTX 4060 Ti",
+  "x64": true,
+  "factor_sha256": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5",
+  "points": [
+    {
+      "bits": 12,
+      "jax": {
+        "E_SOS": -22144.18824805,
+        "E_gap": 3.914898049999465,
+        "Lambda": 294.4533135801261,
+        "error_1": 0.003503874451243791,
+        "error_2": 0.019999496917408224
+      },
+      "official": {
+        "error_1": 0.0035038744512458173,
+        "error_2": 0.019999496917408148,
+        "Lambda": 294.453313580126,
+        "E_SOS": -22144.18824805,
+        "E_gap": 3.914898049999465,
+        "lambda_eff": 47.8558562723471,
+        "gap_in_domain": true
+      },
+      "absolute_difference": {
+        "E_SOS": 0.0,
+        "E_gap": 0.0,
+        "Lambda": 1.1368683772161603e-13,
+        "error_1": 2.0261570199409107e-15,
+        "error_2": 7.632783294297951e-17
+      },
+      "seconds": 15.701208872007555
+    },
+    {
+      "bits": 11,
+      "jax": {
+        "E_SOS": -22144.18824805,
+        "E_gap": 3.914898049999465,
+        "Lambda": 294.4533135801261,
+        "error_1": 0.006379185052925322,
+        "error_2": 0.019999496917408224
+      },
+      "official": {
+        "error_1": 0.006379185052924567,
+        "error_2": 0.019999496917408148,
+        "Lambda": 294.453313580126,
+        "E_SOS": -22144.18824805,
+        "E_gap": 3.914898049999465,
+        "lambda_eff": 47.8558562723471,
+        "gap_in_domain": true
+      },
+      "absolute_difference": {
+        "E_SOS": 0.0,
+        "E_gap": 0.0,
+        "Lambda": 1.1368683772161603e-13,
+        "error_1": 7.546047120499111e-16,
+        "error_2": 7.632783294297951e-17
+      },
+      "seconds": 6.155395905007026
+    },
+    {
+      "bits": 8,
+      "jax": {
+        "E_SOS": -22147.0940285977,
+        "E_gap": 6.820678597701772,
+        "Lambda": 297.35909412782667,
+        "error_1": 0.062047533985255726,
+        "error_2": 0.22651806084949253
+      },
+      "official": {
+        "error_1": 0.06204753398525445,
+        "error_2": 0.2265180608494914,
+        "Lambda": 297.35909412782655,
+        "E_SOS": -22147.094028597698,
+        "E_gap": 6.820678597698134,
+        "lambda_eff": 63.323455068118676,
+        "gap_in_domain": true
+      },
+      "absolute_difference": {
+        "E_SOS": 3.637978807091713e-12,
+        "E_gap": 3.637978807091713e-12,
+        "Lambda": 1.1368683772161603e-13,
+        "error_1": 1.27675647831893e-15,
+        "error_2": 1.1379786002407855e-15
+      },
+      "seconds": 6.192518946991186
+    }
+  ],
+  "source_hashes": {
+    "angles.py": "7c491f16042daec04324d722adc5e0dddd29faac6815f87a05ce371db4972228",
+    "__init__.py": "2371154f4bef140613a9b1823caa9adf7623d8d388e311479395baede30e52e6",
+    "loss.py": "08084fa50ff2af089a42f37597ecdd74f70c13a829a0f78c019955020a871737",
+    "mirror.py": "9351cb437fe0b7487c77e62c5e85ed79d66f6d5557bf119e1f14a815606e8f4f",
+    "assignment.py": "5ecc1ac0e04402940ab346230ae09d8e256cf205af6cd1ddd30401ec8ba07661"
+  },
+  "competition_pins": [
+    {
+      "path": "kickmix/kickmix.so",
+      "sha256": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e"
+    },
+    {
+      "path": "verifiers/dfthcsos/__init__.py",
+      "sha256": "81915e324cc0cade67f52a54b7a51991fd96abaea94d1f8a4d423dae20e57348"
+    },
+    {
+      "path": "verifiers/dfthcsos/example_submission/angle_k_reference_circuit.py",
+      "sha256": "8daccdca69f2d718b0176cd9281803df84a988ea5ac6c167fbb02e461ac2b371"
+    },
+    {
+      "path": "verifiers/dfthcsos/scoreinfra/__init__.py",
+      "sha256": "be90e0d503d5c20dcac0102af638b9a4ccad0341daa5baa5d49216a259e4516f"
+    },
+    {
+      "path": "verifiers/dfthcsos/scoreinfra/circuits.py",
+      "sha256": "fc027b52fdcebe14404f403a089122485d097ed65d03e6d989623d620b1ab68c"
+    },
+    {
+      "path": "verifiers/dfthcsos/scoreinfra/costs_prepare.py",
+      "sha256": "7f1e190c42fc5325f3e6689fbbef51f95b0cb12f1c828cda92b6c088e72206da"
+    },
+    {
+      "path": "verifiers/dfthcsos/scoreinfra/dfthc_math.py",
+      "sha256": "ae82898d47a7a86b96378fb906e0f8a9f46003065cf19c7c09952a123b5b5af8"
+    },
+    {
+      "path": "verifiers/dfthcsos/scoreinfra/reference.py",
+      "sha256": "a2d5a63191d655729e29f0fde1e85fe4630bf896a91a63bb894d8d7daf71ed39"
+    },
+    {
+      "path": "verifiers/dfthcsos/verify.py",
+      "sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+    },
+    {
+      "path": "verifiers/dfthcsos/FeMoCo76o113e.fcidump",
+      "sha256": "e5a48af746fd075026dec9e8f5df2d363802a121e8c53af9a0b984bde695e1bd"
+    },
+    {
+      "path": "verifiers/dfthcsos/FeMoCo76o113e.fixed_shifts.npz",
+      "sha256": "7b7facf63fe35a9d9d3d00787ffdb700c863fa845fe4724d7f7c54778151cd87"
+    }
+  ],
+  "full_circuit_verified": false,
+  "fit_performed": false,
+  "initialization": "pinned encode_inputs at each precision",
+  "stored_words_11": {
+    "official": {
+      "error_1": 0.006383440998581123,
+      "error_2": 0.019999496917408103,
+      "Lambda": 294.45331358012606,
+      "E_SOS": -22144.18824805,
+      "E_gap": 3.914898049999465,
+      "lambda_eff": 47.855856272347104,
+      "gap_in_domain": true
+    },
+    "absolute_difference": {
+      "E_SOS": 0.0,
+      "E_gap": 0.0,
+      "Lambda": 5.684341886080802e-14,
+      "error_1": 5.80265002714242e-16,
+      "error_2": 1.1796119636642288e-16
+    }
+  },
+  "perturbed_shift_difference": {
+    "E_SOS": 0.0,
+    "E_gap": 0.0,
+    "Lambda": 0.0,
+    "error_1": 0.0,
+    "error_2": 0.0
+  },
+  "gradient_norms": {
+    "angles": 18177.64889841761,
+    "offsets": 108.49425674338671,
+    "w": 227680.49195042002
+  },
+  "max_absolute_difference": 3.637978807091713e-12
+}
+

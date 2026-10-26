@@ -1,0 +1,23 @@
+{
+  "counts": {
+    "all": {
+      "count": 1000,
+      "error2_over_limit": 243,
+      "gap_at_or_below_floor": 357,
+      "within_both_of_these_limits": 500
+    },
+    "one_body": {
+      "count": 132,
+      "error2_over_limit": 0,
+      "gap_at_or_below_floor": 0,
+      "within_both_of_these_limits": 132
+    },
+    "two_body": {
+      "count": 868,
+      "error2_over_limit": 243,
+      "gap_at_or_below_floor": 357,
+      "within_both_of_these_limits": 368
+    }
+  },
+  "limitation": "Only error2 and E_gap limits are counted; not full feasibility or circuit acceptance."
+}

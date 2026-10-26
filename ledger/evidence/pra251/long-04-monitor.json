@@ -1,0 +1,23 @@
+{
+  "id": "35ac5f47-d74c-48ca-992a-53bbd5dcc392",
+  "status": "in_progress",
+  "monitorNextCheckAt": "2026-10-26T07:24:31.574Z",
+  "assigneeAgentId": "0760b955-94e4-42be-aea9-d2ce2b694a15",
+  "assigneeUserId": null,
+  "executionPolicy": {
+    "mode": "normal",
+    "stages": [],
+    "monitor": {
+      "kind": "external_service",
+      "notes": null,
+      "timeoutAt": "2026-10-26T07:48:31.574Z",
+      "externalRef": "[redacted]",
+      "maxAttempts": 4,
+      "nextCheckAt": "2026-10-26T07:24:31.574Z",
+      "scheduledBy": "assignee",
+      "serviceName": "local-cuda-fit",
+      "recoveryPolicy": null
+    },
+    "commentRequired": true
+  }
+}

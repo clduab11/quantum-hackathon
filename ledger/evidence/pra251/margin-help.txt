@@ -1,0 +1,25 @@
+usage: margin_run.py [-h] --starter STARTER --competition COMPETITION
+                     --factor FACTOR --jumps JUMPS --out OUT
+                     [--fit-seconds FIT_SECONDS] [--steps STEPS] [--dry-run]
+
+Run bounded Phase M from v8; promote only a margin-qualified official PASS.
+
+options:
+  -h, --help            show this help message and exit
+  --starter STARTER
+  --competition COMPETITION
+  --factor FACTOR
+  --jumps JUMPS
+  --out OUT
+  --fit-seconds FIT_SECONDS
+  --steps STEPS
+  --dry-run
+
+Needs GPU group, pinned public inputs, local verifier paths and word_jumps
+JSON. Example: python -m tasks.dfthcsos.fit_jax.margin_run --starter
+/home/cld-main/work/vqcc-data/starter-kit --competition /home/cld-
+main/work/vqcc-data/google-verifiable-quantum-circuit-compilation --factor
+/home/cld-main/work/vqcc-data/inputs/thc/femoco_thc_r5.npz --jumps
+/tmp/jumps.json --out /tmp/phase-m --dry-run. Remove --dry-run to write a NEW
+output directory. Exit 1 on missing prerequisites or unmet margin/official
+score; no infeasible factor is promoted. Use an outer timeout of 1200 seconds.
