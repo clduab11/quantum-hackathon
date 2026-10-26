@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "device": "cuda:0",
+  "name": "NVIDIA GeForce RTX 4060 Ti",
+  "capability": [
+    8,
+    9
+  ],
+  "torch": "2.8.0+cu128",
+  "cuda_runtime": "12.8",
+  "python": "3.13.13",
+  "free_bytes": 7343177728,
+  "total_bytes": 8585216000,
+  "peak_allocated_bytes": 17043968,
+  "checks": {
+    "torch.float32": "PASS",
+    "torch.float64": "PASS"
+  }
+}
