@@ -1,0 +1,14 @@
+{
+  "candidate_id": "pra250-hankel",
+  "error": "",
+  "kaggle_submission_id": "57674519",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "outcome": "recorded",
+  "reservation_id": "110353e5-81f1-4c19-a208-9ac443c1c007",
+  "reserved_at_utc": "2026-10-26T17:52:52.210881+00:00",
+  "resolved_at_utc": "2026-10-26T17:54:04.259263+00:00",
+  "slot": 2,
+  "submission_id": "submission-006",
+  "utc_day": "2026-10-26",
+  "zip_sha256": "459b2f11778f5bbd576ce69b9f85156ca2c301bd2a3f74752adca5c2dadcbec7"
+}

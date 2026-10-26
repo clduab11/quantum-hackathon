@@ -1,0 +1,13 @@
+{
+  "candidate_id": "pra250-hankel",
+  "error": "",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "outcome": "failed",
+  "reason": "StartSubmissionUpload via Composio proxy returned HTTP 404 (endpoint), no upload session created; Composio tools then dropped (mcp_remote_fetch_failed, tool_not_found). KAGGLE_COMPETITION_SUBMIT never called. Retry on a later wake.",
+  "reservation_id": "0942c896-dba7-4544-ab97-e4a5d6630e90",
+  "reserved_at_utc": "2026-10-26T17:05:00.877755+00:00",
+  "resolved_at_utc": "2026-10-26T17:06:01.917069+00:00",
+  "slot": 2,
+  "utc_day": "2026-10-26",
+  "zip_sha256": "459b2f11778f5bbd576ce69b9f85156ca2c301bd2a3f74752adca5c2dadcbec7"
+}
