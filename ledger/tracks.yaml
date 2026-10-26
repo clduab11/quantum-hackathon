@@ -1,0 +1,80 @@
+# The four programme tracks and their verified numbers (PRA-252), shown on the status page.
+#
+# Read by the status page (ledger/status_page.py) and nothing else; the schema is in
+# docs/ledger-schema.md. The engineers and john-wick update a track's block the day a number is
+# verified, and bump its updated_at_utc. Keep one blank line between tracks, so two people who
+# edit different tracks never touch neighbouring lines.
+#
+# Every value is a per-circuit score ratio (reference cost / our cost) measured with Google's
+# verifier, never a model or an estimate. "shipped": in our latest upload. "verified": passed the
+# verifier, not uploaded. "in work": no measured number yet, so no value.
+#
+# The page shows this text to readers who know nothing about the project: plain English, no
+# ticket ids, no ledger words.
+
+schema: 1
+
+tracks:
+  - id: A
+    name: Ship lane
+    aim: >-
+      Upload only circuits that pass every check, and rebuild the best public designs in our own
+      code.
+    updated_at_utc: "2026-10-26T06:30:00+00:00"
+    figures:
+      # submission-004 manifest, Kaggle public score 6.77899 (D-PRA202-16).
+      - label: Square-root circuit (invsqrt)
+        value: 13.16
+        state: shipped
+      - label: Decoder circuit (dqi)
+        value: 23.56
+        state: shipped
+      - label: Chemistry circuit (dfthcsos)
+        value: 1.00
+        state: shipped
+        note: Google's reference circuit, unchanged.
+      # PRA-249 and PRA-250, started 2026-10-26.
+      - label: Square-root circuit rebuilt from the best public design
+        state: in work
+      - label: Decoder circuit rebuilt from the best public design
+        state: in work
+
+  - id: B
+    name: Chemistry engine
+    aim: >-
+      Describe the molecule's energy more compactly, so the chemistry circuit (dfthcsos) gets
+      cheaper while staying accurate enough to pass.
+    updated_at_utc: "2026-10-26T06:30:00+00:00"
+    figures:
+      # D-PRA237-02: full 254,464-shot verifier PASS, ratio 1.0966038528404063.
+      - label: Best chemistry circuit that passes the verifier
+        value: 1.10
+        state: verified
+        note: Too small a gain to upload; this track aims for 6 or better.
+      # PRA-251, waiting on the GPU refit (PRA-246).
+      - label: Faster fitting on a graphics card, aiming for 6 to 10
+        state: in work
+
+  - id: C
+    name: Beyond the public decoder
+    aim: >-
+      Make the decoder circuit (dqi) cheaper than any published version, starting from the best
+      public one once the ship lane has rebuilt it.
+    updated_at_utc: "2026-10-26T06:30:00+00:00"
+    figures:
+      - label: Our best decoder so far
+        value: 23.56
+        state: shipped
+      - label: A decoder beyond the best public one
+        state: in work
+
+  - id: D
+    name: Presentation
+    aim: >-
+      Show the work in public: this page, and a Kaggle notebook that anyone can run to rebuild our
+      entry from source.
+    updated_at_utc: "2026-10-26T06:30:00+00:00"
+    figures:
+      # PRA-243, waiting on the notebook build (PRA-240).
+      - label: Public notebook that rebuilds our entry
+        state: in work

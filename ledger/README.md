@@ -11,7 +11,7 @@ stranger can re-check. Schema and rules: [`docs/ledger-schema.md`](../docs/ledge
 | `scorecard.py` | Table of all manifests; 3-per-UTC-day submission cap enforced before the upload (`reserve` / `submit` / `record` / `reconcile`, PRA-211) |
 | `archive.py` | Safe zip extraction and deterministic zip builds |
 | `gates/runner.py`, `gates/checks.py` | G0–G5 runner, config-driven from `configs/gates/*.yaml` |
-| `status_page.py` | One-screen public status page (standing, score per circuit, uploads) that Vercel builds on every push (`vercel.json`); leaderboard numbers and upload notes come from `standing.yaml` |
+| `status_page.py` | One-screen public status page (standing, score per circuit, the four tracks, the G0–G5 gate circuit for the latest upload, uploads, provenance) that Vercel builds on every push (`vercel.json`); leaderboard numbers and upload notes come from `standing.yaml`, track figures from `tracks.yaml` (schemas in `docs/ledger-schema.md`) |
 | `examples/` | Sample manifest for the reference submission, with its verifier logs |
 
 ```
