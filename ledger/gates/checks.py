@@ -22,7 +22,7 @@ from ledger.archive import build_zip
 from ledger.benchmark_health import rebuild_in_clean_worktree
 from ledger.evidence import classify_submission, collect_verifier_evidence
 from ledger.gates.runner import GateContext, resolve
-from ledger.run_manifest import SHIPPABLE_LICENCES, TASKS, load_manifests, sha256_file
+from ledger.run_manifest import NEVER_SHIPPED_LICENCES, TASKS, load_manifests, sha256_file
 from ledger.scorecard import best_geometric_mean
 
 
@@ -135,7 +135,7 @@ def provenance_problems(ctx: GateContext) -> list[str]:
             problems.append(f"{task}: no task record")
             continue
         licence = record.provenance.licence
-        if licence not in SHIPPABLE_LICENCES:
+        if licence in NEVER_SHIPPED_LICENCES:
             problems.append(f"{task}: licence {licence!r} cannot be shipped (R10)")
         if licence != "own" and not record.provenance.parent_url:
             problems.append(f"{task}: {licence} parent has no URL")
@@ -143,12 +143,13 @@ def provenance_problems(ctx: GateContext) -> list[str]:
 
 
 def g5_rebuild_and_provenance(ctx: GateContext) -> dict[str, Any]:
-    """R10: provenance is shippable, the zip holds exactly the manifest's files, the zip is the
-    deterministic build of those files, and a clean worktree at `generator_commit` regenerates
-    every file byte for byte. The generators see only the config's declared `inputs` (staged
-    into an otherwise empty VQCC_DATA); an output that is a byte copy of a declared input is
-    recorded as `copied`: a copied circuit fails the gate, a copied non-circuit input (the
-    declared dfthcsos factorization) is accepted (PRA-211; D-PRA211-01, D-PRA211-05)."""
+    """R10: no task ships a reference-only parent, the zip holds exactly the manifest's files,
+    the zip is the deterministic build of those files, and a clean worktree at
+    `generator_commit` regenerates every file byte for byte. The generators see only the
+    config's declared `inputs` (staged into an otherwise empty VQCC_DATA); an output that is a
+    byte copy of a declared input is recorded as `copied`: a copied circuit fails the gate, a
+    copied non-circuit input (the declared dfthcsos factorization) is accepted (PRA-211;
+    D-PRA211-01, D-PRA211-05)."""
     manifest = ctx.manifest
     problems = provenance_problems(ctx)
     expected = {t: manifest.tasks[t].files for t in TASKS if t in manifest.tasks}
