@@ -244,8 +244,15 @@ def main():
         sys.path[:0] = [str(SOURCE), str(DATA / 'kickmix'), str(DATA / 'verifiers')]
         import kickmix as km
         check_hash(Path(km.__file__), CONFIG['kickmix_sha256'])
-        ENV = dict(os.environ, VQCC_DATA=str(DATA), PYTHONPATH=os.pathsep.join(
-            [str(SOURCE), str(DATA / 'kickmix'), str(DATA / 'verifiers')]))
+        ENV = {
+            'VQCC_DATA': str(DATA),
+            'PYTHONPATH': os.pathsep.join(
+                [str(SOURCE), str(DATA / 'kickmix'), str(DATA / 'verifiers')]),
+            'OMP_NUM_THREADS': '1',
+            'OPENBLAS_NUM_THREADS': '1',
+            'MKL_NUM_THREADS': '1',
+            'NUMEXPR_NUM_THREADS': '1',
+        }
         print('Fresh workspace:', WORK.name)
     ''')
     md('build-notes', '''

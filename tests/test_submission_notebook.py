@@ -1,8 +1,11 @@
 # SPDX-License-Identifier: Apache-2.0
 """Exercise the helper cell itself; never run the expensive build in pytest."""
+import ast
 import hashlib
 import json
+import os
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -107,3 +110,28 @@ def test_all_generated_code_cells_compile():
     for cell in notebook['cells']:
         if cell['cell_type'] == 'code':
             compile(''.join(cell['source']), cell['id'], 'exec')
+
+
+def test_generator_environment_contains_only_declared_inputs(tmp_path):
+    notebook = json.loads(NOTEBOOK.read_text())
+    prepare = next(c for c in notebook['cells'] if c.get('id') == 'prepare')
+    assignments = [node for node in ast.parse(''.join(prepare['source'])).body
+                   if isinstance(node, ast.Assign)
+                   and any(isinstance(target, ast.Name) and target.id == 'ENV'
+                           for target in node.targets)]
+    assert len(assignments) == 1
+    source = tmp_path / 'source'
+    data = tmp_path / 'competition'
+    fake_os = SimpleNamespace(pathsep=os.pathsep, environ={'SECRET_SENTINEL': 'do-not-copy'})
+    expression = ast.Expression(assignments[0].value)
+    environment = eval(compile(expression, '<notebook-env>', 'eval'),
+                       {'os': fake_os, 'SOURCE': source, 'DATA': data, 'str': str})
+    assert environment == {
+        'VQCC_DATA': str(data),
+        'PYTHONPATH': os.pathsep.join((str(source), str(data / 'kickmix'),
+                                      str(data / 'verifiers'))),
+        'OMP_NUM_THREADS': '1',
+        'OPENBLAS_NUM_THREADS': '1',
+        'MKL_NUM_THREADS': '1',
+        'NUMEXPR_NUM_THREADS': '1',
+    }
