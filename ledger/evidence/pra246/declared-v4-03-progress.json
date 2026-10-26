@@ -1,0 +1,665 @@
+{
+  "lane": "declared",
+  "input_sha256": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5",
+  "input_path": "/home/cld-main/work/vqcc-data/inputs/thc/femoco_thc_r5.npz",
+  "source_hashes": {
+    "factor_fit_v4.py": "8a5db5feb45f64683008754a046560f19298ae2e756c2d192c29309876a0cb45",
+    "gpu_fit/__init__.py": "c6d561e177d8687a5e599d40b2229bf49caa089291534e38c925ca3341046c49",
+    "gpu_fit/continuous.py": "1ffc38e419c1b25c0e3347a4379bc0e52c1a314a04de32f6e351292dcde41c75",
+    "gpu_fit/fixed.py": "c0b8bdfdd0a22cfb959dcd867cef4d49342fe0bf99635e75d7bdaf0280d4bfe1",
+    "gpu_fit/gauge.py": "33dba6b4fcb0c609e6e2c8f6154a65e9633b74132cb6bcf4b2dfac52f4791638",
+    "gpu_fit/gauss_newton.py": "b5dddbe4d05c8efb0824fd9af596b9bd172de62ce710a2ab6c3cf40566c917aa",
+    "gpu_fit/geometry.py": "cedc1d3f57254e2ddf0fae99dc4c9868061d53a3353c89ec1e8235a636da98b1",
+    "gpu_fit/integer.py": "4dfd69948adbd03c39d7b67f652354a51c46b62311cc4a39a045b89af7bd7080",
+    "gpu_fit/native.py": "b6629f5d8e9a29c3690c1d333d01b153fa53fbc148163690a972e1ea4f24ec12",
+    "gpu_fit/one_body.py": "5ab41c2f6a78bd08abcd4bbcc2cf2a60eefaa1e2f9bf86c6df39233fe4ce9c8e",
+    "gpu_fit/postprocess.py": "33c5275817f0a3f1e3bc8bb818ab19cfafe20d9ae5b25dd34315671a54c0578a",
+    "gpu_fit/quantize.py": "5a7e5998294b436848a1fbeaf8fcc73d164f25b9777e5de9bef0271eab5688f4",
+    "gpu_fit/reporting.py": "203133143da213af9d123d7572a40eac64ee0f173f900fc953eb2c96c5aacef7",
+    "gpu_fit/words.py": "feb210cd35ededc670ae89a9d3d20669a865bcf60ece562720c050ad8f0c439e"
+  },
+  "gpu": {
+    "status": "PASS",
+    "device": "cuda:0",
+    "name": "NVIDIA GeForce RTX 4060 Ti",
+    "capability": [
+      8,
+      9
+    ],
+    "torch": "2.8.0+cu128",
+    "cuda_runtime": "12.8",
+    "python": "3.13.13",
+    "free_bytes": 7246708736,
+    "total_bytes": 8585216000,
+    "peak_allocated_bytes": 67113472,
+    "checks": {
+      "torch.float32": "PASS",
+      "torch.float64": "PASS"
+    }
+  },
+  "input_pins": {
+    "dataset": "sohier/verifiable-circuit-compilation-starter-kit",
+    "version": 4,
+    "license": "Apache-2.0",
+    "files": [
+      {
+        "path": "FeMoCo76o113e.fcidump",
+        "bytes": 128128348,
+        "sha256": "e5a48af746fd075026dec9e8f5df2d363802a121e8c53af9a0b984bde695e1bd",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/FeMoCo76o113e.fcidump?datasetVersionNumber=4"
+      },
+      {
+        "path": "FeMoCo76o113e.fixed_shifts.npz",
+        "bytes": 61028,
+        "sha256": "7b7facf63fe35a9d9d3d00787ffdb700c863fa845fe4724d7f7c54778151cd87",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/FeMoCo76o113e.fixed_shifts.npz?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/__init__.py",
+        "bytes": 292,
+        "sha256": "d78da488e6ca5b913c5ac9f2de605fb920da3d4807b08f2be6a4ddc9c35e3228",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2F__init__.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/build_angle_k.py",
+        "bytes": 4638,
+        "sha256": "82f1cf73adc466ee49894b310e37020e79f36279031f7e2c2ff42ebc053e81ba",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fbuild_angle_k.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/df_thc_sga.py",
+        "bytes": 8917,
+        "sha256": "1e22e79ecf9db19042f042aac5844d404987439493f0152b546e4df1f5432fcc",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fdf_thc_sga.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/dfthc_u_to_tei.py",
+        "bytes": 19784,
+        "sha256": "1e2cd8af4e1ef49c21215dbf5b3f1697a3df4eb76e3987b25445472ce81c0059",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fdfthc_u_to_tei.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/load_integrals.py",
+        "bytes": 8501,
+        "sha256": "14a988da0bb7b55fcc9fda8cae79816bf417b2667319d281d371a6053c1ff667",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fload_integrals.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/spin_free_block_encoding_costs.py",
+        "bytes": 12885,
+        "sha256": "20c3892baa554b379182c72e6024bb15fbf8c16596156bd45519dbdf2af8f6bb",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fspin_free_block_encoding_costs.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/train_df_thc_sga.py",
+        "bytes": 12516,
+        "sha256": "9f3aea602f270d7d596504f0af3ec1f5af44247c2dcf5833795dc10bb55d28e5",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Ftrain_df_thc_sga.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/verify_angle_k.py",
+        "bytes": 19590,
+        "sha256": "00555d552142cd1791c2526de93ff23ea6cc980260f195893f3daa6e4f516b47",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fverify_angle_k.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/dfthc/verify_dfthc.py",
+        "bytes": 9379,
+        "sha256": "84ded6ae4a63c5f90346c3f3628b420fd496bdb846ef4591d4125926abec6a47",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fdfthc%2Fverify_dfthc.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/pyproject.toml",
+        "bytes": 1415,
+        "sha256": "4442ba8a2e538d6414cc5ced3049e7d5a70314013d4eb3ba4d4893f5f4f1b401",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fpyproject.toml?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/FeMoco76_65_60_60.npz",
+        "bytes": 2150130,
+        "sha256": "b13120cb62bf4cfcf41a3dc0c78cd6e58e17dacc7d0691834cee2cc6e4bc642b",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2FFeMoco76_65_60_60.npz?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/check_factorization.py",
+        "bytes": 4256,
+        "sha256": "5b897b14bad6e874878d81323ee774afa9508ecce8cd6d870cfeb5d71c9d3f76",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Fcheck_factorization.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/solution_io.py",
+        "bytes": 4432,
+        "sha256": "682be529a8418696100fc51fe773a32f8499a729c6ec7e78f69344b996fcfe84",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Fsolution_io.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task1_factorization/train_df_thc_qaggle.py",
+        "bytes": 17551,
+        "sha256": "e51b7559918ac1734d46514fcae7f0f0d789a6ef113bcaebd1b70a925e3918bc",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask1_factorization%2Ftrain_df_thc_qaggle.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task2_angles/encode.py",
+        "bytes": 8131,
+        "sha256": "cd8eb31056619b2c85ef9e7a1a3743eb2ef621035cda7dd23e6b47208e683745",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask2_angles%2Fencode.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task2_angles/trees.py",
+        "bytes": 4196,
+        "sha256": "47429502abc75e1a4360a2591f5df6b8ba56f79c0909d90739c38225ce25ea0c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask2_angles%2Ftrees.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task3_circuits/angle_k_kickmix.py",
+        "bytes": 9087,
+        "sha256": "ec90f72a82d3252bdc9bfefaa987ff3c69782aaf1432c7a2358b24d528a1afea",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask3_circuits%2Fangle_k_kickmix.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/starter/task3_circuits/build_circuits.py",
+        "bytes": 11146,
+        "sha256": "5ef5f17b0b1c25b56dfea568c895b0b16113a6302c280a7ecc64ae07869d760c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fstarter%2Ftask3_circuits%2Fbuild_circuits.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/circuits.py",
+        "bytes": 24418,
+        "sha256": "fc027b52fdcebe14404f403a089122485d097ed65d03e6d989623d620b1ab68c",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fcircuits.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/costs.py",
+        "bytes": 8334,
+        "sha256": "aea5bf44850cd315bfba205498d6ec83231faebdb6a48fe6387cccaf24171e6a",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fcosts.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/dfthc_math.py",
+        "bytes": 17597,
+        "sha256": "bb94c70558557091d8492a9842aef4f94c2130533d3cf5ce460d89bb3e82246d",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fdfthc_math.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/reference.py",
+        "bytes": 15200,
+        "sha256": "e5b75b6731a252224c86fd8878f50553bc56138b837b82e04b4bf946cdaa83ef",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Freference.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/score.py",
+        "bytes": 28282,
+        "sha256": "79c97dbd771c072a92a517d1692dbdd53d80c16bd4772c94a0cc45d7dac167ca",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fscore.py?datasetVersionNumber=4"
+      },
+      {
+        "path": "starter_kit/verifier/verify.py",
+        "bytes": 10901,
+        "sha256": "8c35f1a3feaf99c798a9fc8720a54e65a0734d0071af991b3e6ee0c0192ae70a",
+        "url": "https://www.kaggle.com/api/v1/datasets/download/sohier/verifiable-circuit-compilation-starter-kit/starter_kit%2Fverifier%2Fverify.py?datasetVersionNumber=4"
+      }
+    ],
+    "competition_files": [
+      {
+        "path": "kickmix/kickmix.so",
+        "sha256": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e"
+      },
+      {
+        "path": "verifiers/dfthcsos/__init__.py",
+        "sha256": "81915e324cc0cade67f52a54b7a51991fd96abaea94d1f8a4d423dae20e57348"
+      },
+      {
+        "path": "verifiers/dfthcsos/example_submission/angle_k_reference_circuit.py",
+        "sha256": "8daccdca69f2d718b0176cd9281803df84a988ea5ac6c167fbb02e461ac2b371"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/__init__.py",
+        "sha256": "be90e0d503d5c20dcac0102af638b9a4ccad0341daa5baa5d49216a259e4516f"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/circuits.py",
+        "sha256": "fc027b52fdcebe14404f403a089122485d097ed65d03e6d989623d620b1ab68c"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/costs_prepare.py",
+        "sha256": "7f1e190c42fc5325f3e6689fbbef51f95b0cb12f1c828cda92b6c088e72206da"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/dfthc_math.py",
+        "sha256": "ae82898d47a7a86b96378fb906e0f8a9f46003065cf19c7c09952a123b5b5af8"
+      },
+      {
+        "path": "verifiers/dfthcsos/scoreinfra/reference.py",
+        "sha256": "a2d5a63191d655729e29f0fde1e85fe4630bf896a91a63bb894d8d7daf71ed39"
+      },
+      {
+        "path": "verifiers/dfthcsos/verify.py",
+        "sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+      },
+      {
+        "path": "verifiers/dfthcsos/FeMoCo76o113e.fcidump",
+        "sha256": "e5a48af746fd075026dec9e8f5df2d363802a121e8c53af9a0b984bde695e1bd"
+      },
+      {
+        "path": "verifiers/dfthcsos/FeMoCo76o113e.fixed_shifts.npz",
+        "sha256": "7b7facf63fe35a9d9d3d00787ffdb700c863fa845fe4724d7f7c54778151cd87"
+      }
+    ],
+    "method_source": {
+      "url": "https://www.kaggle.com/code/ahmedberatozer/quantum-ai-df-thc-group-compression",
+      "version": 2,
+      "license": "Apache-2.0",
+      "sha256": "2f9b22ad81fa4094485234a853208da7e15937137ded600d3a20b12d84382121",
+      "role": "method reference only; never executed; no factor data loaded"
+    }
+  },
+  "optimizer_seed": 95101,
+  "verifier_seed": null,
+  "schedule": "published R6 methods adapted to THC, 11 then 8",
+  "boundaries": "CUDA continuous/GN/QAT/two-body repair; source NumPy/SciPy QR/barrier/gauge/one-body helpers",
+  "rows": [
+    {
+      "label": "input",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "bits": 11,
+      "error_1": 0.006383440998581123,
+      "error_2": 0.019999496917408103,
+      "Lambda": 294.45331358012606,
+      "E_SOS": -22144.18824805,
+      "E_gap": 3.914898049999465,
+      "lambda_eff": 47.855856272347104,
+      "gap_in_domain": true,
+      "J": 9,
+      "T": 21570,
+      "Q": 822,
+      "angle_qubits": 118,
+      "model": "ordinary-QROM upper bound; not circuit verification",
+      "predicted_ratio": 3.9546957616205973,
+      "seconds": 2.4920105740020517,
+      "gpu_peak_bytes": 67108864,
+      "measured_utc": "2026-10-26T06:33:37.575543+00:00",
+      "file": "0000-input-b11.npz",
+      "sha256": "31ceca5d3960b6f45309a75b90e1113a04d00df48a15bf75d608deedca3c503d",
+      "problems": [],
+      "margin_19_5_mha": false,
+      "detail": {
+        "unmodified_declared_words": true
+      },
+      "full_circuit_verified": false
+    },
+    {
+      "label": "stage-10",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "bits": 11,
+      "error_1": 0.006379355204415295,
+      "error_2": 0.019999496682052597,
+      "Lambda": 294.4533135837526,
+      "E_SOS": -22144.188248318907,
+      "E_gap": 3.9148983189079445,
+      "lambda_eff": 47.8558579052181,
+      "gap_in_domain": true,
+      "J": 9,
+      "T": 21570,
+      "Q": 822,
+      "angle_qubits": 118,
+      "model": "ordinary-QROM upper bound; not circuit verification",
+      "predicted_ratio": 3.9546956266839715,
+      "seconds": 5.913469154998893,
+      "gpu_peak_bytes": 102479872,
+      "measured_utc": "2026-10-26T06:33:40.996884+00:00",
+      "file": "0001-stage-10-b11.npz",
+      "sha256": "23900000179349f252b2d2118214b4d4dfce66f1dcdb10226293f599f4067c36",
+      "problems": [],
+      "margin_19_5_mha": false,
+      "detail": {
+        "step": 0,
+        "calls": 0,
+        "residual": 0.01999949669622114
+      },
+      "full_circuit_verified": false
+    },
+    {
+      "label": "stage-10",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "bits": 11,
+      "error_1": 0.006724443964429186,
+      "error_2": 0.02899513685066998,
+      "Lambda": 306.78441083771287,
+      "E_SOS": -22144.43301226988,
+      "E_gap": 4.1596622698816645,
+      "lambda_eff": 50.348150783316186,
+      "gap_in_domain": true,
+      "J": 9,
+      "T": 21570,
+      "Q": 822,
+      "angle_qubits": 118,
+      "model": "ordinary-QROM upper bound; not circuit verification",
+      "predicted_ratio": 3.7589335263468886,
+      "seconds": 18.382276353004272,
+      "gpu_peak_bytes": 272651776,
+      "measured_utc": "2026-10-26T06:33:53.481934+00:00",
+      "file": "0002-stage-10-b11.npz",
+      "sha256": "5737905012f8f2cb4dcf51178f124c61ad97b4847fb330fadd7a57c5efbf7b4a",
+      "problems": [
+        "error_2 0.02899513685066998 Ha > 0.02 Ha"
+      ],
+      "margin_19_5_mha": false,
+      "detail": {
+        "step": 100,
+        "calls": 602,
+        "residual": 0.018921883247046314
+      },
+      "full_circuit_verified": false
+    },
+    {
+      "label": "stage-10",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "bits": 11,
+      "error_1": 0.006655321987456903,
+      "error_2": 0.03222723166174685,
+      "Lambda": 319.1931467805543,
+      "E_SOS": -22144.451694436822,
+      "E_gap": 4.178344436822954,
+      "lambda_eff": 51.477560703789706,
+      "gap_in_domain": true,
+      "J": 9,
+      "T": 21570,
+      "Q": 822,
+      "angle_qubits": 118,
+      "model": "ordinary-QROM upper bound; not circuit verification",
+      "predicted_ratio": 3.676463091520241,
+      "seconds": 29.887588790996233,
+      "gpu_peak_bytes": 272651776,
+      "measured_utc": "2026-10-26T06:34:04.987176+00:00",
+      "file": "0003-stage-10-b11.npz",
+      "sha256": "2cc138a553ac923e2e67364cfa489535e60054663efcb3d58f76df0505fe8d5f",
+      "problems": [
+        "error_2 0.03222723166174685 Ha > 0.02 Ha"
+      ],
+      "margin_19_5_mha": false,
+      "detail": {
+        "step": 200,
+        "calls": 1203,
+        "residual": 0.018724705489863092
+      },
+      "full_circuit_verified": false
+    },
+    {
+      "label": "stage-10",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "bits": 11,
+      "error_1": 0.0066721826020486805,
+      "error_2": 0.033640296058131056,
+      "Lambda": 335.57452907718573,
+      "E_SOS": -22144.603378508833,
+      "E_gap": 4.330028508833493,
+      "lambda_eff": 53.734024682670714,
+      "gap_in_domain": true,
+      "J": 9,
+      "T": 21570,
+      "Q": 822,
+      "angle_qubits": 118,
+      "model": "ordinary-QROM upper bound; not circuit verification",
+      "predicted_ratio": 3.5220766188022137,
+      "seconds": 40.92628064300516,
+      "gpu_peak_bytes": 272651776,
+      "measured_utc": "2026-10-26T06:34:16.040052+00:00",
+      "file": "0004-stage-10-b11.npz",
+      "sha256": "e71b33caf40d3b915dcf6be6d7811ead18c0f6cd010d5621315802c671ee443e",
+      "problems": [
+        "error_2 0.033640296058131056 Ha > 0.02 Ha"
+      ],
+      "margin_19_5_mha": false,
+      "detail": {
+        "step": 300,
+        "calls": 1803,
+        "residual": 0.01855468573478386
+      },
+      "full_circuit_verified": false
+    },
+    {
+      "label": "stage-10",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "bits": 11,
+      "error_1": 0.006629335390317268,
+      "error_2": 0.032561275610004506,
+      "Lambda": 354.6061483238705,
+      "E_SOS": -22144.891945528383,
+      "E_gap": 4.618595528383594,
+      "lambda_eff": 57.04588782127166,
+      "gap_in_domain": true,
+      "J": 9,
+      "T": 21570,
+      "Q": 822,
+      "angle_qubits": 118,
+      "model": "ordinary-QROM upper bound; not circuit verification",
+      "predicted_ratio": 3.3175985017872707,
+      "seconds": 51.854111181004555,
+      "gpu_peak_bytes": 272651776,
+      "measured_utc": "2026-10-26T06:34:26.967874+00:00",
+      "file": "0005-stage-10-b11.npz",
+      "sha256": "8a2854c35aaf00693c1999fdb950ff9c13c77e845efabcc554ec1b2dffb01bc9",
+      "problems": [
+        "error_2 0.032561275610004506 Ha > 0.02 Ha"
+      ],
+      "margin_19_5_mha": false,
+      "detail": {
+        "step": 400,
+        "calls": 2406,
+        "residual": 0.018381572897336478
+      },
+      "full_circuit_verified": false
+    },
+    {
+      "label": "stage-10",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "bits": 11,
+      "error_1": 0.0066876057954160795,
+      "error_2": 0.03283515685453322,
+      "Lambda": 367.990239105925,
+      "E_SOS": -22145.216743520257,
+      "E_gap": 4.943393520257814,
+      "lambda_eff": 60.114923168316366,
+      "gap_in_domain": true,
+      "J": 9,
+      "T": 21570,
+      "Q": 822,
+      "angle_qubits": 118,
+      "model": "ordinary-QROM upper bound; not circuit verification",
+      "predicted_ratio": 3.1482257980947206,
+      "seconds": 62.42919986699417,
+      "gpu_peak_bytes": 272651776,
+      "measured_utc": "2026-10-26T06:34:37.542955+00:00",
+      "file": "0006-stage-10-b11.npz",
+      "sha256": "86ce36cff53adc3ca0dde1b67c22de41b797cd25af8702e83c2eab30f6263671",
+      "problems": [
+        "error_2 0.03283515685453322 Ha > 0.02 Ha"
+      ],
+      "margin_19_5_mha": false,
+      "detail": {
+        "step": 500,
+        "calls": 3006,
+        "residual": 0.018233275889637898
+      },
+      "full_circuit_verified": false
+    },
+    {
+      "label": "stage-10",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "bits": 11,
+      "error_1": 0.0071036344294155675,
+      "error_2": 0.03368618060546297,
+      "Lambda": 378.697008327244,
+      "E_SOS": -22145.573798435868,
+      "E_gap": 5.30044843586802,
+      "lambda_eff": 63.138206953403284,
+      "gap_in_domain": true,
+      "J": 9,
+      "T": 21570,
+      "Q": 822,
+      "angle_qubits": 118,
+      "model": "ordinary-QROM upper bound; not circuit verification",
+      "predicted_ratio": 2.9974774562199427,
+      "seconds": 73.4682767810009,
+      "gpu_peak_bytes": 272651776,
+      "measured_utc": "2026-10-26T06:34:48.595363+00:00",
+      "file": "0007-stage-10-b11.npz",
+      "sha256": "d244750ff4f1929f8dda1cf5d9db1ea490fd9aa3904c45df4fb34b95ad7299b1",
+      "problems": [
+        "error_2 0.03368618060546297 Ha > 0.02 Ha"
+      ],
+      "margin_19_5_mha": false,
+      "detail": {
+        "step": 600,
+        "calls": 3607,
+        "residual": 0.018114422481114757
+      },
+      "full_circuit_verified": false
+    },
+    {
+      "label": "stage-10",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "bits": 11,
+      "error_1": 0.007400765653364919,
+      "error_2": 0.03316681381330457,
+      "Lambda": 383.86101297445936,
+      "E_SOS": -22145.82306189576,
+      "E_gap": 5.549711895760993,
+      "lambda_eff": 65.03719518798833,
+      "gap_in_domain": true,
+      "J": 9,
+      "T": 21570,
+      "Q": 822,
+      "angle_qubits": 118,
+      "model": "ordinary-QROM upper bound; not circuit verification",
+      "predicted_ratio": 2.909955624961038,
+      "seconds": 84.7877032069955,
+      "gpu_peak_bytes": 272651776,
+      "measured_utc": "2026-10-26T06:34:59.914771+00:00",
+      "file": "0008-stage-10-b11.npz",
+      "sha256": "5989cbc7b74a1b531db4209bf9a07ec4c686b7b6931f0d7fef32313c2ab72dee",
+      "problems": [
+        "error_2 0.03316681381330457 Ha > 0.02 Ha"
+      ],
+      "margin_19_5_mha": false,
+      "detail": {
+        "step": 700,
+        "calls": 4211,
+        "residual": 0.018021750829102273
+      },
+      "full_circuit_verified": false
+    },
+    {
+      "label": "stage-10",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "bits": 11,
+      "error_1": 0.006868990630851202,
+      "error_2": 0.03297126712312513,
+      "Lambda": 387.5626726000308,
+      "E_SOS": -22146.089163959063,
+      "E_gap": 5.8158139590632345,
+      "lambda_eff": 66.88917035389056,
+      "gap_in_domain": true,
+      "J": 9,
+      "T": 21570,
+      "Q": 822,
+      "angle_qubits": 118,
+      "model": "ordinary-QROM upper bound; not circuit verification",
+      "predicted_ratio": 2.8293870437872406,
+      "seconds": 95.89300455100602,
+      "gpu_peak_bytes": 272651776,
+      "measured_utc": "2026-10-26T06:35:11.020065+00:00",
+      "file": "0009-stage-10-b11.npz",
+      "sha256": "5ac3aaf4e38be7fc1c7c2144da51832974a8572259b148bece11f6d8aa03752c",
+      "problems": [
+        "error_2 0.03297126712312513 Ha > 0.02 Ha"
+      ],
+      "margin_19_5_mha": false,
+      "detail": {
+        "step": 800,
+        "calls": 4812,
+        "residual": 0.017944222917349643
+      },
+      "full_circuit_verified": false
+    },
+    {
+      "label": "stage-10",
+      "shape": [
+        1,
+        496,
+        384
+      ],
+      "bits": 11,
+      "error_1": 0.00701055440406893,
+      "error_2": 0.033756046416236384,
+      "Lambda": 389.09976554084386,
+      "E_SOS": -22146.303928818983,
+      "E_gap": 6.030578818983486,
+      "lambda_eff": 68.23947338741803,
+      "gap_in_domain": true,
+      "J": 9,
+      "T": 21570,
+      "Q": 822,
+      "angle_qubits": 118,
+      "model": "ordinary-QROM upper bound; not circuit verification",
+      "predicted_ratio": 2.7733999483628846,
+      "seconds": 106.51953443199454,
+      "gpu_peak_bytes": 272651776,
+      "measured_utc": "2026-10-26T06:35:21.661554+00:00",
+      "file": "0010-stage-10-b11.npz",
+      "sha256": "ae4f0aba0bb2a7bd4d06dde90c093fe30559da9ae9c602176382310c43c6bbd4",
+      "problems": [
+        "error_2 0.033756046416236384 Ha > 0.02 Ha"
+      ],
+      "margin_19_5_mha": false,
+      "detail": {
+        "step": 900,
+        "calls": 5412,
+        "residual": 0.01787788701722698
+      },
+      "full_circuit_verified": false
+    }
+  ],
+  "stages": [],
+  "complete": false
+}

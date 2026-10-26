@@ -184,19 +184,25 @@ runs and all requested reporting are complete, the PR remains a draft.
 
 ## Long-run process lifetime
 
-The first run stopped at the heartbeat boundary during GN. Its71 points are
-retained as an interrupted run, not a completed negative. Run02 restarts every
-stage from the declared input. `ledger/evidence/pra246/declared-v4-02.launch.json`
-records the exact argv, cwd, process group, log and exit-record paths; the adjacent
-`declared-v4-02.runner.py` is the exact one-shot supervisor used. It runs in a new
-process session with closed stdin and an exclusive log. The next issue monitor
-must verify that it survived the heartbeat; a scheduled monitor alone is not
-proof of process survival. Do not start another fit while that process is alive.
+Run01 stopped at the heartbeat boundary during GN. Its71 measured points are
+retained as an interrupted run, not a completed negative. Run02 exited1 before
+fitting: the CUDA runtime initialized its cache under the output directory before
+the fitter could reserve that directory. The exclusive-output check correctly
+refused it. No checkpoint was overwritten.
+
+Run03 restarts every stage from the declared input. The exact argv, cwd, process
+group, log and exit-record paths are in
+`ledger/evidence/pra246/declared-v4-03.launch.json`; the adjacent
+`declared-v4-03.runner.py` is the one-shot supervisor used. It runs in a new
+process session with closed stdin and an exclusive log. It has survived its
+launcher exit and emitted CUDA stage10 checkpoints. The next issue monitor must
+verify survival across the heartbeat boundary; a monitor alone is not proof.
+Do not start another fit while that process is alive.
 
 The launch explicitly puts TORCHINDUCTOR_CACHE_DIR, TRITON_CACHE_DIR,
-TORCH_EXTENSIONS_DIR and CUDA_CACHE_PATH beneath the new output directory.
-Without these settings, the CUDA compiler can use its default user cache paths.
-The supervisor writes the log and exit JSON beside the output directory. A zero
-exit is accepted only with a complete report and reloaded passing factor; absence
-of an exit record or report is not success. No daemon or production service is
-installed. The issue monitor checks the process and the on-disk records.
+TORCH_EXTENSIONS_DIR and CUDA_CACHE_PATH beneath the adjacent
+`/home/cld-main/work/vqcc-data/pra246-declared-v4-03.cache` directory. The supervisor
+writes its log and exit JSON beside the output directory. Without explicit cache
+settings, the CUDA compiler can use default user cache paths. A zero exit is
+accepted only with a complete report and reloaded passing factor; an absent exit
+record or report is not success. No daemon or production service is installed.
