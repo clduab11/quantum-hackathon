@@ -1,0 +1,60 @@
+{
+  "variant": "hankel-cyclic-gold",
+  "num_qubits": 883,
+  "static_toffoli_like": 998017,
+  "num_ops": 84530188,
+  "num_bits": 99133,
+  "build_seconds": 131.08316322197788,
+  "sha256": "81a03e7fd3cc1d2ca63d0858366706aff9885e8758a20457264a52ce70f31765",
+  "bytes": 810179407,
+  "stages": [
+    {
+      "boundary": "initialization",
+      "toffolis_cumulative": 0,
+      "toffolis_since_previous": 0,
+      "peak_qubits": 840,
+      "live_qubits": 852,
+      "ops_cumulative": 20741142
+    },
+    {
+      "boundary": "moment_to_fraction",
+      "toffolis_cumulative": 309812,
+      "toffolis_since_previous": 309812,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 35601571
+    },
+    {
+      "boundary": "fraction_to_polynomials",
+      "toffolis_cumulative": 388808,
+      "toffolis_since_previous": 78996,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 37167382
+    },
+    {
+      "boundary": "phase_correction",
+      "toffolis_cumulative": 609209,
+      "toffolis_since_previous": 220401,
+      "peak_qubits": 883,
+      "live_qubits": 852,
+      "ops_cumulative": 68103980
+    },
+    {
+      "boundary": "polynomials_to_fraction",
+      "toffolis_cumulative": 688205,
+      "toffolis_since_previous": 78996,
+      "peak_qubits": 883,
+      "live_qubits": 852,
+      "ops_cumulative": 69669791
+    },
+    {
+      "boundary": "fraction_to_moments",
+      "toffolis_cumulative": 998017,
+      "toffolis_since_previous": 309812,
+      "peak_qubits": 883,
+      "live_qubits": 840,
+      "ops_cumulative": 84530188
+    }
+  ]
+}

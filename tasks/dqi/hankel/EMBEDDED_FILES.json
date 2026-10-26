@@ -1,0 +1,350 @@
+[
+  {
+    "cell": 35,
+    "path": "build.py",
+    "sha256": "affe27084a69ec798bda984b9377dbde058e9886f2226bf549bdb07b28a34b95",
+    "bytes": 2680
+  },
+  {
+    "cell": 36,
+    "path": "runtime.py",
+    "sha256": "b951b201efba438544f6b2a1daad6332d9342e54a5d8443541a4f53a2beff4b8",
+    "bytes": 2742
+  },
+  {
+    "cell": 37,
+    "path": "hankel_half.py",
+    "sha256": "3fe84f046436cae04ba1cbad764e4d3b099cce4af52713bee3e7aa71893fbeaa",
+    "bytes": 3000
+  },
+  {
+    "cell": 38,
+    "path": "cyclic_gold.py",
+    "sha256": "d51ab45ef43ec66f1dc38fc30986f6df638aedcd8f99ad752cca827f302b8cbb",
+    "bytes": 3941
+  },
+  {
+    "cell": 39,
+    "path": "gold_extraction.py",
+    "sha256": "6bb93d17c742449666d9e7d6185dba4cd79815b02423cf6cd019640cc6221afb",
+    "bytes": 2975
+  },
+  {
+    "cell": 40,
+    "path": "central2/bezout_model.py",
+    "sha256": "2ceef384e912c035857288270e8231f096717b45d856ec195d869f9c4a805b1a",
+    "bytes": 10650
+  },
+  {
+    "cell": 41,
+    "path": "central2/border_circuit.py",
+    "sha256": "f0c34d0634f660f733863d51af9efa3bd97d31d89980541fa1756a3c42ef9dc5",
+    "bytes": 11329
+  },
+  {
+    "cell": 42,
+    "path": "central2/central_circuit.py",
+    "sha256": "d952a3c1a45e540bc6a82068cc8d7b4be0ddeacb7483d04e3136dffff73e7443",
+    "bytes": 12975
+  },
+  {
+    "cell": 43,
+    "path": "central2/forney_bezout.py",
+    "sha256": "c134a55ad41cfc8b5a7e13a8ac1dbfb0f06cb3397d01360a51ee3e84ca48bee3",
+    "bytes": 3239
+  },
+  {
+    "cell": 44,
+    "path": "central2/half_circuit.py",
+    "sha256": "046c851ea477c7a773296dfafcec9bb0abedb4cb071b3f88b3def4953776a289",
+    "bytes": 8459
+  },
+  {
+    "cell": 45,
+    "path": "central2/inplace_poly.py",
+    "sha256": "0554cbca7a160ea1dee83eae492ddd91ad184e4894203e5a3a4b762703f5b68a",
+    "bytes": 8112
+  },
+  {
+    "cell": 46,
+    "path": "central2/recursive_ldu.py",
+    "sha256": "df9cd8845bbe26295901b9a3ef6d0b9bb298d0dd477dca7de5546fb2ec57272d",
+    "bytes": 6150
+  },
+  {
+    "cell": 47,
+    "path": "central2/retry_circuit.py",
+    "sha256": "0cb44f6632ca588ff6d70fc0146fd2857ab2c23fc9d44d28a7c25d26c75ee7d6",
+    "bytes": 8826
+  },
+  {
+    "cell": 48,
+    "path": "gold26/gold_cube.py",
+    "sha256": "4f6d10b4a7e548b8d81a631a1298ae32ca320506d788703ed8a407aec7fd4fef",
+    "bytes": 4131
+  },
+  {
+    "cell": 49,
+    "path": "gold26/gold_forms.py",
+    "sha256": "0554cbca7a160ea1dee83eae492ddd91ad184e4894203e5a3a4b762703f5b68a",
+    "bytes": 8112
+  },
+  {
+    "cell": 50,
+    "path": "upstream/build_merge_dqi.py",
+    "sha256": "1217816147f87a8a166bc2d39d8206d4874e2a5ea574937ebb8248744f972c07",
+    "bytes": 7050
+  },
+  {
+    "cell": 51,
+    "path": "upstream/build_paired_dqi.py",
+    "sha256": "43829ded2d556d824590b6408a44ace06b6a8b4a0399c8f30341673a53838a1c",
+    "bytes": 3171
+  },
+  {
+    "cell": 52,
+    "path": "upstream/build_projected_dqi.py",
+    "sha256": "f50dff719826b0e4a354715c1e0061ac91610779699d19c045308264e16e2cd9",
+    "bytes": 7887
+  },
+  {
+    "cell": 53,
+    "path": "upstream/compact_gap_variant.py",
+    "sha256": "5206a2d109071dc3c9dd275249ea93c17b3c77f6e3b5cbac359d545e8a98ea8a",
+    "bytes": 8398
+  },
+  {
+    "cell": 54,
+    "path": "upstream/compact_lifetime_kernels.py",
+    "sha256": "f47670b0b7c912055a55edba3153a0690473f71e7f31e03204f3b2f39bd90805",
+    "bytes": 7114
+  },
+  {
+    "cell": 55,
+    "path": "upstream/matrix_pair_kernels.py",
+    "sha256": "262ccbc491950b82c9eea5ff6f66983888997b3f15122c91825ec6d1c6dca81d",
+    "bytes": 23694
+  },
+  {
+    "cell": 56,
+    "path": "upstream/mc4_inverse.py",
+    "sha256": "ec1e66bcd1ba8723792238be68f91dfc887170cc8a11f81d81420d25d26b5ce4",
+    "bytes": 3418
+  },
+  {
+    "cell": 57,
+    "path": "upstream/merge_kernels.py",
+    "sha256": "e6b5053fcbdf60bc72a96c4c4c2923f666296059f7e08e56da3fff8a11c4d75e",
+    "bytes": 16265
+  },
+  {
+    "cell": 58,
+    "path": "upstream/norm_recycle_inverse.py",
+    "sha256": "a2d136d74ac0acebe48023a73d9b0583a3cfc85fac809c1a757fbee30b8e239e",
+    "bytes": 2411
+  },
+  {
+    "cell": 59,
+    "path": "upstream/one_mask_inverse.py",
+    "sha256": "bcad22161e54598cf3763f12e4d2dcf7f1a5a6d6a210c487417eef7ec2623991",
+    "bytes": 2120
+  },
+  {
+    "cell": 60,
+    "path": "upstream/paired_kernels.py",
+    "sha256": "acbe7508ee68330666c6dd640b8b255de06fff61d8e3b9d847391aa925020016",
+    "bytes": 16533
+  },
+  {
+    "cell": 61,
+    "path": "upstream/phase_tensor.py",
+    "sha256": "433ebd7a9e392aa2dbf4483142e997ecb6d96b6ed6957d0de5b227722cfa2856",
+    "bytes": 8315
+  },
+  {
+    "cell": 62,
+    "path": "upstream/pointer_phase_codec.py",
+    "sha256": "71f2adef49ce9467e347b3231e2d126fac2741daec1c9536f5b0af49be487870",
+    "bytes": 3621
+  },
+  {
+    "cell": 63,
+    "path": "upstream/quadratic_cube.py",
+    "sha256": "9d8dac8a7fb88169923e0defe7f467fef606437b67add35182e1d85b0e9252ba",
+    "bytes": 2808
+  },
+  {
+    "cell": 64,
+    "path": "upstream/smallspace_inverse.py",
+    "sha256": "669bbb035cdc0eef5f113cf1c6627f23464c6dd8c0c38c4cc36042c2614a7173",
+    "bytes": 3995
+  },
+  {
+    "cell": 65,
+    "path": "upstream/triple_matrix.py",
+    "sha256": "d5693f769f6c466b01029466606d255c2c62ecf0be2241b2acf2de4d5e5352c7",
+    "bytes": 8176
+  },
+  {
+    "cell": 66,
+    "path": "upstream/triple_ordinary.py",
+    "sha256": "bd92b3365b249a5a6ba876b85dbf0e1d3ff52e4f85a86fff929f2b986763af02",
+    "bytes": 3578
+  },
+  {
+    "cell": 67,
+    "path": "upstream/upstream/dqi/common.py",
+    "sha256": "f21e9ff6fb5b6f2e665deb546c2751e4ae826cd305931a37a2e328906abea0d7",
+    "bytes": 1074
+  },
+  {
+    "cell": 68,
+    "path": "upstream/upstream/dqi/compact_euclid.py",
+    "sha256": "02e78391cde317b1de1bc7f60193560990c9a47640d4d20a119d58fbdb09b1fc",
+    "bytes": 13397
+  },
+  {
+    "cell": 69,
+    "path": "upstream/upstream/dqi/continued_fraction/jfraction_decoder.py",
+    "sha256": "532d21556fa7981e73e68bd91f2fdb49ca7091a4daca0267be35ffe8fa563ee3",
+    "bytes": 7349
+  },
+  {
+    "cell": 70,
+    "path": "upstream/upstream/dqi/continued_fraction/jfraction_gap_decoder.py",
+    "sha256": "c41f980ff7778234f4a098c15a3d52657a33f5a9748d8dbc31d4c646675c3ed6",
+    "bytes": 10334
+  },
+  {
+    "cell": 71,
+    "path": "upstream/upstream/dqi/continued_fraction/keyeq/model_fast_extraction.py",
+    "sha256": "77fb085f1bf0a1a22167d5010e9ad327295c83555d9c539ca0a5187d82ef0336",
+    "bytes": 7085
+  },
+  {
+    "cell": 72,
+    "path": "upstream/upstream/dqi/continued_fraction/keyeq/model_jfraction.py",
+    "sha256": "e3c3b83a76b520b1720eee865aca20b72433211dbb5c10f422e2abf08be4d1b9",
+    "bytes": 8049
+  },
+  {
+    "cell": 73,
+    "path": "upstream/upstream/dqi/continued_fraction/mask_projection.py",
+    "sha256": "21476b1931a0d9d5ace2ad5a25e6fdb2fb1e04c303fce0cd35e84486b68c681e",
+    "bytes": 5275
+  },
+  {
+    "cell": 74,
+    "path": "upstream/upstream/dqi/continued_fraction/poly_arithmetic.py",
+    "sha256": "f26338b25b7c9623e3690fb4e571e87c47391943fe9742016d52a644dfe4a975",
+    "bytes": 7719
+  },
+  {
+    "cell": 75,
+    "path": "upstream/upstream/dqi/counter.py",
+    "sha256": "13950281035350b8a4336da90f1d7a9bda453223af02ae78f9b3e1bd7bbd3380",
+    "bytes": 1703
+  },
+  {
+    "cell": 76,
+    "path": "upstream/upstream/dqi/cubic.py",
+    "sha256": "c74e40a0f0ec1d93bf1bd6a64b71794002bc8db62baf05ffbefa2efda174f58a",
+    "bytes": 7112
+  },
+  {
+    "cell": 77,
+    "path": "upstream/upstream/dqi/early_a.py",
+    "sha256": "3336ddb6e634437d7f328de78fdfce1acd0cf2090e1ccb69b11390f2970b2cf2",
+    "bytes": 3074
+  },
+  {
+    "cell": 78,
+    "path": "upstream/upstream/dqi/evaluation.py",
+    "sha256": "499cb9faf95027d3c9cecca317d251ebaaf309d7aee7e2de4c9b115a2295bc76",
+    "bytes": 1749
+  },
+  {
+    "cell": 79,
+    "path": "upstream/upstream/dqi/forney_control.py",
+    "sha256": "2c343b082f9d5700453f479fd69049e82c5f5e27c9d25962fbead43422fb1e29",
+    "bytes": 3876
+  },
+  {
+    "cell": 80,
+    "path": "upstream/upstream/dqi/narrow.py",
+    "sha256": "3ede87c02962ddf3827fbabfa47bcbe14a455318838b531a3649fac727f56dcf",
+    "bytes": 1830
+  },
+  {
+    "cell": 81,
+    "path": "upstream/upstream/dqi/quotient.py",
+    "sha256": "47b87ca6306ba6a4866e84d434570a8fb2bb0035ff166e3f29088cfdf772405f",
+    "bytes": 6373
+  },
+  {
+    "cell": 82,
+    "path": "upstream/upstream/dqi/quotient_hmr.py",
+    "sha256": "155ff7954c10bc25708c8e6fce9f0dd6d73a973d581f5e8978c367c4f1652651",
+    "bytes": 3673
+  },
+  {
+    "cell": 83,
+    "path": "upstream/upstream/dqi/recursive.py",
+    "sha256": "d8fb02e40c042e2c84df11fc0d29bb0a7cb583eac773e0c063e1c13ad96d80d7",
+    "bytes": 8933
+  },
+  {
+    "cell": 84,
+    "path": "upstream/upstream/dqi/static_divisions.py",
+    "sha256": "7bc9f4d8a4517158c5a62dc657de8d1e27d8f5b4d294bbb28256773e0cb8670d",
+    "bytes": 9259
+  },
+  {
+    "cell": 85,
+    "path": "upstream/upstream/dqi/sweep.py",
+    "sha256": "019fb28b0144d65ec3004426c5f512e1ce743e355ab9d2c04961c16559153ca0",
+    "bytes": 3288
+  },
+  {
+    "cell": 86,
+    "path": "upstream/upstream/dqi/tower.py",
+    "sha256": "9e7bd85201a783be5eedbecb2161f425df5c7815dae4fd367a01677366dddcc5",
+    "bytes": 7416
+  },
+  {
+    "cell": 87,
+    "path": "upstream/upstream/dqi/zero_chain.py",
+    "sha256": "dd4e7c3e8edbe2fb0c33ebb12b12ff4c5ab0315ca47b2c7d94f25c66e7917021",
+    "bytes": 3249
+  },
+  {
+    "cell": 88,
+    "path": "upstream/zero_mask_inverse.py",
+    "sha256": "610a6b2ea677489d3ae856ca9c9c051b14dacd2d4b1226c531243bc8ef1413bc",
+    "bytes": 2635
+  },
+  {
+    "cell": 89,
+    "path": "gold26/hermitian12-search-check.json",
+    "sha256": "a10ce67df5bab5a089a12debea5342045e0ef17ce7ab66bfd2b5b162662cf001",
+    "bytes": 2503
+  },
+  {
+    "cell": 90,
+    "path": "upstream/LICENSE.txt",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358
+  },
+  {
+    "cell": 91,
+    "path": "upstream/NOTICE.txt",
+    "sha256": "65a08ae66c1bc7dca13f077c7e61222f7c98c2b52f81c4cd300fad52b1f77447",
+    "bytes": 2065
+  },
+  {
+    "cell": 92,
+    "path": "upstream/pinned_sources.json",
+    "sha256": "a747be631f533aa11537d5edb305e856fc395570691a5fcd2aee98daf9abcb38",
+    "bytes": 5765
+  }
+]

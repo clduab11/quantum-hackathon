@@ -1,0 +1,28 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_______ test_gold_cube_complete_domain_preserves_source_target_and_phase _______
+
+    def test_gold_cube_complete_domain_preserves_source_target_and_phase():
+>       from tasks.dqi.hankel.gold_cube import xor_cube
+E       ModuleNotFoundError: No module named 'tasks.dqi.hankel'
+
+tests/test_dqi_hankel.py:15: ModuleNotFoundError
+___________ test_extraction_hooks_restore_fallback_even_on_exception ___________
+
+    def test_extraction_hooks_restore_fallback_even_on_exception():
+>       from tasks.dqi.hankel.cyclic_gold import installed
+E       ModuleNotFoundError: No module named 'tasks.dqi.hankel'
+
+tests/test_dqi_hankel.py:38: ModuleNotFoundError
+______ test_hankel_phase_matches_forney_formula_and_restores_polynomials _______
+
+    def test_hankel_phase_matches_forney_formula_and_restores_polynomials():
+>       from tasks.dqi.hankel.hankel_half import forney
+E       ModuleNotFoundError: No module named 'tasks.dqi.hankel'
+
+tests/test_dqi_hankel.py:49: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_dqi_hankel.py::test_gold_cube_complete_domain_preserves_source_target_and_phase
+FAILED tests/test_dqi_hankel.py::test_extraction_hooks_restore_fallback_even_on_exception
+FAILED tests/test_dqi_hankel.py::test_hankel_phase_matches_forney_formula_and_restores_polynomials
+3 failed in 0.25s

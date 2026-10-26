@@ -1,0 +1,76 @@
+### Merge-order gate: FAIL
+
+- repository `clduab11/quantum-hackathon`, base `main` at `9db5f61785d41636cff13a9116d26aa13c57aeb1`
+- heads (5): #43 `331bb7dc3424`, #44 `f2b85f88182d`, #45 `0f67db89b7f6`, #46 `3a343ea4b680`, mine `fe8ec72d5bd6`
+- excluded: none
+- heads already in the base (they prove nothing): none
+- orders squashed: 120 (every permutation); clean 0, conflicting 120
+
+| squashed first | then conflicts | files |
+| --- | --- | --- |
+| (main) | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → #45 → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → #45 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → #46 → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → #46 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → mine → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → mine → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → #44 → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → #44 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → #46 → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → #46 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → mine → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → mine → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → #44 → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → #44 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → #45 → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → #45 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → mine → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → mine → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #44 → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #44 → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #45 → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #45 → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #46 → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #46 → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → #45 → #46 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → #45 → mine → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → #46 → #45 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → #46 → mine → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → mine → #45 → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #44 → mine → #46 → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → #44 → #46 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → #44 → mine → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → #46 → #44 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → #46 → mine → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → mine → #44 → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #45 → mine → #46 → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → #44 → #45 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → #44 → mine → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → #45 → #44 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → #45 → mine → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → mine → #44 → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #46 → mine → #45 → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #44 → #45 → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #44 → #46 → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #45 → #44 → #46 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #45 → #46 → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #46 → #44 → #45 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #46 → #45 → #44 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+

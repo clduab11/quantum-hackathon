@@ -1,0 +1,71 @@
+# PRA-250: Hankel DQI, current invsqrt, verified PRA-247 Gluzdov v8/J10 chemistry.
+schema: 1
+salt_label: PRA171_LOCAL_PUBLIC_FIXED_SALT_0001
+gates:
+- id: G0
+  name: pre-flight (metric-only file checks, no simulation)
+  check: ledger.gates.checks:g0_preflight
+  waivable: false
+  params:
+    hook: ledger.gates.g0_preflight:preflight
+- id: G1
+  name: smoke on small instances
+  check: ledger.gates.checks:per_task
+  waivable: true
+  params:
+    hooks:
+      invsqrt: tasks.invsqrt.gates:g1_smoke
+      dqi: tasks.dqi.hankel.gates:g1_smoke
+      dfthcsos: tasks.dfthcsos.gates:g1_smoke
+- id: G2
+  name: fast proxy
+  check: ledger.gates.checks:per_task
+  waivable: true
+  params:
+    hooks:
+      invsqrt: tasks.invsqrt.gates:g2_proxy
+      dqi: tasks.dqi.gates:g2_proxy
+      dfthcsos: tasks.dfthcsos.gates:g2_proxy
+- id: G3
+  name: full local verifier
+  check: ledger.gates.checks:g3_full_verifier
+  waivable: false
+  params:
+    hook: harness.score_local:score_submission
+    expected_shots:
+      invsqrt: 200540928
+      dqi: 102400
+      dfthcsos: 36608
+- id: G4
+  name: strict improvement over parent and archive
+  check: ledger.gates.checks:g4_strict_improvement
+  waivable: true
+- id: G5
+  name: byte-identical rebuild from a clean worktree + provenance
+  check: ledger.gates.checks:g5_rebuild_and_provenance
+  waivable: false
+  params:
+    timeout_seconds: 7200
+generators:
+  invsqrt:
+  - '{python}'
+  - tasks/invsqrt/generate.py
+  - --out
+  - '{out}'
+  dqi:
+  - '{python}'
+  - tasks/dqi/generate_hankel.py
+  - --out
+  - '{out}'
+  dfthcsos:
+  - '{python}'
+  - -m
+  - tasks.dfthcsos.shipping
+  - --out
+  - '{out}'
+  - --batch-size
+  - '10'
+inputs:
+  dfthcsos:
+  - path: inputs/thc/femoco_thc_r5.npz
+    sha256: 809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5
