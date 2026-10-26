@@ -16,6 +16,9 @@ dependencies = [
 dev = [
     "pytest",
 ]
+gpu = [
+    "jax[cuda12]==0.12.0.1",
+]
 notebooks = [
     "ipykernel",
     "nbclient",
