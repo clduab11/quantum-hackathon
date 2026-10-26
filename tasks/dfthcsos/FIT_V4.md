@@ -1,18 +1,24 @@
 # GPU fit v4 (PRA-246)
 
-Status: the declared-input run04 completed with exit 3 on 2026-10-26 at
-07:42 UTC. Final 8-bit errors are 22.091251207 and 63.720988762 mHa, both
-above 20 mHa. This is a measured negative for the full published-method
-schedule at the declared THC shape, not a proof that all 8-bit fits are impossible.
-The separate Google-only run01 started at 07:51 UTC with no public-factor
-checkpoint or completed-stage resume. It remains incomplete.
+Status: both scheduled GPU experiments completed with exit 3 on 2026-10-26.
+Neither produced an accepted 8-bit factor. These are measured negatives for
+the pinned published-method THC adaptation, not proof that every 8-bit fit
+is impossible. Independent review and merge-queue resolution remain pending.
 
-Final declared report and every checkpoint hash are in
-`ledger/evidence/pra246/declared-v4-04-report.json`; the result summary records
-all source gates. The 8-bit joint barrier and two-body integer repair were
-ineligible under their published error-entry gates. One-body repair used all
-2000 steps and reduced error1 from 50.268023166 to 22.091251207 mHa.
-The unmodified competition evaluator measured every saved point.
+| Input | Final error1 / error2 (mHa) | Elapsed fit work (s) | Peak allocated GPU bytes |
+|---|---|---|---|
+| Declared THC | 22.091251207 / 63.720988762 | 1159.231 retained continuous + 1733.048 QAT/postprocessing | 319705600 |
+| Pinned Google | 22.846695282 / 67.294705249 | 3550.536 | 682028032 |
+
+Full reports, every measured checkpoint hash, launch commands, completion
+records and source-gate summaries are in `ledger/evidence/pra246/`:
+`declared-v4-04-report.json` and `google-v4-01-report.json`, with corresponding
+`-result.json` files. Both schedules completed full 11/8 QAT and eligible
+postprocessing. The Google 11-bit point entered both CUDA integer-repair
+rounds (256 accepted steps each). At 8 bits, both runs were ineligible for
+the source joint-barrier and two-body-repair gates. Each one-body repair used
+all 2000 steps. The unmodified competition evaluator measured every saved
+point. No accepted circuit or submission was produced.
 
 ## Run the declared factor
 
