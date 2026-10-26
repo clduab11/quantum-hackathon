@@ -99,12 +99,14 @@ def test_cuda_continuous_stages_reduce_a_synthetic_residual():
     assert physical_error(un,wn,target)<physical_error(u,initial,target)
 
 
-def test_gpu_progressive_freeze_emits_valid_words_and_checkpoints(monkeypatch):
+@pytest.mark.parametrize('compiled', [False, True])
+def test_gpu_progressive_freeze_emits_valid_words_and_checkpoints(monkeypatch, compiled):
     torch=cuda()
     from types import SimpleNamespace
     from tasks.dfthcsos.gpu_fit.quantize import quantize,EDGES,Tree
     # Small synthetic math test; eager and compiled paths use the same objective.
-    monkeypatch.setattr(torch,'compile',lambda f:f)
+    if not compiled:
+        monkeypatch.setattr(torch,'compile',lambda f:f)
     rng=np.random.default_rng(95101)
     u=rng.normal(size=(1,2,76));u/=np.linalg.norm(u,axis=-1,keepdims=True)
     w=rng.normal(size=(1,2,2))*.01

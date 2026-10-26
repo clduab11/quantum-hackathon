@@ -1,7 +1,8 @@
 # GPU fit v4 (PRA-246)
 
-Status: the full stage driver is implemented and the declared-input GPU run
-has started. Numerical completion and final acceptance are pending. The public factor handed off by PRA-245 is pinned in the CLI.
+Status: run04 resumes full QAT from the hash-verified completed continuous
+stages of run03, with persistent temporary and compiler-cache directories.
+Numerical completion and final acceptance are pending. The public factor handed off by PRA-245 is pinned in the CLI.
 The separate Google-only run follows the ship-lane run. Results are written by
 the unmodified competition evaluator, not by the optimization loss.
 
@@ -174,8 +175,8 @@ Tests compare GPU tangent derivatives to dense and finite-difference forms,
 QR loss/gradients to a dense objective, column gauge Gram preservation, exact
 integer deltas and stale-state rejection, real CUDA continuous descent, and
 progressive freezing/word decoding with deliberate CPU refusal. The tiny QAT
-fixture uses the same objective in eager mode to keep CI fast; the actual
-training driver uses the published compiled path.
+fixture checks both eager and real compiled CUDA execution; the actual training
+driver uses the published compiled path.
 
 Acceptance is error1/error2 <=20 mHa (aim <=19.5), Lambda>49.0 and
 E_gap>3.914898. Hand passing factor hashes to PRA-248 immediately. Full circuit
@@ -206,3 +207,43 @@ writes its log and exit JSON beside the output directory. Without explicit cache
 settings, the CUDA compiler can use default user cache paths. A zero exit is
 accepted only with a complete report and reloaded passing factor; an absent exit
 record or report is not success. No daemon or production service is installed.
+
+## Resume completed continuous stages after a runtime failure
+
+Run03 completed its L-BFGS and GN source budgets, then compilation failed because
+its inherited TMPDIR belonged to an expired heartbeat. This is a runtime failure,
+not a chemistry negative. The complete continuous result is16.868331753377305mHa.
+The supervisor now sets TMPDIR, TMP and TEMP to a persistent explicit adjacent
+`.tmp` directory, in addition to the named compiler caches.
+
+`--resume-continuous` names a JSON manifest with explicit progress/factor paths
+and hashes; `--resume-sha256` pins that manifest. Only completed stages from the
+original v4 driver with unchanged numerical modules and matching input/seed are
+accepted. An inflight optimizer is rejected. The raw checkpoint must reproduce
+the recorded continuous result within1e-12Ha. The original output is read only;
+the new output must not exist. The restart retains the completed stage records,
+prior elapsed seconds and exact source/checkpoint hashes. It resets seed95101 and
+runs every 11-bit and8-bit QAT/postprocessing step; no optimizer state or reduced
+iteration budget is substituted. Total elapsed work includes the recorded
+`resume.prior_seconds` plus the new run's seconds. The helper is read-only and
+invoked only by this CLI; removing it disables this optional resume path.
+
+Use the declared-input command above with a fresh output directory and:
+
+```sh
+--resume-continuous ledger/evidence/pra246/continuous-resume-run03.json \
+--resume-sha256 362d82da2f1f03fdcf1968378ae0699574dc653bfe8f35bfdcc15f4f7063d440 \
+--dry-run
+```
+
+The real dry-run reports `recomputed_error:0.016868331753377305`, manifest hash,
+checkpoint hash and completed stage budgets. Replacing the digest with `wrong`
+exits1: `resume manifest hash mismatch; use the recorded SHA-256`, without creating
+an output. Remove `--dry-run` to start QAT. Tests reject changed manifest, report,
+checkpoint, source, input and unfinished-stage evidence; they also reproduce a
+valid checkpoint's continuous residual. Both eager and compiled CUDA QAT fixtures
+pass. Run these checks with a persistent TMPDIR and explicit compiler cache paths.
+
+Recovery validation: `uv run --group gpu pytest -q` with the persistent
+TMPDIR/compiler-cache paths: **330 passed, 1 skipped in100.33s**. The declared
+run04 launch record and exact supervisor are in `ledger/evidence/pra246/`.

@@ -38,8 +38,10 @@ def intake(args):
 
 def run(args):
     pins, params, lane = intake(args)
+    if bool(args.resume_continuous) != bool(args.resume_sha256):
+        raise ValueError('--resume-continuous and --resume-sha256 must be supplied together')
     gpu = check_cuda()  # Even a dry run refuses CPU fallback.
-    if args.dry_run:
+    if args.dry_run and not args.resume_continuous:
         print(json_text(dict(lane=lane, gpu=gpu, input_sha256=args.sha256,
                             shape=[1,496,384], bits=[11,8], out=str(args.out))))
         return 0
@@ -69,27 +71,42 @@ def run(args):
     params['tree_edges'] = quantize.EDGES.copy() if 'tree_edges' not in params else params['tree_edges']
     if not np.array_equal(params['tree_edges'], quantize.EDGES):
         raise ValueError('QAT requires the published log-depth tree')
-    sources = [Path(__file__), *sorted((Path(__file__).parent/'gpu_fit').glob('*.py'))]
+    sources = [Path(__file__), Path(__file__).with_name('factor_resume.py'), *sorted((Path(__file__).parent/'gpu_fit').glob('*.py'))]
     hashes = {str(p.relative_to(Path(__file__).parent)): sha256(p) for p in sources}
+    resumed = None
+    if args.resume_continuous:
+        from tasks.dfthcsos.factor_resume import load_continuous
+        resumed = load_continuous(args.resume_continuous, args.resume_sha256, args.sha256,
+            {k:v for k,v in hashes.items() if k.startswith('gpu_fit/')}, target)
+        if args.dry_run:
+            print(json_text(dict(gpu=gpu, resume=resumed[1], out=str(args.out))))
+            return 0
     args.out.mkdir(parents=True)
     reporter = Reporter(args.out, context, dict(lane=lane, input_sha256=args.sha256,
         input_path=str(args.factor), source_hashes=hashes, gpu=gpu, input_pins=pins,
         optimizer_seed=95101, verifier_seed=None, schedule='published R6 methods adapted to THC, 11 then 8',
         boundaries='CUDA continuous/GN/QAT/two-body repair; source NumPy/SciPy QR/barrier/gauge/one-body helpers'))
-    if lane == 'declared':
-        reporter.point('input', params, 11, {'unmodified_declared_words': True})
+    if resumed:
+        params, proof = resumed
+        u, w = params['U'], params['W']
+        reporter.report['resume'] = proof
+        reporter.report['stages'] = proof['stages']
+        reporter.save()
     else:
-        params, info = merge_initialize(params, target, (1,496,384), 8)
-        reporter.report['stages'].append(dict(stage='google-merge', **info))
-        reporter.point('google-merge', prepare(context, params, 11), 11)
-    u, w, info = continuous.structural(params['U'], params['W'], target,
-                                      reporter.continuous_callback(10, params))
-    params = {**params, 'U':u, 'W':w}
-    reporter.report['stages'].append(dict(stage='structural', **info)); reporter.save()
-    if physical_error(u, w, target) > .015:
-        u, w, info = continuous.gauss_newton(u, w, target, reporter.continuous_callback(20, params))
+        if lane == 'declared':
+            reporter.point('input', params, 11, {'unmodified_declared_words': True})
+        else:
+            params, info = merge_initialize(params, target, (1,496,384), 8)
+            reporter.report['stages'].append(dict(stage='google-merge', **info))
+            reporter.point('google-merge', prepare(context, params, 11), 11)
+        u, w, info = continuous.structural(params['U'], params['W'], target,
+                                          reporter.continuous_callback(10, params))
         params = {**params, 'U':u, 'W':w}
-        reporter.report['stages'].append(dict(stage='gauss-newton', **info)); reporter.save()
+        reporter.report['stages'].append(dict(stage='structural', **info)); reporter.save()
+        if physical_error(u, w, target) > .015:
+            u, w, info = continuous.gauss_newton(u, w, target, reporter.continuous_callback(20, params))
+            params = {**params, 'U':u, 'W':w}
+            reporter.report['stages'].append(dict(stage='gauss-newton', **info)); reporter.save()
     continuous_error = physical_error(u, w, target)
     reporter.point('continuous-best', prepare(context, params, 11), 11, {'continuous_error':continuous_error})
     if continuous_error <= .030:
@@ -134,11 +151,13 @@ def main():
     for flag in ('starter','competition','factor','out'):
         parser.add_argument('--'+flag, type=Path, required=True)
     parser.add_argument('--sha256', required=True)
+    parser.add_argument('--resume-continuous', type=Path, help='explicit hash-pinned manifest for completed original-v4 continuous stages; see FIT_V4.md')
+    parser.add_argument('--resume-sha256', help='SHA-256 of the resume manifest; full QAT budgets still run')
     parser.add_argument('--source-bits', type=int, default=11)
     parser.add_argument('--dry-run', action='store_true', help='validate input hashes and CUDA without writing')
     try:
         return run(parser.parse_args())
-    except (ValueError, OSError, RuntimeError, ImportError, ArithmeticError) as exc:
+    except (ValueError, OSError, RuntimeError, ImportError, ArithmeticError, KeyError) as exc:
         print(f'factor fit v4: {exc}', file=sys.stderr)
         return 1
 

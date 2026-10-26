@@ -1,0 +1,10 @@
+  "full_circuit_verified": false
+}
+
+/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/PRA-246-factor-fit-v4/.venv/lib/python3.13/site-packages/torch/_inductor/compile_fx.py:282: UserWarning: TensorFloat32 tensor cores for float32 matrix multiplication available but not enabled. Consider setting `torch.set_float32_matmul_precision('high')` for better performance.
+  warnings.warn(
+W1026 01:52:59.863000 97079 .venv/lib/python3.13/site-packages/torch/_inductor/utils.py:1436] [0/0] Not enough SMs to use max_autotune_gemm mode
+factor fit v4: FileNotFoundError: [Errno 2] No such file or directory: '/tmp/paperclip-run-pra-246-3ca1427e-bab-9O0uk2/tmppqnzt8g2'
+
+Set TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"
+

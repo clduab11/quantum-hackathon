@@ -1,0 +1,10 @@
+{
+  "progress": {
+    "path": "/home/cld-main/work/vqcc-data/pra246-declared-v4-03/progress.json",
+    "sha256": "696343853dbcf9ae5d2d44a9304dad8bb316d59e5e7896234616bb3565ce219c"
+  },
+  "factor": {
+    "path": "/home/cld-main/work/vqcc-data/pra246-declared-v4-03/inflight-20-000130.npz",
+    "sha256": "4f3449bd35fd39e30a46afb7986381b80bbf2d1b39e37918717585f2d6de9486"
+  }
+}
