@@ -1,0 +1,8 @@
+Dry run: exit 0, cuda:0; no output directory created.
+Initial driver tests: 3 passed, 1 skipped in 2.85s.
+Opt-in actual GPU smoke test (24 backtracks + restart): 4 passed in 91.18s; internal smoke 87.755s, ratio 4.149427291.
+Driver plus reduction tests: 4 passed, 1 skipped in 7.27s.
+40-backtrack CLI smoke: exit 0, 32 accepted steps, 178.997s, ratio 4.149426629.
+Shape probe CLI (1,496,383): exit 1, all three precisions rejected, stderr: JAX shape probe: every proposal rejected; retain the feasible start.
+uv sync and uv sync --group gpu: exit 0.
+Registers: OK registers: 227 decisions, 6 notice files, legacy index unchanged.

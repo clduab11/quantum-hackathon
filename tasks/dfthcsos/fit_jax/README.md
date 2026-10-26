@@ -2,9 +2,10 @@
 
 This package evaluates a quantisation-aware DF-THC loss on an accelerator and
 checks its five physical terms against the unmodified competition verifier.
-This is the loss-review deliverable, before an optimizer or long run. John Wick's
-approval on PRA-253 is required before a long fit. The 15-minute >=4x circuit
-smoke, shape sweeps and >=6x verified point remain future B1 deliverables.
+John Wick approved the loss at remote revision `6805eb9` on PRA-253. The driver
+adds guarded Adam steps and exact export without changing the approved angle,
+assignment or loss modules. Shape sweeps and the >=6x verified point remain
+outstanding; recorded smoke results are separate from that floor.
 
 ## Run the mirror
 
@@ -45,7 +46,7 @@ All loss arrays use float64 (`jax_enable_x64=True`). Trainable parameters are
 `offsets` W (R,C). Both one- and two-body rows have independent Givens angles.
 S and beta_1 are fixed: the official `load_inputs` replaces the factor's shifts
 with the pinned competition shifts, including the original float32 rounding.
-H2_I is recovered as W + sum_b w when a future driver serializes a factor.
+H2_I is recovered as W + sum_b w when the driver serializes a factor.
 
 For precision k in {12,11,8}, each forward evaluation uses
 
@@ -141,7 +142,8 @@ fixed package shifts even when the factor tries to supply different ones.
 
 `admissible` is a conservative proposed-step guard: either error above 20 mHa,
 Lambda <=49, E_gap <=3.914898, nonfinite metrics or E_gap >=2*Lambda returns false.
-A future driver must reject/revert such a proposed step before promoting it.
+The driver rejects/reverts such a proposed step, including its Adam moments,
+before promoting it.
 It is not an official acceptance replacement. The official floating-point
 upper-domain check is inclusive (`E_gap <=2*Lambda`), followed by the Decimal
 check; this guard deliberately rejects the boundary. The test crosses Lambda
@@ -152,3 +154,82 @@ angle point, the STE gradient must equal that continuous kernel's gradient and
 its directional finite difference. The public `terms` entry always quantizes.
 The numerical mirror meets **absolute 1e-10** on every term, including E_SOS
 and E_gap; no relative tolerance is used to hide large-energy differences.
+
+## Run the GPU smoke
+
+The fitter needs the same pinned inputs as the mirror. The evaluator subprocess
+also needs the local verifier import paths, installed in this worktree's venv:
+
+```sh
+uv run python scripts/install_kickmix.py /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation
+OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 uv run --group gpu python -m tasks.dfthcsos.fit_jax.run \
+  --starter /home/cld-main/work/vqcc-data/starter-kit \
+  --competition /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation \
+  --factor /home/cld-main/work/vqcc-data/inputs/thc/femoco_thc_r5.npz \
+  --out /home/cld-main/work/vqcc-data/pra251-smoke-example --dry-run
+```
+
+Remove `--dry-run` to execute. The output directory must not exist. Defaults are
+11 bits, 32 steps, 300 seconds of fitting, Adam rate 1e-4. The fit budget includes
+JIT compilation but stops between steps, so one step can overrun it. The measured
+900-second smoke limit includes intake, fitting, export, circuit generation and
+the official two-shot/64-shot cascade. Compilation is not hidden from this limit.
+The CLI exits 0 only if at least one step is accepted, stage 3 passes, ratio >=4,
+and the entire run takes <=900 seconds. A negative result exits 1 with evidence
+in `report.json`; intake/export errors print a diagnostic on stderr and exit 1.
+
+This command is deterministic (recorded seed 251, no random draws or salt search).
+Adam scales each gradient component by its running RMS. Every proposed step is
+hard-rounded, must pass `admissible`, and must strictly improve the training
+objective. A line search halves the rate up to 40 times. Rejection keeps both
+parameters and moments unchanged. If there is accumulated momentum, the driver
+tries one fresh Adam direction with the same hard guard; failed restart ends the
+fit. Only an accepted restart replaces the optimizer state. Repeating an identical
+rejected direction would do nothing. The start itself must be feasible: direct 8-bit rounding of
+the public factor is rejected. This driver does not claim an 8-bit recovery fit.
+
+`steps.jsonl` records every trial rate, admissibility, objective, first-step
+norms, accepted metrics and assignment time. Assignment timing uses the real
+current overlap matrix, synchronizes the device, and excludes compilation and
+an explicit warm-up call. It is a separate profiling call, so profiling overhead
+is included in total wall-clock but not in the assignment sample. All checkpoints
+use `factor_progress.py` and exclusive deterministic NPZ writes. `factor.npz`
+contains exact `quantize(angles)` words for **all** N+RB rows. It never regenerates
+one-body angles. The exported factor is independently checked with the official
+numpy terms before the circuit cascade. Checkpoints are unverified intermediates;
+only the final cascade can establish a circuit ratio.
+
+The ANF builder reuses `qrom.py` with eight scratch qubits and degree-four
+pebbling. Batch size is the largest that fits the 128-qubit cap at the current
+row count and precision (J=10 for this 11-bit start). It does not change words.
+The existing evaluator alone determines verified cost and ratio. Its scratch
+root and logs live inside the new output directory, so its stale-output cleanup
+cannot touch another job's files. No remote system or Kaggle is invoked.
+
+For a regression run, add `VQCC_RUN_JAX_SMOKE=1` to the three input variables in
+the test example and run `uv run --group gpu pytest -q tests/test_fit_jax_driver.py`.
+The smoke otherwise skips; rollback, export and checkpoint checks still run on
+GPU. To remove the local verifier path installation, run:
+`uv run python scripts/uninstall_kickmix.py /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation`.
+Removing this package affects only its mirror, driver and tests; exported factors
+and evidence remain readable independently. Outputs are exclusive, so rerunning
+requires a new directory rather than silently replacing a previous experiment.
+
+## Probe smaller shapes without promotion
+
+`python -m tasks.dfthcsos.fit_jax.probe_shapes` uses the same three input flags as
+the mirror plus repeated `--shape R,B,C` flags. For example, append
+`--shape 1,496,383 --shape 1,495,384` to test one fewer ensemble column or basis.
+It prints read-only JSON and exits 1 if all proposals fail `admissible`. A feasible
+proposal is only an initialization finding, never a circuit score.
+
+The GPU reducer keeps groups/bases with greatest squared weight norm, in their
+original order. It truncates a GPU SVD of augmented `[w; offsets]` for smaller C;
+singular-vector signs use the first largest-magnitude component. It preserves
+the submitted free one-body angles and each retained two-body row. SVD rotation
+can raise Lambda despite preserving the untruncated physical tensor; this is a
+proposal heuristic, not a guaranteed cost improvement. Each proposal at 12/11/8
+bits is compared against official numpy terms with absolute tolerance 1e-10.
+The 12-bit probe embeds the stored 11-bit angles exactly; it does not re-encode
+one-body vectors. Infeasible proposals are never fitted, checkpointed or promoted.
+No CPU fit or CPU SVD fallback exists.
