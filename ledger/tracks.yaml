@@ -20,23 +20,22 @@ tracks:
     aim: >-
       Upload only circuits that pass every check, and rebuild the best public designs in our own
       code.
-    updated_at_utc: "2026-10-26T06:30:00+00:00"
+    updated_at_utc: "2026-10-26T17:54:00+00:00"
     figures:
-      # submission-004 manifest, Kaggle public score 6.77899 (D-PRA202-16).
+      # submission-006 manifest (D-PRA202-25); invsqrt and dfthcsos unchanged from submission-005.
       - label: Square-root circuit (invsqrt)
         value: 13.16
         state: shipped
       - label: Decoder circuit (dqi)
-        value: 23.56
+        value: 26.30
         state: shipped
+        note: Rebuilt in our own code from the best openly licensed public design.
       - label: Chemistry circuit (dfthcsos)
-        value: 1.00
+        value: 4.15
         state: shipped
-        note: Google's reference circuit, unchanged.
-      # PRA-249 and PRA-250, started 2026-10-26.
+        note: Built in our own code from a public, openly licensed description of the molecule.
+      # PRA-249, started 2026-10-26. (PRA-250's decoder rebuild shipped as submission-006.)
       - label: Square-root circuit rebuilt from the best public design
-        state: in work
-      - label: Decoder circuit rebuilt from the best public design
         state: in work
 
   - id: B
@@ -60,10 +59,11 @@ tracks:
     aim: >-
       Make the decoder circuit (dqi) cheaper than any published version, starting from the best
       public one once the ship lane has rebuilt it.
-    updated_at_utc: "2026-10-26T06:30:00+00:00"
+    updated_at_utc: "2026-10-26T17:54:00+00:00"
     figures:
+      # submission-006 manifest (D-PRA202-25).
       - label: Our best decoder so far
-        value: 23.56
+        value: 26.30
         state: shipped
       - label: A decoder beyond the best public one
         state: in work

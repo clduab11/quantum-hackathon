@@ -11,15 +11,15 @@
 schema: 1
 
 leaderboard:
-  # PRA-202 `leaderboard-snapshot` revision 6: top-20 read and our rank from
-  # KAGGLE_LIST_COMPETITIONS userRank, one call each (Composio log log_eauIhDPsaYmO).
-  read_at_utc: "2026-10-26T00:22:00+00:00"
-  our_score: 6.77899          # our public score when the rank was read
-  rank: 534
-  teams: 953
-  leader_score: 20.74782
+  # PRA-202 `leaderboard-snapshot` revision 8: top-20 read (KAGGLE_VIEW_COMPETITION_LEADERBOARD) and
+  # the full CSV (publicleaderboard-2026-10-26T17:55:43.csv, 1130 rows), taken with submission-006.
+  read_at_utc: "2026-10-26T17:55:43+00:00"
+  our_score: 10.89339         # our public score when the rank was read
+  rank: 537
+  teams: 1130
+  leader_score: 23.35228
   prize_line_place: 6         # last paid place (D-PRA202-14)
-  prize_line_score: 18.66384
+  prize_line_score: 20.40926
 
 best_public_per_task:
   # PRA-202 `leaderboard-snapshot` revision 4, per-task scoreboard. Kaggle publishes no per-task
@@ -35,6 +35,8 @@ submission_notes:
   submission-002: A cheaper error-correcting decoder (dqi); the other two circuits unchanged.
   submission-003: Adds a cheaper square-root circuit (invsqrt) to the new decoder.
   submission-004: A smaller decoder circuit (dqi) that needs fewer qubits; the other two circuits unchanged.
+  submission-005: A much cheaper chemistry circuit (dfthcsos); the other two circuits unchanged.
+  submission-006: A cheaper decoder circuit (dqi) rebuilt from the best public design; the other two circuits unchanged.
 
 # The public Kaggle notebook, once it is published. null hides the link.
 notebook_url: null
