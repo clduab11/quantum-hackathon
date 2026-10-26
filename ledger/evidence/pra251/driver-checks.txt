@@ -6,3 +6,5 @@ Driver plus reduction tests: 4 passed, 1 skipped in 7.27s.
 Shape probe CLI (1,496,383): exit 1, all three precisions rejected, stderr: JAX shape probe: every proposal rejected; retain the feasible start.
 uv sync and uv sync --group gpu: exit 0.
 Registers: OK registers: 227 decisions, 6 notice files, legacy index unchanged.
+Full suite: 328 passed, 2 skipped in 182.78s; opt-in smoke skipped here and separately passed.
+Queue gate: exit 1; 120/120 merge orders conflict with shared uv.lock / notices/30-dfthcsos.txt.

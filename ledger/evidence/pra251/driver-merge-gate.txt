@@ -1,0 +1,93 @@
+### Merge-order gate: FAIL
+
+- repository `clduab11/quantum-hackathon`, base `main` at `c1961501dd4f299a0d2218b2fd07bc2c1b917dc1`
+- heads (5): #39 `2e49e77037a6`, #40 `db76a51c5855`, #41 `53196668a2d4`, #42 `9368156a904e`, mine `5fe7e7701480`
+- excluded: none
+- heads already in the base (they prove nothing): none
+- orders squashed: 120 (every permutation); clean 0, conflicting 120
+
+| squashed first | then conflicts | files |
+| --- | --- | --- |
+| #39 | mine | `uv.lock` |
+| #40 | mine | `notices/30-dfthcsos.txt` |
+| mine | #39 | `uv.lock` |
+| mine | #40 | `notices/30-dfthcsos.txt` |
+| #39 → #40 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #39 → #41 | mine | `uv.lock` |
+| #39 → #42 | mine | `uv.lock` |
+| #40 → #39 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #40 → #41 | mine | `notices/30-dfthcsos.txt` |
+| #40 → #42 | mine | `notices/30-dfthcsos.txt` |
+| #41 → #39 | mine | `uv.lock` |
+| #41 → #40 | mine | `notices/30-dfthcsos.txt` |
+| #41 → mine | #39 | `uv.lock` |
+| #41 → mine | #40 | `notices/30-dfthcsos.txt` |
+| #42 → #39 | mine | `uv.lock` |
+| #42 → #40 | mine | `notices/30-dfthcsos.txt` |
+| #42 → mine | #39 | `uv.lock` |
+| #42 → mine | #40 | `notices/30-dfthcsos.txt` |
+| mine → #41 | #39 | `uv.lock` |
+| mine → #41 | #40 | `notices/30-dfthcsos.txt` |
+| mine → #42 | #39 | `uv.lock` |
+| mine → #42 | #40 | `notices/30-dfthcsos.txt` |
+| #39 → #40 → #41 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #39 → #40 → #42 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #39 → #41 → #40 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #39 → #41 → #42 | mine | `uv.lock` |
+| #39 → #42 → #40 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #39 → #42 → #41 | mine | `uv.lock` |
+| #40 → #39 → #41 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #40 → #39 → #42 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #40 → #41 → #39 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #40 → #41 → #42 | mine | `notices/30-dfthcsos.txt` |
+| #40 → #42 → #39 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #40 → #42 → #41 | mine | `notices/30-dfthcsos.txt` |
+| #41 → #39 → #40 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #41 → #39 → #42 | mine | `uv.lock` |
+| #41 → #40 → #39 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #41 → #40 → #42 | mine | `notices/30-dfthcsos.txt` |
+| #41 → #42 → #39 | mine | `uv.lock` |
+| #41 → #42 → #40 | mine | `notices/30-dfthcsos.txt` |
+| #41 → #42 → mine | #39 | `uv.lock` |
+| #41 → #42 → mine | #40 | `notices/30-dfthcsos.txt` |
+| #41 → mine → #42 | #39 | `uv.lock` |
+| #41 → mine → #42 | #40 | `notices/30-dfthcsos.txt` |
+| #42 → #39 → #40 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #42 → #39 → #41 | mine | `uv.lock` |
+| #42 → #40 → #39 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #42 → #40 → #41 | mine | `notices/30-dfthcsos.txt` |
+| #42 → #41 → #39 | mine | `uv.lock` |
+| #42 → #41 → #40 | mine | `notices/30-dfthcsos.txt` |
+| #42 → #41 → mine | #39 | `uv.lock` |
+| #42 → #41 → mine | #40 | `notices/30-dfthcsos.txt` |
+| #42 → mine → #41 | #39 | `uv.lock` |
+| #42 → mine → #41 | #40 | `notices/30-dfthcsos.txt` |
+| mine → #41 → #42 | #39 | `uv.lock` |
+| mine → #41 → #42 | #40 | `notices/30-dfthcsos.txt` |
+| mine → #42 → #41 | #39 | `uv.lock` |
+| mine → #42 → #41 | #40 | `notices/30-dfthcsos.txt` |
+| #39 → #40 → #41 → #42 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #39 → #40 → #42 → #41 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #39 → #41 → #40 → #42 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #39 → #41 → #42 → #40 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #39 → #42 → #40 → #41 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #39 → #42 → #41 → #40 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #40 → #39 → #41 → #42 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #40 → #39 → #42 → #41 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #40 → #41 → #39 → #42 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #40 → #41 → #42 → #39 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #40 → #42 → #39 → #41 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #40 → #42 → #41 → #39 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #41 → #39 → #40 → #42 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #41 → #39 → #42 → #40 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #41 → #40 → #39 → #42 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #41 → #40 → #42 → #39 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #41 → #42 → #39 → #40 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #41 → #42 → #40 → #39 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #42 → #39 → #40 → #41 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #42 → #39 → #41 → #40 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #42 → #40 → #39 → #41 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #42 → #40 → #41 → #39 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #42 → #41 → #39 → #40 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+| #42 → #41 → #40 → #39 | mine | `notices/30-dfthcsos.txt`, `uv.lock` |
+
