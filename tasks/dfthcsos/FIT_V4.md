@@ -1,9 +1,66 @@
-# GPU fit v4 preparation (PRA-246)
+# GPU fit v4 (PRA-246)
 
-Status: runtime preparation and source audit only. The fitting driver is not
-implemented yet. There is no v4 factor, numerical negative, or shipping claim.
-PRA-245 supplies the declared THC factor and its hash before the ship-lane fit.
-The Google-only run follows that fit, as requested by the board.
+Status: the full stage driver is implemented and the declared-input GPU run
+has started. Numerical completion and final acceptance are pending. The public factor handed off by PRA-245 is pinned in the CLI.
+The separate Google-only run follows the ship-lane run. Results are written by
+the unmodified competition evaluator, not by the optimization loss.
+
+## Run the declared factor
+
+```sh
+uv run --group gpu python -m tasks.dfthcsos.factor_fit_v4 \
+  --starter /home/cld-main/work/vqcc-data/starter-kit \
+  --competition /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation \
+  --factor /home/cld-main/work/vqcc-data/inputs/thc/femoco_thc_r5.npz \
+  --sha256 809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5 \
+  --source-bits 11 --out /home/cld-main/work/vqcc-data/pra246-declared-v4-01 --dry-run
+```
+
+Remove `--dry-run` to fit. Both forms check all declared input/package hashes
+and real CUDA operations. Dry-run writes no files. The fitter writes a new
+`--out` directory and refuses any existing output path. No source checkpoint is
+overwritten. No network, service, credentials, circuit or Kaggle call occurs.
+Exit 0 means a verified numerical 8-bit point passed (or successful dry-run),
+3 means the published schedule completed without one, and 1 means an error.
+An interrupted run has `progress.json` but no completed `report.json`.
+
+For the second run use `--factor` pointing to the starter-kit
+`starter_kit/starter/task1_factorization/FeMoco76_65_60_60.npz` and its exact hash
+from `ledger/manifests/inputs/pra198-google-v4.json`, with a new output directory.
+Only the two declared hashes are admitted. The Google initializer is merged
+with 8 PSD sweeps to (1,496,384) using the existing tested initializer. No
+public factor, learned checkpoint or word table enters that run.
+
+Implementation map: `gpu_fit/continuous.py` runs the published Torch L-BFGS
+and GN stage methods. `quantize.py` ports Ahmed's progressive freezing with
+Torch compilation; `fixed.py` ports fixed-word QR and the joint barrier;
+`gauge.py` ports augmented column rotations; `integer.py` and `one_body.py`
+port exact discrete repair. `native.py` adapts these to the unchanged official
+`evaluate_words`; `reporting.py` persists exclusive checkpoints through
+`factor_progress.py`, encoded snapshots, metrics and best ordinary-QROM layout
+under the 128-qubit cap. `port-map.json` identifies the exact selected source
+functions. This is attributed source reuse, not a claim of independent invention.
+
+The source float32 CUDA precision, iteration/time budgets, convergence gates
+and float64 physical checks are retained. The task's shape, warm start and
+11-then-8 continuation replace the source's unrelated multi-case search and
+independent 12/10/9 branches. Postprocessing retains the incoming `H2_I`
+warm start rather than resetting that array to zero as the upstream driver
+does; the same published offset optimization then runs. CPU helpers are the published QR/barrier/gauge/
+one-body routines; the complete fit cannot start without CUDA and is never a
+CPU-only run. The optimizer seed is 95101, TF32 is off, deterministic Torch
+algorithms are required, and `CUBLAS_WORKSPACE_CONFIG=:4096:8` is explicit.
+No cross-hardware bit-for-bit optimizer claim is made. Fixed NPZ metadata
+and ordered keys make a given checkpoint deterministic to serialize.
+
+Every persisted numerical point includes its exact words, factor hash,
+shape/bits, error1/error2, Lambda, E_gap, lambda_eff, predicted T/Q/ratio,
+wall-clock and peak GPU allocation. `passing-8bit.json` appears only after
+serialized-file reload and a second unchanged-evaluator pass. It is a
+numerical handoff, not a full circuit-verifier or submission authorization.
+Raw `inflight-*` files remain explicitly unverified; the corresponding encoded
+point has the official numerical result. If a source hash changes mid-run,
+the driver rejects completion and retains partial evidence.
 
 ## CUDA dependency and preflight
 
@@ -59,8 +116,8 @@ GPU. No factor, checkpoint or credentials are discovered implicitly.
 
 A plain `uv sync` omits the optional GPU group. Use `--group gpu` on fitting
 and test commands so uv retains PyTorch. Use a separate worktree/venv per run.
-Removing this runtime helper affects only its CLI and its tests; no existing
-fitter calls it yet. There is no deployed service or machine change to undo.
+Removing this runtime helper affects its CLI, its tests and the v4 fitter,
+which calls it before writing any checkpoint. There is no deployed service or machine change to undo.
 
 ## Published schedule audit
 
@@ -70,7 +127,8 @@ Paired DQI + R6 DF-THC*, v6, Apache-2.0, notebook SHA-256
 URL: https://www.kaggle.com/code/anazemcev/quantum-circuits-881q-paired-dqi-r6-df-thc.
 The pinned dataset v2 source URLs and individual hashes are in
 `ledger/evidence/pra242/method-parents.json`; the v4 audit rechecks those bytes.
-This preparation copies no upstream implementation or numerical array.
+Selected mathematical source definitions are ported with attribution. No upstream
+loader, CLI, circuit or numerical payload is copied into code.
 
 | Stage | Published driver / implementation settings |
 |---|---|
@@ -94,30 +152,51 @@ declared adaptations, not a literal replay of an upstream THC training run.
 Gluzdov v14 describes the shape but does not publish its optimizer; this does
 not prevent reusing the published R6 methods at the declared THC shape.
 
-The v4 implementation must record all settings and actual stop reasons. It
-must not silently replace the full iteration limits with PRA-242's CPU
-fraction, inherit unrelated-case session skips, or declare a negative because
-a wall clock expires. Source time limits and task-driven changes must remain
-explicit. The published QR/barrier/gauge routines use NumPy/SciPy; the driver
+The driver records settings and actual stop reasons. It retains full published
+iteration limits and source per-stage time limits (700/450 seconds), and removes
+unrelated-case remaining-session skips. A source-time-limit stop is reported
+as such, never as convergence or proof of shape infeasibility. The published QR/barrier/gauge routines use NumPy/SciPy; the driver
 uses CUDA for continuous/GN/QAT and two-body repair. That hybrid fact must be
 reported accurately instead of describing every source operation as CUDA.
 
 ## Input and completion boundary
 
-Wait for John Wick's PRA-245 handoff: selected file under
-`/home/cld-main/work/vqcc-data/inputs/thc/`, SHA-256, dataset/version/licence,
-array schema, encoding and unmodified-verifier metrics. Intake must verify the
-hash and shape before any fit. Binary inputs and outputs stay outside git.
+John Wick's PRA-245 handoff selected Gluzdov v8, SHA-256
+`809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5`.
+Intake independently reproduces error1 6.383440999 mHa, error2 19.999496917
+mHa, Lambda 294.453313580, gap 3.914898049999465, lambda_eff 47.855856272.
+The file is immutable and remains outside git. `ledger/evidence/pra246/intake.json`
+contains the full result. The documented source methods, not these original
+numbers, determine whether an 8-bit refit passes.
 
-Remaining implementation: adapt continuous/GN/QAT, fixed-word QR/joint barrier,
-column gauge and integer repair into small modules; exclusive checkpoints via
-`factor_progress.py`; evaluator-backed reporting after every saved point;
-tests for new numerical paths; ship-lane run first, Google-only run second.
-Use a fixed optimizer seed without modifying verifier salts or grinding seeds.
+Check new numerical paths with `uv run --group gpu pytest tests/test_factor_fit_v4.py`.
+Tests compare GPU tangent derivatives to dense and finite-difference forms,
+QR loss/gradients to a dense objective, column gauge Gram preservation, exact
+integer deltas and stale-state rejection, real CUDA continuous descent, and
+progressive freezing/word decoding with deliberate CPU refusal. The tiny QAT
+fixture uses the same objective in eager mode to keep CI fast; the actual
+training driver uses the published compiled path.
 
-Every point needs shape, bits, error1/error2, Lambda, E_gap, lambda_eff,
-predicted T/Q/ratio, elapsed time, GPU memory, source/input/checkpoint hashes.
-Acceptance is error1 and error2 <=20 mHa (aim <=19.5), Lambda>49.0,
-E_gap>3.914898 using the unchanged competition verifier. Hand a passing
-factor hash to T4 immediately. Circuit verification and Kaggle submission
-belong to the downstream task and John Wick. This draft is not ready to merge.
+Acceptance is error1/error2 <=20 mHa (aim <=19.5), Lambda>49.0 and
+E_gap>3.914898. Hand passing factor hashes to PRA-248 immediately. Full circuit
+verification and Kaggle submission stay on the downstream tasks. Until both
+runs and all requested reporting are complete, the PR remains a draft.
+
+## Long-run process lifetime
+
+The first run stopped at the heartbeat boundary during GN. Its71 points are
+retained as an interrupted run, not a completed negative. Run02 restarts every
+stage from the declared input. `ledger/evidence/pra246/declared-v4-02.launch.json`
+records the exact argv, cwd, process group, log and exit-record paths; the adjacent
+`declared-v4-02.runner.py` is the exact one-shot supervisor used. It runs in a new
+process session with closed stdin and an exclusive log. The next issue monitor
+must verify that it survived the heartbeat; a scheduled monitor alone is not
+proof of process survival. Do not start another fit while that process is alive.
+
+The launch explicitly puts TORCHINDUCTOR_CACHE_DIR, TRITON_CACHE_DIR,
+TORCH_EXTENSIONS_DIR and CUDA_CACHE_PATH beneath the new output directory.
+Without these settings, the CUDA compiler can use its default user cache paths.
+The supervisor writes the log and exit JSON beside the output directory. A zero
+exit is accepted only with a complete report and reloaded passing factor; absence
+of an exit record or report is not success. No daemon or production service is
+installed. The issue monitor checks the process and the on-disk records.

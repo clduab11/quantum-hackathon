@@ -1,0 +1,27 @@
+{
+  "input_path": "/home/cld-main/work/vqcc-data/inputs/thc/femoco_thc_r5.npz",
+  "sha256": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5",
+  "bytes": 1871575,
+  "bits": 11,
+  "shape": [
+    1,
+    496,
+    384
+  ],
+  "metrics": {
+    "error_1": 0.006383440998581123,
+    "error_2": 0.019999496917408103,
+    "Lambda": 294.45331358012606,
+    "E_SOS": -22144.18824805,
+    "E_gap": 3.914898049999465,
+    "lambda_eff": 47.855856272347104,
+    "gap_in_domain": true
+  },
+  "predicted_layout": {
+    "J": 9,
+    "T": 21570,
+    "Q": 822,
+    "angle_qubits": 118,
+    "model": "ordinary-QROM upper bound; not circuit verification"
+  }
+}

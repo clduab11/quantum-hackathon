@@ -1,0 +1,111 @@
+{
+  "parent": "anazemcev/vqcc-viberteam-verified-circuits v2, Apache-2.0",
+  "scope": "Selected mathematical definitions; no upstream loaders, circuits, CLI, or numerical payloads. Driver and checkpoint integrations are Praxen code.",
+  "definitions": [
+    {
+      "source": "chemistry.py",
+      "sha256": "b644e557c0068b696630cb9c7ad764d3888f1d04ed68384042380443836c53c0",
+      "definitions": [
+        "copy_data",
+        "native_inputs",
+        "encode_vectors",
+        "decoded_vectors",
+        "refresh_one_body",
+        "optimize_effective_norm"
+      ]
+    },
+    {
+      "source": "learned_factor_compile.py",
+      "sha256": "f246c54d84c671ae5bba44138490aab93789a6f2848545a62abf65b2f3e81fcd",
+      "definitions": [
+        "canonicalize_words",
+        "restore_factor"
+      ]
+    },
+    {
+      "source": "structural_post.py",
+      "sha256": "8ffd89ba15b7de5f653ed9ff98089544dd1395cd7b7e95db3076921973db1186",
+      "definitions": [
+        "qr_model",
+        "fixed_word_fit",
+        "joint_norm"
+      ]
+    },
+    {
+      "source": "fit_grid_candidate.py",
+      "sha256": "dfdd7e9e4de4d81a769773996da4d6cd0b74b4f4838673b1b9aa00daa37c87c4",
+      "definitions": [
+        "prox_squared_l1"
+      ]
+    },
+    {
+      "source": "r26_refine.py",
+      "sha256": "04524b33df42ac3c7f06babd1d219c0d794ca91e76648e08871e99100088931d",
+      "definitions": [
+        "deterministic_column_gauge"
+      ]
+    },
+    {
+      "source": "discrete_polish.py",
+      "sha256": "3fc9b10f2d46bdafe4efced8b46c6876bbd67307fd731af84877c66021476dc1",
+      "definitions": [
+        "decode_numpy",
+        "angle_vjp_numpy",
+        "_sum",
+        "exact_rank2_deltas",
+        "CandidateEvaluation",
+        "ExactAnglePolisher"
+      ]
+    },
+    {
+      "source": "one_body_polish.py",
+      "sha256": "bfb5a9ca1fa55d3de1b1487a5d192ae0fb57bdc7e5faa750f7c39eeca867f97a",
+      "definitions": [
+        "polish"
+      ]
+    },
+    {
+      "source": "structural_train.py",
+      "sha256": "cd2cb5be4b7f532ccdd8e618701eff55d6be4e958d55a3af97b28ac79364817f",
+      "definitions": [
+        "projectors",
+        "columns",
+        "physical_error"
+      ]
+    },
+    {
+      "source": "gauss_newton.py",
+      "sha256": "9e34705e8702fe8fdbd2b3c660e51f7ec10f87115226b47af72f08ddf1096d95",
+      "definitions": [
+        "Geometry",
+        "pcg"
+      ]
+    },
+    {
+      "source": "ahmed_quantize.py",
+      "sha256": "036f53d7952f3aefe19f35d111435aa25f909703b7cf3082f10e3cb4bee0dae3",
+      "definitions": [
+        "x_sym",
+        "frob_err",
+        "d_penalty",
+        "log_depth_tree_edges"
+      ]
+    },
+    {
+      "source": "ahmed_quantize.py",
+      "sha256": "036f53d7952f3aefe19f35d111435aa25f909703b7cf3082f10e3cb4bee0dae3",
+      "definitions": [
+        "Tree",
+        "gauge_angles",
+        "quantize"
+      ]
+    },
+    {
+      "source": "learned_factor_compile.py",
+      "sha256": "f246c54d84c671ae5bba44138490aab93789a6f2848545a62abf65b2f3e81fcd",
+      "definitions": [
+        "validate_compact"
+      ]
+    }
+  ]
+}
