@@ -130,3 +130,7 @@ Candidate `pra197-dqi-bm-forney`. Salt `PRA171_LOCAL_PUBLIC_FIXED_SALT_0001` onl
 `dqi.kmb` in that zip is the file above. `invsqrt.kmb` is the current `tasks/invsqrt/generate.py` output, SHA-256 `75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd`. The dfthcsos files match `REFERENCE_ANGLE_SHA256` and `REFERENCE_NPZ_SHA256`. They were copied from the competition sample after that hash check. This run did not rebuild them.
 
 G0, G1, G2, G3, G4 and G5 PASS. G3 reports dqi value errors 0, phase errors 3, ratio 14.22623531711937, and a three-task geometric mean 5.721389477411995. G2 dqi used 1,536 shots and is not parity. G4 beats archive best `pra200-invsqrt-selected` (2.3612294080657024). G5 checked out `0b5858532fbef2ff3ce0be0b9e6e2c6d2cb8a28e` and rebuilt invsqrt, dqi and dfthcsos. All three file sets matched. The runner's enqueue step was not called. The candidate is not queued and is not shipped. PRA-203 and PRA-204 remain open. Decision rows: D-PRA197-12 and D-PRA197-13.
+
+## PRA-250 submission-9 Hankel port
+
+`generate_hankel.py` selects the new source-only decoder in `hankel/`. See [its provenance map](hankel/PROVENANCE.md), including the SomeJoint v7 source pin, explicit Apache-2.0 grant, inherited lineage, excluded projection source, and per-file changes. The #33 `generate_jfraction.py` path remains available unchanged. Measurement and candidate evidence are in `docs/reports/pra250-dqi.md`; no notebook outputs are generator inputs.

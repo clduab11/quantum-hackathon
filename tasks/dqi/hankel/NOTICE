@@ -1,0 +1,32 @@
+Source-built DQI audit and reproduction, 25 October 2026
+
+The in-place J-fraction decoder and its finite-field and polynomial arithmetic
+are credited to SomeJoint / Agniv Banerjee. Public source notebook:
+https://www.kaggle.com/code/somejoint/quantum-circuits-8-95-lb-cost-breakdown
+
+The classical-mask projection is credited to Manwithacat. Pinned public notebook:
+https://www.kaggle.com/code/manwithacat/dqi-classical-mask-projection-9-13909?scriptVersionId=362021360
+Notebook SHA-256 bd403c9c5761c3dbe031fa47f66351dd6d3fd99b04c17351f36f0c22952e4211.
+Its source explicitly credits SomeJoint / Agniv Banerjee's decoder under the
+Apache License, Version 2.0, subject to that upstream's notices. Its additional
+arithmetic/chemistry portfolio artifacts are not copied into this DQI folder.
+
+Google Quantum AI / competition authors: unchanged official task specification,
+reference code, verifier and Kickmix. These are installed dependencies, not
+relicensed here. No upstream authors' endorsement is implied.
+
+Our additions are the source authentication/build/verifier wrapper, independent
+algebraic fixtures and the audit. No claim to originate the upstream decoder or
+mask projection is made. The extracted source files remain unmodified; their
+individual byte hashes are recorded in pinned_sources.json. The local Apache
+license text is supplied as LICENSE.txt. Further upstream notices in a full
+published distribution must remain attached rather than being replaced by this
+short provenance note.
+
+Paired extraction idea: Phuc Thai EXP-119a, public V9 notebook
+https://www.kaggle.com/code/phucthaiv02/qcc-verified-portfolio-df-thc-retraining-study?scriptVersionId=362089830
+Only the small licensed notebook description was used. Its unpublished generator
+and binary DQI asset were not downloaded or used. Independent paired arithmetic,
+all-chart zero-pivot extension, source generator and fixtures: ViberTeam task E.
+The HMR-first inverse and newer Forney/history schedules are attributed to
+ViberTeam task B; its accepted source hashes are separately recorded.

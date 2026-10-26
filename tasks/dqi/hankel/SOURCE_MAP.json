@@ -1,0 +1,105 @@
+{
+  "source_url": "https://www.kaggle.com/code/somejoint/quantum-circuits-13-54-local-gm-cost-gains",
+  "notebook_version": 7,
+  "source_sha256": "3b0df548f40676117fb6f53cd7c9ab0fc5ca29b7ed56f90581921e443e92d7eb",
+  "files": [
+    {
+      "file": "hankel_half.py",
+      "upstream_path": "hankel_half.py",
+      "upstream_sha256": "3fe84f046436cae04ba1cbad764e4d3b099cce4af52713bee3e7aa71893fbeaa",
+      "port_sha256": "98b2d52a82096f350b0098b2436ec19515d6630625b06f5fc373d246ef4ecb25",
+      "changes": "Selected production functions; package imports; removed notebook bootstrap and microcheck CLIs. Reuse jfraction arithmetic and Praxen projection."
+    },
+    {
+      "file": "inplace_poly.py",
+      "upstream_path": "central2/inplace_poly.py",
+      "upstream_sha256": "0554cbca7a160ea1dee83eae492ddd91ad184e4894203e5a3a4b762703f5b68a",
+      "port_sha256": "d3081fcc7c7cc1a37bd00267440a8b1e29da321ca3be3fcf3a02bcff2b7ef724",
+      "changes": "Selected production functions; package imports; removed notebook bootstrap and microcheck CLIs. Reuse jfraction arithmetic and Praxen projection."
+    },
+    {
+      "file": "border_circuit.py",
+      "upstream_path": "central2/border_circuit.py",
+      "upstream_sha256": "f0c34d0634f660f733863d51af9efa3bd97d31d89980541fa1756a3c42ef9dc5",
+      "port_sha256": "174e8380b8c383eeabb29f189cb72c79d9814f95509c4882a35fe654ecd0103b",
+      "changes": "Selected production functions; package imports; removed notebook bootstrap and microcheck CLIs. Reuse jfraction arithmetic and Praxen projection. Explicit norm-recycling import replaces upstream runtime substitution."
+    },
+    {
+      "file": "retry_circuit.py",
+      "upstream_path": "central2/retry_circuit.py",
+      "upstream_sha256": "0cb44f6632ca588ff6d70fc0146fd2857ab2c23fc9d44d28a7c25d26c75ee7d6",
+      "port_sha256": "0ef6357e0c51af7b6c77071529d31bdf7d99e0f1c195f920df2725f404be6d44",
+      "changes": "Selected production functions; package imports; removed notebook bootstrap and microcheck CLIs. Reuse jfraction arithmetic and Praxen projection."
+    },
+    {
+      "file": "central_circuit.py",
+      "upstream_path": "central2/central_circuit.py",
+      "upstream_sha256": "d952a3c1a45e540bc6a82068cc8d7b4be0ddeacb7483d04e3136dffff73e7443",
+      "port_sha256": "abc1d3b927090f08090d069e3d460932c2e23e60aecc58948d7de3c1888b5169",
+      "changes": "Selected production functions; package imports; removed notebook bootstrap and microcheck CLIs. Reuse jfraction arithmetic and Praxen projection."
+    },
+    {
+      "file": "recursive_ldu.py",
+      "upstream_path": "central2/recursive_ldu.py",
+      "upstream_sha256": "df9cd8845bbe26295901b9a3ef6d0b9bb298d0dd477dca7de5546fb2ec57272d",
+      "port_sha256": "8750627c57eddad8de7e3dc6491ee8dea3b762ac3b645f0273d90b7ec8d06be7",
+      "changes": "Selected production functions; package imports; removed notebook bootstrap and microcheck CLIs. Reuse jfraction arithmetic and Praxen projection."
+    },
+    {
+      "file": "forney_bezout.py",
+      "upstream_path": "central2/forney_bezout.py",
+      "upstream_sha256": "c134a55ad41cfc8b5a7e13a8ac1dbfb0f06cb3397d01360a51ee3e84ca48bee3",
+      "port_sha256": "f6576ed547ce6fc5610bd08d28f12f52936ffb22d7d9e03c8e2d2362daed1d26",
+      "changes": "Selected production functions; package imports; removed notebook bootstrap and microcheck CLIs. Reuse jfraction arithmetic and Praxen projection."
+    },
+    {
+      "file": "gold_cube.py",
+      "upstream_path": "gold26/gold_cube.py",
+      "upstream_sha256": "4f6d10b4a7e548b8d81a631a1298ae32ca320506d788703ed8a407aec7fd4fef",
+      "port_sha256": "2429fc406edb8e854798cf8c5a485e32ddf04c51f485a2c47c22788866f5becd",
+      "changes": "Selected production functions; package imports; removed notebook bootstrap and microcheck CLIs. Reuse jfraction arithmetic and Praxen projection."
+    },
+    {
+      "file": "gold_extraction.py",
+      "upstream_path": "gold_extraction.py",
+      "upstream_sha256": "6bb93d17c742449666d9e7d6185dba4cd79815b02423cf6cd019640cc6221afb",
+      "port_sha256": "69bca5cf507cd02cc701374fced949e34cb4ed8454854654ed17120c7ec72ba5",
+      "changes": "Selected production functions; package imports; removed notebook bootstrap and microcheck CLIs. Reuse jfraction arithmetic and Praxen projection."
+    },
+    {
+      "file": "cyclic_gold.py",
+      "upstream_path": "cyclic_gold.py",
+      "upstream_sha256": "d51ab45ef43ec66f1dc38fc30986f6df638aedcd8f99ad752cca827f302b8cbb",
+      "port_sha256": "dc28fba1af71d4e82a71e63b36b04008a38f6a62c92a3b6db24b4fcd16d24f97",
+      "changes": "Selected production functions; package imports; removed notebook bootstrap and microcheck CLIs. Reuse jfraction arithmetic and Praxen projection."
+    },
+    {
+      "file": "hermitian12-search-check.json",
+      "upstream_path": "gold26/hermitian12-search-check.json",
+      "upstream_sha256": "a10ce67df5bab5a089a12debea5342045e0ef17ce7ab66bfd2b5b162662cf001",
+      "port_sha256": "a10ce67df5bab5a089a12debea5342045e0ef17ce7ab66bfd2b5b162662cf001",
+      "changes": "Verbatim source data or attribution."
+    },
+    {
+      "file": "LICENSE",
+      "upstream_path": "upstream/LICENSE.txt",
+      "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "port_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "changes": "Verbatim source data or attribution."
+    },
+    {
+      "file": "NOTICE",
+      "upstream_path": "upstream/NOTICE.txt",
+      "upstream_sha256": "65a08ae66c1bc7dca13f077c7e61222f7c98c2b52f81c4cd300fad52b1f77447",
+      "port_sha256": "65a08ae66c1bc7dca13f077c7e61222f7c98c2b52f81c4cd300fad52b1f77447",
+      "changes": "Verbatim source data or attribution."
+    },
+    {
+      "file": "decoder.py",
+      "upstream_path": "runtime.py",
+      "upstream_sha256": "b951b201efba438544f6b2a1daad6332d9342e54a5d8443541a4f53a2beff4b8",
+      "port_sha256": "b749d3381f0ecf3c209342a0f0b74ef1262e43949e3a7e8a5a814838e8c1e730",
+      "changes": "Reuse committed paired decoder skeleton and new Praxen projection; fixed Hankel phase/cyclic extraction; explicit package imports and builder initialization."
+    }
+  ]
+}
