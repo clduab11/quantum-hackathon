@@ -26,8 +26,8 @@ The command prints JSON and writes no files. It refuses a missing accelerator,
 changed source/input hash or absolute disagreement greater than 1e-10 with a
 nonzero exit and a diagnostic on stderr. Repeated runs use the same inputs;
 wall-clock timing can vary. There is no seed search, optimizer step, checkpoint,
-circuit build, remote operation or Kaggle upload in this command. Removing this
-package removes only the mirror/loss API; no other tool imports it.
+circuit build, remote operation or Kaggle upload in this command. The driver in this
+package also imports the loss API; no external tool depends on this package.
 
 `uv sync` does not install optional GPU packages. Use `--group gpu` for all loss
 commands. JAX 0.12.0.1 is pinned with the documented `cuda12` extra, the concrete
@@ -233,3 +233,21 @@ bits is compared against official numpy terms with absolute tolerance 1e-10.
 The 12-bit probe embeds the stored 11-bit angles exactly; it does not re-encode
 one-body vectors. Infeasible proposals are never fitted, checkpointed or promoted.
 No CPU fit or CPU SVD fallback exists.
+
+## Bounded continuation result
+
+Run04 (`--fit-seconds 720 --steps 512`) completed on RTX 4060 Ti with 248 accepted
+steps. The unchanged official cascade passed at 4.149426342x in 786.344 seconds;
+this remains below the 6x floor and is not a score improvement. No angle words
+changed; maximum weight change was 9.712e-9. Thus a low step rate can satisfy the
+smoke while making negligible progress on the intended quantization problem.
+Do not interpret accepted-step count as optimization success. D-PRA251-04 and
+`ledger/evidence/pra251/long-04-result.json` preserve this negative result.
+
+No B1 fit remains active. The specified second `(10,129,60)` public factor was
+not found in the declared handoff; PRA-258 asks John Wick for its path, hash and
+source record or a documented correction. The tested reducer cannot initialize
+a feasible smaller factor from the existing start (D-PRA251-03). A new feasible
+initialization or a separately reviewed change of fitting policy is needed;
+these bounded failures do not establish that smaller optimized factors are
+impossible. The loss review conditions remain in force.
