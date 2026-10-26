@@ -77,11 +77,11 @@ its cost and baseline.
 | `measured` | bool | True only when the numbers come from a captured verifier run (`ledger.evidence`). Unmeasured numbers never count as best-per-task or archive |
 | `metrics` | map | Task-specific extras: invsqrt `toffoli_equivalent`, `rotation_eps`, `worst_error_over_tolerance`; dqi `repetition_factor`, `empirical_error_rate`; dfthcsos `lambda_eff`, `Lambda`, `E_gap`, `error_1`, `error_2`, `angles_qubits`, `persistent_qubits`, `temporary_qubits` |
 | `evidence` | list | SHA-256 of each evidence record that fed this task |
-| `provenance.licence` | str | `Apache-2.0`, `CC-BY-4.0`, `own` (Praxen code under the repo's Apache-2.0) or `reference-only` |
+| `provenance.licence` | str | `Apache-2.0`, `CC-BY-4.0`, `own` (Praxen code under the repo's Apache-2.0), `no-licence` (the author attached none) or `reference-only` |
 | `provenance.parent_url` | str \| null | Required unless `own` |
 | `provenance.notes` | str | Free text |
 
-`reference-only` parents (for example the k256.dev dqi artifact) may inform work; G5 refuses to ship them (R10).
+The licence is a record for the end-of-hackathon credits and licensure pass; G5 does not gate on it (D-PRA273-01). The one exception: `reference-only` parents (for example the k256.dev dqi artifact) may inform work, and G5 refuses to ship them (AGENTS.md R10).
 
 ### Gate record
 
@@ -118,7 +118,7 @@ its cost and baseline.
 | G2 | Fast proxy: invsqrt exhaustive numpy mirror; dqi subsampled shots; dfthcsos `heuristic_costs` + error/Λ/E_gap (`tasks.<task>.gates:g2_proxy`) | yes, with reason | generator owner |
 | G3 | Full local verifier at full shots (`harness.score_local:score_submission`); folds results into the manifest as evidence | no | P0-4 |
 | G4 | Measured geometric mean strictly beats the parent and the best measured archived candidate | yes, with reason | ledger |
-| G5 | Provenance shippable; clean 40-hex generator commit; zip holds exactly the manifest's files and is their deterministic build; clean `git worktree` at `generator_commit` regenerates every file byte for byte with `VQCC_DATA` pointing at a staging directory that holds only the config's declared, SHA-256-pinned `inputs`; an output byte-identical to a declared input is recorded as `copied`: a copied circuit fails and a circuit can never be a declared input, a copied non-circuit input (the declared dfthcsos factorization) is accepted (R10, PRA-211, D-PRA211-05) | no | ledger |
+| G5 | No reference-only parent; clean 40-hex generator commit; zip holds exactly the manifest's files and is their deterministic build; clean `git worktree` at `generator_commit` regenerates every file byte for byte with `VQCC_DATA` pointing at a staging directory that holds only the config's declared, SHA-256-pinned `inputs`; an output byte-identical to a declared input is recorded as `copied`: a copied circuit fails and a circuit can never be a declared input, a copied non-circuit input (the declared dfthcsos factorization) is accepted (R10, PRA-211, D-PRA211-05) | no | ledger |
 
 Rules enforced by the runner:
 

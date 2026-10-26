@@ -37,11 +37,14 @@ TASKS = ("invsqrt", "dqi", "dfthcsos")
 
 KINDS = ("candidate", "submission")
 
-# Licence labels a parent can carry (R10). "own" means Praxen-original code, shipped under the
-# repository's Apache-2.0 licence. "reference-only" parents (for example the k256.dev dqi
-# artifact) may inform work but are never shipped; G5 rejects them.
-LICENCES = ("Apache-2.0", "CC-BY-4.0", "own", "reference-only")
-SHIPPABLE_LICENCES = frozenset({"Apache-2.0", "CC-BY-4.0", "own"})
+# Licence labels a parent can carry (R10). They are records for the credits and licensure pass
+# the board will run near the end of the hackathon; G5 does not gate on them (board directive,
+# PRA-273, D-PRA273-01). "own" means Praxen-original code, shipped under the repository's
+# Apache-2.0 licence. "no-licence" means the parent's author attached no licence.
+# "reference-only" parents (for example the k256.dev dqi artifact) may inform work but are never
+# shipped (AGENTS.md R10); G5 rejects them.
+LICENCES = ("Apache-2.0", "CC-BY-4.0", "own", "no-licence", "reference-only")
+NEVER_SHIPPED_LICENCES = frozenset({"reference-only"})
 
 GATE_STATUSES = ("PASS", "FAIL", "WAIVED")
 GATE_IDS = ("G0", "G1", "G2", "G3", "G4", "G5")
