@@ -1,0 +1,55 @@
+{
+  "task": "PRA-280",
+  "observed_utc": "2026-10-26T21:44:42.366886+00:00",
+  "shipping": {
+    "dataset": "michaelrustad/vqcc-dfthc-r10-merged-groups",
+    "dataset_id": 12856598,
+    "version": 1,
+    "licence": "Other (specified in description)",
+    "url": "https://www.kaggle.com/datasets/michaelrustad/vqcc-dfthc-r10-merged-groups?datasetVersionNumber=1",
+    "path": "fact/dfthc_r10_b129_c60_brot8.npz",
+    "staged": "inputs/rustad/dfthc_r10_b129_c60_brot8.npz",
+    "sha256": "27dda66f38c60821665cfc74e51d1bd2bfd2a7f0d902dbaffcdc5b26543dadad",
+    "bytes": 3062892,
+    "shape_RBC": [
+      10,
+      129,
+      60
+    ],
+    "brot": 8
+  },
+  "method_sources": [
+    {
+      "file": "rank_parity.py",
+      "path": "source/chemistry_6p69/reproduction/rank_parity.py",
+      "sha256": "9471a33a3c2907bfccf70acd1ffc5df0104dcee9a891643bbf25cb437626cb5b",
+      "url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=6",
+      "version": 6,
+      "licence": "Apache 2.0"
+    },
+    {
+      "file": "hyper_native.py",
+      "path": "source/chemistry_6p69/reproduction/hyper_native.py",
+      "sha256": "131b45c948699d3931ac375b0e67bdbd7aca557b9739da3c2218c41616f15cd9",
+      "url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=6",
+      "version": 6,
+      "licence": "Apache 2.0"
+    },
+    {
+      "file": "compile_four_address.py",
+      "path": "source/chemistry_four_address/compile_four_address.py",
+      "sha256": "16378294fb5544f838a5614a62a6310c8dc3a17f739e3fd0e289ef6d900adc19",
+      "url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=6",
+      "version": 6,
+      "licence": "Apache 2.0"
+    }
+  ],
+  "method_reference": {
+    "url": "https://www.kaggle.com/code/alexchilton/toffolis-go-18-3-schur-dqi-at-883-qubits",
+    "version": 37,
+    "run_id": 362577442,
+    "licence": "None stated for notebook code; credits label portfolio circuits Apache-2.0",
+    "sha256": "7e824e1530ae5a27cb6c81e5c4a0121f6fee8b65dfe3619da04514c1dd1d7dcc"
+  },
+  "note": "Licence fields recorded as found, not gated (PRA-273). Only the NPZ is a declared runtime input. Exact projective gauge is compiled into circuits; NPZ bytes remain unchanged. No source circuits, certificates, gauge data or private datasets are inputs."
+}
