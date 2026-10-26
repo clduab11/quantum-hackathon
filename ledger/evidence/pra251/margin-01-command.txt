@@ -1,0 +1,2 @@
+OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 timeout --kill-after=5 1190 .venv/bin/python -m tasks.dfthcsos.fit_jax.margin_run --starter /home/cld-main/work/vqcc-data/starter-kit --competition /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation --factor /home/cld-main/work/vqcc-data/inputs/thc/femoco_thc_r5.npz --jumps /tmp/pra251-word-jumps-01.json --out /home/cld-main/work/vqcc-data/pra251-margin-01
+exit=1; phase_m_pass=false; seconds=399.53198382799746

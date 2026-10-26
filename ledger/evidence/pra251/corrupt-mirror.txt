@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+  File "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/PRA-251-jax-loss/tasks/dfthcsos/fit_jax/mirror.py", line 53, in compare
+    raise AssertionError(f'{key} mirror differs by {difference:.17g} Ha; limit 1e-10')
+AssertionError: E_SOS mirror differs by 1.0000803740695119e-08 Ha; limit 1e-10

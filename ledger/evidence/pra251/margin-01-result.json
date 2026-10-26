@@ -1,0 +1,62 @@
+{
+  "seed": 251,
+  "bits": 11,
+  "shape": [
+    1,
+    496,
+    384
+  ],
+  "device": "NVIDIA GeForce RTX 4060 Ti",
+  "input_sha256": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5",
+  "jump_sha256": "f4af5f0eb4ec95b62442013a0a530606d6b30e750105a4732d298298c941c2d8",
+  "target": {
+    "m2": 0.0005,
+    "mg": 0.0007575575556984401,
+    "cap": 48.33441483507058
+  },
+  "rates": {
+    "angles": 0.0001,
+    "w": 1e-06,
+    "offsets": 1e-05
+  },
+  "initial": {
+    "E_SOS": -22144.18824805,
+    "E_gap": 3.914898049999465,
+    "Lambda": 294.4533135801261,
+    "error_1": 0.006383440998581703,
+    "error_2": 0.01999949691740822
+  },
+  "training": {
+    "steps": 1000,
+    "best_penalty": 0.9977804926783203,
+    "seconds": 369.58231935597723
+  },
+  "best_metrics": {
+    "E_SOS": -22144.223222433335,
+    "E_gap": 3.9498724333352584,
+    "Lambda": 294.4794166045199,
+    "error_1": 0.007821366153083192,
+    "error_2": 0.019999444814939128
+  },
+  "source_hashes": {
+    "angles.py": "7c491f16042daec04324d722adc5e0dddd29faac6815f87a05ce371db4972228",
+    "__init__.py": "2371154f4bef140613a9b1823caa9adf7623d8d388e311479395baede30e52e6",
+    "export.py": "00e85ca99a448aca4087f0c62c4bf97798c6a26893e3e00e08b64d81c89ab401",
+    "margin_optimizer.py": "d5e8fb1127c0b944303299371bed5452bd2f26c55414e14677efd878c1aaf70b",
+    "probe_shapes.py": "acfb50e0d43a9a15ce661ea06e9c1968f5346383de12eeb27a091fc9c1511436",
+    "profile.py": "59e84d54238fe2c422b1f51099e446534ebdf8e4028ad04ac5640ae2e62861aa",
+    "reduce.py": "3fecab72c3c37c0cc27072102c79359367178f5f3449ea0d3019cef2517f3b69",
+    "run.py": "758c9241eaf63158f6aa5c9f6070763b31d503c08f32818f380d55fc4abcfaaf",
+    "loss.py": "08084fa50ff2af089a42f37597ecdd74f70c13a829a0f78c019955020a871737",
+    "mirror.py": "9351cb437fe0b7487c77e62c5e85ed79d66f6d5557bf119e1f14a815606e8f4f",
+    "candidate_program.py": "959f0d6d71ac0d25494475c8f929c4b67b4edbe84c5842241e8be83246cca693",
+    "margin_run.py": "64891363987f0f578dd0355b9d7387fd63221563f405a517c243fef210b0f15c",
+    "score.py": "48b68545793e96c66b66a70a33e19dbdc95434243448f1b9ae5538874f082740",
+    "optimizer.py": "2aba2266af2fbf3f383de56aa6e6df67414c745986e1587d187026f6ed86165e",
+    "assignment.py": "5ecc1ac0e04402940ab346230ae09d8e256cf205af6cd1ddd30401ec8ba07661",
+    "word_jumps.py": "e0d3eb5c84e260b114431d83171c4838c5d3eff9a39bdf2df8e788a85c224939",
+    "margin_loss.py": "3701cca4de62bd4f44ff0a63a16c461045dbc7e0e62710521e1e6f21d5807739"
+  },
+  "phase_m_pass": false,
+  "seconds": 399.53198382799746
+}

@@ -1,0 +1,9 @@
+{
+  "best_checkpoint": "inflight-01-000102.npz",
+  "sha256": "e281f1541a3d84710868f0875782cf09f0ce1a52aa3fd1488c621a59a2c8da09",
+  "changed_words": 2244,
+  "verified": false,
+  "promoted_factor_exists": false,
+  "report_sha256": "1f0db4ca5bab04bf46088f43425e31b6dc92fe0f63a301d4e53de7eab7f60d06",
+  "steps_sha256": "212fb7917034c16160e6f1d305db28f7474c72066ef2a1fda8b2fbfd7975d57b"
+}

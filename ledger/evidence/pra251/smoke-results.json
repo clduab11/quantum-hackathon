@@ -1,0 +1,587 @@
+[
+  {
+    "device": "cuda:0",
+    "device_kind": "NVIDIA GeForce RTX 4060 Ti",
+    "shape": [
+      1,
+      496,
+      384
+    ],
+    "bits": 11,
+    "factor_sha256": "2b1a25f998947d49e5694260113d517fb80e50510e63a0e2559bc76aa8b45f45",
+    "seconds": 74.78294911200646,
+    "smoke_pass": true,
+    "export_mirror_difference": {
+      "E_SOS": 0.0,
+      "E_gap": 0.0,
+      "Lambda": 5.684341886080802e-14,
+      "error_1": 1.1709383462843448e-16,
+      "error_2": 1.3530843112619095e-16
+    },
+    "official": {
+      "batch_size": 10,
+      "brot": 11,
+      "lambda_eff": 47.86506900329885,
+      "metrics": {
+        "E_SOS": -22144.189755083935,
+        "E_gap": 3.9164050839353877,
+        "Lambda": 294.45409885364217,
+        "error_1": 0.006381885734459262,
+        "error_2": 0.01999823576858783,
+        "gap_in_domain": 1.0,
+        "lambda_eff": 47.86506900329885
+      },
+      "num_circuits": 8,
+      "num_qubits": 833,
+      "ratio": 4.148680791441788,
+      "resources": {
+        "angles_persistent_qubits": 110,
+        "angles_qubits": 128,
+        "angles_temporary_qubits": 8,
+        "angles_toffoli": 8976.0,
+        "heuristic_persistent_qubits": 83,
+        "heuristic_temporary_qubits": 640,
+        "heuristic_toffoli": 11310,
+        "persistent_qubits": 193,
+        "qubits": 833,
+        "temporary_qubits": 640,
+        "toffoli": 20286.0
+      },
+      "salt": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+      "score": 808835327.9041667,
+      "seconds": 10.0,
+      "shots_per_address": 64,
+      "status": "PASS",
+      "submission_sha256": "465476c0ec004d6a406e2ed8f335e613523a5624c263d11b3f1ce6d6690b0412",
+      "toffoli_count": 20286.0,
+      "verified_shots": 36608
+    },
+    "accepted_steps": 1,
+    "training_seconds": 21.47649409697624,
+    "raw_report": "/home/cld-main/work/vqcc-data/pra251-smoke-01/report.json",
+    "raw_report_sha256": "9b672edf2bbc2d9fe03f696141a4e38e24585fa0528fe0f2c569d658e7ff7388",
+    "first_step": {
+      "iteration": 1,
+      "accepted": true,
+      "objective_before": 48.11574724545652,
+      "gradient_norms": {
+        "angles": 18177.64889841761,
+        "offsets": 108.49425674338671,
+        "w": 227680.49195042002
+      },
+      "assignment_seconds": 0.023719176999293268,
+      "trials": [
+        {
+          "rate": 0.0001,
+          "admissible": false,
+          "objective": 768749.0045821067
+        },
+        {
+          "rate": 5e-05,
+          "admissible": false,
+          "objective": 175680.8791959112
+        },
+        {
+          "rate": 2.5e-05,
+          "admissible": false,
+          "objective": 37506.56343414507
+        },
+        {
+          "rate": 1.25e-05,
+          "admissible": false,
+          "objective": 6906.472704879877
+        },
+        {
+          "rate": 6.25e-06,
+          "admissible": false,
+          "objective": 947.0512771652093
+        },
+        {
+          "rate": 3.125e-06,
+          "admissible": false,
+          "objective": 102.3453977844552
+        },
+        {
+          "rate": 1.5625e-06,
+          "admissible": false,
+          "objective": 56.03943858211407
+        },
+        {
+          "rate": 7.8125e-07,
+          "admissible": false,
+          "objective": 50.680472644505386
+        },
+        {
+          "rate": 3.90625e-07,
+          "admissible": true,
+          "objective": 49.25375723819036
+        },
+        {
+          "rate": 1.953125e-07,
+          "admissible": true,
+          "objective": 48.64857463021209
+        },
+        {
+          "rate": 9.765625e-08,
+          "admissible": true,
+          "objective": 48.368607822775196
+        },
+        {
+          "rate": 4.8828125e-08,
+          "admissible": true,
+          "objective": 48.23494512505614
+        },
+        {
+          "rate": 2.44140625e-08,
+          "admissible": true,
+          "objective": 48.16960287632802
+        },
+        {
+          "rate": 1.220703125e-08,
+          "admissible": true,
+          "objective": 48.13732810252242
+        },
+        {
+          "rate": 6.103515625e-09,
+          "admissible": true,
+          "objective": 48.12129557683211
+        },
+        {
+          "rate": 3.0517578125e-09,
+          "admissible": true,
+          "objective": 48.11330788439902
+        }
+      ],
+      "seconds": 19.247180253994884,
+      "metrics": {
+        "E_SOS": -22144.189755083935,
+        "E_gap": 3.9164050839353877,
+        "Lambda": 294.4540988536422,
+        "error_1": 0.006381885734459379,
+        "error_2": 0.019998235768587693
+      }
+    },
+    "last_step": {
+      "iteration": 2,
+      "accepted": false,
+      "objective_before": 48.11330788439902,
+      "gradient_norms": {
+        "angles": 517.3689804013347,
+        "offsets": 7.4030311507477515,
+        "w": 6221.7713161510665
+      },
+      "assignment_seconds": 0.01805140500073321,
+      "seconds": 21.355353369988734
+    },
+    "assignment_seconds": [
+      0.023719176999293268,
+      0.01805140500073321
+    ],
+    "optimizer_variant": "24-backtracks"
+  },
+  {
+    "device": "cuda:0",
+    "device_kind": "NVIDIA GeForce RTX 4060 Ti",
+    "shape": [
+      1,
+      496,
+      384
+    ],
+    "bits": 11,
+    "factor_sha256": "4a87824cfdce076833c9ecb9e14313c3218f8d3e8865a2ba1653f6e0ec86d95f",
+    "seconds": 87.75501048899605,
+    "smoke_pass": true,
+    "export_mirror_difference": {
+      "E_SOS": 0.0,
+      "E_gap": 0.0,
+      "Lambda": 0.0,
+      "error_1": 2.975050761300224e-16,
+      "error_2": 7.979727989493313e-17
+    },
+    "official": {
+      "batch_size": 10,
+      "brot": 11,
+      "lambda_eff": 47.856457874105416,
+      "metrics": {
+        "E_SOS": -22144.188346517687,
+        "E_gap": 3.914996517687541,
+        "Lambda": 294.453359993198,
+        "error_1": 0.006383335306984984,
+        "error_2": 0.019999412639997136,
+        "gap_in_domain": 1.0,
+        "lambda_eff": 47.856457874105416
+      },
+      "num_circuits": 8,
+      "num_qubits": 833,
+      "ratio": 4.149427291033785,
+      "resources": {
+        "angles_persistent_qubits": 110,
+        "angles_qubits": 128,
+        "angles_temporary_qubits": 8,
+        "angles_toffoli": 8976.0,
+        "heuristic_persistent_qubits": 83,
+        "heuristic_temporary_qubits": 640,
+        "heuristic_toffoli": 11310,
+        "persistent_qubits": 193,
+        "qubits": 833,
+        "temporary_qubits": 640,
+        "toffoli": 20286.0
+      },
+      "salt": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+      "score": 808689814.9936073,
+      "seconds": 10.15,
+      "shots_per_address": 64,
+      "status": "PASS",
+      "submission_sha256": "6b59c2b88170f5bc21082730d1bc1e53ac29f604e449198c4b189ecf3e565744",
+      "toffoli_count": 20286.0,
+      "verified_shots": 36608
+    },
+    "accepted_steps": 7,
+    "training_seconds": 34.887853873020504,
+    "raw_report": "/home/cld-main/work/vqcc-data/pra251-smoke-test-02/test_official_gpu_smoke0/smoke/report.json",
+    "raw_report_sha256": "bfbca90b4395df8e3ea748c201182773ba196b65055d2a8b8db8e2a5091e63df",
+    "first_step": {
+      "iteration": 1,
+      "accepted": true,
+      "objective_before": 48.11574724545652,
+      "gradient_norms": {
+        "angles": 18177.64889841761,
+        "offsets": 108.4942567433867,
+        "w": 227680.49195042005
+      },
+      "assignment_seconds": 0.023391494003590196,
+      "trials": [
+        {
+          "rate": 0.0001,
+          "admissible": false,
+          "objective": 768749.0045821067
+        },
+        {
+          "rate": 5e-05,
+          "admissible": false,
+          "objective": 175680.8791959112
+        },
+        {
+          "rate": 2.5e-05,
+          "admissible": false,
+          "objective": 37506.56343414507
+        },
+        {
+          "rate": 1.25e-05,
+          "admissible": false,
+          "objective": 6906.472704879877
+        },
+        {
+          "rate": 6.25e-06,
+          "admissible": false,
+          "objective": 947.0512771652093
+        },
+        {
+          "rate": 3.125e-06,
+          "admissible": false,
+          "objective": 102.3453977844552
+        },
+        {
+          "rate": 1.5625e-06,
+          "admissible": false,
+          "objective": 56.03943858211407
+        },
+        {
+          "rate": 7.8125e-07,
+          "admissible": false,
+          "objective": 50.680472644505386
+        },
+        {
+          "rate": 3.90625e-07,
+          "admissible": true,
+          "objective": 49.25375723819036
+        },
+        {
+          "rate": 1.953125e-07,
+          "admissible": true,
+          "objective": 48.64857463021209
+        },
+        {
+          "rate": 9.765625e-08,
+          "admissible": true,
+          "objective": 48.368607822775196
+        },
+        {
+          "rate": 4.8828125e-08,
+          "admissible": true,
+          "objective": 48.23494512505614
+        },
+        {
+          "rate": 2.44140625e-08,
+          "admissible": true,
+          "objective": 48.16960287632802
+        },
+        {
+          "rate": 1.220703125e-08,
+          "admissible": true,
+          "objective": 48.13732810252242
+        },
+        {
+          "rate": 6.103515625e-09,
+          "admissible": true,
+          "objective": 48.12129557683211
+        },
+        {
+          "rate": 3.0517578125e-09,
+          "admissible": true,
+          "objective": 48.11330788439902
+        }
+      ],
+      "restart_trials": [],
+      "seconds": 17.3001279529999,
+      "metrics": {
+        "E_SOS": -22144.189755083935,
+        "E_gap": 3.9164050839353877,
+        "Lambda": 294.4540988536422,
+        "error_1": 0.006381885734459379,
+        "error_2": 0.019998235768587693
+      }
+    },
+    "last_step": {
+      "iteration": 8,
+      "accepted": false,
+      "objective_before": 48.10588298559447,
+      "gradient_norms": {
+        "angles": 241.48383716594566,
+        "offsets": 1.6147326549695427,
+        "w": 1995.218819372402
+      },
+      "assignment_seconds": 0.022974041989073157,
+      "seconds": 34.74137696501566
+    },
+    "assignment_seconds": [
+      0.023391494003590196,
+      0.023854906990891322,
+      0.03102886100532487,
+      0.02075393800623715,
+      0.021921904990449548,
+      0.01836053398437798,
+      0.01906616598716937,
+      0.022974041989073157
+    ],
+    "optimizer_variant": "24-backtracks-with-restart"
+  },
+  {
+    "device": "cuda:0",
+    "device_kind": "NVIDIA GeForce RTX 4060 Ti",
+    "shape": [
+      1,
+      496,
+      384
+    ],
+    "bits": 11,
+    "factor_sha256": "0e6d83378b22bb67e2825db54cbfe442477c966c1e31aab5d7b1d2bc768635d4",
+    "seconds": 178.99722307300544,
+    "smoke_pass": true,
+    "export_mirror_difference": {
+      "E_SOS": 0.0,
+      "E_gap": 0.0,
+      "Lambda": 0.0,
+      "error_1": 2.47198095326695e-16,
+      "error_2": 1.734723475976807e-17
+    },
+    "official": {
+      "batch_size": 10,
+      "brot": 11,
+      "lambda_eff": 47.85646551163051,
+      "metrics": {
+        "E_SOS": -22144.188347501557,
+        "E_gap": 3.9149975015570817,
+        "Lambda": 294.45338033882564,
+        "error_1": 0.006383675284076772,
+        "error_2": 0.019999405078763143,
+        "gap_in_domain": 1.0,
+        "lambda_eff": 47.85646551163051
+      },
+      "num_circuits": 8,
+      "num_qubits": 833,
+      "ratio": 4.149426628816992,
+      "resources": {
+        "angles_persistent_qubits": 110,
+        "angles_qubits": 128,
+        "angles_temporary_qubits": 8,
+        "angles_toffoli": 8976.0,
+        "heuristic_persistent_qubits": 83,
+        "heuristic_temporary_qubits": 640,
+        "heuristic_toffoli": 11310,
+        "persistent_qubits": 193,
+        "qubits": 833,
+        "temporary_qubits": 640,
+        "toffoli": 20286.0
+      },
+      "salt": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+      "score": 808689944.0543242,
+      "seconds": 12.25,
+      "shots_per_address": 64,
+      "status": "PASS",
+      "submission_sha256": "39e09c797e9c47fcf7285ff00787b7d7b3817d3510e5f46a29ab24084a22a714",
+      "toffoli_count": 20286.0,
+      "verified_shots": 36608
+    },
+    "accepted_steps": 32,
+    "training_seconds": 112.39796386301168,
+    "raw_report": "/home/cld-main/work/vqcc-data/pra251-smoke-03/report.json",
+    "raw_report_sha256": "34509abce40fbb56691cd5305d4af6e44e651abc30b9b45560458ec8fc7b6680",
+    "first_step": {
+      "iteration": 1,
+      "accepted": true,
+      "objective_before": 48.11574724545652,
+      "gradient_norms": {
+        "angles": 18177.64889841761,
+        "offsets": 108.4942567433867,
+        "w": 227680.49195042005
+      },
+      "assignment_seconds": 0.028027994994772598,
+      "trials": [
+        {
+          "rate": 0.0001,
+          "admissible": false,
+          "objective": 768749.004582107
+        },
+        {
+          "rate": 5e-05,
+          "admissible": false,
+          "objective": 175680.87919591114
+        },
+        {
+          "rate": 2.5e-05,
+          "admissible": false,
+          "objective": 37506.56343414507
+        },
+        {
+          "rate": 1.25e-05,
+          "admissible": false,
+          "objective": 6906.472704879877
+        },
+        {
+          "rate": 6.25e-06,
+          "admissible": false,
+          "objective": 947.0512771652096
+        },
+        {
+          "rate": 3.125e-06,
+          "admissible": false,
+          "objective": 102.34539778445512
+        },
+        {
+          "rate": 1.5625e-06,
+          "admissible": false,
+          "objective": 56.039438582114066
+        },
+        {
+          "rate": 7.8125e-07,
+          "admissible": false,
+          "objective": 50.680472644505386
+        },
+        {
+          "rate": 3.90625e-07,
+          "admissible": true,
+          "objective": 49.25375723819036
+        },
+        {
+          "rate": 1.953125e-07,
+          "admissible": true,
+          "objective": 48.64857463021209
+        },
+        {
+          "rate": 9.765625e-08,
+          "admissible": true,
+          "objective": 48.368607822775196
+        },
+        {
+          "rate": 4.8828125e-08,
+          "admissible": true,
+          "objective": 48.23494512505614
+        },
+        {
+          "rate": 2.44140625e-08,
+          "admissible": true,
+          "objective": 48.16960287632802
+        },
+        {
+          "rate": 1.220703125e-08,
+          "admissible": true,
+          "objective": 48.13732810252242
+        },
+        {
+          "rate": 6.103515625e-09,
+          "admissible": true,
+          "objective": 48.12129557683211
+        },
+        {
+          "rate": 3.0517578125e-09,
+          "admissible": true,
+          "objective": 48.11330788439902
+        }
+      ],
+      "restart_trials": [],
+      "seconds": 20.659854248020565,
+      "metrics": {
+        "E_SOS": -22144.189755083935,
+        "E_gap": 3.9164050839353877,
+        "Lambda": 294.4540988536422,
+        "error_1": 0.006381885734459379,
+        "error_2": 0.019998235768587693
+      }
+    },
+    "last_step": {
+      "iteration": 32,
+      "accepted": true,
+      "objective_before": 48.10587719083294,
+      "gradient_norms": {
+        "angles": 202.33599636533177,
+        "offsets": 0.2784230592008019,
+        "w": 317.33251451064274
+      },
+      "assignment_seconds": 0.020254121016478166,
+      "seconds": 112.23715650499798,
+      "metrics": {
+        "E_SOS": -22144.188347501557,
+        "E_gap": 3.9149975015570817,
+        "Lambda": 294.45338033882564,
+        "error_1": 0.006383675284076525,
+        "error_2": 0.019999405078763126
+      }
+    },
+    "assignment_seconds": [
+      0.028027994994772598,
+      0.03130097399116494,
+      0.021544716000789776,
+      0.022280350007349625,
+      0.022841983998659998,
+      0.031316273991251364,
+      0.02406186200096272,
+      0.024268983979709446,
+      0.021095634991070256,
+      0.019806645985227078,
+      0.021911554998951033,
+      0.023820150992833078,
+      0.026868038024986163,
+      0.020618370006559417,
+      0.02526723701157607,
+      0.01915669400477782,
+      0.019524517003446817,
+      0.01863172897719778,
+      0.03307332799886353,
+      0.019934920012019575,
+      0.020569114974932745,
+      0.021000667999032885,
+      0.023539643007097766,
+      0.02059531499980949,
+      0.029299921996425837,
+      0.019157550996169448,
+      0.01866094401339069,
+      0.019637039018562064,
+      0.0304817289870698,
+      0.020939636015100405,
+      0.023449751985026523,
+      0.020254121016478166
+    ],
+    "optimizer_variant": "40-backtracks-with-restart"
+  }
+]

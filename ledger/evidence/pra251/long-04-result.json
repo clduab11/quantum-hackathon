@@ -1,0 +1,72 @@
+{
+  "device_kind": "NVIDIA GeForce RTX 4060 Ti",
+  "shape": [
+    1,
+    496,
+    384
+  ],
+  "bits": 11,
+  "factor_sha256": "c9ffc85db13d100bc1a7140926ca0fe1b79de68564246914c9a9ceb19f08c7bd",
+  "seconds": 786.3439894280164,
+  "smoke_pass": true,
+  "export_mirror_difference": {
+    "E_SOS": 0.0,
+    "E_gap": 0.0,
+    "Lambda": 0.0,
+    "error_1": 5.793976409762536e-16,
+    "error_2": 1.1449174941446927e-16
+  },
+  "official": {
+    "batch_size": 10,
+    "brot": 11,
+    "lambda_eff": 47.85646881434768,
+    "metrics": {
+      "E_SOS": -22144.188347692187,
+      "E_gap": 3.914997692187171,
+      "Lambda": 294.45340656387754,
+      "error_1": 0.006384119717190372,
+      "error_2": 0.01999939788301569,
+      "gap_in_domain": 1.0,
+      "lambda_eff": 47.85646881434768
+    },
+    "num_circuits": 8,
+    "num_qubits": 833,
+    "ratio": 4.149426342452727,
+    "resources": {
+      "angles_persistent_qubits": 110,
+      "angles_qubits": 128,
+      "angles_temporary_qubits": 8,
+      "angles_toffoli": 8976.0,
+      "heuristic_persistent_qubits": 83,
+      "heuristic_temporary_qubits": 640,
+      "heuristic_toffoli": 11310,
+      "persistent_qubits": 193,
+      "qubits": 833,
+      "temporary_qubits": 640,
+      "toffoli": 20286.0
+    },
+    "salt": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+    "score": 808689999.864425,
+    "seconds": 10.34,
+    "shots_per_address": 64,
+    "status": "PASS",
+    "submission_sha256": "51e5943fe9e7eb41579c6ae8306550d0135f335aee41afb3c1e3add98f6d9790",
+    "toffoli_count": 20286.0,
+    "verified_shots": 36608
+  },
+  "accepted_steps": 248,
+  "fit_seconds": 726.6521292239777,
+  "source_mismatches": [],
+  "comparison": {
+    "changed_angle_words": 0,
+    "max_abs_weight_change": 9.711973367556045e-09,
+    "max_abs_H2_I_change": 2.6847096558715866e-07
+  },
+  "report_sha256": "ce9410e73b8cfa96aa2ad173e3210b7feaa3b4ccb1bf573ca1ec56fa5b7ea403",
+  "steps_sha256": "cfb513c89c4fc62036b727025b6b378789c9beb2e9630d0a3ab2ddf351b3f76e",
+  "completion": {
+    "exit_code": 0,
+    "timed_out": false,
+    "seconds": 788.5656583309174
+  }
+}

@@ -1,0 +1,15 @@
+### Merge-order gate: FAIL
+
+- repository `clduab11/quantum-hackathon`, base `main` at `40bbad1bd80e7362f9c8c8197c4d16362bc3ec9c`
+- heads (3): #43 `331bb7dc3424`, #49 `e8e01b59e6c9`, mine `b6e3c0919bfd`
+- excluded: none
+- heads already in the base (they prove nothing): none
+- orders squashed: 6 (every permutation); clean 0, conflicting 6
+
+| squashed first | then conflicts | files |
+| --- | --- | --- |
+| (main) | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| (main) | mine | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #49 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #49 | mine | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+

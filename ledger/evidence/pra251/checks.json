@@ -1,0 +1,56 @@
+[
+  {
+    "name": "dependency setup",
+    "command": "uv sync; uv sync --group gpu",
+    "result": "PASS",
+    "detail": "Separate B1 venv; JAX 0.12.0.1 CUDA12 wheels locked in uv.lock."
+  },
+  {
+    "name": "full GPU suite",
+    "command": "XLA_PYTHON_CLIENT_PREALLOCATE=false OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 VQCC_STARTER=/home/cld-main/work/vqcc-data/starter-kit VQCC_COMPETITION=/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation VQCC_PUBLIC_FACTOR=/home/cld-main/work/vqcc-data/inputs/thc/femoco_thc_r5.npz uv run --group gpu pytest -q",
+    "result": "PASS",
+    "detail": "........................................................................ [ 22%]\n........................................................................ [ 44%]\n........................................................................ [ 66%]\n........................................................................ [ 88%]\n....................................                                     [100%]\n324 passed, 1 skipped in 142.54s (0:02:22)"
+  },
+  {
+    "name": "public factor mirror",
+    "command": "uv run --group gpu python -m tasks.dfthcsos.fit_jax.mirror --starter /home/cld-main/work/vqcc-data/starter-kit --competition /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation --factor /home/cld-main/work/vqcc-data/inputs/thc/femoco_thc_r5.npz",
+    "result": "PASS",
+    "detail": "RTX 4060 Ti; max absolute disagreement 3.637978807091713e-12 Ha; no fitting."
+  },
+  {
+    "name": "missing accelerator fails closed",
+    "command": "CUDA_VISIBLE_DEVICES='' JAX_PLATFORMS=cpu uv run --group gpu python -m tasks.dfthcsos.fit_jax.mirror --starter /home/cld-main/work/vqcc-data/starter-kit --competition /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation --factor /home/cld-main/work/vqcc-data/inputs/thc/femoco_thc_r5.npz",
+    "result": "PASS",
+    "detail": "Expected exit 1; stdout empty; JAX mirror: GPU/TPU unavailable; install the gpu group and check CUDA visibility; CPU fitting is forbidden"
+  },
+  {
+    "name": "corrupt mirror rejected",
+    "command": "uv run --group gpu python -c \"from tasks.dfthcsos.fit_jax.mirror import compare; compare({'E_SOS': -22144.+1e-8}, {'E_SOS': -22144.})\"",
+    "result": "PASS",
+    "detail": "Expected exit 1: AssertionError: E_SOS mirror differs by 1.0000803740695119e-08 Ha; limit 1e-10"
+  },
+  {
+    "name": "registers",
+    "command": "uv run --group gpu python -m ledger.registers check",
+    "result": "PASS",
+    "detail": "OK registers: 225 decisions, 6 notice files, legacy index unchanged"
+  },
+  {
+    "name": "whitespace",
+    "command": "git diff --check",
+    "result": "PASS",
+    "detail": "No whitespace errors"
+  },
+  {
+    "name": "reviewer regression checks",
+    "command": "uv run --group gpu pytest -q tests/test_fit_jax.py -k \"not declared\"",
+    "result": "PASS",
+    "detail": "10 passed, 1 deselected in 13.17s; new angle directional derivative and strict proposal guard. Public mirror separately passed stored 11-bit words, fresh 12/11/8-bit encoding, row permutation, GPU placement and perturbed fixed-shift intake; all perturbed-shift differences are zero."
+  },
+  {
+    "name": "T3 dependency union",
+    "command": "uv lock --directory <scratch with T3 pyproject plus jax[cuda12]==0.12.0.1>",
+    "result": "PASS",
+    "detail": "Resolved 105 packages in 1.37s; resolution only, no combined runtime claim."
+  }
+]

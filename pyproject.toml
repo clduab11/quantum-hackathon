@@ -14,6 +14,7 @@ dependencies = [
 
 [dependency-groups]
 gpu = [
+    "jax[cuda12]==0.12.0.1",
     "torch==2.8.0+cu128; sys_platform == 'linux' and platform_machine == 'x86_64'",
 ]
 dev = [
