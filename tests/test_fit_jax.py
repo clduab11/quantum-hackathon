@@ -101,3 +101,35 @@ def test_weight_offset_derivatives_against_finite_differences():
         flat = params[key].ravel()
         numeric = approx_derivative(lambda x:float(compiled(jnp.array(x))),np.asarray(flat)).ravel()
         np.testing.assert_allclose(jax.jit(jax.grad(fun))(flat),numeric,atol=2e-7,rtol=2e-5)
+
+
+def test_proposed_step_crossing_floor_is_rejected():
+    from tasks.dfthcsos.fit_jax.loss import admissible
+    point = dict(error_1=jnp.array(.020),error_2=jnp.array(.020),Lambda=jnp.array(49.01),E_gap=jnp.array(4.))
+    assert bool(admissible(point))
+    for lam in (49.,48.99):
+        assert not bool(admissible({**point,'Lambda':jnp.array(lam)}))
+    assert not bool(admissible({**point,'E_gap':jnp.array(3.914898)}))
+
+
+def test_angle_surrogate_matches_continuous_kernel_at_rounded_point():
+    from tasks.dfthcsos.fit_jax.loss import _from_vectors
+    rng = np.random.default_rng(251)
+    edges = jnp.array([[0,1],[1,2]])
+    angles = quantize(jnp.array(rng.uniform(0,2,(5,2))),11)
+    w = jnp.array(rng.normal(size=(1,2,2)))
+    offsets = jnp.array(rng.normal(size=(1,2)))
+    fixed = dict(target=jnp.eye(6),h1_thc=jnp.diag(jnp.array([10.,20.,30.])),
+                 S=jnp.eye(3),beta_1=jnp.array(.1),electrons=jnp.array(2),
+                 ecore=jnp.array(0.),energy_upper=jnp.array(4.))
+    def scalar(m):
+        return m['error_1']+m['error_2']+.1*m['Lambda']+.1*m['E_gap']
+    def soft(a):
+        return scalar(_from_vectors(decode(a,edges),w,offsets,fixed))
+    def hard(a):
+        return scalar(terms(dict(angles=a,w=w,offsets=offsets),fixed,edges,11))
+    grad = jax.jit(jax.grad(hard))(angles)
+    np.testing.assert_allclose(grad,jax.jit(jax.grad(soft))(angles),rtol=1e-11,atol=1e-11)
+    direction = jnp.array(rng.normal(size=angles.shape)); step = 1e-6
+    numeric = (soft(angles+step*direction)-soft(angles-step*direction))/(2*step)
+    np.testing.assert_allclose(jnp.sum(grad*direction),numeric,rtol=1e-6,atol=1e-6)

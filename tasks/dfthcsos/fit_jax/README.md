@@ -129,3 +129,26 @@ It is a declared non-circuit input under D-PRA211-05. Full source/package pins,
 measured terms, device, timings and maximum absolute differences are in
 `ledger/evidence/pra251/mirror.json`. These are numerical mirror points, not
 verified circuit ratios or a successful 8-bit fit.
+
+## Reviewer checklist additions
+
+The mirror also checks the factor's **verbatim stored 11-bit words**, separately
+from fresh encoder words. It perturbs submitted H1_I by 123 and every Hsym_lower
+entry by 17, passes the changed mapping through the same `physics` intake, and
+requires identical fixed inputs and JAX terms. GPU placement is asserted for
+every parameter, fixed input and tree array. Both code and reference use the
+fixed package shifts even when the factor tries to supply different ones.
+
+`admissible` is a conservative proposed-step guard: either error above 20 mHa,
+Lambda <=49, E_gap <=3.914898, nonfinite metrics or E_gap >=2*Lambda returns false.
+A future driver must reject/revert such a proposed step before promoting it.
+It is not an official acceptance replacement. The official floating-point
+upper-domain check is inclusive (`E_gap <=2*Lambda`), followed by the Decimal
+check; this guard deliberately rejects the boundary. The test crosses Lambda
+from 49.01 to 49.0 and 48.99 and observes rejection.
+
+A continuous internal vector kernel exists to test gradients. At a rounded
+angle point, the STE gradient must equal that continuous kernel's gradient and
+its directional finite difference. The public `terms` entry always quantizes.
+The numerical mirror meets **absolute 1e-10** on every term, including E_SOS
+and E_gap; no relative tolerance is used to hide large-energy differences.

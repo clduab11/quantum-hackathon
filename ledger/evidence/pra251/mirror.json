@@ -10,7 +10,7 @@
       "jax": {
         "E_SOS": -22144.18824805,
         "E_gap": 3.914898049999465,
-        "Lambda": 294.4533135801262,
+        "Lambda": 294.4533135801261,
         "error_1": 0.003503874451243791,
         "error_2": 0.019999496917408224
       },
@@ -26,18 +26,18 @@
       "absolute_difference": {
         "E_SOS": 0.0,
         "E_gap": 0.0,
-        "Lambda": 1.7053025658242404e-13,
+        "Lambda": 1.1368683772161603e-13,
         "error_1": 2.0261570199409107e-15,
         "error_2": 7.632783294297951e-17
       },
-      "seconds": 18.100630276006996
+      "seconds": 15.701208872007555
     },
     {
       "bits": 11,
       "jax": {
         "E_SOS": -22144.18824805,
         "E_gap": 3.914898049999465,
-        "Lambda": 294.4533135801262,
+        "Lambda": 294.4533135801261,
         "error_1": 0.006379185052925322,
         "error_2": 0.019999496917408224
       },
@@ -53,18 +53,18 @@
       "absolute_difference": {
         "E_SOS": 0.0,
         "E_gap": 0.0,
-        "Lambda": 1.7053025658242404e-13,
+        "Lambda": 1.1368683772161603e-13,
         "error_1": 7.546047120499111e-16,
         "error_2": 7.632783294297951e-17
       },
-      "seconds": 7.421272616003989
+      "seconds": 6.155395905007026
     },
     {
       "bits": 8,
       "jax": {
         "E_SOS": -22147.0940285977,
         "E_gap": 6.820678597701772,
-        "Lambda": 297.3590941278267,
+        "Lambda": 297.35909412782667,
         "error_1": 0.062047533985255726,
         "error_2": 0.22651806084949253
       },
@@ -80,18 +80,18 @@
       "absolute_difference": {
         "E_SOS": 3.637978807091713e-12,
         "E_gap": 3.637978807091713e-12,
-        "Lambda": 1.7053025658242404e-13,
+        "Lambda": 1.1368683772161603e-13,
         "error_1": 1.27675647831893e-15,
         "error_2": 1.1379786002407855e-15
       },
-      "seconds": 8.023537303000921
+      "seconds": 6.192518946991186
     }
   ],
   "source_hashes": {
     "angles.py": "7c491f16042daec04324d722adc5e0dddd29faac6815f87a05ce371db4972228",
     "__init__.py": "2371154f4bef140613a9b1823caa9adf7623d8d388e311479395baede30e52e6",
-    "loss.py": "823a76b6a36751b5c4a3a0e0b9df1286ef4b24de15ad14aa64114a972f850479",
-    "mirror.py": "8ce792caf60d70b645246948a2f4613e6d6cd92f3da40a3f9ef77731d18a9391",
+    "loss.py": "08084fa50ff2af089a42f37597ecdd74f70c13a829a0f78c019955020a871737",
+    "mirror.py": "9351cb437fe0b7487c77e62c5e85ed79d66f6d5557bf119e1f14a815606e8f4f",
     "assignment.py": "5ecc1ac0e04402940ab346230ae09d8e256cf205af6cd1ddd30401ec8ba07661"
   },
   "competition_pins": [
@@ -143,6 +143,31 @@
   "full_circuit_verified": false,
   "fit_performed": false,
   "initialization": "pinned encode_inputs at each precision",
+  "stored_words_11": {
+    "official": {
+      "error_1": 0.006383440998581123,
+      "error_2": 0.019999496917408103,
+      "Lambda": 294.45331358012606,
+      "E_SOS": -22144.18824805,
+      "E_gap": 3.914898049999465,
+      "lambda_eff": 47.855856272347104,
+      "gap_in_domain": true
+    },
+    "absolute_difference": {
+      "E_SOS": 0.0,
+      "E_gap": 0.0,
+      "Lambda": 5.684341886080802e-14,
+      "error_1": 5.80265002714242e-16,
+      "error_2": 1.1796119636642288e-16
+    }
+  },
+  "perturbed_shift_difference": {
+    "E_SOS": 0.0,
+    "E_gap": 0.0,
+    "Lambda": 0.0,
+    "error_1": 0.0,
+    "error_2": 0.0
+  },
   "gradient_norms": {
     "angles": 18177.64889841761,
     "offsets": 108.49425674338671,

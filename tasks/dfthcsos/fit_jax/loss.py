@@ -16,7 +16,11 @@ def terms(parameters, fixed, edges, bits):
     if not jax.config.x64_enabled:
         raise ValueError('enable jax_enable_x64 before creating loss arrays')
     angles, w, offsets = (parameters[k] for k in ('angles','w','offsets'))
-    vectors = decode(quantize(angles, bits), edges)
+    return _from_vectors(decode(quantize(angles, bits), edges), w, offsets, fixed)
+
+
+def _from_vectors(vectors, w, offsets, fixed):
+    # Continuous kernel for testing the STE tangent; public terms always rounds.
     vectors = vectors / jnp.linalg.norm(vectors, axis=1, keepdims=True)
     n = vectors.shape[1]
     body = vectors[n:].reshape(w.shape[0],w.shape[1],n)
@@ -54,3 +58,12 @@ def objective(metrics, score_weight=1.):
                             49.0001-lam,3.915-gap,gap-2*lam+.0001])
     return (score_weight*jnp.sqrt(jnp.maximum(gap*(2*lam-gap),1e-20))
             +1e6*jnp.sum(jax.nn.relu(violations)**2))
+
+
+def admissible(metrics):
+    """Reject an infeasible proposed step; final acceptance still needs the verifier."""
+    values = jnp.stack(list(metrics.values()))
+    return (jnp.all(jnp.isfinite(values)) & (metrics['error_1'] >= 0)
+            & (metrics['error_1'] <= .020) & (metrics['error_2'] >= 0)
+            & (metrics['error_2'] <= .020) & (metrics['Lambda'] > 49.)
+            & (metrics['E_gap'] > 3.914898) & (metrics['E_gap'] < 2*metrics['Lambda']))

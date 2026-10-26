@@ -33,16 +33,22 @@ def intake(starter, competition, factor):
     if sha256(factor) != FACTOR_SHA256:
         raise ValueError('public factor SHA-256 mismatch; use the declared PRA-245 v8 factor')
     sys.path[:0] = [str(competition/'verifiers'),str(competition/'kickmix'),str(starter/'starter_kit')]
-    from dfthcsos.verify import load_inputs
-    inputs = load_inputs(factor)
+    inputs, fixed = physics(factor)
     with np.load(factor,allow_pickle=False) as archive:
         angles = archive['angle_words'].astype(np.float64)/(1 << 10)
         edges = archive['tree_edges'].copy()
     params = dict(angles=angles,w=inputs.w,offsets=inputs.W)
+    return inputs,params,fixed,edges,pins
+
+
+def physics(factor):
+    """The single fixed-shift intake path, also exercised with corrupted shifts."""
+    from dfthcsos.verify import load_inputs
+    inputs = load_inputs(factor)
     fixed = dict(target=packed_target(inputs.ref['tei'],inputs.S),h1_thc=inputs.ref['h1_thc'],
                  S=inputs.S,beta_1=inputs.beta_1,electrons=inputs.ref['electrons'],
                  ecore=inputs.ref['ecore'],energy_upper=inputs.energy_upper)
-    return inputs,params,fixed,edges,pins
+    return inputs,fixed
 
 
 def compare(actual, expected):
@@ -62,7 +68,7 @@ def mirror(starter, competition, factor):
     inputs,params,fixed,edges,pins = intake(starter,competition,factor)
     from dfthcsos.verify import evaluate_words
     from dfthcsos.scoreinfra.dfthc_math import reconstruct_u_vectors
-    from starter.task2_angles.encode import angles_to_words, encode_inputs
+    from starter.task2_angles.encode import encode_inputs
     from verifier.score import SubmissionInputs
     encoder = SubmissionInputs('FeMoCo76o113e',None,inputs.params,inputs.ref,inputs.w,
                                inputs.W,inputs.S,inputs.beta_1,inputs.energy_upper)
@@ -73,6 +79,7 @@ def mirror(starter, competition, factor):
                   full_circuit_verified=False,fit_performed=False,initialization='pinned encode_inputs at each precision')
     with jax.default_device(device):
         p,f,e = jax.device_put((params,fixed,edges),device)
+        assert all(a.device.platform in ('gpu','tpu') for a in jax.tree.leaves((p,f,e)))
         for bits in (12,11,8):
             start = time.monotonic()
             words = encode_inputs(encoder,edges,bits)
@@ -93,6 +100,20 @@ def mirror(starter, competition, factor):
             compare(reordered,expected)
             report['points'].append(dict(bits=bits,jax=actual,official=expected,
                 absolute_difference=differences,seconds=time.monotonic()-start))
+        # Stored words are a separate 11-bit case, not the fresh encoder output.
+        stored_p = {**p,'angles':jax.device_put(params['angles'],device)}
+        stored_actual = jax.jit(lambda q: terms(q,f,e,11))(stored_p)
+        stored_expected = evaluate_words(inputs,np.rint(params['angles']*1024).astype(np.int64),edges,11)
+        stored_delta = compare(stored_actual,stored_expected)
+        report['stored_words_11'] = dict(official=stored_expected,absolute_difference=stored_delta)
+        # Perturb both submitted shifts through the very same physics intake.
+        altered = {**inputs.params,'H1_I':inputs.params['H1_I']+123.,
+                   'Hsym_lower':inputs.params['Hsym_lower']+17.}
+        _, shifted_fixed = physics(altered)
+        for name in fixed:
+            np.testing.assert_array_equal(shifted_fixed[name],fixed[name])
+        shifted = jax.jit(lambda q,g: terms(q,g,e,11))(stored_p,jax.device_put(shifted_fixed,device))
+        report['perturbed_shift_difference'] = compare(shifted,{k:float(v) for k,v in stored_actual.items()})
         # One gradient evaluation proves the assignment/rounding path composes
         # with autodiff on real data. This does not take an optimizer step.
         p = {**p,'angles':jax.device_put(params['angles'],device)}
@@ -101,7 +122,7 @@ def mirror(starter, competition, factor):
         if not np.isfinite(float(value)) or not all(np.isfinite(v) and v > 0 for v in norms.values()):
             raise AssertionError(f'nonfinite or zero loss gradient: {norms}')
         report['gradient_norms'] = norms
-    report['max_absolute_difference'] = max(max(p['absolute_difference'].values()) for p in report['points'])
+    report['max_absolute_difference'] = max([max(p['absolute_difference'].values()) for p in report['points']] + [max(stored_delta.values())])
     return report
 
 
