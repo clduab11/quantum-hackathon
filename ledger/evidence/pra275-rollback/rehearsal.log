@@ -1,0 +1,151 @@
+PIN 3432001ec2d8eb0ed077e9f7dbab2e1586d89cc7 WORKING /home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/hankel-rollback-evidence OUTPUT /home/cld-main/work/vqcc-data/pra275-rollback-20261026
+COMMAND uv sync --frozen
+warning: `VIRTUAL_ENV=/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/hankel-rollback-evidence/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+Using CPython 3.13.13
+Creating virtual environment at: .venv
+Installed 36 packages in 62ms
+ + annotated-types==0.8.0
+ + anyio==4.15.1
+ + blinker==1.9.0
+ + click==8.5.0
+ + dacite==1.9.2
+ + flask==3.1.3
+ + h11==0.16.0
+ + httpcore2==2.16.0
+ + httpx2==2.16.0
+ + idna==3.20
+ + iniconfig==2.3.1
+ + itsdangerous==2.2.0
+ + jinja2==3.1.6
+ + jiter==0.18.0
+ + markupsafe==3.0.4
+ + numpy==2.5.4
+ + openai==3.37.0
+ + openevolve==0.4.0
+ + packaging==26.3
+ + pandas==3.1.0
+ + pluggy==1.7.0
+ + pydantic==2.14.1
+ + pydantic-core==2.50.1
+ + pygments==2.21.0
+ + pytest==9.1.1
+ + python-dateutil==3.0.0
+ + pyyaml==6.0.3
+ + scipy==1.18.1
+ + six==1.17.0
+ + sniffio==1.3.1
+ + tqdm==4.70.1
+ + truststore==0.10.5
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.4
+ + tzdata==2026.5
+ + werkzeug==3.1.9
+EXIT 0
+COMMAND uv run --frozen python scripts/install_kickmix.py /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation
+warning: `VIRTUAL_ENV=/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/hankel-rollback-evidence/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+kickmix 0.1 /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation/kickmix/kickmix.so
+Created: /home/cld-main/work/vqcc-data/pra275-rollback-20261026/source/.venv/lib/python3.13/site-packages/vqcc_local.pth
+EXIT 0
+BEFORE: rollback target not met; dqi = 17df18286ae5713fd08584cb616116f800c2eed92dce1566f78310f187c58c52
+COMMAND uv run --frozen python tasks/dqi/generate_jfraction.py --out /home/cld-main/work/vqcc-data/pra275-rollback-20261026/generated
+warning: `VIRTUAL_ENV=/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/hankel-rollback-evidence/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+{
+  "variant": "paired-v6",
+  "num_qubits": 881,
+  "static_toffoli_like": 1147675,
+  "num_ops": 113870810,
+  "num_bits": 99133,
+  "build_seconds": 118.11751747201197,
+  "sha256": "dec77920d4b9f5964b6cd52c947aa0c91468d56b7ed28cd475fdfc18d067729d",
+  "bytes": 1040771980,
+  "stages": [
+    {
+      "boundary": "initialization",
+      "toffolis_cumulative": 0,
+      "toffolis_since_previous": 0,
+      "peak_qubits": 840,
+      "live_qubits": 852,
+      "ops_cumulative": 20741142
+    },
+    {
+      "boundary": "moment_to_fraction",
+      "toffolis_cumulative": 320804,
+      "toffolis_since_previous": 320804,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 34342820
+    },
+    {
+      "boundary": "fraction_to_polynomials",
+      "toffolis_cumulative": 399800,
+      "toffolis_since_previous": 78996,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 35908631
+    },
+    {
+      "boundary": "phase_correction",
+      "toffolis_cumulative": 747875,
+      "toffolis_since_previous": 348075,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 98703353
+    },
+    {
+      "boundary": "polynomials_to_fraction",
+      "toffolis_cumulative": 826871,
+      "toffolis_since_previous": 78996,
+      "peak_qubits": 881,
+      "live_qubits": 852,
+      "ops_cumulative": 100269164
+    },
+    {
+      "boundary": "fraction_to_moments",
+      "toffolis_cumulative": 1147675,
+      "toffolis_since_previous": 320804,
+      "peak_qubits": 881,
+      "live_qubits": 840,
+      "ops_cumulative": 113870810
+    }
+  ]
+}
+EXIT 0
+{
+  "source_commit": "3432001ec2d8eb0ed077e9f7dbab2e1586d89cc7",
+  "source_zip": "/home/cld-main/work/vqcc-data/queue/pra250-hankel.zip",
+  "source_zip_sha256": "459b2f11778f5bbd576ce69b9f85156ca2c301bd2a3f74752adca5c2dadcbec7",
+  "output_zip": "/home/cld-main/work/vqcc-data/pra275-rollback-20261026/fallback.zip",
+  "output_zip_sha256": "66de2d131cc2c314e9683799866d8e76e6b2b434a8e9061c401037f1dbea28a8",
+  "before": {
+    "dfthcsos/angle_k_0.kmb": "60d9dfb7a5ec6d172232f4d7081b858ce6868eea0ca2ee99ed3c99a195c3d0bb",
+    "dfthcsos/angle_k_1.kmb": "4079e0a08491fc3e42df613b09fd6c8399364bdf8cc508c0de2814f7ddf75c19",
+    "dfthcsos/angle_k_2.kmb": "cacdff488e6ea968f9f60f80072ca9285036b65a98a1cd60576190960458eb1a",
+    "dfthcsos/angle_k_3.kmb": "dbe4415e56782c83b6a53045ca7325a66528ae3812a28e577e0a527d89ba77bd",
+    "dfthcsos/angle_k_4.kmb": "6e0dcbe0f75a631c60e5d3affcf01179c4599abea05c053ef94d04e0a5f7d472",
+    "dfthcsos/angle_k_5.kmb": "58b75e436ff504af19b40fdb23337c7c548db8f84a3bdc9710d8f8303deee41f",
+    "dfthcsos/angle_k_6.kmb": "9df59056b173c4205a944c59edb4cfe5c77f0fd6003dbb34f2864910204b8d09",
+    "dfthcsos/angle_k_7.kmb": "86bc88ad3aad4553f60f3eac26807acd42a949ebc48bbb2443688193f9a9b1f4",
+    "dfthcsos/submission.npz": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5",
+    "dqi.kmb": "17df18286ae5713fd08584cb616116f800c2eed92dce1566f78310f187c58c52",
+    "invsqrt.kmb": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd"
+  },
+  "after": {
+    "dfthcsos/angle_k_0.kmb": "60d9dfb7a5ec6d172232f4d7081b858ce6868eea0ca2ee99ed3c99a195c3d0bb",
+    "dfthcsos/angle_k_1.kmb": "4079e0a08491fc3e42df613b09fd6c8399364bdf8cc508c0de2814f7ddf75c19",
+    "dfthcsos/angle_k_2.kmb": "cacdff488e6ea968f9f60f80072ca9285036b65a98a1cd60576190960458eb1a",
+    "dfthcsos/angle_k_3.kmb": "dbe4415e56782c83b6a53045ca7325a66528ae3812a28e577e0a527d89ba77bd",
+    "dfthcsos/angle_k_4.kmb": "6e0dcbe0f75a631c60e5d3affcf01179c4599abea05c053ef94d04e0a5f7d472",
+    "dfthcsos/angle_k_5.kmb": "58b75e436ff504af19b40fdb23337c7c548db8f84a3bdc9710d8f8303deee41f",
+    "dfthcsos/angle_k_6.kmb": "9df59056b173c4205a944c59edb4cfe5c77f0fd6003dbb34f2864910204b8d09",
+    "dfthcsos/angle_k_7.kmb": "86bc88ad3aad4553f60f3eac26807acd42a949ebc48bbb2443688193f9a9b1f4",
+    "dfthcsos/submission.npz": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5",
+    "dqi.kmb": "dec77920d4b9f5964b6cd52c947aa0c91468d56b7ed28cd475fdfc18d067729d",
+    "invsqrt.kmb": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd"
+  },
+  "changed_members": [
+    "dqi.kmb"
+  ],
+  "unchanged_members": 10,
+  "original_zip_unchanged": true
+}
+PASS: only dqi.kmb changed; ten other members and original zip unchanged

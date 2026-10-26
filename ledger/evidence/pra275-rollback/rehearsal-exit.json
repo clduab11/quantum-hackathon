@@ -1,0 +1,6 @@
+{
+  "started_utc": "2026-10-26T18:37:53.282302+00:00",
+  "finished_utc": "2026-10-26T18:40:19.855734+00:00",
+  "command": "bash -c \"<verbatim bash block in rollback.md>\"",
+  "exit_status": 0
+}
