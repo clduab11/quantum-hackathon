@@ -44,7 +44,7 @@ def test_default_config_loads_in_order():
     assert tuple(g.id for g in config.gates) == GATE_IDS
     assert {g.id for g in config.gates if not g.waivable} == {"G0", "G3", "G5"}
     assert config.spec("G3").params["expected_shots"] == {
-        "invsqrt": 200540928, "dqi": 102400, "dfthcsos": 254464}
+        "invsqrt": 200540928, "dqi": 102400, "dfthcsos": 36608}
 
 
 @pytest.mark.parametrize("mutate, message", [
@@ -453,9 +453,11 @@ def test_committed_configs_declare_only_the_pinned_factorization_input():
 
     for name in ("default.yaml", "reference.yaml"):
         config = load_config(CONFIG_DIR / name)
-        assert config.inputs == {"dfthcsos": [{
-            "path": "sample_submission/dfthcsos/submission.npz",
-            "sha256": "14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69"}]}, name
+        from tasks.dfthcsos.shipping import INPUT_PATH, INPUT_SHA256
+        expected = {'path': str(INPUT_PATH), 'sha256': INPUT_SHA256} if name == 'default.yaml' else {
+            'path': 'sample_submission/dfthcsos/submission.npz',
+            'sha256': '14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69'}
+        assert config.inputs == {"dfthcsos": [expected]}, name
         for task, argv in config.generators.items():
-            assert argv[1].startswith("tasks/"), (name, task, argv)
+            assert argv[1].startswith("tasks/") or (argv[1] == '-m' and argv[2].startswith('tasks.')), (name, task, argv)
             assert "reference_generator" not in argv[1], (name, task)

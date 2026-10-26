@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 import yaml
 
-from ledger.gates.runner import CONFIG_DIR, DEFAULT_CONFIG, load_config
+from ledger.gates.runner import CONFIG_DIR, load_config
 
 ROOT = Path(__file__).resolve().parents[1]
 HOOK_MODULE = "tasks.invsqrt.reference_gates"
@@ -32,11 +32,13 @@ def submission(tmp_path, reference_bytes):
     return tmp_path
 
 
-def test_config_changes_only_route_a_keys():
+def test_route_a_retains_its_reference_factor_and_bm_forney_contract():
     path = CONFIG_DIR / "reference-invsqrt.yaml"
     config = load_config(path)
-    expected = yaml.safe_load(DEFAULT_CONFIG.read_text())
-    expected["generators"]["invsqrt"][1] = "tasks/invsqrt/reference.py"
+    # Route A is historical. New default candidates must not change its factor,
+    # shot count or DQI builder. Compare against the frozen reference config.
+    expected = yaml.safe_load((CONFIG_DIR / 'reference.yaml').read_text())
+    expected["generators"]["dqi"][1] = "tasks/dqi/generate.py"
     for gate in expected["gates"]:
         if gate["id"] in {"G1", "G2"}:
             old = gate["params"]["hooks"]["invsqrt"]

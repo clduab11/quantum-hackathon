@@ -30,3 +30,16 @@ def g2_proxy(submission_dir) -> dict:
         return proxy_submission(Path(submission_dir))
     except Exception as exc:
         return {"status": f"FAIL: {type(exc).__name__}: {exc}"}
+
+
+def g4_chemistry_floor(ctx) -> dict:
+    """Require the measured 3.8× chemistry floor as well as archive improvement."""
+    from ledger.gates.checks import g4_strict_improvement
+    result = g4_strict_improvement(ctx)
+    if result['status'] != 'PASS':
+        return result
+    ratio = ctx.manifest.tasks['dfthcsos'].ratio
+    if ratio is None or not ratio >= 3.8:
+        return {**result, 'status': f'FAIL: chemistry ratio {ratio} is below 3.8',
+                'chemistry_ratio': ratio, 'chemistry_floor': 3.8}
+    return {**result, 'chemistry_ratio': ratio, 'chemistry_floor': 3.8}

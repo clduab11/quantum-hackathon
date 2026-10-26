@@ -1,0 +1,38 @@
+{
+  "gates": [
+    {
+      "gate": "G0",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G1",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G2",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G3",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G4",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G5",
+      "status": "PASS",
+      "reason": ""
+    }
+  ],
+  "seconds": 449.88181398101733,
+  "shipping_problems": [],
+  "zip_sha256": "66de2d131cc2c314e9683799866d8e76e6b2b434a8e9061c401037f1dbea28a8",
+  "zip_bytes": 105764340
+}
