@@ -1,0 +1,392 @@
+{
+  "candidate_id": "submission-007",
+  "cli_command": "-",
+  "gates": [
+    {
+      "details": {},
+      "evidence_sha256": null,
+      "gate": "G0",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-26T21:39:43.049094+00:00",
+      "zip_sha256": "9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "qubits": 9,
+            "status": "PASS"
+          },
+          "dqi": {
+            "cover_inputs": 256,
+            "inverse_inputs": 4096,
+            "small_phase_shots": 128,
+            "small_weights": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "status": "PASS"
+          },
+          "invsqrt": {
+            "num_qubits": 90,
+            "sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+            "static_toffoli": 1448,
+            "status": "PASS"
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G1",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-26T21:41:05.622087+00:00",
+      "zip_sha256": "9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "E_gap": 3.914898049999465,
+            "Lambda": 294.45331358012606,
+            "brot": 11,
+            "error_1": 0.006383440998581123,
+            "error_2": 0.019999496917408252,
+            "estimated_cost": 808679648.9839141,
+            "estimated_qubits": 833,
+            "estimated_toffoli": 20286,
+            "heuristic_qubits": 723,
+            "heuristic_toffoli": 11310,
+            "lambda_eff": 47.855856272347104,
+            "parity": false,
+            "resources": {
+              "angles_persistent_qubits": 110,
+              "angles_qubits": 128,
+              "angles_selection_qubits": 10,
+              "angles_temporary_qubits": 8,
+              "angles_toffoli": 8976,
+              "angles_toffoli_per_pass": 4488.0,
+              "angles_within_cap": true,
+              "brot": 11,
+              "givens_rotations_toffoli": 3150,
+              "heuristic_persistent_qubits": 83,
+              "heuristic_qubits": 723,
+              "heuristic_temporary_qubits": 640,
+              "heuristic_toffoli": 11310,
+              "inner_state_prep_persistent_qubits": 43,
+              "inner_state_prep_qubits": 683,
+              "inner_state_prep_temporary_qubits": 640,
+              "inner_state_prep_toffoli": 7833,
+              "keep_bits": 10,
+              "outer_state_prep_persistent_qubits": 40,
+              "outer_state_prep_qubits": 130,
+              "outer_state_prep_temporary_qubits": 90,
+              "outer_state_prep_toffoli": 327,
+              "persistent_qubits": 193,
+              "qubits": 833,
+              "temporary_qubits": 640,
+              "toffoli": 20286
+            },
+            "status": "PASS"
+          },
+          "dqi": {
+            "failures": 0,
+            "num_qubits": 892,
+            "parity": false,
+            "shots": 1536,
+            "status": "PASS",
+            "toffoli_count": 535327.287109375
+          },
+          "invsqrt": {
+            "calibration_margin_units": 73326605,
+            "calibration_worst_x": 2489983,
+            "circuit_authorship": "port",
+            "coefficient_provenance": "regenerated; dataset-adapted calibration; licence unresolved",
+            "derivative_split": {
+              "max_coarse": 126,
+              "max_residual": 3471,
+              "max_table_residual": 2745,
+              "min_residual": 18,
+              "normalized_addresses_checked": 4194304
+            },
+            "estimated_ratio": 13.164808753447378,
+            "expected_toffoli": 1437.5,
+            "first_bad_x": null,
+            "layout": {
+              "LB": 21,
+              "S": 20,
+              "w1": 18,
+              "whi": 8
+            },
+            "min_margin_units": 40189295,
+            "pass": true,
+            "phase_fraction_bits": 38,
+            "phase_match": true,
+            "qubits": 90,
+            "rotations": 44,
+            "sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+            "static_toffoli": 1448,
+            "status": "PASS",
+            "table_worst_relative_error": 5.73885374645857e-08,
+            "tested_inputs": 3133452,
+            "worst_ratio": 0.9628198916787619,
+            "worst_x": 1034666
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G2",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-26T21:42:13.684755+00:00",
+      "zip_sha256": "9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5"
+    },
+    {
+      "details": {
+        "geometric_mean": 13.750471706393649
+      },
+      "evidence_sha256": "11cd0ca2581200b7306e9b1d19142fc18641e6af05b1f898d0d6884964fd00f0",
+      "gate": "G3",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-26T21:46:35.560050+00:00",
+      "zip_sha256": "9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5"
+    },
+    {
+      "details": {
+        "archive_best": {
+          "candidate_id": "pra250-hankel",
+          "geometric_mean": 11.283239253337468
+        },
+        "geometric_mean": 13.750471706393649,
+        "parent": 11.283239253337468
+      },
+      "evidence_sha256": null,
+      "gate": "G4",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-26T21:46:36.154763+00:00",
+      "zip_sha256": "9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "6babc95e1ed3a61d399ac2a5e3643d023b635ae3",
+          "copied_inputs": {
+            "dfthcsos/submission.npz": "inputs/thc/femoco_thc_r5.npz"
+          },
+          "inputs": {
+            "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5": "inputs/thc/femoco_thc_r5.npz"
+          },
+          "status": "PASS",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-261-schur-candidate/.venv/bin/python3",
+                "-m",
+                "tasks.dfthcsos.shipping",
+                "--out",
+                "/tmp/paperclip-run-pra-261-d11053c1-8fb-StPMnW/ledger-rebuild-m5l8op6e/out/dfthcsos",
+                "--batch-size",
+                "10"
+              ],
+              "copied": {
+                "dfthcsos/submission.npz": "inputs/thc/femoco_thc_r5.npz"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-261-schur-candidate/.venv/bin/python3",
+                "-m",
+                "tasks.dqi.generate_schur",
+                "--out",
+                "/tmp/paperclip-run-pra-261-d11053c1-8fb-StPMnW/ledger-rebuild-m5l8op6e/out/dqi"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "invsqrt": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-261-schur-candidate/.venv/bin/python3",
+                "tasks/invsqrt/generate.py",
+                "--out",
+                "/tmp/paperclip-run-pra-261-d11053c1-8fb-StPMnW/ledger-rebuild-m5l8op6e/out/invsqrt"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-26T21:54:37.278745+00:00",
+      "zip_sha256": "9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5"
+    }
+  ],
+  "generator_commit": "6babc95e1ed3a61d399ac2a5e3643d023b635ae3",
+  "geometric_mean": 13.750471706393649,
+  "git_branch": "op-vqcc/PRA-261-schur-candidate",
+  "kaggle_submission_id": "57679899",
+  "kickmix_build_id": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
+  "kind": "submission",
+  "manifest_id": "d30baba4-8363-480e-b732-78806738fe2b",
+  "notes": "PRA-261 formal Schur candidate from merged main 6babc95. Exact earlier measured zip; new real G0-G5, no waivers. Rollback rehearsal PRA-278 at 298ca0dbcad79349ad1cb559ba0fef0333e36a3d restores submission-006. No upload authorization implied.",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "parent_candidate_id": "pra250-hankel",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64",
+  "python_version": "3.13.13",
+  "qualtran_pin": null,
+  "salt_label": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+  "schema_version": "1",
+  "source_candidate_id": "pra261-schur",
+  "submitted_at_utc": "2026-10-26T22:18:35.714161+00:00",
+  "tasks": {
+    "dfthcsos": {
+      "baseline_cost": 3355599588.3155365,
+      "cost": 808679648.9839141,
+      "eps_plus": null,
+      "evidence": [
+        "11cd0ca2581200b7306e9b1d19142fc18641e6af05b1f898d0d6884964fd00f0"
+      ],
+      "failures": null,
+      "files": {
+        "dfthcsos/angle_k_0.kmb": "60d9dfb7a5ec6d172232f4d7081b858ce6868eea0ca2ee99ed3c99a195c3d0bb",
+        "dfthcsos/angle_k_1.kmb": "4079e0a08491fc3e42df613b09fd6c8399364bdf8cc508c0de2814f7ddf75c19",
+        "dfthcsos/angle_k_2.kmb": "cacdff488e6ea968f9f60f80072ca9285036b65a98a1cd60576190960458eb1a",
+        "dfthcsos/angle_k_3.kmb": "dbe4415e56782c83b6a53045ca7325a66528ae3812a28e577e0a527d89ba77bd",
+        "dfthcsos/angle_k_4.kmb": "6e0dcbe0f75a631c60e5d3affcf01179c4599abea05c053ef94d04e0a5f7d472",
+        "dfthcsos/angle_k_5.kmb": "58b75e436ff504af19b40fdb23337c7c548db8f84a3bdc9710d8f8303deee41f",
+        "dfthcsos/angle_k_6.kmb": "9df59056b173c4205a944c59edb4cfe5c77f0fd6003dbb34f2864910204b8d09",
+        "dfthcsos/angle_k_7.kmb": "86bc88ad3aad4553f60f3eac26807acd42a949ebc48bbb2443688193f9a9b1f4",
+        "dfthcsos/submission.npz": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5"
+      },
+      "measured": true,
+      "metrics": {
+        "E_gap": 3.914898049999465,
+        "Lambda": 294.45331358012606,
+        "angles_qubits": 128,
+        "batch_size": 10,
+        "brot": 11,
+        "error_1": 0.006383440998581123,
+        "error_2": 0.019999496917408252,
+        "lambda_eff": 47.855856272347104,
+        "num_circuits": 8,
+        "persistent_qubits": 193,
+        "submission_sha256": "877113411abb25ad5fdbde4fa27b1569fbf9dd9da42a5e70e8dd028e956aaee9",
+        "temporary_qubits": 640
+      },
+      "num_qubits": 833,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "PRA-245 declared Gluzdov v8 non-circuit factor, SHA 809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5. Committed ANF builder, J10, 11-bit words; PRA-247 family. All ANGLE circuits regenerated.",
+        "parent_url": "https://www.kaggle.com/datasets/dmitriigluzdov/vqcc-femoco-public-factorization?datasetVersionNumber=8"
+      },
+      "ratio": 4.149479453986215,
+      "rotation_count": null,
+      "shots": 36608,
+      "t_count": null,
+      "task": "dfthcsos",
+      "toffoli_count": 20286.0,
+      "verifier_sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+    },
+    "dqi": {
+      "baseline_cost": 24439465632206.816,
+      "cost": 513507847124.5177,
+      "eps_plus": 0.000983909102617945,
+      "evidence": [
+        "11cd0ca2581200b7306e9b1d19142fc18641e6af05b1f898d0d6884964fd00f0"
+      ],
+      "failures": 3,
+      "files": {
+        "dqi.kmb": "1a1c60ae30f506ec5d05728d893f63d2e0c4952b0145af2081236bfef1e18f48"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "1a1c60ae30f506ec5d05728d893f63d2e0c4952b0145af2081236bfef1e18f48",
+        "empirical_error_rate": 2.9296875e-05,
+        "log2_delta": -128.0,
+        "max_toffoli_count": 535334,
+        "mean_error_weight": 31.046737331746634,
+        "phase_errors": 0,
+        "repetition_factor": 1.2055843238398525,
+        "value_errors": 3
+      },
+      "num_qubits": 892,
+      "provenance": {
+        "licence": "no-licence",
+        "notes": "Schur decoder port from commit 2b9227095bf2c76f9f64a572645d7dce54998298, initial_experiments/6/agent14; independent 17-AND inverse cover. Notebook scriptVersionId 362573669 source SHA256 28e0f08476df85323f9d25589f3cf781f13b5df105233193edfe8a5d1cff149c is reference-only prose; no circuit input. See tasks/dqi/schur/PROVENANCE.md and notices/20-dqi.txt. D-PRA269-01 records board reuse ruling; D-PRA273-01 defers licensure checks. No licence granted by this manifest.",
+        "parent_url": "https://github.com/jday96314/QuantumAI"
+      },
+      "ratio": 47.59316876861791,
+      "rotation_count": null,
+      "shots": 102400,
+      "t_count": null,
+      "task": "dqi",
+      "toffoli_count": 535327.7832421875,
+      "verifier_sha256": "f14274bc0943fb9769ddb01131be6063191a15009fe1caf1d4bdd9fd25194e65"
+    },
+    "invsqrt": {
+      "baseline_cost": 2076774.233715282,
+      "cost": 157751.94999626835,
+      "eps_plus": null,
+      "evidence": [
+        "11cd0ca2581200b7306e9b1d19142fc18641e6af05b1f898d0d6884964fd00f0"
+      ],
+      "failures": 0,
+      "files": {
+        "invsqrt.kmb": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+        "max_toffoli_count": 1448,
+        "rotation_eps": 2.8381742236929845e-13,
+        "toffoli_equivalent": 1752.7994444029816,
+        "worst_error_over_tolerance": 0.9996227434818049,
+        "worst_x": 32
+      },
+      "num_qubits": 90,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Port, not independent clean-room authorship. Apache-2.0 labels the notebook code parents, not the disputed calibration rights. Full parent/module map: tasks/invsqrt/PROVENANCE.md at generator_commit. Other method parents: https://www.kaggle.com/code/kozykappa/quantum-ai-complete-domain-affine-compilation-v2 and https://www.kaggle.com/code/kozykappa/quantum-ai-lb-score-6-68108?scriptVersionId=361677445 (Apache-2.0). Coefficient provenance remains regenerated; dataset-adapted calibration; licence unresolved. Calibration lineage: https://www.kaggle.com/datasets/kozykappa/quantum-ai-dataset?datasetVersionId=21136269 ; code/domain_tables.py SHA-256 59cf4d98899433dcc49d9ce512293be20d33da5334211c20e35323555994a4fb and code/coefficients.json SHA-256 98bd211f22b158bf05a4d2d934ab966e5e97e54d8307b82e2ca58910c6830763. invsqrt lineage ships under the board ruling D-PRA228-01; D-PRA220-01 stays on record. The board ruling permits this shipment; it is not a third-party licence grant.",
+        "parent_url": "https://www.kaggle.com/code/anazemcev/quantum-circuits-signed-digit-memory?scriptVersionId=361502374"
+      },
+      "ratio": 13.16480863637127,
+      "rotation_count": 44.0,
+      "shots": 200540928,
+      "t_count": 1.0,
+      "task": "invsqrt",
+      "toffoli_count": 1437.5000155878406,
+      "verifier_sha256": "ddef520dec6b68d1cf0a6f328ddd36d79eb84570b9192cf3f7acaf073f06733a"
+    }
+  },
+  "timestamp_utc": "2026-10-26T22:18:35.714161+00:00",
+  "zip_sha256": "9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5"
+}
