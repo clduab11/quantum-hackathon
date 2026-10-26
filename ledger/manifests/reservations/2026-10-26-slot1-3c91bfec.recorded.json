@@ -1,0 +1,14 @@
+{
+  "candidate_id": "pra233-chem-v1",
+  "error": "",
+  "kaggle_submission_id": "57672909",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "outcome": "recorded",
+  "reservation_id": "3c91bfec-137a-4983-b410-318714dc9f3f",
+  "reserved_at_utc": "2026-10-26T16:49:04.018017+00:00",
+  "resolved_at_utc": "2026-10-26T16:49:52.326554+00:00",
+  "slot": 1,
+  "submission_id": "submission-005",
+  "utc_day": "2026-10-26",
+  "zip_sha256": "66de2d131cc2c314e9683799866d8e76e6b2b434a8e9061c401037f1dbea28a8"
+}

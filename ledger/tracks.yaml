@@ -20,9 +20,9 @@ tracks:
     aim: >-
       Upload only circuits that pass every check, and rebuild the best public designs in our own
       code.
-    updated_at_utc: "2026-10-26T06:30:00+00:00"
+    updated_at_utc: "2026-10-26T16:50:00+00:00"
     figures:
-      # submission-004 manifest, Kaggle public score 6.77899 (D-PRA202-16).
+      # submission-005 manifest (D-PRA202-22); dqi and invsqrt unchanged from submission-004.
       - label: Square-root circuit (invsqrt)
         value: 13.16
         state: shipped
@@ -30,9 +30,9 @@ tracks:
         value: 23.56
         state: shipped
       - label: Chemistry circuit (dfthcsos)
-        value: 1.00
+        value: 4.15
         state: shipped
-        note: Google's reference circuit, unchanged.
+        note: Built in our own code from a public, openly licensed description of the molecule.
       # PRA-249 and PRA-250, started 2026-10-26.
       - label: Square-root circuit rebuilt from the best public design
         state: in work
