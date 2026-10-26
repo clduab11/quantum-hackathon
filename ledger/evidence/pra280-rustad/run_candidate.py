@@ -48,12 +48,12 @@ def main():
         build_zip(DATA / 'pra280/bundle', ZIP)
         parent = read_manifest(ROOT / 'ledger/manifests/candidates/pra250-hankel.json')
         provenance = {task: record.provenance for task, record in parent.tasks.items()}
-        provenance['dqi'] = Provenance(licence='not-stated',
+        provenance['dqi'] = Provenance(licence='no-licence',
             parent_url='https://github.com/jday96314/QuantumAI',
             notes='Existing committed Schur generator; upstream 2b922709. See tasks/dqi/schur/PROVENANCE.md. Licence recorded, not gated under PRA-273. No circuit input.')
-        provenance['dfthcsos'] = Provenance(licence='Other (specified in description)',
+        provenance['dfthcsos'] = Provenance(licence='no-licence',
             parent_url='https://www.kaggle.com/datasets/michaelrustad/vqcc-dfthc-r10-merged-groups?datasetVersionNumber=1',
-            notes='Declared non-circuit factor SHA-256 27dda66f38c60821665cfc74e51d1bd2bfd2a7f0d902dbaffcdc5b26543dadad, copied under D-PRA211-05. All circuits regenerated with the mrmeows v6 source port (Apache 2.0), exact integer gauge, J3/brot8. Full source rows: ledger/manifests/inputs/pra280-rustad.json; notices/35-chem-catchup.txt.')
+            notes='Dataset licence field as found: Other (specified in description); normalized to ledger category no-licence, not gated (PRA-273). Declared non-circuit factor SHA-256 27dda66f38c60821665cfc74e51d1bd2bfd2a7f0d902dbaffcdc5b26543dadad, copied under D-PRA211-05. All circuits regenerated with the mrmeows v6 source port (Apache 2.0), exact integer gauge, J3/brot8. Full source rows: ledger/manifests/inputs/pra280-rustad.json; notices/35-chem-catchup.txt.')
         manifest = start_candidate(ZIP, CANDIDATE, provenance,
             parent_candidate_id=parent.candidate_id, salt_label=config.salt_label,
             notes='PRA-280 public parity candidate. No salt/seed search, GPU work or upload. Adjudicator review required before merge/submission.')
