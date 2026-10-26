@@ -1,0 +1,6 @@
+{
+  "command": "CUDA_VISIBLE_DEVICES='' uv run --group gpu python -m tasks.dfthcsos.factor_gpu",
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "factor GPU: CUDA is unavailable; check WSL GPU access and CUDA_VISIBLE_DEVICES; CPU fitting is forbidden\n"
+}

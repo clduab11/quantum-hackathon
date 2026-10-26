@@ -1,0 +1,49 @@
+{
+  "status": "completed_declared_8bit_negative_google_running",
+  "report_sha256": "e1a9daa5890905b747a2830077bad810cf17e5bc368ed4a9704b5f509d1aab2f",
+  "checkpoint_hashes_verified": 36,
+  "source_hashes_verified": 15,
+  "exit_code": 3,
+  "continuous_seconds": 1159.2310252869938,
+  "qat_postprocess_seconds": 1733.0476149999886,
+  "final_8bit": {
+    "label": "final",
+    "shape": [
+      1,
+      496,
+      384
+    ],
+    "bits": 8,
+    "error_1": 0.02209125120731618,
+    "error_2": 0.06372098876193823,
+    "Lambda": 390.41626265753575,
+    "E_SOS": -22144.371433202657,
+    "E_gap": 4.098083202658017,
+    "lambda_eff": 56.41916669135435,
+    "gap_in_domain": true,
+    "J": 13,
+    "T": 23074,
+    "Q": 508,
+    "angle_qubits": 123,
+    "model": "ordinary-QROM upper bound; not circuit verification",
+    "predicted_ratio": 5.074074792716147,
+    "seconds": 1733.0476149999886,
+    "gpu_peak_bytes": 319705600,
+    "measured_utc": "2026-10-26T07:42:13.413065+00:00",
+    "file": "0035-final-b8.npz",
+    "sha256": "9977b734f8b3c30e714b00bcbe58ebdf669216edc3d4e48a9744a025a2ddd14f",
+    "problems": [
+      "error_1 0.02209125120731618 Ha > 0.02 Ha",
+      "error_2 0.06372098876193823 Ha > 0.02 Ha"
+    ],
+    "margin_19_5_mha": false,
+    "detail": {},
+    "full_circuit_verified": false
+  },
+  "conditional_steps": {
+    "joint_barrier_8bit": "skipped: physical error above source 19.999 mHa gate",
+    "two_body_integer_repair": "skipped: 63.720988762 mHa outside source (20,30) mHa entry interval",
+    "one_body_integer_repair": "2000 accepted steps; 14.307530965 seconds including final measurement; iteration budget reached"
+  },
+  "google_output": "/home/cld-main/work/vqcc-data/pra246-google-v4-01"
+}

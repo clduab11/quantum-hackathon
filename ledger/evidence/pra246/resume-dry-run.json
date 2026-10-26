@@ -1,0 +1,54 @@
+{
+  "gpu": {
+    "status": "PASS",
+    "device": "cuda:0",
+    "name": "NVIDIA GeForce RTX 4060 Ti",
+    "capability": [
+      8,
+      9
+    ],
+    "torch": "2.8.0+cu128",
+    "cuda_runtime": "12.8",
+    "python": "3.13.13",
+    "free_bytes": 7246708736,
+    "total_bytes": 8585216000,
+    "peak_allocated_bytes": 67113472,
+    "checks": {
+      "torch.float32": "PASS",
+      "torch.float64": "PASS"
+    }
+  },
+  "resume": {
+    "manifest_sha256": "362d82da2f1f03fdcf1968378ae0699574dc653bfe8f35bfdcc15f4f7063d440",
+    "progress_sha256": "696343853dbcf9ae5d2d44a9304dad8bb316d59e5e7896234616bb3565ce219c",
+    "checkpoint_sha256": "4f3449bd35fd39e30a46afb7986381b80bbf2d1b39e37918717585f2d6de9486",
+    "recomputed_error": 0.016868331753377305,
+    "stages": [
+      {
+        "stage": "structural",
+        "steps": 5734,
+        "calls": 34445,
+        "best_error": 0.016992051664368516,
+        "elapsed": 702.7152083760157,
+        "limit_steps": 8000,
+        "limit_seconds": 700,
+        "stop": "source_time_limit"
+      },
+      {
+        "stage": "gauss-newton",
+        "iterations": 129,
+        "cg_iterations": 12900,
+        "best_error": 0.016868331753377305,
+        "elapsed": 450.6937171909958,
+        "stop": "source_time_limit",
+        "limit_iterations": 300,
+        "limit_cg": 100,
+        "limit_seconds": 450
+      }
+    ],
+    "prior_seconds": 1159.2310252869938,
+    "note": "Completed continuous stages retained; full QAT and postprocessing restart with seed95101"
+  },
+  "out": "/home/cld-main/work/vqcc-data/pra246-declared-v4-04"
+}
+

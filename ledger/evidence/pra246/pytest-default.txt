@@ -1,0 +1,5 @@
+Initial full-suite run before project-local kickmix setup:
+2 failed, 312 passed, 3 skipped in 80.02s.
+Failures: test_seed_program_reproduces_the_reference_family; test_evaluator_stage1_scores_the_seed_without_simulating.
+Diagnosis by direct seed invocation: ModuleNotFoundError: No module named kickmix.
+The search subprocess replaces PYTHONPATH. Corrected with the existing hash-checking scripts/install_kickmix.py in this worktree venv; no source change. Follow-up result: pytest-gpu.txt.

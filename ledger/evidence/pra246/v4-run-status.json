@@ -1,0 +1,16 @@
+{
+  "recorded_utc": "2026-10-26T06:16:35.394781+00:00",
+  "complete": false,
+  "run_directory": "/home/cld-main/work/vqcc-data/pra246-declared-v4-01",
+  "log": "/home/cld-main/work/vqcc-data/pra246-declared-v4-01.log",
+  "source_commit": "b94e3d7",
+  "branch": "op-vqcc/PRA-246-factor-fit-v4",
+  "row_count": 71,
+  "last_measured_utc": "2026-10-26T06:20:19.692827+00:00",
+  "last_file": "0070-stage-20-b11.npz",
+  "passing_8bit_file_exists": false,
+  "publication": "New implementation not yet pushed: governed GitHub gateway_token_revoked; connections_search HTTP403 inactive runtime token. PR39 still preparation tree.",
+  "merge_gate": "Replacement-head simulation passes all24 orders versus40/41/42, excluding stale own PR39 in favor of local HEAD. Full published queue not claimed ready.",
+  "next": "Full restart in pra246-declared-v4-02; no completed chemistry negative.",
+  "status": "interrupted"
+}

@@ -1,0 +1,12 @@
+### Merge-order gate: PASS
+
+- repository `clduab11/quantum-hackathon`, base `main` at `c1961501dd4f299a0d2218b2fd07bc2c1b917dc1`
+- heads (4): #40 `db76a51c5855`, #41 `53196668a2d4` draft, #42 `9368156a904e`, mine `008ea378fb77`
+- excluded: #39 (draft)
+- heads already in the base (they prove nothing): none
+- orders squashed: 24 (every permutation); clean 24, conflicting 0
+
+| merged tree | register check |
+| --- | --- |
+| `4b2e463b88a1` | PASS: OK registers: 239 decisions, 6 notice files, legacy index unchanged |
+

@@ -1,0 +1,38 @@
+{
+  "started_utc": "2026-10-26T07:13:10.584151+00:00",
+  "runner_pid": 37641,
+  "process_group": 37641,
+  "argv": [
+    "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/PRA-246-factor-fit-v4/.venv/bin/python",
+    "-m",
+    "tasks.dfthcsos.factor_fit_v4",
+    "--starter",
+    "/home/cld-main/work/vqcc-data/starter-kit",
+    "--competition",
+    "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation",
+    "--factor",
+    "/home/cld-main/work/vqcc-data/inputs/thc/femoco_thc_r5.npz",
+    "--sha256",
+    "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5",
+    "--out",
+    "/home/cld-main/work/vqcc-data/pra246-declared-v4-04",
+    "--resume-continuous",
+    "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/PRA-246-factor-fit-v4/ledger/evidence/pra246/continuous-resume-run03.json",
+    "--resume-sha256",
+    "362d82da2f1f03fdcf1968378ae0699574dc653bfe8f35bfdcc15f4f7063d440"
+  ],
+  "cwd": "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/PRA-246-factor-fit-v4",
+  "source_commit": "cd317bab09fa41811a45fa8b2fb270297846e157",
+  "compiler_caches": {
+    "TORCHINDUCTOR_CACHE_DIR": "/home/cld-main/work/vqcc-data/pra246-declared-v4-04.cache/.torch-inductor",
+    "TRITON_CACHE_DIR": "/home/cld-main/work/vqcc-data/pra246-declared-v4-04.cache/.triton",
+    "TORCH_EXTENSIONS_DIR": "/home/cld-main/work/vqcc-data/pra246-declared-v4-04.cache/.torch-extensions",
+    "CUDA_CACHE_PATH": "/home/cld-main/work/vqcc-data/pra246-declared-v4-04.cache/.cuda-cache",
+    "TMPDIR": "/home/cld-main/work/vqcc-data/pra246-declared-v4-04.tmp",
+    "TMP": "/home/cld-main/work/vqcc-data/pra246-declared-v4-04.tmp",
+    "TEMP": "/home/cld-main/work/vqcc-data/pra246-declared-v4-04.tmp"
+  },
+  "exit_record": "/home/cld-main/work/vqcc-data/pra246-declared-v4-04.exit.json",
+  "log": "/home/cld-main/work/vqcc-data/pra246-declared-v4-04.log",
+  "launch": "new session, closed stdin, exclusive log, persistent temporary directory"
+}

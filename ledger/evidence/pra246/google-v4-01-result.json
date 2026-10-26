@@ -1,0 +1,47 @@
+{
+  "status": "completed_google_8bit_negative",
+  "report_sha256": "5f35a17b9a9d4ba95ad5d89281f22079608425179c949e4da55b2edecb8589d9",
+  "checkpoint_hashes_verified": 251,
+  "source_hashes_verified": 15,
+  "exit_code": 3,
+  "final_8bit": {
+    "label": "final",
+    "shape": [
+      1,
+      496,
+      384
+    ],
+    "bits": 8,
+    "error_1": 0.022846695282426048,
+    "error_2": 0.06729470524921975,
+    "Lambda": 475.0293472833875,
+    "E_SOS": -22144.376804858788,
+    "E_gap": 4.103454858788609,
+    "lambda_eff": 62.30316705093153,
+    "gap_in_domain": true,
+    "J": 13,
+    "T": 23074,
+    "Q": 508,
+    "angle_qubits": 123,
+    "model": "ordinary-QROM upper bound; not circuit verification",
+    "predicted_ratio": 4.594871899539678,
+    "seconds": 3550.535668595985,
+    "gpu_peak_bytes": 682028032,
+    "measured_utc": "2026-10-26T08:50:58.074872+00:00",
+    "file": "0250-final-b8.npz",
+    "sha256": "31aed203858621515bf95cd9f9cefca5c57b2eb49d17c5b20733c623a2a19021",
+    "problems": [
+      "error_1 0.022846695282426048 Ha > 0.02 Ha",
+      "error_2 0.06729470524921975 Ha > 0.02 Ha"
+    ],
+    "margin_19_5_mha": false,
+    "detail": {},
+    "full_circuit_verified": false
+  },
+  "conditional_steps": {
+    "integer_repair_11bit": "two CUDA rounds, 256 accepted steps and 61696 proposals each; QR150 each; full subsequent postprocess",
+    "joint_barrier_8bit": "skipped: physical error above source 19.999 mHa gate",
+    "two_body_integer_repair_8bit": "skipped: 67.294705249 mHa outside source (20,30) mHa entry interval",
+    "one_body_integer_repair_8bit": "2000 accepted steps, 14.028886877 seconds including final measurement; iteration budget reached"
+  }
+}

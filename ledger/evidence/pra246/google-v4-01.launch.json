@@ -1,0 +1,34 @@
+{
+  "started_utc": "2026-10-26T07:51:36.162014+00:00",
+  "runner_pid": 72315,
+  "process_group": 72315,
+  "argv": [
+    "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/PRA-246-factor-fit-v4/.venv/bin/python",
+    "-m",
+    "tasks.dfthcsos.factor_fit_v4",
+    "--starter",
+    "/home/cld-main/work/vqcc-data/starter-kit",
+    "--competition",
+    "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation",
+    "--factor",
+    "/home/cld-main/work/vqcc-data/starter-kit/starter_kit/starter/task1_factorization/FeMoco76_65_60_60.npz",
+    "--sha256",
+    "b13120cb62bf4cfcf41a3dc0c78cd6e58e17dacc7d0691834cee2cc6e4bc642b",
+    "--out",
+    "/home/cld-main/work/vqcc-data/pra246-google-v4-01"
+  ],
+  "cwd": "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/PRA-246-factor-fit-v4",
+  "source_commit": "6c264167997b96d4cc445f8c8c6f794545cfef0c",
+  "compiler_caches": {
+    "TORCHINDUCTOR_CACHE_DIR": "/home/cld-main/work/vqcc-data/pra246-google-v4-01.cache/.torch-inductor",
+    "TRITON_CACHE_DIR": "/home/cld-main/work/vqcc-data/pra246-google-v4-01.cache/.triton",
+    "TORCH_EXTENSIONS_DIR": "/home/cld-main/work/vqcc-data/pra246-google-v4-01.cache/.torch-extensions",
+    "CUDA_CACHE_PATH": "/home/cld-main/work/vqcc-data/pra246-google-v4-01.cache/.cuda-cache",
+    "TMPDIR": "/home/cld-main/work/vqcc-data/pra246-google-v4-01.tmp",
+    "TMP": "/home/cld-main/work/vqcc-data/pra246-google-v4-01.tmp",
+    "TEMP": "/home/cld-main/work/vqcc-data/pra246-google-v4-01.tmp"
+  },
+  "exit_record": "/home/cld-main/work/vqcc-data/pra246-google-v4-01.exit.json",
+  "log": "/home/cld-main/work/vqcc-data/pra246-google-v4-01.log",
+  "launch": "new session, closed stdin, exclusive log, persistent temporary directory"
+}
