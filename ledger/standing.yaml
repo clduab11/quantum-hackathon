@@ -11,23 +11,28 @@
 schema: 1
 
 leaderboard:
-  # PRA-202 `leaderboard-snapshot` revision 8: top-20 read (KAGGLE_VIEW_COMPETITION_LEADERBOARD) and
-  # the full CSV (publicleaderboard-2026-10-26T17:55:43.csv, 1130 rows), taken with submission-006.
-  read_at_utc: "2026-10-26T17:55:43+00:00"
-  our_score: 10.89339         # our public score when the rank was read
-  rank: 537
-  teams: 1130
+  # PRA-202 `leaderboard-snapshot` revision 9: the full CSV (publicleaderboard-2026-10-26T18:51:02.csv,
+  # 1132 rows), taken with the submission-006 score read-back (D-PRA202-26).
+  read_at_utc: "2026-10-26T18:51:02+00:00"
+  our_score: 11.30048         # our public score when the rank was read
+  rank: 523
+  teams: 1132
   leader_score: 23.35228
   prize_line_place: 6         # last paid place (D-PRA202-14)
   prize_line_score: 20.40926
 
 best_public_per_task:
-  # PRA-202 `leaderboard-snapshot` revision 4, per-task scoreboard. Kaggle publishes no per-task
-  # scores; these are the best figures authors state in public notebooks, so they are a floor on
-  # the true best, not the true best.
-  read_at_utc: "2026-10-25T15:11:00+00:00"
-  invsqrt: 15.04
-  dqi: 23.66
+  # Kaggle publishes no per-task scores; these are the best figures authors state in public
+  # notebooks, so they are a floor on the true best, not the true best. Refreshed 2026-10-26 from
+  # the sources already in the ledger (no new Kaggle read):
+  #   invsqrt 15.69: busyaprime notebook v5, stated, not verified by us (D-PRA202-19).
+  #   dqi 48.79: the public Schur circuit (alexchilton, read 2026-10-26 17:20-17:35Z), stated.
+  #     It counts as a stated public figure; our own run of that circuit at our fixed salt
+  #     measured 48.14x (D-PRA269-02).
+  #   dfthcsos 4.09: Gluzdov v8, stated; unchanged since the 2026-10-25 read (revision 4).
+  read_at_utc: "2026-10-26T17:35:00+00:00"
+  invsqrt: 15.69
+  dqi: 48.79
   dfthcsos: 4.09
 
 submission_notes:

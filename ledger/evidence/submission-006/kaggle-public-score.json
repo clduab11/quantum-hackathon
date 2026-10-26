@@ -1,0 +1,23 @@
+{
+  "candidate_id": "submission-006",
+  "commands": [
+    "Composio proxy_execute POST https://www.kaggle.com/api/v1/competitions.CompetitionApiService/ListSubmissions {competitionName: google-verifiable-quantum-circuit-compilation, pageSize: 20}"
+  ],
+  "kaggle": {
+    "competition": "google-verifiable-quantum-circuit-compilation",
+    "date": "2026-10-26T17:53:55.240Z",
+    "description": "pra250-hankel Hankel DQI (PRA-250) + J10 chemistry; zip sha256 459b2f11...cbec7; local GM 11.2832",
+    "fileName": "submission.zip",
+    "publicScore": "11.30048",
+    "ref": 57674519,
+    "status": "COMPLETE",
+    "totalBytes": 43263149
+  },
+  "kind": "kaggle_public_score",
+  "local_geometric_mean": 11.283239253337468,
+  "notes": "Public score read back from Kaggle ListSubmissions (Composio log log_xlsSnDGmLFtd) by the PRA-202 issue monitor. submission-NNN.json manifests are never rewritten (docs/ledger-schema.md), so the score is recorded here and in D-PRA202-26. Kaggle public 11.30048 is 1.00153x the local fixed-salt G3 geometric mean 11.283239253337468 (+0.15%), the same ratio as submissions 004 and 005. totalBytes equals the local zip size. No salt grinding follows.",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "source_candidate_id": "pra250-hankel",
+  "timestamp_utc": "2026-10-26T18:50:40+00:00",
+  "zip_sha256": "459b2f11778f5bbd576ce69b9f85156ca2c301bd2a3f74752adca5c2dadcbec7"
+}
