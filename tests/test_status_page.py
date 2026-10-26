@@ -18,18 +18,26 @@ from ledger.run_manifest import (
     load_manifests,
 )
 from ledger.scorecard import submissions
+from ledger.gates.runner import load_config
 from ledger.status_page import (
     STANDING_PATH,
+    TRACKS_PATH,
     StandingError,
+    TracksError,
     build,
     checks_sentence,
+    featured_candidate,
+    gate_cell,
     load_standing,
+    load_tracks,
     parse_standing,
+    parse_tracks,
     public_scores,
     render_page,
 )
 
 STANDING = yaml.safe_load(STANDING_PATH.read_text(encoding="utf-8"))
+TRACKS = yaml.safe_load(TRACKS_PATH.read_text(encoding="utf-8"))
 
 
 def _submission(candidate_id: str, submitted: str, *, gates: dict[str, str] | None = None):
@@ -40,6 +48,19 @@ def _submission(candidate_id: str, submitted: str, *, gates: dict[str, str] | No
     for gate, status in (gates or {g: "PASS" for g in GATE_IDS}).items():
         m.gates.append(GateRecord(gate=gate, status=status, timestamp_utc="",
                                   zip_sha256=m.zip_sha256))
+    return m
+
+
+def _gated(candidate_id: str, cleared: int, *, kind: str = "candidate",
+           zip_sha256: str | None = None):
+    """A manifest whose first `cleared` gates PASS; `zip_sha256` binds them to another zip."""
+    tasks = {t: TaskRecord(task=t, provenance=Provenance(licence="own"), cost=1.0,
+                           baseline_cost=2.0, measured=True) for t in TASKS}
+    m = create_manifest(candidate_id=candidate_id, tasks=tasks, zip_sha256="ab" * 32)
+    m.kind = kind
+    for gate in GATE_IDS[:cleared]:
+        m.gates.append(GateRecord(gate=gate, status="PASS", timestamp_utc="",
+                                  zip_sha256=zip_sha256 or m.zip_sha256))
     return m
 
 
@@ -100,13 +121,161 @@ def test_page_reads_the_ledger_and_the_standing_file(tmp_path: Path):
 def test_page_is_one_plain_screen(tmp_path: Path):
     page = build(tmp_path / "public").read_text(encoding="utf-8")
     text = _text(page)
-    assert "<script" not in page and "<svg" not in page
+    assert "<script" not in page                       # no JavaScript
     assert "fonts.googleapis.com" not in page          # one request, no web fonts
-    assert len(text.split()) < 450
-    for jargon in ("manifest", "salt", "merge gate", "G3", "PRA-", "D-PRA", "candidate"):
+    assert page.count("<svg") == 1                     # the gate circuit, inline
+    assert len(text.split()) < 1000
+    for jargon in ("manifest", "salt", "merge gate", "PRA-", "D-PRA", "candidate", "zip",
+                   "worktree", "proxy", "parent"):
         assert jargon not in text, jargon
+    for heading in ("Where we stand", "What we are working on", "How each upload is checked",
+                    "Our uploads", "Where every circuit comes from"):
+        assert f">{heading}</h2>" in page, heading
     assert 'href="https://github.com/clduab11/quantum-hackathon"' in page
     assert "kaggle.com/competitions/google-verifiable-quantum-circuit-compilation" in page
+    assert "/tree/main/docs/decisions" in page
+
+
+def test_circuit_draws_the_latest_upload_from_the_ledger(tmp_path: Path):
+    page = build(tmp_path / "public").read_text(encoding="utf-8")
+    svg = page[page.index("<svg"):page.index("</svg>")]
+    # submission-004: every gate passed on the uploaded zip; G1 and G2 are per circuit.
+    assert '<g class="gate pass"><title>G0, all circuits: Passed</title>' in svg
+    assert '<g class="gate pass"><title>G2 dqi: Passed</title>' in svg
+    assert '<g class="gate pass"><title>G5, all circuits: Passed</title>' in svg
+    assert "notrun" not in svg and "fail" not in svg
+    for ratio in (">13.16</text>", ">23.56</text>", ">1.00</text>"):
+        assert ratio in svg
+    assert svg.count('class="inner"') == 3            # G0, G3, G5 are never waived
+    text = _text(page)
+    assert "It shows our latest upload, sent on 25 October 2026. For the latest upload, all six " \
+           "of our automatic checks passed." in text
+
+
+def test_circuit_shows_gate_failures_and_stale_records():
+    m = _gated("submission-001", 1, kind="submission")
+    m.submitted_at_utc = "2026-10-24T07:00:00+00:00"
+    m.gates.append(GateRecord(
+        gate="G1", status="FAIL", timestamp_utc="", zip_sha256=m.zip_sha256,
+        details={"tasks": {"invsqrt": {"status": "PASS"}, "dqi": {"status": "FAIL: smoke"},
+                           "dfthcsos": {"status": "PASS"}}}))
+    m.gates.append(GateRecord(gate="G2", status="PASS", timestamp_utc="", zip_sha256="cd" * 32))
+    page = render_page([m], _standing(), {})
+    assert '<g class="gate fail"><title>G1 dqi: Failed (FAIL: smoke)</title>' in page
+    assert ('<g class="gate stale"><title>G2 dqi: Ran on an earlier version (ran on an earlier '
+            'version)</title>') in page
+    assert '<g class="gate notrun"><title>G3, all circuits: Not run</title>' in page
+    assert "invsqrt passed, dqi failed, dfthcsos passed" in page
+
+
+def test_circuit_falls_back_to_the_furthest_candidate_before_any_upload():
+    page = render_page([_gated("cand-a", 3), _gated("cand-b", 1)], _standing(), {})
+    assert "Nothing is uploaded yet, so this shows the circuits furthest through our checks." \
+        in page
+    assert '<g class="gate pass"><title>G2 invsqrt: Passed</title>' in page
+    assert '<g class="gate notrun"><title>G3, all circuits: Not run</title>' in page
+    empty = render_page([], _standing(), {})
+    assert "Nothing has entered our checks yet." in empty
+    assert empty.count('<g class="gate notrun">') == 10   # 4 tall gates + 2 gates on 3 wires
+
+
+def test_featured_candidate_prefers_the_furthest_gated_then_the_newest():
+    assert featured_candidate([]) is None
+    assert featured_candidate([_gated("submission-001", 6, kind="submission")]) is None
+    older, newer = _gated("cand-a", 4), _gated("cand-b", 1)
+    assert featured_candidate([older, newer]) is older
+    older, newer = _gated("cand-a", 2), _gated("cand-b", 2)
+    assert featured_candidate([older, newer]) is newer
+    stale = _gated("cand-a", 6, zip_sha256="cd" * 32)  # every PASS is on an earlier zip
+    current = _gated("cand-b", 1)
+    assert featured_candidate([current, stale]) is current
+
+
+def test_gate_cells_follow_the_ledger_rules():
+    m = _gated("cand", 1)
+    m.gates.append(GateRecord(
+        gate="G1", status="FAIL", timestamp_utc="", zip_sha256=m.zip_sha256,
+        details={"tasks": {"invsqrt": {"status": "PASS"}, "dqi": {"status": "FAIL: smoke"},
+                           "dfthcsos": {"status": "PASS"}}}))
+    m.gates.append(GateRecord(gate="G2", status="PASS", timestamp_utc="", zip_sha256="cd" * 32))
+    assert gate_cell(m, "G0").status == "PASS"
+    assert gate_cell(m, "G1", "invsqrt").status == "PASS"
+    assert (gate_cell(m, "G1", "dqi").status, gate_cell(m, "G1", "dqi").reason) == (
+        "FAIL", "FAIL: smoke")
+    assert gate_cell(m, "G2", "dqi").status == "stale"  # bound to an earlier zip: not cleared
+    assert gate_cell(m, "G3").status == "not run"
+    assert gate_cell(None, "G0").status == "not run"
+    waived = _gated("cand", 0)
+    waived.gates.append(GateRecord(gate="G1", status="WAIVED", timestamp_utc="",
+                                   zip_sha256=waived.zip_sha256, reason="board waiver"))
+    assert {gate_cell(waived, "G1", t).status for t in TASKS} == {"WAIVED"}
+
+
+def test_committed_tracks_cover_the_four_programme_tracks():
+    tracks = load_tracks()
+    assert [t.id for t in tracks] == ["A", "B", "C", "D"]
+    for t in tracks:
+        assert t.figures, f"track {t.id} has no figures"
+
+
+def test_shipped_track_figures_match_the_latest_upload():
+    """'shipped' means 'in our latest upload': a new upload that changes a circuit's score must
+    come with a tracks.yaml update, as a new upload must come with a note (PR #37)."""
+    latest = max(submissions(load_manifests()), key=lambda m: m.submitted_at_utc)
+    ours = {round(r.ratio, 2) for r in latest.tasks.values() if r.ratio is not None}
+    for t in load_tracks():
+        for f in t.figures:
+            if f.state == "shipped":
+                assert round(f.value, 2) in ours, f"track {t.id}: {f.label} {f.value} not shipped"
+
+
+def _tracks(**changes):
+    data = copy.deepcopy(TRACKS)
+    figure = data["tracks"][0]["figures"][0]
+    for key, value in changes.items():
+        target, _, field = key.partition("__")
+        node = {"doc": data, "track": data["tracks"][0], "figure": figure}[target]
+        if value is _DELETE:
+            node.pop(field)
+        else:
+            node[field] = value
+    return parse_tracks(data)
+
+
+_DELETE = object()
+
+
+@pytest.mark.parametrize("change", [
+    {"doc__schema": 2},
+    {"doc__tracks": []},
+    {"track__name": ""},
+    {"track__aim": _DELETE},
+    {"track__updated_at_utc": "today"},
+    {"track__figures": "13.16"},
+    {"track__id": "B"},                    # duplicate id
+    {"figure__state": "done"},
+    {"figure__value": None},               # shipped needs a measured value
+    {"figure__value": "13.16"},
+    {"figure__value": True},
+    {"figure__value": 0},
+    {"figure__state": "in work"},          # in work never carries a number
+    {"figure__note": 3},
+])
+def test_malformed_tracks_fail_the_build(change):
+    with pytest.raises(TracksError):
+        _tracks(**change)
+
+
+def test_tracks_render_escaped_and_in_work_has_no_number():
+    tracks = parse_tracks({"schema": 1, "tracks": [{
+        "id": "A", "name": "<b>Ship</b>", "aim": "Aim.", "updated_at_utc": "2026-10-26T06:00:00",
+        "figures": [{"label": "x", "value": 2.5, "state": "verified", "note": "<i>n</i>"},
+                    {"label": "Next", "state": "in work"}]}]})
+    page = render_page([], _standing(), {}, tracks=tracks)
+    assert "&lt;b&gt;Ship&lt;/b&gt;" in page and "&lt;i&gt;n&lt;/i&gt;" in page
+    assert '<span class="fvalue">2.50×</span><span class="fstate verified">verified</span>' in page
+    assert ('<li><span class="flabel">Next</span><span class="fstate inwork">in work</span></li>'
+            in page)
 
 
 def test_notebook_link_appears_only_when_set():
@@ -115,7 +284,10 @@ def test_notebook_link_appears_only_when_set():
     with_link = render_page(shipped, _standing(notebook_url="https://www.kaggle.com/code/x/y"),
                             {"s-1": 1.0})
     assert "Our public notebook" not in without
+    assert "A public Kaggle notebook that rebuilds the entry from source is on its way." \
+        in _text(without)
     assert 'href="https://www.kaggle.com/code/x/y">Our public notebook' in with_link
+    assert 'Our <a href="https://www.kaggle.com/code/x/y">public notebook</a> rebuilds' in with_link
 
 
 def test_unscored_upload_waits_and_the_rank_says_when_it_is_stale():

@@ -23,6 +23,8 @@ submission, rebuilt by `ledger/examples/make_reference_manifest.py`.
 | `ledger/manifests/index-legacy.csv` | The rows appended before PRA-210, frozen byte for byte | yes |
 | `ledger/queue/<candidate_id>.json` | Queue pointer for a G5-passed zip | yes |
 | `ledger/queue/<candidate_id>.zip`, `.kmb`, `.npz`, data | Binaries | **no** (SHA-256 only) |
+| `ledger/standing.yaml` | Our leaderboard standing and one note per submission, for the status page (PRA-241) | yes |
+| `ledger/tracks.yaml` | The four programme tracks and their verified numbers, for the status page (PRA-252) | yes |
 
 Manifests are JSON with sorted keys, written atomically (fsynced `.tmp` file, then rename). `runner new` and every
 `submission-NNN.json` are created exclusively: an existing file is never overwritten. Derived values (`ratio`,
@@ -174,6 +176,46 @@ invisible to the ledger. AGENTS.md forbids that path; the ledger cannot see it.
 
 `uv run python -m ledger.scorecard` prints the table: ratio per task, geometric mean, measured flag, last gate,
 best measured ratio per task, submissions per UTC day and pending reservations.
+
+## Status page inputs (`ledger/status_page.py`)
+
+Vercel builds the public status page from the committed repo on every push (`vercel.json`). Our own numbers come from
+the manifests (per-task ratios, gate states) and from `ledger/evidence/<submission>/kaggle-public-score.json`; the
+two files below hold what the manifests cannot. Both are read by the status page and nothing else, and a missing
+field or a value of the wrong type fails the build rather than showing a wrong page. Their text is shown to readers
+who know nothing about the project: plain English, no ticket ids, no ledger words.
+
+`ledger/standing.yaml` (`schema: 1`), updated by john-wick with every leaderboard snapshot:
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `leaderboard.read_at_utc` | ISO 8601 text | When the leaderboard was read |
+| `leaderboard.our_score` | number | Our public score at that read; the page says the rank is stale if a newer score differs |
+| `leaderboard.rank`, `leaderboard.teams` | integer | Our rank and the number of teams |
+| `leaderboard.leader_score` | number | The leader's public score |
+| `leaderboard.prize_line_place`, `leaderboard.prize_line_score` | integer, number | The last paid place and its score |
+| `best_public_per_task.read_at_utc` | ISO 8601 text | When the per-task figures were read |
+| `best_public_per_task.<task>` | number | Best per-task ratio stated in a public notebook, for each of `invsqrt`, `dqi`, `dfthcsos` |
+| `submission_notes.<submission_id>` | text | One line per submission; a test fails if a submission manifest has no note |
+| `notebook_url` | https URL or `null` | Our public Kaggle notebook; `null` hides the link |
+
+`ledger/tracks.yaml` (`schema: 1`), updated by the engineers and john-wick the day a number is verified:
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| `tracks[]` | non-empty list | One entry per programme track, shown in file order |
+| `tracks[].id` | text | Short unique id (`A` to `D`) |
+| `tracks[].name`, `tracks[].aim` | text | The track's name and one sentence on what it is for |
+| `tracks[].updated_at_utc` | ISO 8601 text | When the track's figures were last updated |
+| `tracks[].figures[]` | list | The track's numbers; may be empty |
+| `figures[].label` | text | What the number is |
+| `figures[].state` | `shipped`, `verified` or `in work` | `shipped`: in our latest upload; `verified`: passed Google's verifier, not uploaded; `in work`: no measured number yet |
+| `figures[].value` | positive number, or absent | The per-circuit score ratio (reference cost / our cost) measured with Google's verifier, never a model. Required for `shipped` and `verified`, forbidden for `in work` |
+| `figures[].note` | text, optional | One plain-English line of context |
+
+A test checks that every `shipped` value equals a per-task ratio of the latest submission manifest (two decimals),
+so a new upload that changes a circuit's score must come with a `tracks.yaml` update. Keep a blank line between tracks
+so that two edits to different tracks never touch neighbouring lines and squash-merge cleanly.
 
 ## Health and reproducibility
 
