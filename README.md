@@ -17,7 +17,8 @@ tasks/invsqrt/     generator, verifier wrapper and candidates for the invsqrt ta
 tasks/dqi/         generator, verifier wrapper and candidates for the dqi task
 tasks/dfthcsos/    generator, verifier wrapper and candidates for the dfthcsos task
 ledger/            submission ledger: run manifests, evidence, scorecard, gates G0–G5
-harness/           local search loop and verifier wrappers
+harness/           local verifier wrappers and scoring
+search/            evaluator-driven OpenEvolve search loop for dfthcsos (search/README.md); hand-offs, never shipping
 notebooks/         public Kaggle notebook source
 docs/DECISIONS.md  decision and negative-results register (closed rows; new rows in docs/decisions/)
 docs/decisions/    one file per new decision (python -m ledger.registers decisions prints all)

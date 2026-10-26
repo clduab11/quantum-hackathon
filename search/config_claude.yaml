@@ -1,0 +1,59 @@
+# OpenEvolve configuration: dfthcsos search on Claude Max through the Claude Code CLI (`claude -p`,
+# OAuth session, no API key). Launch with `uv run python search/run.py --provider claude`.
+# search/run.py replaces prompt.system_message with prompts/system_message.txt + DISCOVERY.md and installs
+# the lean claude_code provider from search/providers.py (same `provider:` name, far fewer tokens per call).
+
+max_iterations: 100000          # a standing loop; cap a session with run.py --iterations N
+checkpoint_interval: 5          # resume loses at most four iterations (run.py also checkpoints on SIGTERM)
+log_level: INFO
+random_seed: null               # unseeded model sampling (see config_codex.yaml); parent sampling uses database.random_seed
+language: python
+diff_based_evolution: true      # SEARCH/REPLACE edits inside the EVOLVE block
+enforce_evolve_blocks: true     # edits outside EVOLVE-BLOCK-START/END are reverted
+max_code_length: 24000
+
+llm:
+  provider: claude_code
+  timeout: 900                  # seconds per call; opus with long reasoning can take minutes
+  retries: 2
+  retry_delay: 30
+  max_tokens: 16000
+  models:
+    - name: sonnet              # rewrites: the volume model on this provider
+      weight: 0.8
+      max_budget_usd: 2.00      # list-price cap the CLI enforces per call (Max is not billed per token)
+    - name: opus                # ideation
+      weight: 0.2
+      max_budget_usd: 6.00
+
+prompt:
+  template_dir: prompts         # prompts/diff_user.txt (task-specific user template)
+  system_message: system_message   # replaced at launch by run.py
+  num_top_programs: 3
+  num_diverse_programs: 2
+  include_artifacts: true
+  max_artifact_bytes: 16384
+  suggest_simplification_after_chars: 20000
+
+database:
+  population_size: 200
+  archive_size: 50
+  num_islands: 3
+  migration_interval: 20
+  migration_rate: 0.1
+  elite_selection_ratio: 0.1
+  exploration_ratio: 0.3
+  exploitation_ratio: 0.6
+  feature_dimensions: [q_bin, t_bin]   # raw Q_total and T_total from the evaluator; min-max binned here
+  feature_bins: 10
+  log_prompts: true
+  max_snapshot_artifacts: null  # default 100 < population_size would drop parent artifacts from prompts
+
+evaluator:
+  timeout: 900                  # per stage; the full verifier takes 35-60 s on this machine
+  max_retries: 0                # the evaluator never raises; a crash is a stage-1 FAIL with artifacts
+  cascade_evaluation: true
+  cascade_thresholds: [0.05, 0.3]   # stage 2 needs a clean build; stage 3 needs a reduced-shot PASS
+  parallel_evaluations: 2       # = concurrent `claude -p` calls; keep at about 2 on Max 5-hour limits
+  enable_artifacts: true
+  use_llm_feedback: false

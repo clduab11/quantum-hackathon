@@ -24,3 +24,8 @@ public/
 
 # Derived manifest index (python -m ledger.registers index); index-legacy.csv is the frozen log
 ledger/manifests/index.csv
+
+# Search loop products (search/README.md): runs hold checkpoints and prompt logs, hand-offs hold circuit binaries
+search/runs/
+search/handoff/
+search/scratch/

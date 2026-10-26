@@ -1,0 +1,15 @@
+# Declared factor input for the dfthcsos search loop (search/README.md).
+#
+# The evaluator checks this SHA-256 before every build and hands the file to the search program as
+# --factorization / --source-brot. To search on a better declared factor, change these three values;
+# no code changes. `${VQCC_DATA}` expands to the environment variable, or to the competition package
+# path used everywhere else in this repository when it is unset. The file itself stays outside the
+# repository: .npz files are never committed (AGENTS.md, PRA-211).
+factorization: ${VQCC_DATA}/sample_submission/dfthcsos/submission.npz
+sha256: 14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69
+# Bits per angle word stored in the file.
+source_brot: 12
+# Path of the same file inside the competition package root, for the G5-style declared-input record
+# that search/promote.py writes into every hand-off folder (D-PRA211-05: a declared non-circuit input
+# may ship as a recorded copy).
+package_relative_path: sample_submission/dfthcsos/submission.npz
