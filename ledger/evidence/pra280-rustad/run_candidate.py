@@ -10,6 +10,7 @@ A mismatch or failed gate exits nonzero; no upload or service call occurs.
 import argparse
 import json
 from pathlib import Path
+import subprocess
 import time
 
 from ledger.archive import build_zip
@@ -26,6 +27,7 @@ MANIFEST = ROOT / f'ledger/manifests/candidates/{CANDIDATE}.json'
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--dry-run', action='store_true', help='Print paths; write nothing and run no gates.')
+    parser.add_argument('--generator-commit', help='Published source commit with the same tree as HEAD.')
     args = parser.parse_args()
     if args.dry_run:
         print(json.dumps({'bundle': str(DATA / 'pra280/bundle'), 'zip': str(ZIP),
@@ -37,6 +39,12 @@ def main():
     else:
         if ZIP.exists():
             raise FileExistsError('zip exists without manifest; inspect before retrying')
+        if args.generator_commit:
+            def tree(ref):
+                return subprocess.check_output(['git', 'rev-parse', '--verify', ref + '^{tree}'],
+                                               cwd=ROOT, text=True).strip()
+            if tree(args.generator_commit) != tree('HEAD'):
+                raise ValueError('published generator tree differs from local HEAD')
         build_zip(DATA / 'pra280/bundle', ZIP)
         parent = read_manifest(ROOT / 'ledger/manifests/candidates/pra250-hankel.json')
         provenance = {task: record.provenance for task, record in parent.tasks.items()}
@@ -49,6 +57,8 @@ def main():
         manifest = start_candidate(ZIP, CANDIDATE, provenance,
             parent_candidate_id=parent.candidate_id, salt_label=config.salt_label,
             notes='PRA-280 public parity candidate. No salt/seed search, GPU work or upload. Adjudicator review required before merge/submission.')
+        if args.generator_commit:
+            manifest.generator_commit = args.generator_commit
         write_manifest(manifest, MANIFEST, exclusive=True)
     started = time.monotonic()
     records = run_pipeline(manifest, ZIP, config, manifest_file=MANIFEST, package_root=DATA)
