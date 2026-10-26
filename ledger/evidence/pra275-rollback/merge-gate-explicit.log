@@ -1,0 +1,27 @@
+### Merge-order gate: FAIL
+
+- repository `clduab11/quantum-hackathon`, base `main` at `3432001ec2d8eb0ed077e9f7dbab2e1586d89cc7`
+- heads (4): #43 `331bb7dc3424`, #50 `f5d9effc7d1e`, #51 `b7ceb4f601ce`, mine `b533c475df45`
+- excluded: none
+- heads already in the base (they prove nothing): none
+- orders squashed: 24 (every permutation); clean 0, conflicting 24
+
+| squashed first | then conflicts | files |
+| --- | --- | --- |
+| (main) | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #50 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #51 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #50 → #51 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #50 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #51 → #50 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #51 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #50 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #51 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #50 → #51 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #50 → mine → #51 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #51 → #50 → mine | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| #51 → mine → #50 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #50 → #51 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+| mine → #51 → #50 | #43 | `notices/30-dfthcsos.txt`, `pyproject.toml`, `uv.lock` |
+

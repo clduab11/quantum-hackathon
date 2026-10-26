@@ -1,0 +1,90 @@
+set -euo pipefail
+cd /home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/hankel-rollback-evidence
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 uv run --frozen python - <<'PY'
+from pathlib import Path
+import hashlib
+import json
+import os
+import shutil
+import subprocess
+import sys
+import tarfile
+import zipfile
+
+pin = '3432001ec2d8eb0ed077e9f7dbab2e1586d89cc7'
+root = Path('/home/cld-main/work/vqcc-data/pra275-rollback-20261026')
+original = Path('/home/cld-main/work/vqcc-data/queue/pra250-hankel.zip')
+package = Path('/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation')
+original_hash = '459b2f11778f5bbd576ce69b9f85156ca2c301bd2a3f74752adca5c2dadcbec7'
+old_dqi = 'dec77920d4b9f5964b6cd52c947aa0c91468d56b7ed28cd475fdfc18d067729d'
+
+def digest(path):
+    with path.open('rb') as stream:
+        return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+def require(ok, message):
+    if not ok:
+        raise RuntimeError(message)
+
+def run(args, cwd):
+    print('COMMAND', ' '.join(map(str, args)), flush=True)
+    result = subprocess.run(list(map(str, args)), cwd=cwd, check=False)
+    print('EXIT', result.returncode, flush=True)
+    result.check_returncode()
+
+require(digest(original) == original_hash, 'Wrong source zip; no rollback performed')
+require(not root.exists(), 'Output root already exists; preserve prior rehearsal')
+require(subprocess.check_output(['git', 'rev-parse', pin], text=True).strip() == pin,
+        'Pinned source commit is unavailable')
+root.mkdir()
+source = root / 'source'
+source.mkdir()
+with (root / 'source.tar').open('wb') as stream:
+    subprocess.run(['git', 'archive', pin], stdout=stream, check=True)
+with tarfile.open(root / 'source.tar') as archive:
+    archive.extractall(source, filter='data')
+print('PIN', pin, 'WORKING', Path.cwd(), 'OUTPUT', root, flush=True)
+run(['uv', 'sync', '--frozen'], source)
+run(['uv', 'run', '--frozen', 'python', 'scripts/install_kickmix.py', package], source)
+manifest = json.loads((source / 'ledger/manifests/candidates/pra250-hankel.json').read_text())
+require(manifest['zip_sha256'] == original_hash, 'Source manifest mismatch')
+expected = {name: sha for task in manifest['tasks'].values()
+            for name, sha in task['files'].items()}
+sys.path.insert(0, str(source))
+from ledger.archive import safe_extract, build_zip
+bundle = safe_extract(original, root / 'bundle')
+
+def hashes(directory):
+    return {p.relative_to(directory).as_posix(): digest(p)
+            for p in sorted(directory.rglob('*')) if p.is_file()}
+
+before = hashes(bundle)
+require(before == expected, 'Source member mismatch')
+require(before['dqi.kmb'] != old_dqi, 'Expected Hankel source, not a prior rollback')
+print('BEFORE: rollback target not met; dqi =', before['dqi.kmb'], flush=True)
+generated = root / 'generated'
+run(['uv', 'run', '--frozen', 'python', 'tasks/dqi/generate_jfraction.py',
+     '--out', generated], source)
+require(hashes(generated) == {'dqi.kmb': old_dqi}, 'Generated DQI hash/file-set mismatch')
+shutil.copyfile(generated / 'dqi.kmb', bundle / 'dqi.kmb')
+after = hashes(bundle)
+target = {**before, 'dqi.kmb': old_dqi}
+require(after == target, 'Rollback changed a non-DQI member')
+fallback = build_zip(bundle, root / 'fallback.zip')
+with zipfile.ZipFile(fallback) as archive:
+    require(len(archive.namelist()) == len(target), 'Unexpected zip member count')
+    archived = {}
+    for name in archive.namelist():
+        with archive.open(name) as stream:
+            archived[name] = hashlib.file_digest(stream, 'sha256').hexdigest()
+require(archived == target, 'Fallback zip member mismatch')
+require(digest(original) == original_hash, 'Original zip changed')
+receipt = dict(source_commit=pin, source_zip=str(original), source_zip_sha256=original_hash,
+               output_zip=str(fallback), output_zip_sha256=digest(fallback),
+               before=before, after=after,
+               changed_members=[name for name in before if before[name] != after[name]],
+               unchanged_members=10, original_zip_unchanged=True)
+(root / 'member-hashes.json').write_text(json.dumps(receipt, indent=2) + '\n')
+print(json.dumps(receipt, indent=2), flush=True)
+print('PASS: only dqi.kmb changed; ten other members and original zip unchanged', flush=True)
+PY

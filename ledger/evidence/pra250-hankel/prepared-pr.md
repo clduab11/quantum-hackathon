@@ -25,4 +25,4 @@ A task-specific gate config combines this DQI with the current invsqrt and the a
 
 ## Risk and rollback
 
-This remains a sampled decoder with rare degree-gap exceptions. Finite tests do not prove universal correctness. Select the unchanged #33 generator/config to revert the candidate path; no main, production config, live service or upload was changed. Board merges; John Wick uploads only after the task requirements are resolved.
+This remains a sampled decoder with rare degree-gap exceptions. Finite tests do not prove universal correctness. For a DQI-only local fallback, use the [pinned command and rehearsal in PRA-275](../pra275-rollback/rollback.md). Do not select the whole #33 gate config: it would also replace chemistry. The checked procedure regenerates only DQI and preserves current chemistry/invsqrt bytes and all historical records. A local rollback cannot undo the completed Kaggle upload. Any later upload belongs to John Wick under the ledger reservation and three-per-UTC-day cap. Board merges; candidate sign-off remains a separate review.

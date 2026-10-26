@@ -1,0 +1,49 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.13, pytest-9.1.1, pluggy-1.7.0
+rootdir: /home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/hankel-rollback-evidence
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1
+collected 372 items / 1 skipped
+
+tests/test_chemistry_candidate.py ........                               [  2%]
+tests/test_costs.py ...............                                      [  6%]
+tests/test_dfthcsos_qrom.py ...........................                  [ 13%]
+tests/test_dqi_algebra.py .                                              [ 13%]
+tests/test_dqi_formulas.py .                                             [ 13%]
+tests/test_dqi_hankel.py .....                                           [ 15%]
+tests/test_dqi_jfraction.py ..                                           [ 15%]
+tests/test_dqi_projection.py .....                                       [ 17%]
+tests/test_dqi_provenance.py .........                                   [ 19%]
+tests/test_factor_fit_v3.py ......                                       [ 21%]
+tests/test_factor_fit_v4.py ...ssss                                      [ 23%]
+tests/test_factor_gpu.py .ss                                             [ 23%]
+tests/test_factor_pipeline.py ...........                                [ 26%]
+tests/test_factor_refit_v2.py .........                                  [ 29%]
+tests/test_factor_resume.py .......                                      [ 31%]
+tests/test_g0.py ...................                                     [ 36%]
+tests/test_gate_contract.py ......                                       [ 37%]
+tests/test_install_kickmix.py ........                                   [ 40%]
+tests/test_invsqrt_design_study.py ......                                [ 41%]
+tests/test_invsqrt_parity.py ...                                         [ 42%]
+tests/test_invsqrt_provenance.py ....                                    [ 43%]
+tests/test_invsqrt_public_port.py ...s.                                  [ 44%]
+tests/test_ledger_evidence.py ............                               [ 48%]
+tests/test_ledger_gates.py ....................................          [ 57%]
+tests/test_ledger_manifest.py ...............                            [ 61%]
+tests/test_ledger_scorecard.py ...................                       [ 66%]
+tests/test_merge_gate.py .......                                         [ 68%]
+tests/test_pra177_generators.py ...                                      [ 69%]
+tests/test_pra245_declared_factors.py ..                                 [ 70%]
+tests/test_reference_identity.py .................                       [ 74%]
+tests/test_reference_invsqrt_gates.py .......                            [ 76%]
+tests/test_reference_rebuild.py ...                                      [ 77%]
+tests/test_registers.py ...............                                  [ 81%]
+tests/test_review_boundaries.py ..                                       [ 81%]
+tests/test_scoring.py .....                                              [ 83%]
+tests/test_search_loop.py .............                                  [ 86%]
+tests/test_smoke.py ..                                                   [ 87%]
+tests/test_status_page.py .....................................          [ 97%]
+tests/test_submission_notebook.py ..........                             [100%]
+
+================== 365 passed, 8 skipped in 126.06s (0:02:06) ==================
