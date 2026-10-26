@@ -108,3 +108,33 @@ These names are not opens, warm starts, or test oracles in `tasks/invsqrt` Pytho
 - any `.npz` load
 
 A recorded SHA-256 of a circuit we generated is not a load of that file.
+
+
+## Public source experiment (PRA-249)
+
+Immediate parent: Dmitrii Gluzdov, *Quantum circuit compilation from source*,
+v7 / `361726742`, [version-pinned notebook](https://www.kaggle.com/code/dmitriigluzdov/quantum-circuit-compilation-from-source?scriptVersionId=361726742).
+Notebook SHA-256 `d689cc89f41a6c9130e9f4c3a6b08dfd5d758fcbbb79f527d55cbd3b48e15280`;
+Apache-2.0 declaration in cell 50. This is a source port, not clean-room authorship.
+The source packet is attached to [PRA-249](/PRA/issues/PRA-249#document-invsqrt-source-route).
+
+| Module under `public_port/` | Source and changes | Data inputs |
+| --- | --- | --- |
+| `model.py` | Centered integer pipeline, cells 22/29; pure numpy/torch interface and independent exhaustive integer certificate | mathematical target only |
+| `fit.py` | Cell 22 base/slope enumeration plus cell 34 even anchors; CUDA int64/float64, deterministic adaptive subdivision of groups above 0.95 error | none; no saved coefficient table |
+| `arithmetic.py` | Cell 23 `prepare` and `shift`; reuse existing signed-digit arithmetic helpers | regenerated triples |
+| `deferred.py` | Cell 20 demolition and ANF repair | regenerated lookup truth tables |
+| `virtual_low.py` | Cell 40 virtual low accumulator bit, credited to Zongao Bian | circuit registers |
+| `schedule.py` | Cell 42 virtual time multiplexing; package imports, no setup/environment changes or notebook driver | regenerated triples and interpolation encoding |
+| `calibration.py` | Repository angle fitter with CUDA full-domain constraint evaluation and host HiGHS cutting planes; bounded to original angles and smallest single drop | newly compiled truth vectors; no angle replay |
+| `generate.py` | New entry point; recomputes G2 before importing kickmix, then existing affine compiler and new GPU calibration | none; optional output directory only |
+
+The generic circuit helpers imported from `signed_digit.py` do not call its
+coefficient fitter or load its coefficient lineage. All new triples come from
+the published v7 recipe and the mathematical target. `affine.py` and
+`peephole.py` retain their existing parents and licences described above.
+No source cell containing stored tables, calibration values, exact rewrite
+patches, packaged circuits or chemistry data is executed or adopted. The
+busyaprime binary-parent option was not selected by the board. The fallback
+`tasks/invsqrt/generate.py` remains the submission generator unless a separate
+candidate passes the required floor and gates.
