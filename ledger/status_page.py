@@ -517,16 +517,23 @@ in the <a href="{REPO_URL}/tree/main/ledger">ledger</a> before it is sent. The
 <a href="{KAGGLE_URL}">competition on Kaggle</a>.{notebook}</p>"""
 
 
+# Only the newest uploads carry their "What changed" note; older rows keep their date and score.
+# Each upload adds a row, and this keeps the page under its word budget as the list grows.
+NOTED_UPLOADS = 5
+
+
 def uploads_table(shipped: list[RunManifest], scores: dict[str, float],
                   standing: Standing) -> str:
     if not shipped:
         return "<p>No uploads yet.</p>"
     rows = []
-    for m in shipped:
+    first_noted = len(shipped) - NOTED_UPLOADS
+    for i, m in enumerate(shipped):
         score = scores.get(m.candidate_id)
         shown = f"{score:.5f}" if score is not None else "waiting for Kaggle"
+        note = standing.submission_notes.get(m.candidate_id, "") if i >= first_noted else ""
         rows.append(f"<tr><td>{_time(submitted_at(m))}</td><td class=\"num\">{shown}</td>"
-                    f"<td>{esc(standing.submission_notes.get(m.candidate_id, ''))}</td></tr>")
+                    f"<td>{esc(note)}</td></tr>")
     return ('<table><thead><tr><th scope="col">Date</th><th scope="col" class="num">Public score</th>'
             '<th scope="col">What changed</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table>')
