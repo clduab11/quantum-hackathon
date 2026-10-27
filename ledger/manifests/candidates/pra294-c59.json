@@ -1,0 +1,399 @@
+{
+  "candidate_id": "pra294-c59",
+  "cli_command": "ledger/evidence/pra294-c59/run_candidate.py",
+  "gates": [
+    {
+      "details": {},
+      "evidence_sha256": null,
+      "gate": "G0",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-27T20:40:30.545652+00:00",
+      "zip_sha256": "f569b107f4136d388636bcdb03f323b5c7483df463a3f8b6d682624de97e7435"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "high_cache_qubits": 78,
+            "low_ANDs_computed": 11,
+            "num_qubits": 128,
+            "peak_low_cache_qubits": 7,
+            "stage_products": [
+              135,
+              50
+            ],
+            "status": "PASS",
+            "toffoli_per_call": 274
+          },
+          "dqi": {
+            "domain": 4096,
+            "inverse_toffolis": 66,
+            "mul_xor_toffolis": 42,
+            "pinned_files": 62,
+            "status": "PASS"
+          },
+          "invsqrt": {
+            "num_qubits": 84,
+            "sha256": "17fc223d79d3f1f15ef448389072209972b373403dd0a45352f4fe7eaff541ad",
+            "static_toffoli": 1564,
+            "status": "PASS"
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G1",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-27T20:40:31.555092+00:00",
+      "zip_sha256": "f569b107f4136d388636bcdb03f323b5c7483df463a3f8b6d682624de97e7435"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "E_gap": 3.9149140258268744,
+            "Lambda": 291.76402858097003,
+            "brot": 8,
+            "error_1": 0.019985098452012035,
+            "error_2": 0.01997578705069574,
+            "estimated_cost": 390644041.72834545,
+            "estimated_qubits": 423,
+            "estimated_toffoli": 19387,
+            "heuristic_qubits": 391,
+            "heuristic_toffoli": 8975,
+            "lambda_eff": 47.635445034314195,
+            "parity": false,
+            "resources": {
+              "angles_persistent_qubits": 32,
+              "angles_qubits": 128,
+              "angles_selection_qubits": 11,
+              "angles_temporary_qubits": 85,
+              "angles_toffoli": 10412,
+              "angles_toffoli_per_pass": 5206.0,
+              "angles_within_cap": true,
+              "brot": 8,
+              "givens_rotations_toffoli": 2250,
+              "heuristic_persistent_qubits": 87,
+              "heuristic_qubits": 391,
+              "heuristic_temporary_qubits": 304,
+              "heuristic_toffoli": 8975,
+              "inner_state_prep_persistent_qubits": 45,
+              "inner_state_prep_qubits": 349,
+              "inner_state_prep_temporary_qubits": 304,
+              "inner_state_prep_toffoli": 6328,
+              "keep_bits": 10,
+              "outer_state_prep_persistent_qubits": 42,
+              "outer_state_prep_qubits": 217,
+              "outer_state_prep_temporary_qubits": 175,
+              "outer_state_prep_toffoli": 397,
+              "persistent_qubits": 119,
+              "qubits": 423,
+              "temporary_qubits": 304,
+              "toffoli": 19387
+            },
+            "status": "PASS"
+          },
+          "dqi": {
+            "failures": 0,
+            "num_qubits": 889,
+            "parity": false,
+            "shots": 1536,
+            "status": "PASS",
+            "toffoli_count": 474307.765625
+          },
+          "invsqrt": {
+            "failures": 0,
+            "num_qubits": 84,
+            "parity": false,
+            "scope": "not parity: x=1..1536, one shot per input",
+            "sha256": "17fc223d79d3f1f15ef448389072209972b373403dd0a45352f4fe7eaff541ad",
+            "shots": 1536,
+            "status": "PASS",
+            "toffoli_count": 1552.78125,
+            "worst_error_over_tolerance": 0.9995943415273103
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G2",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-27T20:41:23.324725+00:00",
+      "zip_sha256": "f569b107f4136d388636bcdb03f323b5c7483df463a3f8b6d682624de97e7435"
+    },
+    {
+      "details": {
+        "geometric_mean": 18.39393056697713
+      },
+      "evidence_sha256": "6c03831ee3fc08e5b2a8447e65e46e4bbc3990885596c2cd1512a62ff53e37f5",
+      "gate": "G3",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-27T20:48:06.378868+00:00",
+      "zip_sha256": "f569b107f4136d388636bcdb03f323b5c7483df463a3f8b6d682624de97e7435"
+    },
+    {
+      "details": {
+        "archive_best": {
+          "candidate_id": "pra293-fused-invsqrt",
+          "geometric_mean": 17.719490035438174
+        },
+        "chemistry_floor": 8.0,
+        "chemistry_ratio": 8.589916214949021,
+        "dqi_floor": 54.7,
+        "dqi_ratio": 54.72947182918558,
+        "geometric_mean": 18.39393056697713,
+        "invsqrt_floor": 13.2377,
+        "invsqrt_ratio": 13.237727705632725,
+        "parent": 17.719490035438174
+      },
+      "evidence_sha256": null,
+      "gate": "G4",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-27T20:48:06.429638+00:00",
+      "zip_sha256": "f569b107f4136d388636bcdb03f323b5c7483df463a3f8b6d682624de97e7435"
+    },
+    {
+      "details": {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/pra233-chem-c59/ledger/gates/runner.py\", line 251, in run_gate\n    result = resolve(spec.check)(ctx)\n  File \"/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/pra233-chem-c59/ledger/gates/checks.py\", line 156, in g5_rebuild_and_provenance\n    if classify_submission(ctx.submission_dir) != expected:\n       ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/pra233-chem-c59/ledger/evidence.py\", line 85, in classify_submission\n    raise EvidenceError(f\"expected exactly one {task} circuit, found {len(hits)}\")\nledger.evidence.EvidenceError: expected exactly one invsqrt circuit, found 0\n"
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "EvidenceError: expected exactly one invsqrt circuit, found 0",
+      "status": "FAIL",
+      "timestamp_utc": "2026-10-27T20:48:06.459037+00:00",
+      "zip_sha256": "f569b107f4136d388636bcdb03f323b5c7483df463a3f8b6d682624de97e7435"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "3a2108bef6665fce353aeefa979ccfc99eecc3d9",
+          "copied_inputs": {
+            "dfthcsos/submission.npz": "inputs/mrmeows/qcc-1375-v8-C59-submission.npz"
+          },
+          "inputs": {
+            "8229861b3ee22316e144c900737dfc54f7a30ea88de77ff5391f3375d050fa87": "inputs/mrmeows/qcc-1375-v8-C59-submission.npz"
+          },
+          "status": "PASS",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/pra233-chem-c59/.venv/bin/python3",
+                "-m",
+                "tasks.dfthcsos.c59",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra294-c59/tmp/ledger-rebuild-gpmue5ga/out/dfthcsos"
+              ],
+              "copied": {
+                "dfthcsos/submission.npz": "inputs/mrmeows/qcc-1375-v8-C59-submission.npz"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/pra233-chem-c59/.venv/bin/python3",
+                "-m",
+                "tasks.dqi.generate_fused",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra294-c59/tmp/ledger-rebuild-gpmue5ga/out/dqi"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": "ops\": 59831421, \"seconds\": 87.75719618797302}\n{\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 88.64653539657593}\n{\"path\": \"/home/cld-main/work/vqcc-data/pra294-c59/tmp/dqi-fused-iy659lbl/dqi.kmb\", \"sha256\": \"7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6\", \"T_static\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"num_bits\": 107242, \"stages\": [{\"name\": \"mask_projection\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2388214, \"seconds\": 3.7723822593688965}, {\"name\": \"initial\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2719156, \"seconds\": 4.479929447174072}, {\"name\": \"extract\", \"T\": 87040, \"cumulative_T\": 87040, \"Q\": 889, \"num_ops\": 9255442, \"seconds\": 14.513566970825195}, {\"name\": \"synthesis\", \"T\": 44654, \"cumulative_T\": 131694, \"Q\": 889, \"num_ops\": 15098735, \"seconds\": 23.812545776367188}, {\"name\": \"convert_lookahead\", \"T\": 69220, \"cumulative_T\": 200914, \"Q\": 889, \"num_ops\": 18094594, \"seconds\": 28.089115142822266}, {\"name\": \"scan\", \"T\": 44275, \"cumulative_T\": 245189, \"Q\": 889, \"num_ops\": 41588664, \"seconds\": 57.6736478805542}, {\"name\": \"unconvert_lookahead\", \"T\": 70342, \"cumulative_T\": 315531, \"Q\": 889, \"num_ops\": 44642141, \"seconds\": 62.4947669506073}, {\"name\": \"unsynthesis\", \"T\": 53803, \"cumulative_T\": 369334, \"Q\": 889, \"num_ops\": 51008234, \"seconds\": 73.66235113143921}, {\"name\": \"unextract\", \"T\": 117997, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59500420, \"seconds\": 86.5464596748352}, {\"name\": \"uninitial\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59831421, \"seconds\": 87.75719618797302}, {\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 88.64653539657593}], \"seconds\": 91.29430866241455, \"scope\": \"STATIC compiled counts include mutually exclusive classical branches; confluent Hermite extraction, zero-power retained-norm synthesis, short-Hankel monic-root guarded h2 conversion, classical mask projection; no verifier cost claimed\"}\n"
+            },
+            "invsqrt": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/pra233-chem-c59/.venv/bin/python3",
+                "-m",
+                "tasks.invsqrt.public_port.generate",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra294-c59/tmp/ledger-rebuild-gpmue5ga/out/invsqrt",
+                "--circuit-only"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-27T20:59:34.888427+00:00",
+      "zip_sha256": "f569b107f4136d388636bcdb03f323b5c7483df463a3f8b6d682624de97e7435"
+    }
+  ],
+  "generator_commit": "3a2108bef6665fce353aeefa979ccfc99eecc3d9",
+  "geometric_mean": 18.39393056697713,
+  "git_branch": "op-vqcc/pra233-chem-c59",
+  "kaggle_submission_id": null,
+  "kickmix_build_id": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
+  "kind": "candidate",
+  "manifest_id": "f4c47a3c-ba08-4511-8a5d-3e10fcd1da64",
+  "notes": "PRA-294: pra293-fused-invsqrt (#65) with only the dfthcsos/ files changed to the C59 factor through the J=4 compiler port. No salt/seed search or upload. Adjudicator review required before merge/submission.\nD-PRA294-01: G5 re-run at the same generator commit after the first G5 record failed on a deleted scratch directory (environment, not the zip).",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "parent_candidate_id": "pra293-fused-invsqrt",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64",
+  "python_version": "3.13.13",
+  "qualtran_pin": null,
+  "salt_label": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+  "schema_version": "1",
+  "source_candidate_id": null,
+  "submitted_at_utc": null,
+  "tasks": {
+    "dfthcsos": {
+      "baseline_cost": 3355599588.3155365,
+      "cost": 390644041.72834545,
+      "eps_plus": null,
+      "evidence": [
+        "6c03831ee3fc08e5b2a8447e65e46e4bbc3990885596c2cd1512a62ff53e37f5"
+      ],
+      "failures": null,
+      "files": {
+        "dfthcsos/angle_k_0.kmb": "568e590c62f4b09572f85767d0cd8dbf4d88236d342c5242497437064db419e6",
+        "dfthcsos/angle_k_1.kmb": "1729c7aeb626d0b2f9426b3181eeaeddc34a484604a80eb6176094c62495b2fa",
+        "dfthcsos/angle_k_10.kmb": "00d2dfee968930baef3bf5913b3d8b3a05e4e858fd6813197c7a712a08e8893e",
+        "dfthcsos/angle_k_11.kmb": "52d97f1e745a23d2b37bb9735a9948b3343e13652196268a9feca11772ef3512",
+        "dfthcsos/angle_k_12.kmb": "681f6a8a54ade620951787df9223a670a978c88419393c427afcdb55f78a5df1",
+        "dfthcsos/angle_k_13.kmb": "8c35d92e284fe2f3843fced1747c2dd0dadc8855d3ce4dd283b07edc66db1c67",
+        "dfthcsos/angle_k_14.kmb": "8e472c51e3ec57f79cbc990baf1d8f37ef0777a9e89e589c4cc4a9d0b18ea06c",
+        "dfthcsos/angle_k_15.kmb": "9ea5ad0435db45692a0c65213163023823b113e3f5ed9f1a6ffa6ac1573c5fec",
+        "dfthcsos/angle_k_16.kmb": "b1895bd5a4ab5b83e2c9b05b1d8f76e864beb3cdbf9602cb25aef8dcacb777a6",
+        "dfthcsos/angle_k_17.kmb": "3dc7bcef9c06c84ff5d0369bebf024044f6ec0d309c89a924da1d42875001fe1",
+        "dfthcsos/angle_k_18.kmb": "0073b23a56e233745ac3c4b7a07d6bbd4d3d9d8774fc3f66ff3c68bb3dfc43c4",
+        "dfthcsos/angle_k_2.kmb": "1a0c40c5fc2d783eff7e4db74a028d78184dda351fb9a8b2f41764baa9a6975a",
+        "dfthcsos/angle_k_3.kmb": "2b05a9667b3112153779f78dd5488285c8bad15d67612fa6c39854515459e12a",
+        "dfthcsos/angle_k_4.kmb": "c7dfcf1d6d0765d43bde1a7e08e700ac4af1844507c5d87f4af8bd00590288d9",
+        "dfthcsos/angle_k_5.kmb": "7da6bac62f960683b760f5facc46fada1f9cb0b7867868ccc788ec0d22d086b2",
+        "dfthcsos/angle_k_6.kmb": "e03e5ac3db61b646c63545b0196071a1b487cfca2f74c3a31cc23d66cfd70693",
+        "dfthcsos/angle_k_7.kmb": "5d88ee464f8e37109c35fb1892d70cd21328258233dc64028ed54473ccc1ecdf",
+        "dfthcsos/angle_k_8.kmb": "596bb5be13b1ee0c6ca1cf98d673a83e4207142d85672e604e52035cba487129",
+        "dfthcsos/angle_k_9.kmb": "3326abb0cd525e7822088ef1608af44a81d4118d94669b3b0adf0c803b69daf6",
+        "dfthcsos/submission.npz": "8229861b3ee22316e144c900737dfc54f7a30ea88de77ff5391f3375d050fa87"
+      },
+      "measured": true,
+      "metrics": {
+        "E_gap": 3.9149140258268744,
+        "Lambda": 291.76402858097003,
+        "angles_qubits": 128,
+        "batch_size": 4,
+        "brot": 8,
+        "error_1": 0.019985098452012035,
+        "error_2": 0.01997578705069574,
+        "lambda_eff": 47.635445034314195,
+        "num_circuits": 19,
+        "persistent_qubits": 119,
+        "submission_sha256": "550824b267160457ae2fd23d399aa0093624977281a4d4bae0063061db8d7783",
+        "temporary_qubits": 304
+      },
+      "num_qubits": 423,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Declared non-circuit factor circuits/dfthcsos/submission.npz (C59) SHA-256 8229861b3ee22316e144c900737dfc54f7a30ea88de77ff5391f3375d050fa87, licence field Apache 2.0, copied under D-PRA211-05. Lineage: Rustad R10/B129/C60 v1 (licence field Other, recorded not gated, R-P2-6) refit and C60->59 merged by mrmeows. All 19 circuits regenerated with the mrmeows v8 J=4 streamed compiler port (Apache 2.0) from recorded plan seeds; no certificate or circuit input. Full rows: ledger/manifests/inputs/pra294-c59.json; notices/30-dfthcsos.txt.",
+        "parent_url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=8"
+      },
+      "ratio": 8.589916214949021,
+      "rotation_count": null,
+      "shots": 87424,
+      "t_count": null,
+      "task": "dfthcsos",
+      "toffoli_count": 19387.0,
+      "verifier_sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+    },
+    "dqi": {
+      "baseline_cost": 24439465632206.816,
+      "cost": 446550365194.16925,
+      "eps_plus": 0.0008660587301657926,
+      "evidence": [
+        "6c03831ee3fc08e5b2a8447e65e46e4bbc3990885596c2cd1512a62ff53e37f5"
+      ],
+      "failures": 0,
+      "files": {
+        "dqi.kmb": "7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6",
+        "empirical_error_rate": 0.0,
+        "log2_delta": -128.0,
+        "max_toffoli_count": 487331,
+        "mean_error_weight": 31.046737331746634,
+        "phase_errors": 0,
+        "repetition_factor": 1.1912604648115832,
+        "value_errors": 0
+      },
+      "num_qubits": 889,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Kernel 140675727 v12 (Agniv Banerjee, SomeJoint), source 18d6760953783bec316ddb46266a1b5ccc50c291fbf47ec35f87c73f4d0cf2ac. build.py closure vendored verbatim under tasks/dqi/fused/source/. Design lineage: rebuilt from a pseudocode description of the Schur decoder (jday96314/QuantumAI, no licence; card aba6c540, D-PRA269-01, D-PRA273-01); recorded, not gated. See tasks/dqi/fused/PROVENANCE.md. No circuit input.",
+        "parent_url": "https://www.kaggle.com/code/somejoint/quantum-circuits-21-34-local-gm-fused-dqi"
+      },
+      "ratio": 54.72947182918558,
+      "rotation_count": null,
+      "shots": 102400,
+      "t_count": null,
+      "task": "dqi",
+      "toffoli_count": 474307.7251367188,
+      "verifier_sha256": "f14274bc0943fb9769ddb01131be6063191a15009fe1caf1d4bdd9fd25194e65"
+    },
+    "invsqrt": {
+      "baseline_cost": 2076774.233715282,
+      "cost": 156882.98474606057,
+      "eps_plus": null,
+      "evidence": [
+        "6c03831ee3fc08e5b2a8447e65e46e4bbc3990885596c2cd1512a62ff53e37f5"
+      ],
+      "failures": 0,
+      "files": {
+        "invsqrt.kmb": "17fc223d79d3f1f15ef448389072209972b373403dd0a45352f4fe7eaff541ad"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "17fc223d79d3f1f15ef448389072209972b373403dd0a45352f4fe7eaff541ad",
+        "max_toffoli_count": 1564,
+        "rotation_eps": 3.051847661949807e-13,
+        "toffoli_equivalent": 1867.654580310245,
+        "worst_error_over_tolerance": 0.9995943415273103,
+        "worst_x": 32
+      },
+      "num_qubits": 84,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Gluzdov v7 recipe port already recorded in D-PRA249-01 and notices/10-invsqrt.txt. Coefficients freshly enumerated on CUDA; committed arithmetic, affine compiler and angle calibration rebuild every circuit byte. No circuit, fitted table, angle file or rewrite file is an input. No new licence check.",
+        "parent_url": "https://www.kaggle.com/code/dmitriigluzdov/quantum-circuit-compilation-from-source?scriptVersionId=361726742"
+      },
+      "ratio": 13.237727705632725,
+      "rotation_count": 44.0,
+      "shots": 200540928,
+      "t_count": 1.0,
+      "task": "invsqrt",
+      "toffoli_count": 1553.0002254402652,
+      "verifier_sha256": "ddef520dec6b68d1cf0a6f328ddd36d79eb84570b9192cf3f7acaf073f06733a"
+    }
+  },
+  "timestamp_utc": "2026-10-27T20:40:21.226259+00:00",
+  "zip_sha256": "f569b107f4136d388636bcdb03f323b5c7483df463a3f8b6d682624de97e7435"
+}
