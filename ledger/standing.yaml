@@ -11,15 +11,15 @@
 schema: 1
 
 leaderboard:
-  # PRA-202 `leaderboard-snapshot` revision 9: the full CSV (publicleaderboard-2026-10-26T18:51:02.csv,
-  # 1132 rows), taken with the submission-006 score read-back (D-PRA202-26).
-  read_at_utc: "2026-10-26T18:51:02+00:00"
-  our_score: 11.30048         # our public score when the rank was read
-  rank: 523
-  teams: 1132
+  # PRA-202 `leaderboard-snapshot` revision 10: the full CSV (publicleaderboard-2026-10-27T00:10:18.csv,
+  # 1169 rows), taken with the submission-007 score read-back (D-PRA202-30).
+  read_at_utc: "2026-10-27T00:10:18+00:00"
+  our_score: 13.76646         # our public score when the rank was read
+  rank: 473
+  teams: 1169
   leader_score: 23.35228
   prize_line_place: 6         # last paid place (D-PRA202-14)
-  prize_line_score: 20.40926
+  prize_line_score: 21.34773
 
 best_public_per_task:
   # Kaggle publishes no per-task scores; these are the best figures authors state in public
@@ -29,20 +29,23 @@ best_public_per_task:
   #   dqi 48.79: the public Schur circuit (alexchilton, read 2026-10-26 17:20-17:35Z), stated.
   #     It counts as a stated public figure; our own run of that circuit at our fixed salt
   #     measured 48.14x (D-PRA269-02).
-  #   dfthcsos 4.09: Gluzdov v8, stated; unchanged since the 2026-10-25 read (revision 4).
-  read_at_utc: "2026-10-26T17:35:00+00:00"
+  #   dfthcsos 7.68: rustad's published (10,129,60) factor with the mrmeows v6 compiler; our own
+  #     port reproduced its cost exactly (7.679x, docs/reports/pra280-chemistry.md, read
+  #     2026-10-26 22:04Z). Replaces Gluzdov v8's stated 4.09.
+  read_at_utc: "2026-10-26T22:04:00+00:00"
   invsqrt: 15.69
   dqi: 48.79
-  dfthcsos: 4.09
+  dfthcsos: 7.68
 
 submission_notes:
   submission-001: The unchanged reference circuits, to prove our upload pipeline end to end.
-  submission-002: A cheaper error-correcting decoder (dqi); the other two circuits unchanged.
+  submission-002: "Only change: a cheaper error-correcting decoder (dqi)."
   submission-003: Adds a cheaper square-root circuit (invsqrt) to the new decoder.
-  submission-004: A smaller decoder circuit (dqi) that needs fewer qubits; the other two circuits unchanged.
-  submission-005: A much cheaper chemistry circuit (dfthcsos); the other two circuits unchanged.
-  submission-006: A cheaper decoder circuit (dqi) rebuilt from the best public design; the other two circuits unchanged.
-  submission-007: A much cheaper decoder circuit (dqi); the other two circuits unchanged.
+  submission-004: "Only change: a smaller decoder circuit (dqi) that needs fewer qubits."
+  submission-005: "Only change: a much cheaper chemistry circuit (dfthcsos)."
+  submission-006: "Only change: a cheaper decoder circuit (dqi), rebuilt from the best public design."
+  submission-007: "Only change: a much cheaper decoder circuit (dqi)."
+  submission-008: "Only change: a much cheaper chemistry circuit (dfthcsos)."
 
 # The public Kaggle notebook, once it is published. null hides the link.
 notebook_url: null
