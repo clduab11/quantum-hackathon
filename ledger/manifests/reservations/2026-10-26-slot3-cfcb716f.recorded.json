@@ -1,0 +1,14 @@
+{
+  "candidate_id": "pra261-schur",
+  "error": "",
+  "kaggle_submission_id": "57679899",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "outcome": "recorded",
+  "reservation_id": "cfcb716f-3059-46a4-93b2-25c506c65d65",
+  "reserved_at_utc": "2026-10-26T22:18:01.645820+00:00",
+  "resolved_at_utc": "2026-10-26T22:18:35.815680+00:00",
+  "slot": 3,
+  "submission_id": "submission-007",
+  "utc_day": "2026-10-26",
+  "zip_sha256": "9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5"
+}

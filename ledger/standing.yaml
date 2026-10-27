@@ -42,6 +42,7 @@ submission_notes:
   submission-004: A smaller decoder circuit (dqi) that needs fewer qubits; the other two circuits unchanged.
   submission-005: A much cheaper chemistry circuit (dfthcsos); the other two circuits unchanged.
   submission-006: A cheaper decoder circuit (dqi) rebuilt from the best public design; the other two circuits unchanged.
+  submission-007: A much cheaper decoder circuit (dqi); the other two circuits unchanged.
 
 # The public Kaggle notebook, once it is published. null hides the link.
 notebook_url: null
