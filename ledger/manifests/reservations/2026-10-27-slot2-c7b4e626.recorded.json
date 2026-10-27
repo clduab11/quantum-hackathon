@@ -1,0 +1,14 @@
+{
+  "candidate_id": "pra293-fused-invsqrt",
+  "error": "",
+  "kaggle_submission_id": "57711127",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "outcome": "recorded",
+  "reservation_id": "c7b4e626-08c3-4c7f-8abf-f0928355e604",
+  "reserved_at_utc": "2026-10-27T19:08:47.048837+00:00",
+  "resolved_at_utc": "2026-10-27T19:09:38.184437+00:00",
+  "slot": 2,
+  "submission_id": "submission-009",
+  "utc_day": "2026-10-27",
+  "zip_sha256": "22258bb57f1a711336567cb8771c7f88936d903af7727ab0bbd993fb72e5f27d"
+}
