@@ -1,0 +1,7 @@
+$ bash check-target.sh /home/cld-main/work/vqcc-data/pra294-c59/pra294-c59.zip
+exit 1
+$ bash check-target.sh /home/cld-main/work/vqcc-data/pra294-c59-rollback-20261027/rollback.zip
+exit 0
+$ bash rehearsal-command.sh /home/cld-main/work/vqcc-data/pra294-c59-rollback-20261027   # existing root
+RuntimeError: Output root already exists; preserve prior rehearsal
+exit 1
