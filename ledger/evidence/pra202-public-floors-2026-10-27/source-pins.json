@@ -1,0 +1,30 @@
+{
+ "read_at_utc": "2026-10-27T09:35Z (anonymous public GET only; no credentials, no notebook execution)",
+ "route": "anonymous GET https://www.kaggle.com/api/v1/kernels/output?userName=<owner>&kernelSlug=<slug> (latest run only; signed URLs not recorded)",
+ "note": "The ticket named somejoint v8 (dqi, stated 51.08x) and heliosli v2 (chemistry, stated 7.986x). The output route serves only the latest run, and both latest runs state higher figures (dqi 54.48x / 54.73x, chemistry 8.91x), so the measured builds are newer than the versions named. Measurement evidence only: never committed, never in a bundle, never a declared input (D-PRA211-01).",
+ "measured_with": "uv run python harness/score_local.py <zip> at main 33c8f82 (fixed public salt PRA171_LOCAL_PUBLIC_FIXED_SALT_0001, full shots, unmodified official verifiers); one run each",
+ "kernels": {
+  "somejoint/quantum-circuits-19-73-local-gm-new-dqi-decoder": {
+   "source_pull": "KAGGLE_PULL_KERNEL HTTP 404 (slug resolves for outputs only)",
+   "output_submission_zip_sha256": "04fc9296e3e1c75bd9c5aaee7409b6fc5861fe9d408fe62d279ae10f814b057f",
+   "members": {
+    "dfthcsos/submission.npz": "8229861b3ee22316e144c900737dfc54f7a30ea88de77ff5391f3375d050fa87",
+    "dqi.kmb": "7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6",
+    "invsqrt.kmb": "0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6"
+   },
+   "angle_circuits_sha256_of_sorted_member_hashes": "f60ffde7ae9d4f34efa7d3ed51be15569e952b9dc5fdf245732e461532acda3f"
+  },
+  "heliosli/qcc-j5-chemistry-loaders-deeper-lookup-plans": {
+   "lastRunTime": "2026-10-27T07:44:47.717Z",
+   "source_sha256": "efd056d80815d1076635a9bf2748379b133a39fe46d6903d755fb5c2536643fc",
+   "source_bytes": 27400,
+   "output_submission_zip_sha256": "0b320b718547fc5021b9f740053aa4a13103c55132843d953a590f372c7c79e3",
+   "members": {
+    "dfthcsos/submission.npz": "8229861b3ee22316e144c900737dfc54f7a30ea88de77ff5391f3375d050fa87",
+    "dqi.kmb": "7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6",
+    "invsqrt.kmb": "0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6"
+   },
+   "angle_circuits_sha256_of_sorted_member_hashes": "83561cdb2e34ce25bda71d3dfb99866e025b3857f39da5cd8a2c1a19535ce447"
+  }
+ }
+}
