@@ -1,0 +1,26 @@
+affine 4000/27221 rewrites 64 peak 86 false 105
+affine 8000/27221 rewrites 114 peak 86 false 105
+affine 12000/27221 rewrites 271 peak 90 false 123
+affine 16000/27221 rewrites 642 peak 90 false 378
+affine 20000/27221 rewrites 887 peak 90 false 383
+affine 24000/27221 rewrites 895 peak 90 false 383
+calibration LP 1: rows 8184 lp 125961221.906 exhaustive -200297511334.488
+calibration LP 2: rows 8584 lp 125961221.906 exhaustive -13857676768.725
+calibration LP 3: rows 8984 lp 125961221.906 exhaustive -1477701013.418
+calibration LP 4: rows 9196 lp 125961221.906 exhaustive -445194195.656
+calibration LP 5: rows 9596 lp 125961221.906 exhaustive -1376919939.612
+calibration LP 6: rows 9996 lp 125961221.906 exhaustive 125961221.906
+calibration drop none: margin 125961220 rotations 45 ratio 13.146457
+calibration LP 1: rows 8187 lp 76507185.733 exhaustive -217472324380.970
+calibration LP 2: rows 8587 lp 76507185.733 exhaustive -4168416152.857
+calibration LP 3: rows 8987 lp 76507185.733 exhaustive -1811421717.503
+calibration LP 4: rows 9387 lp 76507185.733 exhaustive -1874717578.768
+calibration LP 5: rows 9787 lp 76507185.733 exhaustive 12560351.334
+calibration LP 6: rows 9999 lp 73326606.462 exhaustive 12793553.508
+calibration LP 7: rows 10090 lp 73326606.462 exhaustive -4442102844.981
+calibration LP 8: rows 10113 lp 73326606.462 exhaustive -56859381.414
+calibration LP 9: rows 10183 lp 73326606.462 exhaustive -307671729.247
+calibration LP 10: rows 10297 lp 73326606.462 exhaustive 73326606.462
+calibration drop [18]: margin 73326605 rotations 44 ratio 13.164809
+/home/cld-main/work/vqcc-data/pra280/bundle/invsqrt.kmb sha256=75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd bytes=234743
+Q 90 expected_toffoli 1437.5 rotations 44 ratio 13.164809 margin 73326605
