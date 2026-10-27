@@ -1,0 +1,198 @@
+INPUTS VERIFIED {"pra293-fused-invsqrt": "22258bb57f1a711336567cb8771c7f88936d903af7727ab0bbd993fb72e5f27d", "pra281-invsqrt-port": "5c8db085d18872b17dc16890a2afd6ea8b3c63d3dc513b853ba0ac20b797cecd", "pin": "c72649c261fa38db3f36cacc832f47e7b5775fac"}
+DELTA {"restored_in_rollback": ["dqi.kmb"], "unchanged": 27}
+COMMAND uv sync --frozen
+Downloading cpython-3.13.13-linux-x86_64-gnu (download) (33.7MiB)
+ Downloaded cpython-3.13.13-linux-x86_64-gnu (download)
+Using CPython 3.13.13
+Creating virtual environment at: .venv
+Installed 36 packages in 115ms
+ + annotated-types==0.8.0
+ + anyio==4.15.1
+ + blinker==1.9.0
+ + click==8.5.0
+ + dacite==1.9.2
+ + flask==3.1.3
+ + h11==0.16.0
+ + httpcore2==2.16.0
+ + httpx2==2.16.0
+ + idna==3.20
+ + iniconfig==2.3.1
+ + itsdangerous==2.2.0
+ + jinja2==3.1.6
+ + jiter==0.18.0
+ + markupsafe==3.0.4
+ + numpy==2.5.4
+ + openai==3.37.0
+ + openevolve==0.4.0
+ + packaging==26.3
+ + pandas==3.1.0
+ + pluggy==1.7.0
+ + pydantic==2.14.1
+ + pydantic-core==2.50.1
+ + pygments==2.21.0
+ + pytest==9.1.1
+ + python-dateutil==3.0.0
+ + pyyaml==6.0.3
+ + scipy==1.18.1
+ + six==1.17.0
+ + sniffio==1.3.1
+ + tqdm==4.70.1
+ + truststore==0.10.5
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.4
+ + tzdata==2026.5
+ + werkzeug==3.1.9
+EXIT 0
+COMMAND uv run --frozen python scripts/install_kickmix.py /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation
+kickmix 0.1 /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation/kickmix/kickmix.so
+Created: /home/cld-main/work/vqcc-data/pra293-fused-invsqrt-rollback-20261027/source/.venv/lib/python3.13/site-packages/vqcc_local.pth
+EXIT 0
+COMMAND uv run --frozen python -m tasks.dqi.generate_schur --out /home/cld-main/work/vqcc-data/pra293-fused-invsqrt-rollback-20261027/generated
+{"N": 70, "reverse": false, "Q": 877, "T": 114240, "seconds": 9.83267092704773}
+{"N": 70, "inverse": false, "Q": 878, "T": 34751, "seconds": 41.77087187767029}
+{"N": 70, "reverse": true, "Q": 877, "T": 132685, "seconds": 19.635238885879517}
+{"N": 70, "inverse": true, "Q": 892, "T": 45412, "seconds": 49.73794341087341}
+{"N": 70, "M": 4095, "Q": 892, "T": 535334, "sha256": "1a1c60ae30f506ec5d05728d893f63d2e0c4952b0145af2081236bfef1e18f48", "seconds": 226.36936555799912, "middle": {"components": [{"Q": 883, "T": 80475}, {"Q": 883, "T": 82726}], "kernel_Q": 35, "kernel_T": 11, "middle_T": 208246}}
+EXIT 0
+REGENERATED dqi.kmb matches pra261-schur: 1a1c60ae30f506ec5d05728d893f63d2e0c4952b0145af2081236bfef1e18f48
+BYTE-EQUAL non-dqi members: 27
+{
+  "source_commit": "c72649c261fa38db3f36cacc832f47e7b5775fac",
+  "started_utc": "2026-10-27T17:39:31.001004+00:00",
+  "finished_utc": "2026-10-27T17:43:44.713131+00:00",
+  "source_zip": "/home/cld-main/work/vqcc-data/pra293-fused-invsqrt/pra293-fused-invsqrt.zip",
+  "source_zip_sha256": "22258bb57f1a711336567cb8771c7f88936d903af7727ab0bbd993fb72e5f27d",
+  "target_zip": "/home/cld-main/work/vqcc-data/pra284/pra281-invsqrt-port.zip",
+  "target_zip_sha256": "5c8db085d18872b17dc16890a2afd6ea8b3c63d3dc513b853ba0ac20b797cecd",
+  "output_zip": "/home/cld-main/work/vqcc-data/pra293-fused-invsqrt-rollback-20261027/rollback.zip",
+  "output_zip_sha256": "5c8db085d18872b17dc16890a2afd6ea8b3c63d3dc513b853ba0ac20b797cecd",
+  "output_equals_target_zip": true,
+  "regenerated_dqi_sha256": "1a1c60ae30f506ec5d05728d893f63d2e0c4952b0145af2081236bfef1e18f48",
+  "byte_equal_non_dqi": [
+    "dfthcsos/angle_k_0.kmb",
+    "dfthcsos/angle_k_1.kmb",
+    "dfthcsos/angle_k_10.kmb",
+    "dfthcsos/angle_k_11.kmb",
+    "dfthcsos/angle_k_12.kmb",
+    "dfthcsos/angle_k_13.kmb",
+    "dfthcsos/angle_k_14.kmb",
+    "dfthcsos/angle_k_15.kmb",
+    "dfthcsos/angle_k_16.kmb",
+    "dfthcsos/angle_k_17.kmb",
+    "dfthcsos/angle_k_18.kmb",
+    "dfthcsos/angle_k_19.kmb",
+    "dfthcsos/angle_k_2.kmb",
+    "dfthcsos/angle_k_20.kmb",
+    "dfthcsos/angle_k_21.kmb",
+    "dfthcsos/angle_k_22.kmb",
+    "dfthcsos/angle_k_23.kmb",
+    "dfthcsos/angle_k_24.kmb",
+    "dfthcsos/angle_k_3.kmb",
+    "dfthcsos/angle_k_4.kmb",
+    "dfthcsos/angle_k_5.kmb",
+    "dfthcsos/angle_k_6.kmb",
+    "dfthcsos/angle_k_7.kmb",
+    "dfthcsos/angle_k_8.kmb",
+    "dfthcsos/angle_k_9.kmb",
+    "dfthcsos/submission.npz",
+    "invsqrt.kmb"
+  ],
+  "delta": {
+    "restored_in_rollback": [
+      "dqi.kmb"
+    ],
+    "removed_in_rollback": [],
+    "added_in_rollback": [],
+    "unchanged": [
+      "dfthcsos/angle_k_0.kmb",
+      "dfthcsos/angle_k_1.kmb",
+      "dfthcsos/angle_k_10.kmb",
+      "dfthcsos/angle_k_11.kmb",
+      "dfthcsos/angle_k_12.kmb",
+      "dfthcsos/angle_k_13.kmb",
+      "dfthcsos/angle_k_14.kmb",
+      "dfthcsos/angle_k_15.kmb",
+      "dfthcsos/angle_k_16.kmb",
+      "dfthcsos/angle_k_17.kmb",
+      "dfthcsos/angle_k_18.kmb",
+      "dfthcsos/angle_k_19.kmb",
+      "dfthcsos/angle_k_2.kmb",
+      "dfthcsos/angle_k_20.kmb",
+      "dfthcsos/angle_k_21.kmb",
+      "dfthcsos/angle_k_22.kmb",
+      "dfthcsos/angle_k_23.kmb",
+      "dfthcsos/angle_k_24.kmb",
+      "dfthcsos/angle_k_3.kmb",
+      "dfthcsos/angle_k_4.kmb",
+      "dfthcsos/angle_k_5.kmb",
+      "dfthcsos/angle_k_6.kmb",
+      "dfthcsos/angle_k_7.kmb",
+      "dfthcsos/angle_k_8.kmb",
+      "dfthcsos/angle_k_9.kmb",
+      "dfthcsos/submission.npz",
+      "invsqrt.kmb"
+    ]
+  },
+  "before": {
+    "dfthcsos/angle_k_0.kmb": "85acedd7ad670b5f5aa8783bfa2d6fcd20cd4cce7768276bace76a3af14a95d4",
+    "dfthcsos/angle_k_1.kmb": "ab92a3d9e329cc565989a7d85379515efc83d621eca87f30edd0574df8988c7c",
+    "dfthcsos/angle_k_10.kmb": "382cbacbd97993f4458c33f8db8be1e72a2865b065b73ebad954add37c5f9e69",
+    "dfthcsos/angle_k_11.kmb": "8a795d4b03f990a4ad1e2f2c218ad294147e0b11659edf501576f14dcd3f15d8",
+    "dfthcsos/angle_k_12.kmb": "5b67468d4a781c86b891155385a5f329f23f4c797a0c621a2b6903d5dc2519fb",
+    "dfthcsos/angle_k_13.kmb": "673b241ace2e2a428a7f90a4142c75b2bfd31681c6304097aeeaecfcf2ef6947",
+    "dfthcsos/angle_k_14.kmb": "20cecee88d2c2a5c4e934e8bee51ab7fb9657dab0a44a3f3c20b9a0c173ee776",
+    "dfthcsos/angle_k_15.kmb": "b220710fae2b386c43bdc409627ae5cdf6d4c2d47971e62db06ff60b0e2ab762",
+    "dfthcsos/angle_k_16.kmb": "aa7004db2ee2db4a8a7c36117b94e13f0d7d9f42c3c09a5ecba015dffa67732f",
+    "dfthcsos/angle_k_17.kmb": "f510b3ec358be914571f71ae8f5e5f22e64b2cf932f4c89bdccf48a4229c0d49",
+    "dfthcsos/angle_k_18.kmb": "296e5f95f77a3f7e2aadb13f851763da59782f64e0e3ee44e9fa65b7362d5abe",
+    "dfthcsos/angle_k_19.kmb": "6d3dd92895b0c915b9481f2a6a9453eef1f9ff12d38e5122cf5e51337fdc7588",
+    "dfthcsos/angle_k_2.kmb": "a73b471bfe82122fb0695de1547061f31cbc5780437421a9b0edecddaca66461",
+    "dfthcsos/angle_k_20.kmb": "0d633cb07d06737cba9a3ae9f34a36a2f861aa665913916e9fa95fadbdd6b852",
+    "dfthcsos/angle_k_21.kmb": "206c8d5ea09eff02881109fd1803072111fc12a04a1798c9dec9d9eaeb9bb095",
+    "dfthcsos/angle_k_22.kmb": "6030e55b7aff70ee59a8f02de4d00b246ad687c5038bceb9e2da06c0d1dcc0de",
+    "dfthcsos/angle_k_23.kmb": "b336062b8af147ac40936c71be52c64f932681278fd58a3750942352c2c7da81",
+    "dfthcsos/angle_k_24.kmb": "aa7bdae65deedb26bc6501e9777b4fd28aceded427a77b2c749fcbc305b5821b",
+    "dfthcsos/angle_k_3.kmb": "bbd4bd5ee37ebe63d240088fb6948b7cb6ccd0482888ed19bbce0cdce03cfc9f",
+    "dfthcsos/angle_k_4.kmb": "4202c583942a254ed8102ffa099913745e1d9c751387390172b1af1c22169005",
+    "dfthcsos/angle_k_5.kmb": "7cf480e3e5d79525e3ad57d09247d0ced6dfee4b4305972881f38e04fbf6111f",
+    "dfthcsos/angle_k_6.kmb": "e53c3cd266d967057a403731a4ce8e9e87bfde2dff0d254186d44a80f547af90",
+    "dfthcsos/angle_k_7.kmb": "3b48b76bd8f661851caa0e696b949a4c5c57ef42ce113fc1c981b4429f5a11b7",
+    "dfthcsos/angle_k_8.kmb": "b119eb757d85efc0acd04dd474b82a6d4d30872c4704c4fc62b2a93ed80f527a",
+    "dfthcsos/angle_k_9.kmb": "62ed9c256370b46bcc8a14604f625e066185357ca6e595288247a851e581147f",
+    "dfthcsos/submission.npz": "27dda66f38c60821665cfc74e51d1bd2bfd2a7f0d902dbaffcdc5b26543dadad",
+    "dqi.kmb": "7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6",
+    "invsqrt.kmb": "17fc223d79d3f1f15ef448389072209972b373403dd0a45352f4fe7eaff541ad"
+  },
+  "after": {
+    "dfthcsos/angle_k_0.kmb": "85acedd7ad670b5f5aa8783bfa2d6fcd20cd4cce7768276bace76a3af14a95d4",
+    "dfthcsos/angle_k_1.kmb": "ab92a3d9e329cc565989a7d85379515efc83d621eca87f30edd0574df8988c7c",
+    "dfthcsos/angle_k_10.kmb": "382cbacbd97993f4458c33f8db8be1e72a2865b065b73ebad954add37c5f9e69",
+    "dfthcsos/angle_k_11.kmb": "8a795d4b03f990a4ad1e2f2c218ad294147e0b11659edf501576f14dcd3f15d8",
+    "dfthcsos/angle_k_12.kmb": "5b67468d4a781c86b891155385a5f329f23f4c797a0c621a2b6903d5dc2519fb",
+    "dfthcsos/angle_k_13.kmb": "673b241ace2e2a428a7f90a4142c75b2bfd31681c6304097aeeaecfcf2ef6947",
+    "dfthcsos/angle_k_14.kmb": "20cecee88d2c2a5c4e934e8bee51ab7fb9657dab0a44a3f3c20b9a0c173ee776",
+    "dfthcsos/angle_k_15.kmb": "b220710fae2b386c43bdc409627ae5cdf6d4c2d47971e62db06ff60b0e2ab762",
+    "dfthcsos/angle_k_16.kmb": "aa7004db2ee2db4a8a7c36117b94e13f0d7d9f42c3c09a5ecba015dffa67732f",
+    "dfthcsos/angle_k_17.kmb": "f510b3ec358be914571f71ae8f5e5f22e64b2cf932f4c89bdccf48a4229c0d49",
+    "dfthcsos/angle_k_18.kmb": "296e5f95f77a3f7e2aadb13f851763da59782f64e0e3ee44e9fa65b7362d5abe",
+    "dfthcsos/angle_k_19.kmb": "6d3dd92895b0c915b9481f2a6a9453eef1f9ff12d38e5122cf5e51337fdc7588",
+    "dfthcsos/angle_k_2.kmb": "a73b471bfe82122fb0695de1547061f31cbc5780437421a9b0edecddaca66461",
+    "dfthcsos/angle_k_20.kmb": "0d633cb07d06737cba9a3ae9f34a36a2f861aa665913916e9fa95fadbdd6b852",
+    "dfthcsos/angle_k_21.kmb": "206c8d5ea09eff02881109fd1803072111fc12a04a1798c9dec9d9eaeb9bb095",
+    "dfthcsos/angle_k_22.kmb": "6030e55b7aff70ee59a8f02de4d00b246ad687c5038bceb9e2da06c0d1dcc0de",
+    "dfthcsos/angle_k_23.kmb": "b336062b8af147ac40936c71be52c64f932681278fd58a3750942352c2c7da81",
+    "dfthcsos/angle_k_24.kmb": "aa7bdae65deedb26bc6501e9777b4fd28aceded427a77b2c749fcbc305b5821b",
+    "dfthcsos/angle_k_3.kmb": "bbd4bd5ee37ebe63d240088fb6948b7cb6ccd0482888ed19bbce0cdce03cfc9f",
+    "dfthcsos/angle_k_4.kmb": "4202c583942a254ed8102ffa099913745e1d9c751387390172b1af1c22169005",
+    "dfthcsos/angle_k_5.kmb": "7cf480e3e5d79525e3ad57d09247d0ced6dfee4b4305972881f38e04fbf6111f",
+    "dfthcsos/angle_k_6.kmb": "e53c3cd266d967057a403731a4ce8e9e87bfde2dff0d254186d44a80f547af90",
+    "dfthcsos/angle_k_7.kmb": "3b48b76bd8f661851caa0e696b949a4c5c57ef42ce113fc1c981b4429f5a11b7",
+    "dfthcsos/angle_k_8.kmb": "b119eb757d85efc0acd04dd474b82a6d4d30872c4704c4fc62b2a93ed80f527a",
+    "dfthcsos/angle_k_9.kmb": "62ed9c256370b46bcc8a14604f625e066185357ca6e595288247a851e581147f",
+    "dfthcsos/submission.npz": "27dda66f38c60821665cfc74e51d1bd2bfd2a7f0d902dbaffcdc5b26543dadad",
+    "dqi.kmb": "1a1c60ae30f506ec5d05728d893f63d2e0c4952b0145af2081236bfef1e18f48",
+    "invsqrt.kmb": "17fc223d79d3f1f15ef448389072209972b373403dd0a45352f4fe7eaff541ad"
+  },
+  "source_archives_unchanged": true
+}
+PASS: only dqi.kmb changed; 27 other members byte-equal; output zip == pra281-invsqrt-port
