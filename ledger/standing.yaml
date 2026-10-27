@@ -1,7 +1,8 @@
 # Our public standing on the Kaggle leaderboard, as john-wick last read it (PRA-241).
 #
 # Read by the status page (ledger/status_page.py) and nothing else. Update the leaderboard block
-# with every `leaderboard-snapshot`, and add a one-line note for every new submission. Our own
+# with every `leaderboard-snapshot`, and add a one-line note for every new submission (the page
+# shows the notes of the five newest uploads only, NOTED_UPLOADS in ledger/status_page.py). Our own
 # scores are not here: the public score comes from ledger/evidence/<submission>/
 # kaggle-public-score.json and the per-task ratios from the submission manifests.
 #
