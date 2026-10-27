@@ -11,15 +11,15 @@
 schema: 1
 
 leaderboard:
-  # PRA-202 `leaderboard-snapshot` revision 12: the full CSV (publicleaderboard-2026-10-27T09:34:37.csv,
-  # 1234 rows), the daily read (D-PRA202-33).
-  read_at_utc: "2026-10-27T09:34:37+00:00"
+  # PRA-202 `leaderboard-snapshot` revision 14: the full CSV (publicleaderboard-2026-10-27T19:11:04.csv,
+  # 1295 rows), read with the submission-009 upload (D-PRA202-34).
+  read_at_utc: "2026-10-27T19:11:04+00:00"
   our_score: 16.90171         # our public score when the rank was read
-  rank: 470
-  teams: 1234
+  rank: 583
+  teams: 1295
   leader_score: 24.52926
   prize_line_place: 6         # last paid place (D-PRA202-14)
-  prize_line_score: 23.09166
+  prize_line_score: 23.44490
 
 best_public_per_task:
   # Kaggle publishes no per-task scores. Since 2026-10-27 these are our own measurements of the
@@ -42,6 +42,7 @@ submission_notes:
   submission-006: "Only change: a cheaper decoder circuit (dqi), rebuilt from the best public design."
   submission-007: "Only change: a much cheaper decoder circuit (dqi)."
   submission-008: "Only change: a much cheaper chemistry circuit (dfthcsos)."
+  submission-009: Cheaper decoder (dqi) and square-root (invsqrt) circuits.
 
 # The public Kaggle notebook, once it is published. null hides the link.
 notebook_url: null
