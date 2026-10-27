@@ -1,0 +1,14 @@
+{
+  "candidate_id": "pra280-rustad",
+  "error": "",
+  "kaggle_submission_id": "57682682",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "outcome": "recorded",
+  "reservation_id": "63768c92-14d1-47fb-8640-4cc5af4c4d69",
+  "reserved_at_utc": "2026-10-27T00:09:20.208089+00:00",
+  "resolved_at_utc": "2026-10-27T00:10:02.640434+00:00",
+  "slot": 1,
+  "submission_id": "submission-008",
+  "utc_day": "2026-10-27",
+  "zip_sha256": "8e2918400fd033440d350d4af76bc4bdfca3787cdf411dcbb974f03d3b4f8f21"
+}
