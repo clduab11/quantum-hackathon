@@ -11,15 +11,15 @@
 schema: 1
 
 leaderboard:
-  # PRA-202 `leaderboard-snapshot` revision 10: the full CSV (publicleaderboard-2026-10-27T00:10:18.csv,
-  # 1169 rows), taken with the submission-007 score read-back (D-PRA202-30).
-  read_at_utc: "2026-10-27T00:10:18+00:00"
-  our_score: 13.76646         # our public score when the rank was read
-  rank: 473
-  teams: 1169
+  # PRA-202 `leaderboard-snapshot` revision 11: the full CSV (publicleaderboard-2026-10-27T01:18:48.csv,
+  # 1176 rows), taken with the submission-008 score read-back (D-PRA202-32).
+  read_at_utc: "2026-10-27T01:18:48+00:00"
+  our_score: 16.90171         # our public score when the rank was read
+  rank: 288
+  teams: 1176
   leader_score: 23.35228
   prize_line_place: 6         # last paid place (D-PRA202-14)
-  prize_line_score: 21.34773
+  prize_line_score: 21.75492
 
 best_public_per_task:
   # Kaggle publishes no per-task scores; these are the best figures authors state in public

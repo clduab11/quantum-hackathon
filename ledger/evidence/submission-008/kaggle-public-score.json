@@ -1,0 +1,23 @@
+{
+  "candidate_id": "submission-008",
+  "commands": [
+    "Composio proxy_execute POST https://www.kaggle.com/api/v1/competitions.CompetitionApiService/ListSubmissions {competitionName: google-verifiable-quantum-circuit-compilation, pageSize: 20}"
+  ],
+  "kaggle": {
+    "competition": "google-verifiable-quantum-circuit-compilation",
+    "date": "2026-10-27T00:09:48.297Z",
+    "description": "pra280-rustad: rustad chemistry 7.679x + Schur dqi (PRA-280), GM local 16.8821, zip sha256 8e291840",
+    "fileName": "submission.zip",
+    "publicScore": "16.90171",
+    "ref": 57682682,
+    "status": "COMPLETE",
+    "totalBytes": 54771505
+  },
+  "kind": "kaggle_public_score",
+  "local_geometric_mean": 16.88208344372253,
+  "notes": "Public score read back from Kaggle ListSubmissions (Composio log log_YIOlQvYMsxLt) by the PRA-202 issue monitor. submission-NNN.json manifests are never rewritten (docs/ledger-schema.md), so the score is recorded here and in D-PRA202-32. Kaggle public 16.90171 is 1.00116x the local fixed-salt G3 geometric mean 16.88208344372253 (+0.12%), the same ratio as submission-007, whose dqi and invsqrt bytes it shares. totalBytes equals the local zip size. No salt grinding follows.",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "source_candidate_id": "pra280-rustad",
+  "timestamp_utc": "2026-10-27T01:18:30+00:00",
+  "zip_sha256": "8e2918400fd033440d350d4af76bc4bdfca3787cdf411dcbb974f03d3b4f8f21"
+}
