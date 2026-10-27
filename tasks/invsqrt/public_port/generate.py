@@ -30,7 +30,9 @@ def resources(circuit):
                 t_like=int(stats.num_t_like), rotations=int(stats.num_z_pow(min_clifford_hierarchy_level=4)))
 
 
-def build_from_fit(fitted):
+def build_from_fit(fitted, storage_mode=None):
+    if storage_mode not in (None, 'affine', 'future', 'product'):
+        raise ValueError(f'Unknown storage mode: {storage_mode}')
     cfg = Config()
     tables = {(e,a): fitted['rows'][128*e+a] for e in range(2) for a in range(128)}
     # Recompute instead of trusting a passed flag supplied by a caller.
@@ -46,7 +48,13 @@ def build_from_fit(fitted):
     raw, split = schedule.build(cfg, tables, group_bits=None, interpolation=fitted['interpolation'],
                                 main_lookup='anf', affine=True, joint_norm=False)
     print(json.dumps(dict(stage='raw', **resources(raw))), flush=True)
-    compiled = affine.compile_circuit(raw)
+    events = []
+    if storage_mode is None:
+        compiled = affine.compile_circuit(raw)
+    else:
+        from .storage import compile_circuit
+        compiled, events = compile_circuit(raw, cap=68, products=storage_mode == 'product',
+                                          future=storage_mode in ('future', 'product'))
     phase = calibrate.assert_phase_matches(compiled, cfg, tables)
     before = resources(km.Circuit(compiled.text))
     print(json.dumps(dict(stage='compiled', phase=phase, **before)), flush=True)
@@ -63,6 +71,8 @@ def build_from_fit(fitted):
                   calibration={k:v for k,v in calibrated.items() if k != 'text'},
                   sha256=hashlib.sha256(data).hexdigest(), bytes=len(data),
                   parent_version=361726742, tables=fitted, full_verification_required=True)
+    if storage_mode is not None:
+        report['storage'] = dict(mode=storage_mode, target_cap=68, events=events)
     return data, report
 
 
@@ -71,15 +81,18 @@ def main():
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--circuit-only', action='store_true',
                         help='Write only the circuit for exact-file G5 comparison; still refit and prove it.')
+    parser.add_argument('--storage', choices=('affine', 'future', 'product'),
+                        help='Experimental idle-wire parking; the default floor candidate is unchanged.')
     args = parser.parse_args()
     from .fit import fit_tables
     fitted = fit_tables()
-    data, report = build_from_fit(fitted)
+    data, report = (build_from_fit(fitted) if args.storage is None
+                    else build_from_fit(fitted, storage_mode=args.storage))
     args.out.mkdir(parents=True, exist_ok=True)
     (args.out/'invsqrt.kmb').write_bytes(data)
     if not args.circuit_only:
         (args.out/'build-report.json').write_text(json.dumps(report, indent=2)+'\n')
-    print(json.dumps({k:v for k,v in report.items() if k not in ('tables','calibration')}), flush=True)
+    print(json.dumps({k:v for k,v in report.items() if k not in ('tables','calibration','storage')}), flush=True)
 
 
 if __name__ == '__main__':

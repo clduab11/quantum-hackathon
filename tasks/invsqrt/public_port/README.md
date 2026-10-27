@@ -35,3 +35,27 @@ the best reachable-domain relative error exceeds `0.95 * 2^-24`. It enforces
 even anchors for the virtual low bit. Tie breaking follows ascending enumeration.
 The rotation experiment tests the full set and one smallest-angle drop; it does
 not claim a global minimum over all schedules or all angle subsets.
+
+PRA-285 adds opt-in storage experiments. `--storage affine` parks idle wires
+using unchanged affine recovery operands; `--storage future` also allows
+affine recovery at a later checkpoint; `--storage product` additionally allows
+one AND term in the recovery function. For example:
+
+```sh
+uv run --group gpu python -m tasks.invsqrt.public_port.profile
+uv run --group gpu python -m tasks.invsqrt.public_port.generate --storage product --out /tmp/invsqrt-storage
+```
+
+Every mode refits the same coefficients, checks the full integer domain, and
+proves the compiled phase before calibrating the original rotation functions.
+The storage pass proves each proposed identity on all legal inputs, restores
+the input routing, and uses phase-only correction for each new X-basis
+measurement. Search is bounded to one attempt per idle interval; future
+recovery examines at most 400 instructions. Its 68-wire target is not a
+guarantee. The build report and official verifier determine the actual peak.
+No storage mode is selected by the default generator or existing gate configs.
+
+`python -m tasks.invsqrt.public_port.lookup_bound` reports the qubit floor of
+the main coefficient lookup: 22 input wires plus every output that is not an XOR
+of address bits and other outputs. On this port's fit it is 68 before flags and
+lookup work wires, so no storage-only schedule reaches 68 (D-PRA285-01).
