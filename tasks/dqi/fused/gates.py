@@ -38,3 +38,20 @@ def g4_floor(ctx):
     if dqi.ratio is None or not dqi.ratio >= DQI_FLOOR:
         return {**result, 'status': f'FAIL: dqi ratio {dqi.ratio} is below {DQI_FLOOR}'}
     return {**result, 'dqi_ratio': dqi.ratio, 'dqi_floor': DQI_FLOOR}
+
+
+INVSQRT_FLOOR = 13.2377
+
+
+def g4_floor_on_port(ctx):
+    """g4_floor, then #62's public-port invsqrt bytes at their 13.2377× floor (pra293-fused-invsqrt)."""
+    from tasks.invsqrt.public_port.gates import PORT_SHA256
+    result = g4_floor(ctx)
+    if result['status'] != 'PASS':
+        return result
+    invsqrt = ctx.manifest.tasks['invsqrt']
+    if invsqrt.files.get('invsqrt.kmb') != PORT_SHA256:
+        return {**result, 'status': f"FAIL: invsqrt.kmb {invsqrt.files.get('invsqrt.kmb')} is not {PORT_SHA256}"}
+    if invsqrt.ratio is None or not invsqrt.ratio >= INVSQRT_FLOOR:
+        return {**result, 'status': f'FAIL: invsqrt ratio {invsqrt.ratio} is below {INVSQRT_FLOOR}'}
+    return {**result, 'invsqrt_ratio': invsqrt.ratio, 'invsqrt_floor': INVSQRT_FLOOR}

@@ -2,6 +2,10 @@
 import hashlib
 import json
 from pathlib import Path
+from types import SimpleNamespace
+
+import pytest
+import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 PORT = ROOT / 'tasks/dqi/fused'
@@ -46,3 +50,30 @@ def test_g1_checks_vendored_arithmetic_on_the_complete_domain():
     assert report['domain'] == 4096
     assert report['pinned_files'] == len(SOURCE_MAP['files'])
     assert not list((PORT / 'source').rglob('__pycache__'))
+
+
+def test_bundle_config_changes_only_dqi_from_the_invsqrt_port():
+    base = yaml.safe_load((ROOT / 'configs/gates/pra281-invsqrt-port.yaml').read_text())
+    for gate in base['gates']:
+        if gate['id'] == 'G1':
+            gate['params']['hooks']['dqi'] = 'tasks.dqi.fused.gates:g1_smoke'
+        if gate['id'] == 'G4':
+            gate['check'] = 'tasks.dqi.fused.gates:g4_floor_on_port'
+    base['generators']['dqi'] = ['{python}', '-m', 'tasks.dqi.generate_fused', '--out', '{out}']
+    assert yaml.safe_load((ROOT / 'configs/gates/pra293-fused-invsqrt.yaml').read_text()) == base
+
+
+def test_g4_on_port_requires_the_port_invsqrt_at_its_floor(monkeypatch):
+    pytest.importorskip('kickmix')
+    from tasks.dqi.fused import gates
+    from tasks.invsqrt.public_port.gates import PORT_SHA256
+
+    monkeypatch.setattr(gates, 'g4_floor', lambda ctx: {'status': 'PASS', 'geometric_mean': 17.72})
+    def ctx(sha, ratio):
+        task = SimpleNamespace(files={'invsqrt.kmb': sha}, ratio=ratio)
+        return SimpleNamespace(manifest=SimpleNamespace(tasks={'invsqrt': task}))
+    assert gates.g4_floor_on_port(ctx(PORT_SHA256, 13.237727705632725))['status'] == 'PASS'
+    assert 'is not' in gates.g4_floor_on_port(ctx('75e8a0e2', 13.2377))['status']
+    assert 'below' in gates.g4_floor_on_port(ctx(PORT_SHA256, 13.1648))['status']
+    monkeypatch.setattr(gates, 'g4_floor', lambda ctx: {'status': 'FAIL: dqi'})
+    assert gates.g4_floor_on_port(ctx(PORT_SHA256, 13.2377))['status'] == 'FAIL: dqi'
