@@ -1,0 +1,39 @@
+{
+  "gates": [
+    {
+      "gate": "G0",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G1",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G2",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G3",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G4",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G5",
+      "status": "PASS",
+      "reason": ""
+    }
+  ],
+  "seconds": 584.2870174410054,
+  "shipping_problems": [],
+  "geometric_mean": 16.91319568027347,
+  "zip_sha256": "5c8db085d18872b17dc16890a2afd6ea8b3c63d3dc513b853ba0ac20b797cecd",
+  "generator_commit": "ab06f050551aefbcf69464b46b5ae9efc52ba0a3"
+}

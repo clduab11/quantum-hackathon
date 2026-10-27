@@ -70,7 +70,10 @@ fail early** (input/output checks), and **The check must be able to fail** (bad
 input and below-floor cases). The full result belongs in
 `docs/reports/pra280-chemistry.md` and the ticket's `chem-catchup-log`.
 
-Only the board merges. The Adjudicator must sign off before merge or submission;
-John Wick owns any later upload. Rollback is a board-applied revert of this PR,
-then selection of the prior candidate config. This PR does not change defaults
-or execute tools against a live service.
+Only the board merges. Under R-P2-2 a candidate with real G0–G5 on the exact
+zip uploads first, and the Adjudicator signs off within 24 hours of the upload.
+John Wick owns uploads. To return the shipped bundle to `pra261-schur`, run
+`bash ledger/evidence/pra280-rustad/rollback/rehearsal-command.sh`. It changes
+only `dfthcsos/` and is rehearsed in `ledger/evidence/pra280-rustad/rollback/`.
+A `git revert` restores source only, not a bundle or a Kaggle submission. This
+module does not change defaults or execute tools against a live service.

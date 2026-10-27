@@ -1,0 +1,340 @@
+INPUTS VERIFIED {"pra280-rustad": "8e2918400fd033440d350d4af76bc4bdfca3787cdf411dcbb974f03d3b4f8f21", "pra261-schur": "9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5", "factor": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5", "pin": "33c8f82cde158101615b40057eb039649efbdd66"}
+DELTA {
+  "removed_in_rollback": [
+    "dfthcsos/angle_k_10.kmb",
+    "dfthcsos/angle_k_11.kmb",
+    "dfthcsos/angle_k_12.kmb",
+    "dfthcsos/angle_k_13.kmb",
+    "dfthcsos/angle_k_14.kmb",
+    "dfthcsos/angle_k_15.kmb",
+    "dfthcsos/angle_k_16.kmb",
+    "dfthcsos/angle_k_17.kmb",
+    "dfthcsos/angle_k_18.kmb",
+    "dfthcsos/angle_k_19.kmb",
+    "dfthcsos/angle_k_20.kmb",
+    "dfthcsos/angle_k_21.kmb",
+    "dfthcsos/angle_k_22.kmb",
+    "dfthcsos/angle_k_23.kmb",
+    "dfthcsos/angle_k_24.kmb",
+    "dfthcsos/angle_k_8.kmb",
+    "dfthcsos/angle_k_9.kmb"
+  ],
+  "restored_in_rollback": [
+    "dfthcsos/angle_k_0.kmb",
+    "dfthcsos/angle_k_1.kmb",
+    "dfthcsos/angle_k_2.kmb",
+    "dfthcsos/angle_k_3.kmb",
+    "dfthcsos/angle_k_4.kmb",
+    "dfthcsos/angle_k_5.kmb",
+    "dfthcsos/angle_k_6.kmb",
+    "dfthcsos/angle_k_7.kmb",
+    "dfthcsos/submission.npz"
+  ],
+  "added_in_rollback": [],
+  "unchanged": [
+    "dqi.kmb",
+    "invsqrt.kmb"
+  ]
+}
+COMMAND uv sync --frozen
+Downloading cpython-3.13.13-linux-x86_64-gnu (download) (33.7MiB)
+ Downloaded cpython-3.13.13-linux-x86_64-gnu (download)
+Using CPython 3.13.13
+Creating virtual environment at: .venv
+Downloading pygments (1.2MiB)
+Downloading pandas (11.4MiB)
+Downloading openai (2.2MiB)
+Downloading pydantic-core (2.1MiB)
+Downloading scipy (33.7MiB)
+Downloading numpy (15.9MiB)
+ Downloaded pygments
+ Downloaded pydantic-core
+ Downloaded openai
+ Downloaded numpy
+ Downloaded pandas
+ Downloaded scipy
+Prepared 36 packages in 2.32s
+Installed 36 packages in 64ms
+ + annotated-types==0.8.0
+ + anyio==4.15.1
+ + blinker==1.9.0
+ + click==8.5.0
+ + dacite==1.9.2
+ + flask==3.1.3
+ + h11==0.16.0
+ + httpcore2==2.16.0
+ + httpx2==2.16.0
+ + idna==3.20
+ + iniconfig==2.3.1
+ + itsdangerous==2.2.0
+ + jinja2==3.1.6
+ + jiter==0.18.0
+ + markupsafe==3.0.4
+ + numpy==2.5.4
+ + openai==3.37.0
+ + openevolve==0.4.0
+ + packaging==26.3
+ + pandas==3.1.0
+ + pluggy==1.7.0
+ + pydantic==2.14.1
+ + pydantic-core==2.50.1
+ + pygments==2.21.0
+ + pytest==9.1.1
+ + python-dateutil==3.0.0
+ + pyyaml==6.0.3
+ + scipy==1.18.1
+ + six==1.17.0
+ + sniffio==1.3.1
+ + tqdm==4.70.1
+ + truststore==0.10.5
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.4
+ + tzdata==2026.5
+ + werkzeug==3.1.9
+EXIT 0
+COMMAND uv run --frozen python scripts/install_kickmix.py /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation
+kickmix 0.1 /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation/kickmix/kickmix.so
+Created: /home/cld-main/work/vqcc-data/pra280-rollback-20261027/source/.venv/lib/python3.13/site-packages/vqcc_local.pth
+EXIT 0
+COMMAND uv run --frozen python -m tasks.dfthcsos.shipping --out /home/cld-main/work/vqcc-data/pra280-rollback-20261027/generated --data /home/cld-main/work/vqcc-data/pra280-rollback-20261027/data --batch-size 10
+{
+  "factorization_sha256": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5",
+  "source_brot": 11,
+  "brot": 11,
+  "batch_size": 10,
+  "bank_bits": 0,
+  "scratch": 8,
+  "pebble_degree": 4,
+  "circuits": [
+    {
+      "num_qubits": 128,
+      "toffoli_per_call": 561,
+      "bank_bits": 0,
+      "bank_width": 0,
+      "scratch": 8,
+      "pebble_degree": 4,
+      "monomial_ands": 247,
+      "recomputed_ands": 0,
+      "direct_leaf_ands": 314
+    },
+    {
+      "num_qubits": 128,
+      "toffoli_per_call": 561,
+      "bank_bits": 0,
+      "bank_width": 0,
+      "scratch": 8,
+      "pebble_degree": 4,
+      "monomial_ands": 247,
+      "recomputed_ands": 0,
+      "direct_leaf_ands": 314
+    },
+    {
+      "num_qubits": 128,
+      "toffoli_per_call": 561,
+      "bank_bits": 0,
+      "bank_width": 0,
+      "scratch": 8,
+      "pebble_degree": 4,
+      "monomial_ands": 247,
+      "recomputed_ands": 0,
+      "direct_leaf_ands": 314
+    },
+    {
+      "num_qubits": 128,
+      "toffoli_per_call": 561,
+      "bank_bits": 0,
+      "bank_width": 0,
+      "scratch": 8,
+      "pebble_degree": 4,
+      "monomial_ands": 247,
+      "recomputed_ands": 0,
+      "direct_leaf_ands": 314
+    },
+    {
+      "num_qubits": 128,
+      "toffoli_per_call": 561,
+      "bank_bits": 0,
+      "bank_width": 0,
+      "scratch": 8,
+      "pebble_degree": 4,
+      "monomial_ands": 247,
+      "recomputed_ands": 0,
+      "direct_leaf_ands": 314
+    },
+    {
+      "num_qubits": 128,
+      "toffoli_per_call": 561,
+      "bank_bits": 0,
+      "bank_width": 0,
+      "scratch": 8,
+      "pebble_degree": 4,
+      "monomial_ands": 247,
+      "recomputed_ands": 0,
+      "direct_leaf_ands": 314
+    },
+    {
+      "num_qubits": 128,
+      "toffoli_per_call": 561,
+      "bank_bits": 0,
+      "bank_width": 0,
+      "scratch": 8,
+      "pebble_degree": 4,
+      "monomial_ands": 247,
+      "recomputed_ands": 0,
+      "direct_leaf_ands": 314
+    },
+    {
+      "num_qubits": 128,
+      "toffoli_per_call": 561,
+      "bank_bits": 0,
+      "bank_width": 0,
+      "scratch": 8,
+      "pebble_degree": 4,
+      "monomial_ands": 247,
+      "recomputed_ands": 0,
+      "direct_leaf_ands": 314
+    }
+  ],
+  "files": {
+    "dfthcsos/submission.npz": {
+      "sha256": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5",
+      "size": 1871575
+    },
+    "dfthcsos/angle_k_0.kmb": {
+      "sha256": "60d9dfb7a5ec6d172232f4d7081b858ce6868eea0ca2ee99ed3c99a195c3d0bb",
+      "size": 439960
+    },
+    "dfthcsos/angle_k_1.kmb": {
+      "sha256": "4079e0a08491fc3e42df613b09fd6c8399364bdf8cc508c0de2814f7ddf75c19",
+      "size": 443009
+    },
+    "dfthcsos/angle_k_2.kmb": {
+      "sha256": "cacdff488e6ea968f9f60f80072ca9285036b65a98a1cd60576190960458eb1a",
+      "size": 442839
+    },
+    "dfthcsos/angle_k_3.kmb": {
+      "sha256": "dbe4415e56782c83b6a53045ca7325a66528ae3812a28e577e0a527d89ba77bd",
+      "size": 447903
+    },
+    "dfthcsos/angle_k_4.kmb": {
+      "sha256": "6e0dcbe0f75a631c60e5d3affcf01179c4599abea05c053ef94d04e0a5f7d472",
+      "size": 444852
+    },
+    "dfthcsos/angle_k_5.kmb": {
+      "sha256": "58b75e436ff504af19b40fdb23337c7c548db8f84a3bdc9710d8f8303deee41f",
+      "size": 443878
+    },
+    "dfthcsos/angle_k_6.kmb": {
+      "sha256": "9df59056b173c4205a944c59edb4cfe5c77f0fd6003dbb34f2864910204b8d09",
+      "size": 448536
+    },
+    "dfthcsos/angle_k_7.kmb": {
+      "sha256": "86bc88ad3aad4553f60f3eac26807acd42a949ebc48bbb2443688193f9a9b1f4",
+      "size": 450307
+    }
+  }
+}
+EXIT 0
+REGENERATED dfthcsos matches pra261-schur: 9 members
+BYTE-EQUAL dqi.kmb
+BYTE-EQUAL invsqrt.kmb
+{
+  "source_commit": "33c8f82cde158101615b40057eb039649efbdd66",
+  "started_utc": "2026-10-27T06:39:53.295051+00:00",
+  "finished_utc": "2026-10-27T06:40:32.359259+00:00",
+  "source_zip": "/home/cld-main/work/vqcc-data/pra280/pra280-rustad.zip",
+  "source_zip_sha256": "8e2918400fd033440d350d4af76bc4bdfca3787cdf411dcbb974f03d3b4f8f21",
+  "target_zip": "/home/cld-main/work/vqcc-data/pra261-schur-port/pra261-schur.zip",
+  "target_zip_sha256": "9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5",
+  "factor": "/home/cld-main/work/vqcc-data/inputs/thc/femoco_thc_r5.npz",
+  "factor_sha256": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5",
+  "output_zip": "/home/cld-main/work/vqcc-data/pra280-rollback-20261027/rollback.zip",
+  "output_zip_sha256": "9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5",
+  "output_equals_target_zip": true,
+  "byte_equal_non_chemistry": [
+    "dqi.kmb",
+    "invsqrt.kmb"
+  ],
+  "delta": {
+    "removed_in_rollback": [
+      "dfthcsos/angle_k_10.kmb",
+      "dfthcsos/angle_k_11.kmb",
+      "dfthcsos/angle_k_12.kmb",
+      "dfthcsos/angle_k_13.kmb",
+      "dfthcsos/angle_k_14.kmb",
+      "dfthcsos/angle_k_15.kmb",
+      "dfthcsos/angle_k_16.kmb",
+      "dfthcsos/angle_k_17.kmb",
+      "dfthcsos/angle_k_18.kmb",
+      "dfthcsos/angle_k_19.kmb",
+      "dfthcsos/angle_k_20.kmb",
+      "dfthcsos/angle_k_21.kmb",
+      "dfthcsos/angle_k_22.kmb",
+      "dfthcsos/angle_k_23.kmb",
+      "dfthcsos/angle_k_24.kmb",
+      "dfthcsos/angle_k_8.kmb",
+      "dfthcsos/angle_k_9.kmb"
+    ],
+    "restored_in_rollback": [
+      "dfthcsos/angle_k_0.kmb",
+      "dfthcsos/angle_k_1.kmb",
+      "dfthcsos/angle_k_2.kmb",
+      "dfthcsos/angle_k_3.kmb",
+      "dfthcsos/angle_k_4.kmb",
+      "dfthcsos/angle_k_5.kmb",
+      "dfthcsos/angle_k_6.kmb",
+      "dfthcsos/angle_k_7.kmb",
+      "dfthcsos/submission.npz"
+    ],
+    "added_in_rollback": [],
+    "unchanged": [
+      "dqi.kmb",
+      "invsqrt.kmb"
+    ]
+  },
+  "before": {
+    "dfthcsos/angle_k_0.kmb": "85acedd7ad670b5f5aa8783bfa2d6fcd20cd4cce7768276bace76a3af14a95d4",
+    "dfthcsos/angle_k_1.kmb": "ab92a3d9e329cc565989a7d85379515efc83d621eca87f30edd0574df8988c7c",
+    "dfthcsos/angle_k_10.kmb": "382cbacbd97993f4458c33f8db8be1e72a2865b065b73ebad954add37c5f9e69",
+    "dfthcsos/angle_k_11.kmb": "8a795d4b03f990a4ad1e2f2c218ad294147e0b11659edf501576f14dcd3f15d8",
+    "dfthcsos/angle_k_12.kmb": "5b67468d4a781c86b891155385a5f329f23f4c797a0c621a2b6903d5dc2519fb",
+    "dfthcsos/angle_k_13.kmb": "673b241ace2e2a428a7f90a4142c75b2bfd31681c6304097aeeaecfcf2ef6947",
+    "dfthcsos/angle_k_14.kmb": "20cecee88d2c2a5c4e934e8bee51ab7fb9657dab0a44a3f3c20b9a0c173ee776",
+    "dfthcsos/angle_k_15.kmb": "b220710fae2b386c43bdc409627ae5cdf6d4c2d47971e62db06ff60b0e2ab762",
+    "dfthcsos/angle_k_16.kmb": "aa7004db2ee2db4a8a7c36117b94e13f0d7d9f42c3c09a5ecba015dffa67732f",
+    "dfthcsos/angle_k_17.kmb": "f510b3ec358be914571f71ae8f5e5f22e64b2cf932f4c89bdccf48a4229c0d49",
+    "dfthcsos/angle_k_18.kmb": "296e5f95f77a3f7e2aadb13f851763da59782f64e0e3ee44e9fa65b7362d5abe",
+    "dfthcsos/angle_k_19.kmb": "6d3dd92895b0c915b9481f2a6a9453eef1f9ff12d38e5122cf5e51337fdc7588",
+    "dfthcsos/angle_k_2.kmb": "a73b471bfe82122fb0695de1547061f31cbc5780437421a9b0edecddaca66461",
+    "dfthcsos/angle_k_20.kmb": "0d633cb07d06737cba9a3ae9f34a36a2f861aa665913916e9fa95fadbdd6b852",
+    "dfthcsos/angle_k_21.kmb": "206c8d5ea09eff02881109fd1803072111fc12a04a1798c9dec9d9eaeb9bb095",
+    "dfthcsos/angle_k_22.kmb": "6030e55b7aff70ee59a8f02de4d00b246ad687c5038bceb9e2da06c0d1dcc0de",
+    "dfthcsos/angle_k_23.kmb": "b336062b8af147ac40936c71be52c64f932681278fd58a3750942352c2c7da81",
+    "dfthcsos/angle_k_24.kmb": "aa7bdae65deedb26bc6501e9777b4fd28aceded427a77b2c749fcbc305b5821b",
+    "dfthcsos/angle_k_3.kmb": "bbd4bd5ee37ebe63d240088fb6948b7cb6ccd0482888ed19bbce0cdce03cfc9f",
+    "dfthcsos/angle_k_4.kmb": "4202c583942a254ed8102ffa099913745e1d9c751387390172b1af1c22169005",
+    "dfthcsos/angle_k_5.kmb": "7cf480e3e5d79525e3ad57d09247d0ced6dfee4b4305972881f38e04fbf6111f",
+    "dfthcsos/angle_k_6.kmb": "e53c3cd266d967057a403731a4ce8e9e87bfde2dff0d254186d44a80f547af90",
+    "dfthcsos/angle_k_7.kmb": "3b48b76bd8f661851caa0e696b949a4c5c57ef42ce113fc1c981b4429f5a11b7",
+    "dfthcsos/angle_k_8.kmb": "b119eb757d85efc0acd04dd474b82a6d4d30872c4704c4fc62b2a93ed80f527a",
+    "dfthcsos/angle_k_9.kmb": "62ed9c256370b46bcc8a14604f625e066185357ca6e595288247a851e581147f",
+    "dfthcsos/submission.npz": "27dda66f38c60821665cfc74e51d1bd2bfd2a7f0d902dbaffcdc5b26543dadad",
+    "dqi.kmb": "1a1c60ae30f506ec5d05728d893f63d2e0c4952b0145af2081236bfef1e18f48",
+    "invsqrt.kmb": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd"
+  },
+  "after": {
+    "dfthcsos/angle_k_0.kmb": "60d9dfb7a5ec6d172232f4d7081b858ce6868eea0ca2ee99ed3c99a195c3d0bb",
+    "dfthcsos/angle_k_1.kmb": "4079e0a08491fc3e42df613b09fd6c8399364bdf8cc508c0de2814f7ddf75c19",
+    "dfthcsos/angle_k_2.kmb": "cacdff488e6ea968f9f60f80072ca9285036b65a98a1cd60576190960458eb1a",
+    "dfthcsos/angle_k_3.kmb": "dbe4415e56782c83b6a53045ca7325a66528ae3812a28e577e0a527d89ba77bd",
+    "dfthcsos/angle_k_4.kmb": "6e0dcbe0f75a631c60e5d3affcf01179c4599abea05c053ef94d04e0a5f7d472",
+    "dfthcsos/angle_k_5.kmb": "58b75e436ff504af19b40fdb23337c7c548db8f84a3bdc9710d8f8303deee41f",
+    "dfthcsos/angle_k_6.kmb": "9df59056b173c4205a944c59edb4cfe5c77f0fd6003dbb34f2864910204b8d09",
+    "dfthcsos/angle_k_7.kmb": "86bc88ad3aad4553f60f3eac26807acd42a949ebc48bbb2443688193f9a9b1f4",
+    "dfthcsos/submission.npz": "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5",
+    "dqi.kmb": "1a1c60ae30f506ec5d05728d893f63d2e0c4952b0145af2081236bfef1e18f48",
+    "invsqrt.kmb": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd"
+  },
+  "source_archives_unchanged": true
+}
+PASS: only dfthcsos changed; dqi and invsqrt byte-equal; output zip == pra261-schur

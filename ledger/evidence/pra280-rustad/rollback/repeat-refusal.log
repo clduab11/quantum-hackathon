@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "<stdin>", line 59, in <module>
+  File "<stdin>", line 23, in require
+RuntimeError: Output root already exists; preserve prior rehearsal
+exit 1
+output hash unchanged after refused repeat: 9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5

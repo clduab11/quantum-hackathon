@@ -1,0 +1,7 @@
+{
+  "command": "bash ledger/evidence/pra280-rustad/rollback/rehearsal-command.sh",
+  "output_root": "/home/cld-main/work/vqcc-data/pra280-rollback-20261027",
+  "exit_status": 0,
+  "started_utc": "2026-10-27T06:39:53.245865523Z",
+  "finished_utc": "2026-10-27T06:40:32.369955229Z"
+}
