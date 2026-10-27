@@ -22,4 +22,4 @@ The sources import each other through the author's `sys.path` layout (`from comm
 ## Measured here
 
 - Wrapper build in this worktree's venv (CPython 3.13.13, competition `kickmix.so` `c66b3216…5e`): `dqi.kmb` SHA-256 `7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6`, 546,664,050 bytes, Q 889, static Toffoli-like 487,331, about 94 s, 2.19 GB peak RSS. This is the hash the notebook asserts.
-- Verifier results, gates and the rebuild from a clean worktree: `ledger/evidence/pra293-fused/`.
+- Verifier results, gates and the rebuild from a clean worktree: `ledger/evidence/pra293-fused-invsqrt/` (the shipping candidate, on #62's invsqrt port) and `ledger/evidence/pra293-fused/` (the superseded first run on submission-008).

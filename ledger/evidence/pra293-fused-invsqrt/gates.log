@@ -1,0 +1,44 @@
+start 2026-10-27T17:32:40Z head c5309550c5395515931ce63f471f5523eedf8ae7
+Verifying invsqrt (full shots)...
+Verifying dqi (full shots)...
+Verifying dfthcsos (full shots)...
+{
+  "gates": [
+    {
+      "gate": "G0",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G1",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G2",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G3",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G4",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G5",
+      "status": "PASS",
+      "reason": ""
+    }
+  ],
+  "seconds": 390.9267045420129,
+  "shipping_problems": [],
+  "geometric_mean": 17.719490035438174,
+  "zip_sha256": "22258bb57f1a711336567cb8771c7f88936d903af7727ab0bbd993fb72e5f27d",
+  "generator_commit": "c5309550c5395515931ce63f471f5523eedf8ae7"
+}
+exit 0 2026-10-27T17:39:24Z
