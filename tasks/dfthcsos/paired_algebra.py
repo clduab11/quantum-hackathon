@@ -57,6 +57,30 @@ class BinaryBasis:
 
 
 
+def nullspace(rows, width):
+    """Basis of the GF(2) vectors of ``width`` bits orthogonal to every packed row."""
+    pivots = {}
+    for value in rows:
+        value = int(value)
+        while value:
+            p = value.bit_length()-1
+            if p not in pivots:
+                pivots[p] = value
+                if len(pivots) == width:
+                    return []
+                break
+            value ^= pivots[p]
+    result = []
+    for j in range(width):
+        if j not in pivots:
+            value = 1 << j
+            for p,row in sorted(pivots.items()):
+                if (row & value).bit_count() & 1:
+                    value ^= 1 << p
+            result.append(value)
+    return result
+
+
 def factor_matrix(columns):
     basis = BinaryBasis()
     for col in columns:
