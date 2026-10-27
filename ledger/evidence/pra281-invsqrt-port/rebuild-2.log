@@ -1,0 +1,94 @@
+{"parity": 0, "group": 0, "group_bits": 3, "score": 0.8221353457927265}
+{"parity": 0, "group": 1, "group_bits": 3, "score": 0.8943204643510907}
+{"parity": 0, "group": 2, "group_bits": 3, "score": 0.9834761903270947}
+{"parity": 0, "group": 4, "group_bits": 2, "score": 0.9078376836122096}
+{"parity": 0, "group": 5, "group_bits": 2, "score": 0.8626976479072372}
+{"parity": 0, "group": 3, "group_bits": 3, "score": 0.9677781455074566}
+{"parity": 0, "group": 6, "group_bits": 2, "score": 0.9677781455074566}
+{"parity": 0, "group": 12, "group_bits": 1, "score": 0.896129102360427}
+{"parity": 0, "group": 13, "group_bits": 1, "score": 0.7218167375731118}
+{"parity": 0, "group": 7, "group_bits": 2, "score": 0.8703936858449143}
+{"parity": 0, "group": 4, "group_bits": 3, "score": 0.8810102937126736}
+{"parity": 0, "group": 5, "group_bits": 3, "score": 0.8254088820967135}
+{"parity": 0, "group": 6, "group_bits": 3, "score": 1.0051602720697732}
+{"parity": 0, "group": 12, "group_bits": 2, "score": 0.9165629943487492}
+{"parity": 0, "group": 13, "group_bits": 2, "score": 0.8384806383841532}
+{"parity": 0, "group": 7, "group_bits": 3, "score": 1.0755331162230624}
+{"parity": 0, "group": 14, "group_bits": 2, "score": 0.9499016293163078}
+{"parity": 0, "group": 15, "group_bits": 2, "score": 1.0452438037137164}
+{"parity": 0, "group": 30, "group_bits": 1, "score": 0.8739257123977401}
+{"parity": 0, "group": 31, "group_bits": 1, "score": 0.91330644704924}
+{"parity": 0, "group": 8, "group_bits": 3, "score": 1.0262336072106746}
+{"parity": 0, "group": 16, "group_bits": 2, "score": 0.8548550322180108}
+{"parity": 0, "group": 17, "group_bits": 2, "score": 0.9538214540739239}
+{"parity": 0, "group": 34, "group_bits": 1, "score": 0.7486626582321619}
+{"parity": 0, "group": 35, "group_bits": 1, "score": 0.7956969251150244}
+{"parity": 0, "group": 9, "group_bits": 3, "score": 0.9289634566854921}
+{"parity": 0, "group": 10, "group_bits": 3, "score": 1.0837493275226566}
+{"parity": 0, "group": 20, "group_bits": 2, "score": 0.9241306836638363}
+{"parity": 0, "group": 21, "group_bits": 2, "score": 0.9741612764427697}
+{"parity": 0, "group": 42, "group_bits": 1, "score": 0.7977529624999707}
+{"parity": 0, "group": 43, "group_bits": 1, "score": 0.7834981895574236}
+{"parity": 0, "group": 11, "group_bits": 3, "score": 0.9738952253623129}
+{"parity": 0, "group": 22, "group_bits": 2, "score": 0.9142272992041863}
+{"parity": 0, "group": 23, "group_bits": 2, "score": 0.9738952253623129}
+{"parity": 0, "group": 46, "group_bits": 1, "score": 0.8740057304397439}
+{"parity": 0, "group": 47, "group_bits": 1, "score": 0.8528011937352002}
+{"parity": 0, "group": 12, "group_bits": 3, "score": 0.8881409954892974}
+{"parity": 0, "group": 13, "group_bits": 3, "score": 1.0302048507969344}
+{"parity": 0, "group": 26, "group_bits": 2, "score": 0.9116751085323821}
+{"parity": 0, "group": 27, "group_bits": 2, "score": 0.9492284958355196}
+{"parity": 0, "group": 14, "group_bits": 3, "score": 0.9913114430452677}
+{"parity": 0, "group": 28, "group_bits": 2, "score": 0.9509008246971019}
+{"parity": 0, "group": 56, "group_bits": 1, "score": 0.7935828352583931}
+{"parity": 0, "group": 57, "group_bits": 1, "score": 0.8046720846489517}
+{"parity": 0, "group": 29, "group_bits": 2, "score": 0.941565881048249}
+{"parity": 0, "group": 15, "group_bits": 3, "score": 0.9983382097990822}
+{"parity": 0, "group": 30, "group_bits": 2, "score": 0.9752065464741345}
+{"parity": 0, "group": 60, "group_bits": 1, "score": 0.9387133611148469}
+{"parity": 0, "group": 61, "group_bits": 1, "score": 0.7883255332438271}
+{"parity": 0, "group": 31, "group_bits": 2, "score": 0.993202155294697}
+{"parity": 0, "group": 62, "group_bits": 1, "score": 0.8636914485414847}
+{"parity": 0, "group": 63, "group_bits": 1, "score": 0.7803664568447933}
+{"parity": 1, "group": 0, "group_bits": 3, "score": 0.7249812641838148}
+{"parity": 1, "group": 1, "group_bits": 3, "score": 0.8026629771168182}
+{"parity": 1, "group": 2, "group_bits": 3, "score": 0.6948060776302255}
+{"parity": 1, "group": 3, "group_bits": 3, "score": 0.611326615579549}
+{"parity": 1, "group": 4, "group_bits": 3, "score": 0.6974229041567335}
+{"parity": 1, "group": 5, "group_bits": 3, "score": 0.7799141051392934}
+{"parity": 1, "group": 6, "group_bits": 3, "score": 0.6650227355176005}
+{"parity": 1, "group": 7, "group_bits": 3, "score": 0.657121674848042}
+{"parity": 1, "group": 8, "group_bits": 3, "score": 0.6639376266509004}
+{"parity": 1, "group": 9, "group_bits": 3, "score": 0.7552662920774285}
+{"parity": 1, "group": 10, "group_bits": 3, "score": 0.8034399560684355}
+{"parity": 1, "group": 11, "group_bits": 3, "score": 0.812105546040423}
+{"parity": 1, "group": 12, "group_bits": 3, "score": 0.7230947601200167}
+{"parity": 1, "group": 13, "group_bits": 3, "score": 0.8255134508502201}
+{"parity": 1, "group": 14, "group_bits": 3, "score": 0.767192264983811}
+{"parity": 1, "group": 15, "group_bits": 3, "score": 0.7254860994118587}
+{"stage": "integer_mirror", "passed": true, "tested_inputs": 3133452, "worst_ratio": 0.9499016330834485, "worst_x": 763987, "min_margin_units": 31510146, "first_bad_x": null}
+{"stage": "raw", "qubits": 84, "static_toffoli": 1577, "expected_toffoli": 1566.0, "t_like": 1, "rotations": 44}
+affine 4000/39181 rewrites 161 peak 79 false 179
+affine 8000/39181 rewrites 366 peak 83 false 193
+affine 12000/39181 rewrites 753 peak 84 false 387
+affine 16000/39181 rewrites 1091 peak 84 false 461
+affine 20000/39181 rewrites 1162 peak 84 false 461
+affine 24000/39181 rewrites 1162 peak 84 false 461
+affine 28000/39181 rewrites 1162 peak 84 false 461
+affine 32000/39181 rewrites 1162 peak 84 false 461
+affine 36000/39181 rewrites 1162 peak 84 false 461
+{"stage": "compiled", "phase": {"phase_match": true, "inputs": 3133452}, "qubits": 84, "static_toffoli": 1564, "expected_toffoli": 1553.0, "t_like": 1, "rotations": 44}
+GPU calibration LP 1: rows 8183 lp 78847038.526 exhaustive -210292396584.978
+GPU calibration LP 2: rows 8583 lp 78847038.526 exhaustive -23244214310.866
+GPU calibration LP 3: rows 8983 lp 78847038.526 exhaustive -2375491054.134
+GPU calibration LP 4: rows 9383 lp 78847038.526 exhaustive -7992835658.012
+GPU calibration LP 5: rows 9513 lp 78847038.526 exhaustive 78847038.526
+calibration drop none: margin 78847037 rotations 44 ratio 13.237729
+GPU calibration LP 1: rows 8186 lp 18658335.673 exhaustive -196314532562.503
+GPU calibration LP 2: rows 8586 lp 18658335.673 exhaustive -17148153381.825
+GPU calibration LP 3: rows 8986 lp 18658335.673 exhaustive -6411619658.928
+GPU calibration LP 4: rows 9386 lp 18658335.673 exhaustive -2958011893.575
+GPU calibration LP 5: rows 9786 lp -35131919.998 exhaustive -86742823.385
+GPU calibration LP 6: rows 10021 lp -36750308.776 exhaustive -36750308.776
+calibration drop [18]: margin -36750310 rotations 43 ratio 0.000000
+{"integer_mirror": {"passed": true, "tested_inputs": 3133452, "worst_ratio": 0.9499016330834485, "worst_x": 763987, "min_margin_units": 31510146, "first_bad_x": null}, "phase": {"phase_match": true, "inputs": 3133452}, "split": {"block": 11, "rw": 12, "cw": 7}, "raw": {"qubits": 84, "static_toffoli": 1577, "expected_toffoli": 1566.0, "t_like": 1, "rotations": 44}, "compiled": {"qubits": 84, "static_toffoli": 1564, "expected_toffoli": 1553.0, "t_like": 1, "rotations": 44}, "rewrites": {"r_zero": 1165, "ccx_literal": 5, "ccx_zero": 8, "cx_zero": 6}, "final": {"qubits": 84, "static_toffoli": 1564, "expected_toffoli": 1553.0, "t_like": 1, "rotations": 44}, "estimate": {"estimated_expected_cost": 156882.9658090783, "ratio": 13.237729303528413, "per_rotation_t": 28.582214079089074, "epsilon": 3.051847661949807e-13}, "sha256": "17fc223d79d3f1f15ef448389072209972b373403dd0a45352f4fe7eaff541ad", "bytes": 255914, "parent_version": 361726742, "full_verification_required": true}
