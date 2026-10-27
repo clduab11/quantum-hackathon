@@ -176,7 +176,54 @@ The generator writes only its output directory; the recipe writes its named
 zip, manifest, gate evidence and queue entry. Builds use WSL and the existing
 organizer Python dependencies. No source downloads occur during generation.
 
-The Adjudicator must review the exact source/input provenance and candidate
-before merge or submission. The board owns merge; John Wick owns any later
-upload. Board rollback command: `git revert <PRA-280-squash-merge-commit>`, then
-select the prior candidate config. No production configuration is changed.
+Under R-P2-2 (D-PRA202-12) a candidate with real G0–G5 on the exact zip may
+upload first; the Adjudicator's sign-off and Marcus's re-check follow within
+24 hours of the upload. This candidate was uploaded as submission-008 (Kaggle
+57682682, D-PRA202-31); its sign-off is PRA-290. The board owns merge, and the
+merge-order gate still applies. John Wick owns uploads. No production
+configuration is changed.
+
+## Archive delta against `pra261-schur` (PRA-290 correction)
+
+An earlier hand-off said only the 25 dfthcsos ANGLE files change. That was
+wrong. The exact member comparison of `pra280-rustad.zip` (`8e291840…8f21`)
+against `pra261-schur.zip` (`9fcb5fe2…07b11d5`, submission-007) is:
+
+| Members | Count | Change |
+| --- | ---: | --- |
+| `dfthcsos/angle_k_0.kmb` … `angle_k_7.kmb` | 8 | Replaced (same name, new bytes) |
+| `dfthcsos/angle_k_8.kmb` … `angle_k_24.kmb` | 17 | Added |
+| `dfthcsos/submission.npz` | 1 | Replaced: Gluzdov v8 `809a9929…57df5` → rustad `27dda66f…dadad` |
+| `dqi.kmb`, `invsqrt.kmb` | 2 | Byte-identical |
+| Removed members | 0 | — |
+
+The candidate has 28 members; `pra261-schur` has 11. The full per-member
+hashes are in `ledger/evidence/pra280-rustad/rollback/member-hashes.json`.
+
+## Rollback (chemistry only)
+
+`git revert` restores source only. It does not restore a queued bundle, and
+nothing undoes a completed Kaggle submission. The rollback is a bundle
+operation: it rebuilds the `pra261-schur` archive from the submission-008
+bundle by changing only `dfthcsos/`. One command, from WSL:
+
+```bash
+bash ledger/evidence/pra280-rustad/rollback/rehearsal-command.sh [OUTPUT_ROOT]
+```
+
+The command checks the input zip hashes and the submission-007 and
+submission-008 ledger pins at `main` `33c8f82`. It regenerates the Gluzdov v8
+chemistry family from a `git archive` of that commit (`tasks.dfthcsos.shipping
+--batch-size 10`, the generator recorded in `pra261-schur`'s G5). It then
+removes all 26 rustad dfthcsos members from the extracted bundle, inserts
+the nine regenerated members, and repackages. It fails unless the output zip is
+archive-identical to `pra261-schur` and dqi and invsqrt are byte-equal to the
+submission-008 bundle. The original zips are not modified. Uploading the
+output is a separate upload, under the ledger reservation and daily cap.
+
+Rehearsal 2026-10-27 06:39–06:40 UTC: exit 0. The output hash is
+`9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5`, so the
+existing real G0–G5 of `pra261-schur` apply to these bytes. The target check
+fails on `pra280-rustad.zip` and passes on the output. A repeat with the same
+output root is refused before any write. The evidence is in
+`ledger/evidence/pra280-rustad/rollback/`.
