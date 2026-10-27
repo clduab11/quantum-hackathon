@@ -1,0 +1,4 @@
+$ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 uv run pytest -q
+395 passed, 11 skipped in 89.11s (0:01:29)
+$ uv run python -m ledger.registers check
+OK registers: 277 decisions, 7 notice files, legacy index unchanged

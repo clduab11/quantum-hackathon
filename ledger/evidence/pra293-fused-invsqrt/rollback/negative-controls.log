@@ -1,0 +1,7 @@
+$ bash ledger/evidence/pra293-fused-invsqrt/rollback/check-target.sh /home/cld-main/work/vqcc-data/pra293-fused-invsqrt/pra293-fused-invsqrt.zip
+exit 1
+$ bash ledger/evidence/pra293-fused-invsqrt/rollback/check-target.sh /home/cld-main/work/vqcc-data/pra293-fused-invsqrt-rollback-20261027/rollback.zip
+exit 0
+$ bash ledger/evidence/pra293-fused-invsqrt/rollback/rehearsal-command.sh   # repeat into the existing output root
+RuntimeError: Output root already exists; preserve prior rehearsal
+exit 1

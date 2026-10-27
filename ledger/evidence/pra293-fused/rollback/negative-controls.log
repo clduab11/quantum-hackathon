@@ -1,0 +1,7 @@
+# target check on the candidate (expect 1)
+exit 1
+# target check on the rollback output (expect 0)
+exit 0
+# repeat into the existing root (expect refusal, exit 1, no write)
+RuntimeError: Output root already exists; preserve prior rehearsal
+exit 1

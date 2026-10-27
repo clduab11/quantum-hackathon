@@ -1,0 +1,447 @@
+{
+  "source_url": "https://www.kaggle.com/code/somejoint/quantum-circuits-21-34-local-gm-fused-dqi",
+  "author": "Agniv Banerjee (SomeJoint)",
+  "kernel_id": 140675727,
+  "notebook_version": 12,
+  "source_sha256": "18d6760953783bec316ddb46266a1b5ccc50c291fbf47ec35f87c73f4d0cf2ac",
+  "embedded_cell": 6,
+  "build_entry": "blocks/dqi/team-fused/source/exp/decoder/build.py",
+  "expected_circuit_sha256": "7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6",
+  "closure": "build.py, the 53 Python modules it imports and the 7 JSON files it opens, traced with a sys.audit hook during a full build",
+  "files": [
+    {
+      "file": "source/exp/decoder/build.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/decoder/build.py",
+      "upstream_sha256": "08f423818ff66867f2c91730daf4a98a74b8efb5f79b6cf2552f8f33d80cc645",
+      "port_sha256": "08f423818ff66867f2c91730daf4a98a74b8efb5f79b6cf2552f8f33d80cc645",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/alternating_gauge/even_fold.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/alternating_gauge/even_fold.py",
+      "upstream_sha256": "784cf9b2873b5fa04da4233a528d7ffd8acf9d30fb2e39dc9992d46b1438cd16",
+      "port_sha256": "784cf9b2873b5fa04da4233a528d7ffd8acf9d30fb2e39dc9992d46b1438cd16",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/alternating_gauge/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/alternating_gauge/kernel.py",
+      "upstream_sha256": "d99aa5eaef8a0df416270d8eee0fa55a9847ee7c08c3aa6ee437352e1abdd05a",
+      "port_sha256": "d99aa5eaef8a0df416270d8eee0fa55a9847ee7c08c3aa6ee437352e1abdd05a",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/alternating_gauge/scalar.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/alternating_gauge/scalar.py",
+      "upstream_sha256": "2fb3e5c4ec62df647de519647a57f51c765907ce1b6ecfe2d512035a91523b15",
+      "port_sha256": "2fb3e5c4ec62df647de519647a57f51c765907ce1b6ecfe2d512035a91523b15",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/arithmetic/division.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/arithmetic/division.py",
+      "upstream_sha256": "28567073545c805e32636668cc0bb33f0dbc441a1de0dee2825774b3a33d2832",
+      "port_sha256": "28567073545c805e32636668cc0bb33f0dbc441a1de0dee2825774b3a33d2832",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/arithmetic/field.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/arithmetic/field.py",
+      "upstream_sha256": "9a84208c0690c0c2473f950920b27bacde4bc78f5e8dabf9a83df5a9b362b603",
+      "port_sha256": "9a84208c0690c0c2473f950920b27bacde4bc78f5e8dabf9a83df5a9b362b603",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/arithmetic/lowwidth.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/arithmetic/lowwidth.py",
+      "upstream_sha256": "c536fa2b42393b83aae2bef80eeda22d83a6c799ef555178e94e09f1f5abc22a",
+      "port_sha256": "c536fa2b42393b83aae2bef80eeda22d83a6c799ef555178e94e09f1f5abc22a",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/confluent_extract/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/confluent_extract/kernel.py",
+      "upstream_sha256": "3acfc52dbf5994a85671b975be506b7967d2d075a3e1fc39f7c7cd16a8586ff3",
+      "port_sha256": "3acfc52dbf5994a85671b975be506b7967d2d075a3e1fc39f7c7cd16a8586ff3",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/confluent_extract/model.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/confluent_extract/model.py",
+      "upstream_sha256": "9b8d6fbaad6aec5da87d5247a11276c2fa177883adff9eca030a9bc2f3286387",
+      "port_sha256": "9b8d6fbaad6aec5da87d5247a11276c2fa177883adff9eca030a9bc2f3286387",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/confluent_synthesis/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/confluent_synthesis/kernel.py",
+      "upstream_sha256": "2eaabffce88e50ab3ce4719e764b3ed43c8bd6d8a6acf22a4461574268691c54",
+      "port_sha256": "2eaabffce88e50ab3ce4719e764b3ed43c8bd6d8a6acf22a4461574268691c54",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/convert/convert.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/convert/convert.py",
+      "upstream_sha256": "7afdafa60806df5afbc0af8fd01417a3e09fc15c5dc83fdd28d68079e78df7a0",
+      "port_sha256": "7afdafa60806df5afbc0af8fd01417a3e09fc15c5dc83fdd28d68079e78df7a0",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/convert/hankel_check.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/convert/hankel_check.py",
+      "upstream_sha256": "6d0ac6f55a70418049f46300863eeabb90a7c38b476b84db6e83d395edc3d72c",
+      "port_sha256": "6d0ac6f55a70418049f46300863eeabb90a7c38b476b84db6e83d395edc3d72c",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/convert/kernels.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/convert/kernels.py",
+      "upstream_sha256": "f5efa2f2b008cce86a0b751d400ee75777b77b6872d1875d6fae281cd7f09ef9",
+      "port_sha256": "f5efa2f2b008cce86a0b751d400ee75777b77b6872d1875d6fae281cd7f09ef9",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/convert/repair.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/convert/repair.py",
+      "upstream_sha256": "8beceea9091a9656901290498fbdc0e4373963374b5ee8f7e98d257ece1daeaf",
+      "port_sha256": "8beceea9091a9656901290498fbdc0e4373963374b5ee8f7e98d257ece1daeaf",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/convert_short_hankel/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/convert_short_hankel/kernel.py",
+      "upstream_sha256": "6dd64a123e4bd668bbf30e7d3c6449e738c8bf693f9a31bce1c9c39810ba7ddb",
+      "port_sha256": "6dd64a123e4bd668bbf30e7d3c6449e738c8bf693f9a31bce1c9c39810ba7ddb",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/convert_short_hankel/phase34.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/convert_short_hankel/phase34.py",
+      "upstream_sha256": "620985ba489a03cef51095157af60b7459732b72b68f85a10265f34905ed203f",
+      "port_sha256": "620985ba489a03cef51095157af60b7459732b72b68f85a10265f34905ed203f",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/decoder/common.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/decoder/common.py",
+      "upstream_sha256": "b483a8df5b42be3a3b372633afc05f60ecaf0d9526f96f523c97056167c11109",
+      "port_sha256": "b483a8df5b42be3a3b372633afc05f60ecaf0d9526f96f523c97056167c11109",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/decoder/extract.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/decoder/extract.py",
+      "upstream_sha256": "6597bd52d2bebedae8860acaa4aaeaf980c3d21977781382ba8926833c8f7696",
+      "port_sha256": "6597bd52d2bebedae8860acaa4aaeaf980c3d21977781382ba8926833c8f7696",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/decoder/safe_bridge.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/decoder/safe_bridge.py",
+      "upstream_sha256": "023c81c775967a71ef44c571200bbe3ffb8b3da443fc2816e751856fc3f0d8d9",
+      "port_sha256": "023c81c775967a71ef44c571200bbe3ffb8b3da443fc2816e751856fc3f0d8d9",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/decoder/synthesis.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/decoder/synthesis.py",
+      "upstream_sha256": "fdd7de226b7445007689ce2e50dbabbe77fdbc20e994ec41ac821a6ad2474c49",
+      "port_sha256": "fdd7de226b7445007689ce2e50dbabbe77fdbc20e994ec41ac821a6ad2474c49",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/fold_cached_norm/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/fold_cached_norm/kernel.py",
+      "upstream_sha256": "6a148ebe23eae9194ec0ddb921ff6da1d362565218913170a36691c45dd7c084",
+      "port_sha256": "6a148ebe23eae9194ec0ddb921ff6da1d362565218913170a36691c45dd7c084",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/fold_cached_norm/phase34.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/fold_cached_norm/phase34.py",
+      "upstream_sha256": "974d76939483c061e7b7995600fcdcb05e91529297725acfba41ce5ce808661f",
+      "port_sha256": "974d76939483c061e7b7995600fcdcb05e91529297725acfba41ce5ce808661f",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/fold_joint/divide.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/fold_joint/divide.py",
+      "upstream_sha256": "8456426c171f36a716a39b457a0de5206b5d4db6c8553f1bfc919248ba1de851",
+      "port_sha256": "8456426c171f36a716a39b457a0de5206b5d4db6c8553f1bfc919248ba1de851",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/fold_joint/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/fold_joint/kernel.py",
+      "upstream_sha256": "d4764e763c6ed1ff538b58c1cc628df0c9577300aae5a4d83a5338e0290e018f",
+      "port_sha256": "d4764e763c6ed1ff538b58c1cc628df0c9577300aae5a4d83a5338e0290e018f",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse12_escape/joint.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse12_escape/joint.py",
+      "upstream_sha256": "4bcc5614693d646bd910b9ed4748b278d2ec8dc1584bf8a45d3e465dd757cdc1",
+      "port_sha256": "4bcc5614693d646bd910b9ed4748b278d2ec8dc1584bf8a45d3e465dd757cdc1",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse12_escape/zero1.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse12_escape/zero1.py",
+      "upstream_sha256": "c9274f825d452082d88a98ded25a269aab247626a17032287c26ca1d8a71c724",
+      "port_sha256": "c9274f825d452082d88a98ded25a269aab247626a17032287c26ca1d8a71c724",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse19_joint/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse19_joint/kernel.py",
+      "upstream_sha256": "035152593a105b8178522a6edbf7cda3b709d8a86f51ae2148e71b01a1274913",
+      "port_sha256": "035152593a105b8178522a6edbf7cda3b709d8a86f51ae2148e71b01a1274913",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse_search/baseline.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse_search/baseline.py",
+      "upstream_sha256": "7aecb36f951122861fe0443eee92f1d65a10484fc86f2e535f3db44f5dd553da",
+      "port_sha256": "7aecb36f951122861fe0443eee92f1d65a10484fc86f2e535f3db44f5dd553da",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse_search/inverse20.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse_search/inverse20.py",
+      "upstream_sha256": "e36162777e51361a7ceb47ae6b86a34ce492b23c2fde8083113b03985b98060d",
+      "port_sha256": "e36162777e51361a7ceb47ae6b86a34ce492b23c2fde8083113b03985b98060d",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse_search/inverse20_iso.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse_search/inverse20_iso.py",
+      "upstream_sha256": "1b4ffd1d35b12ca4f327c8885063fb76eef459eeabed1fddae371e2e4bb4f635",
+      "port_sha256": "1b4ffd1d35b12ca4f327c8885063fb76eef459eeabed1fddae371e2e4bb4f635",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse_width/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse_width/kernel.py",
+      "upstream_sha256": "accdd344715e6972ebe22e1679ca872d455a75466f1b1236b83bb636f6466409",
+      "port_sha256": "accdd344715e6972ebe22e1679ca872d455a75466f1b1236b83bb636f6466409",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse_width_subspaces/kernel19.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse_width_subspaces/kernel19.py",
+      "upstream_sha256": "2cb588e60d5fe22ea59d625164e0a0d285cbcd352a80f5bf86f53f76050c9f4b",
+      "port_sha256": "2cb588e60d5fe22ea59d625164e0a0d285cbcd352a80f5bf86f53f76050c9f4b",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/jet24/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/jet24/kernel.py",
+      "upstream_sha256": "f490e6205c678135dc2273d1f02e5ce9540087995f52c37e174b51dce0b4a5f6",
+      "port_sha256": "f490e6205c678135dc2273d1f02e5ce9540087995f52c37e174b51dce0b4a5f6",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/mask_projection/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/mask_projection/kernel.py",
+      "upstream_sha256": "80148ee048d1fd9aaace9637d2e652a7f46dbcb4306913f053437af4a2119088",
+      "port_sha256": "80148ee048d1fd9aaace9637d2e652a7f46dbcb4306913f053437af4a2119088",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/mul99/kernels.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/mul99/kernels.py",
+      "upstream_sha256": "8f93d0a23f465cf72045e02f702b0b40d629b72d1618952a8fc79c22e23ee6ec",
+      "port_sha256": "8f93d0a23f465cf72045e02f702b0b40d629b72d1618952a8fc79c22e23ee6ec",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/mul99/phase36.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/mul99/phase36.py",
+      "upstream_sha256": "d976ab9f6fbb9e2972b9518576b0135b07181d1b6cbfb74a61c094c211e1dccf",
+      "port_sha256": "d976ab9f6fbb9e2972b9518576b0135b07181d1b6cbfb74a61c094c211e1dccf",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/mul99/schedules.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/mul99/schedules.py",
+      "upstream_sha256": "9d16c576747f9d556b857f846c4029131f977cd6eb15d8a37cff4b84b0919c66",
+      "port_sha256": "9d16c576747f9d556b857f846c4029131f977cd6eb15d8a37cff4b84b0919c66",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/noscratch/kernels.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/noscratch/kernels.py",
+      "upstream_sha256": "fa64bb5d5c359c507ac9a488c3f73363d5390bd43a4697daa67df57c322d7370",
+      "port_sha256": "fa64bb5d5c359c507ac9a488c3f73363d5390bd43a4697daa67df57c322d7370",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/noscratch/phase39.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/noscratch/phase39.py",
+      "upstream_sha256": "a47a3ad3ce8787f868b93b40156e3496eead5200b187244b5db13ec0f0c79f1a",
+      "port_sha256": "a47a3ad3ce8787f868b93b40156e3496eead5200b187244b5db13ec0f0c79f1a",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/noscratch/schedules.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/noscratch/schedules.py",
+      "upstream_sha256": "6871354632e828b1b3efed382d84c39bac42e278f5ac700728efc3f1745cfa8d",
+      "port_sha256": "6871354632e828b1b3efed382d84c39bac42e278f5ac700728efc3f1745cfa8d",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/partial_gauge/prefix.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/partial_gauge/prefix.py",
+      "upstream_sha256": "dba10093b9314daf696ebd8fbc85543dbcf73534eb45d2303dc9ce53189b0652",
+      "port_sha256": "dba10093b9314daf696ebd8fbc85543dbcf73534eb45d2303dc9ce53189b0652",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/partial_gauge/scalar.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/partial_gauge/scalar.py",
+      "upstream_sha256": "7b3cb8eece8ccbc42462f13dcab9ef6b253581a06ce4d14906d88a541774de29",
+      "port_sha256": "7b3cb8eece8ccbc42462f13dcab9ef6b253581a06ce4d14906d88a541774de29",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/partial_gauge/synthesis_noflag.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/partial_gauge/synthesis_noflag.py",
+      "upstream_sha256": "cb316d80cdcfa636735156171a2b4d0bb57be22e4c5495806709f224fd0ea8ae",
+      "port_sha256": "cb316d80cdcfa636735156171a2b4d0bb57be22e4c5495806709f224fd0ea8ae",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/partial_gauge/tail.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/partial_gauge/tail.py",
+      "upstream_sha256": "cef30a29c419aef478fbf9c98f4277ab4a1fc63ca52e95d6025d592f16c7aff3",
+      "port_sha256": "cef30a29c419aef478fbf9c98f4277ab4a1fc63ca52e95d6025d592f16c7aff3",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/phase24_tradeoff/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/phase24_tradeoff/kernel.py",
+      "upstream_sha256": "984fc30f4c834b8f3cc1a7276f26f54801c01c8fd53b757e9ba767325059711a",
+      "port_sha256": "984fc30f4c834b8f3cc1a7276f26f54801c01c8fd53b757e9ba767325059711a",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/phase24_tradeoff/phase6small.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/phase24_tradeoff/phase6small.py",
+      "upstream_sha256": "28590db3c6a0843fedc2894bb9899df45a7b99ea4544ce6b7517e739e672fe32",
+      "port_sha256": "28590db3c6a0843fedc2894bb9899df45a7b99ea4544ce6b7517e739e672fe32",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/safe_scalar/converter.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/safe_scalar/converter.py",
+      "upstream_sha256": "771a242b7910c3e59f27bc82c72e8f7b86f9cb201d84ca3712ba7fd7e28a2841",
+      "port_sha256": "771a242b7910c3e59f27bc82c72e8f7b86f9cb201d84ca3712ba7fd7e28a2841",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/safe_scalar/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/safe_scalar/kernel.py",
+      "upstream_sha256": "72fbedc923066741e50cf4372de75ade749844c3554005b2f72ea5594190e84a",
+      "port_sha256": "72fbedc923066741e50cf4372de75ade749844c3554005b2f72ea5594190e84a",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/safe_scalar/phase.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/safe_scalar/phase.py",
+      "upstream_sha256": "30fdcd43d2234c6476344c1608449684199c8f3e8fb403f96aca80ae2379b048",
+      "port_sha256": "30fdcd43d2234c6476344c1608449684199c8f3e8fb403f96aca80ae2379b048",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/scan/scan.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/scan/scan.py",
+      "upstream_sha256": "bab543d7fbaa33666e8c718a40ec47ac2b9a52e06e59de27bbbe45e68c754b55",
+      "port_sha256": "bab543d7fbaa33666e8c718a40ec47ac2b9a52e06e59de27bbbe45e68c754b55",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/tail_alias/divide.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/tail_alias/divide.py",
+      "upstream_sha256": "46d4c7c4c94a06e9e244c030934ab45092ad6793b530c501226e2edb62a3ee5c",
+      "port_sha256": "46d4c7c4c94a06e9e244c030934ab45092ad6793b530c501226e2edb62a3ee5c",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/tail_alias/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/tail_alias/kernel.py",
+      "upstream_sha256": "3452ed2c039c73d3b1f45743f1ddeb40b88ffc32178b4052115f17bf18ba48ff",
+      "port_sha256": "3452ed2c039c73d3b1f45743f1ddeb40b88ffc32178b4052115f17bf18ba48ff",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/zero_padding_synthesis/kernel.py",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/zero_padding_synthesis/kernel.py",
+      "upstream_sha256": "f2b84166a1ef1fb131ead3d907b21625375bd45a24187e74b440ff45647fc185",
+      "port_sha256": "f2b84166a1ef1fb131ead3d907b21625375bd45a24187e74b440ff45647fc185",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/playbook/exp/cf_check/audit.py",
+      "upstream_path": "blocks/dqi/team-fused/source/playbook/exp/cf_check/audit.py",
+      "upstream_sha256": "c3211bbccebce2183b1a24385812dc505d1041ca7244274bbdffa75a95f37b33",
+      "port_sha256": "c3211bbccebce2183b1a24385812dc505d1041ca7244274bbdffa75a95f37b33",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse12_escape/zero_layout.json",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse12_escape/zero_layout.json",
+      "upstream_sha256": "45d1361fcf582282d15cc6fabeab290f8e9fd9dc4c68a3e14ffff86e9f9a537f",
+      "port_sha256": "45d1361fcf582282d15cc6fabeab290f8e9fd9dc4c68a3e14ffff86e9f9a537f",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse19_joint/layout.json",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse19_joint/layout.json",
+      "upstream_sha256": "0adee49170ae597ed5a7df4d4d0df0e495fba49013f6acd9ae6a3f06b9ad4ab4",
+      "port_sha256": "0adee49170ae597ed5a7df4d4d0df0e495fba49013f6acd9ae6a3f06b9ad4ab4",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse_search/optimized.json",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse_search/optimized.json",
+      "upstream_sha256": "b18cfd6025658d02e38adfbe0ea7eca09960bbbdd458abe1ee1d539e4d3f6ca7",
+      "port_sha256": "b18cfd6025658d02e38adfbe0ea7eca09960bbbdd458abe1ee1d539e4d3f6ca7",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse_search/optimized_isotopy2.json",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse_search/optimized_isotopy2.json",
+      "upstream_sha256": "28424aa2f6b0b92b7b3b4f6bc62feda566746feb9a9f21660ed5103420eae606",
+      "port_sha256": "28424aa2f6b0b92b7b3b4f6bc62feda566746feb9a9f21660ed5103420eae606",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse_width/partial5.json",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse_width/partial5.json",
+      "upstream_sha256": "202ddf3a0a62530ac4f4028774e87c729cba6cc85dd465570a59e882a83cf4f7",
+      "port_sha256": "202ddf3a0a62530ac4f4028774e87c729cba6cc85dd465570a59e882a83cf4f7",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/inverse_width_subspaces/inverse19.json",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/inverse_width_subspaces/inverse19.json",
+      "upstream_sha256": "c868b9fc56f05ec89d34375ad086490691237211ecdc99b4a0c0b6e86b468a3f",
+      "port_sha256": "c868b9fc56f05ec89d34375ad086490691237211ecdc99b4a0c0b6e86b468a3f",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "source/exp/phase24_tradeoff/phase6_six_search.json",
+      "upstream_path": "blocks/dqi/team-fused/source/exp/phase24_tradeoff/phase6_six_search.json",
+      "upstream_sha256": "afb39dcf8748b1b1419a5e8db6b5440be74db6687464e6e0a9052a08b168fdb0",
+      "port_sha256": "afb39dcf8748b1b1419a5e8db6b5440be74db6687464e6e0a9052a08b168fdb0",
+      "changes": "none (verbatim)"
+    },
+    {
+      "file": "LICENSE",
+      "upstream_path": "LICENSE",
+      "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "port_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "changes": "none (verbatim)"
+    }
+  ]
+}
