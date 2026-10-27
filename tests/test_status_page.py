@@ -106,13 +106,13 @@ def test_malformed_standing_fails_the_build(change):
 def test_page_reads_the_ledger_and_the_standing_file(tmp_path: Path):
     page = build(tmp_path / "public").read_text(encoding="utf-8")
     text = _text(page)
-    assert "Our public score is 16.90171, rank 470 of 1234 teams on 27 October 2026." in text
+    assert "Our public score is 16.90171, rank 583 of 1295 teams on 27 October 2026." in text
     assert "The leader scores 24.52926." in text
-    assert "(6th) scores 23.09166" in text
+    assert "(6th) scores 23.44490" in text
     assert "invsqrt 13.16 20.06 1.0" in text      # ours, best public, reference
     assert "dqi 47.59 54.73 1.0" in text
     assert "dfthcsos 7.68 8.91 1.0" in text      # latest scored upload (submission-008)
-    assert "waiting for Kaggle" not in text      # every upload so far has a public score
+    assert text.count("waiting for Kaggle") == 1  # submission-009 has no public score yet
     for score in ("1.00000", "2.40948", "5.68935", "6.77899", "10.89339", "11.30048", "13.76646",
                   "16.90171"):
         assert score in text
@@ -140,12 +140,12 @@ def test_page_is_one_plain_screen(tmp_path: Path):
 def test_circuit_draws_the_latest_upload_from_the_ledger(tmp_path: Path):
     page = build(tmp_path / "public").read_text(encoding="utf-8")
     svg = page[page.index("<svg"):page.index("</svg>")]
-    # submission-008: every gate passed on the uploaded zip; G1 and G2 are per circuit.
+    # submission-009: every gate passed on the uploaded zip; G1 and G2 are per circuit.
     assert '<g class="gate pass"><title>G0, all circuits: Passed</title>' in svg
     assert '<g class="gate pass"><title>G2 dqi: Passed</title>' in svg
     assert '<g class="gate pass"><title>G5, all circuits: Passed</title>' in svg
     assert "notrun" not in svg and "fail" not in svg
-    for ratio in (">13.16</text>", ">47.59</text>", ">7.68</text>"):
+    for ratio in (">13.24</text>", ">54.73</text>", ">7.68</text>"):
         assert ratio in svg
     assert svg.count('class="inner"') == 3            # G0, G3, G5 are never waived
     text = _text(page)
@@ -297,7 +297,7 @@ def test_unscored_upload_waits_and_the_rank_says_when_it_is_stale():
     text = _text(render_page(shipped, _standing(), {"s-1": 9.5}))
     assert "waiting for Kaggle" in text
     # The latest scored upload is s-1, whose score differs from the one the rank was read at.
-    assert "Our public score is 9.50000, rank 470 of 1234 teams on 27 October 2026, before this " \
+    assert "Our public score is 9.50000, rank 583 of 1295 teams on 27 October 2026, before this " \
            "score came in." in text
 
 
