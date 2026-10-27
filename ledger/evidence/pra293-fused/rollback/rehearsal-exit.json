@@ -1,0 +1,7 @@
+{
+  "command": "bash ledger/evidence/pra293-fused/rollback/rehearsal-command.sh",
+  "output_root": "/home/cld-main/work/vqcc-data/pra293-rollback-20261027",
+  "started_utc": "2026-10-27T16:18:10.159711434Z",
+  "finished_utc": "2026-10-27T16:23:47.486540666Z",
+  "exit_status": 0
+}

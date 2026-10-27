@@ -1,0 +1,90 @@
+affine 4000/27221 rewrites 64 peak 86 false 105
+affine 8000/27221 rewrites 114 peak 86 false 105
+affine 12000/27221 rewrites 271 peak 90 false 123
+affine 16000/27221 rewrites 642 peak 90 false 378
+affine 20000/27221 rewrites 887 peak 90 false 383
+affine 24000/27221 rewrites 895 peak 90 false 383
+calibration LP 1: rows 8184 lp 125961221.906 exhaustive -200297511334.488
+calibration LP 2: rows 8584 lp 125961221.906 exhaustive -13857676768.725
+calibration LP 3: rows 8984 lp 125961221.906 exhaustive -1477701013.418
+calibration LP 4: rows 9196 lp 125961221.906 exhaustive -445194195.656
+calibration LP 5: rows 9596 lp 125961221.906 exhaustive -1376919939.612
+calibration LP 6: rows 9996 lp 125961221.906 exhaustive 125961221.906
+calibration drop none: margin 125961220 rotations 45 ratio 13.146457
+calibration LP 1: rows 8187 lp 76507185.733 exhaustive -217472324380.970
+calibration LP 2: rows 8587 lp 76507185.733 exhaustive -4168416152.857
+calibration LP 3: rows 8987 lp 76507185.733 exhaustive -1811421717.503
+calibration LP 4: rows 9387 lp 76507185.733 exhaustive -1874717578.768
+calibration LP 5: rows 9787 lp 76507185.733 exhaustive 12560351.334
+calibration LP 6: rows 9999 lp 73326606.462 exhaustive 12793553.508
+calibration LP 7: rows 10090 lp 73326606.462 exhaustive -4442102844.981
+calibration LP 8: rows 10113 lp 73326606.462 exhaustive -56859381.414
+calibration LP 9: rows 10183 lp 73326606.462 exhaustive -307671729.247
+calibration LP 10: rows 10297 lp 73326606.462 exhaustive 73326606.462
+calibration drop [18]: margin 73326605 rotations 44 ratio 13.164809
+Verifying invsqrt (full shots)...
+Verifying dqi (full shots)...
+Verifying dfthcsos (full shots)...
+{
+  "gates": [
+    {
+      "gate": "G0",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G1",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G2",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G3",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G4",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G5",
+      "status": "PASS",
+      "reason": ""
+    }
+  ],
+  "seconds": 440.5630890770117,
+  "shipping_problems": [],
+  "geometric_mean": 17.686894600727538,
+  "zip_sha256": "7a6489cd7504ad937ddada926c017b8fc70825d433082c83902993973125eba0",
+  "generator_commit": "3b4e342644706772f3db64fe6b0c5084fe0437f1"
+}
+Command being timed: "uv run python ledger/evidence/pra293-fused/run_candidate.py"
+User time (seconds): 1670.72
+System time (seconds): 112.12
+Percent of CPU this job got: 397%
+Elapsed (wall clock) time (h:mm:ss or m:ss): 7:28.80
+Average shared text size (kbytes): 0
+Average unshared data size (kbytes): 0
+Average stack size (kbytes): 0
+Average total size (kbytes): 0
+Maximum resident set size (kbytes): 5087660
+Average resident set size (kbytes): 0
+Major (requiring I/O) page faults: 12
+Minor (reclaiming a frame) page faults: 7807497
+Voluntary context switches: 47077
+Involuntary context switches: 428406
+Swaps: 0
+File system inputs: 1232
+File system outputs: 5662160
+Socket messages sent: 0
+Socket messages received: 0
+Signals delivered: 0
+Page size (bytes): 4096
+Exit status: 0
+exit=0

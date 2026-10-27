@@ -1,0 +1,101 @@
+{
+  "variant": "fused-confluent",
+  "pinned_files": 62,
+  "num_qubits": 889,
+  "static_toffoli_like": 487331,
+  "num_ops": 59925608,
+  "num_bits": 107242,
+  "build_seconds": 93.47412503699888,
+  "sha256": "7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6",
+  "bytes": 546664050,
+  "stages": [
+    {
+      "name": "mask_projection",
+      "T": 0,
+      "cumulative_T": 0,
+      "Q": 840,
+      "num_ops": 2388214,
+      "seconds": 3.8736379146575928
+    },
+    {
+      "name": "initial",
+      "T": 0,
+      "cumulative_T": 0,
+      "Q": 840,
+      "num_ops": 2719156,
+      "seconds": 4.66863489151001
+    },
+    {
+      "name": "extract",
+      "T": 87040,
+      "cumulative_T": 87040,
+      "Q": 889,
+      "num_ops": 9255442,
+      "seconds": 14.70049786567688
+    },
+    {
+      "name": "synthesis",
+      "T": 44654,
+      "cumulative_T": 131694,
+      "Q": 889,
+      "num_ops": 15098735,
+      "seconds": 23.62459659576416
+    },
+    {
+      "name": "convert_lookahead",
+      "T": 69220,
+      "cumulative_T": 200914,
+      "Q": 889,
+      "num_ops": 18094594,
+      "seconds": 27.75930166244507
+    },
+    {
+      "name": "scan",
+      "T": 44275,
+      "cumulative_T": 245189,
+      "Q": 889,
+      "num_ops": 41588664,
+      "seconds": 58.80735659599304
+    },
+    {
+      "name": "unconvert_lookahead",
+      "T": 70342,
+      "cumulative_T": 315531,
+      "Q": 889,
+      "num_ops": 44642141,
+      "seconds": 64.37242007255554
+    },
+    {
+      "name": "unsynthesis",
+      "T": 53803,
+      "cumulative_T": 369334,
+      "Q": 889,
+      "num_ops": 51008234,
+      "seconds": 74.15503931045532
+    },
+    {
+      "name": "unextract",
+      "T": 117997,
+      "cumulative_T": 487331,
+      "Q": 889,
+      "num_ops": 59500420,
+      "seconds": 87.73636817932129
+    },
+    {
+      "name": "uninitial",
+      "T": 0,
+      "cumulative_T": 487331,
+      "Q": 889,
+      "num_ops": 59831421,
+      "seconds": 88.83012557029724
+    },
+    {
+      "name": "restore_masks",
+      "T": 0,
+      "cumulative_T": 487331,
+      "Q": 889,
+      "num_ops": 59925608,
+      "seconds": 89.80714821815491
+    }
+  ]
+}
