@@ -1,5 +1,27 @@
 # invsqrt generator provenance
 
+## PRA-285 storage study
+
+`public_port/storage.py` implements idle-wire parking from the method described
+by [mrmeows, qcc-1375-open-circuits v6](https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits/versions/6):
+README invsqrt items 1–8 and `source/invsqrt_63q/README.txt` stages 23–27.
+The published Apache-2.0 attribution is recorded here; no new licence check
+was used as a gate. The prior Gluzdov/DePie/busyaprime lineage remains credited.
+The prose and the source files `phase/deferred_carries.py`,
+`qubit/optimize_memory.py`, and `qubit/complete_cap77.py` were read as reference.
+No source file is executed or imported, and no frozen circuit, certificate,
+proof, seed, coefficient, or angle from that dataset is loaded.
+
+This implementation searches for affine or single-product recovery identities
+against the port's regenerated truth vectors. Every accepted identity is
+checked on the entire legal input domain, including at its restoration point.
+The port's coefficient fitter, integer model, and rotation calibration are
+unchanged. This is a storage experiment, not a shipping approval.
+
+Reference hashes: README.txt `458598e9189e4e5da87933f9f0623814fd119b5d9be22d3afad0b146a0723eb0`;
+deferred_carries.py `9e13167b71fee5dbe14f1a603f94a2d34bd8b2c575040354f738e9e1d7c6c971`;
+optimize_memory.py `d9f68c987a6f9b07a2c33cc5caf08d92eef01f9308a30ecae0a1b65ea6d8ef9a`.
+
 This generator is a **port**. It is not independent clean-room authorship.
 Coefficient provenance is `regenerated; dataset-adapted calibration; licence unresolved`.
 Nothing in this map is a shipment.
