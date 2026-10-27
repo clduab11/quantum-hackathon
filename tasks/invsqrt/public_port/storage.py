@@ -2,9 +2,12 @@
 
 No saved identities are inputs: sample signatures propose an affine function
 plus at most one product, and packed truth vectors prove it on the full domain.
-Operands must remain unchanged until the parked wire's next use. A nonlinear
-wire is erased in X, then its independent measurement phase is repaired with Z
-after reconstruction. Affine parking uses only reversible Clifford gates.
+The first strategy requires unchanged recovery operands; the future strategy
+replays the idle interval and proves the recovery identity at its endpoint.
+A nonlinear or future-recovered wire is erased in X, then its independent
+measurement phase is repaired with Z after reconstruction. Immediate affine
+parking uses only reversible Clifford gates. The cap is a search target, not
+a promised bound: each idle interval is tried once to bound compilation work.
 """
 from bisect import bisect_right
 from collections import defaultdict
@@ -76,6 +79,7 @@ class StorageCompiler(affine.DomainCompiler):
         self.future = future
         self.index = -1
         self.parked = {}
+        self.deadlines = {}
         self.events = []
         self.attempted = set()
         self.uses = defaultdict(list)
@@ -111,6 +115,9 @@ class StorageCompiler(affine.DomainCompiler):
 
     def restore(self, q):
         terms, constant, product, bit, expected = self.parked.pop(q)
+        self.deadlines.pop(q)
+        if (set(terms) | set(product or ())) & self.parked.keys():
+            raise RuntimeError('Recovery operand is still parked')
         for line in self._clifford(q, terms, constant):
             super().execute(line)
         if product is not None:
@@ -159,14 +166,18 @@ class StorageCompiler(affine.DomainCompiler):
         for terms, _, product, _, _ in self.parked.values():
             dependencies.update(terms)
             dependencies.update(product or ())
-        candidates = sorted(set(self.mapping)-needed-dependencies,
+        candidates = sorted(set(self.mapping)-needed,
                             key=lambda q: (-self.next_at(self.uses, q), q))
         for q in candidates:
             if len(set(self.mapping) | needed) <= self.cap:
                 break
-            if q in dependencies:
-                continue
             end = self.next_at(self.uses, q)
+            if q in dependencies and (not self.future or any(
+                end > self.deadlines[target]
+                for target, (terms, _, product, _, _) in self.parked.items()
+                if q in terms or q in (product or ())
+            )):
+                continue
             if end-self.index < 8 or end >= self.next_at(self.barriers) or (q, end) in self.attempted:
                 continue
             self.attempted.add((q, end))
@@ -196,6 +207,7 @@ class StorageCompiler(affine.DomainCompiler):
             if self.val(q) is not self.zero:
                 raise RuntimeError('Parking failed to erase its target')
             self.parked[q] = terms, constant, product, bit, expected
+            self.deadlines[q] = end
             dependencies.update(terms)
             dependencies.update(product or ())
             # Do not subsequently park an operand needed by this restoration.
