@@ -54,3 +54,8 @@ measurement. Search is bounded to one attempt per idle interval; future
 recovery examines at most 400 instructions. Its 68-wire target is not a
 guarantee. The build report and official verifier determine the actual peak.
 No storage mode is selected by the default generator or existing gate configs.
+
+`python -m tasks.invsqrt.public_port.lookup_bound` reports the qubit floor of
+the main coefficient lookup: 22 input wires plus every output that is not an XOR
+of address bits and other outputs. On this port's fit it is 68 before flags and
+lookup work wires, so no storage-only schedule reaches 68 (D-PRA285-01).

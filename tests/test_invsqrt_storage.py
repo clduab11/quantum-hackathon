@@ -78,3 +78,17 @@ def test_parked_circuit_restores_inputs_scratch_and_random_measurement_phase(fut
         assert not sim.read_across_shots(scratch).any()
         phases.append([sim.read_shot_phase(i) for i in range(len(xs))])
     np.testing.assert_array_equal(phases[0], phases[1])
+
+
+def test_lookup_bound_counts_only_affine_independent_outputs(monkeypatch):
+    from tasks.invsqrt.public_port import lookup_bound
+    # Outputs: address bit 0, a constant, a1 XOR a product, and that product (= mix XOR a1).
+    rows = []
+    for i in range(256):
+        a0, a1, prod = i & 1, i >> 1 & 1, (i & 1) & (i >> 2 & 1)
+        rows.append(a0 | 1 << 1 | (a1 ^ prod) << 2 | prod << 3)
+    monkeypatch.setattr(lookup_bound, 'lookup_outputs', lambda fitted: (['a0', 'one', 'mix', 'prod'], rows))
+    result = lookup_bound.bound(None)
+    assert result['affine_dependent'] == ['a0', 'one', 'prod']
+    assert result['independent'] == 1
+    assert result['floor_without_flags_or_ladder'] == 23
