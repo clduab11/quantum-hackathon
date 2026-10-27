@@ -134,3 +134,7 @@ G0, G1, G2, G3, G4 and G5 PASS. G3 reports dqi value errors 0, phase errors 3, r
 ## PRA-250 submission-9 Hankel port
 
 `generate_hankel.py` selects the new source-only decoder in `hankel/`. See [its provenance map](hankel/PROVENANCE.md), including the SomeJoint v7 source pin, explicit Apache-2.0 grant, inherited lineage, excluded projection source, and per-file changes. The #33 `generate_jfraction.py` path remains available unchanged. Measurement and candidate evidence are in `docs/reports/pra250-dqi.md`; no notebook outputs are generator inputs.
+
+## PRA-293 fused decoder
+
+`generate_fused.py` builds SomeJoint's fused confluent decoder (kernel 140675727 v12) from the verbatim source vendored under `fused/source/`. See [its provenance](fused/PROVENANCE.md) for the source pin, the Apache-2.0 grant, the traced closure, the Schur design lineage and what was left out. No notebook output or circuit is a generator input.

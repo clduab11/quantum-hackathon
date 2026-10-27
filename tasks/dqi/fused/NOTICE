@@ -1,0 +1,27 @@
+Fused DQI decoder, vendored source, 27 October 2026 (PRA-293)
+
+The decoder in source/ is the work of Agniv Banerjee (SomeJoint team), who
+credits it to their research team of AI agents directed for them: "the
+decoder, rebuilt from scratch". Public source notebook, kernel 140675727 v12:
+https://www.kaggle.com/code/somejoint/quantum-circuits-21-34-local-gm-fused-dqi
+UTF-8 source SHA-256 18d6760953783bec316ddb46266a1b5ccc50c291fbf47ec35f87c73f4d0cf2ac.
+The notebook states that its code is Apache-2.0 and embeds the licence text,
+which is copied verbatim to LICENSE. The files carry no per-file SPDX headers.
+
+Design lineage, as the notebook's credits cell states it (record only, not a
+claim that Praxen copied these works): the decoder was rebuilt from a
+pseudocode description of Alex Chilton's 883-qubit Schur decoder, which is
+based on jday96314's QuantumAI decoder and classical models (no licence file;
+the board's ruling on that route is card aba6c540, D-PRA269-01 and
+D-PRA273-01). mrmeows and Ahmed Berat Ozer: the public mask projection of
+round17 and version 8, after manwithacat's classical-mask projection. Earlier
+links: Dmitrii Gluzdov's round12 decoder, Agniv Banerjee (SomeJoint)'s
+Bezout-Hankel phase solve, ViberTeam and Phuc Thai (DePie).
+
+Google Quantum AI / competition authors: task specification, verifiers and
+Kickmix, which keep their own terms. They are installed dependencies, not
+relicensed here. No upstream author's endorsement is implied.
+
+Praxen's additions are only the wrapper (../generate_fused.py), the pin and
+G1 checks (gates.py, smoke.py) and these records. No file under source/ is
+modified; each one's hash is pinned in SOURCE_MAP.json.
