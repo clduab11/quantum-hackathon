@@ -69,13 +69,16 @@ def build_from_fit(fitted):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--circuit-only', action='store_true',
+                        help='Write only the circuit for exact-file G5 comparison; still refit and prove it.')
     args = parser.parse_args()
     from .fit import fit_tables
     fitted = fit_tables()
     data, report = build_from_fit(fitted)
     args.out.mkdir(parents=True, exist_ok=True)
     (args.out/'invsqrt.kmb').write_bytes(data)
-    (args.out/'build-report.json').write_text(json.dumps(report, indent=2)+'\n')
+    if not args.circuit_only:
+        (args.out/'build-report.json').write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps({k:v for k,v in report.items() if k not in ('tables','calibration')}), flush=True)
 
 

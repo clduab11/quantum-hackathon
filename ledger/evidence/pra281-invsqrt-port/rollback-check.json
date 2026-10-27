@@ -1,0 +1,66 @@
+{
+  "source_commit": "8acc1196aad130e3500d6965352db95a77c3d95e",
+  "staging": "git archive of source_commit in a temporary directory, deleted afterwards",
+  "withdrawn": [
+    "ledger/queue/pra281-invsqrt-port.json",
+    "ledger/queue/pra281-invsqrt-port.zip"
+  ],
+  "selected": {
+    "candidate_id": "pra280-rustad",
+    "manifest": "ledger/manifests/candidates/pra280-rustad.json",
+    "manifest_sha256": "a47374797d491fc02f518ea595bba9ef809a83da614b8e992a3d272717332991",
+    "config": "configs/gates/pra280-rustad.yaml",
+    "archive": "/home/cld-main/work/vqcc-data/pra280/pra280-rustad.zip",
+    "archive_sha256": "8e2918400fd033440d350d4af76bc4bdfca3787cdf411dcbb974f03d3b4f8f21",
+    "shipping_problems": [],
+    "geometric_mean": 16.88208344372253,
+    "reserve_args": "--candidate ledger/manifests/candidates/pra280-rustad.json",
+    "submit_args": "--candidate ledger/manifests/candidates/pra280-rustad.json --zip /home/cld-main/work/vqcc-data/pra280/pra280-rustad.zip"
+  },
+  "invsqrt": {
+    "withdrawn": "17fc223d79d3f1f15ef448389072209972b373403dd0a45352f4fe7eaff541ad",
+    "restored": "75e8a0e2341bb3e8f8ded1ec1d53e24437410c69e887da9daf7d49bfcc28c2dd",
+    "ratio_withdrawn": 13.237727705632725,
+    "ratio_restored": 13.16480863637127
+  },
+  "unchanged_tasks": {
+    "dqi": true,
+    "dfthcsos": true
+  },
+  "queue_before": {
+    "ledger/queue/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/queue/pra226-dqi-only.json": "a45880a29be827373da04a7988fcbbb12ea9d673259a87ab624b9edef9c96c1d",
+    "ledger/queue/pra228-dqi-invsqrt-572.json": "8aab650706468fa2112bed59d17b0bc11b9fd07e7a1cbc74f7691460b9ff2d31",
+    "ledger/queue/pra233-2-dqi-q881.json": "bb596cd9214df71ce29511075c76d12f72ef2ca16f6050310430d285529f0ef7",
+    "ledger/queue/pra233-chem-v1.json": "a5d2f06e0a6cfe75547e732a91c1c2e5b6cfdea9fe627fba0d07e9efdcaa0f0c",
+    "ledger/queue/pra250-hankel.json": "7f88bee48421b41c9345daa10c612fb319ccff5a3a4fe449e0346379d6eb8972",
+    "ledger/queue/pra261-schur.json": "5bfd59aab4c4b536eda09783116f3ad5a55097936a54851af4a93ccb42165dc0",
+    "ledger/queue/pra280-rustad.json": "f1b9fbb00bf8673edc0fb61a9229282e9c9b70158581ccfd8e554f5a36d14538",
+    "ledger/queue/pra281-invsqrt-port.json": "2dbb7977907126578d89998f52d91d49ce9ac009b97e8ab04aee3d9e5c765c76",
+    "ledger/queue/pra281-invsqrt-port.zip": "5c8db085d18872b17dc16890a2afd6ea8b3c63d3dc513b853ba0ac20b797cecd",
+    "ledger/queue/reference-002.json": "a011f3f53a2c086cb78185314cbf72310422733606f4b67ad5099d060a8db14b"
+  },
+  "queue_after": {
+    "ledger/queue/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ledger/queue/pra226-dqi-only.json": "a45880a29be827373da04a7988fcbbb12ea9d673259a87ab624b9edef9c96c1d",
+    "ledger/queue/pra228-dqi-invsqrt-572.json": "8aab650706468fa2112bed59d17b0bc11b9fd07e7a1cbc74f7691460b9ff2d31",
+    "ledger/queue/pra233-2-dqi-q881.json": "bb596cd9214df71ce29511075c76d12f72ef2ca16f6050310430d285529f0ef7",
+    "ledger/queue/pra233-chem-v1.json": "a5d2f06e0a6cfe75547e732a91c1c2e5b6cfdea9fe627fba0d07e9efdcaa0f0c",
+    "ledger/queue/pra250-hankel.json": "7f88bee48421b41c9345daa10c612fb319ccff5a3a4fe449e0346379d6eb8972",
+    "ledger/queue/pra261-schur.json": "5bfd59aab4c4b536eda09783116f3ad5a55097936a54851af4a93ccb42165dc0",
+    "ledger/queue/pra280-rustad.json": "f1b9fbb00bf8673edc0fb61a9229282e9c9b70158581ccfd8e554f5a36d14538",
+    "ledger/queue/reference-002.json": "a011f3f53a2c086cb78185314cbf72310422733606f4b67ad5099d060a8db14b"
+  },
+  "preserved_records": {
+    "files": 573,
+    "sha256_of_listing": "871dd18862dfbeffda9c2345220cebbb91b0307614471185bf2a4ae30bc0d257",
+    "decision": {
+      "docs/decisions/D-PRA281-01.md": "238e7528d540a01ddf16cc82c6488aaf406f0caaec214ad536bbfe485a02d991"
+    },
+    "candidate_manifest": {
+      "ledger/manifests/candidates/pra281-invsqrt-port.json": "13cb67053d7b9cdebba794daa9d025fd072d6c03cd1ce30c4a4952aa7480af88"
+    },
+    "reservation_files_unchanged": 11
+  },
+  "reservation_or_upload": "none"
+}
