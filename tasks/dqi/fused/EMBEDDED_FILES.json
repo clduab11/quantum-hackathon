@@ -1,0 +1,536 @@
+[
+  {
+    "path": "LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bytes": 11358,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/README.md",
+    "sha256": "3612d10e122d16f1147985eef04b1cac6a52640162c079565dd8d0111b2c2ed7",
+    "bytes": 816,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/alternating_gauge/even_fold.py",
+    "sha256": "784cf9b2873b5fa04da4233a528d7ffd8acf9d30fb2e39dc9992d46b1438cd16",
+    "bytes": 1689,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/alternating_gauge/kernel.py",
+    "sha256": "d99aa5eaef8a0df416270d8eee0fa55a9847ee7c08c3aa6ee437352e1abdd05a",
+    "bytes": 3000,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/alternating_gauge/scalar.py",
+    "sha256": "2fb3e5c4ec62df647de519647a57f51c765907ce1b6ecfe2d512035a91523b15",
+    "bytes": 2506,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/arithmetic/division.py",
+    "sha256": "28567073545c805e32636668cc0bb33f0dbc441a1de0dee2825774b3a33d2832",
+    "bytes": 7664,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/arithmetic/field.py",
+    "sha256": "9a84208c0690c0c2473f950920b27bacde4bc78f5e8dabf9a83df5a9b362b603",
+    "bytes": 19490,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/arithmetic/lowwidth.py",
+    "sha256": "c536fa2b42393b83aae2bef80eeda22d83a6c799ef555178e94e09f1f5abc22a",
+    "bytes": 6763,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/confluent_extract/kernel.py",
+    "sha256": "3acfc52dbf5994a85671b975be506b7967d2d075a3e1fc39f7c7cd16a8586ff3",
+    "bytes": 2560,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/confluent_extract/model.py",
+    "sha256": "9b8d6fbaad6aec5da87d5247a11276c2fa177883adff9eca030a9bc2f3286387",
+    "bytes": 9798,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/confluent_fold_pair/padding_taylor.py",
+    "sha256": "d95ee2fc9df16a9632181c762ad7c1095eb86e9eec54eb7462a154522ff3460a",
+    "bytes": 2586,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/confluent_synthesis/kernel.py",
+    "sha256": "2eaabffce88e50ab3ce4719e764b3ed43c8bd6d8a6acf22a4461574268691c54",
+    "bytes": 957,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/confluent_synthesis/unified.py",
+    "sha256": "0c2264a2c09e0b5b87be0282607da6747acaebb0eae33fb5f21bd01934492518",
+    "bytes": 3628,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/block_model.py",
+    "sha256": "131a208cb0ed97b19e8f0daa562faa1bd2cf7049de93ea4a860f4ed81c87f342",
+    "bytes": 2142,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/convert.py",
+    "sha256": "7afdafa60806df5afbc0af8fd01417a3e09fc15c5dc83fdd28d68079e78df7a0",
+    "bytes": 5916,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/gap2.py",
+    "sha256": "40141fe4ece6d546da31818178ba83f882132261c1b0bfa932efaa23148394ff",
+    "bytes": 3753,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/hankel_check.py",
+    "sha256": "6d0ac6f55a70418049f46300863eeabb90a7c38b476b84db6e83d395edc3d72c",
+    "bytes": 3093,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/kernels.py",
+    "sha256": "f5efa2f2b008cce86a0b751d400ee75777b77b6872d1875d6fae281cd7f09ef9",
+    "bytes": 3034,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/lookahead.py",
+    "sha256": "51bc1d540e5bc21e04d6a3d0998b6d6af43673cef4790d12d2996f9dab591dbe",
+    "bytes": 4448,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/lookahead_crosspass.py",
+    "sha256": "999b3c3d9b46ada059628cd840aab9a5464f682e5475ad473b42016354b6fe32",
+    "bytes": 7279,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/lookahead_deferred.py",
+    "sha256": "efc4bdde75c370c51363e96bb2197564e809c0eeee0aa2e4460f32d49215a109",
+    "bytes": 6443,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/lookahead_fast.py",
+    "sha256": "c6d696f1117b2c3efff8f2a951d8a5cf27df297ffb72d8e618beae7389f06dc4",
+    "bytes": 5000,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/lookahead_onehot.py",
+    "sha256": "65890248b22e4d33d895bd7144000691372a7b21aa0e6dcc206138482a88427f",
+    "bytes": 5704,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/original_model.py",
+    "sha256": "06e9f75e540035fbb2b48d34284b95ce5089090dcbc16ba44b01bd9fcb26897b",
+    "bytes": 5805,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/raw_bezout.py",
+    "sha256": "cb5d209826140f7ec3d04f0de924bad2f633f37c1b83305b339adabc015565bb",
+    "bytes": 2986,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/repair.py",
+    "sha256": "8beceea9091a9656901290498fbdc0e4373963374b5ee8f7e98d257ece1daeaf",
+    "bytes": 5403,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/test_blocks.py",
+    "sha256": "2b10599b1eff3ce42df0d023cf1e19fc3c98bf56bf8b0e0e77bb6c91873c1c78",
+    "bytes": 515,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/test_convert.py",
+    "sha256": "16fcaa61ad55fbc6df24164a3b1869bc93e1549c89f300cc668cc6db62e5eff9",
+    "bytes": 4733,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/test_crosspass_oracle.py",
+    "sha256": "36cdeda9476f464fa8a7d0e1572a21c3c8c99649a7420f2f98d44e20b7ad4552",
+    "bytes": 2984,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/test_gap2.py",
+    "sha256": "c86fdb0bf2c3156d854b87a7291fab0483dc600e8e4223e1aa5abea82109b27b",
+    "bytes": 2150,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/test_kernels.py",
+    "sha256": "f4fd6d685ec3fdccfa0bdee2a09ac80b2d6164c7d32fa071c2c4f3673be2ae75",
+    "bytes": 1775,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/test_poles.py",
+    "sha256": "5b561c3dc827f29b6da02ee32e89dd364a9b0a58679608d8f5f24734982b5465",
+    "bytes": 2297,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/test_poles_deferred.py",
+    "sha256": "37a194e875884ea3af480b69fa6e27a4aaab158ec2983bce6f015f25897954f3",
+    "bytes": 2379,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert/test_repair.py",
+    "sha256": "0b168f7c5aa21016c593bf6f6cb766d562ea110a8a82f7d9e49479445747a8d0",
+    "bytes": 1975,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert_reduce/historyfree.py",
+    "sha256": "8f4bf9b8999246260fd9189fbd5cbf9def434474d8aaa0c451cfeb38fbfe0f7d",
+    "bytes": 8087,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert_short_hankel/kernel.py",
+    "sha256": "6dd64a123e4bd668bbf30e7d3c6449e738c8bf693f9a31bce1c9c39810ba7ddb",
+    "bytes": 3919,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/convert_short_hankel/phase34.py",
+    "sha256": "620985ba489a03cef51095157af60b7459732b72b68f85a10265f34905ed203f",
+    "bytes": 1797,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/decoder/build.py",
+    "sha256": "08f423818ff66867f2c91730daf4a98a74b8efb5f79b6cf2552f8f33d80cc645",
+    "bytes": 3742,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/decoder/common.py",
+    "sha256": "b483a8df5b42be3a3b372633afc05f60ecaf0d9526f96f523c97056167c11109",
+    "bytes": 4449,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/decoder/extract.py",
+    "sha256": "6597bd52d2bebedae8860acaa4aaeaf980c3d21977781382ba8926833c8f7696",
+    "bytes": 1716,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/decoder/safe_bridge.py",
+    "sha256": "023c81c775967a71ef44c571200bbe3ffb8b3da443fc2816e751856fc3f0d8d9",
+    "bytes": 1584,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/decoder/synthesis.py",
+    "sha256": "fdd7de226b7445007689ce2e50dbabbe77fdbc20e994ec41ac821a6ad2474c49",
+    "bytes": 6872,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/fold_cached_norm/kernel.py",
+    "sha256": "6a148ebe23eae9194ec0ddb921ff6da1d362565218913170a36691c45dd7c084",
+    "bytes": 3995,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/fold_cached_norm/phase34.py",
+    "sha256": "974d76939483c061e7b7995600fcdcb05e91529297725acfba41ce5ce808661f",
+    "bytes": 238,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/fold_joint/divide.py",
+    "sha256": "8456426c171f36a716a39b457a0de5206b5d4db6c8553f1bfc919248ba1de851",
+    "bytes": 2901,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/fold_joint/kernel.py",
+    "sha256": "d4764e763c6ed1ff538b58c1cc628df0c9577300aae5a4d83a5338e0290e018f",
+    "bytes": 5183,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse12_escape/joint.py",
+    "sha256": "4bcc5614693d646bd910b9ed4748b278d2ec8dc1584bf8a45d3e465dd757cdc1",
+    "bytes": 5243,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse12_escape/zero1.py",
+    "sha256": "c9274f825d452082d88a98ded25a269aab247626a17032287c26ca1d8a71c724",
+    "bytes": 2603,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse12_escape/zero_layout.json",
+    "sha256": "45d1361fcf582282d15cc6fabeab290f8e9fd9dc4c68a3e14ffff86e9f9a537f",
+    "bytes": 325,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse19_joint/kernel.py",
+    "sha256": "035152593a105b8178522a6edbf7cda3b709d8a86f51ae2148e71b01a1274913",
+    "bytes": 4332,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse19_joint/layout.json",
+    "sha256": "0adee49170ae597ed5a7df4d4d0df0e495fba49013f6acd9ae6a3f06b9ad4ab4",
+    "bytes": 758,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse_search/baseline.py",
+    "sha256": "7aecb36f951122861fe0443eee92f1d65a10484fc86f2e535f3db44f5dd553da",
+    "bytes": 794,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse_search/inverse20.py",
+    "sha256": "e36162777e51361a7ceb47ae6b86a34ce492b23c2fde8083113b03985b98060d",
+    "bytes": 6837,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse_search/inverse20_iso.py",
+    "sha256": "1b4ffd1d35b12ca4f327c8885063fb76eef459eeabed1fddae371e2e4bb4f635",
+    "bytes": 3500,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse_search/optimized.json",
+    "sha256": "b18cfd6025658d02e38adfbe0ea7eca09960bbbdd458abe1ee1d539e4d3f6ca7",
+    "bytes": 967,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse_search/optimized_isotopy2.json",
+    "sha256": "28424aa2f6b0b92b7b3b4f6bc62feda566746feb9a9f21660ed5103420eae606",
+    "bytes": 996,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse_width/kernel.py",
+    "sha256": "accdd344715e6972ebe22e1679ca872d455a75466f1b1236b83bb636f6466409",
+    "bytes": 5055,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse_width/partial5.json",
+    "sha256": "202ddf3a0a62530ac4f4028774e87c729cba6cc85dd465570a59e882a83cf4f7",
+    "bytes": 495,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse_width_subspaces/inverse19.json",
+    "sha256": "c868b9fc56f05ec89d34375ad086490691237211ecdc99b4a0c0b6e86b468a3f",
+    "bytes": 864,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/inverse_width_subspaces/kernel19.py",
+    "sha256": "2cb588e60d5fe22ea59d625164e0a0d285cbcd352a80f5bf86f53f76050c9f4b",
+    "bytes": 3474,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/jet24/kernel.py",
+    "sha256": "f490e6205c678135dc2273d1f02e5ce9540087995f52c37e174b51dce0b4a5f6",
+    "bytes": 5519,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/mask_projection/kernel.py",
+    "sha256": "80148ee048d1fd9aaace9637d2e652a7f46dbcb4306913f053437af4a2119088",
+    "bytes": 3709,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/mul99/kernels.py",
+    "sha256": "8f93d0a23f465cf72045e02f702b0b40d629b72d1618952a8fc79c22e23ee6ec",
+    "bytes": 3145,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/mul99/phase36.py",
+    "sha256": "d976ab9f6fbb9e2972b9518576b0135b07181d1b6cbfb74a61c094c211e1dccf",
+    "bytes": 2607,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/mul99/schedules.py",
+    "sha256": "9d16c576747f9d556b857f846c4029131f977cd6eb15d8a37cff4b84b0919c66",
+    "bytes": 3049,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/noscratch/kernels.py",
+    "sha256": "fa64bb5d5c359c507ac9a488c3f73363d5390bd43a4697daa67df57c322d7370",
+    "bytes": 2023,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/noscratch/phase39.py",
+    "sha256": "a47a3ad3ce8787f868b93b40156e3496eead5200b187244b5db13ec0f0c79f1a",
+    "bytes": 2620,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/noscratch/schedules.py",
+    "sha256": "6871354632e828b1b3efed382d84c39bac42e278f5ac700728efc3f1745cfa8d",
+    "bytes": 2240,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/partial_gauge/prefix.py",
+    "sha256": "dba10093b9314daf696ebd8fbc85543dbcf73534eb45d2303dc9ce53189b0652",
+    "bytes": 2846,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/partial_gauge/scalar.py",
+    "sha256": "7b3cb8eece8ccbc42462f13dcab9ef6b253581a06ce4d14906d88a541774de29",
+    "bytes": 1188,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/partial_gauge/synthesis.py",
+    "sha256": "525d7f760b06d7b8321be67ffa6fbe29377630f2eeb233e9f7d0eaca7bf0fc26",
+    "bytes": 6631,
+    "vendored": false
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/partial_gauge/synthesis_noflag.py",
+    "sha256": "cb316d80cdcfa636735156171a2b4d0bb57be22e4c5495806709f224fd0ea8ae",
+    "bytes": 6887,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/partial_gauge/tail.py",
+    "sha256": "cef30a29c419aef478fbf9c98f4277ab4a1fc63ca52e95d6025d592f16c7aff3",
+    "bytes": 1830,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/phase24_tradeoff/kernel.py",
+    "sha256": "984fc30f4c834b8f3cc1a7276f26f54801c01c8fd53b757e9ba767325059711a",
+    "bytes": 5835,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/phase24_tradeoff/phase6_six_search.json",
+    "sha256": "afb39dcf8748b1b1419a5e8db6b5440be74db6687464e6e0a9052a08b168fdb0",
+    "bytes": 2840,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/phase24_tradeoff/phase6small.py",
+    "sha256": "28590db3c6a0843fedc2894bb9899df45a7b99ea4544ce6b7517e739e672fe32",
+    "bytes": 3257,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/safe_scalar/converter.py",
+    "sha256": "771a242b7910c3e59f27bc82c72e8f7b86f9cb201d84ca3712ba7fd7e28a2841",
+    "bytes": 8008,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/safe_scalar/kernel.py",
+    "sha256": "72fbedc923066741e50cf4372de75ade749844c3554005b2f72ea5594190e84a",
+    "bytes": 1660,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/safe_scalar/phase.py",
+    "sha256": "30fdcd43d2234c6476344c1608449684199c8f3e8fb403f96aca80ae2379b048",
+    "bytes": 2756,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/scan/scan.py",
+    "sha256": "bab543d7fbaa33666e8c718a40ec47ac2b9a52e06e59de27bbbe45e68c754b55",
+    "bytes": 2044,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/tail_alias/divide.py",
+    "sha256": "46d4c7c4c94a06e9e244c030934ab45092ad6793b530c501226e2edb62a3ee5c",
+    "bytes": 912,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/tail_alias/kernel.py",
+    "sha256": "3452ed2c039c73d3b1f45743f1ddeb40b88ffc32178b4052115f17bf18ba48ff",
+    "bytes": 4037,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/exp/zero_padding_synthesis/kernel.py",
+    "sha256": "f2b84166a1ef1fb131ead3d907b21625375bd45a24187e74b440ff45647fc185",
+    "bytes": 3568,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/playbook/exp/cf_check/audit.py",
+    "sha256": "c3211bbccebce2183b1a24385812dc505d1041ca7244274bbdffa75a95f37b33",
+    "bytes": 7065,
+    "vendored": true
+  },
+  {
+    "path": "blocks/dqi/team-fused/source/source_sha256.json",
+    "sha256": "d654f6a3dff99b4dcc4bd30cba476d6ba724ecfeab188448e96dcc6f91edeff6",
+    "bytes": 8412,
+    "vendored": false
+  },
+  {
+    "path": "notebooks/check-submission",
+    "sha256": "b1a0e5190fb0d96df85cc10184c834d33e100f1627b2fbbc4f5604e0f240284b",
+    "bytes": 3054,
+    "vendored": false
+  },
+  {
+    "path": "notebooks/extra-format.py",
+    "sha256": "6593250be3d89ee0942e01daf7251d0e5b351148786aa851d7f07dfe5dcac588",
+    "bytes": 1697,
+    "vendored": false
+  },
+  {
+    "path": "notebooks/launch.py",
+    "sha256": "72179eb4e59baa4adbcab0fa3f8b56cccde7d6ca359a7f06e17d45efaeb14d7b",
+    "bytes": 534,
+    "vendored": false
+  },
+  {
+    "path": "notebooks/take.py",
+    "sha256": "64b527642010d9b07d9ad3e9b1aeec112feecac14a1053b208cfb46033652e8a",
+    "bytes": 2936,
+    "vendored": false
+  }
+]
