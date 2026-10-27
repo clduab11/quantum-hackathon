@@ -20,9 +20,9 @@ tracks:
     aim: >-
       Upload only circuits that pass every check, and rebuild the best public designs in our own
       code.
-    updated_at_utc: "2026-10-26T22:18:29+00:00"
+    updated_at_utc: "2026-10-27T00:09:48+00:00"
     figures:
-      # submission-007 manifest (D-PRA202-29); invsqrt and dfthcsos unchanged from submission-006.
+      # submission-008 manifest (D-PRA202-31); invsqrt and dqi unchanged from submission-007.
       - label: Square-root circuit (invsqrt)
         value: 13.16
         state: shipped
@@ -31,9 +31,9 @@ tracks:
         state: shipped
         note: Rebuilt in our own code from the best public design.
       - label: Chemistry circuit (dfthcsos)
-        value: 4.15
+        value: 7.68
         state: shipped
-        note: Built in our own code from a public, openly licensed description of the molecule.
+        note: Our own circuits, built from the best published description of the molecule.
       # PRA-249, started 2026-10-26. (PRA-250's decoder rebuild shipped as submission-006.)
       - label: Square-root circuit rebuilt from the best public design
         state: in work
