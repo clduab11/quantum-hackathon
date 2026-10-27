@@ -1,0 +1,23 @@
+{
+  "candidate_id": "submission-009",
+  "commands": [
+    "Composio proxy_execute POST https://www.kaggle.com/api/v1/competitions.CompetitionApiService/ListSubmissions {competitionName: google-verifiable-quantum-circuit-compilation, pageSize: 20}"
+  ],
+  "kaggle": {
+    "competition": "google-verifiable-quantum-circuit-compilation",
+    "date": "2026-10-27T19:09:24.507Z",
+    "description": "submission-009 pra293-fused-invsqrt zip 22258bb5 local GM 17.7195",
+    "fileName": "submission.zip",
+    "publicScore": "17.71949",
+    "ref": 57711127,
+    "status": "COMPLETE",
+    "totalBytes": 31967085
+  },
+  "kind": "kaggle_public_score",
+  "local_geometric_mean": 17.719490035438174,
+  "notes": "Public score read back from Kaggle ListSubmissions (Composio log log_9UsLVG8wnlKH) by the PRA-202 issue monitor. submission-NNN.json manifests are never rewritten (docs/ledger-schema.md), so the score is recorded here and in D-PRA202-35. Kaggle public 17.71949 equals the local fixed-salt G3 geometric mean 17.719490035438174 to the printed digits (public/local 1.00000). submission-007 and submission-008 carried the Schur dqi and read 1.00116; submission-009 replaces only dqi.kmb (fused decoder, 0 value / 0 phase errors at our salt) and invsqrt.kmb, so the 0.12% gap was the Schur dqi's and is gone. totalBytes equals the local zip size. No salt grinding follows.",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "source_candidate_id": "pra293-fused-invsqrt",
+  "timestamp_utc": "2026-10-27T20:16:30+00:00",
+  "zip_sha256": "22258bb57f1a711336567cb8771c7f88936d903af7727ab0bbd993fb72e5f27d"
+}

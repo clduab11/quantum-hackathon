@@ -106,15 +106,17 @@ def test_malformed_standing_fails_the_build(change):
 def test_page_reads_the_ledger_and_the_standing_file(tmp_path: Path):
     page = build(tmp_path / "public").read_text(encoding="utf-8")
     text = _text(page)
-    assert "Our public score is 16.90171, rank 583 of 1295 teams on 27 October 2026." in text
+    # The rank was read at 16.90171, before submission-009's score came in.
+    assert "Our public score is 17.71949, rank 583 of 1295 teams on 27 October 2026, before this " \
+           "score came in." in text
     assert "The leader scores 24.52926." in text
     assert "(6th) scores 23.44490" in text
-    assert "invsqrt 13.16 20.06 1.0" in text      # ours, best public, reference
-    assert "dqi 47.59 54.73 1.0" in text
-    assert "dfthcsos 7.68 8.91 1.0" in text      # latest scored upload (submission-008)
-    assert text.count("waiting for Kaggle") == 1  # submission-009 has no public score yet
+    assert "invsqrt 13.24 20.06 1.0" in text      # ours, best public, reference
+    assert "dqi 54.73 54.73 1.0" in text
+    assert "dfthcsos 7.68 8.91 1.0" in text      # latest scored upload (submission-009)
+    assert "waiting for Kaggle" not in text      # every upload so far has a public score
     for score in ("1.00000", "2.40948", "5.68935", "6.77899", "10.89339", "11.30048", "13.76646",
-                  "16.90171"):
+                  "16.90171", "17.71949"):
         assert score in text
     assert "20 January 2027" in text
 
@@ -299,6 +301,18 @@ def test_unscored_upload_waits_and_the_rank_says_when_it_is_stale():
     # The latest scored upload is s-1, whose score differs from the one the rank was read at.
     assert "Our public score is 9.50000, rank 583 of 1295 teams on 27 October 2026, before this " \
            "score came in." in text
+
+
+def test_only_the_newest_uploads_carry_a_note():
+    shipped = [_submission(f"s-{i}", f"2026-10-{10 + i}T07:00:00+00:00") for i in range(7)]
+    notes = {f"s-{i}": f"note number {i}" for i in range(7)}
+    text = _text(render_page(shipped, _standing(submission_notes=notes),
+                             {f"s-{i}": 1.0 + i for i in range(7)}))
+    assert "note number 0" not in text and "note number 1" not in text
+    for i in range(2, 7):
+        assert f"note number {i}" in text
+    for i in range(7):
+        assert f"{1.0 + i:.5f}" in text          # every upload keeps its date and score
 
 
 def test_no_public_score_yet():
