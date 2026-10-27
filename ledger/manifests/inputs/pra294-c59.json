@@ -1,0 +1,106 @@
+{
+  "task": "PRA-294",
+  "observed_utc": "2026-10-27T19:09:00+00:00",
+  "shipping": {
+    "dataset": "mrmeows/qcc-1375-open-circuits",
+    "version": 8,
+    "licence": "Apache 2.0",
+    "url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=8",
+    "path": "circuits/dfthcsos/submission.npz",
+    "same_bytes_as": "sources/dfthcsos_8p6121_C59_submission/dfthcsos/submission.npz",
+    "staged": "inputs/mrmeows/qcc-1375-v8-C59-submission.npz",
+    "sha256": "8229861b3ee22316e144c900737dfc54f7a30ea88de77ff5391f3375d050fa87",
+    "bytes": 2232244,
+    "shape_RBC": [
+      10,
+      129,
+      59
+    ],
+    "brot": 8,
+    "angle_words_shape": [
+      1366,
+      75
+    ],
+    "lineage": "Michael Rustad R10/B129/C60 8-bit factor (pra280-rustad input 27dda66f...) refit by mrmeows, then columns merged C60 to C59 with the lower-normalization words (v8 README, 27 October 2026 02:30 UTC update)."
+  },
+  "method_sources": [
+    {
+      "file": "rank_parity.py",
+      "path": "sources/dfthcsos_cost_first_shape_screen/source/rank_parity.py",
+      "sha256": "9471a33a3c2907bfccf70acd1ffc5df0104dcee9a891643bbf25cb437626cb5b",
+      "url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=8",
+      "version": 8,
+      "licence": "Apache 2.0",
+      "ported_to": "tasks/dfthcsos/paired_algebra.py (nullspace)"
+    },
+    {
+      "file": "kernel_planes.py",
+      "path": "sources/dfthcsos_cost_first_shape_screen/source/kernel_planes.py",
+      "sha256": "eadc1f0c518b9cbfac3752c6b17f476e739c48e830b489fe69551dce49f15550",
+      "url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=8",
+      "version": 8,
+      "licence": "Apache 2.0",
+      "ported_to": "tasks/dfthcsos/kernel_basis.py"
+    },
+    {
+      "file": "hyper_kernel.py",
+      "path": "sources/dfthcsos_cost_first_shape_screen/source/hyper_kernel.py",
+      "sha256": "16c95f1c00bc590b7f6ca173df1ed186079bd39d6bd8af4c892e2b6c3f856e3b",
+      "url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=8",
+      "version": 8,
+      "licence": "Apache 2.0",
+      "ported_to": "tasks/dfthcsos/kernel_basis.py (quotient_selection)"
+    },
+    {
+      "file": "pair_exchange.py",
+      "path": "sources/dfthcsos_cost_first_shape_screen/source/pair_exchange.py",
+      "sha256": "f1b5ae7476c62f847c7b9be19df60cde22f2cd95ca2372d8fa40a8a336ab0660",
+      "url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=8",
+      "version": 8,
+      "licence": "Apache 2.0",
+      "ported_to": "tasks/dfthcsos/kernel_basis.py (paired_exchange)"
+    },
+    {
+      "file": "balanced_plan.py",
+      "path": "sources/dfthcsos_cost_first_shape_screen/source/balanced_plan.py",
+      "sha256": "fda671509313d2350596994a4259a096902d23b0e9d7bac059d2eb853adaf4a8",
+      "url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=8",
+      "version": 8,
+      "licence": "Apache 2.0",
+      "ported_to": "tasks/dfthcsos/kernel_plan.py"
+    },
+    {
+      "file": "streamed_plan.py",
+      "path": "sources/dfthcsos_cost_first_shape_screen/source/streamed_plan.py",
+      "sha256": "25118df858ad29b8a42c10a2dd83626706dee93f5c57f47952b96b9ae3328ddd",
+      "url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=8",
+      "version": 8,
+      "licence": "Apache 2.0",
+      "ported_to": "tasks/dfthcsos/kernel_plan.py"
+    },
+    {
+      "file": "streamed_native.py",
+      "path": "sources/dfthcsos_cost_first_shape_screen/source/streamed_native.py",
+      "sha256": "d44a36188e2cf6d70c7b20191fe67d9192dc1691ba640aefa8d0afff548af250",
+      "url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=8",
+      "version": 8,
+      "licence": "Apache 2.0",
+      "ported_to": "tasks/dfthcsos/streamed_qrom.py"
+    },
+    {
+      "file": "reproduce.py",
+      "path": "sources/dfthcsos_cost_first_shape_screen/source/reproduce.py",
+      "sha256": "552b6681b0676ceef392c00e2ddc771b995f3eb85b957c68cbaa1506ae5e295a",
+      "url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=8",
+      "version": 8,
+      "licence": "Apache 2.0",
+      "ported_to": "tasks/dfthcsos/c59.py (plan loop and stage slices only; the 19 first-stage seeds and the constant stage parameters come from certificates/plan_k.json first_plan/second_plan)"
+    }
+  ],
+  "plan_parameters": {
+    "source": "sources/dfthcsos_cost_first_shape_screen/certificates/plan_0..18.json (first_plan, second_plan fields only)",
+    "note": "Seeds and sizes are recorded in tasks/dfthcsos/c59.py; no certificate, stage_terms or circuit is read at build time.",
+    "certificate_angle_words_equal_c59": "The cost-first-shape-screen NPZ (a84cf33a...) has angle_words identical to the C59 NPZ (0 of 102,450 words differ), so its plan seeds apply unchanged; its W and H2_I differ and it is not shipped."
+  },
+  "note": "Licence fields recorded as found, not gated (R-P2-6). Only the NPZ is a declared runtime input (D-PRA211-05). The generated circuits are byte-identical to mrmeows' published cost-first-shape-screen circuits (dataset circuits, not competition-package circuits); no circuit is an input."
+}

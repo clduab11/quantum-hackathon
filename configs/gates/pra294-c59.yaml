@@ -1,0 +1,72 @@
+# PRA-294: pra293-fused-invsqrt (#65) with only the chemistry files changed to the C59 factor through the ported J=4 streamed compiler.
+schema: 1
+salt_label: PRA171_LOCAL_PUBLIC_FIXED_SALT_0001
+gates:
+- id: G0
+  name: pre-flight (metric-only file checks, no simulation)
+  check: ledger.gates.checks:g0_preflight
+  waivable: false
+  params:
+    hook: ledger.gates.g0_preflight:preflight
+- id: G1
+  name: smoke on small instances
+  check: ledger.gates.checks:per_task
+  waivable: false
+  params:
+    hooks:
+      invsqrt: tasks.invsqrt.public_port.gates:g1_smoke
+      dqi: tasks.dqi.fused.gates:g1_smoke
+      dfthcsos: tasks.dfthcsos.c59_gates:g1_smoke
+- id: G2
+  name: fast proxy
+  check: ledger.gates.checks:per_task
+  waivable: false
+  params:
+    hooks:
+      invsqrt: tasks.invsqrt.public_port.gates:g2_proxy
+      dqi: tasks.dqi.gates:g2_proxy
+      dfthcsos: tasks.dfthcsos.gates:g2_proxy
+- id: G3
+  name: full local verifier
+  check: ledger.gates.checks:g3_full_verifier
+  waivable: false
+  params:
+    hook: harness.score_local:score_submission
+    expected_shots:
+      invsqrt: 200540928
+      dqi: 102400
+      dfthcsos: 87424
+- id: G4
+  name: strict improvement over parent and archive
+  check: tasks.dfthcsos.c59_gates:g4_floor
+  waivable: false
+- id: G5
+  name: byte-identical rebuild from a clean worktree + provenance
+  check: ledger.gates.checks:g5_rebuild_and_provenance
+  waivable: false
+  params:
+    timeout_seconds: 7200
+generators:
+  invsqrt:
+  - '{python}'
+  - -m
+  - tasks.invsqrt.public_port.generate
+  - --out
+  - '{out}'
+  - --circuit-only
+  dqi:
+  - '{python}'
+  - -m
+  - tasks.dqi.generate_fused
+  - --out
+  - '{out}'
+  dfthcsos:
+  - '{python}'
+  - -m
+  - tasks.dfthcsos.c59
+  - --out
+  - '{out}'
+inputs:
+  dfthcsos:
+  - path: inputs/mrmeows/qcc-1375-v8-C59-submission.npz
+    sha256: 8229861b3ee22316e144c900737dfc54f7a30ea88de77ff5391f3375d050fa87
