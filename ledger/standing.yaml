@@ -12,13 +12,13 @@
 schema: 1
 
 leaderboard:
-  # PRA-202 `leaderboard-snapshot` revision 14: the full CSV (publicleaderboard-2026-10-27T19:11:04.csv,
-  # 1295 rows), read with the submission-009 upload (D-PRA202-34).
-  read_at_utc: "2026-10-27T19:11:04+00:00"
-  our_score: 16.90171         # our public score when the rank was read
-  rank: 583
-  teams: 1295
-  leader_score: 24.52926
+  # PRA-202 `leaderboard-snapshot` revision 15: the full CSV (publicleaderboard-2026-10-27T21:16:33.csv,
+  # 1310 rows), the first read after submission-009 scored 17.71949 (D-PRA202-35).
+  read_at_utc: "2026-10-27T21:16:33+00:00"
+  our_score: 17.71949         # our public score when the rank was read
+  rank: 600
+  teams: 1310
+  leader_score: 25.62911
   prize_line_place: 6         # last paid place (D-PRA202-14)
   prize_line_score: 23.44490
 
