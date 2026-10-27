@@ -1,5 +1,13 @@
 # PRA-293 evidence: fused DQI decoder on submission-008's bundle
 
+> **Superseded first run.** #62 merged into `main` while this ran. On the board's instruction (PRA-293 comment
+> `af27be22`, 2026-10-27 17:23 UTC), the candidate that ships in this pull request is `pra293-fused-invsqrt`: #62's
+> `pra281-invsqrt-port` with only `dqi.kmb` changed to the same fused bytes. See `../pra293-fused-invsqrt/`. This
+> run's manifest and queue pointer were removed from the tree, following "one candidate, one pull request" and #62's
+> handling of its PRA-250-based run. They remain in the published commit `2b91cee15463456e1c0e1637dbccdc2edb5bd434`
+> (`ledger/manifests/candidates/pra293-fused.json`, `ledger/queue/pra293-fused.json`). The records below are kept as
+> evidence for the fused dqi bytes, the G5 rebuild of `tasks/dqi/generate_fused.py` and the rollback to submission-008.
+
 Candidate `pra293-fused`: submission-008 (`pra280-rustad`, zip `8e291840…8f21`) with **only `dqi.kmb` changed**, to
 SomeJoint's fused confluent decoder built from the source vendored under `tasks/dqi/fused/` (see its
 `PROVENANCE.md`). invsqrt is submission-008's file (13.165×); #62's 13.238× invsqrt was not on `main` when this branch
