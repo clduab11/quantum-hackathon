@@ -1,0 +1,69 @@
+{
+  "commit": "6babc95e1ed3a61d399ac2a5e3643d023b635ae3",
+  "copied_inputs": {
+    "dfthcsos/submission.npz": "inputs/thc/femoco_thc_r5.npz"
+  },
+  "inputs": {
+    "809a992900937425f01a0593803921873f7bb472d590592c378d3ceb23657df5": "inputs/thc/femoco_thc_r5.npz"
+  },
+  "status": "PASS",
+  "tasks": {
+    "dfthcsos": {
+      "argv": [
+        "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-261-schur-candidate/.venv/bin/python3",
+        "-m",
+        "tasks.dfthcsos.shipping",
+        "--out",
+        "/tmp/paperclip-run-pra-261-d11053c1-8fb-StPMnW/ledger-rebuild-m5l8op6e/out/dfthcsos",
+        "--batch-size",
+        "10"
+      ],
+      "copied": {
+        "dfthcsos/submission.npz": "inputs/thc/femoco_thc_r5.npz"
+      },
+      "diffs": {
+        "changed": [],
+        "extra": [],
+        "missing": []
+      },
+      "identical": true,
+      "returncode": 0,
+      "stderr_tail": ""
+    },
+    "dqi": {
+      "argv": [
+        "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-261-schur-candidate/.venv/bin/python3",
+        "-m",
+        "tasks.dqi.generate_schur",
+        "--out",
+        "/tmp/paperclip-run-pra-261-d11053c1-8fb-StPMnW/ledger-rebuild-m5l8op6e/out/dqi"
+      ],
+      "copied": {},
+      "diffs": {
+        "changed": [],
+        "extra": [],
+        "missing": []
+      },
+      "identical": true,
+      "returncode": 0,
+      "stderr_tail": ""
+    },
+    "invsqrt": {
+      "argv": [
+        "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-261-schur-candidate/.venv/bin/python3",
+        "tasks/invsqrt/generate.py",
+        "--out",
+        "/tmp/paperclip-run-pra-261-d11053c1-8fb-StPMnW/ledger-rebuild-m5l8op6e/out/invsqrt"
+      ],
+      "copied": {},
+      "diffs": {
+        "changed": [],
+        "extra": [],
+        "missing": []
+      },
+      "identical": true,
+      "returncode": 0,
+      "stderr_tail": ""
+    }
+  }
+}

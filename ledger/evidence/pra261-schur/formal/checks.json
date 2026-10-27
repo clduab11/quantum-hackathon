@@ -1,0 +1,41 @@
+{
+  "uv_sync": {
+    "exit_code": 0,
+    "output": "Resolved 105 packages in 1ms; Installed 36 packages in 107ms"
+  },
+  "kickmix_setup": {
+    "exit_code": 0,
+    "scope": "project-local .venv path file; pinned package SHA verified by repository installer"
+  },
+  "pytest": {
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 uv run pytest",
+    "exit_code": 0,
+    "output": "376 passed, 11 skipped in 177.50s (0:02:57)"
+  },
+  "registers": {
+    "command": "uv run python -m ledger.registers check",
+    "exit_code": 0,
+    "output": "OK registers: 272 decisions, 6 notice files, legacy index unchanged"
+  },
+  "rollback_rehearsal": {
+    "performed_this_run": false,
+    "evidence_commit": "298ca0dbcad79349ad1cb559ba0fef0333e36a3d",
+    "packet_attachment_id": "b2741456-e761-4d17-b2ad-4caa6ce73f8e",
+    "packet_sha256": "4dc296e9c8b3b396c8b5911ac53e95dfa63ce13f6566da0ca194a9216d0dceaf"
+  },
+  "gates": {
+    "exit_code": 0,
+    "statuses": {
+      "G0": "PASS",
+      "G1": "PASS",
+      "G2": "PASS",
+      "G3": "PASS",
+      "G4": "PASS",
+      "G5": "PASS"
+    },
+    "shipping_problems": [],
+    "geometric_mean": 13.750471706393649,
+    "elapsed_seconds": 897.634204514994,
+    "queue_zip_sha256": "9fcb5fe2e82d052568e2c5857965cf87cb51ab0dd1f107ae00c188f8e07b11d5"
+  }
+}
