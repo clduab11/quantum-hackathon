@@ -1,0 +1,77 @@
+$ uv sync && OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 uv run pytest
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1
+collected 404 items / 4 skipped
+
+
+================== 397 passed, 11 skipped in 87.71s (0:01:27) ==================
+pytest exit 0
+
+$ uv sync --group gpu && OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 UV_NO_SYNC=1 uv run pytest -rs
+============================= test session starts ==============================
+platform linux -- Python 3.13.13, pytest-9.1.1, pluggy-1.7.0
+rootdir: /home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-281-1-invsqrt-port-candidate
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1
+collected 423 items / 1 skipped
+
+tests/test_chemistry_candidate.py ........                               [  1%]
+tests/test_costs.py ...............                                      [  5%]
+tests/test_dfthcsos_qrom.py ...........................                  [ 11%]
+tests/test_dqi_algebra.py .                                              [ 12%]
+tests/test_dqi_formulas.py .                                             [ 12%]
+tests/test_dqi_hankel.py .....                                           [ 13%]
+tests/test_dqi_jfraction.py ..                                           [ 13%]
+tests/test_dqi_projection.py .....                                       [ 15%]
+tests/test_dqi_provenance.py .........                                   [ 17%]
+tests/test_dqi_schur.py ....                                             [ 18%]
+tests/test_factor_fit_v3.py ......                                       [ 19%]
+tests/test_factor_fit_v4.py .......                                      [ 21%]
+tests/test_factor_gpu.py ...                                             [ 21%]
+tests/test_factor_pipeline.py ...........                                [ 24%]
+tests/test_factor_refit_v2.py .........                                  [ 26%]
+tests/test_factor_resume.py .......                                      [ 28%]
+tests/test_fit_jax.py ......s....                                        [ 30%]
+tests/test_fit_jax_driver.py ...s.                                       [ 32%]
+tests/test_fit_jax_margin.py ...                                         [ 32%]
+tests/test_g0.py ...................                                     [ 37%]
+tests/test_gate_contract.py ......                                       [ 38%]
+tests/test_install_kickmix.py ........                                   [ 40%]
+tests/test_invsqrt_design_study.py ......                                [ 42%]
+tests/test_invsqrt_parity.py ...                                         [ 42%]
+tests/test_invsqrt_provenance.py ....                                    [ 43%]
+tests/test_invsqrt_public_port.py .....                                  [ 44%]
+tests/test_invsqrt_public_port_gates.py ......                           [ 46%]
+tests/test_ledger_evidence.py ............                               [ 49%]
+tests/test_ledger_gates.py ....................................          [ 57%]
+tests/test_ledger_licence_not_gated.py .......                           [ 59%]
+tests/test_ledger_manifest.py ...............                            [ 62%]
+tests/test_ledger_scorecard.py ...................                       [ 67%]
+tests/test_merge_gate.py .......                                         [ 69%]
+tests/test_pra177_generators.py ...                                      [ 69%]
+tests/test_pra245_declared_factors.py ..                                 [ 70%]
+tests/test_reference_identity.py .................                       [ 74%]
+tests/test_reference_invsqrt_gates.py .......                            [ 75%]
+tests/test_reference_rebuild.py ...                                      [ 76%]
+tests/test_registers.py ...............                                  [ 80%]
+tests/test_review_boundaries.py ..                                       [ 80%]
+tests/test_rustad_compiler.py ...............                            [ 84%]
+tests/test_scoring.py .....                                              [ 85%]
+tests/test_search_loop.py .............                                  [ 88%]
+tests/test_smoke.py ..                                                   [ 88%]
+tests/test_status_page.py .....................................          [ 97%]
+tests/test_submission_notebook.py ..........                             [100%]
+
+=============================== warnings summary ===============================
+tests/test_factor_fit_v4.py::test_gpu_progressive_freeze_emits_valid_words_and_checkpoints[True]
+  /home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-281-1-invsqrt-port-candidate/.venv/lib/python3.13/site-packages/torch/_inductor/compile_fx.py:282: UserWarning: TensorFloat32 tensor cores for float32 matrix multiplication available but not enabled. Consider setting `torch.set_float32_matmul_precision('high')` for better performance.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_run_notebook.py:8: could not import 'nbformat': No module named 'nbformat'
+SKIPPED [1] tests/test_fit_jax.py:71: set VQCC_STARTER, VQCC_COMPETITION and VQCC_PUBLIC_FACTOR for pinned integration test
+SKIPPED [1] tests/test_fit_jax_driver.py:75: opt in with VQCC_RUN_JAX_SMOKE=1; runs GPU fit and full circuit cascade
+============ 421 passed, 3 skipped, 1 warning in 144.47s (0:02:24) =============

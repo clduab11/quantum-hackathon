@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "python": "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-281-1-invsqrt-port-candidate/.venv/bin/python3",
+  "environment": {
+    "PYTHONHASHSEED": "0",
+    "VQCC_DATA": "empty declared-input staging directory",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  },
+  "rebuilds": [
+    {
+      "rebuild": 1,
+      "generator_commit": "6babc95e1ed3a61d399ac2a5e3643d023b635ae3",
+      "command": "python -m tasks.invsqrt.public_port.generate --out /tmp/paperclip-run-pra-284-1ec0b9d6-dde-0yl0qV/pra284-rebuild-01e6ml6_/out-1",
+      "clean_worktree": "/tmp/paperclip-run-pra-284-1ec0b9d6-dde-0yl0qV/pra284-rebuild-01e6ml6_/worktree-1",
+      "declared_inputs": [],
+      "exit_code": 0,
+      "sha256": "17fc223d79d3f1f15ef448389072209972b373403dd0a45352f4fe7eaff541ad",
+      "bytes": 255914,
+      "integer_mirror": {
+        "passed": true,
+        "tested_inputs": 3133452,
+        "worst_ratio": 0.9499016330834485,
+        "worst_x": 763987,
+        "min_margin_units": 31510146,
+        "first_bad_x": null
+      },
+      "phase": {
+        "phase_match": true,
+        "inputs": 3133452
+      },
+      "final": {
+        "qubits": 84,
+        "static_toffoli": 1564,
+        "expected_toffoli": 1553.0,
+        "t_like": 1,
+        "rotations": 44
+      }
+    },
+    {
+      "rebuild": 2,
+      "generator_commit": "6babc95e1ed3a61d399ac2a5e3643d023b635ae3",
+      "command": "python -m tasks.invsqrt.public_port.generate --out /tmp/paperclip-run-pra-284-1ec0b9d6-dde-0yl0qV/pra284-rebuild-01e6ml6_/out-2",
+      "clean_worktree": "/tmp/paperclip-run-pra-284-1ec0b9d6-dde-0yl0qV/pra284-rebuild-01e6ml6_/worktree-2",
+      "declared_inputs": [],
+      "exit_code": 0,
+      "sha256": "17fc223d79d3f1f15ef448389072209972b373403dd0a45352f4fe7eaff541ad",
+      "bytes": 255914,
+      "integer_mirror": {
+        "passed": true,
+        "tested_inputs": 3133452,
+        "worst_ratio": 0.9499016330834485,
+        "worst_x": 763987,
+        "min_margin_units": 31510146,
+        "first_bad_x": null
+      },
+      "phase": {
+        "phase_match": true,
+        "inputs": 3133452
+      },
+      "final": {
+        "qubits": 84,
+        "static_toffoli": 1564,
+        "expected_toffoli": 1553.0,
+        "t_like": 1,
+        "rotations": 44
+      }
+    }
+  ]
+}
