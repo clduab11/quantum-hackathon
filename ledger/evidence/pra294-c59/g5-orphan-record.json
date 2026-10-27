@@ -1,0 +1,96 @@
+{
+ "details": {
+  "rebuild": {
+   "commit": "3a2108bef6665fce353aeefa979ccfc99eecc3d9",
+   "copied_inputs": {},
+   "inputs": {
+    "8229861b3ee22316e144c900737dfc54f7a30ea88de77ff5391f3375d050fa87": "inputs/mrmeows/qcc-1375-v8-C59-submission.npz"
+   },
+   "status": "FAIL: rebuild differs for dfthcsos",
+   "tasks": {
+    "dfthcsos": {
+     "argv": [
+      "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/pra233-chem-c59/.venv/bin/python3",
+      "-m",
+      "tasks.dfthcsos.c59",
+      "--out",
+      "/home/cld-main/work/vqcc-data/pra294-c59/tmp/ledger-rebuild-rnz_wzad/out/dfthcsos"
+     ],
+     "copied": {},
+     "diffs": {
+      "changed": [],
+      "extra": [],
+      "missing": [
+       "dfthcsos/angle_k_0.kmb",
+       "dfthcsos/angle_k_1.kmb",
+       "dfthcsos/angle_k_10.kmb",
+       "dfthcsos/angle_k_11.kmb",
+       "dfthcsos/angle_k_12.kmb",
+       "dfthcsos/angle_k_13.kmb",
+       "dfthcsos/angle_k_14.kmb",
+       "dfthcsos/angle_k_15.kmb",
+       "dfthcsos/angle_k_16.kmb",
+       "dfthcsos/angle_k_17.kmb",
+       "dfthcsos/angle_k_18.kmb",
+       "dfthcsos/angle_k_2.kmb",
+       "dfthcsos/angle_k_3.kmb",
+       "dfthcsos/angle_k_4.kmb",
+       "dfthcsos/angle_k_5.kmb",
+       "dfthcsos/angle_k_6.kmb",
+       "dfthcsos/angle_k_7.kmb",
+       "dfthcsos/angle_k_8.kmb",
+       "dfthcsos/angle_k_9.kmb",
+       "dfthcsos/submission.npz"
+      ]
+     },
+     "identical": false,
+     "returncode": 1,
+     "stderr_tail": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/cld-main/work/vqcc-data/pra294-c59/tmp/ledger-rebuild-rnz_wzad/worktree/tasks/dfthcsos/c59.py\", line 79, in <module>\n  File \"/home/cld-main/work/vqcc-data/pra294-c59/tmp/ledger-rebuild-rnz_wzad/worktree/tasks/dfthcsos/c59.py\", line 75, in main\n  File \"/home/cld-main/work/vqcc-data/pra294-c59/tmp/ledger-rebuild-rnz_wzad/worktree/tasks/dfthcsos/c59.py\", line 62, in generate\n  File \"/home/cld-main/.local/share/uv/python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/shutil.py\", line 260, in copyfile\n    with open(src, 'rb') as fsrc:\n         ~~~~^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/home/cld-main/work/vqcc-data/pra294-c59/tmp/ledger-rebuild-rnz_wzad/package/inputs/mrmeows/qcc-1375-v8-C59-submission.npz'\n"
+    },
+    "dqi": {
+     "argv": [
+      "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/pra233-chem-c59/.venv/bin/python3",
+      "-m",
+      "tasks.dqi.generate_fused",
+      "--out",
+      "/home/cld-main/work/vqcc-data/pra294-c59/tmp/ledger-rebuild-rnz_wzad/out/dqi"
+     ],
+     "copied": {},
+     "diffs": {
+      "changed": [],
+      "extra": [],
+      "missing": []
+     },
+     "identical": true,
+     "returncode": 0,
+     "stderr_tail": "ops\": 59831421, \"seconds\": 85.69334697723389}\n{\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 86.42958116531372}\n{\"path\": \"/home/cld-main/work/vqcc-data/pra294-c59/tmp/dqi-fused-v7i7mi7q/dqi.kmb\", \"sha256\": \"7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6\", \"T_static\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"num_bits\": 107242, \"stages\": [{\"name\": \"mask_projection\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2388214, \"seconds\": 2.955418109893799}, {\"name\": \"initial\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2719156, \"seconds\": 3.708573579788208}, {\"name\": \"extract\", \"T\": 87040, \"cumulative_T\": 87040, \"Q\": 889, \"num_ops\": 9255442, \"seconds\": 12.1523756980896}, {\"name\": \"synthesis\", \"T\": 44654, \"cumulative_T\": 131694, \"Q\": 889, \"num_ops\": 15098735, \"seconds\": 20.216805696487427}, {\"name\": \"convert_lookahead\", \"T\": 69220, \"cumulative_T\": 200914, \"Q\": 889, \"num_ops\": 18094594, \"seconds\": 24.345656633377075}, {\"name\": \"scan\", \"T\": 44275, \"cumulative_T\": 245189, \"Q\": 889, \"num_ops\": 41588664, \"seconds\": 55.96346163749695}, {\"name\": \"unconvert_lookahead\", \"T\": 70342, \"cumulative_T\": 315531, \"Q\": 889, \"num_ops\": 44642141, \"seconds\": 60.955220222473145}, {\"name\": \"unsynthesis\", \"T\": 53803, \"cumulative_T\": 369334, \"Q\": 889, \"num_ops\": 51008234, \"seconds\": 70.69379043579102}, {\"name\": \"unextract\", \"T\": 117997, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59500420, \"seconds\": 84.4753942489624}, {\"name\": \"uninitial\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59831421, \"seconds\": 85.69334697723389}, {\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 86.42958116531372}], \"seconds\": 88.99874758720398, \"scope\": \"STATIC compiled counts include mutually exclusive classical branches; confluent Hermite extraction, zero-power retained-norm synthesis, short-Hankel monic-root guarded h2 conversion, classical mask projection; no verifier cost claimed\"}\n"
+    },
+    "invsqrt": {
+     "argv": [
+      "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/pra233-chem-c59/.venv/bin/python3",
+      "-m",
+      "tasks.invsqrt.public_port.generate",
+      "--out",
+      "/home/cld-main/work/vqcc-data/pra294-c59/tmp/ledger-rebuild-rnz_wzad/out/invsqrt",
+      "--circuit-only"
+     ],
+     "copied": {},
+     "diffs": {
+      "changed": [],
+      "extra": [],
+      "missing": []
+     },
+     "identical": true,
+     "returncode": 0,
+     "stderr_tail": ""
+    }
+   }
+  }
+ },
+ "evidence_sha256": null,
+ "gate": "G5",
+ "reason": "rebuild differs for dfthcsos",
+ "status": "FAIL",
+ "timestamp_utc": "2026-10-27T20:56:11.295502+00:00",
+ "zip_sha256": "f569b107f4136d388636bcdb03f323b5c7483df463a3f8b6d682624de97e7435"
+}

@@ -1,0 +1,27 @@
+{
+  "gates": [
+    {
+      "gate": "G3",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G4",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "gate": "G5",
+      "status": "FAIL",
+      "reason": "EvidenceError: expected exactly one invsqrt circuit, found 0"
+    }
+  ],
+  "seconds": 200.41060422203736,
+  "shipping_problems": [
+    "G5 not cleared on the current zip",
+    "G5 is FAIL, it must PASS"
+  ],
+  "geometric_mean": 18.39393056697713,
+  "zip_sha256": "f569b107f4136d388636bcdb03f323b5c7483df463a3f8b6d682624de97e7435",
+  "generator_commit": "3a2108bef6665fce353aeefa979ccfc99eecc3d9"
+}

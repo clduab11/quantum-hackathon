@@ -1,0 +1,9 @@
+{
+  "gate": "G5",
+  "status": "PASS",
+  "reason": "",
+  "shipping_problems": [],
+  "geometric_mean": 18.39393056697713,
+  "zip_sha256": "f569b107f4136d388636bcdb03f323b5c7483df463a3f8b6d682624de97e7435",
+  "generator_commit": "3a2108bef6665fce353aeefa979ccfc99eecc3d9"
+}
