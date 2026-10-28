@@ -1,0 +1,14 @@
+{
+  "candidate_id": "pra294-c59",
+  "error": "",
+  "kaggle_submission_id": "57747749",
+  "operator": "0da39449-8391-4207-b508-56ca43ec725e",
+  "outcome": "recorded",
+  "reservation_id": "a6e7a5a4-ebb2-400c-a872-560646103257",
+  "reserved_at_utc": "2026-10-28T20:03:25.205855+00:00",
+  "resolved_at_utc": "2026-10-28T20:05:29.268732+00:00",
+  "slot": 1,
+  "submission_id": "submission-010",
+  "utc_day": "2026-10-28",
+  "zip_sha256": "f569b107f4136d388636bcdb03f323b5c7483df463a3f8b6d682624de97e7435"
+}

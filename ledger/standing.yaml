@@ -44,6 +44,7 @@ submission_notes:
   submission-007: "Only change: a much cheaper decoder circuit (dqi)."
   submission-008: "Only change: a much cheaper chemistry circuit (dfthcsos)."
   submission-009: Cheaper decoder (dqi) and square-root (invsqrt) circuits.
+  submission-010: "Only change: a cheaper chemistry circuit (dfthcsos), from a better description of the molecule."
 
 # The public Kaggle notebook, once it is published. null hides the link.
 notebook_url: null
