@@ -1,0 +1,75 @@
+{
+  "task": "PRA-321",
+  "observed_utc": "2026-10-28T23:20:00+00:00",
+  "shipping": {
+    "dataset": "somejoint/qcc-our-chemistry-b143-c60-xor2",
+    "version": 1,
+    "licence": "Apache 2.0",
+    "url": "https://www.kaggle.com/datasets/somejoint/qcc-our-chemistry-b143-c60-xor2",
+    "path": "submission.npz",
+    "staged": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz",
+    "sha256": "aef36d39b83bbbf696e909884218f6c02f067baef14a29de1c41306bc1f6395b",
+    "bytes": 1995236,
+    "last_updated": "2026-10-28T13:11:51.017Z",
+    "shape_RBC": [8, 143, 60],
+    "brot": 8,
+    "angle_words_shape": [1220, 75],
+    "lineage": "SomeJoint research-team factorization, pruned from their (8,154,62) factor to B=143 by exact compensated deletion, rank lowered to 60, requantized to 8-bit words with coded low bits, weights refit with words fixed. The published Apache-2.0 notebook embeds the circuit emitter only; it does not include this fit, so the file is a declared non-circuit input (D-PRA211-05) and is not regenerated."
+  },
+  "kernel": {
+    "notebook": "somejoint/quantum-circuits-22-67-local-gm-full-xor-chem",
+    "url": "https://www.kaggle.com/code/somejoint/quantum-circuits-22-67-local-gm-full-xor-chem",
+    "author": "Agniv Banerjee (SomeJoint)",
+    "kernel_id": 140675727,
+    "version": 18,
+    "script_version_id": 363182923,
+    "source_sha256": "b44fc04a99ab0c18afce4c7d8408ddc079dd8a87957e294d2102494d8d9b001a",
+    "licence": "Apache-2.0 (notebook code; credits cell states the notebook code is Apache-2.0). Dataset licence field Apache 2.0."
+  },
+  "method_sources": [
+    {
+      "file": "emitter.py",
+      "path": "blocks/dfthcsos/team-b143-c60-xor2/source/exp/full_xor/emitter.py",
+      "sha256": "64810f36e4c6dc01f94d2315eb0e9e4f3d1580cab3d29c1e9a977d06431099ce",
+      "ported_to": "tasks/dfthcsos/full_xor/emitter.py"
+    },
+    {
+      "file": "paired_anf.py",
+      "path": "blocks/dfthcsos/team-b143-c60-xor2/source/playbook/exp/staged_b154/paired_anf.py",
+      "sha256": "ecc419266710033469abeaa2fc9c1ed542a3a5cdaf37e9a72c65c4297e67b633",
+      "ported_to": "tasks/dfthcsos/full_xor/paired_anf.py"
+    },
+    {
+      "file": "planio.py",
+      "path": "blocks/dfthcsos/team-b143-c60-xor2/source/playbook/exp/staged_b154/planio.py",
+      "sha256": "f4c4d3d7e9a24c152df57300d5666f7240fddb682da52420b46d061bd5e3b650",
+      "ported_to": "tasks/dfthcsos/full_xor/planio.py"
+    },
+    {
+      "file": "scheduler.py",
+      "path": "blocks/dfthcsos/team-b143-c60-xor2/source/playbook/exp/staged_b154/scheduler.py",
+      "sha256": "1d14b12709aeafb068667d3f48140b9b914b48d7add5e7a1f600aaec30007085",
+      "ported_to": "tasks/dfthcsos/full_xor/scheduler.py"
+    },
+    {
+      "file": "validation_helpers.py",
+      "path": "blocks/dfthcsos/team-b143-c60-xor2/source/playbook/exp/staged_b154/validation_helpers.py",
+      "sha256": "ae776666c53e9181632c77e3d59973fa3809022bb008efb0df5e7b381fa36aac",
+      "ported_to": "tasks/dfthcsos/full_xor/validation.py"
+    },
+    {
+      "file": "build.py",
+      "path": "blocks/dfthcsos/team-b143-c60-xor2/source/build.py",
+      "sha256": "2438a6b9ec82c8cf1f760a5276e2bc55fb669fd87ab8b24835ab1eeb4a86c8a5",
+      "ported_to": "tasks/dfthcsos/b143.py"
+    }
+  ],
+  "plans": {
+    "committed": "tasks/dfthcsos/full_xor/plans.json",
+    "source_dataset_file": "BUILD.json",
+    "source_sha256": "5e28b8fe7ea1b7448d0e1782c7f58d9feae58fdc71318d27c39dd21ee9130c90",
+    "bytes": 465650,
+    "kept": "per circuit: batch, delta_sha256, plan, schedule",
+    "dropped": "circuit bytes, circuit_sha256, source_proof, audit, replay flags. Those are checks or certificates and are not inputs. Expected circuit SHA-256 values live in tasks/dfthcsos/b143.py as assertions."
+  }
+}
