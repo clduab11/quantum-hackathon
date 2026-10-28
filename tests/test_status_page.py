@@ -113,7 +113,7 @@ def test_page_reads_the_ledger_and_the_standing_file(tmp_path: Path):
     assert "invsqrt 13.24 20.06 1.0" in text      # ours, best public, reference
     assert "dqi 54.73 54.73 1.0" in text
     assert "dfthcsos 7.68 8.91 1.0" in text      # latest scored upload (submission-009)
-    assert "waiting for Kaggle" not in text      # every upload so far has a public score
+    assert text.count("waiting for Kaggle") == 1  # submission-010 has no public score yet
     for score in ("1.00000", "2.40948", "5.68935", "6.77899", "10.89339", "11.30048", "13.76646",
                   "16.90171", "17.71949"):
         assert score in text
@@ -141,16 +141,16 @@ def test_page_is_one_plain_screen(tmp_path: Path):
 def test_circuit_draws_the_latest_upload_from_the_ledger(tmp_path: Path):
     page = build(tmp_path / "public").read_text(encoding="utf-8")
     svg = page[page.index("<svg"):page.index("</svg>")]
-    # submission-009: every gate passed on the uploaded zip; G1 and G2 are per circuit.
+    # submission-010: every gate passed on the uploaded zip; G1 and G2 are per circuit.
     assert '<g class="gate pass"><title>G0, all circuits: Passed</title>' in svg
     assert '<g class="gate pass"><title>G2 dqi: Passed</title>' in svg
     assert '<g class="gate pass"><title>G5, all circuits: Passed</title>' in svg
     assert "notrun" not in svg and "fail" not in svg
-    for ratio in (">13.24</text>", ">54.73</text>", ">7.68</text>"):
+    for ratio in (">13.24</text>", ">54.73</text>", ">8.59</text>"):
         assert ratio in svg
     assert svg.count('class="inner"') == 3            # G0, G3, G5 are never waived
     text = _text(page)
-    assert "It shows our latest upload, sent on 27 October 2026. For the latest upload, all six " \
+    assert "It shows our latest upload, sent on 28 October 2026. For the latest upload, all six " \
            "of our automatic checks passed." in text
 
 
