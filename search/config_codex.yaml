@@ -48,7 +48,7 @@ database:
   elite_selection_ratio: 0.1
   exploration_ratio: 0.3
   exploitation_ratio: 0.6
-  feature_dimensions: [q_bin, t_bin]
+  feature_dimensions: [log_toffoli, log_qubits]  # MAP-Elites on log T / log Q (§6.2)
   feature_bins: 10
   log_prompts: true
   max_snapshot_artifacts: null  # OpenEvolve's default (100) is below population_size: parents past the first
@@ -58,7 +58,7 @@ evaluator:
   timeout: 900
   max_retries: 0
   cascade_evaluation: true
-  cascade_thresholds: [0.05, 0.3]
+  cascade_thresholds: [0.05, 0.5]   # stage2 needs a near-feasible sample; feasible band starts at 0.5
   parallel_evaluations: 4       # = concurrent Codex turns and verifier runs (16 cores, 27 GB)
   enable_artifacts: true
   use_llm_feedback: false

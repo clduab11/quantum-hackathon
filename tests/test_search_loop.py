@@ -38,7 +38,7 @@ def test_configs_load_and_install_our_providers(provider, name, parallel):
     assert config.llm.provider == name
     assert config.llm.models and all(m.provider == name for m in config.llm.models)
     assert sum(m.weight for m in config.llm.models) == pytest.approx(1.0)
-    assert config.database.feature_dimensions == ["q_bin", "t_bin"]
+    assert config.database.feature_dimensions == ["log_toffoli", "log_qubits"]
     assert config.database.num_islands == 3 and config.database.migration_interval == 20
     assert config.database.population_size == 200
     assert config.evaluator.cascade_evaluation and config.evaluator.enable_artifacts
@@ -75,17 +75,20 @@ def test_system_message_embeds_discovery_notes():
 
 def test_score_policy_keeps_verified_programs_on_top():
     ev = load("evaluator")
-    assert ev.score_policy(False, None, None, None) == 0.0
+    broken = ev.score_policy(False, None, None, None)
     static_only = ev.score_policy(True, 1.1, None, None)
-    assert ev.STAGE1_THRESHOLD <= static_only < ev.STAGE2_THRESHOLD
-    assert ev.score_policy(True, 1.1, {"status": "FAIL"}, None) < ev.STAGE1_THRESHOLD
     reduced = ev.score_policy(True, 1.1, {"status": "PASS", "ratio": 1.1}, None)
-    assert ev.STAGE2_THRESHOLD <= reduced < 0.7
-    full = ev.score_policy(True, 1.1, {"status": "PASS", "ratio": 1.1}, {"status": "PASS", "ratio": 1.077784})
-    assert full == pytest.approx(1.077784)
-    assert ev.score_policy(True, 1.1, {"status": "PASS", "ratio": 1.1}, {"status": "FAIL"}) < ev.STAGE1_THRESHOLD
-    # the worst verified program still beats the best unverified one down to ratio 0.7
-    assert ev.score_policy(True, 2.0, {"status": "PASS", "ratio": 2.0}, {"status": "PASS", "ratio": 0.7}) > reduced
+    full = ev.score_policy(
+        True, 1.1, {"status": "PASS", "ratio": 1.1},
+        {"status": "PASS", "ratio": 1.077784, "toffoli_count": 93237, "num_qubits": 730, "lambda_eff": 48.0},
+    )
+    assert broken < 0.5
+    assert ev.STAGE1_THRESHOLD <= static_only < 0.5
+    assert reduced < 0.5 <= full
+    assert full <= 1.0
+    # An infeasible candidate never outranks a feasible one.
+    assert max(broken, static_only, reduced) < full
+    assert ev.score_policy(True, 1.1, {"status": "PASS", "ratio": 1.1}, {"status": "FAIL"}) < 0.5
 
 
 def test_promote_selects_best_and_pareto_front():
@@ -167,8 +170,9 @@ def test_evaluator_stage1_scores_the_seed_without_simulating(tmp_path, monkeypat
     metrics = result.metrics
     assert metrics["stage1_passed"] == 1.0 and metrics["stage_reached"] == 1.0
     assert (metrics["q"], metrics["t"]) == (730.0, 93237.0) == (metrics["q_bin"], metrics["t_bin"])
+    assert metrics["log_toffoli"] > 0 and metrics["log_qubits"] > 0
     assert metrics["predicted_ratio"] == pytest.approx(1.0, abs=1e-9)
-    assert ev.STAGE1_THRESHOLD <= metrics["combined_score"] < ev.STAGE2_THRESHOLD
+    assert ev.STAGE1_THRESHOLD <= metrics["combined_score"] < 0.5
     assert "summary" in result.artifacts and "files" in result.artifacts and "g2_proxy" in result.artifacts
     build = ev._BUILDS[str(SEARCH / "initial_program.py")]
     assert build.outdir.exists()
@@ -188,7 +192,7 @@ def test_evaluator_reports_a_crashing_program(tmp_path, monkeypatch):
     monkeypatch.setattr(ev, "factor_config", lambda path=None: {
         "path": tmp_path / "factor.npz", "sha256": "0" * 64, "source_brot": 12, "package_relative_path": "x"})
     result = ev.evaluate_stage1(str(broken))
-    assert result.metrics["combined_score"] == 0.0 and result.metrics["stage1_passed"] == 0.0
+    assert result.metrics["combined_score"] < 0.5 and result.metrics["stage1_passed"] == 0.0
     assert "exited 3" in result.artifacts["summary"] and "boom" in result.artifacts["stderr"]
     assert list((tmp_path / "run" / "evals").glob("*.json")), "a failed evaluation is still recorded"
     assert not list(tmp_path.glob("dfthcsos-eval-*")), "the build directory is removed after a stage-1 failure"
