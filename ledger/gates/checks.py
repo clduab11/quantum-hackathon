@@ -147,9 +147,10 @@ def g5_rebuild_and_provenance(ctx: GateContext) -> dict[str, Any]:
     the zip is the deterministic build of those files, and a clean worktree at
     `generator_commit` regenerates every file byte for byte. The generators see only the
     config's declared `inputs` (staged into an otherwise empty VQCC_DATA); an output that is a
-    byte copy of a declared input is recorded as `copied`: a copied circuit fails the gate, a
-    copied non-circuit input (the declared dfthcsos factorization) is accepted (PRA-211;
-    D-PRA211-01, D-PRA211-05)."""
+    byte copy of a declared input is recorded as `copied`: a copied circuit fails the gate unless
+    it is a `vendored_circuit` byte-identical to its pinned source with a licence-record ticket
+    set (D-PRA341-01). A copied non-circuit input (the declared dfthcsos factorization) is
+    accepted (PRA-211; D-PRA211-01, D-PRA211-05)."""
     manifest = ctx.manifest
     problems = provenance_problems(ctx)
     expected = {t: manifest.tasks[t].files for t in TASKS if t in manifest.tasks}

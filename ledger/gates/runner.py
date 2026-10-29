@@ -11,7 +11,8 @@ Rules the runner enforces:
   waiver is stored in the manifest like any other gate result.
 - A check that raises, or a hook that is not installed, is a FAIL, never a skip.
 - Only a candidate that meets the shipping rule (`RunManifest.shipping_problems`: every gate
-  cleared on the current zip, G0/G3/G5 real PASS, every task measured) enters `ledger/queue/`.
+  cleared on the current zip, G0/G3/G5 real PASS, every task measured, and every
+  `vendored_circuit` carrying a licence-record ticket) enters `ledger/queue/`.
 """
 
 from __future__ import annotations
@@ -34,7 +35,7 @@ from typing import Any
 import yaml
 
 from ledger.archive import UnsafeArchive, safe_extract
-from ledger.benchmark_health import PACKAGE_ROOT, is_circuit
+from ledger.benchmark_health import PACKAGE_ROOT, declared_input_problems
 from ledger.evidence import EVIDENCE_DIR, classify_submission
 from ledger.run_manifest import (
     GATE_IDS,
@@ -148,18 +149,16 @@ def load_config(path: Path = DEFAULT_CONFIG) -> GateConfig:
         raise ValueError(f"{path}: inputs for unknown tasks {sorted(unknown)}")
     for task, entries in inputs.items():
         for entry in entries:
-            rel = str(entry.get("path", ""))
-            if not rel or rel.startswith(("/", "\\")) or ".." in Path(rel).parts:
-                raise ValueError(f"{path}: {task} input path {rel!r} must be relative to the "
-                                 "package root and contain no '..'")
-            if not re.fullmatch(r"[0-9a-f]{64}", str(entry.get("sha256", ""))):
-                raise ValueError(f"{path}: {task} input {rel} needs a 64-hex sha256 pin")
-            if is_circuit(rel):
-                raise ValueError(f"{path}: {task} input {rel} is a circuit file; R10 requires every "
-                                 "submitted circuit to be generated, so a circuit cannot be a "
-                                 "declared input (D-PRA211-05)")
+            found = declared_input_problems(task, entry)
+            if found:
+                raise ValueError(f"{path}: " + "; ".join(found))
     return GateConfig(path=path, gates=gates, salt_label=raw.get("salt_label"),
                       generators=generators, inputs=inputs)
+
+
+def copy_declared_inputs(inputs: dict[str, list[dict[str, Any]]] | None) -> dict[str, list[dict[str, Any]]]:
+    """A detached copy of the config's declared inputs, safe to store on a manifest."""
+    return {task: [dict(entry) for entry in entries] for task, entries in (inputs or {}).items()}
 
 
 def resolve(ref: str) -> Callable[..., Any]:
@@ -299,6 +298,7 @@ def run_pipeline(
     """
     waivers = waivers or {}
     _bind_zip(manifest, zip_path)
+    manifest.declared_inputs = copy_declared_inputs(config.inputs)
     records: list[GateRecord] = []
     with tempfile.TemporaryDirectory(prefix="ledger-gates-") as tmp:
         submission_dir = Path(tmp) / "submission"
@@ -356,6 +356,7 @@ def rerun_gate(
     if not re.fullmatch(r"[0-9a-f]{40}", generator_commit or ""):
         raise ManifestError(f"generator commit {generator_commit!r} is not a clean 40-hex commit")
     _bind_zip(manifest, zip_path)
+    manifest.declared_inputs = copy_declared_inputs(config.inputs)
     # The check reads the generator commit from the manifest it is given; run it on a copy so the
     # recorded manifest keeps its identity and only gains the new record.
     probe = dataclasses.replace(manifest, generator_commit=generator_commit,
