@@ -25,7 +25,7 @@ Zip SHA-256 `a710cab21a8bac7ff552944ca48e8afb4e0fe4c98e0be5fd2e86be32b79c01ac`, 
 
 ## Gates
 
-G0–G4 passed on that zip, then G5 was run again at generator commit `dc7ff66fba1a94fd761680849eb403214b18bd13` (this branch, cut from `origin/main`). `pipeline.json` is that G5 resume: 165.76 seconds, exit 0. The manifest holds all six PASS records. G5 rebuilds invsqrt, dqi and dfthcsos byte for byte. The only copied output is the declared factor. `shipping_problems()` is empty. No waiver.
+G0–G4 passed on that zip, then G5 was run at generator commit `dc7ff66fba1a94fd761680849eb403214b18bd13` (the manifest's `generator_commit`, cut from `origin/main`). `pipeline.json` is that G5 resume: 165.76 seconds, exit 0. The manifest's `generator_commit` is still that revision: a later `rerun` appends a record and does not change the identity. PRA-330 repeated G5 at `ea7d10445b9109ab5104ad79efd2f3f8536222a4` through `ledger.gates.runner`. invsqrt, dqi and dfthcsos rebuilt byte for byte, and the zip SHA-256 did not change. One earlier attempt in a virtualenv without torch appended a G5 FAIL for invsqrt; that record stays as history. The latest G5 is PASS. `shipping_problems()` is empty. No waiver.
 
 ```sh
 TMPDIR=/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp \

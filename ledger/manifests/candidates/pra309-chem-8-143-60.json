@@ -229,6 +229,166 @@
       "status": "PASS",
       "timestamp_utc": "2026-10-29T00:03:33.183484+00:00",
       "zip_sha256": "a710cab21a8bac7ff552944ca48e8afb4e0fe4c98e0be5fd2e86be32b79c01ac"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "ea7d10445b9109ab5104ad79efd2f3f8536222a4",
+          "copied_inputs": {
+            "dfthcsos/submission.npz": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+          },
+          "inputs": {
+            "aef36d39b83bbbf696e909884218f6c02f067baef14a29de1c41306bc1f6395b": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+          },
+          "status": "FAIL: rebuild differs for invsqrt",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "/tmp/pra321-onto-main/.venv/bin/python3",
+                "-m",
+                "tasks.dfthcsos.b143",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp/ledger-rebuild-rj8lwi76/out/dfthcsos"
+              ],
+              "copied": {
+                "dfthcsos/submission.npz": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "/tmp/pra321-onto-main/.venv/bin/python3",
+                "-m",
+                "tasks.dqi.generate_fused",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp/ledger-rebuild-rj8lwi76/out/dqi"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": "831421, \"seconds\": 74.27182030677795}\n{\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 74.9845519065857}\n{\"path\": \"/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp/dqi-fused-4kn9z378/dqi.kmb\", \"sha256\": \"7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6\", \"T_static\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"num_bits\": 107242, \"stages\": [{\"name\": \"mask_projection\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2388214, \"seconds\": 2.56173038482666}, {\"name\": \"initial\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2719156, \"seconds\": 3.172569513320923}, {\"name\": \"extract\", \"T\": 87040, \"cumulative_T\": 87040, \"Q\": 889, \"num_ops\": 9255442, \"seconds\": 10.803564548492432}, {\"name\": \"synthesis\", \"T\": 44654, \"cumulative_T\": 131694, \"Q\": 889, \"num_ops\": 15098735, \"seconds\": 19.35979962348938}, {\"name\": \"convert_lookahead\", \"T\": 69220, \"cumulative_T\": 200914, \"Q\": 889, \"num_ops\": 18094594, \"seconds\": 22.631312131881714}, {\"name\": \"scan\", \"T\": 44275, \"cumulative_T\": 245189, \"Q\": 889, \"num_ops\": 41588664, \"seconds\": 49.65182542800903}, {\"name\": \"unconvert_lookahead\", \"T\": 70342, \"cumulative_T\": 315531, \"Q\": 889, \"num_ops\": 44642141, \"seconds\": 53.52144169807434}, {\"name\": \"unsynthesis\", \"T\": 53803, \"cumulative_T\": 369334, \"Q\": 889, \"num_ops\": 51008234, \"seconds\": 62.17141008377075}, {\"name\": \"unextract\", \"T\": 117997, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59500420, \"seconds\": 73.32725977897644}, {\"name\": \"uninitial\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59831421, \"seconds\": 74.27182030677795}, {\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 74.9845519065857}], \"seconds\": 77.58390474319458, \"scope\": \"STATIC compiled counts include mutually exclusive classical branches; confluent Hermite extraction, zero-power retained-norm synthesis, short-Hankel monic-root guarded h2 conversion, classical mask projection; no verifier cost claimed\"}\n"
+            },
+            "invsqrt": {
+              "argv": [
+                "/tmp/pra321-onto-main/.venv/bin/python3",
+                "-m",
+                "tasks.invsqrt.public_port.generate",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp/ledger-rebuild-rj8lwi76/out/invsqrt",
+                "--circuit-only"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": [
+                  "invsqrt.kmb"
+                ]
+              },
+              "identical": false,
+              "returncode": 1,
+              "stderr_tail": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp/ledger-rebuild-rj8lwi76/worktree/tasks/invsqrt/public_port/generate.py\", line 99, in <module>\n    main()\n    ~~~~^^\n  File \"/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp/ledger-rebuild-rj8lwi76/worktree/tasks/invsqrt/public_port/generate.py\", line 88, in main\n    fitted = fit_tables()\n  File \"/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp/ledger-rebuild-rj8lwi76/worktree/tasks/invsqrt/public_port/fit.py\", line 105, in fit_tables\n    visit(e, group, group_bits)\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp/ledger-rebuild-rj8lwi76/worktree/tasks/invsqrt/public_port/fit.py\", line 82, in visit\n    fit = fit_group(e, group, bits, fraction_bits)\n  File \"/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp/ledger-rebuild-rj8lwi76/worktree/tasks/invsqrt/public_port/fit.py\", line 18, in fit_group\n    import torch\nModuleNotFoundError: No module named 'torch'\n"
+            }
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "rebuild differs for invsqrt",
+      "status": "FAIL",
+      "timestamp_utc": "2026-10-29T02:46:09.465604+00:00",
+      "zip_sha256": "a710cab21a8bac7ff552944ca48e8afb4e0fe4c98e0be5fd2e86be32b79c01ac"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "ea7d10445b9109ab5104ad79efd2f3f8536222a4",
+          "copied_inputs": {
+            "dfthcsos/submission.npz": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+          },
+          "inputs": {
+            "aef36d39b83bbbf696e909884218f6c02f067baef14a29de1c41306bc1f6395b": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+          },
+          "status": "PASS",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-308-p3-take-the-top-spot-on-the-vqcc-leaderboard-overrides-all-other-work/.venv/bin/python",
+                "-m",
+                "tasks.dfthcsos.b143",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp/ledger-rebuild-db4pnlfl/out/dfthcsos"
+              ],
+              "copied": {
+                "dfthcsos/submission.npz": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-308-p3-take-the-top-spot-on-the-vqcc-leaderboard-overrides-all-other-work/.venv/bin/python",
+                "-m",
+                "tasks.dqi.generate_fused",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp/ledger-rebuild-db4pnlfl/out/dqi"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": "21, \"seconds\": 76.14228916168213}\n{\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 76.90264821052551}\n{\"path\": \"/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp/dqi-fused-b75iv1tm/dqi.kmb\", \"sha256\": \"7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6\", \"T_static\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"num_bits\": 107242, \"stages\": [{\"name\": \"mask_projection\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2388214, \"seconds\": 3.047168493270874}, {\"name\": \"initial\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2719156, \"seconds\": 3.666491985321045}, {\"name\": \"extract\", \"T\": 87040, \"cumulative_T\": 87040, \"Q\": 889, \"num_ops\": 9255442, \"seconds\": 12.029516696929932}, {\"name\": \"synthesis\", \"T\": 44654, \"cumulative_T\": 131694, \"Q\": 889, \"num_ops\": 15098735, \"seconds\": 21.147730588912964}, {\"name\": \"convert_lookahead\", \"T\": 69220, \"cumulative_T\": 200914, \"Q\": 889, \"num_ops\": 18094594, \"seconds\": 24.729207515716553}, {\"name\": \"scan\", \"T\": 44275, \"cumulative_T\": 245189, \"Q\": 889, \"num_ops\": 41588664, \"seconds\": 52.77158164978027}, {\"name\": \"unconvert_lookahead\", \"T\": 70342, \"cumulative_T\": 315531, \"Q\": 889, \"num_ops\": 44642141, \"seconds\": 56.601250410079956}, {\"name\": \"unsynthesis\", \"T\": 53803, \"cumulative_T\": 369334, \"Q\": 889, \"num_ops\": 51008234, \"seconds\": 64.4450900554657}, {\"name\": \"unextract\", \"T\": 117997, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59500420, \"seconds\": 75.24105429649353}, {\"name\": \"uninitial\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59831421, \"seconds\": 76.14228916168213}, {\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 76.90264821052551}], \"seconds\": 80.69478106498718, \"scope\": \"STATIC compiled counts include mutually exclusive classical branches; confluent Hermite extraction, zero-power retained-norm synthesis, short-Hankel monic-root guarded h2 conversion, classical mask projection; no verifier cost claimed\"}\n"
+            },
+            "invsqrt": {
+              "argv": [
+                "/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-308-p3-take-the-top-spot-on-the-vqcc-leaderboard-overrides-all-other-work/.venv/bin/python",
+                "-m",
+                "tasks.invsqrt.public_port.generate",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra309-chem-8-143-60/tmp/ledger-rebuild-db4pnlfl/out/invsqrt",
+                "--circuit-only"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-29T02:49:51.621415+00:00",
+      "zip_sha256": "a710cab21a8bac7ff552944ca48e8afb4e0fe4c98e0be5fd2e86be32b79c01ac"
     }
   ],
   "generator_commit": "dc7ff66fba1a94fd761680849eb403214b18bd13",
@@ -238,7 +398,7 @@
   "kickmix_build_id": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
   "kind": "candidate",
   "manifest_id": "7c068b3b-12f2-4778-8634-a40938e625ad",
-  "notes": "PRA-321: submission-010 (pra294-c59) with only the dfthcsos/ files changed to the (8,143,60) factor through the full-XOR J=5 compiler. No salt/seed search or upload.",
+  "notes": "PRA-321: submission-010 (pra294-c59) with only the dfthcsos/ files changed to the (8,143,60) factor through the full-XOR J=5 compiler. No salt/seed search or upload.\nPRA-330: G5 repeated after the explicit checks. The manifest generator_commit is unchanged.\nPRA-330: G5 repeated with the torch 2.8.0+cu128 interpreter after the explicit checks. The manifest generator_commit is unchanged.",
   "operator": "cfe42116-9aed-4126-8b82-54476465d7fc",
   "parent_candidate_id": "pra294-c59",
   "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64",
