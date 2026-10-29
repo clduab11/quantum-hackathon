@@ -1,0 +1,14 @@
+{
+  "gates": [
+    {
+      "gate": "G5",
+      "status": "PASS",
+      "reason": ""
+    }
+  ],
+  "seconds": 165.76219231501454,
+  "shipping_problems": [],
+  "geometric_mean": 19.205727125145224,
+  "zip_sha256": "a710cab21a8bac7ff552944ca48e8afb4e0fe4c98e0be5fd2e86be32b79c01ac",
+  "generator_commit": "dc7ff66fba1a94fd761680849eb403214b18bd13"
+}
