@@ -1,0 +1,729 @@
+{
+  "dataset_url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits/versions/8",
+  "version": 8,
+  "retrieved_utc": "2026-10-28",
+  "metadata_endpoint": "https://www.kaggle.com/api/v1/datasets/view/mrmeows/qcc-1375-open-circuits",
+  "listing_endpoint": "https://www.kaggle.com/api/v1/datasets/list/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=8",
+  "download_endpoint": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/{URL-encoded-path}?datasetVersionNumber=8",
+  "license_field": "Apache 2.0",
+  "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+  "package_prefix": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/",
+  "purpose": "Read-only source audit. These files are not a shipping generator or declared build inputs. Only LICENSE is copied into this evidence directory.",
+  "files": [
+    {
+      "upstream_path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "upstream_path": "README.md",
+      "sha256": "16b07a0773d3d078c2ebf27d87ba9aaa7ed7319906630fa4d6f182ea13f2225d",
+      "bytes": 27710
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/README.md",
+      "sha256": "1b9075eed6f2309ecd774e24c9b80cd6ff9d7ee24d12e9ab287586f4c3f1b7e4",
+      "bytes": 7396
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/build_config.json",
+      "sha256": "2d406a9fb7099e1bfcf4f4a3adbd5a71de5c41a55d05faadc75857269bc9d001",
+      "bytes": 594
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/generate.py",
+      "sha256": "7cda70050c4aaef6fb4e6f5090d21b59d06f115a847f6fd6bf701d96862f5599",
+      "bytes": 10000
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/README.md",
+      "sha256": "6ff0ce9227031aa6ca3ee1904046b01721ab230d2db73abdb7ff49a885e50bcf",
+      "bytes": 6956
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/affine_reduce.py",
+      "sha256": "5028fd072c67f0f3ab53ba74a42272d9d987451f38ad318167d1a03661d0f361",
+      "bytes": 2369
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/apply_curvature52_to_pass12.py",
+      "sha256": "b578e70bc439735b50b3318486ce30b18536e7ad2d8baeb4ac37b30cb76ce1c5",
+      "bytes": 5056
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/audit_front_phase_clean_global.py",
+      "sha256": "aa58d7aae909b78dcef235949d0d89c3c7f1768d1a936065270bdaccd7cfecdd",
+      "bytes": 2822
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/audit_physical_frontier.py",
+      "sha256": "32c0e227700a3407ed4544fedbaccb9e6acb271fb132384a3826a8882bd75f15",
+      "bytes": 2442
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/build_guard_e1_phase.py",
+      "sha256": "206a0777eed981d27986a580c35aa5df70c22d02a8bd1a471367008583dfb40e",
+      "bytes": 5835
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/build_norm_gray_prefix.py",
+      "sha256": "c6df2a297d384015449992520b7d065f97727fe2cd73dd3fa7983c6863302687",
+      "bytes": 7276
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/build_partial_merge.py",
+      "sha256": "3e41fa50701f903ce1dcf53cfa883bf80f80603bced10826870422950556bc6c",
+      "bytes": 6141
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/build_retained_seed_phase7.py",
+      "sha256": "3d72974963a5a5d06ffa2e80a7c7b2f00ffee58448417161743d5f4ab52071a6",
+      "bytes": 6648
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/cache_late_curvature.py",
+      "sha256": "20de2ea634af727e5d60bfb41fd26a08e25de4b02a9c4d23418ae85c7cf06b79",
+      "bytes": 3774
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/cache_normalization_prefixes.py",
+      "sha256": "f1adc808a4b656b6de4290033d715faece346d8d14120bf69b8372093a114690",
+      "bytes": 7503
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/cache_normalization_sequential.py",
+      "sha256": "650e3cfa8e47f2668cb7f8c443b2a4f38be885ec185a638c6c5c5f796dfd798b",
+      "bytes": 6605
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/compose_phase_clean_front.py",
+      "sha256": "52b2e58b2ac1297ad799ec5c51724ab358f98c3074ccb93413af93d8e3c47835",
+      "bytes": 3986
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/exact_phase_ledger.py",
+      "sha256": "2b99474bbf9ddf2032266b26f51f448d4663759a839cac007e99aa5ab02993b0",
+      "bytes": 2082
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/factor_deferred_product.py",
+      "sha256": "4c8abbb8bef6cb1fe724644faf9609b876599a6c3e8be3a4434fe70c70bec605",
+      "bytes": 9519
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/factor_late_curvature.py",
+      "sha256": "5e23d8e3ee2d11d1977ad1313ba07718d03fde9c14ea4ae259667521979aad5a",
+      "bytes": 8002
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/fit_phase.py",
+      "sha256": "faf5db6b3273a79077739e6cd5e84d92034f08f44e1d2cbf639d3351a036ae8b",
+      "bytes": 4470
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/partial_merge_probe.py",
+      "sha256": "a773c17933b0879809010669ef05a29fa7e822b5639024f82ec1085d8ed6cdcb",
+      "bytes": 2371
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/recode_low_phase_bit.py",
+      "sha256": "ee6fc02f3214936b7ff2d1311838596885faae85462e0806f8da65b40a93fd9c",
+      "bytes": 7151
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/replay_frontier_component.py",
+      "sha256": "49cdbdbcc485da1a933a538494b88e3396de96c90b8e876cd2c4f6b6533b5ac5",
+      "bytes": 5735
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/replay_history.py",
+      "sha256": "11b224236cc3b2c334980b9b773187fb11f2030db6c20f55cffb029066954ccc",
+      "bytes": 2374
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/replay_norm_gray_prefix.py",
+      "sha256": "be28575fbb9a432b64f14930188804ff6cd875bef71198ac6040c173a63bd6ac",
+      "bytes": 5934
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/search_universal_quadratic_basis.py",
+      "sha256": "ca8207f65f292537c296b6506364b88614a56024c07addc223f51bd19d850a1c",
+      "bytes": 2910
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/trim_partial_tail.py",
+      "sha256": "c4634df1d807e3b5e1a9b8d411de7ad4d0519951c0b56e044bbdf227aeab2561",
+      "bytes": 3272
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/generate.py",
+      "sha256": "f79d87c988629a61137e5b96fe7070dbb56fa47523b52c2801695c05f2065309",
+      "bytes": 4993
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/README.md",
+      "sha256": "915d69a9ee94eeabed356aea21265431af0d810537e65de88492add4334c3b0d",
+      "bytes": 5825
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/README.txt",
+      "sha256": "e980864a9f91a4b64b5e25c69484d825d53b89476a19e2c1c3dd0ff2dba4c25f",
+      "bytes": 5114
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/build_config.json",
+      "sha256": "0752ed60eef19cb1b0948f18672b0f660a016cab10d4485d67a3c28425c09713",
+      "bytes": 27168
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/dirty_complement.py",
+      "sha256": "51823b08087d5f5847b838f0369b0f1532d602155eb5634e0d510e6e5c49f620",
+      "bytes": 3432
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/exact_opt.py",
+      "sha256": "a92136af517dd2397f79e292f4a5b8fb0864e8ac1e351cf98f7b24da62da8af7",
+      "bytes": 8194
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/merge_products.py",
+      "sha256": "ff539007348e6054acae3c2205aab4b57aa2a6d9e97a22ca5ebc65231950bd5e",
+      "bytes": 4847
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/phase_extra_park_probe.py",
+      "sha256": "3b5ee95cf05ce9a129c507c30f6e2f0a9bb870f2b1c5ae5b204c2f4338114587",
+      "bytes": 5025
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/phase_flag_stream.py",
+      "sha256": "9310380129e1b2d8b7e5a7ed76753bf346a1335c5233a0dfb42128b184101ac7",
+      "bytes": 3143
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/phase_idle_park.py",
+      "sha256": "db94a8af1c5e1744c33f231e9349968e5dd4e26f85e31f315aaf084c19393023",
+      "bytes": 3065
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/phase_idle_relations.py",
+      "sha256": "760321ac81e778be4c9ff8f8652d1d9fd97badb2f2ee5fc661f1ef8cac14b2d4",
+      "bytes": 4157
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/phase_mux_stream.py",
+      "sha256": "a7775e97f17c1859e7adcfa1a708a008af86096333883b9d7753398637e2dc29",
+      "bytes": 5175
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/phase_rank_park_probe.py",
+      "sha256": "0b189db1cbf12f031d5d690257816f3ba53f05af0f37a35796e18478ebc927ee",
+      "bytes": 6947
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/transvection_probe.py",
+      "sha256": "f4121528f2c55ceeea60777abdc093593a8efa8247b1eed5c732158a63137185",
+      "bytes": 956
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/generate.py",
+      "sha256": "59678abdf7c10976724318e77fd0fb6f9fbe216ea0c0a229a7418952884b8cd8",
+      "bytes": 3397
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/official/invsqrt/verify_submission_invsqrt.py",
+      "sha256": "ddef520dec6b68d1cf0a6f328ddd36d79eb84570b9192cf3f7acaf073f06733a",
+      "bytes": 17210
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/analyze_features.py",
+      "sha256": "f7ee832231549ccdf9ce2bc43230f6a1a9fff43c714b58d61a7846079d1782e3",
+      "bytes": 645
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/build_memory_candidate.py",
+      "sha256": "0b18e94d4221b9fb7ee01468bb472de77698e3c456d7c41c12d691785a1d7efd",
+      "bytes": 4344
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/build_true76_raw.py",
+      "sha256": "dc84ccc40f0ca648b65b871cd02868e0b093446eb33c91910e63b7d1fee899d1",
+      "bytes": 3673
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/collapse_affine_tail.py",
+      "sha256": "91a719d9db8a91e1796a76eddfc17b10d8825f2e2dcef59f5cea845fb77f4110",
+      "bytes": 3338
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/collect_phase.py",
+      "sha256": "c213329d24cb1e3312ffc40108321540de08cb816cc3b7ae315b6d17f8c2c9c4",
+      "bytes": 786
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/controlled_s.py",
+      "sha256": "ae87b9adc5eb3af10e9972ffcaa68a1736aa8def5b6ad0dc3f6a2aaea2343cbc",
+      "bytes": 1509
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/deferred_carries.py",
+      "sha256": "9e13167b71fee5dbe14f1a603f94a2d34bd8b2c575040354f738e9e1d7c6c971",
+      "bytes": 4667
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/dual_probe.py",
+      "sha256": "675c5d34ad072447c41e4a00d594134ac7f168c67911a63313c2af40c43ca8b3",
+      "bytes": 1173
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/extra_features.py",
+      "sha256": "57da96a355e9ab1f8486f049a896f61bcae2dd28638c275ded9d687f714a0fff",
+      "bytes": 1589
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/fix_frontier75.py",
+      "sha256": "f9563f54a16bcd0de7df03d3c638ec3c762b22e3ff67b8cba028f5852f2ef27b",
+      "bytes": 1828
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/parity_search.py",
+      "sha256": "5cd67215e9e901cb0281d9e2ec8d0f67d7af4f4a9da4e6724a1ffcaf70a7314a",
+      "bytes": 1660
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/probe_lp.py",
+      "sha256": "ce0b3ad607da70b68ea1e30ad31d01b0bc961ea113fbd7a9916ceac42da5c7cf",
+      "bytes": 942
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/rotation_calibration.py",
+      "sha256": "d78e82b9682c3eb76ad93bf9c24118acd2051d07a0eae33bde0e24846f7893c4",
+      "bytes": 9096
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/split_carries.py",
+      "sha256": "d2d31ef604177a7574165ebbdf6a910f632186e4788e551568644f0de6983ef9",
+      "bytes": 6252
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/split_carries_multi.py",
+      "sha256": "4f4d5af713e540e2ca819653dba406dc606b027b12e10e907baa36cf0d75d9cb",
+      "bytes": 4575
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/stream_carries.py",
+      "sha256": "42e006a87815c9b59cdda9815c6831a7faf3923f4f6d8eddefd6306ad2c4e9de",
+      "bytes": 3813
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/tail_erase.py",
+      "sha256": "6b583a3eb5825329aab6f20e3605e93454a0729375d8d8203a00378b508c270f",
+      "bytes": 6742
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/tail_product_probe.py",
+      "sha256": "73d52915567a531259e44e79c9709e4b7a83e1f007614a9a93d969b821b02deb",
+      "bytes": 3886
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base19_README.txt",
+      "sha256": "9b665858e765df80b7c9bfd0930778a166d45b3cdcc1034b8d730c89872fa176",
+      "bytes": 5648
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base19_build_config.json",
+      "sha256": "62cbbe976854111ea498ff851a477db114aecec43a26cd906559e036e53f0414",
+      "bytes": 3077
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base19_generate.py",
+      "sha256": "973ea1ff5a75141228e7abfe39ba83f6accd29f29ed7bc35c77dc33d4204737b",
+      "bytes": 7556
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base19_official_full_verify.json",
+      "sha256": "fa228d8617056aadebaf24d1b6f3648ee5b8002f4ba8a49cda59deaf83333a6f",
+      "bytes": 505
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base19_reproduction.json",
+      "sha256": "0e7b59b69a2d73f6ffc711a0d7b099614c2603ab0bceae8b500ded8e6c5e3bad",
+      "bytes": 3303
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base19_reproduction.log",
+      "sha256": "f6aa94f09cf3e01589ef04988e21428ca3eed79fcbe40e38b7e716e33b23ca2d",
+      "bytes": 2052
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_MANIFEST.json",
+      "sha256": "0eebade45e26d07abca7979bc9b872c902a50722f0b9b149296d4b660b66a642",
+      "bytes": 40176
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_README.txt",
+      "sha256": "02d418cc1694749184003c67cad57bca6a9ae6f1c82ee01b3973ee8f9a7bda0c",
+      "bytes": 4883
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_build_config.json",
+      "sha256": "05572934a2302e0a8120bf4e882cafbd8a0f9bff8794f8200426c2a7c6ed63d9",
+      "bytes": 13763
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_generate.py",
+      "sha256": "59678abdf7c10976724318e77fd0fb6f9fbe216ea0c0a229a7418952884b8cd8",
+      "bytes": 3397
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_official_full_verify.json",
+      "sha256": "917431bfd8b9e7ae59135bb68aceb6007ddded9ffe7b9c9d0de89c9b4869026c",
+      "bytes": 505
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_reproduction.json",
+      "sha256": "dff76e329439567f352b2ef8feb37227957cdc4df20dde9988ac18d51f874da2",
+      "bytes": 3811
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_reproduction.log",
+      "sha256": "c87168841fc2da5397cb660df72f670ff17d15f9b80cca7729fb6aee5bbd97a8",
+      "bytes": 2391
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_MANIFEST.json",
+      "sha256": "309db29520aee6b5c677bec296657d19b9f4a1bc0b666b6bc9ab527e07fd842c",
+      "bytes": 47550
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_README.txt",
+      "sha256": "f9f395a1ffa5c8063d5529121098f5368ece926fa7fad8d7e25af6eebe9bd3e2",
+      "bytes": 5560
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_build_config.json",
+      "sha256": "da0d5d1918e74b5d3c7369f4f6a32634f65970f86f98179cf5aee746f7166086",
+      "bytes": 25565
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_generate.py",
+      "sha256": "59678abdf7c10976724318e77fd0fb6f9fbe216ea0c0a229a7418952884b8cd8",
+      "bytes": 3397
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_official_full_verify.json",
+      "sha256": "647aeeb4f642deb2e0d89ff6c87a9d6d99334fe87caf710f1aa58b5d991be0d0",
+      "bytes": 504
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_official_full_verify.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_reproduction.json",
+      "sha256": "ac1b2a88055b4cc85562b2de60e22b25d7de3f81535178bd629bcd025fcd87b2",
+      "bytes": 5965
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_reproduction.log",
+      "sha256": "c6f01b20addefc0e10de27f0aba25fc32ca59f0852761b6d57c501397a6961b8",
+      "bytes": 1148
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qrom/banked_anf.py",
+      "sha256": "b19cf5148abfdd4be4f5c06a80a0ec4f621f87fbbad7c29204349eec00eb7e27",
+      "bytes": 3536
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qrom/compact_conditions.py",
+      "sha256": "486a92aa7638808231c973e708b5392f2feefcb139aece8bb511b151f1cd0511",
+      "bytes": 943
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qrom/dirty_leaf.py",
+      "sha256": "4ec7245c09d35ef609251a0e89df4443b32a19a8d3b8c040bef491b25bfc5564",
+      "bytes": 1908
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qrom/extract.py",
+      "sha256": "8e3d0c1da66f44d1977b203ade172e0053c9deb0a07e879dfde36accda56c4eb",
+      "bytes": 1234
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qrom/public_rotation_source.py",
+      "sha256": "44c355e49cdf7566121562dae25a68cc12173aff50acb980ac7e1486a8e372f7",
+      "bytes": 20098
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qrom/reduce_tail_workspace.py",
+      "sha256": "a1cd9dba348f34bc00660ac74fff5cae9343b441c086ad6a3ce8a0a652001881",
+      "bytes": 2210
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/cache_products.py",
+      "sha256": "2a716d9fe64261b048895bcdfc2297448e54e97451527551f61b11d24281bbd3",
+      "bytes": 3111
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/cache_products_general.py",
+      "sha256": "490ea6ebcb0e8751fb06e0153219c287c9a840cb9c424d6359982f64da62ee47",
+      "bytes": 4888
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/cache_products_greedy.py",
+      "sha256": "56c81a77e697424365e70a2c146f5ec6c1bb82e7ebd7ff4f589fd4f5ab2ad325",
+      "bytes": 2303
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/complete_cap77.py",
+      "sha256": "28d17a23a20cb67a98179aa262c2abd60ab5b56c5312eec5ca387d49e8c1a358",
+      "bytes": 1627
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/curvature_arbitrary_product.py",
+      "sha256": "81eea68544c28aba0a9c9c3058a81a19a9c1f8ba771b00e05356f74dd7c185b2",
+      "bytes": 2236
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/curvature_joint_search.py",
+      "sha256": "cab5bf24019142183750c7948f7acc010df014fbd7cd2c2b5d7bb1440d1d4d0a",
+      "bytes": 1731
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/curvature_relations.py",
+      "sha256": "fdaf08130511b333d23b5cc6c95ebf85cb54de722d0bf32ffaf68ce10dba8b11",
+      "bytes": 2010
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/curvature_two_products.py",
+      "sha256": "c3e2be2f9163174962faad5b51334138f85c1249776d5ba09022c9613826644d",
+      "bytes": 682
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/find_majority.py",
+      "sha256": "7286164022a175d6ab04001572b170625de060370a47125500dc3bf471f53b59",
+      "bytes": 1240
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/hoist_measurements.py",
+      "sha256": "82fcc04e3e476924ee96583dbc6b6f077bbed2ed4b596d1330ac2ee7e199a8fc",
+      "bytes": 1855
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/implicit_curvature.py",
+      "sha256": "dfbde978ebd736166466ee030ecbd6499077183badd5eac69097a19b5b3293c4",
+      "bytes": 6030
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/implicit_highword.py",
+      "sha256": "3cdc1d9d4923636d5750285b8804317846ac121d899410cd910b483d2c4d2fe4",
+      "bytes": 3337
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/lifetime.py",
+      "sha256": "08ae21c5e171fb1e9793e776791c288792e0cafec9ba30bd574d606e20c53957",
+      "bytes": 872
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/optimize_memory.py",
+      "sha256": "d9f68c987a6f9b07a2c33cc5caf08d92eef01f9308a30ecae0a1b65ea6d8ef9a",
+      "bytes": 5270
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/park_coeff.py",
+      "sha256": "897824501e7a00c6a9a9fbc1076649effa164386537837e2613d552d9a5b3f46",
+      "bytes": 1096
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/park_coeff_two.py",
+      "sha256": "ae1544962103f5cb54bf5a42d4aa040dc78c99868e9a5287c696a6d1c1a7a333",
+      "bytes": 1239
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/park_xor_products.py",
+      "sha256": "965a70ea189790a687727ba8f749b07967d7a415f5686a58bb6768c7f3ccb368",
+      "bytes": 895
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/repeated_products.py",
+      "sha256": "f713bf7167cc8fc2b2481e94eed4090b2cbca6b366f1c75c08a811b329f85bf1",
+      "bytes": 1383
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/symbolic.py",
+      "sha256": "3ccb2fe3021ba8673ddf622f0044ac8f9058da8391f3a2ced2f57c51c42fb006",
+      "bytes": 2977
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/table_analysis.py",
+      "sha256": "df51158bdd9ec51ad68299a65fa23c9026783fc857c1ebcc24110a13e4ee6ef8",
+      "bytes": 1047
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/audit_address_helpers.py",
+      "sha256": "2300c8bdcb98300d09e2d3226d37d57a0248bc52218fcfb1f59b87ca46f8593c",
+      "bytes": 4237
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/build_linear.py",
+      "sha256": "40b715dad9d9fa73cc0b321f1808c37245c41bff9eb9911ccd23707761344c7c",
+      "bytes": 3086
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/build_two_scale.py",
+      "sha256": "a2d8749007da8225719953f1dbb17acd98011af074bae11a05f054fa269037a1",
+      "bytes": 4016
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/check_phase_before_lookup.py",
+      "sha256": "0896a8e25f10a1eca9ff3ce70495cc5c5623fbe1b6827d6db1ec18bbf2defb8a",
+      "bytes": 2689
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/compare_late_controls.py",
+      "sha256": "eea2709fcdc2e69256b6f17ab1b271f1568af0c593a29e2abead958a6144b65d",
+      "bytes": 2212
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/delta_parking_probe.py",
+      "sha256": "d193227740df2b5e79a12d1ad62018c8736df7351394e4ea7687c9b72003b7ea",
+      "bytes": 3814
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/delta_quadratic_probe.py",
+      "sha256": "e34d903173c074b02d1ddd211b41d86de440d40e38a7870a5466845dc7536e1c",
+      "bytes": 2476
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/linear_model.py",
+      "sha256": "8aa5d5b15152c041c48bc4660384265c90306f59e1b5a99a6b24bdc372f51252",
+      "bytes": 2200
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/lookup_flag_park.py",
+      "sha256": "5a96ebeec3ab5d088e17fb1add0bcc399d9f0d3d9c7e4c2f1a28ecc0892fed50",
+      "bytes": 2343
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/lword_early_encoding.py",
+      "sha256": "d437444f978c5c3905b8a51f716f74e94edf27c9579174b38898f3fa0de1cf1d",
+      "bytes": 2519
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/parked_input_allocator.py",
+      "sha256": "0c120473247ad4e8cad0b2f485bb576e01429c34ce10b60d8ae2d81b308e4100",
+      "bytes": 2964
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/phase_address_park.py",
+      "sha256": "9de5fddc65ec331a19c3af4d4b7c0f0fd69ab02e8f7ab00740ef775a11b4c50c",
+      "bytes": 4242
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/phase_cache_evict.py",
+      "sha256": "a49441569a19a9209500efc7c13816b779b14545bd84470ed4132be7fda34708",
+      "bytes": 2943
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/phase_lword_delay.py",
+      "sha256": "f68ca142ebb8dc8e77848e61125b4b1ab2a9d66fbf2b2f794d37f4c78965a028",
+      "bytes": 6041
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/phase_lword_park.py",
+      "sha256": "efc2ac1120d08e187940153121981ee186012cd575a11f08d1fafd429a2d3205",
+      "bytes": 6835
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/qrom_quadratic.py",
+      "sha256": "e3af5489867b0680b1a6c8c1c4b80a9d8a58a47e20ad2877e187fb2bf8742418",
+      "bytes": 4923
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/reference_arithmetic.py",
+      "sha256": "c828f54051099b56f0890a54f7171b38226514599c09b5b137a4f55f25ed4b66",
+      "bytes": 11767
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/two_scale_model.py",
+      "sha256": "c91d28265bdd00a740f5405f4fe7aece4a82865604c420030288ec5396b920e1",
+      "bytes": 3127
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/address_coarse_parity_products.py",
+      "sha256": "f1da9131527e5d90eeddbd7cc81366bbd7d3b5b5876e8e23f831be0ad99b17db",
+      "bytes": 456
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/address_helper_lift.py",
+      "sha256": "bc3448d6b8a3df685dc3cf02b1be270524cdd67530da737aa3833569892e789b",
+      "bytes": 3928
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/address_helper_scratch.py",
+      "sha256": "86253eeda523caba38316d1c73d202eb6c68c7994917959799486bc3820ea5e0",
+      "bytes": 1170
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/carry_save.py",
+      "sha256": "2dbb85d630bb33989788b4a76e2452a87f58a46be300c71768b55f71123e6e5a",
+      "bytes": 2006
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/compressed_curvature_model.py",
+      "sha256": "16ee8b5926414aef5c4e38b8893f25b7ba76c82361f89b8f154522d75575a169",
+      "bytes": 3586
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/cubic_build.py",
+      "sha256": "8895c9dafb153d0ac0df8b72f308f33fd5197f114eedefc68983cd7502cf9e0a",
+      "bytes": 7679
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/cubic_model.py",
+      "sha256": "fd25bc2c077825c6099979d877ac270e162dd0886de16f3e82f8ac4848b2ce1f",
+      "bytes": 3961
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/curvature_cycle_fix.py",
+      "sha256": "340b1e20fa3c1e6c70b60e524b3fae76597d8fbcba4d336ce04081a36fdcb3d5",
+      "bytes": 2237
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/curvature_direct_l2.py",
+      "sha256": "ebd714dde5c3a6a776333a1b0e583b79be0baa05a61c31f42689bc348f16198e",
+      "bytes": 1262
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/curvature_direct_l2_staged.py",
+      "sha256": "d937ec46fd16ae35f380cc514d59faa0eeb366063b3d878fe40c071d3506a344",
+      "bytes": 1245
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/phase_fused.py",
+      "sha256": "a444e784d745f128a78d570bb8cac6edf28024006a271d1f968773bc289b8b6a",
+      "bytes": 3314
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/signed_digit_helpers.py",
+      "sha256": "0066a6b611159b39641f4d38b1eb0e14da67eb13c4c13cc0177b6b27c72ce385",
+      "bytes": 27061
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_phase/l6_exact.py",
+      "sha256": "13fc62c3bb477f0364f12b270ec63d3ca9fd2c8ba76b77b802e6b91d4a8c576d",
+      "bytes": 11623
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/regroup_low_outer.py",
+      "sha256": "ae60083bd62e380aaf1a8e3c6d668a8179c6046f982b40d1bfdfc6189be710ec",
+      "bytes": 11786
+    },
+    {
+      "upstream_path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/generate.py",
+      "sha256": "bda0db6be6fb42668b042b92b24d3a720aa35f13d4271ad4da5198676a7875f8",
+      "bytes": 2981
+    }
+  ]
+}

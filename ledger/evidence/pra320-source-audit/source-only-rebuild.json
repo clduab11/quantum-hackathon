@@ -1,0 +1,14 @@
+{
+  "command": [
+    "uv",
+    "run",
+    "python",
+    "<source-only package>/generate.py",
+    "--build-dir",
+    "<scratch>/source-only-rebuild"
+  ],
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/home/cld-main/work/vqcc-data/pra320/upstream/sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/generate.py\", line 221, in <module>\n    main()\n    ~~~~^^\n  File \"/home/cld-main/work/vqcc-data/pra320/upstream/sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/generate.py\", line 149, in main\n    require_hash(source, CONFIG['source_kmx_sha256'])\n    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/cld-main/work/vqcc-data/pra320/upstream/sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/generate.py\", line 33, in require_hash\n    actual = digest(path)\n  File \"/home/cld-main/work/vqcc-data/pra320/upstream/sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/generate.py\", line 29, in digest\n    return hashlib.sha256(path.read_bytes()).hexdigest()\n                          ~~~~~~~~~~~~~~~^^\n  File \"/home/cld-main/.local/share/uv/python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/pathlib/_abc.py\", line 625, in read_bytes\n    with self.open(mode='rb') as f:\n         ~~~~~~~~~^^^^^^^^^^^\n  File \"/home/cld-main/.local/share/uv/python/cpython-3.13.13-linux-x86_64-gnu/lib/python3.13/pathlib/_local.py\", line 537, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/home/cld-main/work/vqcc-data/pra320/upstream/sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/input/recovered_20p032119.kmx'\n",
+  "scope": "Source-only invocation. No frozen circuit, proof, certificate, SDK copy or angle replay was downloaded as a build input."
+}

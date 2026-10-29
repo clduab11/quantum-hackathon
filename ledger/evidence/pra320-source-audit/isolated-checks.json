@@ -1,0 +1,51 @@
+{
+  "base_commit": "c7ca4659a6a1c342f7a7df683b7cd6fe998efd60",
+  "worktree": "/home/cld-main/work/qh-pra320",
+  "branch": "op-vqcc/pra320-source-audit",
+  "commands": [
+    {
+      "command": "uv sync",
+      "exit_code": 0,
+      "log": "isolated-uv-sync.log"
+    },
+    {
+      "command": "uv run pytest (before SDK path setup)",
+      "exit_code": 1,
+      "result": "7 failed, 417 passed, 11 skipped",
+      "log": "isolated-pytest-before-sdk.log",
+      "cause": "Kickmix unavailable in new-venv subprocess imports; fixed using committed installer; no code changed"
+    },
+    {
+      "command": "uv run python scripts/install_kickmix.py /home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation",
+      "exit_code": 0,
+      "log": "isolated-install-sdk.log"
+    },
+    {
+      "command": "uv run pytest",
+      "exit_code": 0,
+      "result": "424 passed, 11 skipped in 112.62s",
+      "log": "isolated-pytest.log"
+    },
+    {
+      "command": "uv run python -m ledger.registers check",
+      "exit_code": 0,
+      "result": "OK registers: 289 decisions, 8 notice files, legacy index unchanged"
+    }
+  ],
+  "source_audit": [
+    "SOURCE_MAP.json: 143 hashes match",
+    "ADDITIONAL_SOURCE_MAP.json: 363 hashes match"
+  ],
+  "not_checked": [
+    "No new circuit or zip; no candidate full-shot score or G0-G5",
+    "No Kaggle submission"
+  ],
+  "merge_gate": {
+    "command": "uv run python scripts/merge_gate.py --ref mine=HEAD",
+    "exit_code": 1,
+    "tested_head": "20a6de621e73090e8bf8588b213d80b11c1a3462",
+    "result": "120/120 orders conflict at PR #74 in docs/decisions/D-PRA304-01.md; #74 also conflicts directly against main",
+    "handoff": "Draft PR only; final handoff-head report is in the PR body. John-wick routes #74 to its author; whole-queue PASS is required for readiness."
+  },
+  "log_format": "Trailing whitespace normalized in copied failure logs and historical merge report; original files remain in /home/cld-main/work/vqcc-data/pra320/ and the original handoff archive."
+}

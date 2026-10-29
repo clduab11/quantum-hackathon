@@ -1,0 +1,2407 @@
+{
+  "version": 8,
+  "package_prefix": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/",
+  "listing_url": "https://www.kaggle.com/api/v1/datasets/list/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=8",
+  "files": [
+    {
+      "path": "PINS.json",
+      "bytes": 461
+    },
+    {
+      "path": "PROOF.md",
+      "bytes": 1890
+    },
+    {
+      "path": "README.md",
+      "bytes": 2795
+    },
+    {
+      "path": "RESULTS.json",
+      "bytes": 2527
+    },
+    {
+      "path": "SHA256SUMS.json",
+      "bytes": 76486
+    },
+    {
+      "path": "baseline/MANIFEST.sha256",
+      "bytes": 64711
+    },
+    {
+      "path": "baseline/MANIFEST.sha256.json",
+      "bytes": 65007
+    },
+    {
+      "path": "baseline/README.md",
+      "bytes": 3379
+    },
+    {
+      "path": "baseline/build_config.json",
+      "bytes": 554
+    },
+    {
+      "path": "baseline/compiler/affine_reduce.py",
+      "bytes": 2369
+    },
+    {
+      "path": "baseline/compiler/build_partial_merge.py",
+      "bytes": 6141
+    },
+    {
+      "path": "baseline/compiler/cache_late_curvature.py",
+      "bytes": 3774
+    },
+    {
+      "path": "baseline/compiler/cache_normalization_prefixes.py",
+      "bytes": 7503
+    },
+    {
+      "path": "baseline/compiler/cache_normalization_sequential.py",
+      "bytes": 6605
+    },
+    {
+      "path": "baseline/compiler/exact_phase_ledger.py",
+      "bytes": 2082
+    },
+    {
+      "path": "baseline/compiler/history_replay_records.json",
+      "bytes": 181434
+    },
+    {
+      "path": "baseline/compiler/late_curvature_xag.txt",
+      "bytes": 2461
+    },
+    {
+      "path": "baseline/compiler/partial3_cached11.kmb",
+      "bytes": 408176
+    },
+    {
+      "path": "baseline/compiler/partial3_cached11.kmx",
+      "bytes": 525803
+    },
+    {
+      "path": "baseline/compiler/partial3_cached9.kmb",
+      "bytes": 407896
+    },
+    {
+      "path": "baseline/compiler/partial3_cached9.kmx",
+      "bytes": 525447
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_curvature.kmb",
+      "bytes": 407403
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_curvature.kmx",
+      "bytes": 524813
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_curvature.proof.json",
+      "bytes": 1288
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_next.kmb",
+      "bytes": 408303
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_next.kmx",
+      "bytes": 525972
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_normstream.kmb",
+      "bytes": 409453
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_normstream.kmx",
+      "bytes": 527323
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_normstream.proof.json",
+      "bytes": 6886
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass10.kmb",
+      "bytes": 409234
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass10.kmx",
+      "bytes": 527165
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass11.kmb",
+      "bytes": 409554
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass11.kmx",
+      "bytes": 527563
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass12.kmb",
+      "bytes": 409613
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass12.kmx",
+      "bytes": 527642
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass4.kmb",
+      "bytes": 408538
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass4.kmx",
+      "bytes": 526273
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass5.kmb",
+      "bytes": 408687
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass5.kmx",
+      "bytes": 526462
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass6.kmb",
+      "bytes": 408737
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass6.kmx",
+      "bytes": 526530
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass7.kmb",
+      "bytes": 408985
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass7.kmx",
+      "bytes": 526840
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass8.kmb",
+      "bytes": 409080
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass8.kmx",
+      "bytes": 526963
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass9.kmb",
+      "bytes": 409166
+    },
+    {
+      "path": "baseline/compiler/partial3_cached_pass9.kmx",
+      "bytes": 527075
+    },
+    {
+      "path": "baseline/compiler/partial_merge3.kmb",
+      "bytes": 406802
+    },
+    {
+      "path": "baseline/compiler/partial_merge3.kmx",
+      "bytes": 524075
+    },
+    {
+      "path": "baseline/compiler/partial_merge3.proof.json",
+      "bytes": 2421
+    },
+    {
+      "path": "baseline/compiler/partial_merge3_trimmed.kmb",
+      "bytes": 406680
+    },
+    {
+      "path": "baseline/compiler/partial_merge3_trimmed.kmx",
+      "bytes": 523910
+    },
+    {
+      "path": "baseline/compiler/partial_merge3_trimmed.proof.json",
+      "bytes": 777
+    },
+    {
+      "path": "baseline/compiler/partial_merge_probe.py",
+      "bytes": 2371
+    },
+    {
+      "path": "baseline/compiler/replay_history.py",
+      "bytes": 2374
+    },
+    {
+      "path": "baseline/compiler/trim_partial_tail.py",
+      "bytes": 3272
+    },
+    {
+      "path": "baseline/data/high_table.json",
+      "bytes": 4328
+    },
+    {
+      "path": "baseline/data/partial_merge3_fit.json",
+      "bytes": 1733
+    },
+    {
+      "path": "baseline/data/phase_features.json",
+      "bytes": 2657
+    },
+    {
+      "path": "baseline/generate.py",
+      "bytes": 2229
+    },
+    {
+      "path": "baseline/invsqrt.kmb",
+      "bytes": 409453
+    },
+    {
+      "path": "baseline/invsqrt.kmx",
+      "bytes": 527323
+    },
+    {
+      "path": "baseline/official_full_verify.json",
+      "bytes": 506
+    },
+    {
+      "path": "baseline/official_full_verify.stderr",
+      "bytes": 0
+    },
+    {
+      "path": "baseline/proofs/cached_curvature.proof.json",
+      "bytes": 1288
+    },
+    {
+      "path": "baseline/proofs/history_final.proof.json",
+      "bytes": 10013
+    },
+    {
+      "path": "baseline/proofs/normstream.proof.json",
+      "bytes": 6840
+    },
+    {
+      "path": "baseline/proofs/partial_merge3.proof.json",
+      "bytes": 2421
+    },
+    {
+      "path": "baseline/proofs/partial_merge3_trimmed.proof.json",
+      "bytes": 777
+    },
+    {
+      "path": "baseline/proofs/previous_normprefix_official_full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "baseline/reproduction.json",
+      "bytes": 249
+    },
+    {
+      "path": "baseline/reproduction.log",
+      "bytes": 5639
+    },
+    {
+      "path": "baseline/requirements.txt",
+      "bytes": 27
+    },
+    {
+      "path": "baseline/source/MANIFEST.sha256.json",
+      "bytes": 58062
+    },
+    {
+      "path": "baseline/source/README.md",
+      "bytes": 5825
+    },
+    {
+      "path": "baseline/source/baseline/MANIFEST.json",
+      "bytes": 49591
+    },
+    {
+      "path": "baseline/source/baseline/README.txt",
+      "bytes": 5114
+    },
+    {
+      "path": "baseline/source/baseline/build_config.json",
+      "bytes": 27168
+    },
+    {
+      "path": "baseline/source/baseline/certificates/cache64.json",
+      "bytes": 1347
+    },
+    {
+      "path": "baseline/source/baseline/environment.json",
+      "bytes": 195
+    },
+    {
+      "path": "baseline/source/baseline/gate/curvature_table.json",
+      "bytes": 2569
+    },
+    {
+      "path": "baseline/source/baseline/gate/dirty_complement.py",
+      "bytes": 3432
+    },
+    {
+      "path": "baseline/source/baseline/gate/exact_opt.py",
+      "bytes": 8194
+    },
+    {
+      "path": "baseline/source/baseline/gate/merge_products.py",
+      "bytes": 4847
+    },
+    {
+      "path": "baseline/source/baseline/gate/phase_extra_park_probe.py",
+      "bytes": 5025
+    },
+    {
+      "path": "baseline/source/baseline/gate/phase_flag_stream.py",
+      "bytes": 3143
+    },
+    {
+      "path": "baseline/source/baseline/gate/phase_idle_park.py",
+      "bytes": 3065
+    },
+    {
+      "path": "baseline/source/baseline/gate/phase_idle_relations.py",
+      "bytes": 4157
+    },
+    {
+      "path": "baseline/source/baseline/gate/phase_mux_stream.py",
+      "bytes": 5175
+    },
+    {
+      "path": "baseline/source/baseline/gate/phase_rank_park_probe.py",
+      "bytes": 6947
+    },
+    {
+      "path": "baseline/source/baseline/gate/transvection_probe.py",
+      "bytes": 956
+    },
+    {
+      "path": "baseline/source/baseline/generate.py",
+      "bytes": 3397
+    },
+    {
+      "path": "baseline/source/baseline/invsqrt.kmb",
+      "bytes": 404404
+    },
+    {
+      "path": "baseline/source/baseline/invsqrt.kmx",
+      "bytes": 520966
+    },
+    {
+      "path": "baseline/source/baseline/official/invsqrt/verify_submission_invsqrt.py",
+      "bytes": 17210
+    },
+    {
+      "path": "baseline/source/baseline/official/kickmix/LICENSE.txt",
+      "bytes": 11358
+    },
+    {
+      "path": "baseline/source/baseline/official/kickmix/kickmix.so",
+      "bytes": 3220392
+    },
+    {
+      "path": "baseline/source/baseline/official_full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "baseline/source/baseline/official_full_verify.stderr",
+      "bytes": 0
+    },
+    {
+      "path": "baseline/source/baseline/phase/analyze_features.py",
+      "bytes": 645
+    },
+    {
+      "path": "baseline/source/baseline/phase/build_memory_candidate.py",
+      "bytes": 4344
+    },
+    {
+      "path": "baseline/source/baseline/phase/build_true76_raw.py",
+      "bytes": 3673
+    },
+    {
+      "path": "baseline/source/baseline/phase/collapse_affine_tail.py",
+      "bytes": 3338
+    },
+    {
+      "path": "baseline/source/baseline/phase/collect_phase.py",
+      "bytes": 786
+    },
+    {
+      "path": "baseline/source/baseline/phase/controlled_s.py",
+      "bytes": 1509
+    },
+    {
+      "path": "baseline/source/baseline/phase/deferred_carries.py",
+      "bytes": 4667
+    },
+    {
+      "path": "baseline/source/baseline/phase/dual_probe.py",
+      "bytes": 1173
+    },
+    {
+      "path": "baseline/source/baseline/phase/extra_features.py",
+      "bytes": 1589
+    },
+    {
+      "path": "baseline/source/baseline/phase/fix_frontier75.py",
+      "bytes": 1828
+    },
+    {
+      "path": "baseline/source/baseline/phase/parity_search.py",
+      "bytes": 1660
+    },
+    {
+      "path": "baseline/source/baseline/phase/probe_lp.py",
+      "bytes": 942
+    },
+    {
+      "path": "baseline/source/baseline/phase/rotation_calibration.py",
+      "bytes": 9096
+    },
+    {
+      "path": "baseline/source/baseline/phase/split_carries.py",
+      "bytes": 6252
+    },
+    {
+      "path": "baseline/source/baseline/phase/split_carries_multi.py",
+      "bytes": 4575
+    },
+    {
+      "path": "baseline/source/baseline/phase/stream_carries.py",
+      "bytes": 3813
+    },
+    {
+      "path": "baseline/source/baseline/phase/tail_erase.py",
+      "bytes": 6742
+    },
+    {
+      "path": "baseline/source/baseline/phase/tail_product_probe.py",
+      "bytes": 3886
+    },
+    {
+      "path": "baseline/source/baseline/proofs/allocated.build.json",
+      "bytes": 97206
+    },
+    {
+      "path": "baseline/source/baseline/proofs/clean.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "baseline/source/baseline/proofs/deferred.json",
+      "bytes": 5589
+    },
+    {
+      "path": "baseline/source/baseline/proofs/finalized.build.json",
+      "bytes": 149586
+    },
+    {
+      "path": "baseline/source/baseline/proofs/joint.proof.json",
+      "bytes": 424
+    },
+    {
+      "path": "baseline/source/baseline/proofs/lookup.proof.json",
+      "bytes": 172710
+    },
+    {
+      "path": "baseline/source/baseline/proofs/regroup.proof.json",
+      "bytes": 1512
+    },
+    {
+      "path": "baseline/source/baseline/proofs/retimed.json",
+      "bytes": 833
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/allocated.build.json",
+      "bytes": 93911
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/cached.proof.json",
+      "bytes": 87224
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/clean.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/commuted.proof.json",
+      "bytes": 13062
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/composed.proof.json",
+      "bytes": 1235
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/conjugated.proof.json",
+      "bytes": 2081
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/crosscached.proof.json",
+      "bytes": 102436
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/deferred.json",
+      "bytes": 5356
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/finalized.build.json",
+      "bytes": 148354
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/joint.certificate.json",
+      "bytes": 6269
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/joint.proof.json",
+      "bytes": 424
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/joint46_screening_65536.json",
+      "bytes": 500
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/jointlate.proof.json",
+      "bytes": 1057
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/lookup188.proof.json",
+      "bytes": 169724
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/park42.proof.json",
+      "bytes": 1488
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/park44.proof.json",
+      "bytes": 1481
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/phasecached.proof.json",
+      "bytes": 104859
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/phasecarry.proof.json",
+      "bytes": 1175
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/prefix189.certificate.json",
+      "bytes": 208564
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/regroup.proof.json",
+      "bytes": 1512
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/retimed.json",
+      "bytes": 1285
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/selected.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/selected_final.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "baseline/source/baseline/proofs64/sparse.proof.json",
+      "bytes": 1379
+    },
+    {
+      "path": "baseline/source/baseline/proofs_balanced/balanced63_joint16.proof.json",
+      "bytes": 2042
+    },
+    {
+      "path": "baseline/source/baseline/proofs_balanced/balanced_native.proof.json",
+      "bytes": 3698
+    },
+    {
+      "path": "baseline/source/baseline/proofs_balanced/balanced_native_alias.proof.json",
+      "bytes": 5342
+    },
+    {
+      "path": "baseline/source/baseline/proofs_balanced/balanced_native_carries.proof.json",
+      "bytes": 646
+    },
+    {
+      "path": "baseline/source/baseline/proofs_balanced/balanced_native_tail.proof.json",
+      "bytes": 1541
+    },
+    {
+      "path": "baseline/source/baseline/proofs_balanced/balanced_native_zero.proof.json",
+      "bytes": 14942
+    },
+    {
+      "path": "baseline/source/baseline/proofs_balanced/overlap71_rank9.proof.json",
+      "bytes": 3745
+    },
+    {
+      "path": "baseline/source/baseline/proofs_balanced/selected_balanced.kmx.changes.json",
+      "bytes": 191
+    },
+    {
+      "path": "baseline/source/baseline/proofs_decoder5/balanced_decoder5.proof.json",
+      "bytes": 2835
+    },
+    {
+      "path": "baseline/source/baseline/proofs_decoder5/selected_decoder5.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "baseline/source/baseline/provenance/balanced_addon_4_8a0e9f9c2426.json",
+      "bytes": 11323
+    },
+    {
+      "path": "baseline/source/baseline/provenance/balanced_addon_6_63fe584141f2.json",
+      "bytes": 14355
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base19_README.txt",
+      "bytes": 5648
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base19_build_config.json",
+      "bytes": 3077
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base19_generate.py",
+      "bytes": 7556
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base19_official_full_verify.json",
+      "bytes": 505
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base19_reproduction.json",
+      "bytes": 3303
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base19_reproduction.log",
+      "bytes": 2052
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base22_MANIFEST.json",
+      "bytes": 40176
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base22_README.txt",
+      "bytes": 4883
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base22_build_config.json",
+      "bytes": 13763
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base22_generate.py",
+      "bytes": 3397
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base22_official_full_verify.json",
+      "bytes": 505
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base22_reproduction.json",
+      "bytes": 3811
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base22_reproduction.log",
+      "bytes": 2391
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base30_MANIFEST.json",
+      "bytes": 47550
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base30_README.txt",
+      "bytes": 5560
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base30_build_config.json",
+      "bytes": 25565
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base30_generate.py",
+      "bytes": 3397
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base30_official_full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base30_official_full_verify.stderr",
+      "bytes": 0
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base30_reproduction.json",
+      "bytes": 5965
+    },
+    {
+      "path": "baseline/source/baseline/provenance/base30_reproduction.log",
+      "bytes": 1148
+    },
+    {
+      "path": "baseline/source/baseline/provenance/prefix22_reuse.json",
+      "bytes": 664
+    },
+    {
+      "path": "baseline/source/baseline/provenance/prefix30_reuse.json",
+      "bytes": 1135
+    },
+    {
+      "path": "baseline/source/baseline/provenance/verified65_full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "baseline/source/baseline/qrom/banked_anf.py",
+      "bytes": 3536
+    },
+    {
+      "path": "baseline/source/baseline/qrom/compact_conditions.py",
+      "bytes": 943
+    },
+    {
+      "path": "baseline/source/baseline/qrom/dirty_leaf.py",
+      "bytes": 1908
+    },
+    {
+      "path": "baseline/source/baseline/qrom/extract.py",
+      "bytes": 1234
+    },
+    {
+      "path": "baseline/source/baseline/qrom/public_rotation_source.py",
+      "bytes": 20098
+    },
+    {
+      "path": "baseline/source/baseline/qrom/reduce_tail_workspace.py",
+      "bytes": 2210
+    },
+    {
+      "path": "baseline/source/baseline/qubit/cache_products.py",
+      "bytes": 3111
+    },
+    {
+      "path": "baseline/source/baseline/qubit/cache_products_general.py",
+      "bytes": 4888
+    },
+    {
+      "path": "baseline/source/baseline/qubit/cache_products_greedy.py",
+      "bytes": 2303
+    },
+    {
+      "path": "baseline/source/baseline/qubit/complete_cap77.py",
+      "bytes": 1627
+    },
+    {
+      "path": "baseline/source/baseline/qubit/curvature_arbitrary_product.py",
+      "bytes": 2236
+    },
+    {
+      "path": "baseline/source/baseline/qubit/curvature_joint_search.py",
+      "bytes": 1731
+    },
+    {
+      "path": "baseline/source/baseline/qubit/curvature_relations.py",
+      "bytes": 2010
+    },
+    {
+      "path": "baseline/source/baseline/qubit/curvature_two_products.py",
+      "bytes": 682
+    },
+    {
+      "path": "baseline/source/baseline/qubit/find_majority.py",
+      "bytes": 1240
+    },
+    {
+      "path": "baseline/source/baseline/qubit/hoist_measurements.py",
+      "bytes": 1855
+    },
+    {
+      "path": "baseline/source/baseline/qubit/implicit_curvature.py",
+      "bytes": 6030
+    },
+    {
+      "path": "baseline/source/baseline/qubit/implicit_highword.py",
+      "bytes": 3337
+    },
+    {
+      "path": "baseline/source/baseline/qubit/lifetime.py",
+      "bytes": 872
+    },
+    {
+      "path": "baseline/source/baseline/qubit/optimize_memory.py",
+      "bytes": 5270
+    },
+    {
+      "path": "baseline/source/baseline/qubit/park_coeff.py",
+      "bytes": 1096
+    },
+    {
+      "path": "baseline/source/baseline/qubit/park_coeff_two.py",
+      "bytes": 1239
+    },
+    {
+      "path": "baseline/source/baseline/qubit/park_xor_products.py",
+      "bytes": 895
+    },
+    {
+      "path": "baseline/source/baseline/qubit/repeated_products.py",
+      "bytes": 1383
+    },
+    {
+      "path": "baseline/source/baseline/qubit/symbolic.py",
+      "bytes": 2977
+    },
+    {
+      "path": "baseline/source/baseline/qubit/table_analysis.py",
+      "bytes": 1047
+    },
+    {
+      "path": "baseline/source/baseline/qubit/tables.json",
+      "bytes": 62615
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/audit_address_helpers.py",
+      "bytes": 4237
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/build_linear.py",
+      "bytes": 3086
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/build_two_scale.py",
+      "bytes": 4016
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/check_phase_before_lookup.py",
+      "bytes": 2689
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/compare_late_controls.py",
+      "bytes": 2212
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/delta_parking_probe.py",
+      "bytes": 3814
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/delta_quadratic_probe.py",
+      "bytes": 2476
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/linear_model.py",
+      "bytes": 2200
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/lookup_flag_park.py",
+      "bytes": 2343
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/lword_early_encoding.py",
+      "bytes": 2519
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/parked_input_allocator.py",
+      "bytes": 2964
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/phase_address_park.py",
+      "bytes": 4242
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/phase_cache_evict.py",
+      "bytes": 2943
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/phase_lword_delay.py",
+      "bytes": 6041
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/phase_lword_park.py",
+      "bytes": 6835
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/qrom_quadratic.py",
+      "bytes": 4923
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/reference_arithmetic.py",
+      "bytes": 11767
+    },
+    {
+      "path": "baseline/source/baseline/radical_linear/two_scale_model.py",
+      "bytes": 3127
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/address_coarse_parity_products.py",
+      "bytes": 456
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/address_helper_lift.py",
+      "bytes": 3928
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/address_helper_scratch.py",
+      "bytes": 1170
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/carry_save.py",
+      "bytes": 2006
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/compressed_curvature_model.py",
+      "bytes": 3586
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/cubic_build.py",
+      "bytes": 7679
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/cubic_model.py",
+      "bytes": 3961
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/curvature_cycle_fix.py",
+      "bytes": 2237
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/curvature_direct_l2.py",
+      "bytes": 1262
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/curvature_direct_l2_staged.py",
+      "bytes": 1245
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/curvature_direct_products.py",
+      "bytes": 1815
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/curvature_exclude_ltop.py",
+      "bytes": 2021
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/curvature_extra_l3.py",
+      "bytes": 1598
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/curvature_extra_products.py",
+      "bytes": 1434
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/curvature_l2_staged.py",
+      "bytes": 2043
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/deferred_lookup.py",
+      "bytes": 3263
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/delay_highword_parities.py",
+      "bytes": 2876
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/highword_exact.py",
+      "bytes": 6575
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/highword_fit.py",
+      "bytes": 839
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/highword_parity_products.py",
+      "bytes": 3166
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/highword_relations.py",
+      "bytes": 550
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/highword_two_products.py",
+      "bytes": 1536
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/local_clean.py",
+      "bytes": 614
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/lword5_parity_products.py",
+      "bytes": 481
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/lword_curvature_products.py",
+      "bytes": 1214
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/lword_parity_products.py",
+      "bytes": 474
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/memory68.py",
+      "bytes": 3402
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/memory68_stream.py",
+      "bytes": 1607
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/memory68_streamed.py",
+      "bytes": 3511
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/phase_fused.py",
+      "bytes": 3314
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/phase_q19_decoder.py",
+      "bytes": 2154
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/phase_q19_lowrank.py",
+      "bytes": 1725
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/signed_digit_helpers.py",
+      "bytes": 27061
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/verify_curvature_pipeline.py",
+      "bytes": 3938
+    },
+    {
+      "path": "baseline/source/baseline/radical_newton/verify_curvature_products.py",
+      "bytes": 1094
+    },
+    {
+      "path": "baseline/source/baseline/radical_norm/address_helpers.py",
+      "bytes": 10075
+    },
+    {
+      "path": "baseline/source/baseline/radical_norm/borrow_allocator.py",
+      "bytes": 3503
+    },
+    {
+      "path": "baseline/source/baseline/radical_norm/build68.py",
+      "bytes": 4259
+    },
+    {
+      "path": "baseline/source/baseline/radical_norm/build_helper.py",
+      "bytes": 4459
+    },
+    {
+      "path": "baseline/source/baseline/radical_norm/cache_borrowed.py",
+      "bytes": 1443
+    },
+    {
+      "path": "baseline/source/baseline/radical_norm/carry_trade.py",
+      "bytes": 3699
+    },
+    {
+      "path": "baseline/source/baseline/radical_norm/folded_reflections.py",
+      "bytes": 2825
+    },
+    {
+      "path": "baseline/source/baseline/radical_norm/full_reflections.py",
+      "bytes": 4440
+    },
+    {
+      "path": "baseline/source/baseline/radical_norm/inverse_full_reflections.py",
+      "bytes": 5352
+    },
+    {
+      "path": "baseline/source/baseline/radical_norm/reflections.py",
+      "bytes": 7564
+    },
+    {
+      "path": "baseline/source/baseline/radical_phase/address_park.py",
+      "bytes": 8740
+    },
+    {
+      "path": "baseline/source/baseline/radical_phase/address_probe.py",
+      "bytes": 3374
+    },
+    {
+      "path": "baseline/source/baseline/radical_phase/address_quadratic.py",
+      "bytes": 5600
+    },
+    {
+      "path": "baseline/source/baseline/radical_phase/address_relations.py",
+      "bytes": 3482
+    },
+    {
+      "path": "baseline/source/baseline/radical_phase/address_sequential.py",
+      "bytes": 4861
+    },
+    {
+      "path": "baseline/source/baseline/radical_phase/build_structural.py",
+      "bytes": 4381
+    },
+    {
+      "path": "baseline/source/baseline/radical_phase/curvature_generic.py",
+      "bytes": 11246
+    },
+    {
+      "path": "baseline/source/baseline/radical_phase/direct_builder.py",
+      "bytes": 5868
+    },
+    {
+      "path": "baseline/source/baseline/radical_phase/direct_fit.py",
+      "bytes": 2583
+    },
+    {
+      "path": "baseline/source/baseline/radical_phase/phase_flags_generic.py",
+      "bytes": 4483
+    },
+    {
+      "path": "baseline/source/baseline/reproduction.json",
+      "bytes": 6787
+    },
+    {
+      "path": "baseline/source/baseline/reproduction.log",
+      "bytes": 402
+    },
+    {
+      "path": "baseline/source/baseline/requirements.txt",
+      "bytes": 27
+    },
+    {
+      "path": "baseline/source/baseline/round3_arithmetic/anf_qrom.py",
+      "bytes": 4484
+    },
+    {
+      "path": "baseline/source/baseline/round3_arithmetic/compressed_anf_qrom.py",
+      "bytes": 7947
+    },
+    {
+      "path": "baseline/source/baseline/round3_arithmetic/order_probe.py",
+      "bytes": 973
+    },
+    {
+      "path": "baseline/source/baseline/round3_arithmetic/output_grid_model.py",
+      "bytes": 2995
+    },
+    {
+      "path": "baseline/source/baseline/round3_arithmetic/output_space_address.py",
+      "bytes": 3192
+    },
+    {
+      "path": "baseline/source/baseline/round3_arithmetic/output_space_address_extended.py",
+      "bytes": 3323
+    },
+    {
+      "path": "baseline/source/baseline/round3_arithmetic/output_space_address_p8.py",
+      "bytes": 2830
+    },
+    {
+      "path": "baseline/source/baseline/round3_arithmetic/output_space_anf.py",
+      "bytes": 1625
+    },
+    {
+      "path": "baseline/source/baseline/round3_arithmetic/park_qrom_products.py",
+      "bytes": 3122
+    },
+    {
+      "path": "baseline/source/baseline/round3_arithmetic/phase2_second_park_search.py",
+      "bytes": 8247
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/affine_peak.py",
+      "bytes": 2656
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/build67.py",
+      "bytes": 3390
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/build67_coarse.py",
+      "bytes": 3786
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/build67_coarse4.py",
+      "bytes": 3798
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/build67_direct75.py",
+      "bytes": 3807
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/build67_scheduled.py",
+      "bytes": 3605
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/build67_scheduled_late67.py",
+      "bytes": 3839
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/build_l4.py",
+      "bytes": 1365
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/coarse_curvature.py",
+      "bytes": 6574
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/coarse_extra_search.py",
+      "bytes": 2641
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/coarse_four.py",
+      "bytes": 5244
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/coarse_scheduled.py",
+      "bytes": 2666
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/coarse_scheduled_late67.py",
+      "bytes": 2723
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/coarse_simplify75.py",
+      "bytes": 2457
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/commute_carry_resets.py",
+      "bytes": 870
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/delay_affine_initializers.py",
+      "bytes": 1662
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/fit_l4.py",
+      "bytes": 2556
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/h_projection.py",
+      "bytes": 1270
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/memory67.py",
+      "bytes": 3549
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/memory67_relaxed.py",
+      "bytes": 3991
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/memory68_relaxed.py",
+      "bytes": 3733
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/phase_carry_park.py",
+      "bytes": 1341
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/phase_first_oneproduct.py",
+      "bytes": 1964
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/phase_h_quadratic_probe.py",
+      "bytes": 2468
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/phase_merged_quadratic_probe.py",
+      "bytes": 3128
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/phase_parity_helper_probe.py",
+      "bytes": 3887
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/phase_r_h_quadratic_probe.py",
+      "bytes": 2374
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/phase_r_quadratic_probe.py",
+      "bytes": 2339
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/prove_coarse11.py",
+      "bytes": 2313
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/prove_coarse4.py",
+      "bytes": 2302
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/prove_direct75.py",
+      "bytes": 2091
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/prove_scheduled57.py",
+      "bytes": 2264
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/prove_scheduled57_late67.py",
+      "bytes": 2285
+    },
+    {
+      "path": "baseline/source/baseline/round3_memory/r_quadratic_probe.py",
+      "bytes": 2148
+    },
+    {
+      "path": "baseline/source/baseline/round3_phase/build_virtual_merged.py",
+      "bytes": 2405
+    },
+    {
+      "path": "baseline/source/baseline/round3_phase/coefficient_recoding.py",
+      "bytes": 4118
+    },
+    {
+      "path": "baseline/source/baseline/round3_phase/coefficient_shift.py",
+      "bytes": 1504
+    },
+    {
+      "path": "baseline/source/baseline/round3_phase/feature_delete.py",
+      "bytes": 2736
+    },
+    {
+      "path": "baseline/source/baseline/round3_phase/joint_feature_search.py",
+      "bytes": 5505
+    },
+    {
+      "path": "baseline/source/baseline/round3_phase/low_feature_search.py",
+      "bytes": 3892
+    },
+    {
+      "path": "baseline/source/baseline/round3_phase/merge_build.py",
+      "bytes": 4902
+    },
+    {
+      "path": "baseline/source/baseline/round3_phase/merge_fit.py",
+      "bytes": 1742
+    },
+    {
+      "path": "baseline/source/baseline/round3_phase/phase_feature_search.py",
+      "bytes": 2694
+    },
+    {
+      "path": "baseline/source/baseline/round3_phase/segment_recoding.py",
+      "bytes": 3271
+    },
+    {
+      "path": "baseline/source/baseline/round3_phase/transient_feature_search.py",
+      "bytes": 4633
+    },
+    {
+      "path": "baseline/source/baseline/round3_phase/virtual_phase.py",
+      "bytes": 2131
+    },
+    {
+      "path": "baseline/source/baseline/round4_memory/build_encoded.py",
+      "bytes": 3968
+    },
+    {
+      "path": "baseline/source/baseline/round4_memory/build_phase_scratch.py",
+      "bytes": 1687
+    },
+    {
+      "path": "baseline/source/baseline/round4_memory/eager_measurements.py",
+      "bytes": 3082
+    },
+    {
+      "path": "baseline/source/baseline/round4_memory/encode_phase_flags.py",
+      "bytes": 13555
+    },
+    {
+      "path": "baseline/source/baseline/round4_memory/phase_only_scratch.py",
+      "bytes": 5278
+    },
+    {
+      "path": "baseline/source/baseline/round4_memory/phase_only_scratch_v2.py",
+      "bytes": 10558
+    },
+    {
+      "path": "baseline/source/baseline/round4_memory/shift_flag_probe.py",
+      "bytes": 1901
+    },
+    {
+      "path": "baseline/source/baseline/round4_phase/calibrate_candidate.py",
+      "bytes": 5661
+    },
+    {
+      "path": "baseline/source/baseline/round4_phase/encoded_context.py",
+      "bytes": 1252
+    },
+    {
+      "path": "baseline/source/baseline/round4_phase/encoded_probe.py",
+      "bytes": 860
+    },
+    {
+      "path": "baseline/source/baseline/round4_phase/late_cubic_probe.py",
+      "bytes": 5480
+    },
+    {
+      "path": "baseline/source/baseline/round4_phase/lookup_helper_probe.py",
+      "bytes": 3864
+    },
+    {
+      "path": "baseline/source/baseline/round4_phase/lword_late.py",
+      "bytes": 9384
+    },
+    {
+      "path": "baseline/source/baseline/round4_phase/probe_common.py",
+      "bytes": 3825
+    },
+    {
+      "path": "baseline/source/baseline/round4_phase/relaxation_probe.py",
+      "bytes": 1264
+    },
+    {
+      "path": "baseline/source/baseline/round4_root/address_joint.py",
+      "bytes": 6630
+    },
+    {
+      "path": "baseline/source/baseline/round4_root/address_mixed_probe.py",
+      "bytes": 2098
+    },
+    {
+      "path": "baseline/source/baseline/round4_root/address_sequential_search.py",
+      "bytes": 4207
+    },
+    {
+      "path": "baseline/source/baseline/round4_root/build_shared_address.py",
+      "bytes": 3609
+    },
+    {
+      "path": "baseline/source/baseline/round4_root/minrank",
+      "bytes": 32064
+    },
+    {
+      "path": "baseline/source/baseline/round4_root/minrank.cpp",
+      "bytes": 1839
+    },
+    {
+      "path": "baseline/source/baseline/round4_root/parity_lword.py",
+      "bytes": 1528
+    },
+    {
+      "path": "baseline/source/baseline/round4_root/prove_shared_address.py",
+      "bytes": 2776
+    },
+    {
+      "path": "baseline/source/baseline/round4_root/shared51_late20.build.json",
+      "bytes": 469302
+    },
+    {
+      "path": "baseline/source/baseline/round4_root/shared_address.py",
+      "bytes": 2070
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/affine_erasure.py",
+      "bytes": 7710
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/apply_omit_after_phase.py",
+      "bytes": 3306
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/build_preallocated_erasure.py",
+      "bytes": 3306
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/coefficient_frame_probe.py",
+      "bytes": 0
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/delay_lword_inner.py",
+      "bytes": 7816
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/early_target_erasure.py",
+      "bytes": 7002
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/inplace_alias_decoder.py",
+      "bytes": 10461
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/late_lword_probe.json",
+      "bytes": 18334
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/omit_coefficients.py",
+      "bytes": 4711
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/probe_late_lword.py",
+      "bytes": 4369
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/prove_affine_erasure.py",
+      "bytes": 6168
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/prove_early_erasure.py",
+      "bytes": 4736
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/prove_late_lword.py",
+      "bytes": 2816
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/prove_preallocation.py",
+      "bytes": 2150
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/refine_late_lword.py",
+      "bytes": 1943
+    },
+    {
+      "path": "baseline/source/baseline/round5_arithmetic/short_alias_decoder.py",
+      "bytes": 3628
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/borrow_phase_delays.py",
+      "bytes": 6741
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/build_borrowed_memory.py",
+      "bytes": 4418
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/build_l6_borrowed.py",
+      "bytes": 3672
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/build_phase_clifford.py",
+      "bytes": 2674
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/close66.py",
+      "bytes": 6296
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/dirty_flag7.py",
+      "bytes": 3167
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/dirty_parity.py",
+      "bytes": 5153
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/inline_and_fanout.py",
+      "bytes": 3635
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/qrom_affine_borrow.py",
+      "bytes": 6690
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/qrom_affine_borrow_wide.py",
+      "bytes": 2018
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/qrom_affine_product.py",
+      "bytes": 5033
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/qrom_parent_trade.py",
+      "bytes": 2800
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/quadratic_blocks.py",
+      "bytes": 6975
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/quadratic_phase.py",
+      "bytes": 5744
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/retain_nor_carry.py",
+      "bytes": 2250
+    },
+    {
+      "path": "baseline/source/baseline/round5_memory/undo_dirty_phase_echo.py",
+      "bytes": 3006
+    },
+    {
+      "path": "baseline/source/baseline/round5_phase/high_stream.py",
+      "bytes": 8379
+    },
+    {
+      "path": "baseline/source/baseline/round5_phase/l5_late_exact.py",
+      "bytes": 4036
+    },
+    {
+      "path": "baseline/source/baseline/round5_phase/l6_exact.certificate.json",
+      "bytes": 42315
+    },
+    {
+      "path": "baseline/source/baseline/round5_phase/l6_exact.logical.kmx",
+      "bytes": 379281
+    },
+    {
+      "path": "baseline/source/baseline/round5_phase/l6_exact.py",
+      "bytes": 11623
+    },
+    {
+      "path": "baseline/source/baseline/round5_phase/stream_two_shifts.py",
+      "bytes": 9870
+    },
+    {
+      "path": "baseline/source/baseline/round5_root/build_combined.py",
+      "bytes": 3838
+    },
+    {
+      "path": "baseline/source/baseline/round5_root/dirty_control_search.py",
+      "bytes": 4450
+    },
+    {
+      "path": "baseline/source/baseline/round5_root/dirty_phase_borrow.py",
+      "bytes": 5830
+    },
+    {
+      "path": "baseline/source/baseline/round5_root/finalize_compact.py",
+      "bytes": 2687
+    },
+    {
+      "path": "baseline/source/baseline/round5_root/flip_certificate.py",
+      "bytes": 2699
+    },
+    {
+      "path": "baseline/source/baseline/round5_root/restore_spare_carries.py",
+      "bytes": 5073
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/adaptive_family_base.py",
+      "bytes": 11917
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/adaptive_omitted.py",
+      "bytes": 11931
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/check_triangular.py",
+      "bytes": 2166
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/l6_regroup5_f0_joint.certificate.json",
+      "bytes": 6269
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/l6_regroup5_f0_joint.proof.json",
+      "bytes": 424
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/l7_front_fit.py",
+      "bytes": 1774
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/l7_literal_probe.py",
+      "bytes": 2650
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/l7_park.py",
+      "bytes": 4015
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/refine_adaptive_decoders.py",
+      "bytes": 3904
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/refine_l6_extensions.py",
+      "bytes": 5525
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/refine_l6_joint.py",
+      "bytes": 3560
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/regroup_low_outer.py",
+      "bytes": 11786
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/schedule_adaptive.py",
+      "bytes": 5964
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/stage_address.py",
+      "bytes": 7555
+    },
+    {
+      "path": "baseline/source/baseline/round6_arithmetic/triangular_outer.py",
+      "bytes": 9075
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/bootstrap_lookup.py",
+      "bytes": 12676
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/coded_lword_park.py",
+      "bytes": 4533
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/dynamic_frontier_probe.py",
+      "bytes": 2966
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/l6_pool41_refined.proof.json",
+      "bytes": 302808
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/l7_address_span.py",
+      "bytes": 2072
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/l7_parity_probe.py",
+      "bytes": 3230
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/parity_bootstrap_lookup.py",
+      "bytes": 9508
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/pool_lookup.py",
+      "bytes": 6669
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/refine_pool_lookup.py",
+      "bytes": 1054
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/refine_subspace_lookup.py",
+      "bytes": 640
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/release189_generate.py",
+      "bytes": 3294
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/remap_pool_lookup.py",
+      "bytes": 2720
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/seed_count_lookup.py",
+      "bytes": 582
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/stage_release189.py",
+      "bytes": 5140
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/subspace35_refined.proof.json",
+      "bytes": 178622
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/subspace_bootstrap_lookup.py",
+      "bytes": 3349
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/subspace_products",
+      "bytes": 22920
+    },
+    {
+      "path": "baseline/source/baseline/round6_memory/subspace_products.cpp",
+      "bytes": 2097
+    },
+    {
+      "path": "baseline/source/baseline/round6_root/advance_phase.py",
+      "bytes": 6125
+    },
+    {
+      "path": "baseline/source/baseline/round6_root/alias_probe.py",
+      "bytes": 2258
+    },
+    {
+      "path": "baseline/source/baseline/round6_root/combine_lookup.py",
+      "bytes": 2344
+    },
+    {
+      "path": "baseline/source/baseline/round6_root/defer_ccz.py",
+      "bytes": 4948
+    },
+    {
+      "path": "baseline/source/baseline/round6_root/defer_phase.py",
+      "bytes": 7783
+    },
+    {
+      "path": "baseline/source/baseline/round6_root/merge_phase.py",
+      "bytes": 6062
+    },
+    {
+      "path": "baseline/source/baseline/round6_root/packed_calibrate.py",
+      "bytes": 6025
+    },
+    {
+      "path": "baseline/source/baseline/round6_root/phase_cone.py",
+      "bytes": 9698
+    },
+    {
+      "path": "baseline/source/baseline/round6_root/retime_erasure.py",
+      "bytes": 6639
+    },
+    {
+      "path": "baseline/source/baseline/round6_root/retime_independent.py",
+      "bytes": 2921
+    },
+    {
+      "path": "baseline/source/baseline/round6_root/wide_outer.py",
+      "bytes": 6031
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/BALANCED_ADDON.json",
+      "bytes": 16747
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/BALANCED_RESULTS.txt",
+      "bytes": 4177
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/DECODER5_ADDON.json",
+      "bytes": 9036
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/DECODER5_RESULTS.txt",
+      "bytes": 2928
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/OVERLAP63_ADDON.json",
+      "bytes": 11344
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/OVERLAP_TAIL16_ADDON.json",
+      "bytes": 3184
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/address_inplace.py",
+      "bytes": 7773
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/address_inplace_physical.py",
+      "bytes": 9022
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/apply_pool39_exact.py",
+      "bytes": 2064
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/audit_norm_ge2.py",
+      "bytes": 5076
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/balanced63_decoder5.proof.json",
+      "bytes": 2835
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/balanced63_joint16.proof.json",
+      "bytes": 2042
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/balanced_decoder5_physical.py",
+      "bytes": 5283
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/balanced_marker_affine.proof.json",
+      "bytes": 697
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/balanced_native.proof.json",
+      "bytes": 3698
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/balanced_native_alias.proof.json",
+      "bytes": 5342
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/balanced_native_carries.proof.json",
+      "bytes": 646
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/balanced_native_tail.proof.json",
+      "bytes": 1541
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/balanced_native_zero.proof.json",
+      "bytes": 14942
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/close_overlap63.py",
+      "bytes": 8869
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/compose_initial_l7.py",
+      "bytes": 4379
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/integrate_balanced.py",
+      "bytes": 6700
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/joint_overlap_tail_extended.py",
+      "bytes": 7810
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/l7_pool39_park44_42_cap63.raw.kmx",
+      "bytes": 522843
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/norm_ge2.proof.json",
+      "bytes": 1842
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/overlap63_closed.kmx",
+      "bytes": 519845
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/overlap_tail16.certificate.json",
+      "bytes": 8817
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/park_outer_top.py",
+      "bytes": 7669
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/park_overlap71.py",
+      "bytes": 3617
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/park_overlap71_physical.py",
+      "bytes": 4622
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/park_second_top.py",
+      "bytes": 7685
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/park_sparse_carry.py",
+      "bytes": 4845
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/park_sparse_pair63.py",
+      "bytes": 5489
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/port_short_tail.py",
+      "bytes": 5231
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/stage_address.py",
+      "bytes": 7493
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/stage_address_multi.py",
+      "bytes": 4557
+    },
+    {
+      "path": "baseline/source/baseline/round7_arithmetic/staged_address.certificate.json",
+      "bytes": 5857
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/apply_refined_l7_lookup.py",
+      "bytes": 3240
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/coded_initial_lookup.py",
+      "bytes": 6060
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/l7_coded9.certificate.json",
+      "bytes": 12347
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/l7_initial188_pool40.certificate.json",
+      "bytes": 207142
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/l7_initial_pool39.certificate.json",
+      "bytes": 207287
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/l7_initial_pool40.certificate.json",
+      "bytes": 208564
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/l8_span_probe.py",
+      "bytes": 6842
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/merge_l7_late.py",
+      "bytes": 6511
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/merged_all_release.py",
+      "bytes": 6532
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/native64_jointlate_refined.certificate.json",
+      "bytes": 41998
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/native64_zero_retired.proof.json",
+      "bytes": 24791
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/replace_coded_front.py",
+      "bytes": 4918
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/retire_zero_lifetimes.py",
+      "bytes": 8577
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/selected63_zero_retired.proof.json",
+      "bytes": 52803
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/share_l8_late.py",
+      "bytes": 7754
+    },
+    {
+      "path": "baseline/source/baseline/round7_memory/share_l9_late.py",
+      "bytes": 7572
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/balanced_decoder5.py",
+      "bytes": 5991
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/balanced_native_decoder5.proof.json",
+      "bytes": 1516
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/balanced_native_independent.proof.json",
+      "bytes": 1059
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/balanced_norm23.proof.json",
+      "bytes": 2391
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/balanced_normalization.py",
+      "bytes": 7580
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/balanced_phase_audit.py",
+      "bytes": 3298
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/cache64.py",
+      "bytes": 3803
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/cross_cached64_quad.proof.json",
+      "bytes": 98734
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/cross_context_cache.py",
+      "bytes": 12252
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/pool39_alias_fit.py",
+      "bytes": 4512
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/pool39_carry.proof.json",
+      "bytes": 847
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/pool39_leaf.certificate.json",
+      "bytes": 3649
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/pool39_long.certificate.json",
+      "bytes": 13821
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/short_tail_exact.py",
+      "bytes": 3191
+    },
+    {
+      "path": "baseline/source/baseline/round7_phase/tagged_normalization.py",
+      "bytes": 14930
+    },
+    {
+      "path": "baseline/source/baseline/round7_root/balanced63_decoder5_clean.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "baseline/source/baseline/round7_root/balanced63_joint16_clean.kmx.changes.json",
+      "bytes": 191
+    },
+    {
+      "path": "baseline/source/baseline/round7_root/cache_phase_products.py",
+      "bytes": 7980
+    },
+    {
+      "path": "baseline/source/baseline/round7_root/close_carry.py",
+      "bytes": 1207
+    },
+    {
+      "path": "baseline/source/baseline/round7_root/commute_phase_erasure.py",
+      "bytes": 4645
+    },
+    {
+      "path": "baseline/source/baseline/round7_root/conjugate_product.py",
+      "bytes": 4797
+    },
+    {
+      "path": "baseline/source/baseline/round7_root/erase_phase_carry.py",
+      "bytes": 4751
+    },
+    {
+      "path": "baseline/source/baseline/round7_root/native64_overlap71_rank9.proof.json",
+      "bytes": 3745
+    },
+    {
+      "path": "baseline/source/baseline/round7_root/overlap71_refined.certificate.json",
+      "bytes": 7500
+    },
+    {
+      "path": "baseline/source/baseline/round7_root/phasecached64.proof.json",
+      "bytes": 104858
+    },
+    {
+      "path": "baseline/source/baseline/round7_root/replay_cache.py",
+      "bytes": 1365
+    },
+    {
+      "path": "baseline/source/curvature.proof.json",
+      "bytes": 3387
+    },
+    {
+      "path": "baseline/source/curvature_certificate.json",
+      "bytes": 1937
+    },
+    {
+      "path": "baseline/source/curvature_stage.py",
+      "bytes": 7070
+    },
+    {
+      "path": "baseline/source/experiments/cache63.log",
+      "bytes": 574
+    },
+    {
+      "path": "baseline/source/experiments/cache63.proof.json",
+      "bytes": 89317
+    },
+    {
+      "path": "baseline/source/experiments/domain_merge.py",
+      "bytes": 5936
+    },
+    {
+      "path": "baseline/source/experiments/fixed_lookup_search.json",
+      "bytes": 124341
+    },
+    {
+      "path": "baseline/source/experiments/live_profile.json",
+      "bytes": 29340
+    },
+    {
+      "path": "baseline/source/experiments/merge.log",
+      "bytes": 337
+    },
+    {
+      "path": "baseline/source/experiments/merged.proof.json",
+      "bytes": 328
+    },
+    {
+      "path": "baseline/source/experiments/profile_live.py",
+      "bytes": 1049
+    },
+    {
+      "path": "baseline/source/experiments/refine_l7_lookup.py",
+      "bytes": 3670
+    },
+    {
+      "path": "baseline/source/experiments/refine_lookup_fixed.py",
+      "bytes": 4111
+    },
+    {
+      "path": "baseline/source/experiments/sat_24_68_0.json",
+      "bytes": 166
+    },
+    {
+      "path": "baseline/source/experiments/sat_34_78_0.json",
+      "bytes": 166
+    },
+    {
+      "path": "baseline/source/experiments/sat_lookup.py",
+      "bytes": 4163
+    },
+    {
+      "path": "baseline/source/experiments/search_exact_lookup.py",
+      "bytes": 1091
+    },
+    {
+      "path": "baseline/source/experiments/search_space.py",
+      "bytes": 1990
+    },
+    {
+      "path": "baseline/source/experiments/space_i20_s910020.json",
+      "bytes": 70
+    },
+    {
+      "path": "baseline/source/experiments/space_i24_s910024.json",
+      "bytes": 70
+    },
+    {
+      "path": "baseline/source/experiments/space_i26_s910026.json",
+      "bytes": 70
+    },
+    {
+      "path": "baseline/source/experiments/synthesize_curvature_xag.py",
+      "bytes": 4213
+    },
+    {
+      "path": "baseline/source/experiments/xag7_92.json",
+      "bytes": 298
+    },
+    {
+      "path": "baseline/source/experiments/xag7_92.log",
+      "bytes": 121
+    },
+    {
+      "path": "baseline/source/experiments/xag7_92.smt2",
+      "bytes": 12474
+    },
+    {
+      "path": "baseline/source/experiments/xag8_91.log",
+      "bytes": 118
+    },
+    {
+      "path": "baseline/source/experiments/xag8_91.model",
+      "bytes": 2619
+    },
+    {
+      "path": "baseline/source/experiments/xag8_91.smt2",
+      "bytes": 14535
+    },
+    {
+      "path": "baseline/source/generate.py",
+      "bytes": 2981
+    },
+    {
+      "path": "baseline/source/invsqrt.kmb",
+      "bytes": 404609
+    },
+    {
+      "path": "baseline/source/invsqrt.kmx",
+      "bytes": 521328
+    },
+    {
+      "path": "baseline/source/lookup.proof.json",
+      "bytes": 169094
+    },
+    {
+      "path": "baseline/source/lookup_certificate.json",
+      "bytes": 61051
+    },
+    {
+      "path": "baseline/source/lookup_only_full_verify.json",
+      "bytes": 505
+    },
+    {
+      "path": "baseline/source/lookup_stage.py",
+      "bytes": 2609
+    },
+    {
+      "path": "baseline/source/official_full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "baseline/source/official_full_verify.stderr",
+      "bytes": 0
+    },
+    {
+      "path": "baseline/source/previous_full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "baseline/source/reproduction.json",
+      "bytes": 713
+    },
+    {
+      "path": "baseline/source/reproduction.log",
+      "bytes": 8152
+    },
+    {
+      "path": "baseline/source/requirements.txt",
+      "bytes": 27
+    },
+    {
+      "path": "baseline/source/result_summary.json",
+      "bytes": 952
+    },
+    {
+      "path": "build.py",
+      "bytes": 1064
+    },
+    {
+      "path": "candidate/invsqrt.kmb",
+      "bytes": 409951
+    },
+    {
+      "path": "candidate/invsqrt.kmx",
+      "bytes": 527999
+    },
+    {
+      "path": "evidence/all_history.json",
+      "bytes": 401
+    },
+    {
+      "path": "evidence/compress_probe.json",
+      "bytes": 2182
+    },
+    {
+      "path": "evidence/compress_probe.log",
+      "bytes": 422
+    },
+    {
+      "path": "evidence/cubic_candidate.json",
+      "bytes": 5058
+    },
+    {
+      "path": "evidence/cubic_cleanup.log",
+      "bytes": 3674
+    },
+    {
+      "path": "evidence/full_domain_check.log",
+      "bytes": 595
+    },
+    {
+      "path": "evidence/full_domain_deterministic.json",
+      "bytes": 595
+    },
+    {
+      "path": "evidence/history64.json",
+      "bytes": 59529
+    },
+    {
+      "path": "evidence/history64.log",
+      "bytes": 719
+    },
+    {
+      "path": "evidence/native_compare.log",
+      "bytes": 696
+    },
+    {
+      "path": "evidence/native_comparison.json",
+      "bytes": 1347
+    },
+    {
+      "path": "evidence/phase_history.json",
+      "bytes": 400
+    },
+    {
+      "path": "evidence/portable_rebuild.json",
+      "bytes": 204
+    },
+    {
+      "path": "evidence/portable_rebuild.log",
+      "bytes": 797
+    },
+    {
+      "path": "historical_input_19p507.kmx",
+      "bytes": 528252
+    },
+    {
+      "path": "tools/compress_probe.py",
+      "bytes": 2608
+    },
+    {
+      "path": "tools/cubic_cleanup.py",
+      "bytes": 5677
+    },
+    {
+      "path": "tools/native_compare.py",
+      "bytes": 3597
+    },
+    {
+      "path": "tools/phase_history.py",
+      "bytes": 9187
+    }
+  ]
+}
