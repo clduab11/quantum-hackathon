@@ -53,4 +53,10 @@ def g2_proxy(submission_dir: Path) -> dict:
     report = run_mirror()
     if not report["pass"]:
         return {"status": f"FAIL: mirror {report}", **report}
-    return {"status": "PASS", **report, "sha256": smoke["sha256"]}
+    return {
+        "status": "PASS",
+        **report,
+        "sha256": smoke["sha256"],
+        "static_toffoli": smoke.get("static_toffoli"),
+        "num_qubits": smoke.get("num_qubits"),
+    }

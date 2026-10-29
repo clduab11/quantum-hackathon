@@ -49,6 +49,8 @@ def run_mirror() -> dict:
     phase_ok = built["phase"]["phase_match"] is True
     calibration_margin = int(built["calibration"]["margin_units"])
     passed = bool(certificate["pass"]) and split_ok and phase_ok and calibration_margin > 0
+    if "estimated_expected_cost" not in built["estimate"]:
+        raise KeyError("compilation_report estimate lacks estimated_expected_cost")
     return {
         "pass": passed,
         "tested_inputs": certificate.get("tested_inputs"),
@@ -68,6 +70,7 @@ def run_mirror() -> dict:
         "expected_toffoli": built["final"]["expected_toffoli"],
         "rotations": built["final"]["rotations"],
         "estimated_ratio": built["estimate"]["ratio"],
+        "estimated_expected_cost": built["estimate"]["estimated_expected_cost"],
         "sha256": built["sha256"],
         "coefficient_provenance": built["coefficient_provenance"],
         "circuit_authorship": built["circuit_authorship"],

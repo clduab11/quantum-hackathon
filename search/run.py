@@ -43,6 +43,7 @@ import providers  # noqa: E402
 
 
 def checkpoint_number(path: Path) -> int | None:
+    """Parse the integer suffix of a checkpoint directory name."""
     tail = path.name.rsplit("_", 1)[-1]
     return int(tail) if path.name.startswith("checkpoint_") and tail.isdigit() else None
 
@@ -117,9 +118,22 @@ def prune_checkpoints(output: Path, keep: int) -> list[Path]:
     return removed
 
 
+INITIAL_PROGRAMS = {
+    "dfthcsos": SEARCH_DIR / "initial_program.py",
+    "invsqrt": SEARCH_DIR / "initial_invsqrt.py",
+    "dqi": SEARCH_DIR / "initial_dqi.py",
+}
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--provider", choices=["claude", "codex"], required=True,
+    parser.add_argument("--task", choices=["invsqrt", "dfthcsos", "dqi"], default="dfthcsos",
+                        help="which VQCC task adapter to drive (default: dfthcsos)")
+    parser.add_argument("--smoke", action="store_true",
+                        help="run stages 0/1/3 on the seed once (no LLM, no stage-2 official verify)")
+    parser.add_argument("--smoke-repeats", type=int, default=1,
+                        help="repeats for the smoke median timing (default: 1)")
+    parser.add_argument("--provider", choices=["claude", "codex"], default=None,
                         help="claude = Claude Max via `claude -p`; codex = ChatGPT/Codex via `codex app-server`")
     parser.add_argument("--config", type=Path, help="OpenEvolve YAML (default search/config_<provider>.yaml)")
     parser.add_argument("--iterations", type=int, help="iterations to run now (default: config max_iterations)")
@@ -134,8 +148,40 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def run_smoke(task: str, repeats: int = 1) -> int:
+    """End-to-end smoke without providers: stages 0, 1, 3 on the seed program."""
+    os.environ["SEARCH_SMOKE"] = "1"
+    os.environ.setdefault("VQCC_DATA", DEFAULT_DATA)
+    from search.staged import smoke_evaluate
+
+    result = smoke_evaluate(task, repeats=repeats)
+    med = result["median_seconds"]
+    print(json.dumps(result, indent=1, default=str))
+    print("\nTiming table (median seconds)")
+    print("| task | stage0 | stage1 | stage3 | 0+1+3 | combined_score |")
+    print("|---|---:|---:|---:|---:|---:|")
+    print(
+        f"| {task} | {med['stage0']:.3f} | {med['stage1']:.3f} | {med['stage3']:.3f} | "
+        f"{med['stages_0_1_3']:.3f} | {result['combined_score']:.6f} |"
+    )
+    if med["stages_0_1_3"] >= 60.0:
+        print(f"SMOKE FAIL: median stages 0+1+3 = {med['stages_0_1_3']:.3f}s >= 60s", file=sys.stderr)
+        return 1
+    if result["problems"]:
+        print(f"SMOKE FAIL: problems={result['problems']}", file=sys.stderr)
+        return 1
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
+    """Parse argv and either smoke-evaluate or launch OpenEvolve."""
     args = build_parser().parse_args(argv)
+    os.environ["SEARCH_TASK"] = args.task
+    if args.smoke:
+        return run_smoke(args.task, repeats=args.smoke_repeats)
+    if not args.provider:
+        print("--provider is required unless --smoke is set", file=sys.stderr)
+        return 2
     config_path = args.config or SEARCH_DIR / f"config_{args.provider}.yaml"
     config = load_config(str(config_path))
     installed = providers.install(config)
@@ -177,8 +223,12 @@ def main(argv: list[str] | None = None) -> int:
         stream.write(json.dumps(launch) + "\n")
     print(json.dumps(launch, indent=1))
 
-    openevolve = OpenEvolve(initial_program_path=str(SEARCH_DIR / "initial_program.py"),
-                            evaluation_file=str(SEARCH_DIR / "evaluator.py"), config=config, output_dir=str(output))
+    initial = INITIAL_PROGRAMS[args.task]
+    # Route live OpenEvolve stages to the task-specific evaluator (dfthcsos
+    # chemistry cascade, or invsqrt/dqi adapter cascade). Smoke uses staged.py.
+    openevolve = OpenEvolve(initial_program_path=str(initial),
+                            evaluation_file=str(SEARCH_DIR / "evaluate_entry.py"),
+                            config=config, output_dir=str(output))
     if args.log_level:
         logging.getLogger().setLevel(getattr(logging, args.log_level))
     best = None

@@ -1,12 +1,18 @@
-# search/: evaluator-driven search loop for dfthcsos
+# search/: evaluator-driven search loop (invsqrt, dfthcsos, dqi)
 
 An [OpenEvolve](https://github.com/algorithmicsuperintelligence/openevolve) loop that evolves one Python
-program, `initial_program.py`, which builds the dfthcsos `angle_k_*.kmb` family from the declared factor
-file. Every candidate is scored by Google's official verifier through a three-stage cascade, and the fitness
-is the verified cost ratio (reference cost / cost). Programs are kept on a MAP-Elites grid over
-(Q_total, T_total) in three islands with migration, and the prompt carries `DISCOVERY.md`, the append-only
-notes file. Nothing here ships: `promote.py` writes hand-off folders and Paperclip plus the board take it
-from there (AGENTS.md).
+program per task. Fitness is the Deb-layered `combined_score` from research report §6.2 (infeasible band
+`[0, 0.5)`, feasible band `[0.5, 1]` on log cost). MAP-Elites features are `log_toffoli` and `log_qubits`.
+The staged evaluator (§6.4) runs parse/build → seeded sample → memoised official verify → cost score.
+Nothing here ships: `promote.py` writes hand-off folders and Paperclip plus the board take it from there
+(AGENTS.md).
+
+```bash
+uv run python -m search.run --task invsqrt --smoke
+uv run python -m search.run --task dfthcsos --smoke
+uv run python -m search.run --task dqi --smoke
+uv run python -m search.run --task dfthcsos --provider codex --iterations 40
+```
 
 The design follows Gu, Kemeny, Yelin and Lukin (arXiv:2610.22367): islands, MAP-Elites over (T, Q),
 a fresh model session per iteration with the parent program and the evaluator's feedback, archive elites in
@@ -68,8 +74,8 @@ Run the loop with `nohup ... &` or inside `tmux` for unattended sessions; it log
 | per-call budget (Claude) | `max_budget_usd` per model | 2.00 / 6.00 | list-price cap the CLI enforces; Max is not billed per token |
 | reasoning effort (Codex) | `llm.reasoning_effort` | medium | low, medium, high, xhigh |
 | islands, migration, population | `database.*` | 3 islands, every 20 generations, 200 programs | |
-| MAP-Elites features | `database.feature_dimensions` | `q_bin`, `t_bin` | raw Q_total and T_total; OpenEvolve min-max bins them into 10 cells each |
-| cascade | `evaluator.cascade_thresholds` | `[0.05, 0.3]` | stage 2 needs a clean build, stage 3 needs a reduced-shot PASS. Mirrored by `STAGE1_THRESHOLD`/`STAGE2_THRESHOLD` in `evaluator.py` |
+| MAP-Elites features | `database.feature_dimensions` | `log_toffoli`, `log_qubits` | log-spaced (T, Q) cells |
+| cascade | `evaluator.cascade_thresholds` | `[0.05, 0.49]` | stage 2 needs a reduced PASS (~0.495); Deb feasible floor stays 0.5. Mirrored by `STAGE1_THRESHOLD`/`STAGE2_THRESHOLD` in `evaluator.py` |
 | stage timeouts | `evaluator.timeout` | 900 s per stage | OpenEvolve's outer limit. Inside it a build has 420 s (`SEARCH_BUILD_TIMEOUT`) and each verifier run, which runs in a child process so it can be killed, 600 s (`SEARCH_VERIFY_TIMEOUT`); the full verifier takes 35-60 s here |
 | static size gates | `SEARCH_MAX_INSTRUCTIONS`, `SEARCH_MAX_STATIC_TOFFOLI` | 30M instructions, 400k static Toffolis | ten times the reference family; larger families fail stage 1 instead of occupying a worker for minutes |
 | checkpoints | `checkpoint_interval`, `run.py --keep-checkpoints N` | 5, keep all | one more atomic checkpoint on exit; each holds every program with its prompts (about 50 KB per program), so prune on a standing loop |

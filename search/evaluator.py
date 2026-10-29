@@ -51,7 +51,11 @@ SEARCH_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SEARCH_DIR.parent
 if str(REPO_ROOT) not in sys.path:  # `tasks.*` imports, whether run as a script or inside an OpenEvolve worker
     sys.path.insert(0, str(REPO_ROOT))
+from search.fitness import combined_score as dense_combined_score, log_safe  # noqa: E402
+from search.memo import VerifierMemo, settings_digest, verification_key  # noqa: E402
+
 DEFAULT_DATA = "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation"
+_VERIFY_MEMO = VerifierMemo()
 
 BASELINE_COST = 3355599588.3155365
 SALT = "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001"
@@ -73,7 +77,10 @@ MAX_STATIC_TOFFOLI = int(os.environ.get("SEARCH_MAX_STATIC_TOFFOLI", str(400_000
 # Mirror of evaluator.cascade_thresholds in config_*.yaml; used only to clean up build outputs when
 # OpenEvolve will not call the next stage.
 STAGE1_THRESHOLD = 0.05
-STAGE2_THRESHOLD = 0.3
+# Must sit below the reduced-PASS infeasible ceiling (0.5/1.01 ≈ 0.495) so a
+# reduced official PASS advances the cascade into stage 3 (full verifier). The
+# Deb feasible floor remains 0.5; only the cascade gate is lower.
+STAGE2_THRESHOLD = 0.49
 STALE_AFTER_SECONDS = 6 * 3600
 
 
@@ -81,6 +88,7 @@ STALE_AFTER_SECONDS = 6 * 3600
 
 
 def sha256_file(path: Path) -> str:
+    """Return the hex SHA-256 digest of a file."""
     digest = hashlib.sha256()
     with Path(path).open("rb") as stream:
         for block in iter(lambda: stream.read(1 << 20), b""):
@@ -89,6 +97,7 @@ def sha256_file(path: Path) -> str:
 
 
 def scratch_root() -> Path:
+    """Return the scratch directory for build outputs."""
     root = Path(os.environ.get("SEARCH_SCRATCH", tempfile.gettempdir()))
     root.mkdir(parents=True, exist_ok=True)
     return root
@@ -146,11 +155,13 @@ def num(value: Any, default: float = 0.0) -> float:
 
 
 def compact(value: Any, limit: int = 6000) -> str:
+    """JSON-or-text truncate a value for OpenEvolve artifacts."""
     text = value if isinstance(value, str) else json.dumps(_finite(value), sort_keys=True, default=str)
     return text if len(text) <= limit else text[:limit] + " ...(truncated)"
 
 
 def extract_notes(code: str) -> str:
+    """Pull the NOTES triple-quoted block from a program."""
     match = re.search(r'NOTES\s*=\s*"""(.*?)"""', code, re.DOTALL)
     return match.group(1).strip() if match else ""
 
@@ -295,8 +306,40 @@ def static_checks(build: Build) -> None:
 # --- the official verifier (stages 2 and 3) ----------------------------------------------------
 
 
+def _family_fingerprint(chemistry: Path) -> bytes:
+    """Stable fingerprint of every file under the chemistry dir."""
+    parts = []
+    for path in sorted(Path(chemistry).rglob("*")):
+        if path.is_file():
+            parts.append(path.relative_to(chemistry).as_posix().encode("utf-8"))
+            parts.append(sha256_file(path).encode("ascii"))
+    return b"\0".join(parts)
+
+
+def _submission_identity(chemistry: Path) -> str:
+    """SHA-256 of ``submission.npz`` when present; empty otherwise."""
+    path = Path(chemistry) / "submission.npz"
+    if path.is_file():
+        return sha256_file(path)
+    return ""
+
+
 def verify_family_isolated(chemistry: Path, shots_per_address: int, timeout: float = VERIFY_TIMEOUT) -> dict[str, Any]:
     """``verify_family`` in a child process with a hard timeout (OpenEvolve cannot cancel a thread)."""
+    mode = "smoke" if os.environ.get("SEARCH_SMOKE") == "1" else "full"
+    key = verification_key(
+        task="dfthcsos",
+        mode=mode,
+        circuit_fingerprint=_family_fingerprint(chemistry),
+        shots=int(shots_per_address),
+        verifier_settings=settings_digest({"salt": SALT, "timeout": timeout}),
+        submission_id=_submission_identity(chemistry),
+    )
+    cached = _VERIFY_MEMO.get(key)
+    if cached is not None:
+        hit = dict(cached)
+        hit["memo_hit"] = True
+        return hit
     started = time.monotonic()
     cmd = [sys.executable, str(Path(__file__).resolve()), "--verify-json", str(chemistry), str(shots_per_address)]
     env = {**os.environ, "PYTHONPATH": str(REPO_ROOT), "OPENBLAS_NUM_THREADS": os.environ.get("OPENBLAS_NUM_THREADS", "2")}
@@ -318,6 +361,7 @@ def verify_family_isolated(chemistry: Path, shots_per_address: int, timeout: flo
         return {"status": "FAIL", "shots_per_address": shots_per_address, "salt": SALT,
                 "error": f"verifier child exited {proc.returncode} without a result: {proc.stderr.strip()[-800:]}",
                 "seconds": round(time.monotonic() - started, 2)}
+    _VERIFY_MEMO.set(key, payload)
     return payload
 
 
@@ -354,25 +398,54 @@ def verify_family(chemistry: Path, shots_per_address: int) -> dict[str, Any]:
 
 
 def score_policy(static_ok: bool, predicted_ratio: float | None,
-                 reduced: dict | None, full: dict | None) -> float:
-    """``combined_score``: the full-verifier ratio when stage 3 passed, a penalised proxy otherwise.
+                 reduced: dict | None, full: dict | None,
+                 *, resources: dict | None = None) -> float:
+    """Deb-layered ``combined_score`` (research report §6.2).
 
-    Verified programs score about 1.0 and up; every unverified outcome stays below 0.7, so the
-    MAP-Elites fitness never prefers an unverified program over a verified one.
+    Only a full-verifier PASS enters the feasible band ``[0.5, 1]``. Everything
+    earlier stays strictly below 0.5 so an infeasible candidate never outranks a
+    feasible one.
     """
+    resources = resources or {}
+    if full is not None and full.get("status") == "PASS":
+        res = {
+            "feasible": True,
+            "task": "dfthcsos",
+            "toffoli_count": num(full.get("toffoli_count"), resources.get("t", REFERENCE_T)),
+            "qubit_count": num(full.get("num_qubits"), resources.get("q", REFERENCE_Q)),
+            "lambda_eff": num(full.get("lambda_eff"), 1.0),
+        }
+        return dense_combined_score(res, task="dfthcsos")
+    # Graded infeasibility from whatever we know so far.
     if full is not None:
-        return float(full["ratio"]) if full.get("status") == "PASS" else 0.03
-    if reduced is not None:
-        return 0.4 + 0.1 * min(float(reduced["ratio"]), 2.0) if reduced.get("status") == "PASS" else 0.02
-    if static_ok:
-        return 0.1 * min(max(predicted_ratio or 0.0, 0.0), 2.0)
-    return 0.0
+        fraction = 0.0
+    elif reduced is not None and reduced.get("status") == "PASS":
+        fraction = 0.99
+    elif static_ok:
+        fraction = 0.5 + 0.4 * min(max(predicted_ratio or 0.0, 0.0), 1.0)
+    else:
+        fraction = 0.0
+    res = {
+        "feasible": False,
+        "fraction_correct": fraction,
+        # Keep max-error at the graded floor (1.0 → violation 0) so fraction_correct
+        # can differentiate static-only candidates; a hard 2.0 masked them all.
+        "max_error_over_tol": 1.0,
+        "ancilla_dirty_fraction": 0.0 if static_ok else 1.0,
+        "phase_wrong_fraction": 0.0 if static_ok else 1.0,
+    }
+    score = dense_combined_score(res, task="dfthcsos")
+    # Broken builds must fall below the stage-1 cascade threshold so OpenEvolve
+    # records them and cleans up without advancing.
+    if not static_ok:
+        return min(score, STAGE1_THRESHOLD - 1e-6)
+    return score
 
 
 def assemble(build: Build) -> EvaluationResult:
+    """Build metrics and artifacts from a Build across stages 1–3."""
     proxy = build.proxy or {}
     predicted = proxy.get("predicted_ratio")
-    combined = score_policy(build.static_ok, predicted, build.reduced, build.full)
     source = None
     for candidate in (build.full, build.reduced):
         if candidate and candidate.get("status") == "PASS":
@@ -382,12 +455,16 @@ def assemble(build: Build) -> EvaluationResult:
         q, t, lambda_eff = num(source["num_qubits"]), num(source["toffoli_count"]), num(source["lambda_eff"])
         error1 = num(source["metrics"].get("error_1"))
         error2 = num(source["metrics"].get("error_2"))
+        e_gap = num(source["metrics"].get("E_gap") or source["metrics"].get("e_gap"))
     elif num(proxy.get("estimated_qubits")) > 0 and num(proxy.get("estimated_toffoli")) > 0:
         q, t = num(proxy["estimated_qubits"]), num(proxy["estimated_toffoli"])
         lambda_eff = num(proxy.get("lambda_eff"))
         error1, error2 = num(proxy.get("error_1")), num(proxy.get("error_2"))
+        e_gap = num(proxy.get("E_gap") or proxy.get("e_gap"))
     else:
-        q, t, lambda_eff, error1, error2 = REFERENCE_Q, REFERENCE_T, 0.0, 0.0, 0.0
+        q, t, lambda_eff, error1, error2, e_gap = REFERENCE_Q, REFERENCE_T, 0.0, 0.0, 0.0, 0.0
+    combined = score_policy(build.static_ok, predicted, build.reduced, build.full,
+                            resources={"q": q, "t": t})
     predicted = num(predicted) or None
     report = build.report or {}
     full_pass = bool(build.full and build.full.get("status") == "PASS")
@@ -403,7 +480,14 @@ def assemble(build: Build) -> EvaluationResult:
         "ratio": num(build.full["ratio"]) if full_pass else 0.0,
         "predicted_ratio": num(predicted),
         "q": q, "t": t, "lambda_eff": lambda_eff, "error1": error1, "error2": error2,
-        "q_bin": q, "t_bin": t,
+        "toffoli_count": t, "qubit_count": q,
+        "log_toffoli": log_safe(max(t, 1.0)), "log_qubits": log_safe(max(q, 1.0)),
+        "fraction_correct": 1.0 if full_pass else (0.99 if reduced_pass else (0.5 if build.static_ok else 0.0)),
+        "max_error_over_tol": 0.0 if full_pass else 0.0,
+        "error_1": error1, "error_2": error2, "E_gap": e_gap,
+        "margin_min": 0.0, "k_failures": 0.0, "eps_plus": 0.0,
+        "feasible": 1.0 if full_pass else 0.0,
+        "q_bin": q, "t_bin": t,  # kept for older checkpoints; MAP-Elites uses log_* now
         "stage1_passed": 1.0 if build.static_ok else 0.0,
         "stage2_passed": 1.0 if reduced_pass else 0.0,
         "stage3_passed": 1.0 if full_pass else 0.0,
@@ -476,6 +560,7 @@ def discard(build: Build) -> None:
 
 
 def _build_for(program_path: str) -> Build:
+    """Return a cached Build for ``program_path``, building if needed."""
     build = _BUILDS.get(str(program_path))
     if build is None or not build.outdir.exists():
         build = run_program(program_path)
@@ -505,6 +590,7 @@ def _failed_result(program_path: str, stage: int, exc: BaseException) -> Evaluat
 
 
 def evaluate_stage1(program_path: str) -> EvaluationResult:
+    """OpenEvolve stage 1: build + static proxy."""
     try:
         sweep_stale_outputs()
         build = _build_for(program_path)
@@ -518,6 +604,7 @@ def evaluate_stage1(program_path: str) -> EvaluationResult:
 
 
 def evaluate_stage2(program_path: str) -> EvaluationResult:
+    """OpenEvolve stage 2: reduced official verifier."""
     try:
         build = _build_for(program_path)
         if not build.static_ok:
@@ -537,6 +624,7 @@ def evaluate_stage2(program_path: str) -> EvaluationResult:
 
 
 def evaluate_stage3(program_path: str) -> EvaluationResult:
+    """OpenEvolve stage 3: full official verifier."""
     try:
         build = _build_for(program_path)
         if build.static_ok:
@@ -566,6 +654,7 @@ def evaluate(program_path: str) -> EvaluationResult:
 
 
 def main(argv: list[str] | None = None) -> int:
+    """CLI entry for evaluating one program or a verify-json child."""
     argv = sys.argv[1:] if argv is None else argv
     if argv[:1] == ["--verify-json"]:  # child process of verify_family_isolated
         print(json.dumps(verify_family(Path(argv[1]), int(argv[2])), default=str))
