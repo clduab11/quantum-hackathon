@@ -106,16 +106,16 @@ def test_malformed_standing_fails_the_build(change):
 def test_page_reads_the_ledger_and_the_standing_file(tmp_path: Path):
     page = build(tmp_path / "public").read_text(encoding="utf-8")
     text = _text(page)
-    # The rank was read at 17.71949, after submission-009's score came in.
-    assert "Our public score is 17.71949, rank 600 of 1310 teams on 27 October 2026." in text
-    assert "The leader scores 25.62911." in text
-    assert "(6th) scores 23.44490" in text
+    # The rank was read at 18.39393 (PRA-347 fresh read after submission-010 scored).
+    assert "Our public score is 18.39393, rank 848 of 1501 teams on 29 October 2026." in text
+    assert "The leader scores 26.14113." in text
+    assert "(6th) scores 24.74409" in text
     assert "invsqrt 13.24 20.06 1.0" in text      # ours, best public, reference
     assert "dqi 54.73 54.73 1.0" in text
-    assert "dfthcsos 7.68 8.91 1.0" in text      # latest scored upload (submission-009)
-    assert text.count("waiting for Kaggle") == 1  # submission-010 has no public score yet
+    assert "dfthcsos 8.59 8.91 1.0" in text      # latest scored upload (submission-010)
+    assert text.count("waiting for Kaggle") == 1  # submission-011 has no public score yet
     for score in ("1.00000", "2.40948", "5.68935", "6.77899", "10.89339", "11.30048", "13.76646",
-                  "16.90171", "17.71949"):
+                  "16.90171", "17.71949", "18.39393"):
         assert score in text
     assert "20 January 2027" in text
 
@@ -141,16 +141,16 @@ def test_page_is_one_plain_screen(tmp_path: Path):
 def test_circuit_draws_the_latest_upload_from_the_ledger(tmp_path: Path):
     page = build(tmp_path / "public").read_text(encoding="utf-8")
     svg = page[page.index("<svg"):page.index("</svg>")]
-    # submission-010: every gate passed on the uploaded zip; G1 and G2 are per circuit.
+    # submission-011: every gate passed on the uploaded zip; G1 and G2 are per circuit.
     assert '<g class="gate pass"><title>G0, all circuits: Passed</title>' in svg
     assert '<g class="gate pass"><title>G2 dqi: Passed</title>' in svg
     assert '<g class="gate pass"><title>G5, all circuits: Passed</title>' in svg
     assert "notrun" not in svg and "fail" not in svg
-    for ratio in (">13.24</text>", ">54.73</text>", ">8.59</text>"):
+    for ratio in (">13.24</text>", ">54.73</text>", ">9.78</text>"):
         assert ratio in svg
     assert svg.count('class="inner"') == 3            # G0, G3, G5 are never waived
     text = _text(page)
-    assert "It shows our latest upload, sent on 28 October 2026. For the latest upload, all six " \
+    assert "It shows our latest upload, sent on 29 October 2026. For the latest upload, all six " \
            "of our automatic checks passed." in text
 
 
@@ -298,7 +298,7 @@ def test_unscored_upload_waits_and_the_rank_says_when_it_is_stale():
     text = _text(render_page(shipped, _standing(), {"s-1": 9.5}))
     assert "waiting for Kaggle" in text
     # The latest scored upload is s-1, whose score differs from the one the rank was read at.
-    assert "Our public score is 9.50000, rank 600 of 1310 teams on 27 October 2026, before this " \
+    assert "Our public score is 9.50000, rank 848 of 1501 teams on 29 October 2026, before this " \
            "score came in." in text
 
 

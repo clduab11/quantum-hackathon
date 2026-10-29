@@ -20,9 +20,9 @@ tracks:
     aim: >-
       Upload only circuits that pass every check, and rebuild the best public designs in our own
       code.
-    updated_at_utc: "2026-10-28T20:04:47+00:00"
+    updated_at_utc: "2026-10-29T05:25:24+00:00"
     figures:
-      # submission-010 manifest (D-PRA202-36); invsqrt and dqi unchanged from submission-009.
+      # submission-011 manifest (D-PRA341-02); invsqrt and dqi unchanged from submission-010.
       - label: Square-root circuit (invsqrt)
         value: 13.24
         state: shipped
@@ -31,7 +31,7 @@ tracks:
         state: shipped
         note: The best public design, built from its published source.
       - label: Chemistry circuit (dfthcsos)
-        value: 8.59
+        value: 9.78
         state: shipped
         note: Our own circuits, built from the best published description of the molecule.
       # PRA-285, started 2026-10-27.

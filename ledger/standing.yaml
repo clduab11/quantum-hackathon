@@ -12,15 +12,16 @@
 schema: 1
 
 leaderboard:
-  # PRA-202 `leaderboard-snapshot` revision 15: the full CSV (publicleaderboard-2026-10-27T21:16:33.csv,
-  # 1310 rows), the first read after submission-009 scored 17.71949 (D-PRA202-35).
-  read_at_utc: "2026-10-27T21:16:33+00:00"
-  our_score: 17.71949         # our public score when the rank was read
-  rank: 600
-  teams: 1310
-  leader_score: 25.62911
+  # PRA-343 / PRA-347: the-tracker's fresh public-board read at 2026-10-29T05:37:01Z
+  # (1501 rows). Prior standing was the PRA-317 2026-10-28 23:08Z read (rank 800 of 1463
+  # at 18.39393; #1 26.14113; #6 24.11149). Our public score is unchanged; the field grew.
+  read_at_utc: "2026-10-29T05:37:01+00:00"
+  our_score: 18.39393         # our public score when the rank was read
+  rank: 848
+  teams: 1501
+  leader_score: 26.14113
   prize_line_place: 6         # last paid place (D-PRA202-14)
-  prize_line_score: 23.44490
+  prize_line_score: 24.74409
 
 best_public_per_task:
   # Kaggle publishes no per-task scores. Since 2026-10-27 these are our own measurements of the
@@ -45,6 +46,7 @@ submission_notes:
   submission-008: "Only change: a much cheaper chemistry circuit (dfthcsos)."
   submission-009: Cheaper decoder (dqi) and square-root (invsqrt) circuits.
   submission-010: "Only change: a cheaper chemistry circuit (dfthcsos), from a better description of the molecule."
+  submission-011: "Only change: a cheaper chemistry circuit (dfthcsos), from a denser description of the molecule."
 
 # The public Kaggle notebook, once it is published. null hides the link.
 notebook_url: null
