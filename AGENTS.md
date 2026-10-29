@@ -6,23 +6,25 @@ the board through The High Table before you go on.
 ## Branches and merges
 
 - Work on `op-vqcc/<topic>` branches in `/home/cld-main/work/quantum-hackathon`.
-- Never push `main`. Never merge. Never force-push. The board (Chris) merges.
+- Never push `main`. Never force-push. Never merge your own PR; john-wick alone squash-merges, after his review (D-PRA304-01).
+- Autonomy and who merges: see the `praxen-house-rules` skill. The only thing that needs Chris's approval is deleting a material file.
+- Repo hosting: GitHub is the source of truth, mirrored to Entire (entire.com); agents push only to GitHub.
 - Open a pull request for every branch and register it on the Paperclip ticket.
 - Commit trailer: `Co-Authored-By: Paperclip <noreply@paperclip.ing>`.
 
 ## Merge queue (PRA-210)
 
-The board squash-merges pull requests one after another and never resolves a conflict.
+john-wick squash-merges pull requests one after another and never resolves a conflict.
 
 - One candidate, one pull request, cut from current `main`. No pull request bundles two tasks.
 - Never cut a branch from another unmerged pull request. A squash merge drops that ancestry, so the stacked branch
   then conflicts with its own parent's changes.
-- Before you hand a pull request to the board, run the merge-order gate over every open head and paste its
+- Before you hand a pull request to john-wick, run the merge-order gate over every open head and paste its
   report in the pull request body: `uv run python scripts/merge_gate.py` (add `--ref mine=HEAD` if your branch has
   no pull request yet). CI runs the same gate on every pull request and on every push to `main`.
-- No pull request is reported to the board as ready unless the whole open queue passes the gate.
+- No pull request is reported to john-wick as ready unless the whole open queue passes the gate.
 - If two open pull requests touch the same register entry, the second one rebases onto `main` after the first
-  merges. The author resolves it, never the board.
+  merges. The author resolves it, never john-wick.
 - Registers are one file per entry, so ordinary work never shares a file:
   - a decision is a new file `docs/decisions/<id>.md` holding one table row; `docs/DECISIONS.md` is closed;
   - a third-party notice is a bullet in `notices/NN-<area>.txt` (one file per task area), not in `NOTICE`;
