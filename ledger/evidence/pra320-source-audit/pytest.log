@@ -1,0 +1,134 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.13, pytest-9.1.1, pluggy-1.7.0
+rootdir: /home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-308-p3-take-the-top-spot-on-the-vqcc-leaderboard-overrides-all-other-work
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1
+collected 452 items / 4 skipped
+
+tests/test_brot7_refit.py .......s                                       [  1%]
+tests/test_c59_compiler.py .........                                     [  3%]
+tests/test_chemistry_candidate.py ........                               [  5%]
+tests/test_costs.py ...............                                      [  8%]
+tests/test_dfthcsos_qrom.py ...........................                  [ 14%]
+tests/test_dqi_algebra.py .                                              [ 15%]
+tests/test_dqi_formulas.py .                                             [ 15%]
+tests/test_dqi_fused.py ......                                           [ 16%]
+tests/test_dqi_hankel.py .....                                           [ 17%]
+tests/test_dqi_jfraction.py ..                                           [ 18%]
+tests/test_dqi_projection.py .....                                       [ 19%]
+tests/test_dqi_provenance.py .........                                   [ 21%]
+tests/test_dqi_schur.py ....                                             [ 22%]
+tests/test_factor_fit_v3.py ......                                       [ 23%]
+tests/test_factor_fit_v4.py ...ssss                                      [ 25%]
+tests/test_factor_gpu.py .ss                                             [ 25%]
+tests/test_factor_pipeline.py ...........                                [ 28%]
+tests/test_factor_refit_v2.py .........                                  [ 30%]
+tests/test_factor_resume.py .......                                      [ 31%]
+tests/test_g0.py ...................                                     [ 35%]
+tests/test_gate_contract.py ......                                       [ 37%]
+tests/test_install_kickmix.py ........                                   [ 38%]
+tests/test_invsqrt_design_study.py ......                                [ 40%]
+tests/test_invsqrt_parity.py ...                                         [ 40%]
+tests/test_invsqrt_provenance.py ....                                    [ 41%]
+tests/test_invsqrt_public_port.py ...s.                                  [ 42%]
+tests/test_invsqrt_public_port_gates.py ......                           [ 44%]
+tests/test_invsqrt_staged_budget.py ......                               [ 45%]
+tests/test_invsqrt_storage.py .....                                      [ 46%]
+tests/test_ledger_evidence.py ............                               [ 49%]
+tests/test_ledger_gates.py ....................................          [ 57%]
+tests/test_ledger_licence_not_gated.py .......                           [ 58%]
+tests/test_ledger_manifest.py ...............                            [ 62%]
+tests/test_ledger_scorecard.py ...................                       [ 66%]
+tests/test_merge_gate.py .......                                         [ 67%]
+tests/test_pra177_generators.py ...                                      [ 68%]
+tests/test_pra245_declared_factors.py ..                                 [ 69%]
+tests/test_reference_identity.py .................                       [ 72%]
+tests/test_reference_invsqrt_gates.py .......                            [ 74%]
+tests/test_reference_rebuild.py ...                                      [ 75%]
+tests/test_registers.py ...............                                  [ 78%]
+tests/test_review_boundaries.py ..                                       [ 78%]
+tests/test_rustad_compiler.py ...............                            [ 82%]
+tests/test_scoring.py .....                                              [ 83%]
+tests/test_search_fitness.py .............                               [ 86%]
+tests/test_search_loop.py FF...F......F                                  [ 88%]
+tests/test_smoke.py ..                                                   [ 89%]
+tests/test_status_page.py ......................................         [ 97%]
+tests/test_submission_notebook.py ..........                             [100%]
+
+=================================== FAILURES ===================================
+______ test_configs_load_and_install_our_providers[claude-claude_code-2] _______
+
+provider = 'claude', name = 'claude_code', parallel = 2
+
+    @pytest.mark.parametrize("provider,name,parallel", [("claude", "claude_code", 2), ("codex", "codex_app_server", 4)])
+    def test_configs_load_and_install_our_providers(provider, name, parallel):
+        from openevolve.config import Config
+        config = Config.from_yaml(SEARCH / f"config_{provider}.yaml")
+        assert config.llm.provider == name
+        assert config.llm.models and all(m.provider == name for m in config.llm.models)
+        assert sum(m.weight for m in config.llm.models) == pytest.approx(1.0)
+>       assert config.database.feature_dimensions == ["log_toffoli", "log_qubits"]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert ['log_toffoli', 'log_qubits'] == ['q_bin', 't_bin']
+E
+E         At index 0 diff: 'log_toffoli' != 'q_bin'
+E         Use -v to get more diff
+
+tests/test_search_loop.py:41: AssertionError
+____ test_configs_load_and_install_our_providers[codex-codex_app_server-4] _____
+
+provider = 'codex', name = 'codex_app_server', parallel = 4
+
+    @pytest.mark.parametrize("provider,name,parallel", [("claude", "claude_code", 2), ("codex", "codex_app_server", 4)])
+    def test_configs_load_and_install_our_providers(provider, name, parallel):
+        from openevolve.config import Config
+        config = Config.from_yaml(SEARCH / f"config_{provider}.yaml")
+        assert config.llm.provider == name
+        assert config.llm.models and all(m.provider == name for m in config.llm.models)
+        assert sum(m.weight for m in config.llm.models) == pytest.approx(1.0)
+>       assert config.database.feature_dimensions == ["log_toffoli", "log_qubits"]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert ['log_toffoli', 'log_qubits'] == ['q_bin', 't_bin']
+E
+E         At index 0 diff: 'log_toffoli' != 'q_bin'
+E         Use -v to get more diff
+
+tests/test_search_loop.py:41: AssertionError
+_______________ test_score_policy_keeps_verified_programs_on_top _______________
+
+    def test_score_policy_keeps_verified_programs_on_top():
+        ev = load("evaluator")
+>       broken = ev.score_policy(False, None, None, None)
+E       AssertionError: assert 0.25 == 0.0
+E        +  where 0.25 = <function score_policy at 0x7c3172a04c20>(False, None, None, None)
+E        +    where <function score_policy at 0x7c3172a04c20> = <module 'evaluator' from '/home/cld-main/work/.paperclip-worktrees/quantum-hackathon/op-vqcc/PRA-308-p3-take-the-top-spot-on-the-vqcc-leaderboard-overrides-all-other-work/search/evaluator.py'>.score_policy
+
+tests/test_search_loop.py:78: AssertionError
+__________________ test_evaluator_reports_a_crashing_program ___________________
+
+tmp_path = PosixPath('/tmp/paperclip-run-pra-320-bc4770f8-fc7-Dn2Aty/pytest-of-cld-main/pytest-0/test_evaluator_reports_a_crash0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7c3172a1ac80>
+
+        ev.discard(build)
+        assert not build.outdir.exists()
+
+
+    def test_evaluator_reports_a_crashing_program(tmp_path, monkeypatch):
+        monkeypatch.setenv("SEARCH_SCRATCH", str(tmp_path))
+        monkeypatch.setenv("SEARCH_RUN_DIR", str(tmp_path / "run"))
+        monkeypatch.delenv("SEARCH_KEEP_OUTPUTS", raising=False)
+        broken = tmp_path / "broken.py"
+        broken.write_text("import sys\nprint('boom', file=sys.stderr)\nraise SystemExit(3)\n", encoding="utf-8")
+        ev = load("evaluator")
+        # no competition package needed: the program never reads the factor file
+>       (tmp_path / "factor.npz").write_bytes(b"not an npz")
+E       assert (0.25 == 0.0)
+
+tests/test_search_loop.py:191: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_search_loop.py::test_configs_load_and_install_our_providers[claude-claude_code-2]
+FAILED tests/test_search_loop.py::test_configs_load_and_install_our_providers[codex-codex_app_server-4]
+FAILED tests/test_search_loop.py::test_score_policy_keeps_verified_programs_on_top
+FAILED tests/test_search_loop.py::test_evaluator_reports_a_crashing_program
+============ 4 failed, 440 passed, 12 skipped in 993.58s (0:16:33) =============

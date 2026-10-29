@@ -1,0 +1,1639 @@
+{
+  "version": 6,
+  "package_prefix": "source/invsqrt_63q/",
+  "listing_url": "https://www.kaggle.com/api/v1/datasets/list/mrmeows/qcc-1375-open-circuits?datasetVersionNumber=6",
+  "files": [
+    {
+      "path": "MANIFEST.json",
+      "bytes": 43803
+    },
+    {
+      "path": "README.txt",
+      "bytes": 5402
+    },
+    {
+      "path": "build_config.json",
+      "bytes": 20987
+    },
+    {
+      "path": "certificates/cache64.json",
+      "bytes": 1347
+    },
+    {
+      "path": "environment.json",
+      "bytes": 195
+    },
+    {
+      "path": "gate/curvature_table.json",
+      "bytes": 2569
+    },
+    {
+      "path": "gate/dirty_complement.py",
+      "bytes": 3432
+    },
+    {
+      "path": "gate/exact_opt.py",
+      "bytes": 8194
+    },
+    {
+      "path": "gate/merge_products.py",
+      "bytes": 4847
+    },
+    {
+      "path": "gate/phase_extra_park_probe.py",
+      "bytes": 5025
+    },
+    {
+      "path": "gate/phase_flag_stream.py",
+      "bytes": 3143
+    },
+    {
+      "path": "gate/phase_idle_park.py",
+      "bytes": 3065
+    },
+    {
+      "path": "gate/phase_idle_relations.py",
+      "bytes": 4157
+    },
+    {
+      "path": "gate/phase_mux_stream.py",
+      "bytes": 5175
+    },
+    {
+      "path": "gate/phase_rank_park_probe.py",
+      "bytes": 6947
+    },
+    {
+      "path": "gate/transvection_probe.py",
+      "bytes": 956
+    },
+    {
+      "path": "generate.py",
+      "bytes": 3397
+    },
+    {
+      "path": "official/invsqrt/verify_submission_invsqrt.py",
+      "bytes": 17210
+    },
+    {
+      "path": "official/kickmix/LICENSE.txt",
+      "bytes": 11358
+    },
+    {
+      "path": "official_full_verify.json",
+      "bytes": 505
+    },
+    {
+      "path": "official_full_verify.stderr",
+      "bytes": 0
+    },
+    {
+      "path": "phase/analyze_features.py",
+      "bytes": 645
+    },
+    {
+      "path": "phase/build_memory_candidate.py",
+      "bytes": 4344
+    },
+    {
+      "path": "phase/build_true76_raw.py",
+      "bytes": 3673
+    },
+    {
+      "path": "phase/collapse_affine_tail.py",
+      "bytes": 3338
+    },
+    {
+      "path": "phase/collect_phase.py",
+      "bytes": 786
+    },
+    {
+      "path": "phase/controlled_s.py",
+      "bytes": 1509
+    },
+    {
+      "path": "phase/deferred_carries.py",
+      "bytes": 4667
+    },
+    {
+      "path": "phase/dual_probe.py",
+      "bytes": 1173
+    },
+    {
+      "path": "phase/extra_features.py",
+      "bytes": 1589
+    },
+    {
+      "path": "phase/fix_frontier75.py",
+      "bytes": 1828
+    },
+    {
+      "path": "phase/parity_search.py",
+      "bytes": 1660
+    },
+    {
+      "path": "phase/probe_lp.py",
+      "bytes": 942
+    },
+    {
+      "path": "phase/rotation_calibration.py",
+      "bytes": 9096
+    },
+    {
+      "path": "phase/split_carries.py",
+      "bytes": 6252
+    },
+    {
+      "path": "phase/split_carries_multi.py",
+      "bytes": 4575
+    },
+    {
+      "path": "phase/stream_carries.py",
+      "bytes": 3813
+    },
+    {
+      "path": "phase/tail_erase.py",
+      "bytes": 6742
+    },
+    {
+      "path": "phase/tail_product_probe.py",
+      "bytes": 3886
+    },
+    {
+      "path": "proofs/allocated.build.json",
+      "bytes": 97206
+    },
+    {
+      "path": "proofs/clean.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "proofs/deferred.json",
+      "bytes": 5589
+    },
+    {
+      "path": "proofs/finalized.build.json",
+      "bytes": 149586
+    },
+    {
+      "path": "proofs/joint.proof.json",
+      "bytes": 424
+    },
+    {
+      "path": "proofs/lookup.proof.json",
+      "bytes": 172710
+    },
+    {
+      "path": "proofs/regroup.proof.json",
+      "bytes": 1512
+    },
+    {
+      "path": "proofs/retimed.json",
+      "bytes": 833
+    },
+    {
+      "path": "proofs64/allocated.build.json",
+      "bytes": 93911
+    },
+    {
+      "path": "proofs64/cached.proof.json",
+      "bytes": 87224
+    },
+    {
+      "path": "proofs64/clean.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "proofs64/commuted.proof.json",
+      "bytes": 13062
+    },
+    {
+      "path": "proofs64/composed.proof.json",
+      "bytes": 1235
+    },
+    {
+      "path": "proofs64/conjugated.proof.json",
+      "bytes": 2081
+    },
+    {
+      "path": "proofs64/crosscached.proof.json",
+      "bytes": 102436
+    },
+    {
+      "path": "proofs64/deferred.json",
+      "bytes": 5356
+    },
+    {
+      "path": "proofs64/finalized.build.json",
+      "bytes": 148354
+    },
+    {
+      "path": "proofs64/joint.certificate.json",
+      "bytes": 6269
+    },
+    {
+      "path": "proofs64/joint.proof.json",
+      "bytes": 424
+    },
+    {
+      "path": "proofs64/joint46_screening_65536.json",
+      "bytes": 500
+    },
+    {
+      "path": "proofs64/jointlate.proof.json",
+      "bytes": 1057
+    },
+    {
+      "path": "proofs64/lookup188.proof.json",
+      "bytes": 169724
+    },
+    {
+      "path": "proofs64/park42.proof.json",
+      "bytes": 1488
+    },
+    {
+      "path": "proofs64/park44.proof.json",
+      "bytes": 1481
+    },
+    {
+      "path": "proofs64/phasecached.proof.json",
+      "bytes": 104859
+    },
+    {
+      "path": "proofs64/phasecarry.proof.json",
+      "bytes": 1175
+    },
+    {
+      "path": "proofs64/prefix189.certificate.json",
+      "bytes": 208564
+    },
+    {
+      "path": "proofs64/regroup.proof.json",
+      "bytes": 1512
+    },
+    {
+      "path": "proofs64/retimed.json",
+      "bytes": 1285
+    },
+    {
+      "path": "proofs64/selected.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "proofs64/selected_final.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "proofs64/sparse.proof.json",
+      "bytes": 1379
+    },
+    {
+      "path": "proofs_overlap63/overlap63_carries.proof.json",
+      "bytes": 646
+    },
+    {
+      "path": "proofs_overlap63/overlap63_closed.proof.json",
+      "bytes": 5342
+    },
+    {
+      "path": "proofs_overlap63/overlap63_tail.proof.json",
+      "bytes": 1299
+    },
+    {
+      "path": "proofs_overlap63/overlap71_pool39.proof.json",
+      "bytes": 169929
+    },
+    {
+      "path": "proofs_overlap63/overlap71_rank9.proof.json",
+      "bytes": 3745
+    },
+    {
+      "path": "proofs_overlap63/selected_overlap63.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "provenance/base19_README.txt",
+      "bytes": 5648
+    },
+    {
+      "path": "provenance/base19_build_config.json",
+      "bytes": 3077
+    },
+    {
+      "path": "provenance/base19_generate.py",
+      "bytes": 7556
+    },
+    {
+      "path": "provenance/base19_official_full_verify.json",
+      "bytes": 505
+    },
+    {
+      "path": "provenance/base19_reproduction.json",
+      "bytes": 3303
+    },
+    {
+      "path": "provenance/base19_reproduction.log",
+      "bytes": 2052
+    },
+    {
+      "path": "provenance/base22_README.txt",
+      "bytes": 4883
+    },
+    {
+      "path": "provenance/base22_build_config.json",
+      "bytes": 13763
+    },
+    {
+      "path": "provenance/base22_generate.py",
+      "bytes": 3397
+    },
+    {
+      "path": "provenance/base22_official_full_verify.json",
+      "bytes": 505
+    },
+    {
+      "path": "provenance/base22_reproduction.json",
+      "bytes": 3811
+    },
+    {
+      "path": "provenance/base22_reproduction.log",
+      "bytes": 2391
+    },
+    {
+      "path": "provenance/verified65_full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "qrom/banked_anf.py",
+      "bytes": 3536
+    },
+    {
+      "path": "qrom/compact_conditions.py",
+      "bytes": 943
+    },
+    {
+      "path": "qrom/dirty_leaf.py",
+      "bytes": 1908
+    },
+    {
+      "path": "qrom/extract.py",
+      "bytes": 1234
+    },
+    {
+      "path": "qrom/public_rotation_source.py",
+      "bytes": 20098
+    },
+    {
+      "path": "qrom/reduce_tail_workspace.py",
+      "bytes": 2210
+    },
+    {
+      "path": "qubit/cache_products.py",
+      "bytes": 3111
+    },
+    {
+      "path": "qubit/cache_products_general.py",
+      "bytes": 4888
+    },
+    {
+      "path": "qubit/cache_products_greedy.py",
+      "bytes": 2303
+    },
+    {
+      "path": "qubit/complete_cap77.py",
+      "bytes": 1627
+    },
+    {
+      "path": "qubit/curvature_arbitrary_product.py",
+      "bytes": 2236
+    },
+    {
+      "path": "qubit/curvature_joint_search.py",
+      "bytes": 1731
+    },
+    {
+      "path": "qubit/curvature_relations.py",
+      "bytes": 2010
+    },
+    {
+      "path": "qubit/curvature_two_products.py",
+      "bytes": 682
+    },
+    {
+      "path": "qubit/find_majority.py",
+      "bytes": 1240
+    },
+    {
+      "path": "qubit/hoist_measurements.py",
+      "bytes": 1855
+    },
+    {
+      "path": "qubit/implicit_curvature.py",
+      "bytes": 6030
+    },
+    {
+      "path": "qubit/implicit_highword.py",
+      "bytes": 3337
+    },
+    {
+      "path": "qubit/lifetime.py",
+      "bytes": 872
+    },
+    {
+      "path": "qubit/optimize_memory.py",
+      "bytes": 5270
+    },
+    {
+      "path": "qubit/park_coeff.py",
+      "bytes": 1096
+    },
+    {
+      "path": "qubit/park_coeff_two.py",
+      "bytes": 1239
+    },
+    {
+      "path": "qubit/park_xor_products.py",
+      "bytes": 895
+    },
+    {
+      "path": "qubit/repeated_products.py",
+      "bytes": 1383
+    },
+    {
+      "path": "qubit/symbolic.py",
+      "bytes": 2977
+    },
+    {
+      "path": "qubit/table_analysis.py",
+      "bytes": 1047
+    },
+    {
+      "path": "qubit/tables.json",
+      "bytes": 62615
+    },
+    {
+      "path": "radical_linear/audit_address_helpers.py",
+      "bytes": 4237
+    },
+    {
+      "path": "radical_linear/build_linear.py",
+      "bytes": 3086
+    },
+    {
+      "path": "radical_linear/build_two_scale.py",
+      "bytes": 4016
+    },
+    {
+      "path": "radical_linear/check_phase_before_lookup.py",
+      "bytes": 2689
+    },
+    {
+      "path": "radical_linear/compare_late_controls.py",
+      "bytes": 2212
+    },
+    {
+      "path": "radical_linear/delta_parking_probe.py",
+      "bytes": 3814
+    },
+    {
+      "path": "radical_linear/delta_quadratic_probe.py",
+      "bytes": 2476
+    },
+    {
+      "path": "radical_linear/linear_model.py",
+      "bytes": 2200
+    },
+    {
+      "path": "radical_linear/lookup_flag_park.py",
+      "bytes": 2343
+    },
+    {
+      "path": "radical_linear/lword_early_encoding.py",
+      "bytes": 2519
+    },
+    {
+      "path": "radical_linear/parked_input_allocator.py",
+      "bytes": 2964
+    },
+    {
+      "path": "radical_linear/phase_address_park.py",
+      "bytes": 4242
+    },
+    {
+      "path": "radical_linear/phase_cache_evict.py",
+      "bytes": 2943
+    },
+    {
+      "path": "radical_linear/phase_lword_delay.py",
+      "bytes": 6041
+    },
+    {
+      "path": "radical_linear/phase_lword_park.py",
+      "bytes": 6835
+    },
+    {
+      "path": "radical_linear/qrom_quadratic.py",
+      "bytes": 4923
+    },
+    {
+      "path": "radical_linear/reference_arithmetic.py",
+      "bytes": 11767
+    },
+    {
+      "path": "radical_linear/two_scale_model.py",
+      "bytes": 3127
+    },
+    {
+      "path": "radical_newton/address_coarse_parity_products.py",
+      "bytes": 456
+    },
+    {
+      "path": "radical_newton/address_helper_lift.py",
+      "bytes": 3928
+    },
+    {
+      "path": "radical_newton/address_helper_scratch.py",
+      "bytes": 1170
+    },
+    {
+      "path": "radical_newton/carry_save.py",
+      "bytes": 2006
+    },
+    {
+      "path": "radical_newton/compressed_curvature_model.py",
+      "bytes": 3586
+    },
+    {
+      "path": "radical_newton/cubic_build.py",
+      "bytes": 7679
+    },
+    {
+      "path": "radical_newton/cubic_model.py",
+      "bytes": 3961
+    },
+    {
+      "path": "radical_newton/curvature_cycle_fix.py",
+      "bytes": 2237
+    },
+    {
+      "path": "radical_newton/curvature_direct_l2.py",
+      "bytes": 1262
+    },
+    {
+      "path": "radical_newton/curvature_direct_l2_staged.py",
+      "bytes": 1245
+    },
+    {
+      "path": "radical_newton/curvature_direct_products.py",
+      "bytes": 1815
+    },
+    {
+      "path": "radical_newton/curvature_exclude_ltop.py",
+      "bytes": 2021
+    },
+    {
+      "path": "radical_newton/curvature_extra_l3.py",
+      "bytes": 1598
+    },
+    {
+      "path": "radical_newton/curvature_extra_products.py",
+      "bytes": 1434
+    },
+    {
+      "path": "radical_newton/curvature_l2_staged.py",
+      "bytes": 2043
+    },
+    {
+      "path": "radical_newton/deferred_lookup.py",
+      "bytes": 3263
+    },
+    {
+      "path": "radical_newton/delay_highword_parities.py",
+      "bytes": 2876
+    },
+    {
+      "path": "radical_newton/highword_exact.py",
+      "bytes": 6575
+    },
+    {
+      "path": "radical_newton/highword_fit.py",
+      "bytes": 839
+    },
+    {
+      "path": "radical_newton/highword_parity_products.py",
+      "bytes": 3166
+    },
+    {
+      "path": "radical_newton/highword_relations.py",
+      "bytes": 550
+    },
+    {
+      "path": "radical_newton/highword_two_products.py",
+      "bytes": 1536
+    },
+    {
+      "path": "radical_newton/local_clean.py",
+      "bytes": 614
+    },
+    {
+      "path": "radical_newton/lword5_parity_products.py",
+      "bytes": 481
+    },
+    {
+      "path": "radical_newton/lword_curvature_products.py",
+      "bytes": 1214
+    },
+    {
+      "path": "radical_newton/lword_parity_products.py",
+      "bytes": 474
+    },
+    {
+      "path": "radical_newton/memory68.py",
+      "bytes": 3402
+    },
+    {
+      "path": "radical_newton/memory68_stream.py",
+      "bytes": 1607
+    },
+    {
+      "path": "radical_newton/memory68_streamed.py",
+      "bytes": 3511
+    },
+    {
+      "path": "radical_newton/phase_fused.py",
+      "bytes": 3314
+    },
+    {
+      "path": "radical_newton/phase_q19_decoder.py",
+      "bytes": 2154
+    },
+    {
+      "path": "radical_newton/phase_q19_lowrank.py",
+      "bytes": 1725
+    },
+    {
+      "path": "radical_newton/signed_digit_helpers.py",
+      "bytes": 27061
+    },
+    {
+      "path": "radical_newton/verify_curvature_pipeline.py",
+      "bytes": 3938
+    },
+    {
+      "path": "radical_newton/verify_curvature_products.py",
+      "bytes": 1094
+    },
+    {
+      "path": "radical_norm/address_helpers.py",
+      "bytes": 10075
+    },
+    {
+      "path": "radical_norm/borrow_allocator.py",
+      "bytes": 3503
+    },
+    {
+      "path": "radical_norm/build68.py",
+      "bytes": 4259
+    },
+    {
+      "path": "radical_norm/build_helper.py",
+      "bytes": 4459
+    },
+    {
+      "path": "radical_norm/cache_borrowed.py",
+      "bytes": 1443
+    },
+    {
+      "path": "radical_norm/carry_trade.py",
+      "bytes": 3699
+    },
+    {
+      "path": "radical_norm/folded_reflections.py",
+      "bytes": 2825
+    },
+    {
+      "path": "radical_norm/full_reflections.py",
+      "bytes": 4440
+    },
+    {
+      "path": "radical_norm/inverse_full_reflections.py",
+      "bytes": 5352
+    },
+    {
+      "path": "radical_norm/reflections.py",
+      "bytes": 7564
+    },
+    {
+      "path": "radical_phase/address_park.py",
+      "bytes": 8740
+    },
+    {
+      "path": "radical_phase/address_probe.py",
+      "bytes": 3374
+    },
+    {
+      "path": "radical_phase/address_quadratic.py",
+      "bytes": 5600
+    },
+    {
+      "path": "radical_phase/address_relations.py",
+      "bytes": 3482
+    },
+    {
+      "path": "radical_phase/address_sequential.py",
+      "bytes": 4861
+    },
+    {
+      "path": "radical_phase/build_structural.py",
+      "bytes": 4381
+    },
+    {
+      "path": "radical_phase/curvature_generic.py",
+      "bytes": 11246
+    },
+    {
+      "path": "radical_phase/direct_builder.py",
+      "bytes": 5868
+    },
+    {
+      "path": "radical_phase/direct_fit.py",
+      "bytes": 2583
+    },
+    {
+      "path": "radical_phase/phase_flags_generic.py",
+      "bytes": 4483
+    },
+    {
+      "path": "reproduction.json",
+      "bytes": 4808
+    },
+    {
+      "path": "reproduction.log",
+      "bytes": 3037
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 27
+    },
+    {
+      "path": "round3_arithmetic/anf_qrom.py",
+      "bytes": 4484
+    },
+    {
+      "path": "round3_arithmetic/compressed_anf_qrom.py",
+      "bytes": 7947
+    },
+    {
+      "path": "round3_arithmetic/order_probe.py",
+      "bytes": 973
+    },
+    {
+      "path": "round3_arithmetic/output_grid_model.py",
+      "bytes": 2995
+    },
+    {
+      "path": "round3_arithmetic/output_space_address.py",
+      "bytes": 3192
+    },
+    {
+      "path": "round3_arithmetic/output_space_address_extended.py",
+      "bytes": 3323
+    },
+    {
+      "path": "round3_arithmetic/output_space_address_p8.py",
+      "bytes": 2830
+    },
+    {
+      "path": "round3_arithmetic/output_space_anf.py",
+      "bytes": 1625
+    },
+    {
+      "path": "round3_arithmetic/park_qrom_products.py",
+      "bytes": 3122
+    },
+    {
+      "path": "round3_arithmetic/phase2_second_park_search.py",
+      "bytes": 8247
+    },
+    {
+      "path": "round3_memory/affine_peak.py",
+      "bytes": 2656
+    },
+    {
+      "path": "round3_memory/build67.py",
+      "bytes": 3390
+    },
+    {
+      "path": "round3_memory/build67_coarse.py",
+      "bytes": 3786
+    },
+    {
+      "path": "round3_memory/build67_coarse4.py",
+      "bytes": 3798
+    },
+    {
+      "path": "round3_memory/build67_direct75.py",
+      "bytes": 3807
+    },
+    {
+      "path": "round3_memory/build67_scheduled.py",
+      "bytes": 3605
+    },
+    {
+      "path": "round3_memory/build67_scheduled_late67.py",
+      "bytes": 3839
+    },
+    {
+      "path": "round3_memory/build_l4.py",
+      "bytes": 1365
+    },
+    {
+      "path": "round3_memory/coarse_curvature.py",
+      "bytes": 6574
+    },
+    {
+      "path": "round3_memory/coarse_extra_search.py",
+      "bytes": 2641
+    },
+    {
+      "path": "round3_memory/coarse_four.py",
+      "bytes": 5244
+    },
+    {
+      "path": "round3_memory/coarse_scheduled.py",
+      "bytes": 2666
+    },
+    {
+      "path": "round3_memory/coarse_scheduled_late67.py",
+      "bytes": 2723
+    },
+    {
+      "path": "round3_memory/coarse_simplify75.py",
+      "bytes": 2457
+    },
+    {
+      "path": "round3_memory/commute_carry_resets.py",
+      "bytes": 870
+    },
+    {
+      "path": "round3_memory/delay_affine_initializers.py",
+      "bytes": 1662
+    },
+    {
+      "path": "round3_memory/fit_l4.py",
+      "bytes": 2556
+    },
+    {
+      "path": "round3_memory/h_projection.py",
+      "bytes": 1270
+    },
+    {
+      "path": "round3_memory/memory67.py",
+      "bytes": 3549
+    },
+    {
+      "path": "round3_memory/memory67_relaxed.py",
+      "bytes": 3991
+    },
+    {
+      "path": "round3_memory/memory68_relaxed.py",
+      "bytes": 3733
+    },
+    {
+      "path": "round3_memory/phase_carry_park.py",
+      "bytes": 1341
+    },
+    {
+      "path": "round3_memory/phase_first_oneproduct.py",
+      "bytes": 1964
+    },
+    {
+      "path": "round3_memory/phase_h_quadratic_probe.py",
+      "bytes": 2468
+    },
+    {
+      "path": "round3_memory/phase_merged_quadratic_probe.py",
+      "bytes": 3128
+    },
+    {
+      "path": "round3_memory/phase_parity_helper_probe.py",
+      "bytes": 3887
+    },
+    {
+      "path": "round3_memory/phase_r_h_quadratic_probe.py",
+      "bytes": 2374
+    },
+    {
+      "path": "round3_memory/phase_r_quadratic_probe.py",
+      "bytes": 2339
+    },
+    {
+      "path": "round3_memory/prove_coarse11.py",
+      "bytes": 2313
+    },
+    {
+      "path": "round3_memory/prove_coarse4.py",
+      "bytes": 2302
+    },
+    {
+      "path": "round3_memory/prove_direct75.py",
+      "bytes": 2091
+    },
+    {
+      "path": "round3_memory/prove_scheduled57.py",
+      "bytes": 2264
+    },
+    {
+      "path": "round3_memory/prove_scheduled57_late67.py",
+      "bytes": 2285
+    },
+    {
+      "path": "round3_memory/r_quadratic_probe.py",
+      "bytes": 2148
+    },
+    {
+      "path": "round3_phase/build_virtual_merged.py",
+      "bytes": 2405
+    },
+    {
+      "path": "round3_phase/coefficient_recoding.py",
+      "bytes": 4118
+    },
+    {
+      "path": "round3_phase/coefficient_shift.py",
+      "bytes": 1504
+    },
+    {
+      "path": "round3_phase/feature_delete.py",
+      "bytes": 2736
+    },
+    {
+      "path": "round3_phase/joint_feature_search.py",
+      "bytes": 5505
+    },
+    {
+      "path": "round3_phase/low_feature_search.py",
+      "bytes": 3892
+    },
+    {
+      "path": "round3_phase/merge_build.py",
+      "bytes": 4902
+    },
+    {
+      "path": "round3_phase/merge_fit.py",
+      "bytes": 1742
+    },
+    {
+      "path": "round3_phase/phase_feature_search.py",
+      "bytes": 2694
+    },
+    {
+      "path": "round3_phase/segment_recoding.py",
+      "bytes": 3271
+    },
+    {
+      "path": "round3_phase/transient_feature_search.py",
+      "bytes": 4633
+    },
+    {
+      "path": "round3_phase/virtual_phase.py",
+      "bytes": 2131
+    },
+    {
+      "path": "round4_memory/build_encoded.py",
+      "bytes": 3968
+    },
+    {
+      "path": "round4_memory/build_phase_scratch.py",
+      "bytes": 1687
+    },
+    {
+      "path": "round4_memory/eager_measurements.py",
+      "bytes": 3082
+    },
+    {
+      "path": "round4_memory/encode_phase_flags.py",
+      "bytes": 13555
+    },
+    {
+      "path": "round4_memory/phase_only_scratch.py",
+      "bytes": 5278
+    },
+    {
+      "path": "round4_memory/phase_only_scratch_v2.py",
+      "bytes": 10558
+    },
+    {
+      "path": "round4_memory/shift_flag_probe.py",
+      "bytes": 1901
+    },
+    {
+      "path": "round4_phase/calibrate_candidate.py",
+      "bytes": 5661
+    },
+    {
+      "path": "round4_phase/encoded_context.py",
+      "bytes": 1252
+    },
+    {
+      "path": "round4_phase/encoded_probe.py",
+      "bytes": 860
+    },
+    {
+      "path": "round4_phase/late_cubic_probe.py",
+      "bytes": 5480
+    },
+    {
+      "path": "round4_phase/lookup_helper_probe.py",
+      "bytes": 3864
+    },
+    {
+      "path": "round4_phase/lword_late.py",
+      "bytes": 9384
+    },
+    {
+      "path": "round4_phase/probe_common.py",
+      "bytes": 3825
+    },
+    {
+      "path": "round4_phase/relaxation_probe.py",
+      "bytes": 1264
+    },
+    {
+      "path": "round4_root/address_joint.py",
+      "bytes": 6630
+    },
+    {
+      "path": "round4_root/address_mixed_probe.py",
+      "bytes": 2098
+    },
+    {
+      "path": "round4_root/address_sequential_search.py",
+      "bytes": 4207
+    },
+    {
+      "path": "round4_root/build_shared_address.py",
+      "bytes": 3609
+    },
+    {
+      "path": "round4_root/minrank",
+      "bytes": 32064
+    },
+    {
+      "path": "round4_root/minrank.cpp",
+      "bytes": 1839
+    },
+    {
+      "path": "round4_root/parity_lword.py",
+      "bytes": 1528
+    },
+    {
+      "path": "round4_root/prove_shared_address.py",
+      "bytes": 2776
+    },
+    {
+      "path": "round4_root/shared51_late20.build.json",
+      "bytes": 469302
+    },
+    {
+      "path": "round4_root/shared_address.py",
+      "bytes": 2070
+    },
+    {
+      "path": "round5_arithmetic/affine_erasure.py",
+      "bytes": 7710
+    },
+    {
+      "path": "round5_arithmetic/apply_omit_after_phase.py",
+      "bytes": 3306
+    },
+    {
+      "path": "round5_arithmetic/build_preallocated_erasure.py",
+      "bytes": 3306
+    },
+    {
+      "path": "round5_arithmetic/coefficient_frame_probe.py",
+      "bytes": 0
+    },
+    {
+      "path": "round5_arithmetic/delay_lword_inner.py",
+      "bytes": 7816
+    },
+    {
+      "path": "round5_arithmetic/early_target_erasure.py",
+      "bytes": 7002
+    },
+    {
+      "path": "round5_arithmetic/inplace_alias_decoder.py",
+      "bytes": 10461
+    },
+    {
+      "path": "round5_arithmetic/late_lword_probe.json",
+      "bytes": 18334
+    },
+    {
+      "path": "round5_arithmetic/omit_coefficients.py",
+      "bytes": 4711
+    },
+    {
+      "path": "round5_arithmetic/probe_late_lword.py",
+      "bytes": 4369
+    },
+    {
+      "path": "round5_arithmetic/prove_affine_erasure.py",
+      "bytes": 6168
+    },
+    {
+      "path": "round5_arithmetic/prove_early_erasure.py",
+      "bytes": 4736
+    },
+    {
+      "path": "round5_arithmetic/prove_late_lword.py",
+      "bytes": 2816
+    },
+    {
+      "path": "round5_arithmetic/prove_preallocation.py",
+      "bytes": 2150
+    },
+    {
+      "path": "round5_arithmetic/refine_late_lword.py",
+      "bytes": 1943
+    },
+    {
+      "path": "round5_arithmetic/short_alias_decoder.py",
+      "bytes": 3628
+    },
+    {
+      "path": "round5_memory/borrow_phase_delays.py",
+      "bytes": 6741
+    },
+    {
+      "path": "round5_memory/build_borrowed_memory.py",
+      "bytes": 4418
+    },
+    {
+      "path": "round5_memory/build_l6_borrowed.py",
+      "bytes": 3672
+    },
+    {
+      "path": "round5_memory/build_phase_clifford.py",
+      "bytes": 2674
+    },
+    {
+      "path": "round5_memory/close66.py",
+      "bytes": 6296
+    },
+    {
+      "path": "round5_memory/dirty_flag7.py",
+      "bytes": 3167
+    },
+    {
+      "path": "round5_memory/dirty_parity.py",
+      "bytes": 5153
+    },
+    {
+      "path": "round5_memory/inline_and_fanout.py",
+      "bytes": 3635
+    },
+    {
+      "path": "round5_memory/qrom_affine_borrow.py",
+      "bytes": 6690
+    },
+    {
+      "path": "round5_memory/qrom_affine_borrow_wide.py",
+      "bytes": 2018
+    },
+    {
+      "path": "round5_memory/qrom_affine_product.py",
+      "bytes": 5033
+    },
+    {
+      "path": "round5_memory/qrom_parent_trade.py",
+      "bytes": 2800
+    },
+    {
+      "path": "round5_memory/quadratic_blocks.py",
+      "bytes": 6975
+    },
+    {
+      "path": "round5_memory/quadratic_phase.py",
+      "bytes": 5744
+    },
+    {
+      "path": "round5_memory/retain_nor_carry.py",
+      "bytes": 2250
+    },
+    {
+      "path": "round5_memory/undo_dirty_phase_echo.py",
+      "bytes": 3006
+    },
+    {
+      "path": "round5_phase/high_stream.py",
+      "bytes": 8379
+    },
+    {
+      "path": "round5_phase/l5_late_exact.py",
+      "bytes": 4036
+    },
+    {
+      "path": "round5_phase/l6_exact.certificate.json",
+      "bytes": 42315
+    },
+    {
+      "path": "round5_phase/l6_exact.logical.kmx",
+      "bytes": 379281
+    },
+    {
+      "path": "round5_phase/l6_exact.py",
+      "bytes": 11623
+    },
+    {
+      "path": "round5_phase/stream_two_shifts.py",
+      "bytes": 9870
+    },
+    {
+      "path": "round5_root/build_combined.py",
+      "bytes": 3838
+    },
+    {
+      "path": "round5_root/dirty_control_search.py",
+      "bytes": 4450
+    },
+    {
+      "path": "round5_root/dirty_phase_borrow.py",
+      "bytes": 5830
+    },
+    {
+      "path": "round5_root/finalize_compact.py",
+      "bytes": 2687
+    },
+    {
+      "path": "round5_root/flip_certificate.py",
+      "bytes": 2699
+    },
+    {
+      "path": "round5_root/restore_spare_carries.py",
+      "bytes": 5073
+    },
+    {
+      "path": "round6_arithmetic/adaptive_family_base.py",
+      "bytes": 11917
+    },
+    {
+      "path": "round6_arithmetic/adaptive_omitted.py",
+      "bytes": 11931
+    },
+    {
+      "path": "round6_arithmetic/check_triangular.py",
+      "bytes": 2166
+    },
+    {
+      "path": "round6_arithmetic/l6_regroup5_f0_joint.certificate.json",
+      "bytes": 6269
+    },
+    {
+      "path": "round6_arithmetic/l6_regroup5_f0_joint.proof.json",
+      "bytes": 424
+    },
+    {
+      "path": "round6_arithmetic/l7_front_fit.py",
+      "bytes": 1774
+    },
+    {
+      "path": "round6_arithmetic/l7_literal_probe.py",
+      "bytes": 2650
+    },
+    {
+      "path": "round6_arithmetic/l7_park.py",
+      "bytes": 4015
+    },
+    {
+      "path": "round6_arithmetic/refine_adaptive_decoders.py",
+      "bytes": 3904
+    },
+    {
+      "path": "round6_arithmetic/refine_l6_extensions.py",
+      "bytes": 5525
+    },
+    {
+      "path": "round6_arithmetic/refine_l6_joint.py",
+      "bytes": 3560
+    },
+    {
+      "path": "round6_arithmetic/regroup_low_outer.py",
+      "bytes": 11786
+    },
+    {
+      "path": "round6_arithmetic/schedule_adaptive.py",
+      "bytes": 5964
+    },
+    {
+      "path": "round6_arithmetic/stage_address.py",
+      "bytes": 7555
+    },
+    {
+      "path": "round6_arithmetic/triangular_outer.py",
+      "bytes": 9075
+    },
+    {
+      "path": "round6_memory/bootstrap_lookup.py",
+      "bytes": 12676
+    },
+    {
+      "path": "round6_memory/coded_lword_park.py",
+      "bytes": 4533
+    },
+    {
+      "path": "round6_memory/dynamic_frontier_probe.py",
+      "bytes": 2966
+    },
+    {
+      "path": "round6_memory/l6_pool41_refined.proof.json",
+      "bytes": 302808
+    },
+    {
+      "path": "round6_memory/l7_address_span.py",
+      "bytes": 2072
+    },
+    {
+      "path": "round6_memory/l7_parity_probe.py",
+      "bytes": 3230
+    },
+    {
+      "path": "round6_memory/parity_bootstrap_lookup.py",
+      "bytes": 9508
+    },
+    {
+      "path": "round6_memory/pool_lookup.py",
+      "bytes": 6669
+    },
+    {
+      "path": "round6_memory/refine_pool_lookup.py",
+      "bytes": 1054
+    },
+    {
+      "path": "round6_memory/refine_subspace_lookup.py",
+      "bytes": 640
+    },
+    {
+      "path": "round6_memory/release189_generate.py",
+      "bytes": 3294
+    },
+    {
+      "path": "round6_memory/remap_pool_lookup.py",
+      "bytes": 2720
+    },
+    {
+      "path": "round6_memory/seed_count_lookup.py",
+      "bytes": 582
+    },
+    {
+      "path": "round6_memory/stage_release189.py",
+      "bytes": 5140
+    },
+    {
+      "path": "round6_memory/subspace35_refined.proof.json",
+      "bytes": 178622
+    },
+    {
+      "path": "round6_memory/subspace_bootstrap_lookup.py",
+      "bytes": 3349
+    },
+    {
+      "path": "round6_memory/subspace_products",
+      "bytes": 22920
+    },
+    {
+      "path": "round6_memory/subspace_products.cpp",
+      "bytes": 2097
+    },
+    {
+      "path": "round6_root/advance_phase.py",
+      "bytes": 6125
+    },
+    {
+      "path": "round6_root/alias_probe.py",
+      "bytes": 2258
+    },
+    {
+      "path": "round6_root/combine_lookup.py",
+      "bytes": 2344
+    },
+    {
+      "path": "round6_root/defer_ccz.py",
+      "bytes": 4948
+    },
+    {
+      "path": "round6_root/defer_phase.py",
+      "bytes": 7783
+    },
+    {
+      "path": "round6_root/merge_phase.py",
+      "bytes": 6062
+    },
+    {
+      "path": "round6_root/packed_calibrate.py",
+      "bytes": 6025
+    },
+    {
+      "path": "round6_root/phase_cone.py",
+      "bytes": 9698
+    },
+    {
+      "path": "round6_root/retime_erasure.py",
+      "bytes": 6639
+    },
+    {
+      "path": "round6_root/retime_independent.py",
+      "bytes": 2921
+    },
+    {
+      "path": "round6_root/wide_outer.py",
+      "bytes": 6031
+    },
+    {
+      "path": "round7_arithmetic/OVERLAP63_ADDON.json",
+      "bytes": 11344
+    },
+    {
+      "path": "round7_arithmetic/address_inplace.py",
+      "bytes": 7773
+    },
+    {
+      "path": "round7_arithmetic/address_inplace_physical.py",
+      "bytes": 9022
+    },
+    {
+      "path": "round7_arithmetic/apply_pool39_exact.py",
+      "bytes": 2064
+    },
+    {
+      "path": "round7_arithmetic/close_overlap63.py",
+      "bytes": 8869
+    },
+    {
+      "path": "round7_arithmetic/compose_initial_l7.py",
+      "bytes": 4379
+    },
+    {
+      "path": "round7_arithmetic/l7_pool39_park44_42_cap63.raw.kmx",
+      "bytes": 522843
+    },
+    {
+      "path": "round7_arithmetic/park_outer_top.py",
+      "bytes": 7669
+    },
+    {
+      "path": "round7_arithmetic/park_overlap71.py",
+      "bytes": 3617
+    },
+    {
+      "path": "round7_arithmetic/park_overlap71_physical.py",
+      "bytes": 4622
+    },
+    {
+      "path": "round7_arithmetic/park_second_top.py",
+      "bytes": 7685
+    },
+    {
+      "path": "round7_arithmetic/park_sparse_carry.py",
+      "bytes": 4845
+    },
+    {
+      "path": "round7_arithmetic/park_sparse_pair63.py",
+      "bytes": 5489
+    },
+    {
+      "path": "round7_arithmetic/stage_address.py",
+      "bytes": 7493
+    },
+    {
+      "path": "round7_arithmetic/stage_address_multi.py",
+      "bytes": 4557
+    },
+    {
+      "path": "round7_arithmetic/staged_address.certificate.json",
+      "bytes": 5857
+    },
+    {
+      "path": "round7_memory/apply_refined_l7_lookup.py",
+      "bytes": 3240
+    },
+    {
+      "path": "round7_memory/coded_initial_lookup.py",
+      "bytes": 6060
+    },
+    {
+      "path": "round7_memory/l7_coded9.certificate.json",
+      "bytes": 12347
+    },
+    {
+      "path": "round7_memory/l7_initial188_pool40.certificate.json",
+      "bytes": 207142
+    },
+    {
+      "path": "round7_memory/l7_initial_pool39.certificate.json",
+      "bytes": 207287
+    },
+    {
+      "path": "round7_memory/l7_initial_pool40.certificate.json",
+      "bytes": 208564
+    },
+    {
+      "path": "round7_memory/l8_span_probe.py",
+      "bytes": 6842
+    },
+    {
+      "path": "round7_memory/merge_l7_late.py",
+      "bytes": 6511
+    },
+    {
+      "path": "round7_memory/merged_all_release.py",
+      "bytes": 6532
+    },
+    {
+      "path": "round7_memory/native64_jointlate_refined.certificate.json",
+      "bytes": 41998
+    },
+    {
+      "path": "round7_memory/replace_coded_front.py",
+      "bytes": 4918
+    },
+    {
+      "path": "round7_memory/share_l8_late.py",
+      "bytes": 7754
+    },
+    {
+      "path": "round7_memory/share_l9_late.py",
+      "bytes": 7572
+    },
+    {
+      "path": "round7_phase/cache64.py",
+      "bytes": 3803
+    },
+    {
+      "path": "round7_phase/cross_cached64_quad.proof.json",
+      "bytes": 98734
+    },
+    {
+      "path": "round7_phase/cross_context_cache.py",
+      "bytes": 12252
+    },
+    {
+      "path": "round7_phase/overlap63_exact_tail.proof.json",
+      "bytes": 1299
+    },
+    {
+      "path": "round7_phase/pool39_alias_fit.py",
+      "bytes": 4512
+    },
+    {
+      "path": "round7_phase/pool39_carry.proof.json",
+      "bytes": 847
+    },
+    {
+      "path": "round7_phase/pool39_leaf.certificate.json",
+      "bytes": 3649
+    },
+    {
+      "path": "round7_phase/pool39_long.certificate.json",
+      "bytes": 13821
+    },
+    {
+      "path": "round7_phase/short_tail_exact.py",
+      "bytes": 3191
+    },
+    {
+      "path": "round7_root/cache_phase_products.py",
+      "bytes": 7980
+    },
+    {
+      "path": "round7_root/close_carry.py",
+      "bytes": 1207
+    },
+    {
+      "path": "round7_root/commute_phase_erasure.py",
+      "bytes": 4645
+    },
+    {
+      "path": "round7_root/conjugate_product.py",
+      "bytes": 4797
+    },
+    {
+      "path": "round7_root/erase_phase_carry.py",
+      "bytes": 4751
+    },
+    {
+      "path": "round7_root/overlap71_refined.certificate.json",
+      "bytes": 7500
+    },
+    {
+      "path": "round7_root/phasecached64.proof.json",
+      "bytes": 104858
+    },
+    {
+      "path": "round7_root/replay_cache.py",
+      "bytes": 1365
+    }
+  ]
+}

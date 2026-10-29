@@ -1,0 +1,1519 @@
+{
+  "source": "source/baseline/build_config.json",
+  "source_sha256": "0752ed60eef19cb1b0948f18672b0f660a016cab10d4485d67a3c28425c09713",
+  "explanation": "Circuit and certificate/proof dependencies in the inherited baseline config, forbidden as inputs by PRA-320. This is evidence, not an input declaration.",
+  "dependencies": [
+    {
+      "path": "round5_phase/l6_exact.logical.kmx",
+      "sha256": "a98ed6cfbddda86aa6f560605d965339e404170bca3d51f02839286956a31eb5"
+    },
+    {
+      "path": "round6_arithmetic/l6_regroup5_f0_joint.certificate.json",
+      "sha256": "83d4ea87518e9aa286ff9899348337bd16353d05c9a925c56ad16e39a7c8632c"
+    },
+    {
+      "path": "round7_arithmetic/staged_address.certificate.json",
+      "sha256": "edb2fc2c7d9ef01b2515dfe57023f5605620846747e36edd7fa881c766ae7669"
+    },
+    {
+      "path": "round7_memory/l7_coded9.certificate.json",
+      "sha256": "c67c0cffb501b341b7396cc3b4cf2201ec0349d778b5ff84a69a54b65c2f3677"
+    },
+    {
+      "path": "round7_memory/l7_initial_pool40.certificate.json.gz",
+      "sha256": "f63269589f1fdac033d4e1f3e7c7c0ff5e5976459098e39b70a8d30e04b84199"
+    },
+    {
+      "path": "round7_memory/l7_initial188_pool40.certificate.json.gz",
+      "sha256": "957a153cef3a48872191a811e821842b7a65e20b963a833a338b2566e0d898b1"
+    },
+    {
+      "path": "certificates/cache64.json",
+      "sha256": "82377c29902e93d98fac3e7bc5caaeaf191eb6944e24c3bd983b9b3ff70d20c6"
+    },
+    {
+      "path": "round7_phase/cross_cached64_quad.proof.json",
+      "sha256": "0a5c45d9ddd8cf29361cd55a4f4f01088c3a2eaa7969abf80230e6a0546e5373"
+    },
+    {
+      "path": "round7_memory/native64_jointlate_refined.certificate.json",
+      "sha256": "813d12ecc3018753c60143013cbb1e4b19192b8d4a3bf0d44f9aae5a646ab63b"
+    },
+    {
+      "path": "round7_root/phasecached64.proof.json",
+      "sha256": "34474924d5e6e2f915c11690c68ee22ca8f29c6715b4329c302608beddd25445"
+    },
+    {
+      "path": "round7_memory/selected63_zero_retired.proof.json",
+      "sha256": "6f0150e54992b8f96f07f46ef6f10ad6aace85587f23b0cc87eb5dd1f4702c54"
+    },
+    {
+      "path": "round7_root/overlap71_refined.certificate.json",
+      "sha256": "a541fb3733105f527cf83c97dabbb27f0931dca8e2634a73d65fd412c24369a9"
+    },
+    {
+      "path": "round7_phase/balanced_native_independent.proof.json",
+      "sha256": "1f807ec85de64383989575cb76387186661fdf5879105b5a9b425e039ad14987"
+    },
+    {
+      "path": "round7_memory/native64_zero_retired.proof.json",
+      "sha256": "e793079dd860e117ef9edff336f6411fd24f96ac8cb934e873b1b5b0a2e0f317"
+    },
+    {
+      "path": "round7_arithmetic/norm_ge2.proof.json",
+      "sha256": "caebff405800e88cfa957a507f09bb6768912a048b4a8b71e554bf67ccb64548"
+    },
+    {
+      "path": "round7_arithmetic/balanced_native.proof.json",
+      "sha256": "a54c40a279ae9ad633359c5b703a3581d34e13c0e21af3157e4b447ccb30e021"
+    },
+    {
+      "path": "round7_arithmetic/overlap_tail16.certificate.json",
+      "sha256": "2fba2e521e31563ec2086ae8577d9057862cc7efb5b7cdde2195fa39aa993c54"
+    },
+    {
+      "path": "round7_phase/balanced_norm23.proof.json",
+      "sha256": "2dfbee800c2635781d3f9a0fb4758235e1bd3303183a37a2837debed4c225fdc"
+    },
+    {
+      "path": "round7_root/native64_overlap71_rank9.proof.json",
+      "sha256": "165770ef521891c836ea87be5bd3c99198b338def1faca40fa722a8666e50780"
+    },
+    {
+      "path": "round7_memory/l7_initial_pool39.certificate.json.gz",
+      "sha256": "d2ddebc418b4c9cdb40f2636a971d6038aec763050ad74a8d48f5a8fbe8caa11"
+    },
+    {
+      "path": "round7_phase/pool39_long.certificate.json",
+      "sha256": "ec686f15dba9e263fa935f01bf9f1e3999060022347df691b4b42b70347a3cee"
+    },
+    {
+      "path": "round7_phase/pool39_leaf.certificate.json",
+      "sha256": "4a7ac13d4b853ab0726bca863eb1bf9dcc8b779390fbed3d69e52535a1bdfc76"
+    },
+    {
+      "path": "round7_phase/pool39_carry.proof.json",
+      "sha256": "01f4abffb8a32a292c199cb695ab618600376f369e019a4eea4edef76d73623b"
+    },
+    {
+      "path": "round7_arithmetic/l7_pool39_park44_42_cap63.raw.kmx.gz",
+      "sha256": "74dedd90275beb9fdc90af5542ce888895ce37d1f3596dfcf69672fde0b59e01"
+    },
+    {
+      "path": "round7_arithmetic/balanced_native_alias.proof.json",
+      "sha256": "c90e38266499552cb96810a0b47c8e6f36867954e61a2fe32d6de7ed3aba3a63"
+    },
+    {
+      "path": "round7_arithmetic/balanced_native_tail.proof.json",
+      "sha256": "b02cf5b5b6952bff613ceb10b2c132dbe3e93d463761256c23e1c5f02baa928f"
+    },
+    {
+      "path": "round7_arithmetic/balanced_native_zero.proof.json",
+      "sha256": "69903d131756bb99511e971cf770117587c7c261a496d67eba9a60c4e24753d8"
+    },
+    {
+      "path": "round7_arithmetic/overlap63_closed.kmx",
+      "sha256": "bab22ebebaf88727b555beaf065a4e908177a4c17343ab3dc85d8cdc47f652e4"
+    },
+    {
+      "path": "round7_arithmetic/balanced63_joint16.proof.json",
+      "sha256": "c8a1e943b0cb7663baf4474d1146224974957198cbfe4688d748c62d79eb8fec"
+    },
+    {
+      "path": "round7_arithmetic/balanced_native_carries.proof.json",
+      "sha256": "7b5021842f9e264c920d9833776c8efae1dabad70c1cd27c426f93d9a656ceac"
+    },
+    {
+      "path": "round7_arithmetic/balanced_marker_affine.proof.json",
+      "sha256": "ec1073e5a66a44dae096caab3af3eb14c5c7103ca077f39c650f912773294f7f"
+    },
+    {
+      "path": "round7_root/balanced63_joint16_clean.kmx.changes.json",
+      "sha256": "5db0eff3e184167461c2d72e631d6d253d03bad3c38c25551e58325ace6a545a"
+    },
+    {
+      "path": "round7_phase/balanced_native_decoder5.proof.json",
+      "sha256": "27fd75ea3d9f51deda2c651dd2f30775ac9145758dcc0d5f8f209261e2bd8e68"
+    },
+    {
+      "path": "round7_arithmetic/balanced63_decoder5.proof.json",
+      "sha256": "37ef66f2562c5889ba4fd7c5d269b427a8bd2fe44cec214cd134723e5173dcda"
+    },
+    {
+      "path": "round7_root/balanced63_decoder5_clean.kmx.changes.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    }
+  ],
+  "scope": "Dependency evidence only; nothing here declares build inputs. Original 35-entry ancestor record is preserved above.",
+  "packages": [
+    {
+      "id": "v6-63q",
+      "version": 6,
+      "package_prefix": "source/invsqrt_63q/",
+      "entry_point": "generate.py",
+      "baseline_config": "build_config.json",
+      "baseline_config_sha256": "c2d805f82e1e2f66d2f5467df1abbf19ea9379d916ece7939a7bcbc840ff56da",
+      "stage_count": 28,
+      "baseline_frozen_dependencies": [
+        {
+          "path": "round5_phase/l6_exact.logical.kmx",
+          "sha256": "a98ed6cfbddda86aa6f560605d965339e404170bca3d51f02839286956a31eb5",
+          "hash_source": "build_config.json",
+          "in_package_inventory": true,
+          "kind": "circuit"
+        },
+        {
+          "path": "round6_arithmetic/l6_regroup5_f0_joint.certificate.json",
+          "sha256": "83d4ea87518e9aa286ff9899348337bd16353d05c9a925c56ad16e39a7c8632c",
+          "hash_source": "build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "round7_arithmetic/staged_address.certificate.json",
+          "sha256": "edb2fc2c7d9ef01b2515dfe57023f5605620846747e36edd7fa881c766ae7669",
+          "hash_source": "build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "round7_memory/l7_coded9.certificate.json",
+          "sha256": "c67c0cffb501b341b7396cc3b4cf2201ec0349d778b5ff84a69a54b65c2f3677",
+          "hash_source": "build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "round7_memory/l7_initial_pool40.certificate.json.gz",
+          "sha256": "f63269589f1fdac033d4e1f3e7c7c0ff5e5976459098e39b70a8d30e04b84199",
+          "hash_source": "build_config.json",
+          "in_package_inventory": false,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "round7_memory/l7_initial188_pool40.certificate.json.gz",
+          "sha256": "957a153cef3a48872191a811e821842b7a65e20b963a833a338b2566e0d898b1",
+          "hash_source": "build_config.json",
+          "in_package_inventory": false,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "certificates/cache64.json",
+          "sha256": "82377c29902e93d98fac3e7bc5caaeaf191eb6944e24c3bd983b9b3ff70d20c6",
+          "hash_source": "build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "round7_phase/cross_cached64_quad.proof.json",
+          "sha256": "0a5c45d9ddd8cf29361cd55a4f4f01088c3a2eaa7969abf80230e6a0546e5373",
+          "hash_source": "build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "round7_memory/native64_jointlate_refined.certificate.json",
+          "sha256": "813d12ecc3018753c60143013cbb1e4b19192b8d4a3bf0d44f9aae5a646ab63b",
+          "hash_source": "build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "round7_root/phasecached64.proof.json",
+          "sha256": "34474924d5e6e2f915c11690c68ee22ca8f29c6715b4329c302608beddd25445",
+          "hash_source": "build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "round7_arithmetic/l7_pool39_park44_42_cap63.raw.kmx.gz",
+          "sha256": "74dedd90275beb9fdc90af5542ce888895ce37d1f3596dfcf69672fde0b59e01",
+          "hash_source": "build_config.json",
+          "in_package_inventory": false,
+          "kind": "circuit"
+        },
+        {
+          "path": "round7_memory/l7_initial_pool39.certificate.json.gz",
+          "sha256": "d2ddebc418b4c9cdb40f2636a971d6038aec763050ad74a8d48f5a8fbe8caa11",
+          "hash_source": "build_config.json",
+          "in_package_inventory": false,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "round7_phase/overlap63_exact_tail.proof.json",
+          "sha256": "821237e36a8bc7b54a5f44c499412fd1dd0426570161fcc50b6cacab7cb6322d",
+          "hash_source": "build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "round7_phase/pool39_carry.proof.json",
+          "sha256": "01f4abffb8a32a292c199cb695ab618600376f369e019a4eea4edef76d73623b",
+          "hash_source": "build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "round7_phase/pool39_leaf.certificate.json",
+          "sha256": "4a7ac13d4b853ab0726bca863eb1bf9dcc8b779390fbed3d69e52535a1bdfc76",
+          "hash_source": "build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "round7_phase/pool39_long.certificate.json",
+          "sha256": "ec686f15dba9e263fa935f01bf9f1e3999060022347df691b4b42b70347a3cee",
+          "hash_source": "build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "round7_root/overlap71_refined.certificate.json",
+          "sha256": "a541fb3733105f527cf83c97dabbb27f0931dca8e2634a73d65fd412c24369a9",
+          "hash_source": "build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        }
+      ],
+      "all_baseline_pins": {
+        "round5_phase/l6_exact.logical.kmx": "a98ed6cfbddda86aa6f560605d965339e404170bca3d51f02839286956a31eb5",
+        "round6_arithmetic/l6_regroup5_f0_joint.certificate.json": "83d4ea87518e9aa286ff9899348337bd16353d05c9a925c56ad16e39a7c8632c",
+        "round7_arithmetic/staged_address.certificate.json": "edb2fc2c7d9ef01b2515dfe57023f5605620846747e36edd7fa881c766ae7669",
+        "round7_memory/l7_coded9.certificate.json": "c67c0cffb501b341b7396cc3b4cf2201ec0349d778b5ff84a69a54b65c2f3677",
+        "round7_memory/l7_initial_pool40.certificate.json.gz": "f63269589f1fdac033d4e1f3e7c7c0ff5e5976459098e39b70a8d30e04b84199",
+        "round7_memory/l7_initial188_pool40.certificate.json.gz": "957a153cef3a48872191a811e821842b7a65e20b963a833a338b2566e0d898b1",
+        "certificates/cache64.json": "82377c29902e93d98fac3e7bc5caaeaf191eb6944e24c3bd983b9b3ff70d20c6",
+        "round7_phase/cross_cached64_quad.proof.json": "0a5c45d9ddd8cf29361cd55a4f4f01088c3a2eaa7969abf80230e6a0546e5373",
+        "gate/dirty_complement.py": "51823b08087d5f5847b838f0369b0f1532d602155eb5634e0d510e6e5c49f620",
+        "gate/exact_opt.py": "a92136af517dd2397f79e292f4a5b8fb0864e8ac1e351cf98f7b24da62da8af7",
+        "official/kickmix/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "official/kickmix/kickmix.so": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
+        "qrom/dirty_leaf.py": "4ec7245c09d35ef609251a0e89df4443b32a19a8d3b8c040bef491b25bfc5564",
+        "qubit/cache_products_general.py": "490ea6ebcb0e8751fb06e0153219c287c9a840cb9c424d6359982f64da62ee47",
+        "qubit/implicit_curvature.py": "dfbde978ebd736166466ee030ecbd6499077183badd5eac69097a19b5b3293c4",
+        "qubit/implicit_highword.py": "3cdc1d9d4923636d5750285b8804317846ac121d899410cd910b483d2c4d2fe4",
+        "qubit/optimize_memory.py": "d9f68c987a6f9b07a2c33cc5caf08d92eef01f9308a30ecae0a1b65ea6d8ef9a",
+        "radical_norm/borrow_allocator.py": "bba2723b2d6e947166d77b87a5028de1db367de136998041f88f510554600eac",
+        "radical_phase/address_probe.py": "a7ff8e7715d186a599583ec2f23b4a439cf4d8f8d44655de85fa88ff1abfdd98",
+        "radical_phase/address_quadratic.py": "105abf3fa2535521e4579bcc243a836cf45bac83e6f3aec8f8924a9b8f016fe4",
+        "round3_arithmetic/anf_qrom.py": "a6f32a15b5c9e5c7cd5524d0b28c0d927ea0c42b8550bb4ede10f07cf0177843",
+        "round4_root/address_joint.py": "244056a31613640e13ab352791d851594171e4c5db1c7ced326ec449a761fc27",
+        "round5_memory/quadratic_phase.py": "522529fafc21220f511bd9075c3051c4f3f2ad23b1ec6e635bf7755ffbbce420",
+        "round6_memory/bootstrap_lookup.py": "65e2d0660c1ba5fcdd462a89d005aadfdf512af5189cad2b8a22cedbad6dd1ff",
+        "round6_memory/coded_lword_park.py": "4e0e5f5a8a6dd945ea69572cfd34b9ef401a895908952435997e93bca097e676",
+        "round6_memory/parity_bootstrap_lookup.py": "0a96f26f557b328d2a725dca0811c4ff695373bab0d0ff34ac20d77f0b7d877d",
+        "round6_memory/pool_lookup.py": "bc662cf479d6147636d055b2dac24a3ce44563ef570d45ac13d052000561885d",
+        "round6_memory/subspace_bootstrap_lookup.py": "1e1ba68aef4853921e42f6e727a088af46048acbbf5b5a2b80478fb465c7d5d2",
+        "round6_root/phase_cone.py": "054cb6d9aea6ab7426ebc2e7cda64318332d715588d8a63adc121b4fd25e42d6",
+        "round7_memory/coded_initial_lookup.py": "3bd5e2fdd9d309f6152c7433d60434c9e16c2b7b5d54e10521451bb6475282ea",
+        "round7_memory/l8_span_probe.py": "a0cedb8d4eab3f94d99be1de8ce375d209c92e0e83387416bc09069e2260f94a",
+        "round7_memory/merge_l7_late.py": "fe4c8992d59bb6df06a986be924f7dc5344057b1b3d8ae63ecc6bf1fcc4f9eb2",
+        "round7_memory/merged_all_release.py": "0b0e06728d83e4b7d102c71fbcb56d8a4ec6b5017da3948d6d11feab48063938",
+        "round7_memory/native64_jointlate_refined.certificate.json": "813d12ecc3018753c60143013cbb1e4b19192b8d4a3bf0d44f9aae5a646ab63b",
+        "round7_memory/replace_coded_front.py": "2a6044107170e804f2440709b9466aa553b6fc16565d3281929224ac98812625",
+        "round7_memory/share_l8_late.py": "4f5ec7ba6a181a698034928d392c1fa204c2b0ca7995144773b30b2048b8e102",
+        "round7_memory/share_l9_late.py": "366bc6ca315728fa26d3457b6ccacc476fd0a00a26a33b09bbf59db47dc571df",
+        "round7_phase/cross_context_cache.py": "508e17609c906b55598d8284c71203e95787c82a0e3730412fb07a703bdd9047",
+        "round7_root/cache_phase_products.py": "317975b089df61ad1782a8677f22ab6bfdd5f6a873055a7e67ee94de0b68bb39",
+        "round7_root/phasecached64.proof.json": "34474924d5e6e2f915c11690c68ee22ca8f29c6715b4329c302608beddd25445",
+        "qubit/curvature_arbitrary_product.py": "81eea68544c28aba0a9c9c3058a81a19a9c1f8ba771b00e05356f74dd7c185b2",
+        "radical_linear/parked_input_allocator.py": "0c120473247ad4e8cad0b2f485bb576e01429c34ce10b60d8ae2d81b308e4100",
+        "radical_linear/phase_lword_delay.py": "f68ca142ebb8dc8e77848e61125b4b1ab2a9d66fbf2b2f794d37f4c78965a028",
+        "radical_linear/phase_lword_park.py": "efc2ac1120d08e187940153121981ee186012cd575a11f08d1fafd429a2d3205",
+        "radical_newton/carry_save.py": "2dbb85d630bb33989788b4a76e2452a87f58a46be300c71768b55f71123e6e5a",
+        "radical_newton/deferred_lookup.py": "2efc5714bbc0582ffc4a4e54097edbafdfa37303a028fa66fb2377a011ef00f5",
+        "radical_newton/highword_parity_products.py": "42d3728db68668b1b7841e97bc45d65ccba34c878c9846b776ad12467867bef9",
+        "radical_newton/phase_fused.py": "a444e784d745f128a78d570bb8cac6edf28024006a271d1f968773bc289b8b6a",
+        "radical_newton/signed_digit_helpers.py": "0066a6b611159b39641f4d38b1eb0e14da67eb13c4c13cc0177b6b27c72ce385",
+        "radical_norm/carry_trade.py": "ee4b60730c18076dc8fc20db76a4d037b6ef26bb78087cf25ceff08a6591eb57",
+        "radical_phase/address_park.py": "a81fcd4b86c8af968dfa15a9d29ee7e5d3ff8bcd74569cb0ae540dffadb3561d",
+        "round5_arithmetic/delay_lword_inner.py": "64d89a139c0448280c7980bbfe181cabc5e8c463a7ff5f76c79ad25d54861ca7",
+        "round5_arithmetic/inplace_alias_decoder.py": "d11019ed53ec77e64aab05079465b9f5ba55c3bc9aebb98ab259e7c8f962bfef",
+        "round5_phase/l6_exact.py": "13fc62c3bb477f0364f12b270ec63d3ca9fd2c8ba76b77b802e6b91d4a8c576d",
+        "round6_arithmetic/adaptive_family_base.py": "62047c931cf7a6a2454456a78a694bf23946f3ad68f5436c6c43976c587fcdf2",
+        "round6_arithmetic/adaptive_omitted.py": "9fa862e37d7139332424f77cfc325d8e2cd14ae55ef9e16ed7d06782de47a85a",
+        "round6_arithmetic/refine_adaptive_decoders.py": "8c0f6309b6d1ccc26726414b3d27381a22989d3176c7376bc6e03ad42b84bd74",
+        "round6_arithmetic/refine_l6_extensions.py": "18f5ea170c18346162a29d54b2dfb9a840ebdb5bc93786d72a82264c9fe5e456",
+        "round6_arithmetic/refine_l6_joint.py": "b6aa3abc8b0afd344d86822dc1d7819c81d26b94c6bfa718e7442c4f044110d9",
+        "round6_memory/remap_pool_lookup.py": "ccbaae8f6d73c9c5b4c7926e972fc6dca4fefe4cdab5e3a565076296acb8c8f9",
+        "round7_arithmetic/OVERLAP63_ADDON.json": "00ec2aec7f72151d17e0ade8aa5de8bddcd4d31dca32c0611f0b585d7a19e737",
+        "round7_arithmetic/address_inplace.py": "44f526aa6ccbdc2a30ddca351d718c20b99c461b3e85bdea6ee18f9a417b0499",
+        "round7_arithmetic/address_inplace_physical.py": "4e3203a1d632b92c04456416d93b478e03e159328b9a3b9dc91833762364bf74",
+        "round7_arithmetic/apply_pool39_exact.py": "0b098c02bdd37ae1fc415a019c9afe22a9f3069a414b24cd191c9faf24f36bdf",
+        "round7_arithmetic/close_overlap63.py": "10df36a5cc9e07d95caf108c730b26cab360f87902287677b21618af2006dd44",
+        "round7_arithmetic/l7_pool39_park44_42_cap63.raw.kmx.gz": "74dedd90275beb9fdc90af5542ce888895ce37d1f3596dfcf69672fde0b59e01",
+        "round7_arithmetic/park_outer_top.py": "af9035a59943237cb56c3df767c525e697fe83ffd48edfde113dda849e609beb",
+        "round7_arithmetic/park_overlap71.py": "03df2278149733f03a113650ba7632a0e651799b018621df3fc64b3a38d7808a",
+        "round7_arithmetic/park_overlap71_physical.py": "2c8dc65b2e753e833ef293433df7663761db55b0c6e3fb57aeac3db6e8977aaa",
+        "round7_arithmetic/park_sparse_pair63.py": "20aeacd913e63137efd778684f9499c35f9d08ce901824f1ca29188fbbf5e1c9",
+        "round7_arithmetic/stage_address.py": "766536203b184411fdf27aa465a0df9f31e86c5f864134f9e85020c675a931a7",
+        "round7_arithmetic/stage_address_multi.py": "e5dd14f6ccc3ccdf9229e2970d8ce9e1fab0b54bb2379806e5782f4bf5af2b15",
+        "round7_memory/apply_refined_l7_lookup.py": "f76129517d1a6a40b4a2a8ec57732d23fa2ee5d6361940be2fbfbdf15c527e74",
+        "round7_memory/l7_initial_pool39.certificate.json.gz": "d2ddebc418b4c9cdb40f2636a971d6038aec763050ad74a8d48f5a8fbe8caa11",
+        "round7_phase/overlap63_exact_tail.proof.json": "821237e36a8bc7b54a5f44c499412fd1dd0426570161fcc50b6cacab7cb6322d",
+        "round7_phase/pool39_alias_fit.py": "5ed4a28391b680869ca5a5d401c922e5f43e866cb4c37be9b1da1717d1f7f445",
+        "round7_phase/pool39_carry.proof.json": "01f4abffb8a32a292c199cb695ab618600376f369e019a4eea4edef76d73623b",
+        "round7_phase/pool39_leaf.certificate.json": "4a7ac13d4b853ab0726bca863eb1bf9dcc8b779390fbed3d69e52535a1bdfc76",
+        "round7_phase/pool39_long.certificate.json": "ec686f15dba9e263fa935f01bf9f1e3999060022347df691b4b42b70347a3cee",
+        "round7_phase/short_tail_exact.py": "e309a42036ff6aded1e6e3a5627a558433d9f61fbbeb8b65a7630e416ddc6433",
+        "round7_root/close_carry.py": "5cae0b151385bc14f133c58b09682f7979f1e1a04290e2f7d035051e65d60a0d",
+        "round7_root/overlap71_refined.certificate.json": "a541fb3733105f527cf83c97dabbb27f0931dca8e2634a73d65fd412c24369a9"
+      },
+      "earlier_builder": "round5_phase/l6_exact.py",
+      "earlier_missing_inputs": [
+        {
+          "path": "round4_root/l5_shared51_late25_build/phasepark.logical.kmx",
+          "in_package_inventory": false
+        },
+        {
+          "path": "round4_root/l5_shared51_late25.logical_build.json",
+          "in_package_inventory": false
+        },
+        {
+          "path": "round3_root/l5/extra.json",
+          "in_package_inventory": false
+        },
+        {
+          "path": "round5_arithmetic/two_shift_lateL.logical.certificate.json",
+          "in_package_inventory": false
+        }
+      ],
+      "disposition": "not ported: no closed source-plus-numeric-table release chain found",
+      "entry_dependencies": [
+        {
+          "path": "round5_phase/l6_exact.logical.kmx",
+          "sha256": "a98ed6cfbddda86aa6f560605d965339e404170bca3d51f02839286956a31eb5",
+          "kind": "circuit"
+        }
+      ],
+      "l5_builder_dependencies": [
+        "radical_norm/both_reflect76.kmb",
+        "radical_newton/address_helper_scratch.json",
+        "round3_root/l5/extra.json",
+        "round3_root/l5/early.json",
+        "round3_root/l5/late.json",
+        "round3_memory/l4_direct.json",
+        "round4_root/address_joint.json"
+      ],
+      "l5_builder_evidence": "round4_root/build_shared_address.py:15-28; default input is a frozen circuit with hard-coded text SHA-256 5f318ffb470e37f2b6225444dbccc4572858cde400bc004bb0e4d1223ac09e20; alternatives must match that hash."
+    },
+    {
+      "id": "v8-19p945",
+      "version": 8,
+      "package_prefix": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/",
+      "entry_point": "generate.py",
+      "baseline_config": "source/baseline/build_config.json",
+      "baseline_config_sha256": "0752ed60eef19cb1b0948f18672b0f660a016cab10d4485d67a3c28425c09713",
+      "stage_count": 32,
+      "baseline_frozen_dependencies": [
+        {
+          "path": "source/baseline/round5_phase/l6_exact.logical.kmx",
+          "sha256": "a98ed6cfbddda86aa6f560605d965339e404170bca3d51f02839286956a31eb5",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "circuit"
+        },
+        {
+          "path": "source/baseline/round6_arithmetic/l6_regroup5_f0_joint.certificate.json",
+          "sha256": "83d4ea87518e9aa286ff9899348337bd16353d05c9a925c56ad16e39a7c8632c",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_arithmetic/staged_address.certificate.json",
+          "sha256": "edb2fc2c7d9ef01b2515dfe57023f5605620846747e36edd7fa881c766ae7669",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_memory/l7_coded9.certificate.json",
+          "sha256": "c67c0cffb501b341b7396cc3b4cf2201ec0349d778b5ff84a69a54b65c2f3677",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_memory/l7_initial_pool40.certificate.json.gz",
+          "sha256": "f63269589f1fdac033d4e1f3e7c7c0ff5e5976459098e39b70a8d30e04b84199",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": false,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_memory/l7_initial188_pool40.certificate.json.gz",
+          "sha256": "957a153cef3a48872191a811e821842b7a65e20b963a833a338b2566e0d898b1",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": false,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/certificates/cache64.json",
+          "sha256": "82377c29902e93d98fac3e7bc5caaeaf191eb6944e24c3bd983b9b3ff70d20c6",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_phase/cross_cached64_quad.proof.json",
+          "sha256": "0a5c45d9ddd8cf29361cd55a4f4f01088c3a2eaa7969abf80230e6a0546e5373",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_memory/native64_jointlate_refined.certificate.json",
+          "sha256": "813d12ecc3018753c60143013cbb1e4b19192b8d4a3bf0d44f9aae5a646ab63b",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_root/phasecached64.proof.json",
+          "sha256": "34474924d5e6e2f915c11690c68ee22ca8f29c6715b4329c302608beddd25445",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_memory/selected63_zero_retired.proof.json",
+          "sha256": "6f0150e54992b8f96f07f46ef6f10ad6aace85587f23b0cc87eb5dd1f4702c54",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_root/overlap71_refined.certificate.json",
+          "sha256": "a541fb3733105f527cf83c97dabbb27f0931dca8e2634a73d65fd412c24369a9",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_phase/balanced_native_independent.proof.json",
+          "sha256": "1f807ec85de64383989575cb76387186661fdf5879105b5a9b425e039ad14987",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_memory/native64_zero_retired.proof.json",
+          "sha256": "e793079dd860e117ef9edff336f6411fd24f96ac8cb934e873b1b5b0a2e0f317",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_arithmetic/norm_ge2.proof.json",
+          "sha256": "caebff405800e88cfa957a507f09bb6768912a048b4a8b71e554bf67ccb64548",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_arithmetic/balanced_native.proof.json",
+          "sha256": "a54c40a279ae9ad633359c5b703a3581d34e13c0e21af3157e4b447ccb30e021",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_arithmetic/overlap_tail16.certificate.json",
+          "sha256": "2fba2e521e31563ec2086ae8577d9057862cc7efb5b7cdde2195fa39aa993c54",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_phase/balanced_norm23.proof.json",
+          "sha256": "2dfbee800c2635781d3f9a0fb4758235e1bd3303183a37a2837debed4c225fdc",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_root/native64_overlap71_rank9.proof.json",
+          "sha256": "165770ef521891c836ea87be5bd3c99198b338def1faca40fa722a8666e50780",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_memory/l7_initial_pool39.certificate.json.gz",
+          "sha256": "d2ddebc418b4c9cdb40f2636a971d6038aec763050ad74a8d48f5a8fbe8caa11",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": false,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_phase/pool39_long.certificate.json",
+          "sha256": "ec686f15dba9e263fa935f01bf9f1e3999060022347df691b4b42b70347a3cee",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_phase/pool39_leaf.certificate.json",
+          "sha256": "4a7ac13d4b853ab0726bca863eb1bf9dcc8b779390fbed3d69e52535a1bdfc76",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_phase/pool39_carry.proof.json",
+          "sha256": "01f4abffb8a32a292c199cb695ab618600376f369e019a4eea4edef76d73623b",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_arithmetic/l7_pool39_park44_42_cap63.raw.kmx.gz",
+          "sha256": "74dedd90275beb9fdc90af5542ce888895ce37d1f3596dfcf69672fde0b59e01",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": false,
+          "kind": "circuit"
+        },
+        {
+          "path": "source/baseline/round7_arithmetic/balanced_native_alias.proof.json",
+          "sha256": "c90e38266499552cb96810a0b47c8e6f36867954e61a2fe32d6de7ed3aba3a63",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_arithmetic/balanced_native_tail.proof.json",
+          "sha256": "b02cf5b5b6952bff613ceb10b2c132dbe3e93d463761256c23e1c5f02baa928f",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_arithmetic/balanced_native_zero.proof.json",
+          "sha256": "69903d131756bb99511e971cf770117587c7c261a496d67eba9a60c4e24753d8",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_arithmetic/overlap63_closed.kmx",
+          "sha256": "bab22ebebaf88727b555beaf065a4e908177a4c17343ab3dc85d8cdc47f652e4",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "circuit"
+        },
+        {
+          "path": "source/baseline/round7_arithmetic/balanced63_joint16.proof.json",
+          "sha256": "c8a1e943b0cb7663baf4474d1146224974957198cbfe4688d748c62d79eb8fec",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_arithmetic/balanced_native_carries.proof.json",
+          "sha256": "7b5021842f9e264c920d9833776c8efae1dabad70c1cd27c426f93d9a656ceac",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_arithmetic/balanced_marker_affine.proof.json",
+          "sha256": "ec1073e5a66a44dae096caab3af3eb14c5c7103ca077f39c650f912773294f7f",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_root/balanced63_joint16_clean.kmx.changes.json",
+          "sha256": "5db0eff3e184167461c2d72e631d6d253d03bad3c38c25551e58325ace6a545a",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_phase/balanced_native_decoder5.proof.json",
+          "sha256": "27fd75ea3d9f51deda2c651dd2f30775ac9145758dcc0d5f8f209261e2bd8e68",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_arithmetic/balanced63_decoder5.proof.json",
+          "sha256": "37ef66f2562c5889ba4fd7c5d269b427a8bd2fe44cec214cd134723e5173dcda",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "source/baseline/round7_root/balanced63_decoder5_clean.kmx.changes.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "hash_source": "source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        }
+      ],
+      "all_baseline_pins": {
+        "round5_phase/l6_exact.logical.kmx": "a98ed6cfbddda86aa6f560605d965339e404170bca3d51f02839286956a31eb5",
+        "round6_arithmetic/l6_regroup5_f0_joint.certificate.json": "83d4ea87518e9aa286ff9899348337bd16353d05c9a925c56ad16e39a7c8632c",
+        "round7_arithmetic/staged_address.certificate.json": "edb2fc2c7d9ef01b2515dfe57023f5605620846747e36edd7fa881c766ae7669",
+        "round7_memory/l7_coded9.certificate.json": "c67c0cffb501b341b7396cc3b4cf2201ec0349d778b5ff84a69a54b65c2f3677",
+        "round7_memory/l7_initial_pool40.certificate.json.gz": "f63269589f1fdac033d4e1f3e7c7c0ff5e5976459098e39b70a8d30e04b84199",
+        "round7_memory/l7_initial188_pool40.certificate.json.gz": "957a153cef3a48872191a811e821842b7a65e20b963a833a338b2566e0d898b1",
+        "certificates/cache64.json": "82377c29902e93d98fac3e7bc5caaeaf191eb6944e24c3bd983b9b3ff70d20c6",
+        "round7_phase/cross_cached64_quad.proof.json": "0a5c45d9ddd8cf29361cd55a4f4f01088c3a2eaa7969abf80230e6a0546e5373",
+        "gate/dirty_complement.py": "51823b08087d5f5847b838f0369b0f1532d602155eb5634e0d510e6e5c49f620",
+        "gate/exact_opt.py": "a92136af517dd2397f79e292f4a5b8fb0864e8ac1e351cf98f7b24da62da8af7",
+        "official/kickmix/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "official/kickmix/kickmix.so": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
+        "qrom/dirty_leaf.py": "4ec7245c09d35ef609251a0e89df4443b32a19a8d3b8c040bef491b25bfc5564",
+        "qubit/cache_products_general.py": "490ea6ebcb0e8751fb06e0153219c287c9a840cb9c424d6359982f64da62ee47",
+        "qubit/implicit_curvature.py": "dfbde978ebd736166466ee030ecbd6499077183badd5eac69097a19b5b3293c4",
+        "qubit/implicit_highword.py": "3cdc1d9d4923636d5750285b8804317846ac121d899410cd910b483d2c4d2fe4",
+        "qubit/optimize_memory.py": "d9f68c987a6f9b07a2c33cc5caf08d92eef01f9308a30ecae0a1b65ea6d8ef9a",
+        "radical_norm/borrow_allocator.py": "bba2723b2d6e947166d77b87a5028de1db367de136998041f88f510554600eac",
+        "radical_phase/address_probe.py": "a7ff8e7715d186a599583ec2f23b4a439cf4d8f8d44655de85fa88ff1abfdd98",
+        "radical_phase/address_quadratic.py": "105abf3fa2535521e4579bcc243a836cf45bac83e6f3aec8f8924a9b8f016fe4",
+        "round3_arithmetic/anf_qrom.py": "a6f32a15b5c9e5c7cd5524d0b28c0d927ea0c42b8550bb4ede10f07cf0177843",
+        "round4_root/address_joint.py": "244056a31613640e13ab352791d851594171e4c5db1c7ced326ec449a761fc27",
+        "round5_memory/quadratic_phase.py": "522529fafc21220f511bd9075c3051c4f3f2ad23b1ec6e635bf7755ffbbce420",
+        "round6_memory/bootstrap_lookup.py": "65e2d0660c1ba5fcdd462a89d005aadfdf512af5189cad2b8a22cedbad6dd1ff",
+        "round6_memory/coded_lword_park.py": "4e0e5f5a8a6dd945ea69572cfd34b9ef401a895908952435997e93bca097e676",
+        "round6_memory/parity_bootstrap_lookup.py": "0a96f26f557b328d2a725dca0811c4ff695373bab0d0ff34ac20d77f0b7d877d",
+        "round6_memory/pool_lookup.py": "bc662cf479d6147636d055b2dac24a3ce44563ef570d45ac13d052000561885d",
+        "round6_memory/subspace_bootstrap_lookup.py": "1e1ba68aef4853921e42f6e727a088af46048acbbf5b5a2b80478fb465c7d5d2",
+        "round6_root/phase_cone.py": "054cb6d9aea6ab7426ebc2e7cda64318332d715588d8a63adc121b4fd25e42d6",
+        "round7_memory/coded_initial_lookup.py": "3bd5e2fdd9d309f6152c7433d60434c9e16c2b7b5d54e10521451bb6475282ea",
+        "round7_memory/l8_span_probe.py": "a0cedb8d4eab3f94d99be1de8ce375d209c92e0e83387416bc09069e2260f94a",
+        "round7_memory/merge_l7_late.py": "fe4c8992d59bb6df06a986be924f7dc5344057b1b3d8ae63ecc6bf1fcc4f9eb2",
+        "round7_memory/merged_all_release.py": "0b0e06728d83e4b7d102c71fbcb56d8a4ec6b5017da3948d6d11feab48063938",
+        "round7_memory/native64_jointlate_refined.certificate.json": "813d12ecc3018753c60143013cbb1e4b19192b8d4a3bf0d44f9aae5a646ab63b",
+        "round7_memory/replace_coded_front.py": "2a6044107170e804f2440709b9466aa553b6fc16565d3281929224ac98812625",
+        "round7_memory/share_l8_late.py": "4f5ec7ba6a181a698034928d392c1fa204c2b0ca7995144773b30b2048b8e102",
+        "round7_memory/share_l9_late.py": "366bc6ca315728fa26d3457b6ccacc476fd0a00a26a33b09bbf59db47dc571df",
+        "round7_phase/cross_context_cache.py": "508e17609c906b55598d8284c71203e95787c82a0e3730412fb07a703bdd9047",
+        "round7_root/cache_phase_products.py": "317975b089df61ad1782a8677f22ab6bfdd5f6a873055a7e67ee94de0b68bb39",
+        "round7_root/phasecached64.proof.json": "34474924d5e6e2f915c11690c68ee22ca8f29c6715b4329c302608beddd25445",
+        "round6_arithmetic/refine_l6_joint.py": "b6aa3abc8b0afd344d86822dc1d7819c81d26b94c6bfa718e7442c4f044110d9",
+        "round7_phase/balanced_phase_audit.py": "bdd9786785a948d3b142e8f3696082c3352a75687f4aa4bceacd63111aef6467",
+        "round5_arithmetic/delay_lword_inner.py": "64d89a139c0448280c7980bbfe181cabc5e8c463a7ff5f76c79ad25d54861ca7",
+        "round6_arithmetic/refine_l6_extensions.py": "18f5ea170c18346162a29d54b2dfb9a840ebdb5bc93786d72a82264c9fe5e456",
+        "round7_arithmetic/integrate_balanced.py": "ef3604f4e8893b3d3c14151c419f65013ffc28e6aed4e2e225eb3fb80646e5ac",
+        "round7_arithmetic/park_overlap71_physical.py": "2c8dc65b2e753e833ef293433df7663761db55b0c6e3fb57aeac3db6e8977aaa",
+        "round7_memory/selected63_zero_retired.proof.json": "6f0150e54992b8f96f07f46ef6f10ad6aace85587f23b0cc87eb5dd1f4702c54",
+        "radical_linear/phase_lword_delay.py": "f68ca142ebb8dc8e77848e61125b4b1ab2a9d66fbf2b2f794d37f4c78965a028",
+        "radical_phase/address_park.py": "a81fcd4b86c8af968dfa15a9d29ee7e5d3ff8bcd74569cb0ae540dffadb3561d",
+        "round6_memory/remap_pool_lookup.py": "ccbaae8f6d73c9c5b4c7926e972fc6dca4fefe4cdab5e3a565076296acb8c8f9",
+        "radical_newton/highword_parity_products.py": "42d3728db68668b1b7841e97bc45d65ccba34c878c9846b776ad12467867bef9",
+        "round7_root/overlap71_refined.certificate.json": "a541fb3733105f527cf83c97dabbb27f0931dca8e2634a73d65fd412c24369a9",
+        "round7_arithmetic/park_overlap71.py": "03df2278149733f03a113650ba7632a0e651799b018621df3fc64b3a38d7808a",
+        "radical_linear/parked_input_allocator.py": "0c120473247ad4e8cad0b2f485bb576e01429c34ce10b60d8ae2d81b308e4100",
+        "radical_newton/phase_fused.py": "a444e784d745f128a78d570bb8cac6edf28024006a271d1f968773bc289b8b6a",
+        "round7_arithmetic/park_outer_top.py": "af9035a59943237cb56c3df767c525e697fe83ffd48edfde113dda849e609beb",
+        "round6_arithmetic/adaptive_omitted.py": "9fa862e37d7139332424f77cfc325d8e2cd14ae55ef9e16ed7d06782de47a85a",
+        "round4_root/shared51_late20.build.json": "68d79016e4c303a35777f540b531bfa21842dde2a2fe8365995fece4c4c08047",
+        "round7_arithmetic/apply_pool39_exact.py": "0b098c02bdd37ae1fc415a019c9afe22a9f3069a414b24cd191c9faf24f36bdf",
+        "radical_newton/carry_save.py": "2dbb85d630bb33989788b4a76e2452a87f58a46be300c71768b55f71123e6e5a",
+        "radical_newton/signed_digit_helpers.py": "0066a6b611159b39641f4d38b1eb0e14da67eb13c4c13cc0177b6b27c72ce385",
+        "round6_arithmetic/refine_adaptive_decoders.py": "8c0f6309b6d1ccc26726414b3d27381a22989d3176c7376bc6e03ad42b84bd74",
+        "round7_arithmetic/joint_overlap_tail_extended.py": "5b074d6855061ee1566531eb27905e8b160d0dfbe3dd286e6fe844a27cf02e42",
+        "round7_arithmetic/OVERLAP63_ADDON.json": "00ec2aec7f72151d17e0ade8aa5de8bddcd4d31dca32c0611f0b585d7a19e737",
+        "radical_newton/deferred_lookup.py": "2efc5714bbc0582ffc4a4e54097edbafdfa37303a028fa66fb2377a011ef00f5",
+        "round6_arithmetic/adaptive_family_base.py": "62047c931cf7a6a2454456a78a694bf23946f3ad68f5436c6c43976c587fcdf2",
+        "qubit/curvature_arbitrary_product.py": "81eea68544c28aba0a9c9c3058a81a19a9c1f8ba771b00e05356f74dd7c185b2",
+        "round7_arithmetic/stage_address_multi.py": "e5dd14f6ccc3ccdf9229e2970d8ce9e1fab0b54bb2379806e5782f4bf5af2b15",
+        "round7_arithmetic/audit_norm_ge2.py": "fca59ceda8e478cc2a328300808d3a2c4bb637f86ce8176e5b5bcc3f7e853f08",
+        "radical_linear/phase_lword_park.py": "efc2ac1120d08e187940153121981ee186012cd575a11f08d1fafd429a2d3205",
+        "round7_phase/balanced_native_independent.proof.json": "1f807ec85de64383989575cb76387186661fdf5879105b5a9b425e039ad14987",
+        "round7_arithmetic/address_inplace.py": "44f526aa6ccbdc2a30ddca351d718c20b99c461b3e85bdea6ee18f9a417b0499",
+        "round7_memory/native64_zero_retired.proof.json": "e793079dd860e117ef9edff336f6411fd24f96ac8cb934e873b1b5b0a2e0f317",
+        "round7_phase/tagged_normalization.py": "6bd1596657f33ada1c3a8d415b06cdc1f7e7b8a71ea7880423dba31e4b8af962",
+        "round7_arithmetic/stage_address.py": "766536203b184411fdf27aa465a0df9f31e86c5f864134f9e85020c675a931a7",
+        "round7_arithmetic/park_sparse_pair63.py": "20aeacd913e63137efd778684f9499c35f9d08ce901824f1ca29188fbbf5e1c9",
+        "round7_arithmetic/norm_ge2.proof.json": "caebff405800e88cfa957a507f09bb6768912a048b4a8b71e554bf67ccb64548",
+        "round7_arithmetic/address_inplace_physical.py": "4e3203a1d632b92c04456416d93b478e03e159328b9a3b9dc91833762364bf74",
+        "round7_memory/apply_refined_l7_lookup.py": "f76129517d1a6a40b4a2a8ec57732d23fa2ee5d6361940be2fbfbdf15c527e74",
+        "round7_arithmetic/balanced_native.proof.json": "a54c40a279ae9ad633359c5b703a3581d34e13c0e21af3157e4b447ccb30e021",
+        "round7_memory/retire_zero_lifetimes.py": "5908739da927536b8140f7ee87752226ad24699edc8e108a63c21389380e2ba6",
+        "round5_phase/l6_exact.py": "13fc62c3bb477f0364f12b270ec63d3ca9fd2c8ba76b77b802e6b91d4a8c576d",
+        "round7_arithmetic/overlap_tail16.certificate.json": "2fba2e521e31563ec2086ae8577d9057862cc7efb5b7cdde2195fa39aa993c54",
+        "round7_arithmetic/OVERLAP_TAIL16_ADDON.json": "db33db8277239cb6a6b557ed3f800250f812015486e3265c02c285aae2323847",
+        "round7_arithmetic/close_overlap63.py": "10df36a5cc9e07d95caf108c730b26cab360f87902287677b21618af2006dd44",
+        "qubit/tables.json": "499b75c963da4f1f652ee36fb4c6c57d9cda49f3e99c654f03a94a83e8e2b40c",
+        "round7_phase/balanced_norm23.proof.json": "2dfbee800c2635781d3f9a0fb4758235e1bd3303183a37a2837debed4c225fdc",
+        "round7_root/native64_overlap71_rank9.proof.json": "165770ef521891c836ea87be5bd3c99198b338def1faca40fa722a8666e50780",
+        "round7_phase/balanced_normalization.py": "6b8ad87cd80dfc5e7556775795de43950399bb67fa139aecb7bb9f7c8f0a67c2",
+        "round7_memory/l7_initial_pool39.certificate.json.gz": "d2ddebc418b4c9cdb40f2636a971d6038aec763050ad74a8d48f5a8fbe8caa11",
+        "round7_phase/pool39_long.certificate.json": "ec686f15dba9e263fa935f01bf9f1e3999060022347df691b4b42b70347a3cee",
+        "round7_phase/pool39_leaf.certificate.json": "4a7ac13d4b853ab0726bca863eb1bf9dcc8b779390fbed3d69e52535a1bdfc76",
+        "round7_phase/pool39_carry.proof.json": "01f4abffb8a32a292c199cb695ab618600376f369e019a4eea4edef76d73623b",
+        "round7_arithmetic/l7_pool39_park44_42_cap63.raw.kmx.gz": "74dedd90275beb9fdc90af5542ce888895ce37d1f3596dfcf69672fde0b59e01",
+        "radical_norm/carry_trade.py": "ee4b60730c18076dc8fc20db76a4d037b6ef26bb78087cf25ceff08a6591eb57",
+        "round5_arithmetic/inplace_alias_decoder.py": "d11019ed53ec77e64aab05079465b9f5ba55c3bc9aebb98ab259e7c8f962bfef",
+        "round7_arithmetic/balanced_native_alias.proof.json": "c90e38266499552cb96810a0b47c8e6f36867954e61a2fe32d6de7ed3aba3a63",
+        "round7_arithmetic/balanced_native_tail.proof.json": "b02cf5b5b6952bff613ceb10b2c132dbe3e93d463761256c23e1c5f02baa928f",
+        "round7_arithmetic/balanced_native_zero.proof.json": "69903d131756bb99511e971cf770117587c7c261a496d67eba9a60c4e24753d8",
+        "round7_arithmetic/overlap63_closed.kmx": "bab22ebebaf88727b555beaf065a4e908177a4c17343ab3dc85d8cdc47f652e4",
+        "round7_arithmetic/port_short_tail.py": "66a86554af95c0b79c753fdf607c87103cb5a0843133b8b31b62a341c7d2d330",
+        "round7_phase/pool39_alias_fit.py": "5ed4a28391b680869ca5a5d401c922e5f43e866cb4c37be9b1da1717d1f7f445",
+        "round7_phase/short_tail_exact.py": "e309a42036ff6aded1e6e3a5627a558433d9f61fbbeb8b65a7630e416ddc6433",
+        "round7_root/close_carry.py": "5cae0b151385bc14f133c58b09682f7979f1e1a04290e2f7d035051e65d60a0d",
+        "round7_arithmetic/balanced63_joint16.proof.json": "c8a1e943b0cb7663baf4474d1146224974957198cbfe4688d748c62d79eb8fec",
+        "round7_arithmetic/balanced_native_carries.proof.json": "7b5021842f9e264c920d9833776c8efae1dabad70c1cd27c426f93d9a656ceac",
+        "round7_arithmetic/BALANCED_ADDON.json": "0e3fe182ed0223e4d39f42c66c31ab0d3e92f736e277209ed9b1a1c9d70d5b29",
+        "round7_arithmetic/BALANCED_RESULTS.txt": "b28c1f9b7c18cb0eb37440d6657e27795cd3927de0a56944fd8b50ed2845f7a0",
+        "round7_arithmetic/balanced_marker_affine.proof.json": "ec1073e5a66a44dae096caab3af3eb14c5c7103ca077f39c650f912773294f7f",
+        "round7_root/balanced63_joint16_clean.kmx.changes.json": "5db0eff3e184167461c2d72e631d6d253d03bad3c38c25551e58325ace6a545a",
+        "round7_phase/balanced_decoder5.py": "96fab32b51f6169987acb325313d18b145797cad768471469e788e13fae3b9f8",
+        "round7_phase/balanced_native_decoder5.proof.json": "27fd75ea3d9f51deda2c651dd2f30775ac9145758dcc0d5f8f209261e2bd8e68",
+        "round7_arithmetic/balanced63_decoder5.proof.json": "37ef66f2562c5889ba4fd7c5d269b427a8bd2fe44cec214cd134723e5173dcda",
+        "round7_arithmetic/balanced_decoder5_physical.py": "a1badfea3074c625044bb5a4a8982fc328b8af4f85c6baa46282894dfa60dfae",
+        "round7_root/balanced63_decoder5_clean.kmx.changes.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "round7_arithmetic/DECODER5_RESULTS.txt": "93c4ea2f8fd69bcd774e9da38777d4ffca48df6fcd2aab8f0137b6f2e51be847",
+        "round7_arithmetic/DECODER5_ADDON.json": "e7a9642ce493477db7d5ba313420cef6817f656b2534f16fc5d29bcedcf4e06e"
+      },
+      "earlier_builder": "source/baseline/round5_phase/l6_exact.py",
+      "earlier_missing_inputs": [
+        {
+          "path": "source/baseline/round4_root/l5_shared51_late25_build/phasepark.logical.kmx",
+          "in_package_inventory": false
+        },
+        {
+          "path": "source/baseline/round4_root/l5_shared51_late25.logical_build.json",
+          "in_package_inventory": false
+        },
+        {
+          "path": "source/baseline/round3_root/l5/extra.json",
+          "in_package_inventory": false
+        },
+        {
+          "path": "source/baseline/round5_arithmetic/two_shift_lateL.logical.certificate.json",
+          "in_package_inventory": false
+        }
+      ],
+      "disposition": "not ported: no closed source-plus-numeric-table release chain found",
+      "entry_dependencies": [
+        {
+          "path": "source/invsqrt.kmx",
+          "sha256": "77302e018eff451da70fc521f28630c27881ea83741a958618c81a9ea0f90bc5",
+          "kind": "circuit"
+        },
+        {
+          "path": "data/phase_features.json",
+          "kind": "phase metadata and saved angles"
+        },
+        {
+          "path": "data/partial_merge3_fit.json",
+          "kind": "saved phase-fit replay"
+        },
+        {
+          "path": "data/high_table.json",
+          "kind": "numeric table; alone does not close circuit dependency"
+        },
+        {
+          "path": "compiler/history_replay_records.json",
+          "kind": "synthesis replay"
+        },
+        {
+          "path": "source/baseline/invsqrt.kmx",
+          "sha256": "76db8e8c1526bdb8def9ceaa7023d535bb97dfe5d5d3f9d73cfc7991c0adf494",
+          "kind": "circuit"
+        },
+        {
+          "path": "source/lookup_certificate.json.gz",
+          "kind": "synthesis certificate"
+        },
+        {
+          "path": "source/curvature_certificate.json",
+          "kind": "synthesis certificate"
+        },
+        {
+          "path": "proofs/frozen_front.block.kmx",
+          "sha256": "85a0174df11d41c1f85c94f496ec2f2d879057eb5d89ad8d1b84a38fc38f157f",
+          "kind": "circuit block"
+        },
+        {
+          "path": "compiler/frozen_front.json",
+          "kind": "decoder/measurement-repair synthesis certificate"
+        }
+      ],
+      "l5_builder_dependencies": [
+        "radical_norm/both_reflect76.kmb",
+        "radical_newton/address_helper_scratch.json",
+        "round3_root/l5/extra.json",
+        "round3_root/l5/early.json",
+        "round3_root/l5/late.json",
+        "round3_memory/l4_direct.json",
+        "round4_root/address_joint.json"
+      ],
+      "l5_builder_evidence": "source/baseline/round4_root/build_shared_address.py:15-28; default input is a frozen circuit with hard-coded text SHA-256 5f318ffb470e37f2b6225444dbccc4572858cde400bc004bb0e4d1223ac09e20; alternatives must match that hash."
+    },
+    {
+      "id": "v8-19p80",
+      "version": 8,
+      "package_prefix": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/",
+      "entry_point": "build.py",
+      "baseline_config": "baseline/source/baseline/build_config.json",
+      "baseline_config_sha256": "0752ed60eef19cb1b0948f18672b0f660a016cab10d4485d67a3c28425c09713",
+      "stage_count": 32,
+      "baseline_frozen_dependencies": [
+        {
+          "path": "baseline/source/baseline/round5_phase/l6_exact.logical.kmx",
+          "sha256": "a98ed6cfbddda86aa6f560605d965339e404170bca3d51f02839286956a31eb5",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "circuit"
+        },
+        {
+          "path": "baseline/source/baseline/round6_arithmetic/l6_regroup5_f0_joint.certificate.json",
+          "sha256": "83d4ea87518e9aa286ff9899348337bd16353d05c9a925c56ad16e39a7c8632c",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_arithmetic/staged_address.certificate.json",
+          "sha256": "edb2fc2c7d9ef01b2515dfe57023f5605620846747e36edd7fa881c766ae7669",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_memory/l7_coded9.certificate.json",
+          "sha256": "c67c0cffb501b341b7396cc3b4cf2201ec0349d778b5ff84a69a54b65c2f3677",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_memory/l7_initial_pool40.certificate.json.gz",
+          "sha256": "f63269589f1fdac033d4e1f3e7c7c0ff5e5976459098e39b70a8d30e04b84199",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": false,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_memory/l7_initial188_pool40.certificate.json.gz",
+          "sha256": "957a153cef3a48872191a811e821842b7a65e20b963a833a338b2566e0d898b1",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": false,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/certificates/cache64.json",
+          "sha256": "82377c29902e93d98fac3e7bc5caaeaf191eb6944e24c3bd983b9b3ff70d20c6",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_phase/cross_cached64_quad.proof.json",
+          "sha256": "0a5c45d9ddd8cf29361cd55a4f4f01088c3a2eaa7969abf80230e6a0546e5373",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_memory/native64_jointlate_refined.certificate.json",
+          "sha256": "813d12ecc3018753c60143013cbb1e4b19192b8d4a3bf0d44f9aae5a646ab63b",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_root/phasecached64.proof.json",
+          "sha256": "34474924d5e6e2f915c11690c68ee22ca8f29c6715b4329c302608beddd25445",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_memory/selected63_zero_retired.proof.json",
+          "sha256": "6f0150e54992b8f96f07f46ef6f10ad6aace85587f23b0cc87eb5dd1f4702c54",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_root/overlap71_refined.certificate.json",
+          "sha256": "a541fb3733105f527cf83c97dabbb27f0931dca8e2634a73d65fd412c24369a9",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_phase/balanced_native_independent.proof.json",
+          "sha256": "1f807ec85de64383989575cb76387186661fdf5879105b5a9b425e039ad14987",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_memory/native64_zero_retired.proof.json",
+          "sha256": "e793079dd860e117ef9edff336f6411fd24f96ac8cb934e873b1b5b0a2e0f317",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_arithmetic/norm_ge2.proof.json",
+          "sha256": "caebff405800e88cfa957a507f09bb6768912a048b4a8b71e554bf67ccb64548",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_arithmetic/balanced_native.proof.json",
+          "sha256": "a54c40a279ae9ad633359c5b703a3581d34e13c0e21af3157e4b447ccb30e021",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_arithmetic/overlap_tail16.certificate.json",
+          "sha256": "2fba2e521e31563ec2086ae8577d9057862cc7efb5b7cdde2195fa39aa993c54",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_phase/balanced_norm23.proof.json",
+          "sha256": "2dfbee800c2635781d3f9a0fb4758235e1bd3303183a37a2837debed4c225fdc",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_root/native64_overlap71_rank9.proof.json",
+          "sha256": "165770ef521891c836ea87be5bd3c99198b338def1faca40fa722a8666e50780",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_memory/l7_initial_pool39.certificate.json.gz",
+          "sha256": "d2ddebc418b4c9cdb40f2636a971d6038aec763050ad74a8d48f5a8fbe8caa11",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": false,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_phase/pool39_long.certificate.json",
+          "sha256": "ec686f15dba9e263fa935f01bf9f1e3999060022347df691b4b42b70347a3cee",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_phase/pool39_leaf.certificate.json",
+          "sha256": "4a7ac13d4b853ab0726bca863eb1bf9dcc8b779390fbed3d69e52535a1bdfc76",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_phase/pool39_carry.proof.json",
+          "sha256": "01f4abffb8a32a292c199cb695ab618600376f369e019a4eea4edef76d73623b",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_arithmetic/l7_pool39_park44_42_cap63.raw.kmx.gz",
+          "sha256": "74dedd90275beb9fdc90af5542ce888895ce37d1f3596dfcf69672fde0b59e01",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": false,
+          "kind": "circuit"
+        },
+        {
+          "path": "baseline/source/baseline/round7_arithmetic/balanced_native_alias.proof.json",
+          "sha256": "c90e38266499552cb96810a0b47c8e6f36867954e61a2fe32d6de7ed3aba3a63",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_arithmetic/balanced_native_tail.proof.json",
+          "sha256": "b02cf5b5b6952bff613ceb10b2c132dbe3e93d463761256c23e1c5f02baa928f",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_arithmetic/balanced_native_zero.proof.json",
+          "sha256": "69903d131756bb99511e971cf770117587c7c261a496d67eba9a60c4e24753d8",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_arithmetic/overlap63_closed.kmx",
+          "sha256": "bab22ebebaf88727b555beaf065a4e908177a4c17343ab3dc85d8cdc47f652e4",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "circuit"
+        },
+        {
+          "path": "baseline/source/baseline/round7_arithmetic/balanced63_joint16.proof.json",
+          "sha256": "c8a1e943b0cb7663baf4474d1146224974957198cbfe4688d748c62d79eb8fec",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_arithmetic/balanced_native_carries.proof.json",
+          "sha256": "7b5021842f9e264c920d9833776c8efae1dabad70c1cd27c426f93d9a656ceac",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_arithmetic/balanced_marker_affine.proof.json",
+          "sha256": "ec1073e5a66a44dae096caab3af3eb14c5c7103ca077f39c650f912773294f7f",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_root/balanced63_joint16_clean.kmx.changes.json",
+          "sha256": "5db0eff3e184167461c2d72e631d6d253d03bad3c38c25551e58325ace6a545a",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_phase/balanced_native_decoder5.proof.json",
+          "sha256": "27fd75ea3d9f51deda2c651dd2f30775ac9145758dcc0d5f8f209261e2bd8e68",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_arithmetic/balanced63_decoder5.proof.json",
+          "sha256": "37ef66f2562c5889ba4fd7c5d269b427a8bd2fe44cec214cd134723e5173dcda",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        },
+        {
+          "path": "baseline/source/baseline/round7_root/balanced63_decoder5_clean.kmx.changes.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "hash_source": "baseline/source/baseline/build_config.json",
+          "in_package_inventory": true,
+          "kind": "synthesis/proof replay"
+        }
+      ],
+      "all_baseline_pins": {
+        "round5_phase/l6_exact.logical.kmx": "a98ed6cfbddda86aa6f560605d965339e404170bca3d51f02839286956a31eb5",
+        "round6_arithmetic/l6_regroup5_f0_joint.certificate.json": "83d4ea87518e9aa286ff9899348337bd16353d05c9a925c56ad16e39a7c8632c",
+        "round7_arithmetic/staged_address.certificate.json": "edb2fc2c7d9ef01b2515dfe57023f5605620846747e36edd7fa881c766ae7669",
+        "round7_memory/l7_coded9.certificate.json": "c67c0cffb501b341b7396cc3b4cf2201ec0349d778b5ff84a69a54b65c2f3677",
+        "round7_memory/l7_initial_pool40.certificate.json.gz": "f63269589f1fdac033d4e1f3e7c7c0ff5e5976459098e39b70a8d30e04b84199",
+        "round7_memory/l7_initial188_pool40.certificate.json.gz": "957a153cef3a48872191a811e821842b7a65e20b963a833a338b2566e0d898b1",
+        "certificates/cache64.json": "82377c29902e93d98fac3e7bc5caaeaf191eb6944e24c3bd983b9b3ff70d20c6",
+        "round7_phase/cross_cached64_quad.proof.json": "0a5c45d9ddd8cf29361cd55a4f4f01088c3a2eaa7969abf80230e6a0546e5373",
+        "gate/dirty_complement.py": "51823b08087d5f5847b838f0369b0f1532d602155eb5634e0d510e6e5c49f620",
+        "gate/exact_opt.py": "a92136af517dd2397f79e292f4a5b8fb0864e8ac1e351cf98f7b24da62da8af7",
+        "official/kickmix/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "official/kickmix/kickmix.so": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
+        "qrom/dirty_leaf.py": "4ec7245c09d35ef609251a0e89df4443b32a19a8d3b8c040bef491b25bfc5564",
+        "qubit/cache_products_general.py": "490ea6ebcb0e8751fb06e0153219c287c9a840cb9c424d6359982f64da62ee47",
+        "qubit/implicit_curvature.py": "dfbde978ebd736166466ee030ecbd6499077183badd5eac69097a19b5b3293c4",
+        "qubit/implicit_highword.py": "3cdc1d9d4923636d5750285b8804317846ac121d899410cd910b483d2c4d2fe4",
+        "qubit/optimize_memory.py": "d9f68c987a6f9b07a2c33cc5caf08d92eef01f9308a30ecae0a1b65ea6d8ef9a",
+        "radical_norm/borrow_allocator.py": "bba2723b2d6e947166d77b87a5028de1db367de136998041f88f510554600eac",
+        "radical_phase/address_probe.py": "a7ff8e7715d186a599583ec2f23b4a439cf4d8f8d44655de85fa88ff1abfdd98",
+        "radical_phase/address_quadratic.py": "105abf3fa2535521e4579bcc243a836cf45bac83e6f3aec8f8924a9b8f016fe4",
+        "round3_arithmetic/anf_qrom.py": "a6f32a15b5c9e5c7cd5524d0b28c0d927ea0c42b8550bb4ede10f07cf0177843",
+        "round4_root/address_joint.py": "244056a31613640e13ab352791d851594171e4c5db1c7ced326ec449a761fc27",
+        "round5_memory/quadratic_phase.py": "522529fafc21220f511bd9075c3051c4f3f2ad23b1ec6e635bf7755ffbbce420",
+        "round6_memory/bootstrap_lookup.py": "65e2d0660c1ba5fcdd462a89d005aadfdf512af5189cad2b8a22cedbad6dd1ff",
+        "round6_memory/coded_lword_park.py": "4e0e5f5a8a6dd945ea69572cfd34b9ef401a895908952435997e93bca097e676",
+        "round6_memory/parity_bootstrap_lookup.py": "0a96f26f557b328d2a725dca0811c4ff695373bab0d0ff34ac20d77f0b7d877d",
+        "round6_memory/pool_lookup.py": "bc662cf479d6147636d055b2dac24a3ce44563ef570d45ac13d052000561885d",
+        "round6_memory/subspace_bootstrap_lookup.py": "1e1ba68aef4853921e42f6e727a088af46048acbbf5b5a2b80478fb465c7d5d2",
+        "round6_root/phase_cone.py": "054cb6d9aea6ab7426ebc2e7cda64318332d715588d8a63adc121b4fd25e42d6",
+        "round7_memory/coded_initial_lookup.py": "3bd5e2fdd9d309f6152c7433d60434c9e16c2b7b5d54e10521451bb6475282ea",
+        "round7_memory/l8_span_probe.py": "a0cedb8d4eab3f94d99be1de8ce375d209c92e0e83387416bc09069e2260f94a",
+        "round7_memory/merge_l7_late.py": "fe4c8992d59bb6df06a986be924f7dc5344057b1b3d8ae63ecc6bf1fcc4f9eb2",
+        "round7_memory/merged_all_release.py": "0b0e06728d83e4b7d102c71fbcb56d8a4ec6b5017da3948d6d11feab48063938",
+        "round7_memory/native64_jointlate_refined.certificate.json": "813d12ecc3018753c60143013cbb1e4b19192b8d4a3bf0d44f9aae5a646ab63b",
+        "round7_memory/replace_coded_front.py": "2a6044107170e804f2440709b9466aa553b6fc16565d3281929224ac98812625",
+        "round7_memory/share_l8_late.py": "4f5ec7ba6a181a698034928d392c1fa204c2b0ca7995144773b30b2048b8e102",
+        "round7_memory/share_l9_late.py": "366bc6ca315728fa26d3457b6ccacc476fd0a00a26a33b09bbf59db47dc571df",
+        "round7_phase/cross_context_cache.py": "508e17609c906b55598d8284c71203e95787c82a0e3730412fb07a703bdd9047",
+        "round7_root/cache_phase_products.py": "317975b089df61ad1782a8677f22ab6bfdd5f6a873055a7e67ee94de0b68bb39",
+        "round7_root/phasecached64.proof.json": "34474924d5e6e2f915c11690c68ee22ca8f29c6715b4329c302608beddd25445",
+        "round6_arithmetic/refine_l6_joint.py": "b6aa3abc8b0afd344d86822dc1d7819c81d26b94c6bfa718e7442c4f044110d9",
+        "round7_phase/balanced_phase_audit.py": "bdd9786785a948d3b142e8f3696082c3352a75687f4aa4bceacd63111aef6467",
+        "round5_arithmetic/delay_lword_inner.py": "64d89a139c0448280c7980bbfe181cabc5e8c463a7ff5f76c79ad25d54861ca7",
+        "round6_arithmetic/refine_l6_extensions.py": "18f5ea170c18346162a29d54b2dfb9a840ebdb5bc93786d72a82264c9fe5e456",
+        "round7_arithmetic/integrate_balanced.py": "ef3604f4e8893b3d3c14151c419f65013ffc28e6aed4e2e225eb3fb80646e5ac",
+        "round7_arithmetic/park_overlap71_physical.py": "2c8dc65b2e753e833ef293433df7663761db55b0c6e3fb57aeac3db6e8977aaa",
+        "round7_memory/selected63_zero_retired.proof.json": "6f0150e54992b8f96f07f46ef6f10ad6aace85587f23b0cc87eb5dd1f4702c54",
+        "radical_linear/phase_lword_delay.py": "f68ca142ebb8dc8e77848e61125b4b1ab2a9d66fbf2b2f794d37f4c78965a028",
+        "radical_phase/address_park.py": "a81fcd4b86c8af968dfa15a9d29ee7e5d3ff8bcd74569cb0ae540dffadb3561d",
+        "round6_memory/remap_pool_lookup.py": "ccbaae8f6d73c9c5b4c7926e972fc6dca4fefe4cdab5e3a565076296acb8c8f9",
+        "radical_newton/highword_parity_products.py": "42d3728db68668b1b7841e97bc45d65ccba34c878c9846b776ad12467867bef9",
+        "round7_root/overlap71_refined.certificate.json": "a541fb3733105f527cf83c97dabbb27f0931dca8e2634a73d65fd412c24369a9",
+        "round7_arithmetic/park_overlap71.py": "03df2278149733f03a113650ba7632a0e651799b018621df3fc64b3a38d7808a",
+        "radical_linear/parked_input_allocator.py": "0c120473247ad4e8cad0b2f485bb576e01429c34ce10b60d8ae2d81b308e4100",
+        "radical_newton/phase_fused.py": "a444e784d745f128a78d570bb8cac6edf28024006a271d1f968773bc289b8b6a",
+        "round7_arithmetic/park_outer_top.py": "af9035a59943237cb56c3df767c525e697fe83ffd48edfde113dda849e609beb",
+        "round6_arithmetic/adaptive_omitted.py": "9fa862e37d7139332424f77cfc325d8e2cd14ae55ef9e16ed7d06782de47a85a",
+        "round4_root/shared51_late20.build.json": "68d79016e4c303a35777f540b531bfa21842dde2a2fe8365995fece4c4c08047",
+        "round7_arithmetic/apply_pool39_exact.py": "0b098c02bdd37ae1fc415a019c9afe22a9f3069a414b24cd191c9faf24f36bdf",
+        "radical_newton/carry_save.py": "2dbb85d630bb33989788b4a76e2452a87f58a46be300c71768b55f71123e6e5a",
+        "radical_newton/signed_digit_helpers.py": "0066a6b611159b39641f4d38b1eb0e14da67eb13c4c13cc0177b6b27c72ce385",
+        "round6_arithmetic/refine_adaptive_decoders.py": "8c0f6309b6d1ccc26726414b3d27381a22989d3176c7376bc6e03ad42b84bd74",
+        "round7_arithmetic/joint_overlap_tail_extended.py": "5b074d6855061ee1566531eb27905e8b160d0dfbe3dd286e6fe844a27cf02e42",
+        "round7_arithmetic/OVERLAP63_ADDON.json": "00ec2aec7f72151d17e0ade8aa5de8bddcd4d31dca32c0611f0b585d7a19e737",
+        "radical_newton/deferred_lookup.py": "2efc5714bbc0582ffc4a4e54097edbafdfa37303a028fa66fb2377a011ef00f5",
+        "round6_arithmetic/adaptive_family_base.py": "62047c931cf7a6a2454456a78a694bf23946f3ad68f5436c6c43976c587fcdf2",
+        "qubit/curvature_arbitrary_product.py": "81eea68544c28aba0a9c9c3058a81a19a9c1f8ba771b00e05356f74dd7c185b2",
+        "round7_arithmetic/stage_address_multi.py": "e5dd14f6ccc3ccdf9229e2970d8ce9e1fab0b54bb2379806e5782f4bf5af2b15",
+        "round7_arithmetic/audit_norm_ge2.py": "fca59ceda8e478cc2a328300808d3a2c4bb637f86ce8176e5b5bcc3f7e853f08",
+        "radical_linear/phase_lword_park.py": "efc2ac1120d08e187940153121981ee186012cd575a11f08d1fafd429a2d3205",
+        "round7_phase/balanced_native_independent.proof.json": "1f807ec85de64383989575cb76387186661fdf5879105b5a9b425e039ad14987",
+        "round7_arithmetic/address_inplace.py": "44f526aa6ccbdc2a30ddca351d718c20b99c461b3e85bdea6ee18f9a417b0499",
+        "round7_memory/native64_zero_retired.proof.json": "e793079dd860e117ef9edff336f6411fd24f96ac8cb934e873b1b5b0a2e0f317",
+        "round7_phase/tagged_normalization.py": "6bd1596657f33ada1c3a8d415b06cdc1f7e7b8a71ea7880423dba31e4b8af962",
+        "round7_arithmetic/stage_address.py": "766536203b184411fdf27aa465a0df9f31e86c5f864134f9e85020c675a931a7",
+        "round7_arithmetic/park_sparse_pair63.py": "20aeacd913e63137efd778684f9499c35f9d08ce901824f1ca29188fbbf5e1c9",
+        "round7_arithmetic/norm_ge2.proof.json": "caebff405800e88cfa957a507f09bb6768912a048b4a8b71e554bf67ccb64548",
+        "round7_arithmetic/address_inplace_physical.py": "4e3203a1d632b92c04456416d93b478e03e159328b9a3b9dc91833762364bf74",
+        "round7_memory/apply_refined_l7_lookup.py": "f76129517d1a6a40b4a2a8ec57732d23fa2ee5d6361940be2fbfbdf15c527e74",
+        "round7_arithmetic/balanced_native.proof.json": "a54c40a279ae9ad633359c5b703a3581d34e13c0e21af3157e4b447ccb30e021",
+        "round7_memory/retire_zero_lifetimes.py": "5908739da927536b8140f7ee87752226ad24699edc8e108a63c21389380e2ba6",
+        "round5_phase/l6_exact.py": "13fc62c3bb477f0364f12b270ec63d3ca9fd2c8ba76b77b802e6b91d4a8c576d",
+        "round7_arithmetic/overlap_tail16.certificate.json": "2fba2e521e31563ec2086ae8577d9057862cc7efb5b7cdde2195fa39aa993c54",
+        "round7_arithmetic/OVERLAP_TAIL16_ADDON.json": "db33db8277239cb6a6b557ed3f800250f812015486e3265c02c285aae2323847",
+        "round7_arithmetic/close_overlap63.py": "10df36a5cc9e07d95caf108c730b26cab360f87902287677b21618af2006dd44",
+        "qubit/tables.json": "499b75c963da4f1f652ee36fb4c6c57d9cda49f3e99c654f03a94a83e8e2b40c",
+        "round7_phase/balanced_norm23.proof.json": "2dfbee800c2635781d3f9a0fb4758235e1bd3303183a37a2837debed4c225fdc",
+        "round7_root/native64_overlap71_rank9.proof.json": "165770ef521891c836ea87be5bd3c99198b338def1faca40fa722a8666e50780",
+        "round7_phase/balanced_normalization.py": "6b8ad87cd80dfc5e7556775795de43950399bb67fa139aecb7bb9f7c8f0a67c2",
+        "round7_memory/l7_initial_pool39.certificate.json.gz": "d2ddebc418b4c9cdb40f2636a971d6038aec763050ad74a8d48f5a8fbe8caa11",
+        "round7_phase/pool39_long.certificate.json": "ec686f15dba9e263fa935f01bf9f1e3999060022347df691b4b42b70347a3cee",
+        "round7_phase/pool39_leaf.certificate.json": "4a7ac13d4b853ab0726bca863eb1bf9dcc8b779390fbed3d69e52535a1bdfc76",
+        "round7_phase/pool39_carry.proof.json": "01f4abffb8a32a292c199cb695ab618600376f369e019a4eea4edef76d73623b",
+        "round7_arithmetic/l7_pool39_park44_42_cap63.raw.kmx.gz": "74dedd90275beb9fdc90af5542ce888895ce37d1f3596dfcf69672fde0b59e01",
+        "radical_norm/carry_trade.py": "ee4b60730c18076dc8fc20db76a4d037b6ef26bb78087cf25ceff08a6591eb57",
+        "round5_arithmetic/inplace_alias_decoder.py": "d11019ed53ec77e64aab05079465b9f5ba55c3bc9aebb98ab259e7c8f962bfef",
+        "round7_arithmetic/balanced_native_alias.proof.json": "c90e38266499552cb96810a0b47c8e6f36867954e61a2fe32d6de7ed3aba3a63",
+        "round7_arithmetic/balanced_native_tail.proof.json": "b02cf5b5b6952bff613ceb10b2c132dbe3e93d463761256c23e1c5f02baa928f",
+        "round7_arithmetic/balanced_native_zero.proof.json": "69903d131756bb99511e971cf770117587c7c261a496d67eba9a60c4e24753d8",
+        "round7_arithmetic/overlap63_closed.kmx": "bab22ebebaf88727b555beaf065a4e908177a4c17343ab3dc85d8cdc47f652e4",
+        "round7_arithmetic/port_short_tail.py": "66a86554af95c0b79c753fdf607c87103cb5a0843133b8b31b62a341c7d2d330",
+        "round7_phase/pool39_alias_fit.py": "5ed4a28391b680869ca5a5d401c922e5f43e866cb4c37be9b1da1717d1f7f445",
+        "round7_phase/short_tail_exact.py": "e309a42036ff6aded1e6e3a5627a558433d9f61fbbeb8b65a7630e416ddc6433",
+        "round7_root/close_carry.py": "5cae0b151385bc14f133c58b09682f7979f1e1a04290e2f7d035051e65d60a0d",
+        "round7_arithmetic/balanced63_joint16.proof.json": "c8a1e943b0cb7663baf4474d1146224974957198cbfe4688d748c62d79eb8fec",
+        "round7_arithmetic/balanced_native_carries.proof.json": "7b5021842f9e264c920d9833776c8efae1dabad70c1cd27c426f93d9a656ceac",
+        "round7_arithmetic/BALANCED_ADDON.json": "0e3fe182ed0223e4d39f42c66c31ab0d3e92f736e277209ed9b1a1c9d70d5b29",
+        "round7_arithmetic/BALANCED_RESULTS.txt": "b28c1f9b7c18cb0eb37440d6657e27795cd3927de0a56944fd8b50ed2845f7a0",
+        "round7_arithmetic/balanced_marker_affine.proof.json": "ec1073e5a66a44dae096caab3af3eb14c5c7103ca077f39c650f912773294f7f",
+        "round7_root/balanced63_joint16_clean.kmx.changes.json": "5db0eff3e184167461c2d72e631d6d253d03bad3c38c25551e58325ace6a545a",
+        "round7_phase/balanced_decoder5.py": "96fab32b51f6169987acb325313d18b145797cad768471469e788e13fae3b9f8",
+        "round7_phase/balanced_native_decoder5.proof.json": "27fd75ea3d9f51deda2c651dd2f30775ac9145758dcc0d5f8f209261e2bd8e68",
+        "round7_arithmetic/balanced63_decoder5.proof.json": "37ef66f2562c5889ba4fd7c5d269b427a8bd2fe44cec214cd134723e5173dcda",
+        "round7_arithmetic/balanced_decoder5_physical.py": "a1badfea3074c625044bb5a4a8982fc328b8af4f85c6baa46282894dfa60dfae",
+        "round7_root/balanced63_decoder5_clean.kmx.changes.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "round7_arithmetic/DECODER5_RESULTS.txt": "93c4ea2f8fd69bcd774e9da38777d4ffca48df6fcd2aab8f0137b6f2e51be847",
+        "round7_arithmetic/DECODER5_ADDON.json": "e7a9642ce493477db7d5ba313420cef6817f656b2534f16fc5d29bcedcf4e06e"
+      },
+      "earlier_builder": "baseline/source/baseline/round5_phase/l6_exact.py",
+      "earlier_missing_inputs": [
+        {
+          "path": "baseline/source/baseline/round4_root/l5_shared51_late25_build/phasepark.logical.kmx",
+          "in_package_inventory": false
+        },
+        {
+          "path": "baseline/source/baseline/round4_root/l5_shared51_late25.logical_build.json",
+          "in_package_inventory": false
+        },
+        {
+          "path": "baseline/source/baseline/round3_root/l5/extra.json",
+          "in_package_inventory": false
+        },
+        {
+          "path": "baseline/source/baseline/round5_arithmetic/two_shift_lateL.logical.certificate.json",
+          "in_package_inventory": false
+        }
+      ],
+      "disposition": "not ported: no closed source-plus-numeric-table release chain found",
+      "entry_dependencies": [
+        {
+          "path": "baseline/source/invsqrt.kmx",
+          "sha256": "77302e018eff451da70fc521f28630c27881ea83741a958618c81a9ea0f90bc5",
+          "kind": "circuit"
+        },
+        {
+          "path": "baseline/data/phase_features.json",
+          "kind": "phase metadata and saved angles"
+        },
+        {
+          "path": "baseline/data/partial_merge3_fit.json",
+          "kind": "saved phase-fit replay"
+        },
+        {
+          "path": "baseline/data/high_table.json",
+          "kind": "numeric table; alone does not close circuit dependency"
+        },
+        {
+          "path": "baseline/compiler/history_replay_records.json",
+          "kind": "synthesis replay"
+        },
+        {
+          "path": "baseline/source/baseline/invsqrt.kmx",
+          "sha256": "76db8e8c1526bdb8def9ceaa7023d535bb97dfe5d5d3f9d73cfc7991c0adf494",
+          "kind": "circuit"
+        },
+        {
+          "path": "baseline/source/lookup_certificate.json.gz",
+          "kind": "synthesis certificate"
+        },
+        {
+          "path": "baseline/source/curvature_certificate.json",
+          "kind": "synthesis certificate"
+        },
+        {
+          "path": "baseline/invsqrt.kmx",
+          "sha256": "a0bfeaf07676c5a8fd407a89b3aa95b9d3268b2487c5f8716e494cbf15d165d4",
+          "kind": "circuit"
+        },
+        {
+          "path": "baseline/invsqrt.kmb",
+          "sha256": "8233989943672908a385bcc7c45b5808ad2ecc28ea7bc9f6f8d91a149ff5d780",
+          "kind": "circuit"
+        }
+      ],
+      "top_level_pins": {
+        "baseline/invsqrt.kmx": "a0bfeaf07676c5a8fd407a89b3aa95b9d3268b2487c5f8716e494cbf15d165d4",
+        "baseline/invsqrt.kmb": "8233989943672908a385bcc7c45b5808ad2ecc28ea7bc9f6f8d91a149ff5d780",
+        "baseline/source/baseline/official/kickmix/kickmix.so": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
+        "baseline/source/baseline/official/invsqrt/verify_submission_invsqrt.py": "ddef520dec6b68d1cf0a6f328ddd36d79eb84570b9192cf3f7acaf073f06733a"
+      },
+      "l5_builder_dependencies": [
+        "radical_norm/both_reflect76.kmb",
+        "radical_newton/address_helper_scratch.json",
+        "round3_root/l5/extra.json",
+        "round3_root/l5/early.json",
+        "round3_root/l5/late.json",
+        "round3_memory/l4_direct.json",
+        "round4_root/address_joint.json"
+      ],
+      "l5_builder_evidence": "baseline/source/baseline/round4_root/build_shared_address.py:15-28; default input is a frozen circuit with hard-coded text SHA-256 5f318ffb470e37f2b6225444dbccc4572858cde400bc004bb0e4d1223ac09e20; alternatives must match that hash."
+    },
+    {
+      "id": "v8-20p056",
+      "version": 8,
+      "package_prefix": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/",
+      "entry_point": "generate.py",
+      "entry_dependencies": [
+        {
+          "path": "input/recovered_20p032119.kmx",
+          "sha256": "5e966ecd06b85e90a7ab0d4bef1b0acfad30c5652a00bf81c9f414da87dc333f",
+          "kind": "circuit"
+        },
+        {
+          "path": "provenance/invsqrt_20.032119x_verified.zip",
+          "sha256": "d12bc07d0b585720a11eaac5ab6cefba76be23c117fcab0d6d48ee6ea01abdce",
+          "kind": "archive replay with frozen circuits",
+          "alternative": "--replay-upstream"
+        }
+      ],
+      "disposition": "not ported: consumes frozen recovered circuit or frozen ancestor replay"
+    },
+    {
+      "id": "v8-20p032-ancestor",
+      "version": 8,
+      "package_prefix": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/",
+      "entry_point": "generate.py",
+      "entry_dependencies": [
+        {
+          "path": "source/invsqrt.kmx",
+          "sha256": "77302e018eff451da70fc521f28630c27881ea83741a958618c81a9ea0f90bc5",
+          "kind": "circuit"
+        },
+        {
+          "path": "proofs/frozen_front.block.kmx",
+          "sha256": "85a0174df11d41c1f85c94f496ec2f2d879057eb5d89ad8d1b84a38fc38f157f",
+          "kind": "circuit block"
+        },
+        {
+          "path": "compiler/frozen_front.json",
+          "kind": "synthesis certificate"
+        },
+        {
+          "path": "compiler/retained_derivative_phase_interface.json",
+          "sha256": "43a0edb81a6750803ff2c0c686f66064c30ba2e39cd9431724dfbc245028c3d2",
+          "kind": "selected synthesis/phase replay"
+        },
+        {
+          "path": "compiler/retained_seed7_cleanup.json",
+          "sha256": "df33b9aa6ef39a103c42270ba31448b635fc6a52d6affdaf0ac1722f6d9c1747",
+          "kind": "selected synthesis/phase replay"
+        },
+        {
+          "path": "compiler/selected_physical_model.json",
+          "sha256": "34a437e54e426fe1d9ede1d46e1db91dcf63b1c8c4daf41efdbc2376b78482c4",
+          "kind": "selected synthesis/phase replay"
+        },
+        {
+          "path": "compiler/selected_physical_model_phase_tail3.json",
+          "sha256": "92ef86c036c11bff2ef968d594c0ae0213fe06baec0e42c8c6c2042d4059ba0f",
+          "kind": "selected synthesis/phase replay"
+        },
+        {
+          "path": "compiler/f15_guard_exponent_recode.json",
+          "sha256": "2a41dc804ba41129811c5c4bdc427aa4d04d55e9643c77191ab39d667e4efc1d",
+          "kind": "selected synthesis/phase replay"
+        }
+      ],
+      "baseline_frozen_dependencies": [
+        {
+          "path": "round5_phase/l6_exact.logical.kmx",
+          "sha256": "a98ed6cfbddda86aa6f560605d965339e404170bca3d51f02839286956a31eb5"
+        },
+        {
+          "path": "round6_arithmetic/l6_regroup5_f0_joint.certificate.json",
+          "sha256": "83d4ea87518e9aa286ff9899348337bd16353d05c9a925c56ad16e39a7c8632c"
+        },
+        {
+          "path": "round7_arithmetic/staged_address.certificate.json",
+          "sha256": "edb2fc2c7d9ef01b2515dfe57023f5605620846747e36edd7fa881c766ae7669"
+        },
+        {
+          "path": "round7_memory/l7_coded9.certificate.json",
+          "sha256": "c67c0cffb501b341b7396cc3b4cf2201ec0349d778b5ff84a69a54b65c2f3677"
+        },
+        {
+          "path": "round7_memory/l7_initial_pool40.certificate.json.gz",
+          "sha256": "f63269589f1fdac033d4e1f3e7c7c0ff5e5976459098e39b70a8d30e04b84199"
+        },
+        {
+          "path": "round7_memory/l7_initial188_pool40.certificate.json.gz",
+          "sha256": "957a153cef3a48872191a811e821842b7a65e20b963a833a338b2566e0d898b1"
+        },
+        {
+          "path": "certificates/cache64.json",
+          "sha256": "82377c29902e93d98fac3e7bc5caaeaf191eb6944e24c3bd983b9b3ff70d20c6"
+        },
+        {
+          "path": "round7_phase/cross_cached64_quad.proof.json",
+          "sha256": "0a5c45d9ddd8cf29361cd55a4f4f01088c3a2eaa7969abf80230e6a0546e5373"
+        },
+        {
+          "path": "round7_memory/native64_jointlate_refined.certificate.json",
+          "sha256": "813d12ecc3018753c60143013cbb1e4b19192b8d4a3bf0d44f9aae5a646ab63b"
+        },
+        {
+          "path": "round7_root/phasecached64.proof.json",
+          "sha256": "34474924d5e6e2f915c11690c68ee22ca8f29c6715b4329c302608beddd25445"
+        },
+        {
+          "path": "round7_memory/selected63_zero_retired.proof.json",
+          "sha256": "6f0150e54992b8f96f07f46ef6f10ad6aace85587f23b0cc87eb5dd1f4702c54"
+        },
+        {
+          "path": "round7_root/overlap71_refined.certificate.json",
+          "sha256": "a541fb3733105f527cf83c97dabbb27f0931dca8e2634a73d65fd412c24369a9"
+        },
+        {
+          "path": "round7_phase/balanced_native_independent.proof.json",
+          "sha256": "1f807ec85de64383989575cb76387186661fdf5879105b5a9b425e039ad14987"
+        },
+        {
+          "path": "round7_memory/native64_zero_retired.proof.json",
+          "sha256": "e793079dd860e117ef9edff336f6411fd24f96ac8cb934e873b1b5b0a2e0f317"
+        },
+        {
+          "path": "round7_arithmetic/norm_ge2.proof.json",
+          "sha256": "caebff405800e88cfa957a507f09bb6768912a048b4a8b71e554bf67ccb64548"
+        },
+        {
+          "path": "round7_arithmetic/balanced_native.proof.json",
+          "sha256": "a54c40a279ae9ad633359c5b703a3581d34e13c0e21af3157e4b447ccb30e021"
+        },
+        {
+          "path": "round7_arithmetic/overlap_tail16.certificate.json",
+          "sha256": "2fba2e521e31563ec2086ae8577d9057862cc7efb5b7cdde2195fa39aa993c54"
+        },
+        {
+          "path": "round7_phase/balanced_norm23.proof.json",
+          "sha256": "2dfbee800c2635781d3f9a0fb4758235e1bd3303183a37a2837debed4c225fdc"
+        },
+        {
+          "path": "round7_root/native64_overlap71_rank9.proof.json",
+          "sha256": "165770ef521891c836ea87be5bd3c99198b338def1faca40fa722a8666e50780"
+        },
+        {
+          "path": "round7_memory/l7_initial_pool39.certificate.json.gz",
+          "sha256": "d2ddebc418b4c9cdb40f2636a971d6038aec763050ad74a8d48f5a8fbe8caa11"
+        },
+        {
+          "path": "round7_phase/pool39_long.certificate.json",
+          "sha256": "ec686f15dba9e263fa935f01bf9f1e3999060022347df691b4b42b70347a3cee"
+        },
+        {
+          "path": "round7_phase/pool39_leaf.certificate.json",
+          "sha256": "4a7ac13d4b853ab0726bca863eb1bf9dcc8b779390fbed3d69e52535a1bdfc76"
+        },
+        {
+          "path": "round7_phase/pool39_carry.proof.json",
+          "sha256": "01f4abffb8a32a292c199cb695ab618600376f369e019a4eea4edef76d73623b"
+        },
+        {
+          "path": "round7_arithmetic/l7_pool39_park44_42_cap63.raw.kmx.gz",
+          "sha256": "74dedd90275beb9fdc90af5542ce888895ce37d1f3596dfcf69672fde0b59e01"
+        },
+        {
+          "path": "round7_arithmetic/balanced_native_alias.proof.json",
+          "sha256": "c90e38266499552cb96810a0b47c8e6f36867954e61a2fe32d6de7ed3aba3a63"
+        },
+        {
+          "path": "round7_arithmetic/balanced_native_tail.proof.json",
+          "sha256": "b02cf5b5b6952bff613ceb10b2c132dbe3e93d463761256c23e1c5f02baa928f"
+        },
+        {
+          "path": "round7_arithmetic/balanced_native_zero.proof.json",
+          "sha256": "69903d131756bb99511e971cf770117587c7c261a496d67eba9a60c4e24753d8"
+        },
+        {
+          "path": "round7_arithmetic/overlap63_closed.kmx",
+          "sha256": "bab22ebebaf88727b555beaf065a4e908177a4c17343ab3dc85d8cdc47f652e4"
+        },
+        {
+          "path": "round7_arithmetic/balanced63_joint16.proof.json",
+          "sha256": "c8a1e943b0cb7663baf4474d1146224974957198cbfe4688d748c62d79eb8fec"
+        },
+        {
+          "path": "round7_arithmetic/balanced_native_carries.proof.json",
+          "sha256": "7b5021842f9e264c920d9833776c8efae1dabad70c1cd27c426f93d9a656ceac"
+        },
+        {
+          "path": "round7_arithmetic/balanced_marker_affine.proof.json",
+          "sha256": "ec1073e5a66a44dae096caab3af3eb14c5c7103ca077f39c650f912773294f7f"
+        },
+        {
+          "path": "round7_root/balanced63_joint16_clean.kmx.changes.json",
+          "sha256": "5db0eff3e184167461c2d72e631d6d253d03bad3c38c25551e58325ace6a545a"
+        },
+        {
+          "path": "round7_phase/balanced_native_decoder5.proof.json",
+          "sha256": "27fd75ea3d9f51deda2c651dd2f30775ac9145758dcc0d5f8f209261e2bd8e68"
+        },
+        {
+          "path": "round7_arithmetic/balanced63_decoder5.proof.json",
+          "sha256": "37ef66f2562c5889ba4fd7c5d269b427a8bd2fe44cec214cd134723e5173dcda"
+        },
+        {
+          "path": "round7_root/balanced63_decoder5_clean.kmx.changes.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        }
+      ],
+      "baseline_config_sha256": "0752ed60eef19cb1b0948f18672b0f660a016cab10d4485d67a3c28425c09713",
+      "disposition": "not ported: common frozen baseline and selected synthesis/phase replay"
+    }
+  ]
+}

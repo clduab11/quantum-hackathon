@@ -1,0 +1,34 @@
+{
+  "task": "invsqrt",
+  "status": "PASS",
+  "Q": 84,
+  "full_verification": {
+    "shot_divisor": 1,
+    "salt_label": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001"
+  },
+  "Toffolis": 1553.0002254402652,
+  "T": 1258.6174194799191,
+  "T_unit": "synthesized_T_gates",
+  "failures": 0,
+  "epsilon_plus": null,
+  "cost": 156882.98474606057,
+  "ratio": 13.237727705632725,
+  "seconds": 244.43402084498666,
+  "verifier": {
+    "status": "PASS",
+    "score": 156882.98474606057,
+    "toffoli_equivalent": 1867.654580310245,
+    "toffoli_count": 1553.0002254402652,
+    "max_toffoli_count": 1564,
+    "t_count": 1.0,
+    "rotation_count": 44.0,
+    "rotation_eps": 3.051847661949807e-13,
+    "num_qubits": 84,
+    "reaction_depth": 214,
+    "num_ops": 37753,
+    "verified_shots": 200540928,
+    "worst_error_over_tolerance": 0.9995943415273103,
+    "worst_x": 32,
+    "circuit_sha256": "17fc223d79d3f1f15ef448389072209972b373403dd0a45352f4fe7eaff541ad"
+  }
+}

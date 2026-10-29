@@ -1,0 +1,57 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.13, pytest-9.1.1, pluggy-1.7.0
+rootdir: /home/cld-main/work/qh-pra320
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.15.1
+collected 431 items / 4 skipped
+
+tests/test_c59_compiler.py .........                                     [  2%]
+tests/test_chemistry_candidate.py ........                               [  3%]
+tests/test_costs.py ...............                                      [  7%]
+tests/test_dfthcsos_qrom.py ...........................                  [ 13%]
+tests/test_dqi_algebra.py .                                              [ 13%]
+tests/test_dqi_formulas.py .                                             [ 14%]
+tests/test_dqi_fused.py ......                                           [ 15%]
+tests/test_dqi_hankel.py .....                                           [ 16%]
+tests/test_dqi_jfraction.py ..                                           [ 17%]
+tests/test_dqi_projection.py .....                                       [ 18%]
+tests/test_dqi_provenance.py .........                                   [ 20%]
+tests/test_dqi_schur.py ....                                             [ 21%]
+tests/test_factor_fit_v3.py ......                                       [ 22%]
+tests/test_factor_fit_v4.py ...ssss                                      [ 24%]
+tests/test_factor_gpu.py .ss                                             [ 25%]
+tests/test_factor_pipeline.py ...........                                [ 27%]
+tests/test_factor_refit_v2.py .........                                  [ 29%]
+tests/test_factor_resume.py .......                                      [ 31%]
+tests/test_g0.py ...................                                     [ 35%]
+tests/test_gate_contract.py ......                                       [ 37%]
+tests/test_install_kickmix.py ........                                   [ 38%]
+tests/test_invsqrt_design_study.py ......                                [ 40%]
+tests/test_invsqrt_parity.py ...                                         [ 41%]
+tests/test_invsqrt_provenance.py ....                                    [ 41%]
+tests/test_invsqrt_public_port.py ...s.                                  [ 43%]
+tests/test_invsqrt_public_port_gates.py ......                           [ 44%]
+tests/test_invsqrt_staged_budget.py ......                               [ 45%]
+tests/test_invsqrt_storage.py .....                                      [ 47%]
+tests/test_ledger_evidence.py ............                               [ 49%]
+tests/test_ledger_gates.py ....................................          [ 58%]
+tests/test_ledger_licence_not_gated.py .......                           [ 59%]
+tests/test_ledger_manifest.py ...............                            [ 63%]
+tests/test_ledger_scorecard.py ...................                       [ 67%]
+tests/test_merge_gate.py .......                                         [ 69%]
+tests/test_pra177_generators.py ...                                      [ 70%]
+tests/test_pra245_declared_factors.py ..                                 [ 70%]
+tests/test_reference_identity.py .................                       [ 74%]
+tests/test_reference_invsqrt_gates.py .......                            [ 76%]
+tests/test_reference_rebuild.py ...                                      [ 76%]
+tests/test_registers.py ...............                                  [ 80%]
+tests/test_review_boundaries.py ..                                       [ 80%]
+tests/test_rustad_compiler.py ...............                            [ 84%]
+tests/test_scoring.py .....                                              [ 85%]
+tests/test_search_loop.py .............                                  [ 88%]
+tests/test_smoke.py ..                                                   [ 88%]
+tests/test_status_page.py ......................................         [ 97%]
+tests/test_submission_notebook.py ..........                             [100%]
+
+================= 424 passed, 11 skipped in 112.62s (0:01:52) ==================

@@ -1,0 +1,2583 @@
+{
+  "dataset_version": 8,
+  "dataset_file_count": 2704,
+  "package_prefix": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7396
+    },
+    {
+      "path": "RESULT.json",
+      "bytes": 4841
+    },
+    {
+      "path": "SHA256SUMS.json",
+      "bytes": 5735
+    },
+    {
+      "path": "build_config.json",
+      "bytes": 594
+    },
+    {
+      "path": "certificates/archive_upstream_reproduction.json",
+      "bytes": 2070
+    },
+    {
+      "path": "certificates/fast_full_domain_boundary.json",
+      "bytes": 574
+    },
+    {
+      "path": "certificates/fast_reproduction.json",
+      "bytes": 1253
+    },
+    {
+      "path": "certificates/fast_universal_identity.json",
+      "bytes": 1470
+    },
+    {
+      "path": "certificates/full_domain_boundary.json",
+      "bytes": 567
+    },
+    {
+      "path": "certificates/initial_identity_check.json",
+      "bytes": 996
+    },
+    {
+      "path": "certificates/official_invocation.json",
+      "bytes": 572
+    },
+    {
+      "path": "certificates/replay.log",
+      "bytes": 1498
+    },
+    {
+      "path": "certificates/reproduction.json",
+      "bytes": 1498
+    },
+    {
+      "path": "certificates/universal_identity.json",
+      "bytes": 1470
+    },
+    {
+      "path": "certificates/upstream_replay.log",
+      "bytes": 22236
+    },
+    {
+      "path": "generate.py",
+      "bytes": 10000
+    },
+    {
+      "path": "input/recovered_20p032119.kmx",
+      "bytes": 600630
+    },
+    {
+      "path": "input/recovered_official_full_verify.json",
+      "bytes": 505
+    },
+    {
+      "path": "invsqrt.kmb",
+      "bytes": 459891
+    },
+    {
+      "path": "invsqrt.kmx",
+      "bytes": 600658
+    },
+    {
+      "path": "measurement_audit.md",
+      "bytes": 1456
+    },
+    {
+      "path": "official/invsqrt/verify_submission_invsqrt.py",
+      "bytes": 17210
+    },
+    {
+      "path": "official/kickmix/LICENSE.txt",
+      "bytes": 11358
+    },
+    {
+      "path": "official/kickmix/kickmix.so",
+      "bytes": 3220392
+    },
+    {
+      "path": "official_full_verify.json",
+      "bytes": 503
+    },
+    {
+      "path": "official_full_verify.stderr",
+      "bytes": 0
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/MANIFEST.sha256",
+      "bytes": 66809
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/MANIFEST.sha256.json",
+      "bytes": 65007
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/README.md",
+      "bytes": 6956
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/build_config.json",
+      "bytes": 1232
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/affine_reduce.py",
+      "bytes": 2369
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/apply_curvature52_to_pass12.py",
+      "bytes": 5056
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/audit_front_phase_clean_global.py",
+      "bytes": 2822
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/audit_physical_frontier.py",
+      "bytes": 2442
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/build_guard_e1_phase.py",
+      "bytes": 5835
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/build_norm_gray_prefix.py",
+      "bytes": 7276
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/build_partial_merge.py",
+      "bytes": 6141
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/build_retained_seed_phase7.py",
+      "bytes": 6648
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/cache_late_curvature.py",
+      "bytes": 3774
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/cache_normalization_prefixes.py",
+      "bytes": 7503
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/cache_normalization_sequential.py",
+      "bytes": 6605
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/compose_phase_clean_front.py",
+      "bytes": 3986
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/exact_phase_ledger.py",
+      "bytes": 2082
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/f15_guard_exponent_recode.json",
+      "bytes": 18013
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/factor_deferred_product.py",
+      "bytes": 9519
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/factor_late_curvature.py",
+      "bytes": 8002
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/fit_phase.py",
+      "bytes": 4470
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/front38_global.proof.json",
+      "bytes": 697
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/front_interface.json",
+      "bytes": 7154
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/frozen_front.block.replay.json",
+      "bytes": 327
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/frozen_front.json",
+      "bytes": 123600
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/history_replay_records.json",
+      "bytes": 181434
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/invsqrt20_phase7_graynorm_guard.proof.json",
+      "bytes": 2150
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/late_curvature_xag.txt",
+      "bytes": 2461
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/partial3_cached_curvature.proof.json",
+      "bytes": 1288
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/partial3_cached_curvature51_normstream.proof.json",
+      "bytes": 1598
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/partial3_cached_curvature52.proof.json",
+      "bytes": 1452
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/partial3_cached_curvature52_normstream.proof.json",
+      "bytes": 1456
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/partial3_cached_normstream.proof.json",
+      "bytes": 6881
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/partial3_front38_phase7_graynorm.proof.json",
+      "bytes": 4578
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/partial3_front38_phase_clean.proof.json",
+      "bytes": 5192
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/partial3_front38_retained_phase7.proof.json",
+      "bytes": 2193
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/partial_merge3.proof.json",
+      "bytes": 2421
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/partial_merge3_trimmed.proof.json",
+      "bytes": 777
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/partial_merge_probe.py",
+      "bytes": 2371
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/phase7_global.proof.json",
+      "bytes": 696
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/recode_low_phase_bit.py",
+      "bytes": 7151
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/replay_frontier_component.py",
+      "bytes": 5735
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/replay_history.py",
+      "bytes": 2374
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/replay_norm_gray_prefix.py",
+      "bytes": 5934
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/retained_derivative_phase_interface.json",
+      "bytes": 17914
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/retained_seed7_cleanup.json",
+      "bytes": 1093
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/search_universal_quadratic_basis.py",
+      "bytes": 2910
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/selected_physical_model.json",
+      "bytes": 26390
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/selected_physical_model_phase_tail3.json",
+      "bytes": 4451
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/compiler/trim_partial_tail.py",
+      "bytes": 3272
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/data/high_table.json",
+      "bytes": 4328
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/data/partial_merge3_fit.json",
+      "bytes": 1733
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/data/phase_features.json",
+      "bytes": 2657
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/generate.py",
+      "bytes": 4993
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/invsqrt.kmb",
+      "bytes": 459863
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/invsqrt.kmx",
+      "bytes": 600630
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/official_full_verify.json",
+      "bytes": 505
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/official_full_verify.stderr",
+      "bytes": 0
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/cached_curvature.proof.json",
+      "bytes": 1288
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/composition_independent_audit.json",
+      "bytes": 3983
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/final_phase_late_seeds_all_legal.proof.json",
+      "bytes": 26932
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/front38_composition.proof.json",
+      "bytes": 5069
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/front38_official_full_verify.json",
+      "bytes": 506
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/front38_phase_clean_global.proof.json",
+      "bytes": 697
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/frozen_current_front_interface.json",
+      "bytes": 7114
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/frozen_front.block.kmx",
+      "bytes": 66535
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/history_final.proof.json",
+      "bytes": 10013
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/invsqrt20_phase7_graynorm_guard.proof.json",
+      "bytes": 2111
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/normstream.proof.json",
+      "bytes": 6840
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/partial3_cached_curvature51_normstream.proof.json",
+      "bytes": 1558
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/partial3_cached_curvature52_normstream.full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/partial3_cached_curvature52_normstream.proof.json",
+      "bytes": 1416
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/partial3_front38_phase7_graynorm.proof.json",
+      "bytes": 4536
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/partial3_front38_phasebasis9.full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/partial3_front38_retained_phase7.global.proof.json",
+      "bytes": 696
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/partial3_front38_retained_phase7.proof.json",
+      "bytes": 2076
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/partial_merge3.proof.json",
+      "bytes": 2421
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/partial_merge3_trimmed.proof.json",
+      "bytes": 777
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/previous_normprefix_official_full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/reproduction.json",
+      "bytes": 249
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/reproduction.log",
+      "bytes": 21988
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/proofs/retained7_independent_review.proof.json",
+      "bytes": 389519
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/reproduction.json",
+      "bytes": 249
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/reproduction.log",
+      "bytes": 5639
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/requirements.txt",
+      "bytes": 27
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/MANIFEST.sha256.json",
+      "bytes": 58062
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/README.md",
+      "bytes": 5825
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/MANIFEST.json",
+      "bytes": 49591
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/README.txt",
+      "bytes": 5114
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/build_config.json",
+      "bytes": 27168
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/certificates/cache64.json",
+      "bytes": 1347
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/environment.json",
+      "bytes": 195
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/curvature_table.json",
+      "bytes": 2569
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/dirty_complement.py",
+      "bytes": 3432
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/exact_opt.py",
+      "bytes": 8194
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/merge_products.py",
+      "bytes": 4847
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/phase_extra_park_probe.py",
+      "bytes": 5025
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/phase_flag_stream.py",
+      "bytes": 3143
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/phase_idle_park.py",
+      "bytes": 3065
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/phase_idle_relations.py",
+      "bytes": 4157
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/phase_mux_stream.py",
+      "bytes": 5175
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/phase_rank_park_probe.py",
+      "bytes": 6947
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/gate/transvection_probe.py",
+      "bytes": 956
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/generate.py",
+      "bytes": 3397
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/invsqrt.kmb",
+      "bytes": 404404
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/invsqrt.kmx",
+      "bytes": 520966
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/official/invsqrt/verify_submission_invsqrt.py",
+      "bytes": 17210
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/official/kickmix/LICENSE.txt",
+      "bytes": 11358
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/official/kickmix/kickmix.so",
+      "bytes": 3220392
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/official_full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/official_full_verify.stderr",
+      "bytes": 0
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/analyze_features.py",
+      "bytes": 645
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/build_memory_candidate.py",
+      "bytes": 4344
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/build_true76_raw.py",
+      "bytes": 3673
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/collapse_affine_tail.py",
+      "bytes": 3338
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/collect_phase.py",
+      "bytes": 786
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/controlled_s.py",
+      "bytes": 1509
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/deferred_carries.py",
+      "bytes": 4667
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/dual_probe.py",
+      "bytes": 1173
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/extra_features.py",
+      "bytes": 1589
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/fix_frontier75.py",
+      "bytes": 1828
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/parity_search.py",
+      "bytes": 1660
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/probe_lp.py",
+      "bytes": 942
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/rotation_calibration.py",
+      "bytes": 9096
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/split_carries.py",
+      "bytes": 6252
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/split_carries_multi.py",
+      "bytes": 4575
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/stream_carries.py",
+      "bytes": 3813
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/tail_erase.py",
+      "bytes": 6742
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/phase/tail_product_probe.py",
+      "bytes": 3886
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs/allocated.build.json",
+      "bytes": 97206
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs/clean.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs/deferred.json",
+      "bytes": 5589
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs/finalized.build.json",
+      "bytes": 149586
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs/joint.proof.json",
+      "bytes": 424
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs/lookup.proof.json",
+      "bytes": 172710
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs/regroup.proof.json",
+      "bytes": 1512
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs/retimed.json",
+      "bytes": 833
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/allocated.build.json",
+      "bytes": 93911
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/cached.proof.json",
+      "bytes": 87224
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/clean.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/commuted.proof.json",
+      "bytes": 13062
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/composed.proof.json",
+      "bytes": 1235
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/conjugated.proof.json",
+      "bytes": 2081
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/crosscached.proof.json",
+      "bytes": 102436
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/deferred.json",
+      "bytes": 5356
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/finalized.build.json",
+      "bytes": 148354
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/joint.certificate.json",
+      "bytes": 6269
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/joint.proof.json",
+      "bytes": 424
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/joint46_screening_65536.json",
+      "bytes": 500
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/jointlate.proof.json",
+      "bytes": 1057
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/lookup188.proof.json",
+      "bytes": 169724
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/park42.proof.json",
+      "bytes": 1488
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/park44.proof.json",
+      "bytes": 1481
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/phasecached.proof.json",
+      "bytes": 104859
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/phasecarry.proof.json",
+      "bytes": 1175
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/prefix189.certificate.json",
+      "bytes": 208564
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/regroup.proof.json",
+      "bytes": 1512
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/retimed.json",
+      "bytes": 1285
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/selected.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/selected_final.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs64/sparse.proof.json",
+      "bytes": 1379
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs_balanced/balanced63_joint16.proof.json",
+      "bytes": 2042
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs_balanced/balanced_native.proof.json",
+      "bytes": 3698
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs_balanced/balanced_native_alias.proof.json",
+      "bytes": 5342
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs_balanced/balanced_native_carries.proof.json",
+      "bytes": 646
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs_balanced/balanced_native_tail.proof.json",
+      "bytes": 1541
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs_balanced/balanced_native_zero.proof.json",
+      "bytes": 14942
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs_balanced/overlap71_rank9.proof.json",
+      "bytes": 3745
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs_balanced/selected_balanced.kmx.changes.json",
+      "bytes": 191
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs_decoder5/balanced_decoder5.proof.json",
+      "bytes": 2835
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/proofs_decoder5/selected_decoder5.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/balanced_addon_4_8a0e9f9c2426.json",
+      "bytes": 11323
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/balanced_addon_6_63fe584141f2.json",
+      "bytes": 14355
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base19_README.txt",
+      "bytes": 5648
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base19_build_config.json",
+      "bytes": 3077
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base19_generate.py",
+      "bytes": 7556
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base19_official_full_verify.json",
+      "bytes": 505
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base19_reproduction.json",
+      "bytes": 3303
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base19_reproduction.log",
+      "bytes": 2052
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_MANIFEST.json",
+      "bytes": 40176
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_README.txt",
+      "bytes": 4883
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_build_config.json",
+      "bytes": 13763
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_generate.py",
+      "bytes": 3397
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_official_full_verify.json",
+      "bytes": 505
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_reproduction.json",
+      "bytes": 3811
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base22_reproduction.log",
+      "bytes": 2391
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_MANIFEST.json",
+      "bytes": 47550
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_README.txt",
+      "bytes": 5560
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_build_config.json",
+      "bytes": 25565
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_generate.py",
+      "bytes": 3397
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_official_full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_official_full_verify.stderr",
+      "bytes": 0
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_reproduction.json",
+      "bytes": 5965
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/base30_reproduction.log",
+      "bytes": 1148
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/prefix22_reuse.json",
+      "bytes": 664
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/prefix30_reuse.json",
+      "bytes": 1135
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/provenance/verified65_full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qrom/banked_anf.py",
+      "bytes": 3536
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qrom/compact_conditions.py",
+      "bytes": 943
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qrom/dirty_leaf.py",
+      "bytes": 1908
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qrom/extract.py",
+      "bytes": 1234
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qrom/public_rotation_source.py",
+      "bytes": 20098
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qrom/reduce_tail_workspace.py",
+      "bytes": 2210
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/cache_products.py",
+      "bytes": 3111
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/cache_products_general.py",
+      "bytes": 4888
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/cache_products_greedy.py",
+      "bytes": 2303
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/complete_cap77.py",
+      "bytes": 1627
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/curvature_arbitrary_product.py",
+      "bytes": 2236
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/curvature_joint_search.py",
+      "bytes": 1731
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/curvature_relations.py",
+      "bytes": 2010
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/curvature_two_products.py",
+      "bytes": 682
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/find_majority.py",
+      "bytes": 1240
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/hoist_measurements.py",
+      "bytes": 1855
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/implicit_curvature.py",
+      "bytes": 6030
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/implicit_highword.py",
+      "bytes": 3337
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/lifetime.py",
+      "bytes": 872
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/optimize_memory.py",
+      "bytes": 5270
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/park_coeff.py",
+      "bytes": 1096
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/park_coeff_two.py",
+      "bytes": 1239
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/park_xor_products.py",
+      "bytes": 895
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/repeated_products.py",
+      "bytes": 1383
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/symbolic.py",
+      "bytes": 2977
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/table_analysis.py",
+      "bytes": 1047
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/qubit/tables.json",
+      "bytes": 62615
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/audit_address_helpers.py",
+      "bytes": 4237
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/build_linear.py",
+      "bytes": 3086
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/build_two_scale.py",
+      "bytes": 4016
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/check_phase_before_lookup.py",
+      "bytes": 2689
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/compare_late_controls.py",
+      "bytes": 2212
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/delta_parking_probe.py",
+      "bytes": 3814
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/delta_quadratic_probe.py",
+      "bytes": 2476
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/linear_model.py",
+      "bytes": 2200
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/lookup_flag_park.py",
+      "bytes": 2343
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/lword_early_encoding.py",
+      "bytes": 2519
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/parked_input_allocator.py",
+      "bytes": 2964
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/phase_address_park.py",
+      "bytes": 4242
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/phase_cache_evict.py",
+      "bytes": 2943
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/phase_lword_delay.py",
+      "bytes": 6041
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/phase_lword_park.py",
+      "bytes": 6835
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/qrom_quadratic.py",
+      "bytes": 4923
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/reference_arithmetic.py",
+      "bytes": 11767
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_linear/two_scale_model.py",
+      "bytes": 3127
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/address_coarse_parity_products.py",
+      "bytes": 456
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/address_helper_lift.py",
+      "bytes": 3928
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/address_helper_scratch.py",
+      "bytes": 1170
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/carry_save.py",
+      "bytes": 2006
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/compressed_curvature_model.py",
+      "bytes": 3586
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/cubic_build.py",
+      "bytes": 7679
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/cubic_model.py",
+      "bytes": 3961
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/curvature_cycle_fix.py",
+      "bytes": 2237
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/curvature_direct_l2.py",
+      "bytes": 1262
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/curvature_direct_l2_staged.py",
+      "bytes": 1245
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/curvature_direct_products.py",
+      "bytes": 1815
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/curvature_exclude_ltop.py",
+      "bytes": 2021
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/curvature_extra_l3.py",
+      "bytes": 1598
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/curvature_extra_products.py",
+      "bytes": 1434
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/curvature_l2_staged.py",
+      "bytes": 2043
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/deferred_lookup.py",
+      "bytes": 3263
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/delay_highword_parities.py",
+      "bytes": 2876
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/highword_exact.py",
+      "bytes": 6575
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/highword_fit.py",
+      "bytes": 839
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/highword_parity_products.py",
+      "bytes": 3166
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/highword_relations.py",
+      "bytes": 550
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/highword_two_products.py",
+      "bytes": 1536
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/local_clean.py",
+      "bytes": 614
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/lword5_parity_products.py",
+      "bytes": 481
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/lword_curvature_products.py",
+      "bytes": 1214
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/lword_parity_products.py",
+      "bytes": 474
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/memory68.py",
+      "bytes": 3402
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/memory68_stream.py",
+      "bytes": 1607
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/memory68_streamed.py",
+      "bytes": 3511
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/phase_fused.py",
+      "bytes": 3314
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/phase_q19_decoder.py",
+      "bytes": 2154
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/phase_q19_lowrank.py",
+      "bytes": 1725
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/signed_digit_helpers.py",
+      "bytes": 27061
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/verify_curvature_pipeline.py",
+      "bytes": 3938
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_newton/verify_curvature_products.py",
+      "bytes": 1094
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_norm/address_helpers.py",
+      "bytes": 10075
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_norm/borrow_allocator.py",
+      "bytes": 3503
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_norm/build68.py",
+      "bytes": 4259
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_norm/build_helper.py",
+      "bytes": 4459
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_norm/cache_borrowed.py",
+      "bytes": 1443
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_norm/carry_trade.py",
+      "bytes": 3699
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_norm/folded_reflections.py",
+      "bytes": 2825
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_norm/full_reflections.py",
+      "bytes": 4440
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_norm/inverse_full_reflections.py",
+      "bytes": 5352
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_norm/reflections.py",
+      "bytes": 7564
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_phase/address_park.py",
+      "bytes": 8740
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_phase/address_probe.py",
+      "bytes": 3374
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_phase/address_quadratic.py",
+      "bytes": 5600
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_phase/address_relations.py",
+      "bytes": 3482
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_phase/address_sequential.py",
+      "bytes": 4861
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_phase/build_structural.py",
+      "bytes": 4381
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_phase/curvature_generic.py",
+      "bytes": 11246
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_phase/direct_builder.py",
+      "bytes": 5868
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_phase/direct_fit.py",
+      "bytes": 2583
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/radical_phase/phase_flags_generic.py",
+      "bytes": 4483
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/reproduction.json",
+      "bytes": 6787
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/reproduction.log",
+      "bytes": 402
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/requirements.txt",
+      "bytes": 27
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_arithmetic/anf_qrom.py",
+      "bytes": 4484
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_arithmetic/compressed_anf_qrom.py",
+      "bytes": 7947
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_arithmetic/order_probe.py",
+      "bytes": 973
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_arithmetic/output_grid_model.py",
+      "bytes": 2995
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_arithmetic/output_space_address.py",
+      "bytes": 3192
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_arithmetic/output_space_address_extended.py",
+      "bytes": 3323
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_arithmetic/output_space_address_p8.py",
+      "bytes": 2830
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_arithmetic/output_space_anf.py",
+      "bytes": 1625
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_arithmetic/park_qrom_products.py",
+      "bytes": 3122
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_arithmetic/phase2_second_park_search.py",
+      "bytes": 8247
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/affine_peak.py",
+      "bytes": 2656
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/build67.py",
+      "bytes": 3390
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/build67_coarse.py",
+      "bytes": 3786
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/build67_coarse4.py",
+      "bytes": 3798
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/build67_direct75.py",
+      "bytes": 3807
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/build67_scheduled.py",
+      "bytes": 3605
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/build67_scheduled_late67.py",
+      "bytes": 3839
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/build_l4.py",
+      "bytes": 1365
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/coarse_curvature.py",
+      "bytes": 6574
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/coarse_extra_search.py",
+      "bytes": 2641
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/coarse_four.py",
+      "bytes": 5244
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/coarse_scheduled.py",
+      "bytes": 2666
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/coarse_scheduled_late67.py",
+      "bytes": 2723
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/coarse_simplify75.py",
+      "bytes": 2457
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/commute_carry_resets.py",
+      "bytes": 870
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/delay_affine_initializers.py",
+      "bytes": 1662
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/fit_l4.py",
+      "bytes": 2556
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/h_projection.py",
+      "bytes": 1270
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/memory67.py",
+      "bytes": 3549
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/memory67_relaxed.py",
+      "bytes": 3991
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/memory68_relaxed.py",
+      "bytes": 3733
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/phase_carry_park.py",
+      "bytes": 1341
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/phase_first_oneproduct.py",
+      "bytes": 1964
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/phase_h_quadratic_probe.py",
+      "bytes": 2468
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/phase_merged_quadratic_probe.py",
+      "bytes": 3128
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/phase_parity_helper_probe.py",
+      "bytes": 3887
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/phase_r_h_quadratic_probe.py",
+      "bytes": 2374
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/phase_r_quadratic_probe.py",
+      "bytes": 2339
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/prove_coarse11.py",
+      "bytes": 2313
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/prove_coarse4.py",
+      "bytes": 2302
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/prove_direct75.py",
+      "bytes": 2091
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/prove_scheduled57.py",
+      "bytes": 2264
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/prove_scheduled57_late67.py",
+      "bytes": 2285
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_memory/r_quadratic_probe.py",
+      "bytes": 2148
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_phase/build_virtual_merged.py",
+      "bytes": 2405
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_phase/coefficient_recoding.py",
+      "bytes": 4118
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_phase/coefficient_shift.py",
+      "bytes": 1504
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_phase/feature_delete.py",
+      "bytes": 2736
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_phase/joint_feature_search.py",
+      "bytes": 5505
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_phase/low_feature_search.py",
+      "bytes": 3892
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_phase/merge_build.py",
+      "bytes": 4902
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_phase/merge_fit.py",
+      "bytes": 1742
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_phase/phase_feature_search.py",
+      "bytes": 2694
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_phase/segment_recoding.py",
+      "bytes": 3271
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_phase/transient_feature_search.py",
+      "bytes": 4633
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round3_phase/virtual_phase.py",
+      "bytes": 2131
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_memory/build_encoded.py",
+      "bytes": 3968
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_memory/build_phase_scratch.py",
+      "bytes": 1687
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_memory/eager_measurements.py",
+      "bytes": 3082
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_memory/encode_phase_flags.py",
+      "bytes": 13555
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_memory/phase_only_scratch.py",
+      "bytes": 5278
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_memory/phase_only_scratch_v2.py",
+      "bytes": 10558
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_memory/shift_flag_probe.py",
+      "bytes": 1901
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_phase/calibrate_candidate.py",
+      "bytes": 5661
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_phase/encoded_context.py",
+      "bytes": 1252
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_phase/encoded_probe.py",
+      "bytes": 860
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_phase/late_cubic_probe.py",
+      "bytes": 5480
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_phase/lookup_helper_probe.py",
+      "bytes": 3864
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_phase/lword_late.py",
+      "bytes": 9384
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_phase/probe_common.py",
+      "bytes": 3825
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_phase/relaxation_probe.py",
+      "bytes": 1264
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_root/address_joint.py",
+      "bytes": 6630
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_root/address_mixed_probe.py",
+      "bytes": 2098
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_root/address_sequential_search.py",
+      "bytes": 4207
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_root/build_shared_address.py",
+      "bytes": 3609
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_root/minrank",
+      "bytes": 32064
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_root/minrank.cpp",
+      "bytes": 1839
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_root/parity_lword.py",
+      "bytes": 1528
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_root/prove_shared_address.py",
+      "bytes": 2776
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_root/shared51_late20.build.json",
+      "bytes": 469302
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round4_root/shared_address.py",
+      "bytes": 2070
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/affine_erasure.py",
+      "bytes": 7710
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/apply_omit_after_phase.py",
+      "bytes": 3306
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/build_preallocated_erasure.py",
+      "bytes": 3306
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/coefficient_frame_probe.py",
+      "bytes": 0
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/delay_lword_inner.py",
+      "bytes": 7816
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/early_target_erasure.py",
+      "bytes": 7002
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/inplace_alias_decoder.py",
+      "bytes": 10461
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/late_lword_probe.json",
+      "bytes": 18334
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/omit_coefficients.py",
+      "bytes": 4711
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/probe_late_lword.py",
+      "bytes": 4369
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/prove_affine_erasure.py",
+      "bytes": 6168
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/prove_early_erasure.py",
+      "bytes": 4736
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/prove_late_lword.py",
+      "bytes": 2816
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/prove_preallocation.py",
+      "bytes": 2150
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/refine_late_lword.py",
+      "bytes": 1943
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_arithmetic/short_alias_decoder.py",
+      "bytes": 3628
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/borrow_phase_delays.py",
+      "bytes": 6741
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/build_borrowed_memory.py",
+      "bytes": 4418
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/build_l6_borrowed.py",
+      "bytes": 3672
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/build_phase_clifford.py",
+      "bytes": 2674
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/close66.py",
+      "bytes": 6296
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/dirty_flag7.py",
+      "bytes": 3167
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/dirty_parity.py",
+      "bytes": 5153
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/inline_and_fanout.py",
+      "bytes": 3635
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/qrom_affine_borrow.py",
+      "bytes": 6690
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/qrom_affine_borrow_wide.py",
+      "bytes": 2018
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/qrom_affine_product.py",
+      "bytes": 5033
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/qrom_parent_trade.py",
+      "bytes": 2800
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/quadratic_blocks.py",
+      "bytes": 6975
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/quadratic_phase.py",
+      "bytes": 5744
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/retain_nor_carry.py",
+      "bytes": 2250
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_memory/undo_dirty_phase_echo.py",
+      "bytes": 3006
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_phase/high_stream.py",
+      "bytes": 8379
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_phase/l5_late_exact.py",
+      "bytes": 4036
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_phase/l6_exact.certificate.json",
+      "bytes": 42315
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_phase/l6_exact.logical.kmx",
+      "bytes": 379281
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_phase/l6_exact.py",
+      "bytes": 11623
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_phase/stream_two_shifts.py",
+      "bytes": 9870
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_root/build_combined.py",
+      "bytes": 3838
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_root/dirty_control_search.py",
+      "bytes": 4450
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_root/dirty_phase_borrow.py",
+      "bytes": 5830
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_root/finalize_compact.py",
+      "bytes": 2687
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_root/flip_certificate.py",
+      "bytes": 2699
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round5_root/restore_spare_carries.py",
+      "bytes": 5073
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/adaptive_family_base.py",
+      "bytes": 11917
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/adaptive_omitted.py",
+      "bytes": 11931
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/check_triangular.py",
+      "bytes": 2166
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/l6_regroup5_f0_joint.certificate.json",
+      "bytes": 6269
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/l6_regroup5_f0_joint.proof.json",
+      "bytes": 424
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/l7_front_fit.py",
+      "bytes": 1774
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/l7_literal_probe.py",
+      "bytes": 2650
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/l7_park.py",
+      "bytes": 4015
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/refine_adaptive_decoders.py",
+      "bytes": 3904
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/refine_l6_extensions.py",
+      "bytes": 5525
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/refine_l6_joint.py",
+      "bytes": 3560
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/regroup_low_outer.py",
+      "bytes": 11786
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/schedule_adaptive.py",
+      "bytes": 5964
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/stage_address.py",
+      "bytes": 7555
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_arithmetic/triangular_outer.py",
+      "bytes": 9075
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/bootstrap_lookup.py",
+      "bytes": 12676
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/coded_lword_park.py",
+      "bytes": 4533
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/dynamic_frontier_probe.py",
+      "bytes": 2966
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/l6_pool41_refined.proof.json",
+      "bytes": 302808
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/l7_address_span.py",
+      "bytes": 2072
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/l7_parity_probe.py",
+      "bytes": 3230
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/parity_bootstrap_lookup.py",
+      "bytes": 9508
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/pool_lookup.py",
+      "bytes": 6669
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/refine_pool_lookup.py",
+      "bytes": 1054
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/refine_subspace_lookup.py",
+      "bytes": 640
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/release189_generate.py",
+      "bytes": 3294
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/remap_pool_lookup.py",
+      "bytes": 2720
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/seed_count_lookup.py",
+      "bytes": 582
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/stage_release189.py",
+      "bytes": 5140
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/subspace35_refined.proof.json",
+      "bytes": 178622
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/subspace_bootstrap_lookup.py",
+      "bytes": 3349
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/subspace_products",
+      "bytes": 22920
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_memory/subspace_products.cpp",
+      "bytes": 2097
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_root/advance_phase.py",
+      "bytes": 6125
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_root/alias_probe.py",
+      "bytes": 2258
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_root/combine_lookup.py",
+      "bytes": 2344
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_root/defer_ccz.py",
+      "bytes": 4948
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_root/defer_phase.py",
+      "bytes": 7783
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_root/merge_phase.py",
+      "bytes": 6062
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_root/packed_calibrate.py",
+      "bytes": 6025
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_root/phase_cone.py",
+      "bytes": 9698
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_root/retime_erasure.py",
+      "bytes": 6639
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_root/retime_independent.py",
+      "bytes": 2921
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round6_root/wide_outer.py",
+      "bytes": 6031
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/BALANCED_ADDON.json",
+      "bytes": 16747
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/BALANCED_RESULTS.txt",
+      "bytes": 4177
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/DECODER5_ADDON.json",
+      "bytes": 9036
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/DECODER5_RESULTS.txt",
+      "bytes": 2928
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/OVERLAP63_ADDON.json",
+      "bytes": 11344
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/OVERLAP_TAIL16_ADDON.json",
+      "bytes": 3184
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/address_inplace.py",
+      "bytes": 7773
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/address_inplace_physical.py",
+      "bytes": 9022
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/apply_pool39_exact.py",
+      "bytes": 2064
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/audit_norm_ge2.py",
+      "bytes": 5076
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/balanced63_decoder5.proof.json",
+      "bytes": 2835
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/balanced63_joint16.proof.json",
+      "bytes": 2042
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/balanced_decoder5_physical.py",
+      "bytes": 5283
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/balanced_marker_affine.proof.json",
+      "bytes": 697
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/balanced_native.proof.json",
+      "bytes": 3698
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/balanced_native_alias.proof.json",
+      "bytes": 5342
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/balanced_native_carries.proof.json",
+      "bytes": 646
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/balanced_native_tail.proof.json",
+      "bytes": 1541
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/balanced_native_zero.proof.json",
+      "bytes": 14942
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/close_overlap63.py",
+      "bytes": 8869
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/compose_initial_l7.py",
+      "bytes": 4379
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/integrate_balanced.py",
+      "bytes": 6700
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/joint_overlap_tail_extended.py",
+      "bytes": 7810
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/l7_pool39_park44_42_cap63.raw.kmx",
+      "bytes": 522843
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/norm_ge2.proof.json",
+      "bytes": 1842
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/overlap63_closed.kmx",
+      "bytes": 519845
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/overlap_tail16.certificate.json",
+      "bytes": 8817
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/park_outer_top.py",
+      "bytes": 7669
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/park_overlap71.py",
+      "bytes": 3617
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/park_overlap71_physical.py",
+      "bytes": 4622
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/park_second_top.py",
+      "bytes": 7685
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/park_sparse_carry.py",
+      "bytes": 4845
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/park_sparse_pair63.py",
+      "bytes": 5489
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/port_short_tail.py",
+      "bytes": 5231
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/stage_address.py",
+      "bytes": 7493
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/stage_address_multi.py",
+      "bytes": 4557
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_arithmetic/staged_address.certificate.json",
+      "bytes": 5857
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/apply_refined_l7_lookup.py",
+      "bytes": 3240
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/coded_initial_lookup.py",
+      "bytes": 6060
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/l7_coded9.certificate.json",
+      "bytes": 12347
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/l7_initial188_pool40.certificate.json",
+      "bytes": 207142
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/l7_initial_pool39.certificate.json",
+      "bytes": 207287
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/l7_initial_pool40.certificate.json",
+      "bytes": 208564
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/l8_span_probe.py",
+      "bytes": 6842
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/merge_l7_late.py",
+      "bytes": 6511
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/merged_all_release.py",
+      "bytes": 6532
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/native64_jointlate_refined.certificate.json",
+      "bytes": 41998
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/native64_zero_retired.proof.json",
+      "bytes": 24791
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/replace_coded_front.py",
+      "bytes": 4918
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/retire_zero_lifetimes.py",
+      "bytes": 8577
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/selected63_zero_retired.proof.json",
+      "bytes": 52803
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/share_l8_late.py",
+      "bytes": 7754
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_memory/share_l9_late.py",
+      "bytes": 7572
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/balanced_decoder5.py",
+      "bytes": 5991
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/balanced_native_decoder5.proof.json",
+      "bytes": 1516
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/balanced_native_independent.proof.json",
+      "bytes": 1059
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/balanced_norm23.proof.json",
+      "bytes": 2391
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/balanced_normalization.py",
+      "bytes": 7580
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/balanced_phase_audit.py",
+      "bytes": 3298
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/cache64.py",
+      "bytes": 3803
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/cross_cached64_quad.proof.json",
+      "bytes": 98734
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/cross_context_cache.py",
+      "bytes": 12252
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/pool39_alias_fit.py",
+      "bytes": 4512
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/pool39_carry.proof.json",
+      "bytes": 847
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/pool39_leaf.certificate.json",
+      "bytes": 3649
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/pool39_long.certificate.json",
+      "bytes": 13821
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/short_tail_exact.py",
+      "bytes": 3191
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_phase/tagged_normalization.py",
+      "bytes": 14930
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_root/balanced63_decoder5_clean.kmx.changes.json",
+      "bytes": 3
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_root/balanced63_joint16_clean.kmx.changes.json",
+      "bytes": 191
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_root/cache_phase_products.py",
+      "bytes": 7980
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_root/close_carry.py",
+      "bytes": 1207
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_root/commute_phase_erasure.py",
+      "bytes": 4645
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_root/conjugate_product.py",
+      "bytes": 4797
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_root/erase_phase_carry.py",
+      "bytes": 4751
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_root/native64_overlap71_rank9.proof.json",
+      "bytes": 3745
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_root/overlap71_refined.certificate.json",
+      "bytes": 7500
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_root/phasecached64.proof.json",
+      "bytes": 104858
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/baseline/round7_root/replay_cache.py",
+      "bytes": 1365
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/curvature.proof.json",
+      "bytes": 3387
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/curvature_certificate.json",
+      "bytes": 1937
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/curvature_stage.py",
+      "bytes": 7070
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/cache63.log",
+      "bytes": 574
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/cache63.proof.json",
+      "bytes": 89317
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/domain_merge.py",
+      "bytes": 5936
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/fixed_lookup_search.json",
+      "bytes": 124341
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/live_profile.json",
+      "bytes": 29340
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/merge.log",
+      "bytes": 337
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/merged.proof.json",
+      "bytes": 328
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/profile_live.py",
+      "bytes": 1049
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/refine_l7_lookup.py",
+      "bytes": 3670
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/refine_lookup_fixed.py",
+      "bytes": 4111
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/sat_24_68_0.json",
+      "bytes": 166
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/sat_34_78_0.json",
+      "bytes": 166
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/sat_lookup.py",
+      "bytes": 4163
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/search_exact_lookup.py",
+      "bytes": 1091
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/search_space.py",
+      "bytes": 1990
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/space_i20_s910020.json",
+      "bytes": 70
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/space_i24_s910024.json",
+      "bytes": 70
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/space_i26_s910026.json",
+      "bytes": 70
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/synthesize_curvature_xag.py",
+      "bytes": 4213
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/xag7_92.json",
+      "bytes": 298
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/xag7_92.log",
+      "bytes": 121
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/xag7_92.smt2",
+      "bytes": 12474
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/xag8_91.log",
+      "bytes": 118
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/xag8_91.model",
+      "bytes": 2619
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/experiments/xag8_91.smt2",
+      "bytes": 14535
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/generate.py",
+      "bytes": 2981
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/invsqrt.kmb",
+      "bytes": 404609
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/invsqrt.kmx",
+      "bytes": 521328
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/lookup.proof.json",
+      "bytes": 169094
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/lookup_certificate.json",
+      "bytes": 61051
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/lookup_only_full_verify.json",
+      "bytes": 505
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/lookup_stage.py",
+      "bytes": 2609
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/official_full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/official_full_verify.stderr",
+      "bytes": 0
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/previous_full_verify.json",
+      "bytes": 504
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/reproduction.json",
+      "bytes": 713
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/reproduction.log",
+      "bytes": 8152
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/requirements.txt",
+      "bytes": 27
+    },
+    {
+      "path": "provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/source/result_summary.json",
+      "bytes": 952
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 27
+    },
+    {
+      "path": "research/README.md",
+      "bytes": 3119
+    },
+    {
+      "path": "research/executed_source/collect_source44.py",
+      "bytes": 3066
+    },
+    {
+      "path": "research/executed_source/conditional_profile.py",
+      "bytes": 1123
+    },
+    {
+      "path": "research/executed_source/gated_merge_allinputs.py",
+      "bytes": 2775
+    },
+    {
+      "path": "research/executed_source/gated_merge_probe.py",
+      "bytes": 2774
+    },
+    {
+      "path": "research/executed_source/late_high_probe.py",
+      "bytes": 3277
+    },
+    {
+      "path": "research/inputs/round14/invsqrt.kmx",
+      "bytes": 531970
+    },
+    {
+      "path": "research/results/conditional_profile.json",
+      "bytes": 26433
+    },
+    {
+      "path": "research/results/gated_merge_allinputs.json",
+      "bytes": 20980
+    },
+    {
+      "path": "research/results/gated_merge_probe.json",
+      "bytes": 20978
+    },
+    {
+      "path": "research/results/late_high_probe.json",
+      "bytes": 53989
+    },
+    {
+      "path": "research/results/merged/fit1.json",
+      "bytes": 1300
+    },
+    {
+      "path": "research/results/merged/fit2.json",
+      "bytes": 1417
+    },
+    {
+      "path": "research/results/merged/fit3.json",
+      "bytes": 1473
+    },
+    {
+      "path": "research/results/merged/fit4.json",
+      "bytes": 1545
+    },
+    {
+      "path": "research/results/merged/fit5.json",
+      "bytes": 1619
+    },
+    {
+      "path": "research/results/merged/fit6.json",
+      "bytes": 1882
+    },
+    {
+      "path": "research/results/merged/fit7.json",
+      "bytes": 1936
+    },
+    {
+      "path": "research/results/merged/fit8.json",
+      "bytes": 2001
+    },
+    {
+      "path": "research/results/phase_rots.json",
+      "bytes": 7924
+    },
+    {
+      "path": "research/results/quadratic_delta_results.json",
+      "bytes": 12134
+    },
+    {
+      "path": "research/results/rank_profile.json",
+      "bytes": 411371
+    },
+    {
+      "path": "research/scripts/collect_phase.py",
+      "bytes": 2948
+    },
+    {
+      "path": "research/scripts/delta_synthesis.py",
+      "bytes": 3270
+    },
+    {
+      "path": "research/scripts/fit_merged.py",
+      "bytes": 2796
+    },
+    {
+      "path": "research/scripts/rank_probe.py",
+      "bytes": 1871
+    },
+    {
+      "path": "verify_boundaries.py",
+      "bytes": 3917
+    }
+  ]
+}

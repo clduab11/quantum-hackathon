@@ -1,0 +1,15 @@
+{
+  "source_hashes_matched": 143,
+  "selected_package_inventory_files": 644,
+  "missing_L6_dependencies": [
+    "round4_root/l5_shared51_late25_build/phasepark.logical.kmx",
+    "round4_root/l5_shared51_late25.logical_build.json",
+    "round3_root/l5/extra.json",
+    "round5_arithmetic/two_shift_lateL.logical.certificate.json"
+  ],
+  "incumbent_candidate_id": "pra294-c59",
+  "incumbent_zip_sha256": "f569b107f4136d388636bcdb03f323b5c7483df463a3f8b6d682624de97e7435",
+  "incumbent_zip_bytes": 31809317,
+  "incumbent_prior_shipping_problems": [],
+  "scope": "Audit pins and unchanged incumbent identity only; no new candidate or target gate PASS."
+}

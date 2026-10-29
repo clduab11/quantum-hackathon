@@ -1,0 +1,2549 @@
+{
+  "retrieved_utc": "2026-10-29",
+  "licence": "Apache-2.0",
+  "licence_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+  "purpose": "Read-only source, documentation and build-configuration audit. No declared generator inputs; no circuit/certificate/proof/angle-replay downloaded. Hash pins describe source identity, not permission to ship frozen inputs.",
+  "files": [
+    {
+      "version": 6,
+      "path": "LICENSE",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/LICENSE?datasetVersionNumber=6",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "version": 6,
+      "path": "README.md",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/README.md?datasetVersionNumber=6",
+      "sha256": "b86b2c1e34e2ed1eb7919507d03d42ae679ea5cd92d81ae198abc6466876afc9",
+      "bytes": 10654
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/README.txt",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2FREADME.txt?datasetVersionNumber=6",
+      "sha256": "458598e9189e4e5da87933f9f0623814fd119b5d9be22d3afad0b146a0723eb0",
+      "bytes": 5402
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fbuild_config.json?datasetVersionNumber=6",
+      "sha256": "c2d805f82e1e2f66d2f5467df1abbf19ea9379d916ece7939a7bcbc840ff56da",
+      "bytes": 20987
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/gate/dirty_complement.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fgate%2Fdirty_complement.py?datasetVersionNumber=6",
+      "sha256": "51823b08087d5f5847b838f0369b0f1532d602155eb5634e0d510e6e5c49f620",
+      "bytes": 3432
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/gate/exact_opt.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fgate%2Fexact_opt.py?datasetVersionNumber=6",
+      "sha256": "a92136af517dd2397f79e292f4a5b8fb0864e8ac1e351cf98f7b24da62da8af7",
+      "bytes": 8194
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/gate/merge_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fgate%2Fmerge_products.py?datasetVersionNumber=6",
+      "sha256": "ff539007348e6054acae3c2205aab4b57aa2a6d9e97a22ca5ebc65231950bd5e",
+      "bytes": 4847
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/gate/phase_extra_park_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fgate%2Fphase_extra_park_probe.py?datasetVersionNumber=6",
+      "sha256": "3b5ee95cf05ce9a129c507c30f6e2f0a9bb870f2b1c5ae5b204c2f4338114587",
+      "bytes": 5025
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/gate/phase_flag_stream.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fgate%2Fphase_flag_stream.py?datasetVersionNumber=6",
+      "sha256": "9310380129e1b2d8b7e5a7ed76753bf346a1335c5233a0dfb42128b184101ac7",
+      "bytes": 3143
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/gate/phase_idle_park.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fgate%2Fphase_idle_park.py?datasetVersionNumber=6",
+      "sha256": "db94a8af1c5e1744c33f231e9349968e5dd4e26f85e31f315aaf084c19393023",
+      "bytes": 3065
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/gate/phase_idle_relations.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fgate%2Fphase_idle_relations.py?datasetVersionNumber=6",
+      "sha256": "760321ac81e778be4c9ff8f8652d1d9fd97badb2f2ee5fc661f1ef8cac14b2d4",
+      "bytes": 4157
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/gate/phase_mux_stream.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fgate%2Fphase_mux_stream.py?datasetVersionNumber=6",
+      "sha256": "a7775e97f17c1859e7adcfa1a708a008af86096333883b9d7753398637e2dc29",
+      "bytes": 5175
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/gate/phase_rank_park_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fgate%2Fphase_rank_park_probe.py?datasetVersionNumber=6",
+      "sha256": "0b189db1cbf12f031d5d690257816f3ba53f05af0f37a35796e18478ebc927ee",
+      "bytes": 6947
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/gate/transvection_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fgate%2Ftransvection_probe.py?datasetVersionNumber=6",
+      "sha256": "f4121528f2c55ceeea60777abdc093593a8efa8247b1eed5c732158a63137185",
+      "bytes": 956
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fgenerate.py?datasetVersionNumber=6",
+      "sha256": "59678abdf7c10976724318e77fd0fb6f9fbe216ea0c0a229a7418952884b8cd8",
+      "bytes": 3397
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/official/invsqrt/verify_submission_invsqrt.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fofficial%2Finvsqrt%2Fverify_submission_invsqrt.py?datasetVersionNumber=6",
+      "sha256": "ddef520dec6b68d1cf0a6f328ddd36d79eb84570b9192cf3f7acaf073f06733a",
+      "bytes": 17210
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/analyze_features.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fanalyze_features.py?datasetVersionNumber=6",
+      "sha256": "f7ee832231549ccdf9ce2bc43230f6a1a9fff43c714b58d61a7846079d1782e3",
+      "bytes": 645
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/build_memory_candidate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fbuild_memory_candidate.py?datasetVersionNumber=6",
+      "sha256": "0b18e94d4221b9fb7ee01468bb472de77698e3c456d7c41c12d691785a1d7efd",
+      "bytes": 4344
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/build_true76_raw.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fbuild_true76_raw.py?datasetVersionNumber=6",
+      "sha256": "dc84ccc40f0ca648b65b871cd02868e0b093446eb33c91910e63b7d1fee899d1",
+      "bytes": 3673
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/collapse_affine_tail.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fcollapse_affine_tail.py?datasetVersionNumber=6",
+      "sha256": "91a719d9db8a91e1796a76eddfc17b10d8825f2e2dcef59f5cea845fb77f4110",
+      "bytes": 3338
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/collect_phase.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fcollect_phase.py?datasetVersionNumber=6",
+      "sha256": "c213329d24cb1e3312ffc40108321540de08cb816cc3b7ae315b6d17f8c2c9c4",
+      "bytes": 786
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/controlled_s.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fcontrolled_s.py?datasetVersionNumber=6",
+      "sha256": "ae87b9adc5eb3af10e9972ffcaa68a1736aa8def5b6ad0dc3f6a2aaea2343cbc",
+      "bytes": 1509
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/deferred_carries.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fdeferred_carries.py?datasetVersionNumber=6",
+      "sha256": "9e13167b71fee5dbe14f1a603f94a2d34bd8b2c575040354f738e9e1d7c6c971",
+      "bytes": 4667
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/dual_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fdual_probe.py?datasetVersionNumber=6",
+      "sha256": "675c5d34ad072447c41e4a00d594134ac7f168c67911a63313c2af40c43ca8b3",
+      "bytes": 1173
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/extra_features.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fextra_features.py?datasetVersionNumber=6",
+      "sha256": "57da96a355e9ab1f8486f049a896f61bcae2dd28638c275ded9d687f714a0fff",
+      "bytes": 1589
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/fix_frontier75.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Ffix_frontier75.py?datasetVersionNumber=6",
+      "sha256": "f9563f54a16bcd0de7df03d3c638ec3c762b22e3ff67b8cba028f5852f2ef27b",
+      "bytes": 1828
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/parity_search.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fparity_search.py?datasetVersionNumber=6",
+      "sha256": "5cd67215e9e901cb0281d9e2ec8d0f67d7af4f4a9da4e6724a1ffcaf70a7314a",
+      "bytes": 1660
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/probe_lp.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fprobe_lp.py?datasetVersionNumber=6",
+      "sha256": "ce0b3ad607da70b68ea1e30ad31d01b0bc961ea113fbd7a9916ceac42da5c7cf",
+      "bytes": 942
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/rotation_calibration.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Frotation_calibration.py?datasetVersionNumber=6",
+      "sha256": "d78e82b9682c3eb76ad93bf9c24118acd2051d07a0eae33bde0e24846f7893c4",
+      "bytes": 9096
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/split_carries.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fsplit_carries.py?datasetVersionNumber=6",
+      "sha256": "d2d31ef604177a7574165ebbdf6a910f632186e4788e551568644f0de6983ef9",
+      "bytes": 6252
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/split_carries_multi.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fsplit_carries_multi.py?datasetVersionNumber=6",
+      "sha256": "4f4d5af713e540e2ca819653dba406dc606b027b12e10e907baa36cf0d75d9cb",
+      "bytes": 4575
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/stream_carries.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Fstream_carries.py?datasetVersionNumber=6",
+      "sha256": "42e006a87815c9b59cdda9815c6831a7faf3923f4f6d8eddefd6306ad2c4e9de",
+      "bytes": 3813
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/tail_erase.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Ftail_erase.py?datasetVersionNumber=6",
+      "sha256": "6b583a3eb5825329aab6f20e3605e93454a0729375d8d8203a00378b508c270f",
+      "bytes": 6742
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/phase/tail_product_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fphase%2Ftail_product_probe.py?datasetVersionNumber=6",
+      "sha256": "73d52915567a531259e44e79c9709e4b7a83e1f007614a9a93d969b821b02deb",
+      "bytes": 3886
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/provenance/base19_README.txt",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fprovenance%2Fbase19_README.txt?datasetVersionNumber=6",
+      "sha256": "9b665858e765df80b7c9bfd0930778a166d45b3cdcc1034b8d730c89872fa176",
+      "bytes": 5648
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/provenance/base19_build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fprovenance%2Fbase19_build_config.json?datasetVersionNumber=6",
+      "sha256": "62cbbe976854111ea498ff851a477db114aecec43a26cd906559e036e53f0414",
+      "bytes": 3077
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/provenance/base19_generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fprovenance%2Fbase19_generate.py?datasetVersionNumber=6",
+      "sha256": "973ea1ff5a75141228e7abfe39ba83f6accd29f29ed7bc35c77dc33d4204737b",
+      "bytes": 7556
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/provenance/base22_README.txt",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fprovenance%2Fbase22_README.txt?datasetVersionNumber=6",
+      "sha256": "02d418cc1694749184003c67cad57bca6a9ae6f1c82ee01b3973ee8f9a7bda0c",
+      "bytes": 4883
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/provenance/base22_build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fprovenance%2Fbase22_build_config.json?datasetVersionNumber=6",
+      "sha256": "05572934a2302e0a8120bf4e882cafbd8a0f9bff8794f8200426c2a7c6ed63d9",
+      "bytes": 13763
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/provenance/base22_generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fprovenance%2Fbase22_generate.py?datasetVersionNumber=6",
+      "sha256": "59678abdf7c10976724318e77fd0fb6f9fbe216ea0c0a229a7418952884b8cd8",
+      "bytes": 3397
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qrom/banked_anf.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqrom%2Fbanked_anf.py?datasetVersionNumber=6",
+      "sha256": "b19cf5148abfdd4be4f5c06a80a0ec4f621f87fbbad7c29204349eec00eb7e27",
+      "bytes": 3536
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qrom/compact_conditions.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqrom%2Fcompact_conditions.py?datasetVersionNumber=6",
+      "sha256": "486a92aa7638808231c973e708b5392f2feefcb139aece8bb511b151f1cd0511",
+      "bytes": 943
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qrom/dirty_leaf.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqrom%2Fdirty_leaf.py?datasetVersionNumber=6",
+      "sha256": "4ec7245c09d35ef609251a0e89df4443b32a19a8d3b8c040bef491b25bfc5564",
+      "bytes": 1908
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qrom/extract.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqrom%2Fextract.py?datasetVersionNumber=6",
+      "sha256": "8e3d0c1da66f44d1977b203ade172e0053c9deb0a07e879dfde36accda56c4eb",
+      "bytes": 1234
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qrom/public_rotation_source.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqrom%2Fpublic_rotation_source.py?datasetVersionNumber=6",
+      "sha256": "44c355e49cdf7566121562dae25a68cc12173aff50acb980ac7e1486a8e372f7",
+      "bytes": 20098
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qrom/reduce_tail_workspace.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqrom%2Freduce_tail_workspace.py?datasetVersionNumber=6",
+      "sha256": "a1cd9dba348f34bc00660ac74fff5cae9343b441c086ad6a3ce8a0a652001881",
+      "bytes": 2210
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/cache_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fcache_products.py?datasetVersionNumber=6",
+      "sha256": "2a716d9fe64261b048895bcdfc2297448e54e97451527551f61b11d24281bbd3",
+      "bytes": 3111
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/cache_products_general.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fcache_products_general.py?datasetVersionNumber=6",
+      "sha256": "490ea6ebcb0e8751fb06e0153219c287c9a840cb9c424d6359982f64da62ee47",
+      "bytes": 4888
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/cache_products_greedy.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fcache_products_greedy.py?datasetVersionNumber=6",
+      "sha256": "56c81a77e697424365e70a2c146f5ec6c1bb82e7ebd7ff4f589fd4f5ab2ad325",
+      "bytes": 2303
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/complete_cap77.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fcomplete_cap77.py?datasetVersionNumber=6",
+      "sha256": "28d17a23a20cb67a98179aa262c2abd60ab5b56c5312eec5ca387d49e8c1a358",
+      "bytes": 1627
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/curvature_arbitrary_product.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fcurvature_arbitrary_product.py?datasetVersionNumber=6",
+      "sha256": "81eea68544c28aba0a9c9c3058a81a19a9c1f8ba771b00e05356f74dd7c185b2",
+      "bytes": 2236
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/curvature_joint_search.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fcurvature_joint_search.py?datasetVersionNumber=6",
+      "sha256": "cab5bf24019142183750c7948f7acc010df014fbd7cd2c2b5d7bb1440d1d4d0a",
+      "bytes": 1731
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/curvature_relations.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fcurvature_relations.py?datasetVersionNumber=6",
+      "sha256": "fdaf08130511b333d23b5cc6c95ebf85cb54de722d0bf32ffaf68ce10dba8b11",
+      "bytes": 2010
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/curvature_two_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fcurvature_two_products.py?datasetVersionNumber=6",
+      "sha256": "c3e2be2f9163174962faad5b51334138f85c1249776d5ba09022c9613826644d",
+      "bytes": 682
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/find_majority.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Ffind_majority.py?datasetVersionNumber=6",
+      "sha256": "7286164022a175d6ab04001572b170625de060370a47125500dc3bf471f53b59",
+      "bytes": 1240
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/hoist_measurements.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fhoist_measurements.py?datasetVersionNumber=6",
+      "sha256": "82fcc04e3e476924ee96583dbc6b6f077bbed2ed4b596d1330ac2ee7e199a8fc",
+      "bytes": 1855
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/implicit_curvature.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fimplicit_curvature.py?datasetVersionNumber=6",
+      "sha256": "dfbde978ebd736166466ee030ecbd6499077183badd5eac69097a19b5b3293c4",
+      "bytes": 6030
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/implicit_highword.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fimplicit_highword.py?datasetVersionNumber=6",
+      "sha256": "3cdc1d9d4923636d5750285b8804317846ac121d899410cd910b483d2c4d2fe4",
+      "bytes": 3337
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/lifetime.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Flifetime.py?datasetVersionNumber=6",
+      "sha256": "08ae21c5e171fb1e9793e776791c288792e0cafec9ba30bd574d606e20c53957",
+      "bytes": 872
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/optimize_memory.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Foptimize_memory.py?datasetVersionNumber=6",
+      "sha256": "d9f68c987a6f9b07a2c33cc5caf08d92eef01f9308a30ecae0a1b65ea6d8ef9a",
+      "bytes": 5270
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/park_coeff.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fpark_coeff.py?datasetVersionNumber=6",
+      "sha256": "897824501e7a00c6a9a9fbc1076649effa164386537837e2613d552d9a5b3f46",
+      "bytes": 1096
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/park_coeff_two.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fpark_coeff_two.py?datasetVersionNumber=6",
+      "sha256": "ae1544962103f5cb54bf5a42d4aa040dc78c99868e9a5287c696a6d1c1a7a333",
+      "bytes": 1239
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/park_xor_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fpark_xor_products.py?datasetVersionNumber=6",
+      "sha256": "965a70ea189790a687727ba8f749b07967d7a415f5686a58bb6768c7f3ccb368",
+      "bytes": 895
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/repeated_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Frepeated_products.py?datasetVersionNumber=6",
+      "sha256": "f713bf7167cc8fc2b2481e94eed4090b2cbca6b366f1c75c08a811b329f85bf1",
+      "bytes": 1383
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/symbolic.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Fsymbolic.py?datasetVersionNumber=6",
+      "sha256": "3ccb2fe3021ba8673ddf622f0044ac8f9058da8391f3a2ced2f57c51c42fb006",
+      "bytes": 2977
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/qubit/table_analysis.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fqubit%2Ftable_analysis.py?datasetVersionNumber=6",
+      "sha256": "df51158bdd9ec51ad68299a65fa23c9026783fc857c1ebcc24110a13e4ee6ef8",
+      "bytes": 1047
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/audit_address_helpers.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Faudit_address_helpers.py?datasetVersionNumber=6",
+      "sha256": "2300c8bdcb98300d09e2d3226d37d57a0248bc52218fcfb1f59b87ca46f8593c",
+      "bytes": 4237
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/build_linear.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Fbuild_linear.py?datasetVersionNumber=6",
+      "sha256": "40b715dad9d9fa73cc0b321f1808c37245c41bff9eb9911ccd23707761344c7c",
+      "bytes": 3086
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/build_two_scale.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Fbuild_two_scale.py?datasetVersionNumber=6",
+      "sha256": "a2d8749007da8225719953f1dbb17acd98011af074bae11a05f054fa269037a1",
+      "bytes": 4016
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/check_phase_before_lookup.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Fcheck_phase_before_lookup.py?datasetVersionNumber=6",
+      "sha256": "0896a8e25f10a1eca9ff3ce70495cc5c5623fbe1b6827d6db1ec18bbf2defb8a",
+      "bytes": 2689
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/compare_late_controls.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Fcompare_late_controls.py?datasetVersionNumber=6",
+      "sha256": "eea2709fcdc2e69256b6f17ab1b271f1568af0c593a29e2abead958a6144b65d",
+      "bytes": 2212
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/delta_parking_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Fdelta_parking_probe.py?datasetVersionNumber=6",
+      "sha256": "d193227740df2b5e79a12d1ad62018c8736df7351394e4ea7687c9b72003b7ea",
+      "bytes": 3814
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/delta_quadratic_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Fdelta_quadratic_probe.py?datasetVersionNumber=6",
+      "sha256": "e34d903173c074b02d1ddd211b41d86de440d40e38a7870a5466845dc7536e1c",
+      "bytes": 2476
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/linear_model.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Flinear_model.py?datasetVersionNumber=6",
+      "sha256": "8aa5d5b15152c041c48bc4660384265c90306f59e1b5a99a6b24bdc372f51252",
+      "bytes": 2200
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/lookup_flag_park.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Flookup_flag_park.py?datasetVersionNumber=6",
+      "sha256": "5a96ebeec3ab5d088e17fb1add0bcc399d9f0d3d9c7e4c2f1a28ecc0892fed50",
+      "bytes": 2343
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/lword_early_encoding.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Flword_early_encoding.py?datasetVersionNumber=6",
+      "sha256": "d437444f978c5c3905b8a51f716f74e94edf27c9579174b38898f3fa0de1cf1d",
+      "bytes": 2519
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/parked_input_allocator.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Fparked_input_allocator.py?datasetVersionNumber=6",
+      "sha256": "0c120473247ad4e8cad0b2f485bb576e01429c34ce10b60d8ae2d81b308e4100",
+      "bytes": 2964
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/phase_address_park.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Fphase_address_park.py?datasetVersionNumber=6",
+      "sha256": "9de5fddc65ec331a19c3af4d4b7c0f0fd69ab02e8f7ab00740ef775a11b4c50c",
+      "bytes": 4242
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/phase_cache_evict.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Fphase_cache_evict.py?datasetVersionNumber=6",
+      "sha256": "a49441569a19a9209500efc7c13816b779b14545bd84470ed4132be7fda34708",
+      "bytes": 2943
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/phase_lword_delay.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Fphase_lword_delay.py?datasetVersionNumber=6",
+      "sha256": "f68ca142ebb8dc8e77848e61125b4b1ab2a9d66fbf2b2f794d37f4c78965a028",
+      "bytes": 6041
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/phase_lword_park.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Fphase_lword_park.py?datasetVersionNumber=6",
+      "sha256": "efc2ac1120d08e187940153121981ee186012cd575a11f08d1fafd429a2d3205",
+      "bytes": 6835
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/qrom_quadratic.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Fqrom_quadratic.py?datasetVersionNumber=6",
+      "sha256": "e3af5489867b0680b1a6c8c1c4b80a9d8a58a47e20ad2877e187fb2bf8742418",
+      "bytes": 4923
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/reference_arithmetic.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Freference_arithmetic.py?datasetVersionNumber=6",
+      "sha256": "c828f54051099b56f0890a54f7171b38226514599c09b5b137a4f55f25ed4b66",
+      "bytes": 11767
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_linear/two_scale_model.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_linear%2Ftwo_scale_model.py?datasetVersionNumber=6",
+      "sha256": "c91d28265bdd00a740f5405f4fe7aece4a82865604c420030288ec5396b920e1",
+      "bytes": 3127
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/address_coarse_parity_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Faddress_coarse_parity_products.py?datasetVersionNumber=6",
+      "sha256": "f1da9131527e5d90eeddbd7cc81366bbd7d3b5b5876e8e23f831be0ad99b17db",
+      "bytes": 456
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/address_helper_lift.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Faddress_helper_lift.py?datasetVersionNumber=6",
+      "sha256": "bc3448d6b8a3df685dc3cf02b1be270524cdd67530da737aa3833569892e789b",
+      "bytes": 3928
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/address_helper_scratch.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Faddress_helper_scratch.py?datasetVersionNumber=6",
+      "sha256": "86253eeda523caba38316d1c73d202eb6c68c7994917959799486bc3820ea5e0",
+      "bytes": 1170
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/carry_save.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fcarry_save.py?datasetVersionNumber=6",
+      "sha256": "2dbb85d630bb33989788b4a76e2452a87f58a46be300c71768b55f71123e6e5a",
+      "bytes": 2006
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/compressed_curvature_model.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fcompressed_curvature_model.py?datasetVersionNumber=6",
+      "sha256": "16ee8b5926414aef5c4e38b8893f25b7ba76c82361f89b8f154522d75575a169",
+      "bytes": 3586
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/cubic_build.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fcubic_build.py?datasetVersionNumber=6",
+      "sha256": "8895c9dafb153d0ac0df8b72f308f33fd5197f114eedefc68983cd7502cf9e0a",
+      "bytes": 7679
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/cubic_model.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fcubic_model.py?datasetVersionNumber=6",
+      "sha256": "fd25bc2c077825c6099979d877ac270e162dd0886de16f3e82f8ac4848b2ce1f",
+      "bytes": 3961
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/curvature_cycle_fix.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fcurvature_cycle_fix.py?datasetVersionNumber=6",
+      "sha256": "340b1e20fa3c1e6c70b60e524b3fae76597d8fbcba4d336ce04081a36fdcb3d5",
+      "bytes": 2237
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/curvature_direct_l2.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fcurvature_direct_l2.py?datasetVersionNumber=6",
+      "sha256": "ebd714dde5c3a6a776333a1b0e583b79be0baa05a61c31f42689bc348f16198e",
+      "bytes": 1262
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/curvature_direct_l2_staged.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fcurvature_direct_l2_staged.py?datasetVersionNumber=6",
+      "sha256": "d937ec46fd16ae35f380cc514d59faa0eeb366063b3d878fe40c071d3506a344",
+      "bytes": 1245
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/curvature_direct_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fcurvature_direct_products.py?datasetVersionNumber=6",
+      "sha256": "072d8af4fb2a22465e36b313636e95f0939a70a9b6cc379abf6e1c66165e75a1",
+      "bytes": 1815
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/curvature_exclude_ltop.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fcurvature_exclude_ltop.py?datasetVersionNumber=6",
+      "sha256": "33277048770106fdd1b31e24351eedea0faa6ab2e0b481dd4830eafb732f417a",
+      "bytes": 2021
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/curvature_extra_l3.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fcurvature_extra_l3.py?datasetVersionNumber=6",
+      "sha256": "f5a7031f104bfe1622d015b082bb1f899487b690b60d4f03fc1feb632f3fafb8",
+      "bytes": 1598
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/curvature_extra_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fcurvature_extra_products.py?datasetVersionNumber=6",
+      "sha256": "bc25d957f6fc3052b65a43553e8e1058aa651ef6754a2216ff7dda8b7ed4e971",
+      "bytes": 1434
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/curvature_l2_staged.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fcurvature_l2_staged.py?datasetVersionNumber=6",
+      "sha256": "208ca7f6a5c5832e7a7198801c0b4bb6387aa70ae6fab50f12f0a88f2f2732bd",
+      "bytes": 2043
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/deferred_lookup.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fdeferred_lookup.py?datasetVersionNumber=6",
+      "sha256": "2efc5714bbc0582ffc4a4e54097edbafdfa37303a028fa66fb2377a011ef00f5",
+      "bytes": 3263
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/delay_highword_parities.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fdelay_highword_parities.py?datasetVersionNumber=6",
+      "sha256": "60e22d460ed655e4524ac280868087f5a109bbd45eabe94f05c79bb7ad8220bb",
+      "bytes": 2876
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/highword_exact.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fhighword_exact.py?datasetVersionNumber=6",
+      "sha256": "2db9a7eb9b80e99707f108943674cfadaca6ae2a222a64e682c0dded7ac0001b",
+      "bytes": 6575
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/highword_fit.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fhighword_fit.py?datasetVersionNumber=6",
+      "sha256": "f4175a5fa64aebbd2f1a5076c5893200054ba8a2f9bc05050d6fb8c989675edb",
+      "bytes": 839
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/highword_parity_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fhighword_parity_products.py?datasetVersionNumber=6",
+      "sha256": "42d3728db68668b1b7841e97bc45d65ccba34c878c9846b776ad12467867bef9",
+      "bytes": 3166
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/highword_relations.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fhighword_relations.py?datasetVersionNumber=6",
+      "sha256": "e2a2ad64295ce5e66586da4778206a9417a8c54169e14a24bbcc41d75c7e6109",
+      "bytes": 550
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/highword_two_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fhighword_two_products.py?datasetVersionNumber=6",
+      "sha256": "a108f70b75b39136c219f2dea7bbb64eb6177214ea6406d20ea43cf1beb21044",
+      "bytes": 1536
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/local_clean.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Flocal_clean.py?datasetVersionNumber=6",
+      "sha256": "ca34f0d9b3751e73171905c940f6d7601e2d1a7fb2d83bd4a277badf081efabe",
+      "bytes": 614
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/lword5_parity_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Flword5_parity_products.py?datasetVersionNumber=6",
+      "sha256": "d2c99da8adf74c6d938d157d555d792b0ec86473acdc159ffbeb487005add313",
+      "bytes": 481
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/lword_curvature_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Flword_curvature_products.py?datasetVersionNumber=6",
+      "sha256": "5b6d961438e5d25e232f8182f0f1ad67bd36b8ab6ed701491ebb13b1182a988e",
+      "bytes": 1214
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/lword_parity_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Flword_parity_products.py?datasetVersionNumber=6",
+      "sha256": "31257361f8c1f1c452a187ecaceb1b73fbd316fa82c226310c1391c98852a7a1",
+      "bytes": 474
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/memory68.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fmemory68.py?datasetVersionNumber=6",
+      "sha256": "89bb9890dd1a6d52a5736c8922bd71a5f5408eff4e48d131b442d5fd834c2731",
+      "bytes": 3402
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/memory68_stream.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fmemory68_stream.py?datasetVersionNumber=6",
+      "sha256": "416e220436377eaa192013c2a2d5c57233bf5685bb1f2ec8006dfb677248d2c2",
+      "bytes": 1607
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/memory68_streamed.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fmemory68_streamed.py?datasetVersionNumber=6",
+      "sha256": "e1b2a5fd33266c152dc1ba6accdffc49970b0c4efde071174d20054671db1de2",
+      "bytes": 3511
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/phase_fused.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fphase_fused.py?datasetVersionNumber=6",
+      "sha256": "a444e784d745f128a78d570bb8cac6edf28024006a271d1f968773bc289b8b6a",
+      "bytes": 3314
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/phase_q19_decoder.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fphase_q19_decoder.py?datasetVersionNumber=6",
+      "sha256": "8ad28490579ffcb0b2e9448b4af28ed9fee329c4cbdd5c34a6b7a80240ee4c1d",
+      "bytes": 2154
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/phase_q19_lowrank.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fphase_q19_lowrank.py?datasetVersionNumber=6",
+      "sha256": "063a67f5ff16e37573a630bb1ff6f882fe361cc4c6ba07de60492d3e0afb9b72",
+      "bytes": 1725
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/signed_digit_helpers.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fsigned_digit_helpers.py?datasetVersionNumber=6",
+      "sha256": "0066a6b611159b39641f4d38b1eb0e14da67eb13c4c13cc0177b6b27c72ce385",
+      "bytes": 27061
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/verify_curvature_pipeline.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fverify_curvature_pipeline.py?datasetVersionNumber=6",
+      "sha256": "1a5f4557b6e862b0ef30924812e01198fbc8d9d617ffeaef5ca8877d5ff5563f",
+      "bytes": 3938
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_newton/verify_curvature_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_newton%2Fverify_curvature_products.py?datasetVersionNumber=6",
+      "sha256": "d18e7839fbff7089663ba40487c4cc49c174fae2e18c2edb5dec5776cc543d71",
+      "bytes": 1094
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_norm/address_helpers.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_norm%2Faddress_helpers.py?datasetVersionNumber=6",
+      "sha256": "28e83032650b033ee484810a1b401c177aa20d580f43eccdbb37297a0e96fd28",
+      "bytes": 10075
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_norm/borrow_allocator.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_norm%2Fborrow_allocator.py?datasetVersionNumber=6",
+      "sha256": "bba2723b2d6e947166d77b87a5028de1db367de136998041f88f510554600eac",
+      "bytes": 3503
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_norm/build68.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_norm%2Fbuild68.py?datasetVersionNumber=6",
+      "sha256": "29a24b4b67e939016d931ed090ca90bc9fc950a85c0dfd69ad39c4a00003b9a3",
+      "bytes": 4259
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_norm/build_helper.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_norm%2Fbuild_helper.py?datasetVersionNumber=6",
+      "sha256": "6e1bd01029f4b1da02998a5b3383014ab6f4ea94dbb734edca14ce2020d0698e",
+      "bytes": 4459
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_norm/cache_borrowed.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_norm%2Fcache_borrowed.py?datasetVersionNumber=6",
+      "sha256": "a7491f10936332d6d81a4e8483ded5089ff2df290dce42413cb57691f18e983e",
+      "bytes": 1443
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_norm/carry_trade.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_norm%2Fcarry_trade.py?datasetVersionNumber=6",
+      "sha256": "ee4b60730c18076dc8fc20db76a4d037b6ef26bb78087cf25ceff08a6591eb57",
+      "bytes": 3699
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_norm/folded_reflections.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_norm%2Ffolded_reflections.py?datasetVersionNumber=6",
+      "sha256": "ee0e89fadc2f346d8a36b570c2eee4beb65b0708adeef63d20971c447fb8b2e1",
+      "bytes": 2825
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_norm/full_reflections.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_norm%2Ffull_reflections.py?datasetVersionNumber=6",
+      "sha256": "a66e83931ed25e6548c2b9a8079aee4862b9d37270bb5262168283a62f4d0fa5",
+      "bytes": 4440
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_norm/inverse_full_reflections.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_norm%2Finverse_full_reflections.py?datasetVersionNumber=6",
+      "sha256": "0b02357a48797f69dfadb398b128225c95932ad941f756aefa5640327dae440a",
+      "bytes": 5352
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_norm/reflections.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_norm%2Freflections.py?datasetVersionNumber=6",
+      "sha256": "7c6f0fc6136b9712dc2e3b62984df44ab6c6f257aace996b581937568b78a5b2",
+      "bytes": 7564
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_phase/address_park.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_phase%2Faddress_park.py?datasetVersionNumber=6",
+      "sha256": "a81fcd4b86c8af968dfa15a9d29ee7e5d3ff8bcd74569cb0ae540dffadb3561d",
+      "bytes": 8740
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_phase/address_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_phase%2Faddress_probe.py?datasetVersionNumber=6",
+      "sha256": "a7ff8e7715d186a599583ec2f23b4a439cf4d8f8d44655de85fa88ff1abfdd98",
+      "bytes": 3374
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_phase/address_quadratic.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_phase%2Faddress_quadratic.py?datasetVersionNumber=6",
+      "sha256": "105abf3fa2535521e4579bcc243a836cf45bac83e6f3aec8f8924a9b8f016fe4",
+      "bytes": 5600
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_phase/address_relations.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_phase%2Faddress_relations.py?datasetVersionNumber=6",
+      "sha256": "1727c9e93684e1a02ea57d366a883b10069115cb638578e337a96640f72778d1",
+      "bytes": 3482
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_phase/address_sequential.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_phase%2Faddress_sequential.py?datasetVersionNumber=6",
+      "sha256": "9e90f85d0aea8318cd631105f83434b86e22a1e53338414a6c469539f74a33e4",
+      "bytes": 4861
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_phase/build_structural.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_phase%2Fbuild_structural.py?datasetVersionNumber=6",
+      "sha256": "59e465c79d914314b22102d38169d0b21d60b72a73d6b286a5a87f729aa8ecc2",
+      "bytes": 4381
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_phase/curvature_generic.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_phase%2Fcurvature_generic.py?datasetVersionNumber=6",
+      "sha256": "1d1174abe480b426e249c875043eee2986710588d54adc9911587109d7a24e06",
+      "bytes": 11246
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_phase/direct_builder.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_phase%2Fdirect_builder.py?datasetVersionNumber=6",
+      "sha256": "05e3d6cf829a2b4bcc411d33a8aed9b4cfcf42f028e16fab58da77dc19b1a42c",
+      "bytes": 5868
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_phase/direct_fit.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_phase%2Fdirect_fit.py?datasetVersionNumber=6",
+      "sha256": "dd53cd6754dfc7caf6cdef8e80a7d6b015d8d477d82e778805db18fbba5e2d63",
+      "bytes": 2583
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/radical_phase/phase_flags_generic.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fradical_phase%2Fphase_flags_generic.py?datasetVersionNumber=6",
+      "sha256": "7d1ec0fd42646215ad58e5b0081b3ead240502bb100624e79b504531a129861f",
+      "bytes": 4483
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/requirements.txt",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Frequirements.txt?datasetVersionNumber=6",
+      "sha256": "983665a6331eda07ab1f4b23ef92d66f4b024c27b360ee0e7420511ef3b28c64",
+      "bytes": 27
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_arithmetic/anf_qrom.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_arithmetic%2Fanf_qrom.py?datasetVersionNumber=6",
+      "sha256": "a6f32a15b5c9e5c7cd5524d0b28c0d927ea0c42b8550bb4ede10f07cf0177843",
+      "bytes": 4484
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_arithmetic/compressed_anf_qrom.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_arithmetic%2Fcompressed_anf_qrom.py?datasetVersionNumber=6",
+      "sha256": "c6ae89c4c3c27b242edfefa55361e01254c1e854b80788b24fabc3e26265b45f",
+      "bytes": 7947
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_arithmetic/order_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_arithmetic%2Forder_probe.py?datasetVersionNumber=6",
+      "sha256": "4e7ce8609ddc2ac149c5bdb7843dc6f7744bd435634fee34e71f337cbc49158c",
+      "bytes": 973
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_arithmetic/output_grid_model.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_arithmetic%2Foutput_grid_model.py?datasetVersionNumber=6",
+      "sha256": "b25ca4885ad80d2e8da75398be8493bb46c7983df81d30b37b545856cd281def",
+      "bytes": 2995
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_arithmetic/output_space_address.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_arithmetic%2Foutput_space_address.py?datasetVersionNumber=6",
+      "sha256": "e386ed60e75b236d0797b8f8c9b61c793a12f517f749d2fd41b7efd4d3a4afed",
+      "bytes": 3192
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_arithmetic/output_space_address_extended.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_arithmetic%2Foutput_space_address_extended.py?datasetVersionNumber=6",
+      "sha256": "2fde2455e5398d519802e2838b3df73588f066dbc2533ee585513160ae8c6520",
+      "bytes": 3323
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_arithmetic/output_space_address_p8.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_arithmetic%2Foutput_space_address_p8.py?datasetVersionNumber=6",
+      "sha256": "b78891bf0a7cbea92f5e8a7fd192fed2a0945c587a21144bb80574227264f47d",
+      "bytes": 2830
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_arithmetic/output_space_anf.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_arithmetic%2Foutput_space_anf.py?datasetVersionNumber=6",
+      "sha256": "00e06057c17337b1ce9b8be93bf11d621a2fddde8d4cbd407575ddbbe2c43194",
+      "bytes": 1625
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_arithmetic/park_qrom_products.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_arithmetic%2Fpark_qrom_products.py?datasetVersionNumber=6",
+      "sha256": "e396f136391a29a689a31bf93db9e05948201a1ee53dbaf553a38f80a3e95c0f",
+      "bytes": 3122
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_arithmetic/phase2_second_park_search.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_arithmetic%2Fphase2_second_park_search.py?datasetVersionNumber=6",
+      "sha256": "93f8f76632ea2b77bf1097da1679291a09ee1bbf54d467774153c5f803c4e1a3",
+      "bytes": 8247
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/affine_peak.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Faffine_peak.py?datasetVersionNumber=6",
+      "sha256": "37f5af9446fb805d1fda2eb50392ba2d0555a25811f4990ac9dbc1767cd642cb",
+      "bytes": 2656
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/build67.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fbuild67.py?datasetVersionNumber=6",
+      "sha256": "5ddcf99c6580fd59e5f4eb27872bca591e2b5359063fe6e9c02a8ad7d21f6ac9",
+      "bytes": 3390
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/build67_coarse.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fbuild67_coarse.py?datasetVersionNumber=6",
+      "sha256": "47d3b7b0c78089683ed27479eba90037f9021d69500b8c62c599da18f8600515",
+      "bytes": 3786
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/build67_coarse4.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fbuild67_coarse4.py?datasetVersionNumber=6",
+      "sha256": "3cfbb56cdad167c78641e18606d79934ed4112881f9d1d0827aa76fd1f3ae1be",
+      "bytes": 3798
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/build67_direct75.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fbuild67_direct75.py?datasetVersionNumber=6",
+      "sha256": "0fc19e4efee2e42f66ee313d0be6e3baa7f77f5f73663da85e413e4ee5a0b80f",
+      "bytes": 3807
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/build67_scheduled.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fbuild67_scheduled.py?datasetVersionNumber=6",
+      "sha256": "427e8b0b0874776f3fecde4a6041a7f15a99503cbecf8e9d99bf785f6d50240e",
+      "bytes": 3605
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/build67_scheduled_late67.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fbuild67_scheduled_late67.py?datasetVersionNumber=6",
+      "sha256": "940a6e7e72cf71d19fdecf21585ffd2416baf7aa7d38f28a419c13390f1dd057",
+      "bytes": 3839
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/build_l4.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fbuild_l4.py?datasetVersionNumber=6",
+      "sha256": "a415d46cbc35760f5f9721295dcadb4f53fc3f7019dde161e5156eeb3067aef2",
+      "bytes": 1365
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/coarse_curvature.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fcoarse_curvature.py?datasetVersionNumber=6",
+      "sha256": "473be894abf47fc933d3e20a45d5a2789bb96015f301ced6f71d953d3a4a07e1",
+      "bytes": 6574
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/coarse_extra_search.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fcoarse_extra_search.py?datasetVersionNumber=6",
+      "sha256": "125c466abaea13fb715e2c191b09036b9d47f71b31554d5d1dea69cc63fce4cc",
+      "bytes": 2641
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/coarse_four.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fcoarse_four.py?datasetVersionNumber=6",
+      "sha256": "34dbb4ddba7557f3addc63e63b4d7dece25b0b182f14d621e909b79cfd0be0bd",
+      "bytes": 5244
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/coarse_scheduled.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fcoarse_scheduled.py?datasetVersionNumber=6",
+      "sha256": "b3fe07fe401c9c8dcca2401dbbe737ad50d4e261ca448c0bd287d23b6f6d9c77",
+      "bytes": 2666
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/coarse_scheduled_late67.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fcoarse_scheduled_late67.py?datasetVersionNumber=6",
+      "sha256": "a9a095a872bdca5f3da88cbe7140bf59e4cbf849e492874d676ec89603bf5fb6",
+      "bytes": 2723
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/coarse_simplify75.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fcoarse_simplify75.py?datasetVersionNumber=6",
+      "sha256": "8179ed2dd96f0f610e1b9bdae43d8a986727124b867a0824a25434510c820291",
+      "bytes": 2457
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/commute_carry_resets.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fcommute_carry_resets.py?datasetVersionNumber=6",
+      "sha256": "02455e5f2bad6532fbf1a4025305d24b6c26c27b28e204f37da4eb3c664294d8",
+      "bytes": 870
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/delay_affine_initializers.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fdelay_affine_initializers.py?datasetVersionNumber=6",
+      "sha256": "989ed6c301baa8e1d24f9cccf22826a007b7175e3a1554ef39cdbd59058236c8",
+      "bytes": 1662
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/fit_l4.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Ffit_l4.py?datasetVersionNumber=6",
+      "sha256": "bb4d2784618b64a791b7508273fb0d98fd20a9848c6f6fecc9c5bc8c9b2ef252",
+      "bytes": 2556
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/h_projection.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fh_projection.py?datasetVersionNumber=6",
+      "sha256": "6bf6edec2293713b91a26eb06fec22f4988da9da256bfbab05c6fe7523f0d80e",
+      "bytes": 1270
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/memory67.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fmemory67.py?datasetVersionNumber=6",
+      "sha256": "4a7fc89aad28936e11ad70ee7bfc9679a55684cabc606cf8f575f16a64e16bd7",
+      "bytes": 3549
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/memory67_relaxed.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fmemory67_relaxed.py?datasetVersionNumber=6",
+      "sha256": "7db48c3ddfbba166c3de1a11e63ad13785a405be3a202ac213d71cba0c95ce25",
+      "bytes": 3991
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/memory68_relaxed.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fmemory68_relaxed.py?datasetVersionNumber=6",
+      "sha256": "c7aaac36a4cf14992df48c759d600d7f5bceab5a85b1b6c754d769c558c3e848",
+      "bytes": 3733
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/phase_carry_park.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fphase_carry_park.py?datasetVersionNumber=6",
+      "sha256": "15a96b7838d75306ea4939053b929241bdb8aa3bab6732224564a4ea42d25be3",
+      "bytes": 1341
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/phase_first_oneproduct.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fphase_first_oneproduct.py?datasetVersionNumber=6",
+      "sha256": "3deaab7bc9cbcfedb7f9f43cb7dece2ab945d212c257f64c3255d407caebd7e0",
+      "bytes": 1964
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/phase_h_quadratic_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fphase_h_quadratic_probe.py?datasetVersionNumber=6",
+      "sha256": "9c34c81ac102b3d9a11d42d33f9152a87cc4dbf11d1c686f9c713bdc368412d2",
+      "bytes": 2468
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/phase_merged_quadratic_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fphase_merged_quadratic_probe.py?datasetVersionNumber=6",
+      "sha256": "22476629d7670ae57728372303a45aab895325bf751d89fa8f06f6cacd7de953",
+      "bytes": 3128
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/phase_parity_helper_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fphase_parity_helper_probe.py?datasetVersionNumber=6",
+      "sha256": "0c96c55088ebdad87d76436e45f3d048c159c1824453ae7a38c3e6cad4b09761",
+      "bytes": 3887
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/phase_r_h_quadratic_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fphase_r_h_quadratic_probe.py?datasetVersionNumber=6",
+      "sha256": "41da90b9b712c944d5feffdcfc2a38af3dfd0aec34bb5cd9cc634f4ac6280551",
+      "bytes": 2374
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/phase_r_quadratic_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fphase_r_quadratic_probe.py?datasetVersionNumber=6",
+      "sha256": "5fe0eb9e0667c6033666ff1a6627e0ea4aa2cc46fb0b050f339ba43f0d0d4810",
+      "bytes": 2339
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/prove_coarse11.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fprove_coarse11.py?datasetVersionNumber=6",
+      "sha256": "9ae12bdee9a50c564cd8dcb9b469e065af216244f4066222e499b6e7c275cff8",
+      "bytes": 2313
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/prove_coarse4.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fprove_coarse4.py?datasetVersionNumber=6",
+      "sha256": "bc0554501527ae146902a595a1d421a0ab506a184167f0098a9c815474254aa0",
+      "bytes": 2302
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/prove_direct75.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fprove_direct75.py?datasetVersionNumber=6",
+      "sha256": "e59eff1d4f22f006e7d082c75822b264959fa887d37b78f24b971ebcfd299e60",
+      "bytes": 2091
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/prove_scheduled57.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fprove_scheduled57.py?datasetVersionNumber=6",
+      "sha256": "41a7667de35c06e24154d6c50c0a5a7e5c3a2cfb5783d8b45a1f480633275de4",
+      "bytes": 2264
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/prove_scheduled57_late67.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fprove_scheduled57_late67.py?datasetVersionNumber=6",
+      "sha256": "11de853f9c20ec584e2ffa1517a59724c38ddccfbebdc0fd5e46bf3162d4cf93",
+      "bytes": 2285
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_memory/r_quadratic_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_memory%2Fr_quadratic_probe.py?datasetVersionNumber=6",
+      "sha256": "06fa317dae85a2617f101cc38dccf363750f337357067231cc7d59ca2b58cff5",
+      "bytes": 2148
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_phase/build_virtual_merged.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_phase%2Fbuild_virtual_merged.py?datasetVersionNumber=6",
+      "sha256": "7105a7cacce15267f6b9e55a9d309f7dc038c119b33d48109ce31dc655b2434b",
+      "bytes": 2405
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_phase/coefficient_recoding.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_phase%2Fcoefficient_recoding.py?datasetVersionNumber=6",
+      "sha256": "52b76548e5415c910b1dc7b4a5819e86da3cdeb1f170666d11d4494a5983185d",
+      "bytes": 4118
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_phase/coefficient_shift.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_phase%2Fcoefficient_shift.py?datasetVersionNumber=6",
+      "sha256": "8366c29dffcd8af40d9ec26ec0805e20a37b3f2090283e760ab5e467a1de3104",
+      "bytes": 1504
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_phase/feature_delete.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_phase%2Ffeature_delete.py?datasetVersionNumber=6",
+      "sha256": "42ee2b2c8a534dd834c93ec00c10ed65ed796f6acc38c1306bbcfe0a5ca2ee61",
+      "bytes": 2736
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_phase/joint_feature_search.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_phase%2Fjoint_feature_search.py?datasetVersionNumber=6",
+      "sha256": "74f43e71abe34f0eb3c5f1330b690917ed1e9de32a3399d27780e33b17ce4436",
+      "bytes": 5505
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_phase/low_feature_search.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_phase%2Flow_feature_search.py?datasetVersionNumber=6",
+      "sha256": "5965eb7580bf5d26d95588630ba4f6d2e1bd226b1260e48188b2e3e13dd4bac1",
+      "bytes": 3892
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_phase/merge_build.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_phase%2Fmerge_build.py?datasetVersionNumber=6",
+      "sha256": "0433a31fe37b588545d2bee1f47f28a1bfdddcec25922dc75ac3d9840879a532",
+      "bytes": 4902
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_phase/merge_fit.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_phase%2Fmerge_fit.py?datasetVersionNumber=6",
+      "sha256": "7f0f39109e0a3ea89da49a11441ee57026c5eb065193401501d490694644e44d",
+      "bytes": 1742
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_phase/phase_feature_search.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_phase%2Fphase_feature_search.py?datasetVersionNumber=6",
+      "sha256": "24c360ddd26cf064ef6b290df417eac3654e3743c46b45d9c2f9f70a0609d9b5",
+      "bytes": 2694
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_phase/segment_recoding.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_phase%2Fsegment_recoding.py?datasetVersionNumber=6",
+      "sha256": "3cc6a88080a2451d4a61d04c9bd0157303d167ac5c8dbc33b4069bfdeb9394b9",
+      "bytes": 3271
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_phase/transient_feature_search.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_phase%2Ftransient_feature_search.py?datasetVersionNumber=6",
+      "sha256": "b3e9e90ff84cd985c09d8596623d820b7e448bf3f6f3bf57a817fa6fbe15f82f",
+      "bytes": 4633
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round3_phase/virtual_phase.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround3_phase%2Fvirtual_phase.py?datasetVersionNumber=6",
+      "sha256": "4cb88fc88c49adbfe67f70d1304826073dfa7df30b4cabc86cdb322b1c21edf3",
+      "bytes": 2131
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_memory/build_encoded.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_memory%2Fbuild_encoded.py?datasetVersionNumber=6",
+      "sha256": "ebebe87466c69d57feb329c1ec5b3a79d627112e3395216524581c4d64d79c19",
+      "bytes": 3968
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_memory/build_phase_scratch.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_memory%2Fbuild_phase_scratch.py?datasetVersionNumber=6",
+      "sha256": "c95ddafce5a0bb954ed583e231cc1710f35a1add1a54b1a153755de3b48c51d0",
+      "bytes": 1687
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_memory/eager_measurements.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_memory%2Feager_measurements.py?datasetVersionNumber=6",
+      "sha256": "9a697a6a8decf27c7fe247aedfde09787301884c7237f202f312f0269a340022",
+      "bytes": 3082
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_memory/encode_phase_flags.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_memory%2Fencode_phase_flags.py?datasetVersionNumber=6",
+      "sha256": "fc48eb5d13abbdca4f64c28aca650b1e51a5c8cd5eee1aeb9f1787d47e0dcf8f",
+      "bytes": 13555
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_memory/phase_only_scratch.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_memory%2Fphase_only_scratch.py?datasetVersionNumber=6",
+      "sha256": "48234ef3a4e9eb9cf0e1d77ed036815b2df3649a4b409566cacab55d81bcfbef",
+      "bytes": 5278
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_memory/phase_only_scratch_v2.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_memory%2Fphase_only_scratch_v2.py?datasetVersionNumber=6",
+      "sha256": "9a1da11a7b2a12df957fca014d194e9c95ed086858080adf8ed0d2b31a7a4e3c",
+      "bytes": 10558
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_memory/shift_flag_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_memory%2Fshift_flag_probe.py?datasetVersionNumber=6",
+      "sha256": "9853dc4020f9d427757af4d43b166b49e65cc029497d9476b609f2706037d369",
+      "bytes": 1901
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_phase/calibrate_candidate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_phase%2Fcalibrate_candidate.py?datasetVersionNumber=6",
+      "sha256": "479da6242b4a32d97dc04ba652e6092906d84970f74a21040b09b64313d42c2a",
+      "bytes": 5661
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_phase/encoded_context.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_phase%2Fencoded_context.py?datasetVersionNumber=6",
+      "sha256": "e152eec98884337686f051e683ee4c9d7ed3710c9b33012efe7d03384046307a",
+      "bytes": 1252
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_phase/encoded_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_phase%2Fencoded_probe.py?datasetVersionNumber=6",
+      "sha256": "de6521917cc1a15c83151acf8a43f039742db0015dcc22705e35c114505553e9",
+      "bytes": 860
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_phase/late_cubic_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_phase%2Flate_cubic_probe.py?datasetVersionNumber=6",
+      "sha256": "f96f18febdeba90e3025265554ef9177c4e067993b94781652d3cc130e39b88c",
+      "bytes": 5480
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_phase/lookup_helper_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_phase%2Flookup_helper_probe.py?datasetVersionNumber=6",
+      "sha256": "0da99708ab240d29db6960310bb403eeea952e818b74e9802af55dc283e8b2b3",
+      "bytes": 3864
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_phase/lword_late.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_phase%2Flword_late.py?datasetVersionNumber=6",
+      "sha256": "8bc0afa5cab19101a4918adfc9422399ff471a02076c22d74d129f6e9d265852",
+      "bytes": 9384
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_phase/probe_common.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_phase%2Fprobe_common.py?datasetVersionNumber=6",
+      "sha256": "2c04d2aebef8650de0739d618440a42c894913c23818c3836c557a2a684fe540",
+      "bytes": 3825
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_phase/relaxation_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_phase%2Frelaxation_probe.py?datasetVersionNumber=6",
+      "sha256": "3a7fef858f53356ddb87058438744333c7ac4b65cff2f006f6c8ceb08844e0af",
+      "bytes": 1264
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_root/address_joint.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_root%2Faddress_joint.py?datasetVersionNumber=6",
+      "sha256": "244056a31613640e13ab352791d851594171e4c5db1c7ced326ec449a761fc27",
+      "bytes": 6630
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_root/address_mixed_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_root%2Faddress_mixed_probe.py?datasetVersionNumber=6",
+      "sha256": "b5dd708db8f5b0afd9a54a76f90e85bb0a8e605a00fae7d771bfcdf4ec44b581",
+      "bytes": 2098
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_root/address_sequential_search.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_root%2Faddress_sequential_search.py?datasetVersionNumber=6",
+      "sha256": "f8f83a10a5951a6e1f6a69c95edf658d38f580345631fbf0aec6626c958706f5",
+      "bytes": 4207
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_root/build_shared_address.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_root%2Fbuild_shared_address.py?datasetVersionNumber=6",
+      "sha256": "c2f4f4e42cee0bea3c5f13a28e508d471ebf1e7910fa05296d9964bbd33e990f",
+      "bytes": 3609
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_root/parity_lword.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_root%2Fparity_lword.py?datasetVersionNumber=6",
+      "sha256": "16e676f62d1d69e38398b5ce59bf98862e315551994bf9d0b963837be28b590b",
+      "bytes": 1528
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_root/prove_shared_address.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_root%2Fprove_shared_address.py?datasetVersionNumber=6",
+      "sha256": "12417370a644a5be205e5fbc406d0c328f665e3d430e2cd85f14b578377b10bb",
+      "bytes": 2776
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round4_root/shared_address.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround4_root%2Fshared_address.py?datasetVersionNumber=6",
+      "sha256": "849eec03f2b5e0adad4bc969de3e77bce85852bc2c293fc1ee4f06bfd523e973",
+      "bytes": 2070
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/affine_erasure.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Faffine_erasure.py?datasetVersionNumber=6",
+      "sha256": "98e5e1da911470236bb79af1a9e2857327174806e9d8c841f97be4f444b18236",
+      "bytes": 7710
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/apply_omit_after_phase.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Fapply_omit_after_phase.py?datasetVersionNumber=6",
+      "sha256": "4bdd65b5827e82e51eb409e86e86a51a789ded7a5ceff82c35a0f692b9590687",
+      "bytes": 3306
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/build_preallocated_erasure.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Fbuild_preallocated_erasure.py?datasetVersionNumber=6",
+      "sha256": "6915fb6d2aa319bf056caacdf17ae87f000febbd79c29c123cc233ba48f86083",
+      "bytes": 3306
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/coefficient_frame_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Fcoefficient_frame_probe.py?datasetVersionNumber=6",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/delay_lword_inner.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Fdelay_lword_inner.py?datasetVersionNumber=6",
+      "sha256": "64d89a139c0448280c7980bbfe181cabc5e8c463a7ff5f76c79ad25d54861ca7",
+      "bytes": 7816
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/early_target_erasure.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Fearly_target_erasure.py?datasetVersionNumber=6",
+      "sha256": "61d43b3d11231d2ef7085e0357222a7603e81029b87968ab9c0928df8e8f2858",
+      "bytes": 7002
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/inplace_alias_decoder.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Finplace_alias_decoder.py?datasetVersionNumber=6",
+      "sha256": "d11019ed53ec77e64aab05079465b9f5ba55c3bc9aebb98ab259e7c8f962bfef",
+      "bytes": 10461
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/omit_coefficients.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Fomit_coefficients.py?datasetVersionNumber=6",
+      "sha256": "729a319c29dc2c34949dad3115f9ce51df46594c515b60e051e18df8b4ac718c",
+      "bytes": 4711
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/probe_late_lword.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Fprobe_late_lword.py?datasetVersionNumber=6",
+      "sha256": "f125366152398875a2a0e783f3d873cbfe3dcea77b3a247fe8c0ff6c7675f601",
+      "bytes": 4369
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/prove_affine_erasure.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Fprove_affine_erasure.py?datasetVersionNumber=6",
+      "sha256": "adb054cc86c942c4e2c3f3d957833429e97bc3f64c7660857a842e43543b9abf",
+      "bytes": 6168
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/prove_early_erasure.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Fprove_early_erasure.py?datasetVersionNumber=6",
+      "sha256": "63de11e20fa38a38b139946a76d02fc4dcac1e1e213ee1bf9bfa261c94e63e10",
+      "bytes": 4736
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/prove_late_lword.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Fprove_late_lword.py?datasetVersionNumber=6",
+      "sha256": "cddb7f69fd7892e2124a6ed5b325fe204f730762b8e3f63cbea88198518df23a",
+      "bytes": 2816
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/prove_preallocation.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Fprove_preallocation.py?datasetVersionNumber=6",
+      "sha256": "3e6c8f56706076e0265c16525f84542b591d3497b75f079ba442188eb98eea93",
+      "bytes": 2150
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/refine_late_lword.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Frefine_late_lword.py?datasetVersionNumber=6",
+      "sha256": "890494fb4a365332186e0c741214fd6c1e3e6952bc93381ec3647f3de291843a",
+      "bytes": 1943
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_arithmetic/short_alias_decoder.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_arithmetic%2Fshort_alias_decoder.py?datasetVersionNumber=6",
+      "sha256": "b7c58dc681a5e171b61c33e572f8c914086fa79f07d3bc4780012d9cd8b9fa2e",
+      "bytes": 3628
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/borrow_phase_delays.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fborrow_phase_delays.py?datasetVersionNumber=6",
+      "sha256": "f1fd5daf3a0ac4874c3d421b4fe844604d7d33e18fe9493a81f334cd1c4ca10a",
+      "bytes": 6741
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/build_borrowed_memory.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fbuild_borrowed_memory.py?datasetVersionNumber=6",
+      "sha256": "4fbe78afd52b09e46573cf31821871b7699dfb1f1db83bad4457b96ac6d2996b",
+      "bytes": 4418
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/build_l6_borrowed.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fbuild_l6_borrowed.py?datasetVersionNumber=6",
+      "sha256": "b61bb4e7be23b416b75cff8db5b6c7af42b7fb2d418d3a5c61aa22070e903c23",
+      "bytes": 3672
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/build_phase_clifford.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fbuild_phase_clifford.py?datasetVersionNumber=6",
+      "sha256": "d1fc91f0883de9c874d84b693d2cb665aa0d154a80f00906fc0614a9c649f7bc",
+      "bytes": 2674
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/close66.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fclose66.py?datasetVersionNumber=6",
+      "sha256": "e2268c7cccdd7ea9536eec350a540da225fbdb65fa441afb73c6e045acbb1890",
+      "bytes": 6296
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/dirty_flag7.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fdirty_flag7.py?datasetVersionNumber=6",
+      "sha256": "6c4fdd1233af5bfa596a72985ffbf3697a54195ad1847fca8965a38e26c70bcc",
+      "bytes": 3167
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/dirty_parity.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fdirty_parity.py?datasetVersionNumber=6",
+      "sha256": "b7d06e16b20472aab7dcb08bc41f6881c6c4a315a4da2c45a4bf5597a05ef1a0",
+      "bytes": 5153
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/inline_and_fanout.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Finline_and_fanout.py?datasetVersionNumber=6",
+      "sha256": "ec45d1b800c4e2d48cca1ac882d6c4f75538b0b85804359833b2cd8305259684",
+      "bytes": 3635
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/qrom_affine_borrow.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fqrom_affine_borrow.py?datasetVersionNumber=6",
+      "sha256": "3be5167edb2f0dbe95e668ea0e75d8ba93b784a581356d2bf3f6bb523b14157b",
+      "bytes": 6690
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/qrom_affine_borrow_wide.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fqrom_affine_borrow_wide.py?datasetVersionNumber=6",
+      "sha256": "f82e117003125b4da8e21f4cfd34c1b3fa5135590586281e9f60e066e6ece824",
+      "bytes": 2018
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/qrom_affine_product.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fqrom_affine_product.py?datasetVersionNumber=6",
+      "sha256": "f1a77a76473311008d0a543f9887a78331682373c3045c834e9affa7e19f3d8f",
+      "bytes": 5033
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/qrom_parent_trade.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fqrom_parent_trade.py?datasetVersionNumber=6",
+      "sha256": "25bd54084965c5c8cec1d9a7453a74fa65de08cc2ad5dfc89976d59ce3f9693c",
+      "bytes": 2800
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/quadratic_blocks.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fquadratic_blocks.py?datasetVersionNumber=6",
+      "sha256": "d941df334153495d5fedbfc5ab8547e040a865316d9087da521cbcff2aa19300",
+      "bytes": 6975
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/quadratic_phase.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fquadratic_phase.py?datasetVersionNumber=6",
+      "sha256": "522529fafc21220f511bd9075c3051c4f3f2ad23b1ec6e635bf7755ffbbce420",
+      "bytes": 5744
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/retain_nor_carry.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fretain_nor_carry.py?datasetVersionNumber=6",
+      "sha256": "62d21f49402d0433f66aaf0af61fcea2e3531c17f68978b3aed2646aa242a7a5",
+      "bytes": 2250
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_memory/undo_dirty_phase_echo.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_memory%2Fundo_dirty_phase_echo.py?datasetVersionNumber=6",
+      "sha256": "a020a98779bfbb0783dc7af52a4d49af992945f4f1007b1aa896e77d508b34d1",
+      "bytes": 3006
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_phase/high_stream.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_phase%2Fhigh_stream.py?datasetVersionNumber=6",
+      "sha256": "6c591bdced3d05642a34478769f2844c8a442bd8880d2fa525982587200b0acc",
+      "bytes": 8379
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_phase/l5_late_exact.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_phase%2Fl5_late_exact.py?datasetVersionNumber=6",
+      "sha256": "715ae3e892a78716962b493faf6c8df2d5935fb96012aee18bd539d3ce853eca",
+      "bytes": 4036
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_phase/l6_exact.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_phase%2Fl6_exact.py?datasetVersionNumber=6",
+      "sha256": "13fc62c3bb477f0364f12b270ec63d3ca9fd2c8ba76b77b802e6b91d4a8c576d",
+      "bytes": 11623
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_phase/stream_two_shifts.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_phase%2Fstream_two_shifts.py?datasetVersionNumber=6",
+      "sha256": "7a49d0fdef1804a045ee2ed7e90044c7ac5c3581ecf8079668efe75d6c39f9e0",
+      "bytes": 9870
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_root/build_combined.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_root%2Fbuild_combined.py?datasetVersionNumber=6",
+      "sha256": "15811505445aff02763d2ffc1b28f85c45e8b2523dd5bd0bbfa16adff81f50c8",
+      "bytes": 3838
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_root/dirty_control_search.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_root%2Fdirty_control_search.py?datasetVersionNumber=6",
+      "sha256": "9fcdb81152acbf1372856d7ca2a2ea28fbc68ecaa0bf12605e586dfe0932727c",
+      "bytes": 4450
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_root/dirty_phase_borrow.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_root%2Fdirty_phase_borrow.py?datasetVersionNumber=6",
+      "sha256": "6f30ed5b242c7bac77342b06a4c26edd960061e6ca1d5b79aa7892bc269f9b03",
+      "bytes": 5830
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_root/finalize_compact.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_root%2Ffinalize_compact.py?datasetVersionNumber=6",
+      "sha256": "c66c73e1264293d9cfa6f53547a0ae8a5e65d84be05ce75bc54f7c62680479c6",
+      "bytes": 2687
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round5_root/restore_spare_carries.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround5_root%2Frestore_spare_carries.py?datasetVersionNumber=6",
+      "sha256": "f4e43cc32daa59ebe25c0a36148e43994f689455d2a0e97888608bbfa206b938",
+      "bytes": 5073
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_arithmetic/adaptive_family_base.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_arithmetic%2Fadaptive_family_base.py?datasetVersionNumber=6",
+      "sha256": "62047c931cf7a6a2454456a78a694bf23946f3ad68f5436c6c43976c587fcdf2",
+      "bytes": 11917
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_arithmetic/adaptive_omitted.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_arithmetic%2Fadaptive_omitted.py?datasetVersionNumber=6",
+      "sha256": "9fa862e37d7139332424f77cfc325d8e2cd14ae55ef9e16ed7d06782de47a85a",
+      "bytes": 11931
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_arithmetic/check_triangular.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_arithmetic%2Fcheck_triangular.py?datasetVersionNumber=6",
+      "sha256": "53d2aaab68aaab9cf3114335173fd13b87f6babdafbfd81f511bf35c70e4f15e",
+      "bytes": 2166
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_arithmetic/l7_front_fit.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_arithmetic%2Fl7_front_fit.py?datasetVersionNumber=6",
+      "sha256": "6f1f590f4c03c95fe713ff30942eae738980bd2078a607acaaf297b4d95f43c0",
+      "bytes": 1774
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_arithmetic/l7_literal_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_arithmetic%2Fl7_literal_probe.py?datasetVersionNumber=6",
+      "sha256": "e5a7826a794dc0ffe4b92992438b41dee9efa4be81b44056d2a5f81aec13f587",
+      "bytes": 2650
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_arithmetic/l7_park.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_arithmetic%2Fl7_park.py?datasetVersionNumber=6",
+      "sha256": "db51de0d5f04396633dcd564009dc932b96c6793c71e02ef1c7a3dfeb226b8fd",
+      "bytes": 4015
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_arithmetic/refine_adaptive_decoders.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_arithmetic%2Frefine_adaptive_decoders.py?datasetVersionNumber=6",
+      "sha256": "8c0f6309b6d1ccc26726414b3d27381a22989d3176c7376bc6e03ad42b84bd74",
+      "bytes": 3904
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_arithmetic/refine_l6_extensions.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_arithmetic%2Frefine_l6_extensions.py?datasetVersionNumber=6",
+      "sha256": "18f5ea170c18346162a29d54b2dfb9a840ebdb5bc93786d72a82264c9fe5e456",
+      "bytes": 5525
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_arithmetic/refine_l6_joint.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_arithmetic%2Frefine_l6_joint.py?datasetVersionNumber=6",
+      "sha256": "b6aa3abc8b0afd344d86822dc1d7819c81d26b94c6bfa718e7442c4f044110d9",
+      "bytes": 3560
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_arithmetic/regroup_low_outer.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_arithmetic%2Fregroup_low_outer.py?datasetVersionNumber=6",
+      "sha256": "ae60083bd62e380aaf1a8e3c6d668a8179c6046f982b40d1bfdfc6189be710ec",
+      "bytes": 11786
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_arithmetic/schedule_adaptive.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_arithmetic%2Fschedule_adaptive.py?datasetVersionNumber=6",
+      "sha256": "3c5fb2b1790dd165e06427cd65e1f5cbb7a9fa3a5df2a0c032a364fa3ae8a89e",
+      "bytes": 5964
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_arithmetic/stage_address.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_arithmetic%2Fstage_address.py?datasetVersionNumber=6",
+      "sha256": "bd5d3a7f407e6e8a74d3aa0474d555efae4757520e0e180852fdfde3559be8e5",
+      "bytes": 7555
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_arithmetic/triangular_outer.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_arithmetic%2Ftriangular_outer.py?datasetVersionNumber=6",
+      "sha256": "f13adb4a89b212d5b38913caffa5c7a57840d2e3f869e4f60316cf65a09be852",
+      "bytes": 9075
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/bootstrap_lookup.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Fbootstrap_lookup.py?datasetVersionNumber=6",
+      "sha256": "65e2d0660c1ba5fcdd462a89d005aadfdf512af5189cad2b8a22cedbad6dd1ff",
+      "bytes": 12676
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/coded_lword_park.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Fcoded_lword_park.py?datasetVersionNumber=6",
+      "sha256": "4e0e5f5a8a6dd945ea69572cfd34b9ef401a895908952435997e93bca097e676",
+      "bytes": 4533
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/dynamic_frontier_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Fdynamic_frontier_probe.py?datasetVersionNumber=6",
+      "sha256": "e4e5086d9bf78386c86f6f363a2f4cadea3443cfc5751b04dfe6138aa4e1bc08",
+      "bytes": 2966
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/l7_address_span.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Fl7_address_span.py?datasetVersionNumber=6",
+      "sha256": "24cc2167a66e158cbb5b1a59d7f2eec925ebb96a584cd3d47920d982830d1720",
+      "bytes": 2072
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/l7_parity_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Fl7_parity_probe.py?datasetVersionNumber=6",
+      "sha256": "57ba3406f0cec3454405ad111c6fae977e72352ceb790d4dd393825896199cf9",
+      "bytes": 3230
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/parity_bootstrap_lookup.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Fparity_bootstrap_lookup.py?datasetVersionNumber=6",
+      "sha256": "0a96f26f557b328d2a725dca0811c4ff695373bab0d0ff34ac20d77f0b7d877d",
+      "bytes": 9508
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/pool_lookup.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Fpool_lookup.py?datasetVersionNumber=6",
+      "sha256": "bc662cf479d6147636d055b2dac24a3ce44563ef570d45ac13d052000561885d",
+      "bytes": 6669
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/refine_pool_lookup.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Frefine_pool_lookup.py?datasetVersionNumber=6",
+      "sha256": "18e6e432fb400d6ca8acb1fed075e49335201519d3def4a2aee9cb21c1455163",
+      "bytes": 1054
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/refine_subspace_lookup.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Frefine_subspace_lookup.py?datasetVersionNumber=6",
+      "sha256": "ac185536d1cf71d56f9c1af2d9c3346b8b20869dc89b01eb7eea915d6ea1a093",
+      "bytes": 640
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/release189_generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Frelease189_generate.py?datasetVersionNumber=6",
+      "sha256": "7d7b12ef353f58aeec104a03ffd5a85e2ca2067da2e39e550d32e3a7bebe80e3",
+      "bytes": 3294
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/remap_pool_lookup.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Fremap_pool_lookup.py?datasetVersionNumber=6",
+      "sha256": "ccbaae8f6d73c9c5b4c7926e972fc6dca4fefe4cdab5e3a565076296acb8c8f9",
+      "bytes": 2720
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/seed_count_lookup.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Fseed_count_lookup.py?datasetVersionNumber=6",
+      "sha256": "48b91af2a9036f590340c37075a72ccebcf761e5f1bc7abdfef7a884dafd1fbf",
+      "bytes": 582
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/stage_release189.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Fstage_release189.py?datasetVersionNumber=6",
+      "sha256": "3fd4ba465c2d505a813479eedb1bf2198f4cc0ff912307539137f71c2ccfc66f",
+      "bytes": 5140
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_memory/subspace_bootstrap_lookup.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_memory%2Fsubspace_bootstrap_lookup.py?datasetVersionNumber=6",
+      "sha256": "1e1ba68aef4853921e42f6e727a088af46048acbbf5b5a2b80478fb465c7d5d2",
+      "bytes": 3349
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_root/advance_phase.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_root%2Fadvance_phase.py?datasetVersionNumber=6",
+      "sha256": "601022fea0833548278f9e90b0216b1b5b356d8a006a29f98817533633a4af8d",
+      "bytes": 6125
+    },
+    {
+      "version": 6,
+      "path": "source/invsqrt_63q/round6_root/alias_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/source%2Finvsqrt_63q%2Fround6_root%2Falias_probe.py?datasetVersionNumber=6",
+      "sha256": "4d7e138d4c3a2aca340ac750397aa38e02ab1a712984ad3f6b632c9b0e8cf422",
+      "bytes": 2258
+    },
+    {
+      "version": 8,
+      "path": "LICENSE",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/LICENSE?datasetVersionNumber=8",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "version": 8,
+      "path": "README.md",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/README.md?datasetVersionNumber=8",
+      "sha256": "16b07a0773d3d078c2ebf27d87ba9aaa7ed7319906630fa4d6f182ea13f2225d",
+      "bytes": 27710
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/PINS.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2FPINS.json?datasetVersionNumber=8",
+      "sha256": "3893ddbbb6a300fbc93d74dc4fe62085086cd9a1dd00a7832fc3620b3e6ba107",
+      "bytes": 461
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/README.md",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2FREADME.md?datasetVersionNumber=8",
+      "sha256": "95094d8aec5a7a0e8f5b2fa34b45fb866118d6c5852b6769008bf9c12910b2e1",
+      "bytes": 2795
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/README.md",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2FREADME.md?datasetVersionNumber=8",
+      "sha256": "b68796f54b2cce3c678550f40e252ae98276a8ba9e9dbabe7cfba8f3179c1e4c",
+      "bytes": 3379
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fbuild_config.json?datasetVersionNumber=8",
+      "sha256": "597a08dc190c63729e96926002bd3f6f0eed3f4f689282b12fd484e1af4b9a72",
+      "bytes": 554
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/compiler/affine_reduce.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fcompiler%2Faffine_reduce.py?datasetVersionNumber=8",
+      "sha256": "5028fd072c67f0f3ab53ba74a42272d9d987451f38ad318167d1a03661d0f361",
+      "bytes": 2369
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/compiler/build_partial_merge.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fcompiler%2Fbuild_partial_merge.py?datasetVersionNumber=8",
+      "sha256": "3e41fa50701f903ce1dcf53cfa883bf80f80603bced10826870422950556bc6c",
+      "bytes": 6141
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/compiler/cache_late_curvature.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fcompiler%2Fcache_late_curvature.py?datasetVersionNumber=8",
+      "sha256": "20de2ea634af727e5d60bfb41fd26a08e25de4b02a9c4d23418ae85c7cf06b79",
+      "bytes": 3774
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/compiler/cache_normalization_prefixes.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fcompiler%2Fcache_normalization_prefixes.py?datasetVersionNumber=8",
+      "sha256": "f1adc808a4b656b6de4290033d715faece346d8d14120bf69b8372093a114690",
+      "bytes": 7503
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/compiler/cache_normalization_sequential.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fcompiler%2Fcache_normalization_sequential.py?datasetVersionNumber=8",
+      "sha256": "650e3cfa8e47f2668cb7f8c443b2a4f38be885ec185a638c6c5c5f796dfd798b",
+      "bytes": 6605
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/compiler/exact_phase_ledger.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fcompiler%2Fexact_phase_ledger.py?datasetVersionNumber=8",
+      "sha256": "2b99474bbf9ddf2032266b26f51f448d4663759a839cac007e99aa5ab02993b0",
+      "bytes": 2082
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/compiler/partial_merge_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fcompiler%2Fpartial_merge_probe.py?datasetVersionNumber=8",
+      "sha256": "a773c17933b0879809010669ef05a29fa7e822b5639024f82ec1085d8ed6cdcb",
+      "bytes": 2371
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/compiler/replay_history.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fcompiler%2Freplay_history.py?datasetVersionNumber=8",
+      "sha256": "11b224236cc3b2c334980b9b773187fb11f2030db6c20f55cffb029066954ccc",
+      "bytes": 2374
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/compiler/trim_partial_tail.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fcompiler%2Ftrim_partial_tail.py?datasetVersionNumber=8",
+      "sha256": "c4634df1d807e3b5e1a9b8d411de7ad4d0519951c0b56e044bbdf227aeab2561",
+      "bytes": 3272
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fgenerate.py?datasetVersionNumber=8",
+      "sha256": "140b6a2112697199903f57060393c025d174963397dfadb069fe1ceab8aaa363",
+      "bytes": 2229
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/README.md",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2FREADME.md?datasetVersionNumber=8",
+      "sha256": "915d69a9ee94eeabed356aea21265431af0d810537e65de88492add4334c3b0d",
+      "bytes": 5825
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/README.txt",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2FREADME.txt?datasetVersionNumber=8",
+      "sha256": "e980864a9f91a4b64b5e25c69484d825d53b89476a19e2c1c3dd0ff2dba4c25f",
+      "bytes": 5114
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fbuild_config.json?datasetVersionNumber=8",
+      "sha256": "0752ed60eef19cb1b0948f18672b0f660a016cab10d4485d67a3c28425c09713",
+      "bytes": 27168
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fgenerate.py?datasetVersionNumber=8",
+      "sha256": "59678abdf7c10976724318e77fd0fb6f9fbe216ea0c0a229a7418952884b8cd8",
+      "bytes": 3397
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/provenance/base19_README.txt",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fprovenance%2Fbase19_README.txt?datasetVersionNumber=8",
+      "sha256": "9b665858e765df80b7c9bfd0930778a166d45b3cdcc1034b8d730c89872fa176",
+      "bytes": 5648
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/provenance/base19_build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fprovenance%2Fbase19_build_config.json?datasetVersionNumber=8",
+      "sha256": "62cbbe976854111ea498ff851a477db114aecec43a26cd906559e036e53f0414",
+      "bytes": 3077
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/provenance/base19_generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fprovenance%2Fbase19_generate.py?datasetVersionNumber=8",
+      "sha256": "973ea1ff5a75141228e7abfe39ba83f6accd29f29ed7bc35c77dc33d4204737b",
+      "bytes": 7556
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/provenance/base22_README.txt",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fprovenance%2Fbase22_README.txt?datasetVersionNumber=8",
+      "sha256": "02d418cc1694749184003c67cad57bca6a9ae6f1c82ee01b3973ee8f9a7bda0c",
+      "bytes": 4883
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/provenance/base22_build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fprovenance%2Fbase22_build_config.json?datasetVersionNumber=8",
+      "sha256": "05572934a2302e0a8120bf4e882cafbd8a0f9bff8794f8200426c2a7c6ed63d9",
+      "bytes": 13763
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/provenance/base22_generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fprovenance%2Fbase22_generate.py?datasetVersionNumber=8",
+      "sha256": "59678abdf7c10976724318e77fd0fb6f9fbe216ea0c0a229a7418952884b8cd8",
+      "bytes": 3397
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/provenance/base30_README.txt",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fprovenance%2Fbase30_README.txt?datasetVersionNumber=8",
+      "sha256": "f9f395a1ffa5c8063d5529121098f5368ece926fa7fad8d7e25af6eebe9bd3e2",
+      "bytes": 5560
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/provenance/base30_build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fprovenance%2Fbase30_build_config.json?datasetVersionNumber=8",
+      "sha256": "da0d5d1918e74b5d3c7369f4f6a32634f65970f86f98179cf5aee746f7166086",
+      "bytes": 25565
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/provenance/base30_generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fprovenance%2Fbase30_generate.py?datasetVersionNumber=8",
+      "sha256": "59678abdf7c10976724318e77fd0fb6f9fbe216ea0c0a229a7418952884b8cd8",
+      "bytes": 3397
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/radical_newton/cubic_build.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fradical_newton%2Fcubic_build.py?datasetVersionNumber=8",
+      "sha256": "8895c9dafb153d0ac0df8b72f308f33fd5197f114eedefc68983cd7502cf9e0a",
+      "bytes": 7679
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/round3_phase/merge_build.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fround3_phase%2Fmerge_build.py?datasetVersionNumber=8",
+      "sha256": "0433a31fe37b588545d2bee1f47f28a1bfdddcec25922dc75ac3d9840879a532",
+      "bytes": 4902
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/round4_root/build_shared_address.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fround4_root%2Fbuild_shared_address.py?datasetVersionNumber=8",
+      "sha256": "c2f4f4e42cee0bea3c5f13a28e508d471ebf1e7910fa05296d9964bbd33e990f",
+      "bytes": 3609
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/round5_phase/l6_exact.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fround5_phase%2Fl6_exact.py?datasetVersionNumber=8",
+      "sha256": "13fc62c3bb477f0364f12b270ec63d3ca9fd2c8ba76b77b802e6b91d4a8c576d",
+      "bytes": 11623
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/baseline/round6_memory/release189_generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fbaseline%2Fround6_memory%2Frelease189_generate.py?datasetVersionNumber=8",
+      "sha256": "7d7b12ef353f58aeec104a03ffd5a85e2ca2067da2e39e550d32e3a7bebe80e3",
+      "bytes": 3294
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/baseline/source/generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbaseline%2Fsource%2Fgenerate.py?datasetVersionNumber=8",
+      "sha256": "bda0db6be6fb42668b042b92b24d3a720aa35f13d4271ad4da5198676a7875f8",
+      "bytes": 2981
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/build.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Fbuild.py?datasetVersionNumber=8",
+      "sha256": "6e0e1c4e263421ae9d10ecdadae4dbeef6ce38982aa3008bfeaf92ff58f99e58",
+      "bytes": 1064
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p80_history_cache_research/invsqrt_history_research/tools/phase_history.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p80_history_cache_research%2Finvsqrt_history_research%2Ftools%2Fphase_history.py?datasetVersionNumber=8",
+      "sha256": "f5af058d3ad55b6ca197b6ee598a7fef9f983e01e6667eb61fd3da2bc1dec38d",
+      "bytes": 9187
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/README.md",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2FREADME.md?datasetVersionNumber=8",
+      "sha256": "51460045690f7f187f8fa4bd38b6ade361f61407af8c5767bb9adc264d49a860",
+      "bytes": 4890
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fbuild_config.json?datasetVersionNumber=8",
+      "sha256": "24bf71e71d192a2a6b34ea48a41b3e63b059915402b413eb46721dd05eabde3f",
+      "bytes": 653
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/affine_reduce.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Faffine_reduce.py?datasetVersionNumber=8",
+      "sha256": "5028fd072c67f0f3ab53ba74a42272d9d987451f38ad318167d1a03661d0f361",
+      "bytes": 2369
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/apply_curvature52_to_pass12.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Fapply_curvature52_to_pass12.py?datasetVersionNumber=8",
+      "sha256": "b578e70bc439735b50b3318486ce30b18536e7ad2d8baeb4ac37b30cb76ce1c5",
+      "bytes": 5056
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/audit_front_phase_clean_global.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Faudit_front_phase_clean_global.py?datasetVersionNumber=8",
+      "sha256": "aa58d7aae909b78dcef235949d0d89c3c7f1768d1a936065270bdaccd7cfecdd",
+      "bytes": 2822
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/audit_physical_frontier.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Faudit_physical_frontier.py?datasetVersionNumber=8",
+      "sha256": "32c0e227700a3407ed4544fedbaccb9e6acb271fb132384a3826a8882bd75f15",
+      "bytes": 2442
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/build_partial_merge.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Fbuild_partial_merge.py?datasetVersionNumber=8",
+      "sha256": "3e41fa50701f903ce1dcf53cfa883bf80f80603bced10826870422950556bc6c",
+      "bytes": 6141
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/cache_late_curvature.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Fcache_late_curvature.py?datasetVersionNumber=8",
+      "sha256": "20de2ea634af727e5d60bfb41fd26a08e25de4b02a9c4d23418ae85c7cf06b79",
+      "bytes": 3774
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/cache_normalization_prefixes.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Fcache_normalization_prefixes.py?datasetVersionNumber=8",
+      "sha256": "f1adc808a4b656b6de4290033d715faece346d8d14120bf69b8372093a114690",
+      "bytes": 7503
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/cache_normalization_sequential.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Fcache_normalization_sequential.py?datasetVersionNumber=8",
+      "sha256": "650e3cfa8e47f2668cb7f8c443b2a4f38be885ec185a638c6c5c5f796dfd798b",
+      "bytes": 6605
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/compose_phase_clean_front.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Fcompose_phase_clean_front.py?datasetVersionNumber=8",
+      "sha256": "52b2e58b2ac1297ad799ec5c51724ab358f98c3074ccb93413af93d8e3c47835",
+      "bytes": 3986
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/exact_phase_ledger.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Fexact_phase_ledger.py?datasetVersionNumber=8",
+      "sha256": "2b99474bbf9ddf2032266b26f51f448d4663759a839cac007e99aa5ab02993b0",
+      "bytes": 2082
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/factor_deferred_product.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Ffactor_deferred_product.py?datasetVersionNumber=8",
+      "sha256": "4c8abbb8bef6cb1fe724644faf9609b876599a6c3e8be3a4434fe70c70bec605",
+      "bytes": 9519
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/factor_late_curvature.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Ffactor_late_curvature.py?datasetVersionNumber=8",
+      "sha256": "5e23d8e3ee2d11d1977ad1313ba07718d03fde9c14ea4ae259667521979aad5a",
+      "bytes": 8002
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/partial_merge_probe.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Fpartial_merge_probe.py?datasetVersionNumber=8",
+      "sha256": "a773c17933b0879809010669ef05a29fa7e822b5639024f82ec1085d8ed6cdcb",
+      "bytes": 2371
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/replay_frontier_component.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Freplay_frontier_component.py?datasetVersionNumber=8",
+      "sha256": "49cdbdbcc485da1a933a538494b88e3396de96c90b8e876cd2c4f6b6533b5ac5",
+      "bytes": 5735
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/replay_history.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Freplay_history.py?datasetVersionNumber=8",
+      "sha256": "11b224236cc3b2c334980b9b773187fb11f2030db6c20f55cffb029066954ccc",
+      "bytes": 2374
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/compiler/trim_partial_tail.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fcompiler%2Ftrim_partial_tail.py?datasetVersionNumber=8",
+      "sha256": "c4634df1d807e3b5e1a9b8d411de7ad4d0519951c0b56e044bbdf227aeab2561",
+      "bytes": 3272
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fgenerate.py?datasetVersionNumber=8",
+      "sha256": "d1d1d635618d4c131b8d6574f72e278e8ae79afa8edea929d42c57d6050c5eb3",
+      "bytes": 3642
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/README.md",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2FREADME.md?datasetVersionNumber=8",
+      "sha256": "915d69a9ee94eeabed356aea21265431af0d810537e65de88492add4334c3b0d",
+      "bytes": 5825
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/README.txt",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2FREADME.txt?datasetVersionNumber=8",
+      "sha256": "e980864a9f91a4b64b5e25c69484d825d53b89476a19e2c1c3dd0ff2dba4c25f",
+      "bytes": 5114
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fbuild_config.json?datasetVersionNumber=8",
+      "sha256": "0752ed60eef19cb1b0948f18672b0f660a016cab10d4485d67a3c28425c09713",
+      "bytes": 27168
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fgenerate.py?datasetVersionNumber=8",
+      "sha256": "59678abdf7c10976724318e77fd0fb6f9fbe216ea0c0a229a7418952884b8cd8",
+      "bytes": 3397
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/provenance/base19_README.txt",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fprovenance%2Fbase19_README.txt?datasetVersionNumber=8",
+      "sha256": "9b665858e765df80b7c9bfd0930778a166d45b3cdcc1034b8d730c89872fa176",
+      "bytes": 5648
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/provenance/base19_build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fprovenance%2Fbase19_build_config.json?datasetVersionNumber=8",
+      "sha256": "62cbbe976854111ea498ff851a477db114aecec43a26cd906559e036e53f0414",
+      "bytes": 3077
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/provenance/base19_generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fprovenance%2Fbase19_generate.py?datasetVersionNumber=8",
+      "sha256": "973ea1ff5a75141228e7abfe39ba83f6accd29f29ed7bc35c77dc33d4204737b",
+      "bytes": 7556
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/provenance/base22_README.txt",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fprovenance%2Fbase22_README.txt?datasetVersionNumber=8",
+      "sha256": "02d418cc1694749184003c67cad57bca6a9ae6f1c82ee01b3973ee8f9a7bda0c",
+      "bytes": 4883
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/provenance/base22_build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fprovenance%2Fbase22_build_config.json?datasetVersionNumber=8",
+      "sha256": "05572934a2302e0a8120bf4e882cafbd8a0f9bff8794f8200426c2a7c6ed63d9",
+      "bytes": 13763
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/provenance/base22_generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fprovenance%2Fbase22_generate.py?datasetVersionNumber=8",
+      "sha256": "59678abdf7c10976724318e77fd0fb6f9fbe216ea0c0a229a7418952884b8cd8",
+      "bytes": 3397
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/provenance/base30_README.txt",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fprovenance%2Fbase30_README.txt?datasetVersionNumber=8",
+      "sha256": "f9f395a1ffa5c8063d5529121098f5368ece926fa7fad8d7e25af6eebe9bd3e2",
+      "bytes": 5560
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/provenance/base30_build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fprovenance%2Fbase30_build_config.json?datasetVersionNumber=8",
+      "sha256": "da0d5d1918e74b5d3c7369f4f6a32634f65970f86f98179cf5aee746f7166086",
+      "bytes": 25565
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/provenance/base30_generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fprovenance%2Fbase30_generate.py?datasetVersionNumber=8",
+      "sha256": "59678abdf7c10976724318e77fd0fb6f9fbe216ea0c0a229a7418952884b8cd8",
+      "bytes": 3397
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/radical_newton/cubic_build.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fradical_newton%2Fcubic_build.py?datasetVersionNumber=8",
+      "sha256": "8895c9dafb153d0ac0df8b72f308f33fd5197f114eedefc68983cd7502cf9e0a",
+      "bytes": 7679
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/round3_phase/merge_build.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fround3_phase%2Fmerge_build.py?datasetVersionNumber=8",
+      "sha256": "0433a31fe37b588545d2bee1f47f28a1bfdddcec25922dc75ac3d9840879a532",
+      "bytes": 4902
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/round4_root/build_shared_address.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fround4_root%2Fbuild_shared_address.py?datasetVersionNumber=8",
+      "sha256": "c2f4f4e42cee0bea3c5f13a28e508d471ebf1e7910fa05296d9964bbd33e990f",
+      "bytes": 3609
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/round5_phase/l6_exact.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fround5_phase%2Fl6_exact.py?datasetVersionNumber=8",
+      "sha256": "13fc62c3bb477f0364f12b270ec63d3ca9fd2c8ba76b77b802e6b91d4a8c576d",
+      "bytes": 11623
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/baseline/round6_memory/release189_generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fbaseline%2Fround6_memory%2Frelease189_generate.py?datasetVersionNumber=8",
+      "sha256": "7d7b12ef353f58aeec104a03ffd5a85e2ca2067da2e39e550d32e3a7bebe80e3",
+      "bytes": 3294
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_19p945_front38_source/invsqrt_verified_10412405_front38/source/generate.py",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_19p945_front38_source%2Finvsqrt_verified_10412405_front38%2Fsource%2Fgenerate.py?datasetVersionNumber=8",
+      "sha256": "bda0db6be6fb42668b042b92b24d3a720aa35f13d4271ad4da5198676a7875f8",
+      "bytes": 2981
+    },
+    {
+      "version": 8,
+      "path": "sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/provenance/invsqrt_20.032119x_verified/invsqrt_20.032119x_verified/build_config.json",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/sources%2Finvsqrt_20p056_verified_source%2Finvsqrt_20p056505_complete%2Fprovenance%2Finvsqrt_20.032119x_verified%2Finvsqrt_20.032119x_verified%2Fbuild_config.json?datasetVersionNumber=8",
+      "sha256": "1c7069f83804c6709d1bacd14825d5b6a5bad9957da3d0994ca26cdef3b0abce",
+      "bytes": 1232
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+Read-only source audit for PRA-320.
+
+mrmeows, qcc-1375-open-circuits versions 6 and 8:
+https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits/versions/6
+https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits/versions/8
+Licence: Apache-2.0, as recorded by the dataset and its LICENSE.
+
+The source map identifies downloaded reference source, not vendored generator
+code. Only the licence text is copied here. The accompanying inventory,
+dependency analysis and failed source-only invocation are Praxen audit evidence.
+No circuit, proof, synthesis certificate or angle replay is a build input.
+
+The audited signed_digit_helpers.py credits Sumit Chongder's v2 notebook:
+https://www.kaggle.com/code/sumitchongder/notebook2f196e646b
+Apache-2.0 as stated in the helper. Earlier Gluzdov/DePie/busyaprime lineage
+remains recorded in tasks/invsqrt/PROVENANCE.md and notices/10-invsqrt.txt.
