@@ -156,6 +156,14 @@ class DqiAdapter(TaskAdapter):
             "shots": shots,
         }
 
+    def reduced_shots(self) -> int | None:
+        """Reduced-stage shot count for the verifier memo key."""
+        return REDUCED_SHOTS
+
+    def full_shots(self) -> int | None:
+        """Full-stage shot count for the verifier memo key."""
+        return FULL_SHOTS
+
     def stage2_verify(self, bundle: CandidateBundle) -> dict[str, Any]:
         """Default verify entry: full official shots (feasibility only on PASS)."""
         return self.stage2_verify_full(bundle)
@@ -175,7 +183,7 @@ class DqiAdapter(TaskAdapter):
     def cost_fields(self, bundle: CandidateBundle, sample: dict[str, Any],
                     verified: dict[str, Any] | None) -> dict[str, Any]:
         """Resource + graded fields for ``combined_score`` / rich metrics."""
-        source = verified if verified and verified.get("feasible") else sample
+        source = verified if verified else sample
         return {
             "task": "dqi",
             "toffoli_count": source.get("toffoli_count", 0.0),

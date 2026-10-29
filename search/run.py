@@ -168,7 +168,8 @@ def run_smoke(task: str, repeats: int = 1) -> int:
         print(f"SMOKE FAIL: median stages 0+1+3 = {med['stages_0_1_3']:.3f}s >= 60s", file=sys.stderr)
         return 1
     if result["problems"]:
-        print(f"SMOKE WARN: problems={result['problems']}", file=sys.stderr)
+        print(f"SMOKE FAIL: problems={result['problems']}", file=sys.stderr)
+        return 1
     return 0
 
 

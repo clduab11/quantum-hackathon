@@ -45,7 +45,7 @@ class InvsqrtAdapter(TaskAdapter):
         while len(xs) < SAMPLE_SIZE:
             xs.add(rng.randint(1, max_x))
         ordered = np.array(sorted(xs), dtype=np.int64)
-        if os.environ.get("SEARCH_SMOKE") == "1" or report.get("smoke_package_sample"):
+        if report.get("smoke_package_sample"):
             # Smoke: structural sample only (package sample is the reference circuit).
             return {
                 "feasible": False,
@@ -113,8 +113,8 @@ class InvsqrtAdapter(TaskAdapter):
             "max_error_over_tol": 0.0 if ok else 9.0,
             "ancilla_dirty_fraction": 0.0,
             "phase_wrong_fraction": 0.0,
-            "toffoli_count": float(report.get("expected_toffoli") or proxy.get("static_toffoli") or 0.0),
-            "qubit_count": float(report.get("qubits") or proxy.get("qubits") or 0.0),
+            "toffoli_count": float(proxy.get("static_toffoli") or report.get("expected_toffoli") or 0.0),
+            "qubit_count": float(proxy.get("num_qubits") or report.get("qubits") or 0.0),
             "cost_c": float(report.get("cost_c") or report.get("expected_toffoli") or 0.0),
             "margin_min": float(report.get("margin_units") or proxy.get("min_margin_units") or 0.0),
             "verifier": proxy,
@@ -153,8 +153,8 @@ class InvsqrtAdapter(TaskAdapter):
             "max_error_over_tol": 0.0 if ok else 9.0,
             "ancilla_dirty_fraction": 0.0,
             "phase_wrong_fraction": 0.0,
-            "toffoli_count": float(report.get("expected_toffoli") or proxy.get("static_toffoli") or 0.0),
-            "qubit_count": float(report.get("qubits") or proxy.get("qubits") or 0.0),
+            "toffoli_count": float(proxy.get("static_toffoli") or report.get("expected_toffoli") or 0.0),
+            "qubit_count": float(proxy.get("num_qubits") or report.get("qubits") or 0.0),
             "cost_c": float(report.get("cost_c") or report.get("expected_toffoli") or 0.0),
             "margin_min": float(report.get("margin_units") or proxy.get("min_margin_units") or 0.0),
             "verifier": proxy,
@@ -168,7 +168,7 @@ class InvsqrtAdapter(TaskAdapter):
     def cost_fields(self, bundle: CandidateBundle, sample: dict[str, Any],
                     verified: dict[str, Any] | None) -> dict[str, Any]:
         """Map sample/verify outputs into Deb-layered fitness fields."""
-        source = verified if verified and verified.get("feasible") else sample
+        source = verified if verified else sample
         return {
             "task": "invsqrt",
             "toffoli_count": source.get("toffoli_count", 0.0),

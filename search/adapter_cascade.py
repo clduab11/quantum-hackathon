@@ -13,6 +13,8 @@ Mirrors the dfthcsos ``evaluator.py`` cascade contract:
 from __future__ import annotations
 
 import os
+import shutil
+import traceback
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -52,6 +54,53 @@ def _state_key(program_path: str, task: str) -> str:
     return f"{task}:{program_path}"
 
 
+def _cleanup(program_path: str, task: str) -> None:
+    """Remove cascade state and delete the owned stage0 build directory."""
+    state = _STATE.pop(_state_key(str(program_path), task), None)
+    if state is None:
+        return
+    bundle = state.get("bundle")
+    outdir = getattr(bundle, "outdir", None) if bundle is not None else None
+    if outdir is not None:
+        shutil.rmtree(outdir, ignore_errors=True)
+
+
+def _failed_result(program_path: str, task: str, stage: int, exc: BaseException) -> EvaluationResult:
+    """Return a zero score after an evaluator exception; never re-raise."""
+    del exc
+    _cleanup(program_path, task)
+    metrics = {
+        "combined_score": 0.0,
+        "ratio": 0.0,
+        "predicted_ratio": 0.0,
+        "q": 0.0,
+        "t": 0.0,
+        "q_bin": 0.0,
+        "t_bin": 0.0,
+        "stage1_passed": 0.0,
+        "stage2_passed": 0.0,
+        "stage3_passed": 0.0,
+        "stage_reached": float(stage),
+        "feasible": 0.0,
+        "fraction_correct": 0.0,
+        "max_error_over_tol": 9.0,
+        "ancilla_dirty_fraction": 0.0,
+        "phase_wrong_fraction": 0.0,
+        "toffoli_count": 0.0,
+        "qubit_count": 0.0,
+    }
+    return EvaluationResult(
+        metrics=metrics,
+        artifacts={
+            "summary": (
+                f"task={task} stage {stage}: the evaluator failed; "
+                "this is not the program's fault"
+            ),
+            "evaluator_traceback": traceback.format_exc()[-3000:],
+        },
+    )
+
+
 def _score_fields(task: str, sample: dict[str, Any], verified: dict[str, Any] | None,
                   adapter: TaskAdapter, bundle: CandidateBundle) -> dict[str, Any]:
     """Build cost fields; force infeasible when only a reduced result is present."""
@@ -88,101 +137,140 @@ def _to_result(task: str, fields: dict[str, Any], *, stage_reached: int,
 def evaluate_stage1(program_path: str, task: str | None = None) -> EvaluationResult:
     """Build the candidate and run the stage-1 sample; never marks feasible."""
     task = _task_name(task)
-    adapter = _adapter_for(task)
-    program = Path(program_path)
-    bundle = adapter.stage0_build(program)
-    sample = {"feasible": False, "fraction_correct": 0.0, "max_error_over_tol": 9.0,
-              "ancilla_dirty_fraction": 1.0, "phase_wrong_fraction": 1.0,
-              "toffoli_count": 1.0, "qubit_count": 1.0}
-    if not bundle.problems:
-        sample = adapter.stage1_sample(bundle, generation_seed(0))
-        sample["feasible"] = False
-    fields = _score_fields(task, sample, None, adapter, bundle)
-    state = {
-        "bundle": bundle,
-        "sample": sample,
-        "reduced": None,
-        "verified": None,
-        "adapter_task": task,
-    }
-    _STATE[_state_key(str(program), task)] = state
-    result = _to_result(task, fields, stage_reached=1, problems=list(bundle.problems),
-                        artifacts={"report": bundle.report})
-    return result
+    try:
+        adapter = _adapter_for(task)
+        program = Path(program_path)
+        bundle = adapter.stage0_build(program)
+        sample = {"feasible": False, "fraction_correct": 0.0, "max_error_over_tol": 9.0,
+                  "ancilla_dirty_fraction": 1.0, "phase_wrong_fraction": 1.0,
+                  "toffoli_count": 1.0, "qubit_count": 1.0}
+        if not bundle.problems:
+            sample = adapter.stage1_sample(bundle, generation_seed(0))
+            sample["feasible"] = False
+        fields = _score_fields(task, sample, None, adapter, bundle)
+        state = {
+            "bundle": bundle,
+            "sample": sample,
+            "reduced": None,
+            "verified": None,
+            "adapter_task": task,
+        }
+        _STATE[_state_key(str(program), task)] = state
+        result = _to_result(task, fields, stage_reached=1, problems=list(bundle.problems),
+                            artifacts={"report": bundle.report})
+        if result.metrics["combined_score"] < STAGE1_THRESHOLD:
+            _cleanup(str(program), task)
+        return result
+    except Exception as exc:  # noqa: BLE001
+        return _failed_result(program_path, task, 1, exc)
 
 
 def evaluate_stage2(program_path: str, task: str | None = None) -> EvaluationResult:
     """Reduced / proxy verify. Never marks feasible; must clear ``STAGE2_THRESHOLD``."""
     task = _task_name(task)
-    key = _state_key(str(program_path), task)
-    state = _STATE.get(key)
-    if state is None:
-        evaluate_stage1(program_path, task=task)
-        state = _STATE[key]
-    adapter = _adapter_for(task)
-    bundle: CandidateBundle = state["bundle"]
-    sample = state["sample"]
-    if bundle.problems:
-        fields = _score_fields(task, sample, None, adapter, bundle)
-        return _to_result(task, fields, stage_reached=1, problems=list(bundle.problems))
+    try:
+        key = _state_key(str(program_path), task)
+        state = _STATE.get(key)
+        if state is None:
+            evaluate_stage1(program_path, task=task)
+            state = _STATE.get(key)
+            if state is None:
+                # Stage 1 failed and cleaned up; re-run would loop. Return zero.
+                return _to_result(
+                    task,
+                    {"task": task, "feasible": False, "fraction_correct": 0.0,
+                     "max_error_over_tol": 9.0, "ancilla_dirty_fraction": 0.0,
+                     "phase_wrong_fraction": 0.0, "toffoli_count": 1.0, "qubit_count": 1.0},
+                    stage_reached=1,
+                    problems=["stage1 did not retain state"],
+                )
+        adapter = _adapter_for(task)
+        bundle: CandidateBundle = state["bundle"]
+        sample = state["sample"]
+        if bundle.problems:
+            fields = _score_fields(task, sample, None, adapter, bundle)
+            result = _to_result(task, fields, stage_reached=1, problems=list(bundle.problems))
+            _cleanup(program_path, task)
+            return result
 
-    mode = "smoke" if (bundle.report or {}).get("smoke_package_sample") else "full"
-    memo_key = verification_key(
-        task=task,
-        mode=mode,
-        circuit_fingerprint=adapter.fingerprint(bundle) + b"|reduced",
-        shots=None,
-        verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "reduced"}),
-        submission_id=adapter.submission_identity(bundle),
-    )
-    cached = _MEMO.get(memo_key)
-    if cached is not None:
-        reduced = cached
-    else:
-        reduced = adapter.stage2_verify_reduced(bundle)
-        reduced = dict(reduced)
-        reduced["feasible"] = False
-        _MEMO.set(memo_key, reduced)
-    state["reduced"] = reduced
-    fields = _score_fields(task, sample, reduced, adapter, bundle)
-    return _to_result(task, fields, stage_reached=2, problems=[],
-                      artifacts={"reduced": reduced})
+        mode = "smoke" if (bundle.report or {}).get("smoke_package_sample") else "full"
+        memo_key = verification_key(
+            task=task,
+            mode=mode,
+            circuit_fingerprint=adapter.fingerprint(bundle) + b"|reduced",
+            shots=adapter.reduced_shots(),
+            verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "reduced"}),
+            submission_id=adapter.submission_identity(bundle),
+        )
+        cached = _MEMO.get(memo_key)
+        if cached is not None:
+            reduced = cached
+        else:
+            reduced = adapter.stage2_verify_reduced(bundle)
+            reduced = dict(reduced)
+            reduced["feasible"] = False
+            _MEMO.set(memo_key, reduced)
+        state["reduced"] = reduced
+        fields = _score_fields(task, sample, reduced, adapter, bundle)
+        result = _to_result(task, fields, stage_reached=2, problems=[],
+                            artifacts={"reduced": reduced})
+        if result.metrics["combined_score"] < STAGE2_THRESHOLD:
+            _cleanup(program_path, task)
+        return result
+    except Exception as exc:  # noqa: BLE001
+        return _failed_result(program_path, task, 2, exc)
 
 
 def evaluate_stage3(program_path: str, task: str | None = None) -> EvaluationResult:
     """Full official verify; sole stage that may mark the candidate feasible."""
     task = _task_name(task)
-    key = _state_key(str(program_path), task)
-    state = _STATE.get(key)
-    if state is None or state.get("reduced") is None:
-        evaluate_stage2(program_path, task=task)
-        state = _STATE[key]
-    adapter = _adapter_for(task)
-    bundle: CandidateBundle = state["bundle"]
-    sample = state["sample"]
-    if bundle.problems:
-        fields = _score_fields(task, sample, None, adapter, bundle)
-        return _to_result(task, fields, stage_reached=1, problems=list(bundle.problems))
+    try:
+        key = _state_key(str(program_path), task)
+        state = _STATE.get(key)
+        if state is None or state.get("reduced") is None:
+            evaluate_stage2(program_path, task=task)
+            state = _STATE.get(key)
+            if state is None:
+                return _to_result(
+                    task,
+                    {"task": task, "feasible": False, "fraction_correct": 0.0,
+                     "max_error_over_tol": 9.0, "ancilla_dirty_fraction": 0.0,
+                     "phase_wrong_fraction": 0.0, "toffoli_count": 1.0, "qubit_count": 1.0},
+                    stage_reached=2,
+                    problems=["stage2 did not retain state"],
+                )
+        adapter = _adapter_for(task)
+        bundle: CandidateBundle = state["bundle"]
+        sample = state["sample"]
+        if bundle.problems:
+            fields = _score_fields(task, sample, None, adapter, bundle)
+            result = _to_result(task, fields, stage_reached=1, problems=list(bundle.problems))
+            _cleanup(program_path, task)
+            return result
 
-    mode = "smoke" if (bundle.report or {}).get("smoke_package_sample") else "full"
-    memo_key = verification_key(
-        task=task,
-        mode=mode,
-        circuit_fingerprint=adapter.fingerprint(bundle) + b"|full",
-        shots=None,
-        verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "full"}),
-        submission_id=adapter.submission_identity(bundle),
-    )
-    cached = _MEMO.get(memo_key)
-    if cached is not None:
-        verified = cached
-    else:
-        verified = adapter.stage2_verify_full(bundle)
-        _MEMO.set(memo_key, verified)
-    state["verified"] = verified
-    fields = _score_fields(task, sample, verified, adapter, bundle)
-    return _to_result(task, fields, stage_reached=3, problems=[],
-                      artifacts={"verified": verified})
+        mode = "smoke" if (bundle.report or {}).get("smoke_package_sample") else "full"
+        memo_key = verification_key(
+            task=task,
+            mode=mode,
+            circuit_fingerprint=adapter.fingerprint(bundle) + b"|full",
+            shots=adapter.full_shots(),
+            verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "full"}),
+            submission_id=adapter.submission_identity(bundle),
+        )
+        cached = _MEMO.get(memo_key)
+        if cached is not None:
+            verified = cached
+        else:
+            verified = adapter.stage2_verify_full(bundle)
+            _MEMO.set(memo_key, verified)
+        state["verified"] = verified
+        fields = _score_fields(task, sample, verified, adapter, bundle)
+        result = _to_result(task, fields, stage_reached=3, problems=[],
+                            artifacts={"verified": verified})
+        _cleanup(program_path, task)
+        return result
+    except Exception as exc:  # noqa: BLE001
+        return _failed_result(program_path, task, 3, exc)
 
 
 def evaluate(program_path: str, task: str | None = None) -> EvaluationResult:

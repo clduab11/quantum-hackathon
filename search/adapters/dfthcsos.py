@@ -250,6 +250,16 @@ class DfthcsosAdapter(TaskAdapter):
             "verification_stage": "full",
         }
 
+    def reduced_shots(self) -> int | None:
+        """Reduced-stage shot count for the verifier memo key."""
+        from search import evaluator as ev
+        return ev.REDUCED_SHOTS
+
+    def full_shots(self) -> int | None:
+        """Full-stage shot count for the verifier memo key."""
+        from search import evaluator as ev
+        return ev.FULL_SHOTS
+
     def stage2_verify(self, bundle: CandidateBundle) -> dict[str, Any]:
         """Default verify entry delegates to the full official path."""
         return self.stage2_verify_full(bundle)
@@ -257,7 +267,7 @@ class DfthcsosAdapter(TaskAdapter):
     def cost_fields(self, bundle: CandidateBundle, sample: dict[str, Any],
                     verified: dict[str, Any] | None) -> dict[str, Any]:
         """Map sample/verify outputs into Deb-layered fitness fields."""
-        source = verified if verified and verified.get("feasible") else sample
+        source = verified if verified else sample
         return {
             "task": "dfthcsos",
             "toffoli_count": source.get("toffoli_count", 0.0),

@@ -73,7 +73,7 @@ these files are ports and new code, not verbatim notebook cells.
 | `generate.py` | the modules above | port; coefficient provenance: `regenerated; dataset-adapted calibration; licence unresolved` | none | Entry point. Writes only `invsqrt.kmb`. SHA-256 `9ccdffd0cba53a097c78d99d833b9bcc37e9be387f62ed723a8173cd2cdf498c` |
 | `reference.py` | Google's `verifiers/invsqrt/nr_reference_circuit.py` (competition package) | Apache-2.0 (Google) | the script, attributed | Port with `--out DIR`; builds the reference circuit shipped as submission-001, SHA-256 `e2bf8eb64350a4460a271fc7f1d591ef125b1e276377e9a0f64b96ab3ca321e1`. G5 generator for `configs/gates/reference.yaml` only (PRA-211). Not a parent of the candidate and not used by `generate.py` |
 | `mirror.py` | the integer model | Apache-2.0 (this repository) | none | G2 certificate. SHA-256 `44f9928fe54f84c45977e9cfe637e7ad2068ab7cda7dd9fb2949a6666cd1513d` |
-| `gates.py` | the ledger hook contract | Apache-2.0 (this repository) | none | G1/G2 hooks. Not a method parent. SHA-256 `3f569d70c97f3c41f7b627050e7a40494d54c546da196788c1bc08f55162890d` |
+| `gates.py` | the ledger hook contract | Apache-2.0 (this repository) | none | G1/G2 hooks. Not a method parent. SHA-256 `d43b4e21cf1fa5aa7ae1519f6378a981538b769e3d54a2f6eb40b38f73d38265` |
 
 ## Public-source evidence (PRA-218, 2026-10-25)
 

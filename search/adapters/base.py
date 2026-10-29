@@ -214,6 +214,14 @@ class TaskAdapter:
         """Settings that can change a verification result (salt, workers, …)."""
         return {}
 
+    def reduced_shots(self) -> int | None:
+        """Shot count bound into the reduced-stage verifier memo key, if any."""
+        return None
+
+    def full_shots(self) -> int | None:
+        """Shot count bound into the full-stage verifier memo key, if any."""
+        return None
+
     def stage2_verify_reduced(self, bundle: CandidateBundle) -> dict[str, Any]:
         """Cheap / reduced-shot proxy. Must never set ``feasible`` True."""
         result = self.stage2_verify(bundle)

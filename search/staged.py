@@ -43,18 +43,6 @@ def _is_smoke_bundle(bundle: Any) -> bool:
     return bool(report.get("smoke_package_sample"))
 
 
-def _memo_key(adapter: TaskAdapter, bundle: Any, *, mode: str, shots: int | None) -> bytes:
-    """Bind task, mode, shots, settings, submission identity, and circuit fingerprint."""
-    return verification_key(
-        task=adapter.task,
-        mode=mode,
-        circuit_fingerprint=adapter.fingerprint(bundle),
-        shots=shots,
-        verifier_settings=settings_digest(adapter.verifier_settings()),
-        submission_id=adapter.submission_identity(bundle),
-    )
-
-
 def evaluate_candidate(
     task: str,
     program_path: Path | None = None,
@@ -118,13 +106,12 @@ def evaluate_candidate(
 
         if run_stage2:
             t2 = time.perf_counter()
-            reduced_key = _memo_key(adapter, bundle, mode=mode, shots=-1)  # -1 marks reduced slot
             # Distinguish reduced vs full inside the mode namespace via settings suffix in key:
             reduced_key = verification_key(
                 task=adapter.task,
                 mode=mode,
                 circuit_fingerprint=adapter.fingerprint(bundle) + b"|reduced",
-                shots=None,
+                shots=adapter.reduced_shots(),
                 verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "reduced"}),
                 submission_id=adapter.submission_identity(bundle),
             )
@@ -151,7 +138,7 @@ def evaluate_candidate(
                     task=adapter.task,
                     mode=mode,
                     circuit_fingerprint=adapter.fingerprint(bundle) + b"|full",
-                    shots=None,
+                    shots=adapter.full_shots(),
                     verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "full"}),
                     submission_id=adapter.submission_identity(bundle),
                 )
