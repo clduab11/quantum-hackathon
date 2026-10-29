@@ -28,7 +28,7 @@ Iters 009–010 not shown in the captured screenshots.
 |------|-----------------|---|----------|-------|
 | baseline | `7beea291…9655f6` | 889 | 487,331 | vendored pin |
 | e001 | `21f8484f…1c9f` | 889 | 487,331 | static T unchanged (push_condition); mean ΔT pending score_local |
-| e002 | `210c7e4c…0f2a` | **901** | **496,522** | Q matches hengck (+12). Static T still +9,191 vs baseline 487,331 (mean ΔT pending score_local). linear square + W-park + Di snapshot. |
+| e002 | see e002_build.json | **901** | see receipt | linear square24 + Di snapshot; Q=901 ΔQ+12; T_static still above baseline |
 
 ## Classical projective oracle (edit 002)
 
