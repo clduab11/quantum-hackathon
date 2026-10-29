@@ -1,0 +1,18 @@
+{
+  "edit": "e002",
+  "hengck_iter": "004",
+  "expected_dT_mean": -15259,
+  "expected_dQ": 12,
+  "expected_Q": 901,
+  "baseline_T_static": 487331,
+  "baseline_Q": 889,
+  "e002_circuit_sha256": "210c7e4c8e1e3872c1fc598974e9912e6f4661cf127e2fe1ab1a987964d30f2a",
+  "e002_T_static": 496522,
+  "e002_Q": 901,
+  "e002_bytes": 515630895,
+  "build_seconds": 112.89945329894545,
+  "stages_extract_Q": 901,
+  "stages_unextract_Q": 901,
+  "status": "meets_Q",
+  "note": "linear square + W park around ladder + Di classical snapshot materialize_rev"
+}
