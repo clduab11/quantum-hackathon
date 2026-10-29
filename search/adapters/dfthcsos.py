@@ -22,6 +22,7 @@ class DfthcsosAdapter(TaskAdapter):
 
     def stage0_build(self, program_path: Path, outdir: Path | None = None,
                      timeout: float = 420.0) -> CandidateBundle:
+        """Build the chemistry family, with a smoke package-sample shortcut."""
         if os.environ.get("SEARCH_SMOKE") == "1":
             import shutil
             import tempfile
@@ -58,6 +59,7 @@ class DfthcsosAdapter(TaskAdapter):
         return super().stage0_build(program_path, outdir=outdir, timeout=timeout)
 
     def factor_config(self) -> dict[str, Any]:
+        """Load and hash-check the declared factorization input."""
         path = Path(os.environ.get("SEARCH_FACTOR_CONFIG", SEARCH_DIR / "factor.yaml"))
         raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         os.environ.setdefault("VQCC_DATA", str(DEFAULT_DATA))
@@ -84,6 +86,7 @@ class DfthcsosAdapter(TaskAdapter):
         return json.loads(stdout)
 
     def static_checks(self, bundle: CandidateBundle) -> list[str]:
+        """Enforce dfthcsos layout, qubit cap, and required output files."""
         problems = super().static_checks(bundle)
         report = bundle.report or {}
         circuits = report.get("circuits") or []
@@ -109,11 +112,19 @@ class DfthcsosAdapter(TaskAdapter):
             problems.append(f"missing output files: {missing}")
         return problems
 
+    def submission_identity(self, bundle: CandidateBundle) -> str:
+        """SHA-256 of the chemistry ``submission.npz`` when present."""
+        path = bundle.outdir / "dfthcsos" / "submission.npz"
+        if path.is_file():
+            return sha256_file(path)
+        return ""
+
     def stage1_sample(self, bundle: CandidateBundle, seed: int) -> dict[str, Any]:
         """Cheap static G2 proxy + seeded shot subsample; never marks feasible."""
         del seed  # dfthcsos proxy is deterministic; seed reserved for future shot sampling
         report = bundle.report or {}
-        if os.environ.get("SEARCH_SMOKE") == "1" or report.get("smoke_package_sample"):
+        # Bundle flag alone controls smoke shortcuts (not the process env).
+        if report.get("smoke_package_sample"):
             circuits = report.get("circuits") or []
             t = float(sum(int(c.get("toffoli_like_static") or 0) for c in circuits))
             q = float(sum(int(c.get("num_qubits") or 0) for c in circuits))
@@ -151,8 +162,55 @@ class DfthcsosAdapter(TaskAdapter):
             "proxy": proxy,
         }
 
-    def stage2_verify(self, bundle: CandidateBundle) -> dict[str, Any]:
-        if os.environ.get("SEARCH_SMOKE") == "1":
+    def stage2_verify_reduced(self, bundle: CandidateBundle) -> dict[str, Any]:
+        """Reduced-shot official verify; never sets ``feasible``."""
+        report = bundle.report or {}
+        if report.get("smoke_package_sample"):
+            sample = self.stage1_sample(bundle, seed=0)
+            ok = sample.get("fraction_correct", 0.0) >= 1.0
+            return {
+                "feasible": False,
+                "fraction_correct": sample.get("fraction_correct", 0.0),
+                "max_error_over_tol": sample.get("max_error_over_tol", 0.0),
+                "ancilla_dirty_fraction": 0.0,
+                "phase_wrong_fraction": 0.0,
+                "toffoli_count": sample.get("toffoli_count", 0.0),
+                "qubit_count": sample.get("qubit_count", 0.0),
+                "lambda_eff": sample.get("lambda_eff", 48.0),
+                "error_1": sample.get("error_1", 0.0),
+                "error_2": sample.get("error_2", 0.0),
+                "E_gap": 0.0,
+                "verifier": {"status": "PASS" if ok else "FAIL", "smoke": True, "stage": "reduced"},
+                "verification_stage": "reduced",
+                "reduced_pass": ok,
+            }
+        from search import evaluator as ev
+
+        chemistry = bundle.outdir / "dfthcsos"
+        result = ev.verify_family_isolated(chemistry, ev.REDUCED_SHOTS)
+        pass_ok = result.get("status") == "PASS"
+        metrics = result.get("metrics") or {}
+        return {
+            "feasible": False,
+            "fraction_correct": 0.99 if pass_ok else 0.0,
+            "max_error_over_tol": 1.0,
+            "ancilla_dirty_fraction": 0.0,
+            "phase_wrong_fraction": 0.0,
+            "toffoli_count": float(result.get("toffoli_count") or 0.0),
+            "qubit_count": float(result.get("num_qubits") or 0.0),
+            "lambda_eff": float(result.get("lambda_eff") or 0.0),
+            "error_1": float(metrics.get("error_1") or 0.0),
+            "error_2": float(metrics.get("error_2") or 0.0),
+            "E_gap": float(metrics.get("E_gap") or metrics.get("e_gap") or 0.0),
+            "verifier": result,
+            "verification_stage": "reduced",
+            "reduced_pass": pass_ok,
+        }
+
+    def stage2_verify_full(self, bundle: CandidateBundle) -> dict[str, Any]:
+        """Full official verify (64 shots/address); sole feasibility arbiter."""
+        report = bundle.report or {}
+        if report.get("smoke_package_sample"):
             sample = self.stage1_sample(bundle, seed=0)
             ok = sample.get("fraction_correct", 0.0) >= 1.0
             return {
@@ -167,7 +225,8 @@ class DfthcsosAdapter(TaskAdapter):
                 "error_1": sample.get("error_1", 0.0),
                 "error_2": sample.get("error_2", 0.0),
                 "E_gap": 0.0,
-                "verifier": {"status": "PASS" if ok else "FAIL", "smoke": True},
+                "verifier": {"status": "PASS" if ok else "FAIL", "smoke": True, "stage": "full"},
+                "verification_stage": "full",
             }
         from search import evaluator as ev
 
@@ -188,10 +247,16 @@ class DfthcsosAdapter(TaskAdapter):
             "error_2": float(metrics.get("error_2") or 0.0),
             "E_gap": float(metrics.get("E_gap") or metrics.get("e_gap") or 0.0),
             "verifier": result,
+            "verification_stage": "full",
         }
+
+    def stage2_verify(self, bundle: CandidateBundle) -> dict[str, Any]:
+        """Default verify entry delegates to the full official path."""
+        return self.stage2_verify_full(bundle)
 
     def cost_fields(self, bundle: CandidateBundle, sample: dict[str, Any],
                     verified: dict[str, Any] | None) -> dict[str, Any]:
+        """Map sample/verify outputs into Deb-layered fitness fields."""
         source = verified if verified and verified.get("feasible") else sample
         return {
             "task": "dfthcsos",

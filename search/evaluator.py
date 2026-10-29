@@ -52,7 +52,7 @@ REPO_ROOT = SEARCH_DIR.parent
 if str(REPO_ROOT) not in sys.path:  # `tasks.*` imports, whether run as a script or inside an OpenEvolve worker
     sys.path.insert(0, str(REPO_ROOT))
 from search.fitness import combined_score as dense_combined_score, log_safe  # noqa: E402
-from search.memo import VerifierMemo  # noqa: E402
+from search.memo import VerifierMemo, settings_digest, verification_key  # noqa: E402
 
 DEFAULT_DATA = "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation"
 _VERIFY_MEMO = VerifierMemo()
@@ -77,7 +77,10 @@ MAX_STATIC_TOFFOLI = int(os.environ.get("SEARCH_MAX_STATIC_TOFFOLI", str(400_000
 # Mirror of evaluator.cascade_thresholds in config_*.yaml; used only to clean up build outputs when
 # OpenEvolve will not call the next stage.
 STAGE1_THRESHOLD = 0.05
-STAGE2_THRESHOLD = 0.5  # Deb feasible floor; cascade mirrors config_*.yaml
+# Must sit below the reduced-PASS infeasible ceiling (0.5/1.01 ≈ 0.495) so a
+# reduced official PASS advances the cascade into stage 3 (full verifier). The
+# Deb feasible floor remains 0.5; only the cascade gate is lower.
+STAGE2_THRESHOLD = 0.49
 STALE_AFTER_SECONDS = 6 * 3600
 
 
@@ -85,6 +88,7 @@ STALE_AFTER_SECONDS = 6 * 3600
 
 
 def sha256_file(path: Path) -> str:
+    """Return the hex SHA-256 digest of a file."""
     digest = hashlib.sha256()
     with Path(path).open("rb") as stream:
         for block in iter(lambda: stream.read(1 << 20), b""):
@@ -93,6 +97,7 @@ def sha256_file(path: Path) -> str:
 
 
 def scratch_root() -> Path:
+    """Return the scratch directory for build outputs."""
     root = Path(os.environ.get("SEARCH_SCRATCH", tempfile.gettempdir()))
     root.mkdir(parents=True, exist_ok=True)
     return root
@@ -150,11 +155,13 @@ def num(value: Any, default: float = 0.0) -> float:
 
 
 def compact(value: Any, limit: int = 6000) -> str:
+    """JSON-or-text truncate a value for OpenEvolve artifacts."""
     text = value if isinstance(value, str) else json.dumps(_finite(value), sort_keys=True, default=str)
     return text if len(text) <= limit else text[:limit] + " ...(truncated)"
 
 
 def extract_notes(code: str) -> str:
+    """Pull the NOTES triple-quoted block from a program."""
     match = re.search(r'NOTES\s*=\s*"""(.*?)"""', code, re.DOTALL)
     return match.group(1).strip() if match else ""
 
@@ -300,6 +307,7 @@ def static_checks(build: Build) -> None:
 
 
 def _family_fingerprint(chemistry: Path) -> bytes:
+    """Stable fingerprint of every file under the chemistry dir."""
     parts = []
     for path in sorted(Path(chemistry).rglob("*")):
         if path.is_file():
@@ -308,9 +316,25 @@ def _family_fingerprint(chemistry: Path) -> bytes:
     return b"\0".join(parts)
 
 
+def _submission_identity(chemistry: Path) -> str:
+    """SHA-256 of ``submission.npz`` when present; empty otherwise."""
+    path = Path(chemistry) / "submission.npz"
+    if path.is_file():
+        return sha256_file(path)
+    return ""
+
+
 def verify_family_isolated(chemistry: Path, shots_per_address: int, timeout: float = VERIFY_TIMEOUT) -> dict[str, Any]:
     """``verify_family`` in a child process with a hard timeout (OpenEvolve cannot cancel a thread)."""
-    key = _family_fingerprint(chemistry) + f":{shots_per_address}".encode("ascii")
+    mode = "smoke" if os.environ.get("SEARCH_SMOKE") == "1" else "full"
+    key = verification_key(
+        task="dfthcsos",
+        mode=mode,
+        circuit_fingerprint=_family_fingerprint(chemistry),
+        shots=int(shots_per_address),
+        verifier_settings=settings_digest({"salt": SALT, "timeout": timeout}),
+        submission_id=_submission_identity(chemistry),
+    )
     cached = _VERIFY_MEMO.get(key)
     if cached is not None:
         hit = dict(cached)
@@ -404,7 +428,9 @@ def score_policy(static_ok: bool, predicted_ratio: float | None,
     res = {
         "feasible": False,
         "fraction_correct": fraction,
-        "max_error_over_tol": 0.0 if fraction >= 0.99 else 2.0,
+        # Keep max-error at the graded floor (1.0 → violation 0) so fraction_correct
+        # can differentiate static-only candidates; a hard 2.0 masked them all.
+        "max_error_over_tol": 1.0,
         "ancilla_dirty_fraction": 0.0 if static_ok else 1.0,
         "phase_wrong_fraction": 0.0 if static_ok else 1.0,
     }
@@ -417,6 +443,7 @@ def score_policy(static_ok: bool, predicted_ratio: float | None,
 
 
 def assemble(build: Build) -> EvaluationResult:
+    """Build metrics and artifacts from a Build across stages 1–3."""
     proxy = build.proxy or {}
     predicted = proxy.get("predicted_ratio")
     source = None
@@ -533,6 +560,7 @@ def discard(build: Build) -> None:
 
 
 def _build_for(program_path: str) -> Build:
+    """Return a cached Build for ``program_path``, building if needed."""
     build = _BUILDS.get(str(program_path))
     if build is None or not build.outdir.exists():
         build = run_program(program_path)
@@ -562,6 +590,7 @@ def _failed_result(program_path: str, stage: int, exc: BaseException) -> Evaluat
 
 
 def evaluate_stage1(program_path: str) -> EvaluationResult:
+    """OpenEvolve stage 1: build + static proxy."""
     try:
         sweep_stale_outputs()
         build = _build_for(program_path)
@@ -575,6 +604,7 @@ def evaluate_stage1(program_path: str) -> EvaluationResult:
 
 
 def evaluate_stage2(program_path: str) -> EvaluationResult:
+    """OpenEvolve stage 2: reduced official verifier."""
     try:
         build = _build_for(program_path)
         if not build.static_ok:
@@ -594,6 +624,7 @@ def evaluate_stage2(program_path: str) -> EvaluationResult:
 
 
 def evaluate_stage3(program_path: str) -> EvaluationResult:
+    """OpenEvolve stage 3: full official verifier."""
     try:
         build = _build_for(program_path)
         if build.static_ok:
@@ -623,6 +654,7 @@ def evaluate(program_path: str) -> EvaluationResult:
 
 
 def main(argv: list[str] | None = None) -> int:
+    """CLI entry for evaluating one program or a verify-json child."""
     argv = sys.argv[1:] if argv is None else argv
     if argv[:1] == ["--verify-json"]:  # child process of verify_family_isolated
         print(json.dumps(verify_family(Path(argv[1]), int(argv[2])), default=str))

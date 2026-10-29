@@ -58,7 +58,7 @@ evaluator:
   timeout: 900
   max_retries: 0
   cascade_evaluation: true
-  cascade_thresholds: [0.05, 0.5]   # stage2 needs a near-feasible sample; feasible band starts at 0.5
+  cascade_thresholds: [0.05, 0.49]  # below reduced-PASS ceiling (~0.495); feasible band still starts at 0.5
   parallel_evaluations: 4       # = concurrent Codex turns and verifier runs (16 cores, 27 GB)
   enable_artifacts: true
   use_llm_feedback: false

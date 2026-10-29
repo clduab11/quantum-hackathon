@@ -22,10 +22,12 @@ TASK_LOG_COST = {
 
 
 def clip(value: float, low: float, high: float) -> float:
+    """Clamp ``value`` into ``[low, high]``."""
     return low if value < low else high if value > high else value
 
 
 def _finite(value: Any, default: float = 0.0) -> float:
+    """Coerce ``value`` to a finite float, else ``default``."""
     try:
         result = float(value)
     except (TypeError, ValueError):
@@ -34,6 +36,7 @@ def _finite(value: Any, default: float = 0.0) -> float:
 
 
 def log_safe(value: Any, floor: float = 1e-12) -> float:
+    """Natural log of ``value``, floored so missing/zero inputs stay defined."""
     return math.log(max(_finite(value, floor), floor))
 
 
@@ -52,14 +55,19 @@ def graded_violation(res: Mapping[str, Any]) -> float:
 
 
 def log_cost_terms(task: str, res: Mapping[str, Any]) -> dict[str, float]:
-    """Fill the log-cost ingredients the task needs; missing keys default to 0."""
+    """Fill the log-cost ingredients the task needs; missing keys default safely.
+
+    ``lambda_eff`` is floored at 1.0 after the finite-value fallback so a missing,
+    zero, or invalid value cannot improve the feasible score.
+    """
     toffoli = max(_finite(res.get("toffoli_count"), 0.0), 1.0)
     qubits = max(_finite(res.get("qubit_count", res.get("num_qubits")), 0.0), 1.0)
+    lambda_eff = max(_finite(res.get("lambda_eff"), 1.0), 1.0)
     out = {
         "log_toffoli": log_safe(toffoli),
         "log_qubits": log_safe(qubits),
         "log_cost_c": log_safe(res.get("cost_c", toffoli)),
-        "log_lambda_eff": log_safe(res.get("lambda_eff", 1.0)),
+        "log_lambda_eff": log_safe(lambda_eff),
         "log_r_eps": log_safe(res.get("r_eps", res.get("R_eps", 1.0))),
     }
     # Allow callers to override any term explicitly.
@@ -72,6 +80,7 @@ def log_cost_terms(task: str, res: Mapping[str, Any]) -> dict[str, float]:
 
 
 def task_log_cost(task: str, res: Mapping[str, Any]) -> float:
+    """Sum the task's log-cost terms from ``log_cost_terms``."""
     terms = log_cost_terms(task, res)
     return sum(terms[name] for name in TASK_LOG_COST[task])
 

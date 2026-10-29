@@ -43,6 +43,7 @@ import providers  # noqa: E402
 
 
 def checkpoint_number(path: Path) -> int | None:
+    """Parse the integer suffix of a checkpoint directory name."""
     tail = path.name.rsplit("_", 1)[-1]
     return int(tail) if path.name.startswith("checkpoint_") and tail.isdigit() else None
 
@@ -157,8 +158,8 @@ def run_smoke(task: str, repeats: int = 1) -> int:
     med = result["median_seconds"]
     print(json.dumps(result, indent=1, default=str))
     print("\nTiming table (median seconds)")
-    print(f"| task | stage0 | stage1 | stage3 | 0+1+3 | combined_score |")
-    print(f"|---|---:|---:|---:|---:|---:|")
+    print("| task | stage0 | stage1 | stage3 | 0+1+3 | combined_score |")
+    print("|---|---:|---:|---:|---:|---:|")
     print(
         f"| {task} | {med['stage0']:.3f} | {med['stage1']:.3f} | {med['stage3']:.3f} | "
         f"{med['stages_0_1_3']:.3f} | {result['combined_score']:.6f} |"
@@ -172,6 +173,7 @@ def run_smoke(task: str, repeats: int = 1) -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
+    """Parse argv and either smoke-evaluate or launch OpenEvolve."""
     args = build_parser().parse_args(argv)
     os.environ["SEARCH_TASK"] = args.task
     if args.smoke:
@@ -221,8 +223,11 @@ def main(argv: list[str] | None = None) -> int:
     print(json.dumps(launch, indent=1))
 
     initial = INITIAL_PROGRAMS[args.task]
+    # Route live OpenEvolve stages to the task-specific evaluator (dfthcsos
+    # chemistry cascade, or invsqrt/dqi adapter cascade). Smoke uses staged.py.
     openevolve = OpenEvolve(initial_program_path=str(initial),
-                            evaluation_file=str(SEARCH_DIR / "evaluator.py"), config=config, output_dir=str(output))
+                            evaluation_file=str(SEARCH_DIR / "evaluate_entry.py"),
+                            config=config, output_dir=str(output))
     if args.log_level:
         logging.getLogger().setLevel(getattr(logging, args.log_level))
     best = None

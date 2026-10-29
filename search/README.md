@@ -75,7 +75,7 @@ Run the loop with `nohup ... &` or inside `tmux` for unattended sessions; it log
 | reasoning effort (Codex) | `llm.reasoning_effort` | medium | low, medium, high, xhigh |
 | islands, migration, population | `database.*` | 3 islands, every 20 generations, 200 programs | |
 | MAP-Elites features | `database.feature_dimensions` | `log_toffoli`, `log_qubits` | log-spaced (T, Q) cells |
-| cascade | `evaluator.cascade_thresholds` | `[0.05, 0.5]` | stage 2 needs a near-feasible sample; feasible floor is 0.5. Mirrored by `STAGE1_THRESHOLD`/`STAGE2_THRESHOLD` in `evaluator.py` |
+| cascade | `evaluator.cascade_thresholds` | `[0.05, 0.49]` | stage 2 needs a reduced PASS (~0.495); Deb feasible floor stays 0.5. Mirrored by `STAGE1_THRESHOLD`/`STAGE2_THRESHOLD` in `evaluator.py` |
 | stage timeouts | `evaluator.timeout` | 900 s per stage | OpenEvolve's outer limit. Inside it a build has 420 s (`SEARCH_BUILD_TIMEOUT`) and each verifier run, which runs in a child process so it can be killed, 600 s (`SEARCH_VERIFY_TIMEOUT`); the full verifier takes 35-60 s here |
 | static size gates | `SEARCH_MAX_INSTRUCTIONS`, `SEARCH_MAX_STATIC_TOFFOLI` | 30M instructions, 400k static Toffolis | ten times the reference family; larger families fail stage 1 instead of occupying a worker for minutes |
 | checkpoints | `checkpoint_interval`, `run.py --keep-checkpoints N` | 5, keep all | one more atomic checkpoint on exit; each holds every program with its prompts (about 50 KB per program), so prune on a standing loop |

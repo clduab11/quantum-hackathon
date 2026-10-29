@@ -15,6 +15,7 @@ ADAPTERS: dict[str, type[TaskAdapter]] = {
 
 
 def get_adapter(task: str, **kwargs) -> TaskAdapter:
+    """Return a TaskAdapter instance for ``task``."""
     try:
         cls = ADAPTERS[task]
     except KeyError as exc:

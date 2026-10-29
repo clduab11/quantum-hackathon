@@ -19,10 +19,12 @@ class InvsqrtAdapter(TaskAdapter):
     initial_program = SEARCH_DIR / "initial_invsqrt.py"
 
     def build_command(self, program_path: Path, outdir: Path) -> list[str]:
+        """Build argv that writes ``outdir/invsqrt.kmb``."""
         import sys
         return [sys.executable, str(program_path), "--out", str(outdir)]
 
     def parse_build_report(self, stdout: str, outdir: Path) -> dict[str, Any]:
+        """Parse the program's JSON stdout report."""
         del outdir
         return json.loads(stdout)
 
@@ -84,11 +86,50 @@ class InvsqrtAdapter(TaskAdapter):
             "sample_size": int(len(ordered)),
         }
 
-    def stage2_verify(self, bundle: CandidateBundle) -> dict[str, Any]:
-        """Official-style verify: G2 mirror when not in smoke; else static PASS from stage-1 signal."""
+    def stage2_verify_reduced(self, bundle: CandidateBundle) -> dict[str, Any]:
+        """G2 integer-mirror proxy; never sets ``feasible``."""
         report = bundle.report or {}
         if report.get("smoke_package_sample"):
-            # Package sample is the reference; treat as feasible for smoke scoring only.
+            return {
+                "feasible": False,
+                "fraction_correct": 1.0,
+                "max_error_over_tol": 0.0,
+                "ancilla_dirty_fraction": 0.0,
+                "phase_wrong_fraction": 0.0,
+                "toffoli_count": float(report.get("expected_toffoli") or 0.0),
+                "qubit_count": float(report.get("qubits") or 0.0),
+                "cost_c": float(report.get("cost_c") or report.get("expected_toffoli") or 0.0),
+                "margin_min": float(report.get("margin_units") or 0.0),
+                "verifier": {"status": "PASS", "smoke": True, "stage": "reduced"},
+                "verification_stage": "reduced",
+            }
+        from tasks.invsqrt.gates import g2_proxy
+
+        proxy = g2_proxy(bundle.outdir)
+        ok = str(proxy.get("status")) == "PASS"
+        return {
+            "feasible": False,
+            "fraction_correct": 1.0 if ok else 0.0,
+            "max_error_over_tol": 0.0 if ok else 9.0,
+            "ancilla_dirty_fraction": 0.0,
+            "phase_wrong_fraction": 0.0,
+            "toffoli_count": float(report.get("expected_toffoli") or proxy.get("static_toffoli") or 0.0),
+            "qubit_count": float(report.get("qubits") or proxy.get("qubits") or 0.0),
+            "cost_c": float(report.get("cost_c") or report.get("expected_toffoli") or 0.0),
+            "margin_min": float(report.get("margin_units") or proxy.get("min_margin_units") or 0.0),
+            "verifier": proxy,
+            "verification_stage": "reduced",
+            "reduced_pass": ok,
+        }
+
+    def stage2_verify_full(self, bundle: CandidateBundle) -> dict[str, Any]:
+        """Full official-style verify (G2 mirror stands in for the package verifier gate).
+
+        Feasibility is granted only here (or on the smoke package-sample path inside
+        the smoke memo namespace). Reduced-shot / G2-proxy success alone never does.
+        """
+        report = bundle.report or {}
+        if report.get("smoke_package_sample"):
             return {
                 "feasible": True,
                 "fraction_correct": 1.0,
@@ -99,7 +140,8 @@ class InvsqrtAdapter(TaskAdapter):
                 "qubit_count": float(report.get("qubits") or 0.0),
                 "cost_c": float(report.get("cost_c") or report.get("expected_toffoli") or 0.0),
                 "margin_min": float(report.get("margin_units") or 0.0),
-                "verifier": {"status": "PASS", "smoke": True},
+                "verifier": {"status": "PASS", "smoke": True, "stage": "full"},
+                "verification_stage": "full",
             }
         from tasks.invsqrt.gates import g2_proxy
 
@@ -116,10 +158,16 @@ class InvsqrtAdapter(TaskAdapter):
             "cost_c": float(report.get("cost_c") or report.get("expected_toffoli") or 0.0),
             "margin_min": float(report.get("margin_units") or proxy.get("min_margin_units") or 0.0),
             "verifier": proxy,
+            "verification_stage": "full",
         }
+
+    def stage2_verify(self, bundle: CandidateBundle) -> dict[str, Any]:
+        """Default verify entry delegates to the full official-style path."""
+        return self.stage2_verify_full(bundle)
 
     def cost_fields(self, bundle: CandidateBundle, sample: dict[str, Any],
                     verified: dict[str, Any] | None) -> dict[str, Any]:
+        """Map sample/verify outputs into Deb-layered fitness fields."""
         source = verified if verified and verified.get("feasible") else sample
         return {
             "task": "invsqrt",

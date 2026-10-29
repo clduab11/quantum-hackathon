@@ -28,6 +28,7 @@ def sha256_bytes(data: bytes) -> str:
 
 
 def sha256_file(path: Path) -> str:
+    """Return the hex SHA-256 digest of a file."""
     digest = hashlib.sha256()
     with path.open("rb") as stream:
         for block in iter(lambda: stream.read(1 << 20), b""):
@@ -79,6 +80,7 @@ class TaskAdapter:
         return self.initial_program
 
     def stage0_parse(self, program_path: Path) -> list[str]:
+        """Parse the program AST and return structural problems."""
         problems: list[str] = []
         try:
             tree = ast.parse(program_path.read_text(encoding="utf-8"), filename=str(program_path))
@@ -94,6 +96,7 @@ class TaskAdapter:
 
     def stage0_build(self, program_path: Path, outdir: Path | None = None,
                      timeout: float = 420.0) -> CandidateBundle:
+        """Run the candidate program and collect circuit artifacts."""
         out = Path(outdir or tempfile.mkdtemp(prefix=f"{self.task}-eval-"))
         bundle = CandidateBundle(task=self.task, program_path=program_path, outdir=out)
         bundle.problems.extend(self.stage0_parse(program_path))
@@ -136,6 +139,7 @@ class TaskAdapter:
         return {}
 
     def collect_circuit_bytes(self, outdir: Path) -> dict[str, bytes]:
+        """Read ``.kmb``/``.kmx`` files under ``outdir`` into memory."""
         found: dict[str, bytes] = {}
         for path in sorted(outdir.rglob("*")):
             if path.is_file() and path.suffix in {".kmb", ".kmx"}:
@@ -143,6 +147,7 @@ class TaskAdapter:
         return found
 
     def static_checks(self, bundle: CandidateBundle) -> list[str]:
+        """Reject empty or text-looking circuit dumps before verification."""
         problems: list[str] = []
         if not bundle.circuit_bytes:
             problems.append("no .kmb/.kmx circuits written")
@@ -179,9 +184,47 @@ class TaskAdapter:
         raise NotImplementedError
 
     def fingerprint(self, bundle: CandidateBundle) -> bytes:
-        """Concatenation of circuit digests; memo key material."""
-        parts = []
+        """Digest every file under ``bundle.outdir`` for the memo key.
+
+        Relative path + content hash for each file. ``DqiAdapter`` overrides this
+        for its large ``.kmb`` so it hashes on disk without loading the whole file.
+        """
+        parts: list[bytes] = []
+        outdir = Path(bundle.outdir)
+        if outdir.is_dir():
+            for path in sorted(outdir.rglob("*")):
+                if path.is_file():
+                    rel = path.relative_to(outdir).as_posix()
+                    parts.append(rel.encode("utf-8"))
+                    parts.append(sha256_file(path).encode("ascii"))
+        if parts:
+            return b"\0".join(parts)
+        # Fallback when the build wrote nothing on disk yet.
         for name in sorted(bundle.circuit_bytes):
             parts.append(name.encode("utf-8"))
             parts.append(sha256_bytes(bundle.circuit_bytes[name]).encode("ascii"))
         return b"\0".join(parts)
+
+    def submission_identity(self, bundle: CandidateBundle) -> str:
+        """Task-specific submission identity bound into the verifier memo key."""
+        del bundle
+        return ""
+
+    def verifier_settings(self) -> dict[str, Any]:
+        """Settings that can change a verification result (salt, workers, …)."""
+        return {}
+
+    def stage2_verify_reduced(self, bundle: CandidateBundle) -> dict[str, Any]:
+        """Cheap / reduced-shot proxy. Must never set ``feasible`` True."""
+        result = self.stage2_verify(bundle)
+        result = dict(result)
+        result["feasible"] = False
+        result["verification_stage"] = "reduced"
+        return result
+
+    def stage2_verify_full(self, bundle: CandidateBundle) -> dict[str, Any]:
+        """Full official verification. Sole path that may set ``feasible``."""
+        result = self.stage2_verify(bundle)
+        result = dict(result)
+        result["verification_stage"] = "full"
+        return result

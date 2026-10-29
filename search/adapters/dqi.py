@@ -10,6 +10,10 @@ from typing import Any
 from search.adapters.base import SEARCH_DIR, CandidateBundle, TaskAdapter
 
 STAGE1_SHOTS = int(os.environ.get("SEARCH_DQI_STAGE1_SHOTS", "128"))
+# Reduced proxy for cascade stage 2; never grants feasibility on its own.
+REDUCED_SHOTS = int(os.environ.get("SEARCH_DQI_STAGE2_SHOTS", "1536"))
+# Official full verification shot count (ledger / package contract).
+FULL_SHOTS = int(os.environ.get("SEARCH_DQI_FULL_SHOTS", "102400"))
 LOCAL_SALTS = (
     "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
     "PRA171_LOCAL_PUBLIC_FIXED_SALT_0002",
@@ -18,6 +22,7 @@ LOCAL_SALTS = (
 
 
 def _r_eps(k_failures: int, shots: int) -> float:
+    """Repetition overhead R(ε) from failure count over ``shots``."""
     import math
     eps = max(k_failures / max(shots, 1), 1e-12)
     inner = 0.5 + 2.0 * math.sqrt(eps)
@@ -27,20 +32,23 @@ def _r_eps(k_failures: int, shots: int) -> float:
 
 
 class DqiAdapter(TaskAdapter):
+    """Staged adapter for the dqi search program."""
+
     name = "dqi"
     initial_program = SEARCH_DIR / "initial_dqi.py"
 
     def build_command(self, program_path: Path, outdir: Path) -> list[str]:
+        """Build argv that writes ``outdir/dqi.kmb`` from the evolvable program."""
         import sys
         return [sys.executable, str(program_path), "--out", str(outdir)]
 
     def parse_build_report(self, stdout: str, outdir: Path) -> dict[str, Any]:
+        """Parse the program's JSON stdout report."""
         del outdir
         return json.loads(stdout)
 
     def collect_circuit_bytes(self, outdir: Path) -> dict[str, bytes]:
-        # dqi.kmb can be ~0.8 GB; keep a short prefix for the text-vs-binary check
-        # and hash the file separately in fingerprint().
+        """Keep a short prefix for the text-vs-binary check (dqi.kmb can be ~0.8 GB)."""
         found: dict[str, bytes] = {}
         for path in sorted(outdir.rglob("*")):
             if path.is_file() and path.suffix in {".kmb", ".kmx"}:
@@ -49,6 +57,7 @@ class DqiAdapter(TaskAdapter):
         return found
 
     def fingerprint(self, bundle: CandidateBundle) -> bytes:
+        """Hash on-disk ``.kmb``/``.kmx`` files without loading the whole circuit."""
         from search.adapters.base import sha256_file
         parts = []
         for path in sorted(bundle.outdir.rglob("*")):
@@ -57,6 +66,10 @@ class DqiAdapter(TaskAdapter):
                 parts.append(rel.encode("utf-8"))
                 parts.append(sha256_file(path).encode("ascii"))
         return b"\0".join(parts)
+
+    def verifier_settings(self) -> dict[str, Any]:
+        """Salts and worker count that affect DQI verification outcomes."""
+        return {"salts": list(LOCAL_SALTS), "max_workers": 1}
 
     def stage1_sample(self, bundle: CandidateBundle, seed: int) -> dict[str, Any]:
         """Algebra smoke + static circuit presence. Never marks feasible."""
@@ -88,12 +101,13 @@ class DqiAdapter(TaskAdapter):
             "algebra": algebra,
         }
 
-    def stage2_verify(self, bundle: CandidateBundle) -> dict[str, Any]:
-        """Official verifier on ≥ 3 local salts; report the max k."""
+    def _verify_at_shots(self, bundle: CandidateBundle, shots: int, *, allow_feasible: bool) -> dict[str, Any]:
+        """Run the package verifier at ``shots``; ``allow_feasible`` gates the feasible flag."""
         report = bundle.report or {}
         if report.get("smoke_package_sample"):
+            # Smoke path only: package sample scores as feasible inside the smoke namespace.
             return {
-                "feasible": True,
+                "feasible": bool(allow_feasible),
                 "fraction_correct": 1.0,
                 "max_error_over_tol": 0.0,
                 "ancilla_dirty_fraction": 0.0,
@@ -102,16 +116,16 @@ class DqiAdapter(TaskAdapter):
                 "qubit_count": float(report.get("num_qubits") or 0.0),
                 "k_failures": 0.0,
                 "eps_plus": 0.0,
-                "r_eps": _r_eps(0, 102400),
+                "r_eps": _r_eps(0, FULL_SHOTS),
                 "salts": [{"salt": s, "k": 0, "smoke": True} for s in LOCAL_SALTS],
-                "shots": 0,
+                "shots": 0 if report.get("smoke_package_sample") else shots,
+                "smoke": True,
             }
         import kickmix as km
         from dqi.verify_submission_dqi import ProblemSpecDQI, verify
 
         path = bundle.outdir / "dqi.kmb"
         circuit = km.Circuit.from_file(str(path))
-        shots = int(os.environ.get("SEARCH_DQI_STAGE2_SHOTS", "1536"))
         spec = ProblemSpecDQI.benchmark_instance(num_shots=shots)
         per_salt = []
         max_k = 0
@@ -123,12 +137,12 @@ class DqiAdapter(TaskAdapter):
                 per_salt.append({"salt": salt, "k": k, "summary": summary})
                 max_k = max(max_k, k)
                 last = summary
-            except AssertionError as exc:
-                per_salt.append({"salt": salt, "k": shots, "error": str(exc)})
+            except Exception as exc:  # noqa: BLE001 — any verifier failure counts as max-k
+                per_salt.append({"salt": salt, "k": shots, "error": f"{type(exc).__name__}: {exc}"})
                 max_k = max(max_k, shots)
         ok = max_k == 0 and bool(last)
         return {
-            "feasible": ok,
+            "feasible": bool(allow_feasible and ok),
             "fraction_correct": 1.0 if ok else max(0.0, 1.0 - max_k / max(shots, 1)),
             "max_error_over_tol": 0.0 if ok else min(9.0, 100.0 * max_k / max(shots, 1)),
             "ancilla_dirty_fraction": 0.0,
@@ -142,8 +156,25 @@ class DqiAdapter(TaskAdapter):
             "shots": shots,
         }
 
+    def stage2_verify(self, bundle: CandidateBundle) -> dict[str, Any]:
+        """Default verify entry: full official shots (feasibility only on PASS)."""
+        return self.stage2_verify_full(bundle)
+
+    def stage2_verify_reduced(self, bundle: CandidateBundle) -> dict[str, Any]:
+        """Reduced-shot proxy; never sets ``feasible``."""
+        result = self._verify_at_shots(bundle, REDUCED_SHOTS, allow_feasible=False)
+        result["verification_stage"] = "reduced"
+        return result
+
+    def stage2_verify_full(self, bundle: CandidateBundle) -> dict[str, Any]:
+        """Full official verification at 102,400 shots; sole feasibility arbiter."""
+        result = self._verify_at_shots(bundle, FULL_SHOTS, allow_feasible=True)
+        result["verification_stage"] = "full"
+        return result
+
     def cost_fields(self, bundle: CandidateBundle, sample: dict[str, Any],
                     verified: dict[str, Any] | None) -> dict[str, Any]:
+        """Resource + graded fields for ``combined_score`` / rich metrics."""
         source = verified if verified and verified.get("feasible") else sample
         return {
             "task": "dqi",
