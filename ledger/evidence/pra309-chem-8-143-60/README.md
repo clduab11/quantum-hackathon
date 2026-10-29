@@ -13,6 +13,8 @@ Candidate `pra309-chem-8-143-60` is submission-010 (`pra294-c59`) with only the 
 | invsqrt ratio | 13.237727705632725 | 13.237727705632725 |
 | local GM | 18.39393056697713 | **19.205727125145224** |
 
+19.205727125145224 is a **local GM**. It is not an uploaded score and it is not a public-leaderboard result. The parent local GM is 18.39393056697713. The last public score is 17.71949 (submission-009). Submission-010 is unscored.
+
 Salt `PRA171_LOCAL_PUBLIC_FIXED_SALT_0001`. Full shots. No salt or seed search.
 
 - dfthcsos (G3, 78,080 shots): PASS, T 16,366, Q 430, cost 343,172,572.78, error_1 0.01582999310172256, error_2 0.01999880580061996, Lambda 305.662648282956, E_gap 3.914902197284391, lambda_eff 48.76425214813735.

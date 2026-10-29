@@ -1,9 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
 """Validated independent truth/dirty-family audits, independent of the compiler."""
-import numpy as np
-import kickmix as km
-from tasks.dfthcsos.full_xor.paired_anf import batch_deltas
-from dfthcsos.scoreinfra.circuits import register_layout
 
 def indices(x):
  out=[]
@@ -38,5 +34,17 @@ def independent_truth(plan):
  return coeff
 
 def assert_independent(plan,delta):
+ """Reject a plan whose truth table is not the packed delta. This is not an assert.
+
+ `python -O` removes assert statements. The generator calls this on every
+ circuit, so the check has to raise in every interpreter mode and name the
+ first address that differs.
+ """
  expected=[sum(int(x)<<(j*plan.brot) for j,x in enumerate(row)) for row in delta]
- assert independent_truth(plan)==expected
+ actual=independent_truth(plan)
+ if len(actual)!=len(expected):
+  raise RuntimeError(
+   f'plan truth table length {len(actual)} differs from delta length {len(expected)}')
+ for address,(got,want) in enumerate(zip(actual,expected)):
+  if got!=want:
+   raise RuntimeError(f'plan truth table differs from delta at address {address}')

@@ -9,6 +9,11 @@ import kickmix as km
 from tasks.dfthcsos.full_xor.paired_anf import bits, Plan
 from tasks.dfthcsos.full_xor.scheduler import audit, parent, members
 
+def require(ok, message):
+    """Explicit check. `assert` disappears under `python -O`; emission checks must not."""
+    if not ok:
+        raise RuntimeError(message)
+
 def high_masks(addresses):
     return [h<<4 for h in range(1,((int(addresses)-1)>>4)+1)if h.bit_count()>=2]
 
@@ -50,32 +55,36 @@ def build_staged(plan,schedule,addresses=None):
         wanted=set(members(target_mask))
         for m in sorted(set(low)-wanted,reverse=True):
             top=1<<(m.bit_length()-1);q=low.pop(m)
-            assert m^top in cache and top in cache
-            assert not any(parent(x)==m for x in low)
+            require(m^top in cache and top in cache, f'erasing {m} without both parents cached')
+            require(not any(parent(x)==m for x in low), f'erasing {m} while a child is still live')
             b.del_and(cache[m^top],cache[top],q);del cache[m];free.append(q);erases+=1
         for m in sorted(wanted-set(low)):
             top=1<<(m.bit_length()-1)
-            assert m^top in cache and top in cache and free
+            require(m^top in cache and top in cache and free, f'computing {m} without parents and a free slot')
             q=free.pop();b.init_and(cache[m^top],cache[top],q);low[m]=q;cache[m]=q;computes+=1
             peak=max(peak,len(low))
     def pure_fanout(mask,fanout):
         for k in bits(fanout&keep):b.cx(cache[mask],targets[k])
     def product(p):
         nonlocal controls_checked,product_count
-        assert not((int(p.right1)|int(p.right2))&1),'constant product control unsupported'
+        require(not((int(p.right1)|int(p.right2))&1), 'constant product control unsupported')
         aa={cache[m].id for m in bits(p.left1)}
         aa.update(cache[h<<4].id for h in bits(p.right2))
         bb={cache[m].id for m in bits(p.left2)}
         bb.update(cache[h<<4].id for h in bits(p.right1))
-        assert aa and bb and aa!=bb
-        assert not((aa|bb)&word_ids),'nonborrowed output used as a control/workspace'
-        pp=min(aa);use_a=pp in bb;bprime=bb^aa if use_a else bb;assert bprime;qq=min(bprime)
+        require(aa and bb and aa!=bb, 'product controls are empty or identical')
+        require(not((aa|bb)&word_ids), 'nonborrowed output used as a control/workspace')
+        pp=min(aa);use_a=pp in bb;bprime=bb^aa if use_a else bb
+        require(bprime, 'product controls collapsed to one wire')
+        qq=min(bprime)
         inverse_ops=[(km.q(t),km.q(pp))for t in sorted(aa-{pp})]
         inverse_ops.extend((km.q(t),km.q(qq))for t in sorted(bprime-{qq}))
         if use_a:inverse_ops.append((km.q(pp),km.q(qq)))
         for control,target in inverse_ops:b.cx(control,target)
-        out=list(bits(p.fanout&keep));assert out;pivot=targets[out[0]]
-        assert pivot.id not in(aa|bb)
+        out=list(bits(p.fanout&keep))
+        require(out, 'product fanout is empty')
+        pivot=targets[out[0]]
+        require(pivot.id not in(aa|bb), f'pivot {pivot.id} is also a control')
         for k in out[1:]:b.cx(pivot,targets[k])
         b.ccx(km.q(pp),km.q(qq),pivot)
         for k in out[1:]:b.cx(pivot,targets[k])
@@ -87,7 +96,9 @@ def build_staged(plan,schedule,addresses=None):
             for index in event['indices']:product(plan.products[index])
         else:
             m=event['monomial'];pure_fanout(m,plan.pure[m])
-    transition(0);assert not low and len(free)==schedule['capacity']
+    transition(0)
+    require(not low and len(free)==schedule['capacity'],
+            f"low cache not returned: live {sorted(low)} free {len(free)} != {schedule['capacity']}")
     # Nonlinear low terms already streamed after every product. Constant/linear
     # low terms and pure-high terms require no low slot and commute with them.
     for m,fan in plan.pure.items():
@@ -95,16 +106,21 @@ def build_staged(plan,schedule,addresses=None):
         pure_fanout(m,fan)
     b.free(low_extra)
     for m in reversed(high):
-        top=1<<(m.bit_length()-1);assert m^top in cache and top in cache
+        top=1<<(m.bit_length()-1)
+        require(m^top in cache and top in cache, f'releasing high monomial {m} without both parents')
         b.del_and(cache[m^top],cache[top],cache[m]);del cache[m]
     b.free(high_pool)
     circuit=b.finish_circuit()
     expected_T=len(high)+computes+len(plan.products)
     expected_Q=(A-1).bit_length()+plan.batch*plan.brot+len(high)+schedule['capacity']
-    assert computes==erases==schedule['low_computations']and product_count==len(plan.products)
-    assert expected_Q<=128
-    assert int(circuit.num_qubits)==expected_Q
-    assert int(circuit.operation_statistics().num_toffoli_like)==expected_T
+    require(computes==erases==schedule['low_computations'] and product_count==len(plan.products),
+            f"emitted counts computes={computes} erases={erases} products={product_count} "
+            f"!= schedule {schedule['low_computations']} products {len(plan.products)}")
+    require(expected_Q<=128, f'emitted qubit count {expected_Q} exceeds 128')
+    require(int(circuit.num_qubits)==expected_Q,
+            f'circuit qubits {int(circuit.num_qubits)} != expected {expected_Q}')
+    emitted_t=int(circuit.operation_statistics().num_toffoli_like)
+    require(emitted_t==expected_T, f'circuit toffolis {emitted_t} != expected {expected_T}')
     return circuit,dict(addresses=A,high_cache=len(high),low_slots=schedule['capacity'],peak_low_live=peak,
         low_computations=computes,low_measurement_erasures=erases,products=product_count,
         T=expected_T,Q=expected_Q,all_measurement_erase_parents_live=True,

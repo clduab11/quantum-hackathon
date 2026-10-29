@@ -6,8 +6,10 @@ import numpy as np
 import pytest
 import yaml
 
+from tasks.dfthcsos.generate import DEFAULT_DATA
+
 ROOT = Path(__file__).resolve().parents[1]
-DATA = Path('/home/cld-main/work/vqcc-data')
+DATA = Path(DEFAULT_DATA)
 
 
 def _words():

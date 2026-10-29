@@ -78,39 +78,58 @@ def optimize_cache(plan,order,capacity=8,label='fixed'):
         back=np.full(M,-1,dtype=np.int16);back[dest]=old;backs.append(back);dp=new
     end=int(np.argmin(dp));computations=int(dp[end]);chosen=[]
     for i in range(len(events)-1,-1,-1):
-        chosen.append(int(states[end]));end=int(backs[i][end]);assert end>=0
-    chosen.reverse();assert end==0
+        chosen.append(int(states[end]));end=int(backs[i][end])
+        if end<0:raise RuntimeError('cache DP backpointer is missing')
+    chosen.reverse()
+    if end!=0:raise RuntimeError('cache DP did not return to the empty cache')
     out=dict(label=label,capacity=capacity,product_order=order,events=[dict(e,cache=s)for e,s in zip(events,chosen)],
         low_computations=computations,min_live_required=max([r.bit_count()for r in req]+[0]),
         peak_live=max([s.bit_count()for s in chosen]+[0]),cache_states_considered=M,
         optimal_retention_for_this_fixed_order=True,globally_optimal_order_claim=False)
     audit(plan,out);return out
 
+def _require(ok, message):
+    """Explicit check. `assert` disappears under `python -O`; a cache audit must not."""
+    if not ok:
+        raise RuntimeError(message)
+
 def audit(plan,schedule):
     """Exact lifetime/parent/control audit, independent of native emission."""
     current=set();computations=0;erases=0;done=[];pure=[];peak=0
     for e in schedule['events']:
-        target=set(members(e['cache']));assert closed(e['cache'])and len(target)<=schedule['capacity']
+        target=set(members(e['cache']))
+        _require(closed(e['cache']) and len(target)<=schedule['capacity'],
+                 f"cache {e['cache']} is not closed within capacity {schedule['capacity']}")
         for m in sorted(current-target,reverse=True):
-            assert parent(m).bit_count()<2 or parent(m)in current
-            assert not any(parent(child)==m for child in current if child!=m)
+            _require(parent(m).bit_count()<2 or parent(m)in current,
+                     f'erasing {m} while parent {parent(m)} is not live')
+            _require(not any(parent(child)==m for child in current if child!=m),
+                     f'erasing {m} while a child is still live')
             current.remove(m);erases+=1
         for m in sorted(target-current):
-            assert parent(m).bit_count()<2 or parent(m)in current
+            _require(parent(m).bit_count()<2 or parent(m)in current,
+                     f'computing {m} while parent {parent(m)} is not live')
             current.add(m);computations+=1;peak=max(peak,len(current))
-        assert current==target
+        _require(current==target, f'cache state {sorted(current)} != target {sorted(target)}')
         if e['kind']=='products':
             for i in e['indices']:
-                assert set(members(product_requirement(plan.products[i])))<=current;done.append(i)
+                need=set(members(product_requirement(plan.products[i])))
+                _require(need<=current, f'product {i} controls {sorted(need-current)} are not cached')
+                done.append(i)
         else:
-            assert e['monomial']in current;pure.append(e['monomial'])
+            _require(e['monomial'] in current, f"pure monomial {e['monomial']} is not cached")
+            pure.append(e['monomial'])
     for m in sorted(current,reverse=True):
-        assert parent(m).bit_count()<2 or parent(m)in current
+        _require(parent(m).bit_count()<2 or parent(m)in current,
+                 f'final erase of {m} while parent {parent(m)} is not live')
         current.remove(m);erases+=1
-    assert not current and sorted(done)==list(range(len(plan.products)))
+    _require(not current and sorted(done)==list(range(len(plan.products))),
+             f'unfinished cache {sorted(current)} or products {sorted(done)}')
     expected=sorted(m for m,v in plan.pure.items()if v and m<16 and m.bit_count()>=2)
-    assert sorted(pure)==expected and computations==schedule['low_computations']and erases==computations
-    assert peak<=schedule['capacity']
+    _require(sorted(pure)==expected and computations==schedule['low_computations'] and erases==computations,
+             f'pure {sorted(pure)} != {expected} or computations {computations}/{erases} '
+             f"!= {schedule['low_computations']}")
+    _require(peak<=schedule['capacity'], f"peak live {peak} exceeds capacity {schedule['capacity']}")
     return dict(parent_live_on_every_compute_and_erase=True,all_low_clean_at_end=True,
                 computes=computations,erases=erases,peak_live=peak,pure_low_deferred=True)
 
