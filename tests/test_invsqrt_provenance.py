@@ -19,7 +19,7 @@ PINNED = {
     "affine.py": "aa351a287c507c264a8aa7d172e1c7b9bfc1d0dcb78c8fa61b92996947eba290",
     "peephole.py": "d5ed02b0d28392cc637111fc94fb1760c71feda4f8ca7aad6f73944e81fff54c",
     "calibrate.py": "7fc0c1cac6ff45753c25d98dfa7cd82fb4803332c37fb616af18fabe47cef309",
-    "mirror.py": "44f9928fe54f84c45977e9cfe637e7ad2068ab7cda7dd9fb2949a6666cd1513d",
+    "mirror.py": "34fd6e2cd5806776eb881ac5890fd67fa6ed84dbdf8d3e76ab7c481788a1fc42",
     "gates.py": "d43b4e21cf1fa5aa7ae1519f6378a981538b769e3d54a2f6eb40b38f73d38265",
 }
 

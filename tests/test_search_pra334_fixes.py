@@ -373,6 +373,7 @@ def test_invsqrt_report_cannot_undercut_measured_counts(tmp_path, monkeypatch):
             "static_toffoli": 5000,
             "num_qubits": 22,
             "min_margin_units": 1.0,
+            "estimated_expected_cost": 5000.0,
         }
 
     monkeypatch.setattr("tasks.invsqrt.gates.g2_proxy", fake_proxy)
@@ -390,6 +391,9 @@ def test_invsqrt_report_cannot_undercut_measured_counts(tmp_path, monkeypatch):
 def test_run_smoke_returns_one_on_problems(monkeypatch):
     from search import run as search_run
 
+    # Claim SEARCH_SMOKE / VQCC_DATA before run_smoke writes them, so teardown restores.
+    monkeypatch.setenv("SEARCH_SMOKE", "0")
+    monkeypatch.setenv("VQCC_DATA", search_run.DEFAULT_DATA)
     monkeypatch.setattr(
         "search.staged.smoke_evaluate",
         lambda task, repeats=1: {

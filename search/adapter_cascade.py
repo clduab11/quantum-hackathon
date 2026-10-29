@@ -67,8 +67,10 @@ def _cleanup(program_path: str, task: str) -> None:
 
 def _failed_result(program_path: str, task: str, stage: int, exc: BaseException) -> EvaluationResult:
     """Return a zero score after an evaluator exception; never re-raise."""
-    del exc
     _cleanup(program_path, task)
+    detail = str(exc)
+    if len(detail) > 300:
+        detail = detail[:300]
     metrics = {
         "combined_score": 0.0,
         "ratio": 0.0,
@@ -93,8 +95,7 @@ def _failed_result(program_path: str, task: str, stage: int, exc: BaseException)
         metrics=metrics,
         artifacts={
             "summary": (
-                f"task={task} stage {stage}: the evaluator failed; "
-                "this is not the program's fault"
+                f"task={task} stage {stage}: {type(exc).__name__}: {detail}"
             ),
             "evaluator_traceback": traceback.format_exc()[-3000:],
         },
