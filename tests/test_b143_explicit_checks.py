@@ -50,6 +50,24 @@ def test_cache_audit_fires_under_optimize():
     assert completed.returncode == 0, completed.stderr or completed.stdout
 
 
+def test_emitter_control_check_fires_under_optimize():
+    completed = _run_optimized(
+        'from tasks.dfthcsos.b143 import load_plans\n'
+        'from tasks.dfthcsos.full_xor.emitter import build_staged\n'
+        'from tasks.dfthcsos.full_xor.planio import plan_from_dict\n'
+        'row = load_plans()[0]\n'
+        'plan = plan_from_dict(row["plan"])\n'
+        'plan.products[0].right1 |= 1\n'
+        'try:\n'
+        '    build_staged(plan, row["schedule"])\n'
+        'except RuntimeError as exc:\n'
+        '    if str(exc) != "constant product control unsupported":\n'
+        '        raise SystemExit(str(exc))\n'
+        '    raise SystemExit(0)\n'
+        'raise SystemExit("did not reject constant product control")\n')
+    assert completed.returncode == 0, completed.stderr or completed.stdout
+
+
 def test_control_and_resource_checks_are_not_asserts():
     """`python -O` strips Assert nodes. These functions must not contain one."""
     expected = {
