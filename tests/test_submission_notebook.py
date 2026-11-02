@@ -135,3 +135,22 @@ def test_generator_environment_contains_only_declared_inputs(tmp_path):
         'MKL_NUM_THREADS': '1',
         'NUMEXPR_NUM_THREADS': '1',
     }
+
+@pytest.mark.parametrize('case', ['name', 'size', 'hash'])
+def test_factor_rejected_before_staging(tmp_path, case):
+    stage = helpers()['stage_factor']
+    factor = tmp_path / ('wrong.npz' if case == 'name' else 'submission.npz')
+    factor.write_bytes(b'bad' if case == 'size' else b'good')
+    expected = hashlib.sha256(b'other' if case == 'hash' else b'good').hexdigest()
+    with pytest.raises(ValueError, match={'name': 'filename', 'size': 'size', 'hash': 'SHA-256'}[case]):
+        stage(factor, tmp_path / 'isolated', 4, expected)
+    assert not (tmp_path / 'isolated').exists()
+
+
+def test_factor_staged_alone(tmp_path):
+    factor = tmp_path / 'submission.npz'
+    factor.write_bytes(b'good')
+    root = tmp_path / 'isolated'
+    staged = helpers()['stage_factor'](factor, root, 4, hashlib.sha256(b'good').hexdigest())
+    assert staged.read_bytes() == b'good'
+    assert [p for p in root.rglob('*') if p.is_file()] == [staged]
