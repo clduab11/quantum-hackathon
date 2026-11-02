@@ -57,6 +57,10 @@ class FakeClient:
             return list(self.routines.values())
         if path.endswith("/live-runs"):
             return []
+        if path.startswith("/api/agents/"):
+            return self.agents[path.split("/")[3]]
+        if path.startswith("/api/routines/"):
+            return self.routines[path.split("/")[3]]
         raise AssertionError(path)
 
     def patch(self, path: str, body):
@@ -168,13 +172,19 @@ def test_force_archives_the_original_record_and_warns(tmp_path: Path, capsys):
     err = capsys.readouterr().err
     (archived,) = tmp_path.glob("state.json.*.superseded")
     assert archived.read_text(encoding="utf-8") == original
-    assert "already armed" in err and str(archived) in err and "--state" in err
+    assert "already armed" in err and str(archived) in err
+    assert err.index("first run disarm") < err.index(f"then disarm --state {archived}")
     # The new record was planned from the armed state: it only knows about caine's pause, so the
-    # original record is the one that restores the fleet.
+    # original record is the one that restores the fleet. The documented order: disarm the current
+    # record (clears the default file), then the superseded one; an ordinary arm then works again.
     assert [a["kind"] for a in json.loads(state.read_text(encoding="utf-8"))["actions"]] == ["pause_agent"]
+    assert ks.cmd_disarm(client, state, False, False) == 0
+    assert not state.exists()
     assert ks.cmd_disarm(client, archived, False, False) == 0
     assert all(a["status"] == "idle" for n, a in client.agents.items() if n not in ("id-sofia", "id-old-grok"))
     assert ks.wake_on_demand_enabled(client.agents["id-marcus"]) is True
+    assert ks.cmd_arm(client, "co", state, None, False, False, False, False) == 0
+    assert state.exists() and client.agents["id-caine"]["status"] == "paused"
 
 
 class FailingClient(FakeClient):
@@ -222,6 +232,88 @@ def test_arm_is_best_effort_and_disarm_undoes_only_what_ran(tmp_path: Path, caps
     assert {"agents": client.agents, "routines": client.routines} == before
 
 
+class LostResponseClient(FakeClient):
+    """Paperclip applies the write, then the response is lost: mutate first, raise after."""
+
+    def __init__(self, agents, routines, lost: set[str], unreadable: set[str] = frozenset()) -> None:
+        super().__init__(agents, routines)
+        self.lost, self.unreadable = lost, set(unreadable)
+
+    def get(self, path):
+        if path in self.unreadable:
+            raise ks.KillSwitchError(f"GET {path} -> HTTP 503")
+        return super().get(path)
+
+    def patch(self, path, body):
+        out = super().patch(path, body)
+        if path in self.lost:
+            raise ks.KillSwitchError(f"PATCH {path} -> timed out")
+        return out
+
+    def post(self, path, body=None):
+        out = super().post(path, body)
+        if path in self.lost:
+            raise ks.KillSwitchError(f"POST {path} -> timed out")
+        return out
+
+
+def test_lost_response_is_read_back_and_still_undone(tmp_path: Path, capsys):
+    client = LostResponseClient(AGENTS, ROUTINES, {"/api/agents/id-marcus", "/api/agents/id-caine/pause"})
+    before = json.loads(json.dumps({"agents": client.agents, "routines": client.routines}))
+    state = tmp_path / "state.json"
+    assert ks.cmd_arm(client, "co", state, None, False, False, False, False) == 1
+    assert "applied after all" in capsys.readouterr().err
+    applied = {(a["kind"], a.get("name") or a.get("title")): a["applied"]
+               for a in json.loads(state.read_text(encoding="utf-8"))["actions"]}
+    assert applied[("disable_wake", "marcus")] is True and applied[("pause_agent", "caine")] is True
+    assert all(v is True for v in applied.values())
+    client.lost.clear()
+    assert ks.cmd_disarm(client, state, False, False) == 0
+    assert {"agents": client.agents, "routines": client.routines} == before
+
+
+def test_unconfirmable_outcome_is_unknown_and_still_undone(tmp_path: Path, capsys):
+    client = LostResponseClient(AGENTS, ROUTINES, {"/api/agents/id-caine/pause"}, unreadable={"/api/agents/id-caine"})
+    state = tmp_path / "state.json"
+    assert ks.cmd_arm(client, "co", state, None, False, False, False, False) == 1
+    assert "outcome unknown" in capsys.readouterr().err
+    (caine,) = [a for a in json.loads(state.read_text(encoding="utf-8"))["actions"]
+                if a["kind"] == "pause_agent" and a["name"] == "caine"]
+    assert caine["applied"] == "unknown"
+    client.lost.clear()
+    client.unreadable.clear()
+    client.calls.clear()
+    assert ks.cmd_disarm(client, state, False, False) == 0
+    assert ("POST", "/api/agents/id-caine/resume") in [(m, p) for m, p, _ in client.calls]
+    assert client.agents["id-caine"]["status"] == "idle"
+    assert any("outcome unknown; undoing it anyway" in n for n in ks.plan_disarm(
+        {"version": ks.STATE_VERSION, "actions": [caine]}).notes)
+
+
+def test_interrupted_arm_leaves_an_accurate_record(tmp_path: Path):
+    class Crash(FakeClient):
+        def post(self, path, body=None):
+            if path == "/api/agents/id-caine/pause":
+                raise RuntimeError("process killed mid-call")
+            return super().post(path, body)
+
+    client = Crash(AGENTS, ROUTINES)
+    state = tmp_path / "state.json"
+    with pytest.raises(RuntimeError):
+        ks.cmd_arm(client, "co", state, None, False, False, False, False)
+    applied = {(a["kind"], a.get("name") or a.get("title")): a["applied"]
+               for a in json.loads(state.read_text(encoding="utf-8"))["actions"]}
+    assert applied[("pause_agent", "marcus")] is True and applied[("pause_agent", "the-bowery-king")] is True
+    assert applied[("pause_agent", "caine")] == "unknown"            # in flight when the process died
+    assert applied[("pause_agent", "aurelio")] == "pending"          # never started
+    plan = ks.plan_disarm(json.loads(state.read_text(encoding="utf-8")))
+    resumed = [a["name"] for a in plan.actions if a["kind"] == "resume_agent"]
+    assert resumed == ["caine", "the-bowery-king", "marcus"]
+    assert any("aurelio: pause_agent never started" in n for n in plan.notes)
+    # An old record without outcomes counts as unknown: it is undone, not skipped.
+    assert ks.needs_undo({"kind": "pause_agent"}) is True
+
+
 def test_incomplete_disarm_keeps_only_the_undone_actions(tmp_path: Path):
     client = FailingClient(AGENTS, ROUTINES, set())
     state = tmp_path / "state.json"
@@ -254,7 +346,7 @@ def test_disarm_of_an_errored_agent_resumes_to_idle_and_says_so():
     plan = ks.plan_disarm(state)
     assert plan.actions == [{"kind": "resume_agent", "agentId": "id-marcus", "name": "marcus",
                              "before": "paused", "after": "idle"}]
-    assert plan.notes and "error" in plan.notes[0]
+    assert any("was in error status" in n for n in plan.notes)
     with pytest.raises(ks.KillSwitchError):
         ks.plan_disarm({"version": 99, "actions": []})
 

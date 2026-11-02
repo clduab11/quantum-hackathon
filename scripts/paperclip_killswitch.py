@@ -36,12 +36,15 @@ the-high-table and the-adjudicator are never touched unless `--all` is given, ev
 `$PAPERCLIP_KILLSWITCH_STATE` or `./paperclip-killswitch-state.json`; `arm` refuses to run while
 one exists (disarm first). `arm --force` archives the existing file as `<name>.<stamp>.superseded`
 and warns: the new record is planned from the already-armed state, so restoring the original
-state means `disarm --state <that archive>`.
+state means `disarm` (clears the new record) and then `disarm --state <that archive>`.
 
 Both `arm` and `disarm` are best effort: a failed API call is reported, the remaining actions still
-run, and the exit code is 1. `arm` marks every action `applied` true or false in the state file,
-`disarm` undoes only the applied ones, and an incomplete `disarm` leaves the still-undone actions
-in the state file for the next run. A finished `disarm` moves the file to `<name>.<stamp>.restored`.
+run, and the exit code is 1. The state file is rewritten after every action, so an interrupted run
+leaves an accurate record: each action's `applied` is `"pending"` (never started), `"unknown"`
+(in flight, or failed and the read-back failed too), `true` or `false` (a failed call is read back
+from the API, because Paperclip may have applied it before the response was lost). `disarm` undoes
+the applied and the unknown ones, skips the rest, and an incomplete `disarm` leaves the still-undone
+actions in the file for the next run. A finished `disarm` moves the file to `<name>.<stamp>.restored`.
 
 Standard library only. Exit 0 on success, 1 on an API or state error, 2 on bad arguments.
 """
@@ -229,9 +232,12 @@ def plan_disarm(state: dict[str, Any]) -> Plan:
     plan = Plan()
     for action in reversed(state.get("actions", [])):
         kind = action["kind"]
-        if action.get("applied") is False:
-            plan.notes.append(f"{action.get('name') or action.get('title')}: {kind} never applied; nothing to undo")
+        who = action.get("name") or action.get("title")
+        if not needs_undo(action):
+            plan.notes.append(f"{who}: {kind} {'never started' if action.get('applied') == 'pending' else 'was not applied'}; nothing to undo")
             continue
+        if action.get("applied", "unknown") == "unknown":
+            plan.notes.append(f"{who}: {kind} outcome unknown; undoing it anyway")
         if kind == "pause_agent":
             after = "idle"
             if action["before"] == "error":
@@ -270,19 +276,64 @@ def _apply_action(client: PaperclipClient, action: dict[str, Any]) -> str:
     raise KillSwitchError(f"unknown action kind: {kind}")
 
 
-def apply_plan(client: PaperclipClient, plan: Plan) -> tuple[list[str], list[str]]:
+def _reconcile(client: PaperclipClient, action: dict[str, Any]) -> bool | str:
+    """After a failed call, read the object back: did Paperclip apply the write anyway?
+    True / False when the read says so, "unknown" when the read fails too."""
+    try:
+        if "agentId" in action:
+            obj = client.get(f"/api/agents/{action['agentId']}") or {}
+        else:
+            obj = client.get(f"/api/routines/{action['routineId']}") or {}
+    except KillSwitchError:
+        return "unknown"
+    kind = action["kind"]
+    if kind == "pause_agent":
+        return obj.get("status") == "paused"
+    if kind == "resume_agent":
+        return obj.get("status") != "paused"
+    if kind in ("pause_routine", "resume_routine"):
+        return obj.get("status") == action["after"]
+    want = (action["after"] or {}).get("heartbeat") or {}
+    have = ((obj.get("runtimeConfig") or {}).get("heartbeat")) or {}
+    return all(have.get(key) == want.get(key) for key in ("enabled",) + WAKE_KEYS)
+
+
+def apply_plan(client: PaperclipClient, plan: Plan, checkpoint=None) -> tuple[list[str], list[str]]:
     """Run every action through the API, in order, best effort: a failed call is reported and
-    the loop goes on, so one bad PATCH never leaves the other agents running. Each action gets
-    `applied` set to True or False. Returns (done lines, failure lines)."""
+    the loop goes on, so one bad PATCH never leaves the other agents running.
+
+    Each action's `applied` goes "pending" -> "unknown" (call in flight) -> True / False /
+    "unknown" (the call failed; the object was read back, or that read failed too). `checkpoint`
+    is called after every change so an interrupted run leaves an accurate record. Returns
+    (done lines, failure lines)."""
     done, failed = [], []
     for action in plan.actions:
+        action.setdefault("applied", "pending")
+    for action in plan.actions:
+        action["applied"] = "unknown"
+        if checkpoint:
+            checkpoint()
         try:
             done.append(_apply_action(client, action))
             action["applied"] = True
         except KillSwitchError as exc:
-            action["applied"] = False
-            failed.append(f"{action['kind']}: {action.get('name') or action.get('title')}: {exc}")
+            action["applied"] = _reconcile(client, action)
+            who = action.get("name") or action.get("title")
+            if action["applied"] is True:
+                failed.append(f"{action['kind']}: {who}: {exc} (read back: applied after all)")
+            elif action["applied"] is False:
+                failed.append(f"{action['kind']}: {who}: {exc} (read back: not applied)")
+            else:
+                failed.append(f"{action['kind']}: {who}: {exc} (read back failed too: outcome unknown)")
+        if checkpoint:
+            checkpoint()
     return done, failed
+
+
+def needs_undo(action: dict[str, Any]) -> bool:
+    """True for an applied action and for one whose outcome is unknown (an unrecorded outcome
+    counts as unknown); False only for a recorded failure or an action that never started."""
+    return action.get("applied", "unknown") not in (False, "pending")
 
 
 def _stamp() -> str:
@@ -385,11 +436,11 @@ def cmd_arm(client: PaperclipClient, company_id: str, state_path: Path, names: l
     if state_path.exists():
         archived = archive_state(state_path, "superseded")
         print(f"warning: the switch was already armed; its record is archived at {archived}. "
-              f"This run plans from the live (armed) state, so to restore the original state run "
-              f"disarm with --state {archived}", file=sys.stderr)
-    write_state(state_path, client.api_url, company_id, plan)   # the plan, before the first write
-    done, failed = apply_plan(client, plan)
-    write_state(state_path, client.api_url, company_id, plan)   # the same plan with `applied` flags
+              f"This run plans from the live (armed) state. To restore the original state, first "
+              f"run disarm (clears {state_path}), then disarm --state {archived}", file=sys.stderr)
+    checkpoint = lambda: write_state(state_path, client.api_url, company_id, plan)  # noqa: E731
+    checkpoint()                                   # the plan, before the first write
+    done, failed = apply_plan(client, plan, checkpoint)   # rewritten after every action
     for line in done:
         print(line)
     for line in failed:
@@ -405,23 +456,32 @@ def cmd_disarm(client: PaperclipClient, state_path: Path, dry_run: bool, as_json
     if dry_run:
         print("dry run: nothing written")
         return 0
-    done, failed = apply_plan(client, plan)
+    inverse = {"resume_agent": "pause_agent", "resume_routine": "pause_routine", "restore_wake": "disable_wake"}
+
+    def remaining() -> list[dict[str, Any]]:
+        # What is still to undo: skip arm actions whose reverse has run (or whose outcome is
+        # unknown, which means it was attempted), so a retry never replays the restored part.
+        undone = {(inverse[a["kind"]], a.get("agentId") or a.get("routineId"))
+                  for a in plan.actions if a.get("applied") in (True, "unknown")}
+        return [a for a in state["actions"]
+                if needs_undo(a) and (a["kind"], a.get("agentId") or a.get("routineId")) not in undone]
+
+    def checkpoint() -> None:
+        state_path.write_text(json.dumps({**state, "actions": remaining()}, indent=1), encoding="utf-8")
+
+    done, failed = apply_plan(client, plan, checkpoint)
     for line in done:
         print(line)
     for line in failed:
         print(f"FAILED {line}", file=sys.stderr)
-    if failed:
-        # Keep only what is still to undo, so the next disarm does not replay the restored part.
-        undone = {(a["kind"], a.get("agentId") or a.get("routineId")) for a in plan.actions if a.get("applied")}
-        inverse = {"resume_agent": "pause_agent", "resume_routine": "pause_routine", "restore_wake": "disable_wake"}
-        remaining = [a for a in state["actions"]
-                     if a.get("applied") is not False
-                     and not any(inverse[k] == a["kind"] and i == (a.get("agentId") or a.get("routineId"))
-                                 for k, i in undone)]
-        state["actions"] = remaining
-        state_path.write_text(json.dumps(state, indent=1), encoding="utf-8")
-        print(f"disarm incomplete; {len(remaining)} action(s) left in {state_path}; run disarm again", file=sys.stderr)
+    if any(a.get("applied") is False for a in plan.actions):
+        left = remaining()
+        print(f"disarm incomplete; {len(left)} action(s) left in {state_path}; run disarm again", file=sys.stderr)
         return 1
+    if failed:
+        print("every action was attempted; the unknown outcomes above should be checked with status", file=sys.stderr)
+    # The archive keeps the whole arm record plus what disarm did, not the (now empty) to-do list.
+    state_path.write_text(json.dumps({**state, "disarm": plan.actions}, indent=1), encoding="utf-8")
     archived = archive_state(state_path, "restored")
     print(f"disarmed; state file moved to {archived}")
     return 0
