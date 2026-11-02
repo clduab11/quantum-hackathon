@@ -27,7 +27,9 @@ llm:
   models:
     # `name` is a model id the gateway serves (GET <api_base>/models lists them); cheap local coders are
     # the point of this config, so one model carries the whole weight. Add a second entry for ideation.
-    - name: local-coder
+    # local-ornith-35b = Cyber-Tiel-Coder-35B-A3B on the Unsloth server (the only local coder-tuned id, free);
+    # the paid routed alternative is `array/coding` (auto router to hosted coding models).
+    - name: local-ornith-35b
       weight: 1.0
       max_budget_usd: 0         # local: no per-call budget (the provider records cost_usd 0)
 

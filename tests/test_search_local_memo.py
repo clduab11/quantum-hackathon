@@ -492,7 +492,7 @@ def test_local_config_loads_and_installs_the_local_provider():
     assert config.database.feature_dimensions == codex.database.feature_dimensions
     assert config.database.population_size == codex.database.population_size
     providers = load("providers")
-    assert providers.install(config) == ["local:local-coder"]
+    assert providers.install(config) == ["local:local-ornith-35b"]
     assert all(m.init_client is providers.init_local_client for m in config.llm.models)
     run = load("run")
     assert run.build_parser().parse_args(["--provider", "local"]).provider == "local"
