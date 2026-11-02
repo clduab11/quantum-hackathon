@@ -40,11 +40,11 @@ state means `disarm` (clears the new record) and then `disarm --state <that arch
 
 Both `arm` and `disarm` are best effort: a failed API call is reported, the remaining actions still
 run, and the exit code is 1. The state file is rewritten after every action, so an interrupted run
-leaves an accurate record: each action's `applied` is `"pending"` (never started), `"unknown"`
-(in flight, or failed and the read-back failed too), `true` or `false` (a failed call is read back
-from the API, because Paperclip may have applied it before the response was lost). `disarm` undoes
-the applied and the unknown ones, skips the rest, and an incomplete `disarm` leaves the still-undone
-actions in the file for the next run. A finished `disarm` moves the file to `<name>.<stamp>.restored`.
+leaves an accurate record: each action's `applied` is `"pending"` (never started), `"in_progress"`
+(the call was in flight), `"unknown"` (the call failed and the read-back failed too), `true` or
+`false` (a failed call is read back from the API, because Paperclip may have applied it before the
+response was lost). `disarm` undoes the applied, in-progress and unknown ones, skips the rest, and
+an incomplete or interrupted `disarm` leaves the still-undone actions in the file for the next run. A finished `disarm` moves the file to `<name>.<stamp>.restored`.
 
 Standard library only. Exit 0 on success, 1 on an API or state error, 2 on bad arguments.
 """
@@ -236,7 +236,7 @@ def plan_disarm(state: dict[str, Any]) -> Plan:
         if not needs_undo(action):
             plan.notes.append(f"{who}: {kind} {'never started' if action.get('applied') == 'pending' else 'was not applied'}; nothing to undo")
             continue
-        if action.get("applied", "unknown") == "unknown":
+        if action.get("applied", "unknown") in ("unknown", "in_progress"):
             plan.notes.append(f"{who}: {kind} outcome unknown; undoing it anyway")
         if kind == "pause_agent":
             after = "idle"
@@ -302,15 +302,16 @@ def apply_plan(client: PaperclipClient, plan: Plan, checkpoint=None) -> tuple[li
     """Run every action through the API, in order, best effort: a failed call is reported and
     the loop goes on, so one bad PATCH never leaves the other agents running.
 
-    Each action's `applied` goes "pending" -> "unknown" (call in flight) -> True / False /
+    Each action's `applied` goes "pending" -> "in_progress" (call in flight) -> True / False /
     "unknown" (the call failed; the object was read back, or that read failed too). `checkpoint`
-    is called after every change so an interrupted run leaves an accurate record. Returns
-    (done lines, failure lines)."""
+    is called after every change so an interrupted run leaves an accurate record; "in_progress"
+    is never treated as a confirmed outcome, so an interrupted disarm keeps the arm action it was
+    undoing. Returns (done lines, failure lines)."""
     done, failed = [], []
     for action in plan.actions:
         action.setdefault("applied", "pending")
     for action in plan.actions:
-        action["applied"] = "unknown"
+        action["applied"] = "in_progress"
         if checkpoint:
             checkpoint()
         try:
@@ -331,8 +332,9 @@ def apply_plan(client: PaperclipClient, plan: Plan, checkpoint=None) -> tuple[li
 
 
 def needs_undo(action: dict[str, Any]) -> bool:
-    """True for an applied action and for one whose outcome is unknown (an unrecorded outcome
-    counts as unknown); False only for a recorded failure or an action that never started."""
+    """True for an applied action and for one whose outcome is unknown or was in flight when the
+    run died (an unrecorded outcome counts as unknown); False only for a recorded failure or an
+    action that never started."""
     return action.get("applied", "unknown") not in (False, "pending")
 
 
@@ -461,6 +463,8 @@ def cmd_disarm(client: PaperclipClient, state_path: Path, dry_run: bool, as_json
     def remaining() -> list[dict[str, Any]]:
         # What is still to undo: skip arm actions whose reverse has run (or whose outcome is
         # unknown, which means it was attempted), so a retry never replays the restored part.
+        # An "in_progress" reverse is not a confirmed outcome: its arm action stays, so a disarm
+        # that dies inside the call can be replayed.
         undone = {(inverse[a["kind"]], a.get("agentId") or a.get("routineId"))
                   for a in plan.actions if a.get("applied") in (True, "unknown")}
         return [a for a in state["actions"]

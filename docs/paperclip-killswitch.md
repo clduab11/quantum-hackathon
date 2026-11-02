@@ -61,10 +61,11 @@ record) and then `disarm --state <archive>`; an ordinary `arm` works again after
 Both commands are best effort. A failed API call is reported on stderr, the remaining actions
 still run, and the exit code is 1. The state file is rewritten after every action, so an
 interrupted run leaves an accurate record: each action's `applied` is `"pending"` (never started),
-`"unknown"` (in flight, or failed and the read-back failed too), `true` or `false`. A failed call
-is read back from the API before it is recorded, because Paperclip may have applied it before the
-response was lost. `disarm` undoes the applied and the unknown ones and skips the rest; an
-incomplete `disarm` leaves the still-undone actions in the file for the next run. A finished `disarm` moves the file to `<name>.<stamp>.restored`
+`"in_progress"` (the call was in flight), `"unknown"` (the call failed and the read-back failed
+too), `true` or `false`. A failed call is read back from the API before it is recorded, because
+Paperclip may have applied it before the response was lost. `disarm` undoes the applied, in-progress
+and unknown ones and skips the rest; an incomplete or interrupted `disarm` leaves the still-undone
+actions in the file (an in-flight restore is not counted as done), so the next `disarm` replays them. A finished `disarm` moves the file to `<name>.<stamp>.restored`
 (`Path.replace`, so repeated cycles work on Windows too). `--json` prints plans as JSON. Exit
 codes: 0 ok, 1 API or state error, 2 bad arguments.
 

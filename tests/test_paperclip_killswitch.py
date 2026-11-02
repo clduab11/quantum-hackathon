@@ -304,14 +304,47 @@ def test_interrupted_arm_leaves_an_accurate_record(tmp_path: Path):
     applied = {(a["kind"], a.get("name") or a.get("title")): a["applied"]
                for a in json.loads(state.read_text(encoding="utf-8"))["actions"]}
     assert applied[("pause_agent", "marcus")] is True and applied[("pause_agent", "the-bowery-king")] is True
-    assert applied[("pause_agent", "caine")] == "unknown"            # in flight when the process died
+    assert applied[("pause_agent", "caine")] == "in_progress"        # in flight when the process died
     assert applied[("pause_agent", "aurelio")] == "pending"          # never started
     plan = ks.plan_disarm(json.loads(state.read_text(encoding="utf-8")))
     resumed = [a["name"] for a in plan.actions if a["kind"] == "resume_agent"]
-    assert resumed == ["caine", "the-bowery-king", "marcus"]
+    assert resumed == ["caine", "the-bowery-king", "marcus"]        # in-flight is undone like unknown
+    assert any("caine: pause_agent outcome unknown; undoing it anyway" in n for n in plan.notes)
     assert any("aurelio: pause_agent never started" in n for n in plan.notes)
     # An old record without outcomes counts as unknown: it is undone, not skipped.
     assert ks.needs_undo({"kind": "pause_agent"}) is True
+
+
+def test_interrupted_disarm_keeps_the_in_flight_arm_action(tmp_path: Path):
+    client = FakeClient(AGENTS, ROUTINES)
+    before = json.loads(json.dumps({"agents": client.agents, "routines": client.routines}))
+    state = tmp_path / "state.json"
+    assert ks.cmd_arm(client, "co", state, None, False, False, False, False) == 0
+
+    class Crash(FakeClient):
+        def post(self, path, body=None):
+            if path == "/api/agents/id-caine/resume":
+                raise RuntimeError("process killed between checkpoint and call")
+            return super().post(path, body)
+
+    crashing = Crash(AGENTS, ROUTINES)
+    crashing.agents, crashing.routines = client.agents, client.routines
+    with pytest.raises(RuntimeError):
+        ks.cmd_disarm(crashing, state, False, False)
+    # aurelio's resume ran and is gone from the file; caine's pause is still there (its resume was
+    # in flight, not confirmed), and so is everything after it.
+    left = [(a["kind"], a.get("name") or a.get("title")) for a in json.loads(state.read_text(encoding="utf-8"))["actions"]]
+    assert ("pause_agent", "aurelio") not in left
+    assert ("pause_agent", "caine") in left and ("disable_wake", "marcus") in left
+    assert client.agents["id-caine"]["status"] == "paused"
+
+    client.calls.clear()
+    assert ks.cmd_disarm(client, state, False, False) == 0
+    writes = [(m, p) for m, p, _ in client.calls if m != "GET"]
+    assert ("POST", "/api/agents/id-caine/resume") in writes
+    assert ("POST", "/api/agents/id-aurelio/resume") not in writes
+    assert {"agents": client.agents, "routines": client.routines} == before
+    assert not state.exists()
 
 
 def test_incomplete_disarm_keeps_only_the_undone_actions(tmp_path: Path):
