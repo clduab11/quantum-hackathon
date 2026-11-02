@@ -38,7 +38,7 @@ The unchanged reference scores 1.0. Each task prices a circuit differently (`har
 
 | Task | Cost (lower is better) | Notes |
 | --- | --- | --- |
-| `invsqrt` | `Q × (Toffoli + T/4)` | Rotations are priced in T; our harness charges about `0.56·log₂(1/ε) + 5.3` T per rotation. Reference: Q 260, 7,735 Toffolis, 37 rotations → 2,076,774. |
+| `invsqrt` | `Q × (Toffoli + T/4)` | Rotations are priced in T by the official verifier's `rotation_t_count`; the repository's invsqrt cost model (`tasks/invsqrt/calibrate.py`) estimates about `0.56·log₂(1/ε) + 5.3` T per rotation. Reference: Q 260, 7,735 Toffolis, 37 rotations → 2,076,774. |
 | `dqi` | `R(ε⁺) × Q² × Toffoli` with `R(ε) = ln 2 / (−ln(½ + 2√ε))` | ε⁺ is a one-sided Clopper–Pearson upper bound on the decoder's failure rate at δ = 2⁻¹²⁸, about 88.7/N with zero failures, so the zero-failure floor is R ≈ 1.191. **Q is squared.** Reference: Q 1,893, 5,725,461 Toffolis → about 2.44 × 10¹³. |
 | `dfthcsos` | `λ_eff × Toffoli × Q` with `λ_eff = √(E_gap (2Λ − E_gap))` | T and Q cover the **whole block encoding**, not only the submitted ANGLE circuits; the state preparation and Givens rotations are priced analytically. Reference: (R, B, C) = (65, 60, 60), 10 circuits, Λ ≈ 308, λ_eff 49.3 → 3,355,599,588. |
 
@@ -65,8 +65,10 @@ Q is the logical-qubit count and Toffoli the Toffoli count, both per shot.
 - `invsqrt`: 64 shots per x over x = 1..3,133,452, i.e. 200,540,928 shots, and **zero failures** are allowed.
   Tolerance is 2⁻²⁴·β/√x turns. Exactly one register.
 - `dqi`: 102,400 shots; failures are allowed and priced through ε⁺. The first failure costs about +0.45 %.
-- `dfthcsos`: rejected if the Hamiltonian error is above 20 mHa, Λ ≤ 49.0 or E_gap ≤ 3.914898 Ha. Any ANGLE
-  circuit wider than 128 qubits is rejected; 128 itself is allowed and our circuits use exactly 128.
+- `dfthcsos`: 64 shots per QROM address, so the full count depends on the submitted circuits: 254,464 shots for
+  the reference (the figure in `docs/ledger-schema.md`), 36,608 for the default gate profile (572 addresses) and
+  78,080 for submission-011 (`expected_shots` in `configs/gates/`). Rejected if the Hamiltonian error is above
+  20 mHa, Λ ≤ 49.0 or E_gap ≤ 3.914898 Ha. Any ANGLE circuit wider than 128 qubits is rejected; 128 itself is allowed and our circuits use exactly 128.
   The `angle_k_*` files are numbered from 0 with no gaps and `submission.npz` must hold `U`, `W`, `H2_I`,
   `H1_I`, `Hsym_lower` and `tree_edges`.
 - Zip layout: `invsqrt.kmb|kmx`, `dqi.kmb|kmx`, `dfthcsos/angle_k_<i>.kmb|kmx` plus `dfthcsos/submission.npz`.
@@ -86,9 +88,10 @@ Approximation is priced, not forbidden. If a circuit fails on a weighted fractio
 output is within trace distance 2√ε of the ideal; `dqi` turns that into the repetition factor R(ε⁺), while
 `invsqrt` and `dfthcsos` demand their accuracy outright (zero failures; ≤ 20 mHa).
 
-Random inputs and internal measurement outcomes are seeded from a salted cryptographic hash of the submission
-(the Fiat–Shamir heuristic). There is no hidden test set, any byte change gets fresh draws, and the salt is
-secret, so searching seeds or nonces for a lucky draw is wasted compute and is banned here (`AGENTS.md`). Local
+The Kaggle overview states that random inputs and internal measurement outcomes are seeded from a salted
+cryptographic hash of the submission (the Fiat–Shamir heuristic), so there is no hidden test set and any byte
+change gets fresh draws; our harness only hands the salt and the circuit hash to the official verifier and does
+not re-derive that behaviour. The competition salt is secret, so searching seeds or nonces for a lucky draw is wasted compute and is banned here (`AGENTS.md`). Local
 runs use a fixed public salt (`PRA171_LOCAL_PUBLIC_FIXED_SALT_0001`), which is why every local figure in this
 repository is labelled "fixed salt" and why only the Kaggle score is the score.
 
@@ -127,9 +130,12 @@ gates of compute–copy–uncompute patterns.
 Prizes total $150,000: leaderboard $50k / $25k / $10k / $5k / $5k / $5k for places 1–6, plus $10k
 Mid-Competition Milestone, $10k Longest Leader and three $10k single-task prizes (fusion, combinatorial
 optimisation, chemistry). Every additional prize carries the same licensing, reproducibility and documentation
-duties as the main prizes, which is why this repository regenerates every shipped circuit from its own committed
-generator and records every parent with URL and licence (R10 in `AGENTS.md`). We compete solo; no team merger
-(R11).
+duties as the main prizes. R10 in `AGENTS.md` therefore requires every shipped circuit to be regenerated from a
+committed generator with every parent recorded with URL and licence, and G5 enforces the byte-for-byte rebuild.
+Today's generators are ports of Apache-2.0 public notebooks: the board ruled on 2026-10-29 (D-PRA341-02) that
+these ship now while own generators are built in parallel, because the host's generator rule applies at prize
+time, and the invsqrt coefficient calibration's licence is recorded as unresolved in `tasks/invsqrt/PROVENANCE.md`.
+We compete solo; no team merger (R11).
 
 ## 7. Per-task playbooks
 
@@ -173,7 +179,7 @@ packaging. On the circuit side, deduplicate angle data, exploit repeated prefixe
 and remember that T and Q are charged for the whole block encoding, so a saving inside one ANGLE circuit is
 diluted by the parts of the encoding you do not control.
 
-Where we are: 9.78× at T 16,366 and Q 430 (λ_eff from Λ ≈ 305.7, E_gap ≈ 3.9149 Ha, error_2 at 19.999 mHa,
+Where we are: 9.78× at T 16,366 and Q 430 (Λ ≈ 305.66, E_gap ≈ 3.9149 Ha, λ_eff ≈ 48.76, error_2 at 19.999 mHa,
 i.e. right at the accuracy wall) with 15 five-word ANGLE circuits from a full-XOR J = 5 compiler on a public
 (8, 143, 60) factor. The repository's negative-results register holds dozens of refit points that failed the
 20 mHa rule; read `docs/decisions/` before repeating one.
@@ -198,7 +204,7 @@ rebuild from a clean environment; licence and public-notebook duties understood.
 folders, no numbering gaps, all `submission.npz` arrays present, every ANGLE circuit ≤ 128 qubits, the zip reopens
 and re-verifies after packaging, and the submission log records UTC time and the remaining daily quota.
 
-## 9. Where we stand (2026-11-02)
+## 9. Where we stand (leaderboard read 2026-11-02; ledger record in PR #81)
 
 | | invsqrt | dqi | dfthcsos | geometric mean |
 | --- | --- | --- | --- | --- |
@@ -213,8 +219,8 @@ The ledger record of this read (`ledger/evidence/submission-011/kaggle-public-sc
 of `ledger/standing.yaml`, which feeds the status page) lands with PR #81 (`op-vqcc/ledger-reconcile-1102`), not with
 this guide; until that merges, `main` still records the 2026-10-29 read.
 
-What the gap means: reaching the prize line from 19.21 needs the product of the three ratios to grow 2.72×
-(26.80/19.21 cubed), i.e. about 1.40× on every task or the equivalent concentrated on one. Matching the best public
+What the gap means: reaching the last paid place from 19.21 needs the product of the three ratios to grow 2.72×
+(26.80/19.21 cubed; the leader would need about 3.10×), i.e. about 1.40× on every task or the equivalent concentrated on one. Matching the best public
 invsqrt we have measured (Kaggle publishes no per-task scores) alone would give (20.06 × 54.73 × 9.78)^(1/3) ≈ 22.1, well short of 26.80. Even after matching that invsqrt, at least one
 task has to go well beyond the public frontier: with dqi at 54.73×, chemistry alone would have to reach about 17.5×
 (from 9.78×), or with chemistry at 9.78×, dqi alone about 98× (from 54.73×). That is why own-generator invsqrt
