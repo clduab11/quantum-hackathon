@@ -1,0 +1,176 @@
+{
+ "edit": "e011+e001",
+ "candidate_circuit_sha256": "07719b58ecc18271a80b651c0cba06eba199d203193a2688b2486c9f9006206e",
+ "rebuild_byte_identical": true,
+ "Q": 889,
+ "T_static": 487235,
+ "baseline_T_static": 487331,
+ "baseline_mean_T": 474307.73,
+ "dqi_baseline_cost": 24439465632206.816,
+ "three_salts": [
+  {
+   "salt": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+   "mean_T": 473357.78025390627,
+   "value_errors": 0,
+   "phase_errors": 2,
+   "score": 449444792825.3299,
+   "ratio": 54.37701364515498
+  },
+  {
+   "salt": "PRA322_NAMED_SALT_A",
+   "mean_T": 473357.615234375,
+   "value_errors": 0,
+   "phase_errors": 0,
+   "score": 445655857469.7928,
+   "ratio": 54.83932326383337
+  },
+  {
+   "salt": "PRA322_NAMED_SALT_B",
+   "mean_T": 473357.462578125,
+   "value_errors": 0,
+   "phase_errors": 0,
+   "score": 445655713747.26715,
+   "ratio": 54.839340949337675
+  }
+ ],
+ "same_salt_comparison": [
+  {
+   "circuit": "base",
+   "salt": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+   "mean_T": 474307.7251367188,
+   "phase_errors": 0,
+   "ratio": 54.72947182918558
+  },
+  {
+   "circuit": "e001-only-real",
+   "salt": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+   "mean_T": 473933.8983398437,
+   "phase_errors": 2,
+   "ratio": 54.31091248393824
+  },
+  {
+   "circuit": "e011",
+   "salt": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+   "mean_T": 473357.78025390627,
+   "phase_errors": 2,
+   "ratio": 54.37701364515498
+  },
+  {
+   "circuit": "base",
+   "salt": "PRA322_NAMED_SALT_A",
+   "mean_T": 474307.7282421875,
+   "phase_errors": 0,
+   "ratio": 54.72947147085141
+  },
+  {
+   "circuit": "e001-only-real",
+   "salt": "PRA322_NAMED_SALT_A",
+   "mean_T": 473933.5714453125,
+   "phase_errors": 0,
+   "ratio": 54.772678799840044
+  },
+  {
+   "circuit": "e011",
+   "salt": "PRA322_NAMED_SALT_A",
+   "mean_T": 473357.615234375,
+   "phase_errors": 0,
+   "ratio": 54.83932326383337
+  },
+  {
+   "circuit": "base",
+   "salt": "PRA322_NAMED_SALT_B",
+   "mean_T": 474307.7237304688,
+   "phase_errors": 1,
+   "ratio": 54.47926814721009
+  },
+  {
+   "circuit": "e001-only-real",
+   "salt": "PRA322_NAMED_SALT_B",
+   "mean_T": 473933.5310546875,
+   "phase_errors": 1,
+   "ratio": 54.522282075929674
+  },
+  {
+   "circuit": "e011",
+   "salt": "PRA322_NAMED_SALT_B",
+   "mean_T": 473357.462578125,
+   "phase_errors": 0,
+   "ratio": 54.839340949337675
+  }
+ ],
+ "same_seed_comparison": [
+  {
+   "circuit": "e001-only-real",
+   "seed": 1,
+   "mean_T": 473933.9170898438,
+   "phase_errors": 2
+  },
+  {
+   "circuit": "e011",
+   "seed": 1,
+   "mean_T": 473357.84080078127,
+   "phase_errors": 2
+  },
+  {
+   "circuit": "e011-qpost",
+   "seed": 1,
+   "mean_T": 473741.6508203125,
+   "phase_errors": 2
+  },
+  {
+   "circuit": "e011-lookA",
+   "seed": 1,
+   "mean_T": 473741.63158203126,
+   "phase_errors": 2
+  },
+  {
+   "circuit": "e011-lookB",
+   "seed": 1,
+   "mean_T": 473741.583828125,
+   "phase_errors": 2
+  },
+  {
+   "circuit": "e001-only-real",
+   "seed": 2,
+   "mean_T": 473933.61552734376,
+   "phase_errors": 1
+  },
+  {
+   "circuit": "e011",
+   "seed": 2,
+   "mean_T": 473357.31287109375,
+   "phase_errors": 1
+  },
+  {
+   "circuit": "e011-qpost",
+   "seed": 2,
+   "mean_T": 473741.863671875,
+   "phase_errors": 1
+  },
+  {
+   "circuit": "e011-lookA",
+   "seed": 2,
+   "mean_T": 473741.63544921874,
+   "phase_errors": 1
+  },
+  {
+   "circuit": "e011-lookB",
+   "seed": 2,
+   "mean_T": 473741.87578125,
+   "phase_errors": 1
+  }
+ ],
+ "notes": "Verifier seeds the shots from the circuit SHA-256 plus the salt, so each circuit sees different shots. At identical explicit seeds the unpatched vendored circuit, e001-only and every e011 variant show the same phase-error counts (seed 1: 2, seed 2: 1), so the rare phase errors are intrinsic to the vendored circuit and not introduced by e001 or e011.",
+ "base_seed_runs": [
+  {
+   "seed": 1,
+   "phase_errors": 2,
+   "mean_T": 474307.72759765625
+  },
+  {
+   "seed": 2,
+   "phase_errors": 1,
+   "mean_T": 474307.7091992188
+  }
+ ]
+}

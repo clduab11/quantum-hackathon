@@ -7,6 +7,10 @@ embedded source. Their imports rely on the author's sys.path layout, so the
 unchanged build.py runs as a script in its own interpreter, the way its author
 runs it. Every vendored file is checked against SOURCE_MAP.json first. No
 notebook, circuit, data file or network access is an input.
+
+PRA-322: optional hengck23 edit patches are applied only onto a scratch copy of
+the vendored tree (see fused/patches/). Vendored bytes and SOURCE_MAP.json stay
+true.
 """
 import argparse
 import hashlib
@@ -19,7 +23,7 @@ import tempfile
 import time
 
 PORT = Path(__file__).resolve().parent / 'fused'
-BUILD = PORT / 'source/exp/decoder/build.py'
+BUILD_REL = Path('exp/decoder/build.py')
 
 
 def sha256(path):
@@ -36,24 +40,42 @@ def check_pins():
     return len(files)
 
 
+def stage_source(scratch: Path, *, apply_hengck23: bool) -> list[dict]:
+    """Copy vendored source into scratch; optionally apply the edit layer."""
+    staged = scratch / 'source'
+    shutil.copytree(PORT / 'source', staged, symlinks=False)
+    receipts = []
+    if apply_hengck23:
+        from tasks.dqi.fused.patches import apply_patches
+        receipts = apply_patches(staged)
+    return receipts
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--hengck23-edits', action='store_true',
+                        help='Apply fused/patches (hengck23 edit layer) on a scratch copy.')
     args = parser.parse_args()
     started = time.monotonic()
     pinned = check_pins()
-    with tempfile.TemporaryDirectory(prefix='dqi-fused-') as scratch:
-        built = Path(scratch) / 'dqi.kmb'
+    with tempfile.TemporaryDirectory(prefix='dqi-fused-') as scratch_name:
+        scratch = Path(scratch_name)
+        receipts = stage_source(scratch, apply_hengck23=args.hengck23_edits)
+        built = scratch / 'dqi.kmb'
+        build = scratch / 'source' / BUILD_REL
         # -B keeps __pycache__ out of the source tree; build.py also writes dqi.build.json,
         # which stays in scratch so OUT holds only the circuit.
-        subprocess.run([sys.executable, '-B', str(BUILD), str(built)], cwd=scratch, check=True,
+        subprocess.run([sys.executable, '-B', str(build), str(built)], cwd=scratch, check=True,
                        stdout=sys.stderr)
         record = json.loads(built.with_suffix('.build.json').read_text())
         args.out.mkdir(parents=True, exist_ok=True)
         path = args.out / 'dqi.kmb'
         shutil.move(built, path)
     digest = sha256(path)
-    print(json.dumps(dict(variant='fused-confluent', pinned_files=pinned, num_qubits=record['Q'],
+    print(json.dumps(dict(variant='fused-confluent' + ('+hengck23' if args.hengck23_edits else ''),
+                          pinned_files=pinned, patches=receipts,
+                          num_qubits=record['Q'],
                           static_toffoli_like=record['T_static'], num_ops=record['num_ops'],
                           num_bits=record['num_bits'], build_seconds=time.monotonic() - started,
                           sha256=digest, bytes=path.stat().st_size, stages=record['stages']),
