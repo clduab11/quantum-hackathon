@@ -53,14 +53,23 @@ uv run python scripts/paperclip_killswitch.py disarm
 ```
 
 `arm` writes `paperclip-killswitch-state.json` (or `$PAPERCLIP_KILLSWITCH_STATE`, or `--state`)
-before its first write and refuses to run while that file exists. `disarm` reads it and renames
-it to `*.restored`. `--json` prints plans as JSON. Exit codes: 0 ok, 1 API or state error, 2 bad
-arguments.
+before its first write and refuses to run while that file exists. `arm --force` archives the
+existing file as `<name>.<stamp>.superseded` and warns: the new record is planned from the
+already-armed state, so the original state comes back only with `disarm --state <archive>`.
+
+Both commands are best effort. A failed API call is reported on stderr, the remaining actions
+still run, and the exit code is 1. `arm` marks each action `applied` true or false in the state
+file and `disarm` undoes only the applied ones; an incomplete `disarm` leaves the still-undone
+actions in the file for the next run. A finished `disarm` moves the file to `<name>.<stamp>.restored`
+(`Path.replace`, so repeated cycles work on Windows too). `--json` prints plans as JSON. Exit
+codes: 0 ok, 1 API or state error, 2 bad arguments.
 
 ## Tests
 
 `tests/test_paperclip_killswitch.py` drives the planner and the apply loop against a fake API
 that records every call: default targets and exclusions, the wake-gate rewrite, the arm/disarm
-round trip (state after disarm equals state before arm, call for call), dry run, and the
-errored-agent case (Paperclip resumes to `idle`; the previous `error` status cannot be restored,
+round trip (state after disarm equals state before arm, call for call, over two cycles), dry run,
+`--force` (the original record is archived and still restores), a best-effort arm with two failing
+calls (the other agents are still paused; disarm undoes only what ran), an incomplete disarm
+(the undone actions stay in the file), and the errored-agent case (Paperclip resumes to `idle`; the previous `error` status cannot be restored,
 and the plan says so).

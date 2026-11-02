@@ -34,7 +34,14 @@ Default targets: marcus, the-bowery-king, caine, sofia, aurelio. The protected a
 the-high-table and the-adjudicator are never touched unless `--all` is given, even when named in
 `--agents`. Terminated agents are skipped. The state file defaults to
 `$PAPERCLIP_KILLSWITCH_STATE` or `./paperclip-killswitch-state.json`; `arm` refuses to run while
-one exists (disarm first, or pass `--force` to overwrite it).
+one exists (disarm first). `arm --force` archives the existing file as `<name>.<stamp>.superseded`
+and warns: the new record is planned from the already-armed state, so restoring the original
+state means `disarm --state <that archive>`.
+
+Both `arm` and `disarm` are best effort: a failed API call is reported, the remaining actions still
+run, and the exit code is 1. `arm` marks every action `applied` true or false in the state file,
+`disarm` undoes only the applied ones, and an incomplete `disarm` leaves the still-undone actions
+in the state file for the next run. A finished `disarm` moves the file to `<name>.<stamp>.restored`.
 
 Standard library only. Exit 0 on success, 1 on an API or state error, 2 on bad arguments.
 """
@@ -222,6 +229,9 @@ def plan_disarm(state: dict[str, Any]) -> Plan:
     plan = Plan()
     for action in reversed(state.get("actions", [])):
         kind = action["kind"]
+        if action.get("applied") is False:
+            plan.notes.append(f"{action.get('name') or action.get('title')}: {kind} never applied; nothing to undo")
+            continue
         if kind == "pause_agent":
             after = "idle"
             if action["before"] == "error":
@@ -243,26 +253,47 @@ def plan_disarm(state: dict[str, Any]) -> Plan:
 # --------------------------------------------------------------------------- applying
 
 
-def apply_plan(client: PaperclipClient, plan: Plan) -> list[str]:
-    """Run every action through the API, in order. Returns one line per action."""
-    done = []
+def _apply_action(client: PaperclipClient, action: dict[str, Any]) -> str:
+    kind = action["kind"]
+    if kind == "disable_wake" or kind == "restore_wake":
+        client.patch(f"/api/agents/{action['agentId']}", {"runtimeConfig": action["after"]})
+        return f"{kind}: {action['name']}"
+    if kind == "pause_routine" or kind == "resume_routine":
+        client.patch(f"/api/routines/{action['routineId']}", {"status": action["after"]})
+        return f"{kind}: {action.get('title')}"
+    if kind == "pause_agent":
+        client.post(f"/api/agents/{action['agentId']}/pause")
+        return f"{kind}: {action['name']} ({action['before']} -> paused)"
+    if kind == "resume_agent":
+        client.post(f"/api/agents/{action['agentId']}/resume")
+        return f"{kind}: {action['name']}"
+    raise KillSwitchError(f"unknown action kind: {kind}")
+
+
+def apply_plan(client: PaperclipClient, plan: Plan) -> tuple[list[str], list[str]]:
+    """Run every action through the API, in order, best effort: a failed call is reported and
+    the loop goes on, so one bad PATCH never leaves the other agents running. Each action gets
+    `applied` set to True or False. Returns (done lines, failure lines)."""
+    done, failed = [], []
     for action in plan.actions:
-        kind = action["kind"]
-        if kind == "disable_wake" or kind == "restore_wake":
-            client.patch(f"/api/agents/{action['agentId']}", {"runtimeConfig": action["after"]})
-            done.append(f"{kind}: {action['name']}")
-        elif kind == "pause_routine" or kind == "resume_routine":
-            client.patch(f"/api/routines/{action['routineId']}", {"status": action["after"]})
-            done.append(f"{kind}: {action.get('title')}")
-        elif kind == "pause_agent":
-            client.post(f"/api/agents/{action['agentId']}/pause")
-            done.append(f"{kind}: {action['name']} ({action['before']} -> paused)")
-        elif kind == "resume_agent":
-            client.post(f"/api/agents/{action['agentId']}/resume")
-            done.append(f"{kind}: {action['name']}")
-        else:
-            raise KillSwitchError(f"unknown action kind: {kind}")
-    return done
+        try:
+            done.append(_apply_action(client, action))
+            action["applied"] = True
+        except KillSwitchError as exc:
+            action["applied"] = False
+            failed.append(f"{action['kind']}: {action.get('name') or action.get('title')}: {exc}")
+    return done, failed
+
+
+def _stamp() -> str:
+    return _dt.datetime.now(_dt.timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+
+
+def archive_state(state_path: Path, suffix: str) -> Path:
+    """Move the state file aside under a timestamped name (`replace`: works on Windows too)."""
+    archived = state_path.with_name(f"{state_path.name}.{_stamp()}.{suffix}")
+    state_path.replace(archived)
+    return archived
 
 
 def load_state(path: Path) -> dict[str, Any]:
@@ -351,11 +382,20 @@ def cmd_arm(client: PaperclipClient, company_id: str, state_path: Path, names: l
     if not plan.actions:
         print("nothing to arm; no state file written")
         return 0
-    write_state(state_path, client.api_url, company_id, plan)
-    for line in apply_plan(client, plan):
+    if state_path.exists():
+        archived = archive_state(state_path, "superseded")
+        print(f"warning: the switch was already armed; its record is archived at {archived}. "
+              f"This run plans from the live (armed) state, so to restore the original state run "
+              f"disarm with --state {archived}", file=sys.stderr)
+    write_state(state_path, client.api_url, company_id, plan)   # the plan, before the first write
+    done, failed = apply_plan(client, plan)
+    write_state(state_path, client.api_url, company_id, plan)   # the same plan with `applied` flags
+    for line in done:
         print(line)
-    print(f"armed; previous state saved to {state_path}")
-    return 0
+    for line in failed:
+        print(f"FAILED {line}", file=sys.stderr)
+    print(f"{'armed with failures' if failed else 'armed'}; previous state saved to {state_path}")
+    return 1 if failed else 0
 
 
 def cmd_disarm(client: PaperclipClient, state_path: Path, dry_run: bool, as_json: bool) -> int:
@@ -365,10 +405,25 @@ def cmd_disarm(client: PaperclipClient, state_path: Path, dry_run: bool, as_json
     if dry_run:
         print("dry run: nothing written")
         return 0
-    for line in apply_plan(client, plan):
+    done, failed = apply_plan(client, plan)
+    for line in done:
         print(line)
-    state_path.rename(state_path.with_suffix(state_path.suffix + ".restored"))
-    print(f"disarmed; state file moved to {state_path}.restored")
+    for line in failed:
+        print(f"FAILED {line}", file=sys.stderr)
+    if failed:
+        # Keep only what is still to undo, so the next disarm does not replay the restored part.
+        undone = {(a["kind"], a.get("agentId") or a.get("routineId")) for a in plan.actions if a.get("applied")}
+        inverse = {"resume_agent": "pause_agent", "resume_routine": "pause_routine", "restore_wake": "disable_wake"}
+        remaining = [a for a in state["actions"]
+                     if a.get("applied") is not False
+                     and not any(inverse[k] == a["kind"] and i == (a.get("agentId") or a.get("routineId"))
+                                 for k, i in undone)]
+        state["actions"] = remaining
+        state_path.write_text(json.dumps(state, indent=1), encoding="utf-8")
+        print(f"disarm incomplete; {len(remaining)} action(s) left in {state_path}; run disarm again", file=sys.stderr)
+        return 1
+    archived = archive_state(state_path, "restored")
+    print(f"disarmed; state file moved to {archived}")
     return 0
 
 
@@ -385,7 +440,8 @@ def build_parser() -> argparse.ArgumentParser:
     arm.add_argument("--agents", help="comma-separated agent names (default: the built-in list)")
     arm.add_argument("--all", action="store_true", help="also act on the protected agents")
     arm.add_argument("--dry-run", action="store_true", help="print the plan and write nothing")
-    arm.add_argument("--force", action="store_true", help="overwrite an existing state file")
+    arm.add_argument("--force", action="store_true",
+                     help="arm again although a state file exists (it is archived first, with a warning)")
     disarm = sub.add_parser("disarm", help="restore exactly what arm recorded")
     disarm.add_argument("--dry-run", action="store_true", help="print the plan and write nothing")
     return parser
