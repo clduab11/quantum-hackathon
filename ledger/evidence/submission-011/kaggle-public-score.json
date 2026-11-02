@@ -1,0 +1,31 @@
+{
+  "candidate_id": "submission-011",
+  "commands": [
+    "Anonymous (logged-out) read of the public leaderboard in the built-in browser: POST https://www.kaggle.com/api/i/competitions.LeaderboardService/GetLeaderboard {competitionId: 161954}; our row matched on submissionId 57759974 (team 17188255, Chris Dukes)."
+  ],
+  "kaggle": {
+    "competition": "google-verifiable-quantum-circuit-compilation",
+    "date": "2026-10-29T05:25:24.567Z",
+    "description": "submission-011 pra309-chem-8-143-60 zip a710cab2 local GM 19.205727125145224",
+    "fileName": "submission.zip",
+    "publicScore": "19.20572",
+    "ref": 57759974,
+    "status": "COMPLETE",
+    "totalBytes": 31514298
+  },
+  "kind": "kaggle_public_score",
+  "leaderboard": {
+    "read_at_utc": "2026-11-02T17:47:39+00:00",
+    "rank": 1404,
+    "teams": 2052,
+    "leader_score": "27.99617",
+    "prize_line_place": 6,
+    "prize_line_score": "26.80320"
+  },
+  "local_geometric_mean": 19.205727125145224,
+  "notes": "Public score read from the public leaderboard (no Kaggle token; anonymous access only) by Chris's Claude Code session on 2026-11-02, reconciling the ledger after D-PRA341-02 left the score pending. The leaderboard row for Kaggle submission 57759974 shows 19.20572 at rank 1404 of 2052 teams; the leaderboard shows a team's best public entry, so submission-011 is now our best. submission-NNN.json manifests are never rewritten (docs/ledger-schema.md), so the score is recorded here. Kaggle public 19.20572 equals the local fixed-salt G3 geometric mean 19.205727125145224 to the printed digits (public/local 1.00000). totalBytes is the ledger's recorded upload size (D-PRA341-02); ListSubmissions was not read. No salt grinding follows.",
+  "operator": "clduab11 (Chris Dukes; Claude Code session, anonymous leaderboard read)",
+  "source_candidate_id": "pra309-chem-8-143-60",
+  "timestamp_utc": "2026-11-02T17:47:39+00:00",
+  "zip_sha256": "a710cab21a8bac7ff552944ca48e8afb4e0fe4c98e0be5fd2e86be32b79c01ac"
+}
