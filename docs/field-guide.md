@@ -204,13 +204,15 @@ and re-verifies after packaging, and the submission log records UTC time and the
 | submission-011, local fixed salt | 13.2377× (Q 84) | 54.7295× (Q 889) | 9.7782× (Q 430) | **19.21** |
 | best public circuit we measured | 20.06 (Q 63) | 54.73 | 8.91 | — |
 
-Latest recorded public score: **18.39393** (submission-010), rank 848 of 1,501; submission-011 was uploaded on
-2026-10-29 and should score about 19.21. Leader 26.14113; last paid place (6th) 24.74409.
+Public score: **19.20572** (submission-011, anonymous leaderboard read 2026-11-02T17:47Z), rank 1,404 of 2,052
+teams; the local fixed-salt figure matched it. Leader 27.99617 (Breaking1800); last paid place (6th) 26.80320. The
+field is moving faster than we are: since the 2026-10-29 read our score rose from 18.39 to 19.21 while the rank fell
+from 848 of 1,501 to 1,404 of 2,052 and the prize line rose from 24.74 to 26.80.
 
-What the gap means: reaching the prize line from 19.21 needs the product of the three ratios to grow 2.14×,
-i.e. about 1.29× on every task or the equivalent concentrated on one. Matching the best public invsqrt alone
-would give (20.06 × 54.73 × 9.78)^(1/3) ≈ 22.1, still short; the paid places need work beyond the public
-frontier on at least two tasks, which is why own-generator invsqrt work and the chemistry factor search run in
+What the gap means: reaching the prize line from 19.21 needs the product of the three ratios to grow 2.72×
+(26.80/19.21 cubed), i.e. about 1.40× on every task or the equivalent concentrated on one. Matching the best public
+invsqrt alone would give (20.06 × 54.73 × 9.78)^(1/3) ≈ 22.1, well short of 26.80; the paid places need work
+beyond the public frontier on at least two tasks, which is why own-generator invsqrt work and the chemistry factor search run in
 parallel. The 2026-11-20 milestone prize additionally needs a public notebook, which we have not published
 (`notebook_url: null` in `ledger/standing.yaml`).
 
