@@ -35,14 +35,14 @@ tracks:
         state: shipped
         note: Our own circuits, built from the best published description of the molecule.
       # PRA-285, finished 2026-10-27 as a negative result (D-PRA285-01, merged #70): storage and
-      # uncompute changes alone cannot take the circuit below 68 qubits, so the best verified point
-      # stays the shipped 84-qubit circuit at 13.24.
-      - label: A square-root circuit with fewer qubits (tried)
+      # uncompute changes alone cannot reach Q <= 68 (no circuit at 68 qubits or fewer); the only
+      # measured point is the shipped Q84 circuit at 13.24, which is the value shown here.
+      - label: A square-root circuit with fewer qubits (not achieved)
         value: 13.24
         state: verified
         note: >-
-          Negative result: storage changes alone cannot get below 68 qubits, so the shipped
-          84-qubit circuit stays.
+          Negative result: storage changes alone cannot reach 68 qubits or fewer. The measured
+          13.24 is the shipped 84-qubit circuit, not a smaller one.
 
   - id: B
     name: Chemistry engine
