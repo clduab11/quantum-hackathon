@@ -1,0 +1,21 @@
+{
+  "edit": "e002",
+  "status": "phase_correct_q_high",
+  "Q": 1513,
+  "T_static": 523549,
+  "mean_toffoli": 510151.6059375,
+  "dT_vs_baseline": 35843.87593750004,
+  "sha256": "0b40ba35531dfdcd4515e8b51904f28e4fc7e05649efcba5d093cd82ed230e7b",
+  "smoke": {
+    "value_errors": 0,
+    "phase_errors": 0,
+    "status": "PASS"
+  },
+  "notes": "nz_swap flag uncomputed from post-swap u under D≠0 invariant (no HMR/reset). Q inflated by live N+Di per mat through synthesis; target Q 901. Q-cut via HMR/XOR-clear failed values (D-PRA322-01).",
+  "hengck_target": {
+    "dT": -15259,
+    "dQ": 12,
+    "Q": 901
+  },
+  "qcut_negative": "docs/decisions/D-PRA322-01.md"
+}

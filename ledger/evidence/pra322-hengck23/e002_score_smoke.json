@@ -1,0 +1,13 @@
+{
+  "kind": "engineering_smoke",
+  "variant": "uncompute_flag_from_postswap_u",
+  "salt": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+  "elapsed_sec": 156.28,
+  "status": "PASS",
+  "error": null,
+  "value_errors": 0,
+  "phase_errors": 0,
+  "Q": 1513,
+  "T_static": 523549,
+  "circuit_sha256": "0b40ba35531dfdcd4515e8b51904f28e4fc7e05649efcba5d093cd82ed230e7b"
+}

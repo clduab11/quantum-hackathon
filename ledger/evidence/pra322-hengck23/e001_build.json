@@ -1,0 +1,14 @@
+{
+  "edit": "e001",
+  "hengck_iter": "001/002",
+  "expected_dT_mean": -374,
+  "note": "Static Toffoli-like count is unchanged: push_condition gates remain in the circuit; mean-executed T drops under the verifier. Measure mean T with harness/score_local, not T_static.",
+  "baseline_circuit_sha256": "7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6",
+  "baseline_T_static": 487331,
+  "baseline_Q": 889,
+  "e001_circuit_sha256": "21f8484f48d411ae32c3f7be0557c2ba0c631a86b8b46939e7a10ee5c94a1c9f",
+  "e001_T_static": 487331,
+  "e001_Q": 889,
+  "e001_bytes": 546664118,
+  "build_seconds": 104.48
+}
