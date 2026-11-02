@@ -108,6 +108,38 @@ def test_memo_set_keeps_the_first_writer_in_process_and_on_disk(tmp_path):
     assert memo.set(b"k", {"who": 1}) == {"who": 1} and memo.set(b"k", {"who": 2}) == {"who": 1}
 
 
+def test_memo_first_writer_is_atomic_across_processes(tmp_path):
+    """Four real worker processes race on the same keys; every key ends with exactly one line on disk and
+    every worker returns the committed winner (the interprocess file lock makes refresh-then-append atomic)."""
+    path = tmp_path / "memo.jsonl"
+    worker = (
+        "import json, sys, time\n"
+        "sys.path.insert(0, sys.argv[1])\n"
+        "from search.memo import VerifierMemo\n"
+        "memo = VerifierMemo(sys.argv[2]); who = sys.argv[3]\n"
+        "start = float(sys.argv[4])\n"
+        "time.sleep(max(0.0, start - time.time()))  # release every worker at the same instant\n"
+        "out = {}\n"
+        "for i in range(150):\n"
+        "    out[str(i)] = memo.set(f'key-{i}'.encode(), {'who': who, 'i': i})\n"
+        "print(json.dumps(out))\n"
+    )
+    import time
+    start = str(time.time() + 1.0)
+    procs = [subprocess.Popen([sys.executable, "-c", worker, str(REPO), str(path), f"w{n}", start],
+                              stdout=subprocess.PIPE, text=True) for n in range(4)]
+    returned = [json.loads(p.communicate(timeout=120)[0]) for p in procs]
+    assert all(p.returncode == 0 for p in procs)
+    lines = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
+    assert len(lines) == 150, "every key was persisted exactly once"
+    on_disk = {record["value"]["i"]: record["value"] for record in lines}
+    for out in returned:
+        for i, value in out.items():
+            assert value == on_disk[int(i)], "each worker returned the committed winner"
+    assert len({v["who"] for v in on_disk.values()}) > 1, "the race was real: more than one worker won keys"
+    assert (tmp_path / "memo.jsonl.lock").exists()
+
+
 def test_program_key_binds_sibling_modules(tmp_path):
     from search.memo import sibling_sources_digest
 
@@ -223,6 +255,13 @@ def test_program_memo_binds_the_declared_factor(tmp_path, monkeypatch):
     ev = _evaluator(tmp_path, monkeypatch)
     program = str(_crashing_program(tmp_path / "a.py"))
     key_a = ev.program_memo_key(program)
+    monkeypatch.setattr(ev, "BUILD_TIMEOUT", ev.BUILD_TIMEOUT * 2)  # a timed-out build must be retried with more time
+    assert ev.program_memo_key(program) != key_a
+    monkeypatch.setattr(ev, "BUILD_TIMEOUT", ev.BUILD_TIMEOUT / 2)
+    monkeypatch.setattr(ev, "VERIFY_TIMEOUT", ev.VERIFY_TIMEOUT * 2)
+    assert ev.program_memo_key(program) != key_a
+    monkeypatch.setattr(ev, "VERIFY_TIMEOUT", ev.VERIFY_TIMEOUT / 2)
+    assert ev.program_memo_key(program) == key_a
     monkeypatch.setattr(ev, "_evaluator_fingerprint", lambda: "deadbeefdeadbeef")  # scoring/verifier code changed
     assert ev.program_memo_key(program) != key_a
     monkeypatch.setattr(ev, "_evaluator_fingerprint", lambda: ev.code_fingerprint(
@@ -483,7 +522,36 @@ def test_cascade_stage3_blocks_dqi_with_one_failed_reduced_shot(tmp_path, monkey
     result = cascade.evaluate_stage3(str(program), task="dqi")
     adapter.stage2_verify_full.assert_not_called()
     assert result.metrics["stage3_passed"] == 0.0 and result.metrics["feasible"] == 0.0
+    assert result.metrics["stage2_passed"] == 0.0, "a failed reduced verdict is a failed stage 2, not 1.0 from the fraction"
     assert "reduced-stage PASS" in result.artifacts["gated"]
+    # the same verdict drives stage 2's own metric
+    monkeypatch.setattr(cascade, "_STATE", {})
+    cascade.evaluate_stage1(str(program), task="dqi")
+    assert cascade.evaluate_stage2(str(program), task="dqi").metrics["stage2_passed"] == 0.0
+
+
+def test_cascade_circuit_memo_keys_bind_the_verifier_code(tmp_path, monkeypatch):
+    from search import adapter_cascade as cascade
+
+    monkeypatch.setattr(cascade, "_STATE", {})
+    monkeypatch.setattr(cascade, "_MEMO", VerifierMemo())
+    program = tmp_path / "prog.py"
+    adapter = _cascade_adapter(_cascade_bundle(tmp_path, program), reduced_fc=1.0)
+    monkeypatch.setattr(cascade, "_adapter_for", lambda t, generation=0: adapter)
+    cascade.evaluate_stage1(str(program), task="invsqrt")
+    cascade.evaluate_stage2(str(program), task="invsqrt")
+    cascade.evaluate_stage2(str(program), task="invsqrt")  # same circuits, same code: memoised
+    assert adapter.stage2_verify_reduced.call_count == 1
+    monkeypatch.setattr(cascade, "_cascade_fingerprint", lambda: "0123456789abcdef")  # verifier/proxy code changed
+    cascade.evaluate_stage2(str(program), task="invsqrt")
+    assert adapter.stage2_verify_reduced.call_count == 2
+    cascade.evaluate_stage3(str(program), task="invsqrt")
+    assert adapter.stage2_verify_full.call_count == 1
+    monkeypatch.setattr(cascade, "_STATE", {})
+    monkeypatch.setattr(cascade, "_cascade_fingerprint", lambda: "fedcba9876543210")
+    adapter.stage0_build.return_value = _cascade_bundle(tmp_path, tmp_path / "again.py")
+    cascade.evaluate(str(program), task="invsqrt")  # a rebuilt program with identical circuit bytes
+    assert adapter.stage2_verify_reduced.call_count == 3 and adapter.stage2_verify_full.call_count == 2
 
 
 def test_cascade_answers_identical_program_sources_from_the_memo(tmp_path, monkeypatch):

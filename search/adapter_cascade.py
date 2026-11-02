@@ -303,7 +303,8 @@ def evaluate_stage2(program_path: str, task: str | None = None) -> EvaluationRes
             mode=mode,
             circuit_fingerprint=adapter.fingerprint(bundle) + b"|reduced",
             shots=adapter.reduced_shots(),
-            verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "reduced"}),
+            verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "reduced",
+                                               "code": _cascade_fingerprint()}),
             submission_id=adapter.submission_identity(bundle),
         )
         cached = _MEMO.get(memo_key)
@@ -318,6 +319,7 @@ def evaluate_stage2(program_path: str, task: str | None = None) -> EvaluationRes
         fields = _score_fields(task, sample, reduced, adapter, bundle)
         result = _to_result(task, fields, stage_reached=2, problems=[],
                             artifacts={"reduced": reduced})
+        result.metrics["stage2_passed"] = 1.0 if _reduced_passed(reduced) else 0.0  # the verdict, not the fraction
         if result.metrics["combined_score"] < STAGE2_THRESHOLD:
             _cleanup(program_path, task)
             _remember(program_path, task, adapter, result, final_stage=2)
@@ -365,6 +367,7 @@ def evaluate_stage3(program_path: str, task: str | None = None) -> EvaluationRes
                 "reduced": reduced,
                 "gated": "full verification needs a reduced-stage PASS first; the reduced stage did not pass",
             })
+            result.metrics["stage2_passed"] = 0.0  # a failed verdict is a failed stage 2, whatever the fraction
             _cleanup(program_path, task)
             _remember(program_path, task, adapter, result, final_stage=2)
             return result
@@ -375,7 +378,8 @@ def evaluate_stage3(program_path: str, task: str | None = None) -> EvaluationRes
             mode=mode,
             circuit_fingerprint=adapter.fingerprint(bundle) + b"|full",
             shots=adapter.full_shots(),
-            verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "full"}),
+            verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "full",
+                                               "code": _cascade_fingerprint()}),
             submission_id=adapter.submission_identity(bundle),
         )
         cached = _MEMO.get(memo_key)

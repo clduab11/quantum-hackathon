@@ -23,17 +23,69 @@ verifier FAIL, a timeout, a crashed child) are stored like any other value so th
 """
 from __future__ import annotations
 
+import contextlib
 import hashlib
 import importlib.util
 import json
 import os
 import threading
 import time
-from collections.abc import Callable, Iterable, Mapping
+from collections.abc import Callable, Iterable, Iterator, Mapping
 from pathlib import Path
 from typing import Any
 
+try:
+    import fcntl
+except ImportError:  # pragma: no cover - Windows
+    fcntl = None  # type: ignore[assignment]
+try:
+    import msvcrt
+except ImportError:  # pragma: no cover - POSIX
+    msvcrt = None  # type: ignore[assignment]
+
 MEMO_FILENAME = "verifier_memo.jsonl"
+
+
+@contextlib.contextmanager
+def file_lock(path: Path | None) -> Iterator[None]:
+    """Hold an exclusive interprocess lock on ``<path>.lock`` (flock on POSIX, msvcrt on Windows).
+
+    Serialises the refresh-then-append decision of ``VerifierMemo.set`` across the worker processes
+    of a run, so two workers that miss the same key cannot both append: the first writer wins and the
+    other returns the committed value. ``None`` (an in-process memo) and an unlockable path yield
+    without locking.
+    """
+    if path is None:
+        yield
+        return
+    lock_path = path.with_name(path.name + ".lock")
+    try:
+        lock_path.parent.mkdir(parents=True, exist_ok=True)
+        handle = lock_path.open("a+b")
+    except OSError:
+        yield
+        return
+    locked = False
+    try:
+        try:
+            if fcntl is not None:
+                fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+                locked = True
+            elif msvcrt is not None:
+                handle.seek(0)
+                msvcrt.locking(handle.fileno(), msvcrt.LK_LOCK, 1)
+                locked = True
+        except OSError:
+            locked = False
+        yield
+    finally:
+        with contextlib.suppress(OSError):
+            if locked and fcntl is not None:
+                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+            elif locked and msvcrt is not None:
+                handle.seek(0)
+                msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+        handle.close()
 
 
 def code_fingerprint(files: Iterable[str | Path] = (), modules: Iterable[str] = ()) -> str:
@@ -275,14 +327,15 @@ class VerifierMemo:
         """Store ``value`` under ``key_material`` and return the stored value.
 
         The first writer wins, in this process and on disk, exactly as in ``get_or_set``: when another
-        worker already persisted the key, its value is kept and returned instead of ``value``.
+        worker already persisted the key, its value is kept and returned instead of ``value``. The
+        decision is taken under the interprocess ``file_lock``, so two workers cannot both append.
         ``negative`` marks a verifier rejection, timeout or crash; left ``None`` it is inferred from
         the value's ``status`` / ``error`` fields.
         """
         if memo_disabled():
             return value
         key = circuit_digest(key_material)
-        with self._lock:
+        with self._lock, file_lock(self.path):
             self._refresh()
             if key in self._store:
                 return self._store[key]
@@ -300,7 +353,7 @@ class VerifierMemo:
         if memo_disabled():
             return value
         key = circuit_digest(key_material)
-        with self._lock:
+        with self._lock, file_lock(self.path):
             self._refresh()
             if key in self._store:  # another worker filled it meanwhile; prefer the first writer
                 return self._store[key]

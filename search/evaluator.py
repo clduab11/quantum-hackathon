@@ -712,6 +712,7 @@ def program_memo_key(program_path: str) -> bytes | None:
         "salt": SALT, "reduced_shots": REDUCED_SHOTS, "full_shots": FULL_SHOTS,
         "factor_sha256": factor["sha256"], "source_brot": factor["source_brot"], "qubit_cap": QUBIT_CAP,
         "max_instructions": MAX_INSTRUCTIONS, "max_static_toffoli": MAX_STATIC_TOFFOLI,
+        "build_timeout": BUILD_TIMEOUT, "verify_timeout": VERIFY_TIMEOUT,  # a timed-out result is only valid for them
         "evaluator": _evaluator_fingerprint(), "siblings": sibling_sources_digest(program_path),
     })
     return program_key(task="dfthcsos", mode=_program_mode(), program_sha256=digest, settings=settings)
