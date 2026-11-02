@@ -215,9 +215,10 @@ this guide; until that merges, `main` still records the 2026-10-29 read.
 
 What the gap means: reaching the prize line from 19.21 needs the product of the three ratios to grow 2.72×
 (26.80/19.21 cubed), i.e. about 1.40× on every task or the equivalent concentrated on one. Matching the best public
-invsqrt we have measured (Kaggle publishes no per-task scores) alone would give (20.06 × 54.73 × 9.78)^(1/3) ≈ 22.1, well short of 26.80; the paid places need work
-beyond the public frontier on at least two tasks, which is why own-generator invsqrt work and the chemistry factor search run in
-parallel. The 2026-11-20 milestone prize additionally needs a public notebook, which we have not published
+invsqrt we have measured (Kaggle publishes no per-task scores) alone would give (20.06 × 54.73 × 9.78)^(1/3) ≈ 22.1, well short of 26.80. Even after matching that invsqrt, at least one
+task has to go well beyond the public frontier: with dqi at 54.73×, chemistry alone would have to reach about 17.5×
+(from 9.78×), or with chemistry at 9.78×, dqi alone about 98× (from 54.73×). That is why own-generator invsqrt
+work and the chemistry factor search run in parallel. The 2026-11-20 milestone prize additionally needs a public notebook, which we have not published
 (`notebook_url: null` in `ledger/standing.yaml`).
 
 ## 10. What the source guide got wrong or left out
