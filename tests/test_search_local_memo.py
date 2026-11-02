@@ -136,7 +136,11 @@ def test_memo_first_writer_is_atomic_across_processes(tmp_path):
         for p in procs:
             assert p.stdout.readline().strip() == "ready"  # wait for all four before setting the start time
         start = time.time() + 0.2
-        returned = [json.loads(p.communicate(input=f"{start}\n", timeout=120)[0]) for p in procs]
+        for p in procs:  # release all four before collecting any: communicate() would serialise them
+            p.stdin.write(f"{start}\n")
+            p.stdin.flush()
+            p.stdin.close()
+        returned = [json.loads(p.communicate(timeout=120)[0]) for p in procs]
     finally:
         for p in procs:  # a failure above must not leave the other workers running
             if p.poll() is None:
