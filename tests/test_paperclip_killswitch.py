@@ -384,6 +384,112 @@ def test_disarm_of_an_errored_agent_resumes_to_idle_and_says_so():
         ks.plan_disarm({"version": 99, "actions": []})
 
 
+class _Resp:
+    def __init__(self, payload) -> None:
+        self._raw = json.dumps(payload).encode()
+        self.status = 200
+
+    def read(self):
+        return self._raw
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+
+def _urlopen_over(store: dict, lost: dict[str, type], calls: list):
+    """A urlopen stand-in: serves GET/POST/PATCH over `store`, applies the write, then raises the
+    raw transport error named in `lost` for that URL (the response was lost after the server acted)."""
+    def urlopen(req, timeout=None):
+        method, path = req.get_method(), req.full_url.split("http://fake", 1)[1]
+        calls.append((method, path))
+        parts = path.split("/")
+        if method == "GET":
+            if path == "/api/companies":
+                return _Resp([{"id": "co", "name": "Praxen"}])
+            if path.endswith("/agents"):
+                return _Resp(list(store["agents"].values()))
+            if path.endswith("/routines"):
+                return _Resp(list(store["routines"].values()))
+            if parts[2] == "agents":
+                return _Resp(store["agents"][parts[3]])
+            raise AssertionError(path)
+        if method == "PATCH":
+            store["agents"][parts[3]]["runtimeConfig"] = json.loads(req.data)["runtimeConfig"]
+        else:
+            store["agents"][parts[3]]["status"] = {"pause": "paused", "resume": "idle"}[parts[4]]
+        if path in lost:
+            raise lost[path]("connection lost after the server acted")
+        return _Resp(store["agents"][parts[3]])
+    return urlopen
+
+
+def test_raw_transport_errors_become_killswitch_errors_and_are_reconciled(tmp_path: Path, monkeypatch, capsys):
+    import http.client
+    store = {"agents": {a["id"]: json.loads(json.dumps(a)) for a in AGENTS}, "routines": {}}
+    before = json.loads(json.dumps(store))
+    calls: list = []
+    lost = {"/api/agents/id-caine/pause": ConnectionResetError, "/api/agents/id-marcus": http.client.RemoteDisconnected,
+            "/api/agents/id-aurelio/pause": TimeoutError}
+    monkeypatch.setattr(ks.urllib.request, "urlopen", _urlopen_over(store, lost, calls))
+    client = ks.PaperclipClient("http://fake", "k")
+    with pytest.raises(ks.KillSwitchError, match="transport error: ConnectionResetError"):
+        client.post("/api/agents/id-caine/pause")
+    store["agents"]["id-caine"]["status"] = "idle"
+
+    state = tmp_path / "state.json"
+    assert ks.cmd_arm(client, "co", state, None, False, False, False, False) == 1
+    err = capsys.readouterr().err
+    assert err.count("applied after all") == 3 and "Traceback" not in err
+    # Every action ran despite three lost responses, and the read-back recorded the truth.
+    assert all(a["status"] == "paused" for n, a in store["agents"].items() if n in ("id-caine", "id-aurelio", "id-marcus"))
+    assert all(a["applied"] is True for a in json.loads(state.read_text(encoding="utf-8"))["actions"])
+    lost.clear()
+    assert ks.cmd_disarm(client, state, False, False) == 0
+    assert store == before
+
+
+def test_non_json_response_is_a_killswitch_error(monkeypatch):
+    class Bad(_Resp):
+        def read(self):
+            return b"<html>gateway timeout</html>"
+    monkeypatch.setattr(ks.urllib.request, "urlopen", lambda req, timeout=None: Bad({}))
+    with pytest.raises(ks.KillSwitchError, match="not JSON"):
+        ks.PaperclipClient("http://fake", "k").get("/api/companies")
+
+
+def test_state_writes_are_atomic_and_the_archive_is_filled_after_the_rename(tmp_path: Path, monkeypatch):
+    state = tmp_path / "state.json"
+    state.write_text("previous complete record", encoding="utf-8")
+    real_replace = ks.os.replace
+    seen: list[tuple[str, str]] = []
+
+    def replace(src, dst):
+        seen.append((Path(src).name, Path(dst).name))
+        return real_replace(src, dst)
+
+    monkeypatch.setattr(ks.os, "replace", replace)
+    ks._atomic_write(state, "new record")
+    assert seen == [("state.json.tmp", "state.json")] and state.read_text(encoding="utf-8") == "new record"
+    assert not state.with_name("state.json.tmp").exists()
+    state.unlink()
+
+    client = FakeClient(AGENTS, ROUTINES)
+    assert ks.cmd_arm(client, "co", state, None, False, False, False, False) == 0
+    seen.clear()
+    assert ks.cmd_disarm(client, state, False, False) == 0
+    # The to-do file is moved aside before the full record is written into the archive.
+    names = [dst for _, dst in seen]
+    rename_at = next(i for i, n in enumerate(names) if n.endswith(".restored"))
+    assert all(n == "state.json" for n in names[:rename_at])
+    assert names[rename_at + 1:] == [names[rename_at]]
+    (archived,) = tmp_path.glob("state.json.*.restored")
+    record = json.loads(archived.read_text(encoding="utf-8"))
+    assert len(record["actions"]) == 10 and len(record["disarm"]) == 10
+
+
 def test_client_needs_a_key_and_never_reads_it_from_argv():
     with pytest.raises(ks.KillSwitchError):
         ks.client_from_env({"PAPERCLIP_API_URL": "http://x"})

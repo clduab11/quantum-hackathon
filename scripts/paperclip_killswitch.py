@@ -54,6 +54,7 @@ from __future__ import annotations
 import argparse
 import copy
 import datetime as _dt
+import http.client
 import json
 import os
 import sys
@@ -104,7 +105,15 @@ class PaperclipClient:
             raise KillSwitchError(f"{method} {path} -> HTTP {exc.code}: {detail}") from None
         except urllib.error.URLError as exc:
             raise KillSwitchError(f"{method} {path} -> {exc.reason}") from None
-        return json.loads(raw) if raw else None
+        except (OSError, http.client.HTTPException) as exc:
+            # A failure after the request was sent (read timeout, connection reset, remote
+            # disconnect): the server may have applied the write. Same error type as above, so
+            # the best-effort loop goes on and the caller reads the object back.
+            raise KillSwitchError(f"{method} {path} -> transport error: {type(exc).__name__}: {exc}") from None
+        try:
+            return json.loads(raw) if raw else None
+        except json.JSONDecodeError as exc:
+            raise KillSwitchError(f"{method} {path} -> response is not JSON: {exc}") from None
 
     def get(self, path: str) -> Any:
         return self.request("GET", path)
@@ -358,10 +367,19 @@ def load_state(path: Path) -> dict[str, Any]:
         raise KillSwitchError(f"state file {path} is not JSON: {exc}") from None
 
 
+def _atomic_write(path: Path, text: str) -> None:
+    """Write via a temp file in the same directory, then `os.replace`: the state file is the only
+    recovery record, so a crash mid-write must leave the previous complete version, never a
+    truncated one."""
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
+
+
 def write_state(path: Path, api_url: str, company_id: str, plan: Plan) -> None:
     state = {"version": STATE_VERSION, "armedAt": _dt.datetime.now(_dt.timezone.utc).isoformat(),
              "apiUrl": api_url, "companyId": company_id, "actions": plan.actions, "notes": plan.notes}
-    path.write_text(json.dumps(state, indent=1), encoding="utf-8")
+    _atomic_write(path, json.dumps(state, indent=1))
 
 
 # --------------------------------------------------------------------------- commands
@@ -471,7 +489,7 @@ def cmd_disarm(client: PaperclipClient, state_path: Path, dry_run: bool, as_json
                 if needs_undo(a) and (a["kind"], a.get("agentId") or a.get("routineId")) not in undone]
 
     def checkpoint() -> None:
-        state_path.write_text(json.dumps({**state, "actions": remaining()}, indent=1), encoding="utf-8")
+        _atomic_write(state_path, json.dumps({**state, "actions": remaining()}, indent=1))
 
     done, failed = apply_plan(client, plan, checkpoint)
     for line in done:
@@ -484,9 +502,10 @@ def cmd_disarm(client: PaperclipClient, state_path: Path, dry_run: bool, as_json
         return 1
     if failed:
         print("every action was attempted; the unknown outcomes above should be checked with status", file=sys.stderr)
-    # The archive keeps the whole arm record plus what disarm did, not the (now empty) to-do list.
-    state_path.write_text(json.dumps({**state, "disarm": plan.actions}, indent=1), encoding="utf-8")
+    # Move the (now empty) to-do file aside first, then fill the archive with the whole arm record
+    # plus what disarm did, so a crash in between never leaves a full record for a replay.
     archived = archive_state(state_path, "restored")
+    _atomic_write(archived, json.dumps({**state, "disarm": plan.actions}, indent=1))
     print(f"disarmed; state file moved to {archived}")
     return 0
 
