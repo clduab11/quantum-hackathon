@@ -124,16 +124,24 @@ def test_memo_first_writer_is_atomic_across_processes(tmp_path):
         "start = float(sys.stdin.readline())\n"
         "time.sleep(max(0.0, start - time.time()))  # release every worker at the same instant\n"
         "out = {}\n"
-        "for i in range(150):\n"
+        "offset = int(who[1:]) * 37  # each worker starts on different keys, so the workers collide mid-way\n"
+        "for step in range(150):\n"
+        "    i = (step + offset) % 150\n"
         "    out[str(i)] = memo.set(f'key-{i}'.encode(), {'who': who, 'i': i})\n"
         "print(json.dumps(out), flush=True)\n"
     )
     procs = [subprocess.Popen([sys.executable, "-c", worker, str(REPO), str(path), f"w{n}"],
                               stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True) for n in range(4)]
-    for p in procs:
-        assert p.stdout.readline().strip() == "ready"  # wait for all four before setting the start time
-    start = time.time() + 0.2
-    returned = [json.loads(p.communicate(input=f"{start}\n", timeout=120)[0]) for p in procs]
+    try:
+        for p in procs:
+            assert p.stdout.readline().strip() == "ready"  # wait for all four before setting the start time
+        start = time.time() + 0.2
+        returned = [json.loads(p.communicate(input=f"{start}\n", timeout=120)[0]) for p in procs]
+    finally:
+        for p in procs:  # a failure above must not leave the other workers running
+            if p.poll() is None:
+                p.kill()
+            p.wait(timeout=30)
     assert all(p.returncode == 0 for p in procs)
     lines = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
     assert len(lines) == 150, "every key was persisted exactly once"
