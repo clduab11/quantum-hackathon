@@ -41,6 +41,7 @@ import tempfile
 import threading
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from collections import deque
 from pathlib import Path
@@ -432,19 +433,43 @@ class CodexAppServerLLM(_SubscriptionLLM):
 
 
 DEFAULT_LOCAL_BASE_URL = "http://127.0.0.1:4000/v1"
+LOOPBACK_HOSTS = ("localhost", "127.0.0.1", "::1")
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    """Refuse every redirect: a 3xx must not carry the bearer key or the prompt to another origin."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: D102 - urllib hook
+        return None
+
+
+_OPENER = urllib.request.build_opener(_NoRedirect())
 
 
 def _post_json(url: str, headers: dict[str, str], body: bytes, timeout: float) -> tuple[int, bytes]:
-    """POST ``body`` and return (HTTP status, response bytes); an error status is returned, not raised.
+    """POST ``body`` and return (HTTP status, response bytes); an error or redirect status is returned, not followed.
 
     Tests replace this function; nothing else in the provider touches the network.
     """
     request = urllib.request.Request(url, data=body, headers=headers, method="POST")
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
+        with _OPENER.open(request, timeout=timeout) as response:
             return int(response.status), response.read()
     except urllib.error.HTTPError as exc:
         return int(exc.code), exc.read() or b""
+
+
+def check_gateway_url(base_url: str, *, credentialed: bool) -> str | None:
+    """Why ``base_url`` may not be used, or ``None``: http(s) only, and cleartext only to loopback when a key is sent."""
+    parts = urllib.parse.urlsplit(base_url)
+    if parts.scheme not in ("http", "https") or not parts.hostname:
+        return f"gateway URL {base_url!r} must be http(s)://host[:port]/path"
+    host = parts.hostname.lower()
+    loopback = host in LOOPBACK_HOSTS or host.startswith("127.")
+    if credentialed and parts.scheme == "http" and not loopback:
+        return (f"gateway URL {base_url!r} is cleartext http to a non-loopback host; the API key and the prompt "
+                "would travel unencrypted. Use https:// or a loopback address")
+    return None
 
 
 class LocalOpenAILLM(_SubscriptionLLM):
@@ -493,6 +518,9 @@ class LocalOpenAILLM(_SubscriptionLLM):
 
     def request(self, system: str, user: str) -> tuple[str, dict[str, str], bytes]:
         """(url, headers, body) of the chat-completions call for one generation."""
+        problem = check_gateway_url(self.base_url, credentialed=bool(self.api_key))
+        if problem:
+            raise NoRetry(problem)
         headers = {"Content-Type": "application/json", "Accept": "application/json"}
         if self.api_key:
             headers["Authorization"] = f"Bearer {self.api_key}"
@@ -544,6 +572,9 @@ class LocalOpenAILLM(_SubscriptionLLM):
         except (socket.timeout, TimeoutError):
             raise asyncio.TimeoutError(f"{self.base_url} did not answer within {timeout} s")
         detail = raw.decode("utf-8", "replace").strip()[-600:]
+        if 300 <= status < 400:
+            raise NoRetry(f"HTTP {status}: {self.base_url} redirected the request; redirects are refused so the key "
+                          "and the prompt never leave the configured gateway origin. Point api_base at the final URL")
         if status == 429 or (status >= 400 and looks_rate_limited(detail)):
             raise RateLimited(f"HTTP {status} from {self.base_url}: {detail}")
         if status in (401, 403):

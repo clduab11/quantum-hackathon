@@ -224,18 +224,36 @@ def discovery_entry(handoff_id: str, verifier: dict[str, Any], program: dict[str
 NEGATIVE_LINES_MAX = 3
 
 
-def failure_reason(program: dict[str, Any]) -> str:
-    """The verifier's rejection text for a program that reached stage 2 or 3 without passing."""
-    artifacts: dict[str, Any] = {}
+EXECUTION_ERROR_MARKERS = ("the evaluator failed", "not the program's fault", "verifier exceeded",
+                           "verifier child exited", "build timed out", "did not retain state")
+
+
+def _artifacts_of(program: dict[str, Any]) -> dict[str, Any]:
+    """Inline artifacts plus the on-disk ones OpenEvolve stores beside the checkpoint (``artifact_dir``)."""
+    checkpoint = program.get("_checkpoint")
+    if checkpoint and program.get("id"):
+        return program_artifacts(program, Path(checkpoint))
     raw = program.get("artifacts_json") or program.get("artifacts")
     if isinstance(raw, str):
         try:
-            artifacts = json.loads(raw)
+            return json.loads(raw)
         except ValueError:
-            artifacts = {}
-    elif isinstance(raw, dict):
-        artifacts = raw
-    summary = str(artifacts.get("summary") or "")
+            return {}
+    return raw if isinstance(raw, dict) else {}
+
+
+def is_execution_error(program: dict[str, Any]) -> bool:
+    """True when the program's stage ended in a crash, timeout or evaluator fault rather than a verdict."""
+    artifacts = _artifacts_of(program)
+    if "evaluator_traceback" in artifacts:
+        return True
+    summary = str(artifacts.get("summary") or "").lower()
+    return any(marker in summary for marker in EXECUTION_ERROR_MARKERS)
+
+
+def failure_reason(program: dict[str, Any]) -> str:
+    """The verifier's rejection text for a program that reached stage 2 or 3 without passing."""
+    summary = str(_artifacts_of(program).get("summary") or "")
     fails = [line.strip() for line in summary.splitlines() if "FAIL" in line]
     if fails:
         return fails[-1]
@@ -248,7 +266,8 @@ def negative_candidates(programs: list[dict[str, Any]], limit: int = NEGATIVE_LI
 
     The most promising first (highest predicted ratio), one per distinct rejection text, at most
     ``limit``. These are the negatives worth a DISCOVERY line: layouts the model should not retry
-    under the same assumptions.
+    under the same assumptions. A crash, a timeout or an evaluator fault is not a verdict and is
+    left out (``is_execution_error``).
     """
     chosen: list[dict[str, Any]] = []
     seen: set[str] = set()
@@ -257,6 +276,8 @@ def negative_candidates(programs: list[dict[str, Any]], limit: int = NEGATIVE_LI
     for program in ordered:
         metrics = program.get("metrics") or {}
         if metrics.get("stage_reached", 0) < 2 or metrics.get("stage3_passed", 0) >= 1:
+            continue
+        if is_execution_error(program):
             continue
         reason = failure_reason(program)
         if reason in seen:
@@ -284,7 +305,9 @@ def negative_entry(program: dict[str, Any], run_name: str, checkpoint_name: str)
 def emit_discovery_lines(run_dir: Path, checkpoint_name: str, lines: list[str]) -> Path | None:
     """Print ``DISCOVERY:`` lines and append them to ``<run>/discovery_lines.md``.
 
-    search/DISCOVERY.md is never written here: it stays hand-curated.
+    Returns the file, or ``None`` when there was nothing to write or the write failed (reported on
+    stderr; the printed lines are the fallback). search/DISCOVERY.md is never written here: it stays
+    hand-curated.
     """
     for line in lines:
         print(line)
@@ -295,7 +318,9 @@ def emit_discovery_lines(run_dir: Path, checkpoint_name: str, lines: list[str]) 
         with target.open("a", encoding="utf-8") as stream:
             stream.write(f"\n## {time.strftime('%Y-%m-%d %H:%M')} search/promote.py {checkpoint_name}\n\n")
             stream.write("\n".join(lines) + "\n")
-    except OSError:
+    except OSError as exc:
+        print(f"could not append {len(lines)} DISCOVERY line(s) to {target}: {exc}; the lines above are the only copy",
+              file=sys.stderr)
         return None
     return target
 
@@ -453,8 +478,8 @@ def main(argv: list[str] | None = None) -> int:
     negative_lines = [negative_entry(p, run_dir.name, checkpoint.name) for p in negatives]
     print(f"{len(negative_lines)} negative result(s) for the run's discovery_lines.md (max {NEGATIVE_LINES_MAX})")
     if args.dry_run or not elites:
-        emit_discovery_lines(run_dir, checkpoint.name, negative_lines)  # negatives need no rebuild
-        return 0
+        written = emit_discovery_lines(run_dir, checkpoint.name, negative_lines)  # negatives need no rebuild
+        return 1 if negative_lines and written is None else 0
     factor = evaluator.factor_config()
     results = []
     for program in elites:
@@ -469,10 +494,10 @@ def main(argv: list[str] | None = None) -> int:
         for r in ready:
             print(r["discovery_entry"])
     print()
-    emit_discovery_lines(run_dir, checkpoint.name,
-                         [f"DISCOVERY: {r['discovery_entry']}" for r in ready] + negative_lines)
+    lines = [f"DISCOVERY: {r['discovery_entry']}" for r in ready] + negative_lines
+    written = emit_discovery_lines(run_dir, checkpoint.name, lines)
     failed = [r for r in results if not str(r.get("status", "")).startswith(("READY", "SKIP"))]
-    return 1 if failed else 0
+    return 1 if failed or (lines and written is None) else 0
 
 
 if __name__ == "__main__":

@@ -24,15 +24,39 @@ verifier FAIL, a timeout, a crashed child) are stored like any other value so th
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 import os
 import threading
 import time
-from collections.abc import Callable, Mapping
+from collections.abc import Callable, Iterable, Mapping
 from pathlib import Path
 from typing import Any
 
 MEMO_FILENAME = "verifier_memo.jsonl"
+
+
+def code_fingerprint(files: Iterable[str | Path] = (), modules: Iterable[str] = ()) -> str:
+    """Short digest of source files and of importable modules' origin files; missing ones are skipped.
+
+    Bound into memo keys so that a change to the scoring, verifier or proxy code misses the memo
+    instead of returning a stale result.
+    """
+    digest = hashlib.sha256()
+    for path in files:
+        try:
+            digest.update(Path(path).read_bytes())
+        except OSError:
+            pass
+    for name in modules:
+        try:
+            spec = importlib.util.find_spec(name)
+            origin = getattr(spec, "origin", None)
+            if origin and origin not in ("built-in", "frozen"):
+                digest.update(name.encode("utf-8") + b"\0" + Path(origin).read_bytes())
+        except (ImportError, OSError, ValueError, AttributeError):
+            pass
+    return digest.hexdigest()[:16]
 
 
 def circuit_digest(circuit_bytes: bytes) -> str:
@@ -267,10 +291,11 @@ class VerifierMemo:
             self.hits = 0
             self.misses = 0
             self.negative_hits = 0
+            self._offset = 0  # the next miss re-reads the whole file, as the docstring promises
+            self._loaded_path = None
             path = self.path
             if persistent and path is not None:
                 try:
                     path.write_text("", encoding="utf-8")
                 except OSError:
                     pass
-                self._offset = 0

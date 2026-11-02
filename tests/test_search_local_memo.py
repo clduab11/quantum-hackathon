@@ -92,6 +92,23 @@ def test_memo_sees_lines_another_worker_appended(tmp_path):
     b.set(b"k1", {"status": "PASS", "who": "b"})  # a second writer never duplicates the line
     assert len(path.read_text(encoding="utf-8").splitlines()) == 1
     assert VerifierMemo(path).get(b"k1")["who"] == "a"  # the first writer wins on disk
+    b.clear()  # in-memory only: the next miss re-reads the file and nothing is written twice
+    assert b.get(b"k1")["who"] == "a" and b.hits == 1
+    b.set(b"k1", {"status": "PASS", "who": "b"})
+    assert len(path.read_text(encoding="utf-8").splitlines()) == 1
+
+
+def test_code_fingerprint_tracks_files_and_module_sources(tmp_path):
+    from search.memo import code_fingerprint
+
+    source = tmp_path / "x.py"
+    source.write_text("a = 1\n", encoding="utf-8")
+    before = code_fingerprint(files=[source])
+    assert before == code_fingerprint(files=[source]) and len(before) == 16
+    source.write_text("a = 2\n", encoding="utf-8")
+    assert code_fingerprint(files=[source]) != before
+    assert code_fingerprint(modules=["search.memo"]) != code_fingerprint(modules=["search.fitness"])
+    assert code_fingerprint(modules=["search.memo"]) == code_fingerprint(modules=["search.memo", "no.such.module"])
 
 
 def test_program_key_binds_source_task_mode_and_settings(tmp_path):
@@ -173,6 +190,11 @@ def test_program_memo_binds_the_declared_factor(tmp_path, monkeypatch):
     ev = _evaluator(tmp_path, monkeypatch)
     program = str(_crashing_program(tmp_path / "a.py"))
     key_a = ev.program_memo_key(program)
+    monkeypatch.setattr(ev, "_evaluator_fingerprint", lambda: "deadbeefdeadbeef")  # scoring/verifier code changed
+    assert ev.program_memo_key(program) != key_a
+    monkeypatch.setattr(ev, "_evaluator_fingerprint", lambda: ev.code_fingerprint(
+        files=(SEARCH / "evaluator.py", SEARCH / "fitness.py"), modules=("tasks.dfthcsos.gates", *ev.VERIFIER_MODULES)))
+    assert ev.program_memo_key(program) == key_a
     monkeypatch.setattr(ev, "factor_config", lambda path=None: {
         "path": tmp_path / "factor.npz", "sha256": "1" * 64, "source_brot": 12, "package_relative_path": "x"})
     assert ev.program_memo_key(program) != key_a
@@ -195,6 +217,46 @@ def test_stage0_syntax_error_short_circuits_before_the_build(tmp_path, monkeypat
     assert list((tmp_path / "run" / "evals").glob("*.json")), "a stage-0 failure is still recorded"
     assert ev.stage0_checks(SEARCH / "initial_program.py") == []
     assert ev.stage0_checks(tmp_path / "missing.py")[0].startswith("stage 0: cannot read")
+    missing = ev.evaluate_stage1(str(tmp_path / "missing.py"))  # unreadable: a stage-0 verdict, not an evaluator fault
+    assert "stage 0: cannot read" in missing.artifacts["summary"] and "evaluator_traceback" not in missing.artifacts
+    assert missing.metrics["stage1_passed"] == 0.0
+
+
+def test_factor_digest_is_hashed_once_per_process(tmp_path, monkeypatch):
+    import yaml
+
+    ev = load("evaluator")
+    factor = tmp_path / "factor.npz"
+    factor.write_bytes(b"factor words " * 16)
+    import hashlib
+    digest = hashlib.sha256(factor.read_bytes()).hexdigest()
+    config = tmp_path / "factor.yaml"
+    config.write_text(yaml.safe_dump({"factorization": str(factor), "sha256": digest, "source_brot": 12,
+                                      "package_relative_path": "x"}), encoding="utf-8")
+    monkeypatch.setenv("SEARCH_FACTOR_CONFIG", str(config))
+    hashed = {"n": 0}
+    real = ev.sha256_file
+
+    def counting(path):
+        hashed["n"] += 1
+        return real(path)
+
+    monkeypatch.setattr(ev, "sha256_file", counting)
+    assert ev.factor_config()["sha256"] == digest and ev.factor_config()["sha256"] == digest
+    assert hashed["n"] == 1
+    factor.write_bytes(b"other words " * 16)  # a changed file is hashed again and then fails the pin
+    with pytest.raises(ValueError):
+        ev.factor_config()
+    assert hashed["n"] == 2
+
+
+def test_verifier_memo_key_binds_the_verifier_code(tmp_path, monkeypatch):
+    ev = load("evaluator")
+    chemistry = _chemistry(tmp_path)
+    key = ev._verify_key(chemistry, ev.REDUCED_SHOTS, 1.0)
+    assert key == ev._verify_key(chemistry, ev.REDUCED_SHOTS, 1.0)
+    monkeypatch.setattr(ev, "_verifier_fingerprint", lambda: "0123456789abcdef")  # dfthcsos.verify changed
+    assert ev._verify_key(chemistry, ev.REDUCED_SHOTS, 1.0) != key
 
 
 def _chemistry(root: Path, name: str = "dfthcsos") -> Path:
@@ -336,8 +398,8 @@ def _cascade_bundle(tmp_path: Path, program: Path):
 def test_cascade_stage3_refuses_the_full_verifier_without_a_reduced_pass(tmp_path, monkeypatch):
     from search import adapter_cascade as cascade
 
-    cascade._STATE.clear()
-    cascade._MEMO = VerifierMemo()
+    monkeypatch.setattr(cascade, "_STATE", {})
+    monkeypatch.setattr(cascade, "_MEMO", VerifierMemo())
     program = tmp_path / "prog.py"
     bundle = _cascade_bundle(tmp_path, program)
     adapter = _cascade_adapter(bundle, reduced_fc=0.0)
@@ -358,8 +420,8 @@ def test_cascade_answers_identical_program_sources_from_the_memo(tmp_path, monke
 
     monkeypatch.delenv("SEARCH_MEMO_DISABLE", raising=False)
     monkeypatch.delenv("SEARCH_SMOKE", raising=False)
-    cascade._STATE.clear()
-    cascade._MEMO = VerifierMemo(tmp_path / "memo.jsonl")
+    monkeypatch.setattr(cascade, "_STATE", {})
+    monkeypatch.setattr(cascade, "_MEMO", VerifierMemo(tmp_path / "memo.jsonl"))
     prog_a, prog_b = tmp_path / "a.py", tmp_path / "b.py"
     prog_a.write_text("x = 1\n", encoding="utf-8")
     prog_b.write_text("x = 1\n", encoding="utf-8")
@@ -373,7 +435,7 @@ def test_cascade_answers_identical_program_sources_from_the_memo(tmp_path, monke
     assert adapter.stage0_build.call_count == 1 and "memo_hit" in second.artifacts
     assert second.metrics == first.metrics
 
-    cascade._MEMO = VerifierMemo(tmp_path / "memo.jsonl")  # a new worker process
+    monkeypatch.setattr(cascade, "_MEMO", VerifierMemo(tmp_path / "memo.jsonl"))  # a new worker process
     third = cascade.evaluate_stage1(str(prog_b), task="invsqrt")
     assert adapter.stage0_build.call_count == 1 and "memo_hit" in third.artifacts
     assert cascade._MEMO.negative_hits == 1 and cascade._STATE == {}
@@ -475,6 +537,31 @@ def test_local_provider_classifies_gateway_errors(monkeypatch):
         llm._call("s", "u", 5)
     respond(200, {"choices": [{"message": {"content": [{"type": "text", "text": "parts "}, {"type": "text", "text": "ok"}]}}]})
     assert llm._call("s", "u", 5)[0] == "parts ok"
+    respond(302, {})  # a redirect is never followed: the key and the prompt stay on the configured origin
+    with pytest.raises(providers.NoRetry, match="redirect"):
+        llm._call("s", "u", 5)
+
+
+def test_local_provider_refuses_cleartext_keys_off_loopback_and_redirects(monkeypatch):
+    monkeypatch.delenv("SEARCH_LOCAL_API_KEY", raising=False)
+    monkeypatch.delenv("LITELLM_API_KEY", raising=False)
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    providers = load("providers")
+    assert providers.check_gateway_url("http://127.0.0.1:4000/v1", credentialed=True) is None
+    assert providers.check_gateway_url("http://localhost:4000/v1", credentialed=True) is None
+    assert providers.check_gateway_url("https://gateway.test/v1", credentialed=True) is None
+    assert providers.check_gateway_url("http://gateway.test/v1", credentialed=False) is None
+    assert "cleartext" in providers.check_gateway_url("http://gateway.test/v1", credentialed=True)
+    assert "http(s)" in providers.check_gateway_url("ftp://gateway.test/v1", credentialed=False)
+    with pytest.raises(providers.NoRetry, match="cleartext"):
+        _local_llm(providers, api_base="http://gateway.test/v1", api_key="k").request("s", "u")
+    assert _local_llm(providers, api_base="https://gateway.test/v1", api_key="k").request("s", "u")[0] == \
+        "https://gateway.test/v1/chat/completions"
+    with pytest.raises(providers.NoRetry, match="http"):
+        _local_llm(providers, api_base="file:///etc/passwd").request("s", "u")
+    # the opener used by _post_json refuses redirects outright
+    assert providers._NoRedirect().redirect_request(None, None, 302, "Found", {}, "https://elsewhere.test/") is None
+    assert any(isinstance(h, providers._NoRedirect) for h in providers._OPENER.handlers)
 
 
 def test_local_config_loads_and_installs_the_local_provider():
@@ -522,7 +609,16 @@ def test_promote_emits_at_most_three_negative_discovery_lines_to_the_run_output(
         program("n4", stage=3, passed=0.0, predicted=1.05,
                 summary="stage 3 (full verifier, 64 shots/address) FAIL: rejected: floor"),
         program("dup", stage=3, passed=0.0, predicted=1.25, summary=fail3),
+        # execution errors are not verdicts: never a DISCOVERY negative
+        program("slow", stage=3, passed=0.0, predicted=1.40,
+                summary="stage 3 (full verifier, 64 shots/address) FAIL: verifier exceeded 600 s (too slow)"),
+        program("crash", stage=2, passed=0.0, predicted=1.35,
+                summary="stage 2 (verifier, 2 shots/address) FAIL: verifier child exited 1 without a result: boom"),
+        {**program("fault", stage=2, passed=0.0, predicted=1.33, summary="stage 2: the evaluator failed (x)"),
+         "artifacts_json": json.dumps({"summary": "stage 2: the evaluator failed (KeyError: 'y'); this is not the "
+                                                  "program's fault", "evaluator_traceback": "Traceback ..."})},
     ]
+    assert [p["id"] for p in programs if promote.is_execution_error(p)] == ["slow", "crash", "fault"]
     negatives = promote.negative_candidates(programs)
     assert [p["id"] for p in negatives] == ["n1", "n2", "n3"]  # best predicted first, one per reason, max 3
     assert promote.failure_reason(programs[2]) == fail3
@@ -540,3 +636,24 @@ def test_promote_emits_at_most_three_negative_discovery_lines_to_the_run_output(
     assert capsys.readouterr().out.count("DISCOVERY: - ") == 3
     assert (SEARCH / "DISCOVERY.md").read_bytes() == before, "DISCOVERY.md stays hand-curated"
     assert promote.emit_discovery_lines(run_dir, "checkpoint_40", []) is None
+    unwritable = tmp_path / "not-a-directory"
+    unwritable.write_text("x", encoding="utf-8")
+    assert promote.emit_discovery_lines(unwritable, "checkpoint_40", lines) is None  # reported, lines still printed
+    err = capsys.readouterr()
+    assert err.out.count("DISCOVERY: - ") == 3 and "could not append 3 DISCOVERY line(s)" in err.err
+
+
+def test_promote_reads_rejection_reasons_from_disk_artifacts(tmp_path):
+    promote = load("promote")
+    checkpoint = tmp_path / "run" / "checkpoints" / "checkpoint_5"
+    artifact_dir = checkpoint / "artifacts" / "big1"
+    artifact_dir.mkdir(parents=True)
+    (artifact_dir / "summary").write_text("stage 2 PASS\nstage 3 (full verifier, 64 shots/address) FAIL: rejected: gap",
+                                          encoding="utf-8")
+    program = {"id": "big1", "code": "", "_checkpoint": str(checkpoint), "artifact_dir": str(artifact_dir),
+               "metrics": {"stage_reached": 3, "stage3_passed": 0.0, "predicted_ratio": 1.2}}
+    assert promote.failure_reason(program).endswith("FAIL: rejected: gap")
+    assert not promote.is_execution_error(program)
+    assert [p["id"] for p in promote.negative_candidates([program])] == ["big1"]
+    (artifact_dir / "evaluator_traceback").write_text("Traceback", encoding="utf-8")
+    assert promote.is_execution_error(program) and promote.negative_candidates([program]) == []

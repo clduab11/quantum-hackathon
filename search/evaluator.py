@@ -61,12 +61,16 @@ if str(REPO_ROOT) not in sys.path:  # `tasks.*` imports, whether run as a script
     sys.path.insert(0, str(REPO_ROOT))
 from search.fitness import combined_score as dense_combined_score, log_safe  # noqa: E402
 from search.memo import (  # noqa: E402
-    MEMO_FILENAME, VerifierMemo, program_key, program_sha256, settings_digest, verification_key,
+    MEMO_FILENAME, VerifierMemo, code_fingerprint, program_key, program_sha256, settings_digest, verification_key,
 )
 
 DEFAULT_DATA = "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation"
 _VERIFY_MEMO = VerifierMemo()  # persisted under $SEARCH_RUN_DIR (or $SEARCH_MEMO_PATH); in-process without either
 _EVALUATOR_FINGERPRINT: str | None = None
+_VERIFIER_FINGERPRINT: str | None = None
+_FACTOR_DIGESTS: dict[tuple[str, int, int], str] = {}
+# The official verifier and the circuit loader it runs on; a change to either misses every verifier memo entry.
+VERIFIER_MODULES = ("dfthcsos.verify", "dfthcsos.scoreinfra.circuits", "kickmix")
 
 BASELINE_COST = 3355599588.3155365
 SALT = "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001"
@@ -138,7 +142,11 @@ def factor_config(path: Path | None = None) -> dict[str, Any]:
     factor = Path(os.path.expandvars(str(raw["factorization"])))
     if not factor.is_file():
         raise FileNotFoundError(f"declared factor file is missing: {factor}")
-    digest = sha256_file(factor)
+    stat = factor.stat()
+    cache_key = (str(factor), stat.st_size, stat.st_mtime_ns)  # hashed once per process unless the file changes
+    digest = _FACTOR_DIGESTS.get(cache_key)
+    if digest is None:
+        digest = _FACTOR_DIGESTS[cache_key] = sha256_file(factor)
     if digest != str(raw["sha256"]):
         raise ValueError(f"declared factor {factor} has SHA-256 {digest}, pinned {raw['sha256']}")
     return {"path": factor, "sha256": digest, "source_brot": int(raw.get("source_brot", 12)),
@@ -177,17 +185,21 @@ def extract_notes(code: str) -> str:
     return match.group(1).strip() if match else ""
 
 
+def _verifier_fingerprint() -> str:
+    """Short digest of the official verifier and circuit-loader code, bound into every verifier memo key."""
+    global _VERIFIER_FINGERPRINT
+    if _VERIFIER_FINGERPRINT is None:
+        _VERIFIER_FINGERPRINT = code_fingerprint(modules=VERIFIER_MODULES)
+    return _VERIFIER_FINGERPRINT
+
+
 def _evaluator_fingerprint() -> str:
-    """Short digest of the scoring code, bound into program-memo keys so a scoring change misses."""
+    """Short digest of the scoring, proxy and verifier code, bound into program-memo keys so a change misses."""
     global _EVALUATOR_FINGERPRINT
     if _EVALUATOR_FINGERPRINT is None:
-        digest = hashlib.sha256()
-        for name in ("evaluator.py", "fitness.py"):
-            try:
-                digest.update((SEARCH_DIR / name).read_bytes())
-            except OSError:
-                pass
-        _EVALUATOR_FINGERPRINT = digest.hexdigest()[:16]
+        _EVALUATOR_FINGERPRINT = code_fingerprint(
+            files=(SEARCH_DIR / "evaluator.py", SEARCH_DIR / "fitness.py"),
+            modules=("tasks.dfthcsos.gates", *VERIFIER_MODULES))
     return _EVALUATOR_FINGERPRINT
 
 
@@ -246,10 +258,10 @@ def run_program(program_path: str) -> Build:
     """Run the candidate program in a subprocess against the declared factor file."""
     program_path = str(program_path)
     outdir = Path(tempfile.mkdtemp(prefix="dfthcsos-eval-", dir=scratch_root()))
-    build = Build(program_path=program_path, program_sha256=sha256_file(Path(program_path)),
+    build = Build(program_path=program_path, program_sha256=program_sha256(program_path) or "",
                   outdir=outdir, chemistry=outdir / "dfthcsos")
     started = time.monotonic()
-    problems = stage0_checks(program_path)  # stage 0 first: a program that does not parse is never executed
+    problems = stage0_checks(program_path)  # stage 0 first: an unreadable or unparsable program is never executed
     build.stage_seconds["stage0"] = round(time.monotonic() - started, 3)
     if problems:
         build.error = "; ".join(problems)
@@ -384,7 +396,7 @@ def _verify_key(chemistry: Path, shots_per_address: int, timeout: float) -> byte
         mode=mode,
         circuit_fingerprint=_family_fingerprint(chemistry),
         shots=int(shots_per_address),
-        verifier_settings=settings_digest({"salt": SALT, "timeout": timeout}),
+        verifier_settings=settings_digest({"salt": SALT, "timeout": timeout, "verifier": _verifier_fingerprint()}),
         submission_id=_submission_identity(chemistry),
     )
 

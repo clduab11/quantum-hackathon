@@ -17,7 +17,6 @@ unless the reduced stage of the same candidate passed.
 """
 from __future__ import annotations
 
-import hashlib
 import os
 import shutil
 import traceback
@@ -29,7 +28,9 @@ from search.adapters import get_adapter
 from search.adapters.base import CandidateBundle, TaskAdapter
 from search.evaluator import STAGE1_THRESHOLD, STAGE2_THRESHOLD
 from search.fitness import combined_score, log_safe, rich_metrics
-from search.memo import VerifierMemo, program_key, program_sha256, settings_digest, verification_key
+from search.memo import (
+    VerifierMemo, code_fingerprint, program_key, program_sha256, settings_digest, verification_key,
+)
 from search.stage_seed import generation_seed
 
 try:
@@ -50,18 +51,19 @@ def _program_mode() -> str:
     return "smoke" if os.environ.get("SEARCH_SMOKE") == "1" else "full"
 
 
+# The verifier, proxy and sample code the adapters call; a change to any of it misses the program memo.
+VERIFIER_MODULES = ("tasks.invsqrt.gates", "tasks.invsqrt.signed_digit", "tasks.dqi.algebra", "tasks.dfthcsos.gates",
+                    "dqi.verify_submission_dqi", "dfthcsos.verify", "dfthcsos.scoreinfra.circuits", "kickmix")
+
+
 def _cascade_fingerprint() -> str:
-    """Short digest of the cascade and scoring code; a change to either misses the program memo."""
+    """Short digest of the cascade, scoring, adapter, verifier and proxy code bound into program-memo keys."""
     global _CASCADE_FINGERPRINT
     if _CASCADE_FINGERPRINT is None:
-        digest = hashlib.sha256()
         here = Path(__file__).resolve().parent
-        for path in [here / "adapter_cascade.py", here / "fitness.py", *sorted((here / "adapters").glob("*.py"))]:
-            try:
-                digest.update(path.read_bytes())
-            except OSError:
-                pass
-        _CASCADE_FINGERPRINT = digest.hexdigest()[:16]
+        _CASCADE_FINGERPRINT = code_fingerprint(
+            files=[here / "adapter_cascade.py", here / "fitness.py", *sorted((here / "adapters").glob("*.py"))],
+            modules=VERIFIER_MODULES)
     return _CASCADE_FINGERPRINT
 
 
