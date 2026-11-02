@@ -140,6 +140,7 @@ def test_memo_first_writer_is_atomic_across_processes(tmp_path):
             p.stdin.write(f"{start}\n")
             p.stdin.flush()
             p.stdin.close()
+            p.stdin = None  # communicate() flushes a still-set stdin; on 3.11 a closed one raises ValueError
         returned = [json.loads(p.communicate(timeout=120)[0]) for p in procs]
     finally:
         for p in procs:  # a failure above must not leave the other workers running
