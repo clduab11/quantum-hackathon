@@ -35,8 +35,8 @@ A short field guide; the full, sourced version is [docs/field-guide.md](docs/fie
 - **Where we stand (2026-11-02):** submission-011 measures 19.21 locally at the fixed salt (invsqrt 13.24× at
   Q 84, dqi 54.73× at Q 889, dfthcsos 9.78× at Q 430) and scores 19.20572 on the public leaderboard, rank 1,404
   of 2,052 teams (read 2026-11-02T17:47Z); the leader scores 27.99617 and the last paid place 26.80320. Reaching
-  it needs the product of the three ratios to grow about 2.72×, far more than matching the best public invsqrt
-  (20.06×) alone would give (≈ 22.1).
+  it needs the product of the three ratios to grow about 2.72×, far more than matching the best public invsqrt we have
+  measured (20.06×; Kaggle publishes no per-task scores) alone would give (≈ 22.1).
 
 ## Layout
 

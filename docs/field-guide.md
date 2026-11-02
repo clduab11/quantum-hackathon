@@ -12,8 +12,9 @@ metric code, file formats) must be re-checked on Kaggle before an upload.
 ## 1. What the contest is
 
 This is not a machine-learning prediction contest. It is a compiler and numerical-optimisation contest whose
-contract is an executable verifier. You hand in three `kickmix` circuits; Google's simulator runs each one on
-classical inputs, checks the outputs, the scratch qubits and the phase, prices the circuit, and divides the
+contract is an executable verifier. You hand in three task entries (`invsqrt` and `dqi` are one `kickmix`
+circuit each; `dfthcsos` is a bundle of `angle_k_<i>` circuits plus `submission.npz`); Google's simulator runs
+every circuit on classical inputs, checks the outputs, the scratch qubits and the phase, prices the circuit, and divides the
 reference cost by yours. The loop is: propose a change, regenerate the circuit, verify it, measure its cost, keep
 it only if the verified cost went down.
 
@@ -21,7 +22,7 @@ The three tasks are bottleneck subroutines of future fault-tolerant algorithms:
 
 | Task | Science | Subroutine we compress |
 | --- | --- | --- |
-| `invsqrt` | Stopping power in inertial-confinement fusion fuel | Phase `|x⟩` by `β/√x` for every x in a 22-qubit register |
+| `invsqrt` | Stopping power in inertial-confinement fusion fuel | Phase `\|x⟩` by `β/√x` for every x in a 22-qubit register |
 | `dqi` | Decoded Quantum Interferometry for Optimal Polynomial Intersection | A reversible Reed–Solomon RS(4095, 4025, 71) syndrome decoder over GF(2¹²) |
 | `dfthcsos` | Phase estimation on the FeMoCo Hamiltonian (nitrogen fixation) | The tensor factorisation, Givens tree and QROM lookups that load the Hamiltonian |
 
@@ -51,8 +52,8 @@ Q is the logical-qubit count and Toffoli the Toffoli count, both per shot.
   qubit for gates breaks even at roughly C/Q Toffoli-equivalents (about 100 at Q = 100, C = 10,000).
 - For `dqi` a 1 % saving in qubits is worth about 2 % because Q is squared. Workspace discipline (register
   liveness, reuse, early release) is the lever, before the repetition factor R even enters.
-- For `dfthcsos` a local circuit win can lose: a factorisation that shrinks the ANGLE lookups but raises Λ or
-  the gap raises `λ_eff` and the score with it. Angle lookups are about 88 % of the reference T and the
+- For `dfthcsos` a local circuit win can lose: a factorisation that shrinks the ANGLE lookups but raises Λ (or
+  raises E_gap, which sits far below Λ here) raises `λ_eff`, so the cost goes up and the score goes down. Angle lookups are about 88 % of the reference T and the
   inner-prep temporaries about 75 % of its Q (`tasks/dfthcsos/README.md`), so the ANGLE circuits are the main
   lever, but the classical fit, the tree and the QROM layout are one joint objective.
 
@@ -211,7 +212,7 @@ from 848 of 1,501 to 1,404 of 2,052 and the prize line rose from 24.74 to 26.80.
 
 What the gap means: reaching the prize line from 19.21 needs the product of the three ratios to grow 2.72×
 (26.80/19.21 cubed), i.e. about 1.40× on every task or the equivalent concentrated on one. Matching the best public
-invsqrt alone would give (20.06 × 54.73 × 9.78)^(1/3) ≈ 22.1, well short of 26.80; the paid places need work
+invsqrt we have measured (Kaggle publishes no per-task scores) alone would give (20.06 × 54.73 × 9.78)^(1/3) ≈ 22.1, well short of 26.80; the paid places need work
 beyond the public frontier on at least two tasks, which is why own-generator invsqrt work and the chemistry factor search run in
 parallel. The 2026-11-20 milestone prize additionally needs a public notebook, which we have not published
 (`notebook_url: null` in `ledger/standing.yaml`).
@@ -224,7 +225,8 @@ parallel. The 2026-11-20 milestone prize additionally needs a public notebook, w
   November upload.
 - **"A focused single-task campaign is strategically valid."** Only with three valid circuits: a failing task
   rejects the zip, and the single-task prize is awarded to a selected submission, not to a bare circuit.
-- **Cost formulas.** It gave the dqi and chemistry factors symbolically. The official definitions are
+- **Cost formulas.** It gave the dqi and chemistry factors symbolically. The definitions printed on the
+  Kaggle evaluation page (read 2026-11-02; `tasks/dqi/README.md` labels the same R(ε) "inferred") are
   `R(ε) = ln 2 / (−ln(½ + 2√ε))` and `λ_eff = √(E_gap(2Λ − E_gap))`, and for chemistry T and Q are charged for
   the whole block encoding, not only the ANGLE circuits. It also did not say that invsqrt rotations are priced
   in T, which decides whether dropping a rotation beats adding a Toffoli.
