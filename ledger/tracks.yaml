@@ -20,7 +20,7 @@ tracks:
     aim: >-
       Upload only circuits that pass every check, and rebuild the best public designs in our own
       code.
-    updated_at_utc: "2026-10-29T05:25:24+00:00"
+    updated_at_utc: "2026-11-02T17:47:39+00:00"
     figures:
       # submission-011 manifest (D-PRA341-02); invsqrt and dqi unchanged from submission-010.
       - label: Square-root circuit (invsqrt)
@@ -34,9 +34,15 @@ tracks:
         value: 9.78
         state: shipped
         note: Our own circuits, built from the best published description of the molecule.
-      # PRA-285, started 2026-10-27.
-      - label: A square-root circuit with fewer qubits
-        state: in work
+      # PRA-285, finished 2026-10-27 as a negative result (D-PRA285-01, merged #70): storage and
+      # uncompute changes alone cannot reach Q <= 68 (no circuit at 68 qubits or fewer); the only
+      # measured point is the shipped Q84 circuit at 13.24, which is the value shown here.
+      - label: A square-root circuit with fewer qubits (not achieved)
+        value: 13.24
+        state: shipped
+        note: >-
+          Negative result: storage changes alone cannot reach 68 qubits or fewer. The measured
+          13.24 is the shipped 84-qubit circuit, not a smaller one.
 
   - id: B
     name: Chemistry engine

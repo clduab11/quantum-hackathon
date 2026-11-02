@@ -106,16 +106,16 @@ def test_malformed_standing_fails_the_build(change):
 def test_page_reads_the_ledger_and_the_standing_file(tmp_path: Path):
     page = build(tmp_path / "public").read_text(encoding="utf-8")
     text = _text(page)
-    # The rank was read at 18.39393 (PRA-347 fresh read after submission-010 scored).
-    assert "Our public score is 18.39393, rank 848 of 1501 teams on 29 October 2026." in text
-    assert "The leader scores 26.14113." in text
-    assert "(6th) scores 24.74409" in text
+    # The rank was read at 19.20572 (2026-11-02 anonymous read after submission-011 scored).
+    assert "Our public score is 19.20572, rank 1404 of 2052 teams on 2 November 2026." in text
+    assert "The leader scores 27.99617." in text
+    assert "(6th) scores 26.80320" in text
     assert "invsqrt 13.24 20.06 1.0" in text      # ours, best public, reference
     assert "dqi 54.73 54.73 1.0" in text
-    assert "dfthcsos 8.59 8.91 1.0" in text      # latest scored upload (submission-010)
-    assert text.count("waiting for Kaggle") == 1  # submission-011 has no public score yet
+    assert "dfthcsos 9.78 8.91 1.0" in text      # latest scored upload (submission-011)
+    assert text.count("waiting for Kaggle") == 0  # every upload has its public score
     for score in ("1.00000", "2.40948", "5.68935", "6.77899", "10.89339", "11.30048", "13.76646",
-                  "16.90171", "17.71949", "18.39393"):
+                  "16.90171", "17.71949", "18.39393", "19.20572"):
         assert score in text
     assert "20 January 2027" in text
 
@@ -298,7 +298,7 @@ def test_unscored_upload_waits_and_the_rank_says_when_it_is_stale():
     text = _text(render_page(shipped, _standing(), {"s-1": 9.5}))
     assert "waiting for Kaggle" in text
     # The latest scored upload is s-1, whose score differs from the one the rank was read at.
-    assert "Our public score is 9.50000, rank 848 of 1501 teams on 29 October 2026, before this " \
+    assert "Our public score is 9.50000, rank 1404 of 2052 teams on 2 November 2026, before this " \
            "score came in." in text
 
 

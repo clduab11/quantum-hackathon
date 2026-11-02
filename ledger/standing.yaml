@@ -12,16 +12,17 @@
 schema: 1
 
 leaderboard:
-  # PRA-343 / PRA-347: the-tracker's fresh public-board read at 2026-10-29T05:37:01Z
-  # (1501 rows). Prior standing was the PRA-317 2026-10-28 23:08Z read (rank 800 of 1463
-  # at 18.39393; #1 26.14113; #6 24.11149). Our public score is unchanged; the field grew.
-  read_at_utc: "2026-10-29T05:37:01+00:00"
-  our_score: 18.39393         # our public score when the rank was read
-  rank: 848
-  teams: 1501
-  leader_score: 26.14113
+  # 2026-11-02 anonymous public-board read at 17:47:39Z (2052 rows) from Chris's Claude Code
+  # session, reconciling submission-011 (Kaggle ref 57759974, public 19.20572). Prior standing was
+  # the PRA-343 / PRA-347 read at 2026-10-29T05:37:01Z (rank 848 of 1501 at 18.39393; #1 26.14113;
+  # #6 24.74409). The field grew and the top moved up; our best public entry is submission-011.
+  read_at_utc: "2026-11-02T17:47:39+00:00"
+  our_score: 19.20572         # our public score when the rank was read
+  rank: 1404
+  teams: 2052
+  leader_score: 27.99617
   prize_line_place: 6         # last paid place (D-PRA202-14)
-  prize_line_score: 24.74409
+  prize_line_score: 26.80320
 
 best_public_per_task:
   # Kaggle publishes no per-task scores. Since 2026-10-27 these are our own measurements of the
