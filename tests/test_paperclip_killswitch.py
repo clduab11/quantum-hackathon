@@ -403,7 +403,7 @@ def _urlopen_over(store: dict, lost: dict[str, type], calls: list):
     """A urlopen stand-in: serves GET/POST/PATCH over `store`, applies the write, then raises the
     raw transport error named in `lost` for that URL (the response was lost after the server acted)."""
     def urlopen(req, timeout=None):
-        method, path = req.get_method(), req.full_url.split("http://fake", 1)[1]
+        method, path = req.get_method(), req.full_url.split("http://localhost", 1)[1]
         calls.append((method, path))
         parts = path.split("/")
         if method == "GET":
@@ -434,7 +434,7 @@ def test_raw_transport_errors_become_killswitch_errors_and_are_reconciled(tmp_pa
     lost = {"/api/agents/id-caine/pause": ConnectionResetError, "/api/agents/id-marcus": http.client.RemoteDisconnected,
             "/api/agents/id-aurelio/pause": TimeoutError}
     monkeypatch.setattr(ks.urllib.request, "urlopen", _urlopen_over(store, lost, calls))
-    client = ks.PaperclipClient("http://fake", "k")
+    client = ks.PaperclipClient("http://localhost", "k")
     with pytest.raises(ks.KillSwitchError, match="transport error: ConnectionResetError"):
         client.post("/api/agents/id-caine/pause")
     store["agents"]["id-caine"]["status"] = "idle"
@@ -457,7 +457,58 @@ def test_non_json_response_is_a_killswitch_error(monkeypatch):
             return b"<html>gateway timeout</html>"
     monkeypatch.setattr(ks.urllib.request, "urlopen", lambda req, timeout=None: Bad({}))
     with pytest.raises(ks.KillSwitchError, match="not JSON"):
-        ks.PaperclipClient("http://fake", "k").get("/api/companies")
+        ks.PaperclipClient("http://localhost", "k").get("/api/companies")
+
+
+def test_plain_http_is_loopback_only(monkeypatch):
+    sent: list = []
+    monkeypatch.setattr(ks.urllib.request, "urlopen", lambda req, timeout=None: sent.append(req) or _Resp([]))
+    for ok in ("http://127.0.0.1:3100", "http://localhost:3100/", "http://[::1]:3100", "https://paperclip.example.com"):
+        ks.PaperclipClient(ok, "k").get("/api/companies")
+    assert len(sent) == 4
+    for bad in ("http://paperclip.example.com", "http://192.168.0.253:3100", "ftp://localhost", "localhost:3100"):
+        with pytest.raises(ks.KillSwitchError, match="loopback"):
+            ks.PaperclipClient(bad, "k")
+    assert len(sent) == 4                                     # rejected before any request is built
+
+
+def test_unknown_reverse_outcome_keeps_the_record_and_is_retried(tmp_path: Path, capsys):
+    client = LostResponseClient(AGENTS, ROUTINES, set())
+    before = json.loads(json.dumps({"agents": client.agents, "routines": client.routines}))
+    state = tmp_path / "state.json"
+    assert ks.cmd_arm(client, "co", state, None, False, False, False, False) == 0
+    client.lost.add("/api/agents/id-caine/resume")            # resume applied, response lost ...
+    client.unreadable.add("/api/agents/id-caine")             # ... and the read-back fails too
+    assert ks.cmd_disarm(client, state, False, False) == 1
+    err = capsys.readouterr().err
+    assert "outcome unknown" in err and "disarm incomplete" in err
+    assert state.exists() and not list(tmp_path.glob("state.json.*.restored"))
+    left = [(a["kind"], a.get("name") or a.get("title")) for a in json.loads(state.read_text(encoding="utf-8"))["actions"]]
+    assert left == [("pause_agent", "caine")]
+    client.lost.clear()
+    client.unreadable.clear()
+    client.calls.clear()
+    assert ks.cmd_disarm(client, state, False, False) == 0
+    assert [(m, p) for m, p, _ in client.calls if m != "GET"] == [("POST", "/api/agents/id-caine/resume")]
+    assert {"agents": client.agents, "routines": client.routines} == before
+    assert not state.exists() and len(list(tmp_path.glob("state.json.*.restored"))) == 1
+
+
+def test_directory_is_synced_after_replace_and_archive_renames(tmp_path: Path, monkeypatch):
+    synced: list[Path] = []
+    monkeypatch.setattr(ks, "_fsync_dir", lambda d: synced.append(Path(d)))
+    state = tmp_path / "state.json"
+    ks._atomic_write(state, "{}")
+    assert synced == [tmp_path]
+    ks.archive_state(state, "restored")
+    assert synced == [tmp_path, tmp_path]
+    if ks.os.name != "nt":                                    # the real helper opens and syncs the directory
+        monkeypatch.undo()
+        opened: list = []
+        real_open = ks.os.open
+        monkeypatch.setattr(ks.os, "open", lambda p, *a, **k: opened.append(Path(p)) or real_open(p, *a, **k))
+        ks._atomic_write(state, "{}")
+        assert tmp_path in opened
 
 
 def test_state_writes_are_atomic_and_the_archive_is_filled_after_the_rename(tmp_path: Path, monkeypatch):
@@ -533,8 +584,8 @@ def test_atomic_writes_use_unique_temp_files(tmp_path: Path, monkeypatch):
 
 def test_client_needs_a_key_and_never_reads_it_from_argv():
     with pytest.raises(ks.KillSwitchError):
-        ks.client_from_env({"PAPERCLIP_API_URL": "http://x"})
-    client = ks.client_from_env({"PAPERCLIP_API_KEY": "k", "PAPERCLIP_API_URL": "http://x/"})
-    assert client.api_url == "http://x"
+        ks.client_from_env({"PAPERCLIP_API_URL": "http://localhost"})
+    client = ks.client_from_env({"PAPERCLIP_API_KEY": "k", "PAPERCLIP_API_URL": "http://localhost/"})
+    assert client.api_url == "http://localhost"
     parser = ks.build_parser()
     assert not any("key" in a.dest for a in parser._actions)

@@ -65,7 +65,10 @@ interrupted run leaves an accurate record: each action's `applied` is `"pending"
 too), `true` or `false`. A failed call is read back from the API before it is recorded, because
 Paperclip may have applied it before the response was lost. `disarm` undoes the applied, in-progress
 and unknown ones and skips the rest; an incomplete or interrupted `disarm` leaves the still-undone
-actions in the file (an in-flight restore is not counted as done), so the next `disarm` replays them.
+actions in the file (a failed, unknown or in-flight restore is not counted as done), the run exits 1,
+and the next `disarm` retries them; the record is archived only when every reverse is confirmed.
+`PAPERCLIP_API_URL` must be https, or plain http to a loopback host only, so the key never travels
+in clear. State writes and archive renames are followed by a directory sync on POSIX.
 Every state write goes through a uniquely named temp file and `os.replace`, and a real `arm` or
 `disarm` holds `<state>.lock` for its whole run (`msvcrt.locking` on Windows, `fcntl.flock`
 elsewhere), failing fast with a clear error if another operator holds it. `--dry-run` takes no lock. A finished `disarm` moves the file to `<name>.<stamp>.restored`

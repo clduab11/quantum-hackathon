@@ -44,7 +44,10 @@ leaves an accurate record: each action's `applied` is `"pending"` (never started
 (the call was in flight), `"unknown"` (the call failed and the read-back failed too), `true` or
 `false` (a failed call is read back from the API, because Paperclip may have applied it before the
 response was lost). `disarm` undoes the applied, in-progress and unknown ones, skips the rest, and
-an incomplete or interrupted `disarm` leaves the still-undone actions in the file for the next run.
+drops an arm action from the record only once its reverse is confirmed applied: a failed, unknown or
+interrupted reverse stays in the file, the run exits 1, and the next `disarm` retries it. The record
+is archived only when every reverse is confirmed.
+The API URL must be https, or plain http to a loopback host only, so the key never travels in clear.
 Every state write goes through a uniquely named temp file and `os.replace`, and a real `arm` or
 `disarm` holds `<state>.lock` for its whole run (`msvcrt.locking` on Windows, `fcntl.flock`
 elsewhere) and fails fast if another operator holds it; `--dry-run` takes no lock. A finished `disarm` moves the file to `<name>.<stamp>.restored`.
@@ -59,11 +62,13 @@ import contextlib
 import copy
 import datetime as _dt
 import http.client
+import ipaddress
 import json
 import os
 import sys
 import tempfile
 import urllib.error
+import urllib.parse
 import urllib.request
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -85,12 +90,36 @@ class KillSwitchError(Exception):
 # --------------------------------------------------------------------------- HTTP client
 
 
+def _is_loopback(host: str | None) -> bool:
+    if not host:
+        return False
+    if host.lower() == "localhost":
+        return True
+    try:
+        return ipaddress.ip_address(host).is_loopback
+    except ValueError:
+        return False
+
+
+def assert_key_safe_url(api_url: str) -> None:
+    """The board key travels as a bearer header: plain HTTP is allowed only to a loopback host,
+    anything else must be HTTPS. Checked before any request is built."""
+    parts = urllib.parse.urlsplit(api_url)
+    if parts.scheme == "https":
+        return
+    if parts.scheme == "http" and _is_loopback(parts.hostname):
+        return
+    raise KillSwitchError(f"PAPERCLIP_API_URL {api_url!r}: plain http is allowed only to a loopback host "
+                          "(localhost, 127.0.0.1, ::1); use https for anything else")
+
+
 class PaperclipClient:
     """Minimal board-key client. The key lives only in this object and the Authorization header."""
 
     def __init__(self, api_url: str, api_key: str, timeout: float = 60.0) -> None:
         if not api_key:
             raise KillSwitchError("PAPERCLIP_API_KEY is not set")
+        assert_key_safe_url(api_url)
         self.api_url = api_url.rstrip("/")
         self._key = api_key
         self.timeout = timeout
@@ -360,6 +389,7 @@ def archive_state(state_path: Path, suffix: str) -> Path:
     """Move the state file aside under a timestamped name (`replace`: works on Windows too)."""
     archived = state_path.with_name(f"{state_path.name}.{_stamp()}.{suffix}")
     state_path.replace(archived)
+    _fsync_dir(state_path.parent)
     return archived
 
 
@@ -372,10 +402,26 @@ def load_state(path: Path) -> dict[str, Any]:
         raise KillSwitchError(f"state file {path} is not JSON: {exc}") from None
 
 
+def _fsync_dir(directory: Path) -> None:
+    """Make a rename durable on POSIX by syncing the directory that holds the entry. Windows
+    cannot open a directory for fsync, so it is skipped there (NTFS journals the rename)."""
+    if os.name == "nt":
+        return
+    try:
+        fd = os.open(directory, os.O_RDONLY)
+    except OSError:
+        return
+    try:
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+
+
 def _atomic_write(path: Path, text: str) -> None:
-    """Write via a uniquely named temp file in the same directory, then `os.replace`: the state
-    file is the only recovery record, so a crash mid-write must leave the previous complete
-    version, never a truncated one, and two writers can never share a temp file."""
+    """Write via a uniquely named temp file in the same directory, then `os.replace` and a
+    directory sync: the state file is the only recovery record, so a crash mid-write must leave
+    the previous complete version, never a truncated one, a crash right after must keep the new
+    name, and two writers can never share a temp file."""
     fd, tmp = tempfile.mkstemp(dir=str(path.parent), prefix=path.name + ".", suffix=".tmp")
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as fh:
@@ -387,6 +433,7 @@ def _atomic_write(path: Path, text: str) -> None:
         with contextlib.suppress(OSError):
             os.unlink(tmp)
         raise
+    _fsync_dir(path.parent)
 
 
 @contextlib.contextmanager
@@ -536,12 +583,12 @@ def _disarm(client: PaperclipClient, state_path: Path, dry_run: bool, as_json: b
     inverse = {"resume_agent": "pause_agent", "resume_routine": "pause_routine", "restore_wake": "disable_wake"}
 
     def remaining() -> list[dict[str, Any]]:
-        # What is still to undo: skip arm actions whose reverse has run (or whose outcome is
-        # unknown, which means it was attempted), so a retry never replays the restored part.
-        # An "in_progress" reverse is not a confirmed outcome: its arm action stays, so a disarm
-        # that dies inside the call can be replayed.
+        # What is still to undo: an arm action leaves the record only once its reverse is
+        # confirmed applied. An "in_progress" or "unknown" reverse is not a confirmed outcome, so
+        # the arm action stays and the next disarm retries it (a repeated resume or restore of an
+        # already restored object is harmless).
         undone = {(inverse[a["kind"]], a.get("agentId") or a.get("routineId"))
-                  for a in plan.actions if a.get("applied") in (True, "unknown")}
+                  for a in plan.actions if a.get("applied") is True}
         return [a for a in state["actions"]
                 if needs_undo(a) and (a["kind"], a.get("agentId") or a.get("routineId")) not in undone]
 
@@ -553,12 +600,11 @@ def _disarm(client: PaperclipClient, state_path: Path, dry_run: bool, as_json: b
         print(line)
     for line in failed:
         print(f"FAILED {line}", file=sys.stderr)
-    if any(a.get("applied") is False for a in plan.actions):
+    if any(a.get("applied") is not True for a in plan.actions):
         left = remaining()
-        print(f"disarm incomplete; {len(left)} action(s) left in {state_path}; run disarm again", file=sys.stderr)
+        print(f"disarm incomplete; {len(left)} action(s) left in {state_path} (failed or unconfirmed); "
+              "run disarm again", file=sys.stderr)
         return 1
-    if failed:
-        print("every action was attempted; the unknown outcomes above should be checked with status", file=sys.stderr)
     # Move the (now empty) to-do file aside first, then fill the archive with the whole arm record
     # plus what disarm did, so a crash in between never leaves a full record for a replay.
     archived = archive_state(state_path, "restored")
