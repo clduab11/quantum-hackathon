@@ -65,7 +65,10 @@ interrupted run leaves an accurate record: each action's `applied` is `"pending"
 too), `true` or `false`. A failed call is read back from the API before it is recorded, because
 Paperclip may have applied it before the response was lost. `disarm` undoes the applied, in-progress
 and unknown ones and skips the rest; an incomplete or interrupted `disarm` leaves the still-undone
-actions in the file (an in-flight restore is not counted as done), so the next `disarm` replays them. A finished `disarm` moves the file to `<name>.<stamp>.restored`
+actions in the file (an in-flight restore is not counted as done), so the next `disarm` replays them.
+Every state write goes through a uniquely named temp file and `os.replace`, and a real `arm` or
+`disarm` holds `<state>.lock` for its whole run (`msvcrt.locking` on Windows, `fcntl.flock`
+elsewhere), failing fast with a clear error if another operator holds it. `--dry-run` takes no lock. A finished `disarm` moves the file to `<name>.<stamp>.restored`
 (`Path.replace`, so repeated cycles work on Windows too). `--json` prints plans as JSON. Exit
 codes: 0 ok, 1 API or state error, 2 bad arguments.
 

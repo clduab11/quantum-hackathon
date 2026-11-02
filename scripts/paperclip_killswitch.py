@@ -44,7 +44,10 @@ leaves an accurate record: each action's `applied` is `"pending"` (never started
 (the call was in flight), `"unknown"` (the call failed and the read-back failed too), `true` or
 `false` (a failed call is read back from the API, because Paperclip may have applied it before the
 response was lost). `disarm` undoes the applied, in-progress and unknown ones, skips the rest, and
-an incomplete or interrupted `disarm` leaves the still-undone actions in the file for the next run. A finished `disarm` moves the file to `<name>.<stamp>.restored`.
+an incomplete or interrupted `disarm` leaves the still-undone actions in the file for the next run.
+Every state write goes through a uniquely named temp file and `os.replace`, and a real `arm` or
+`disarm` holds `<state>.lock` for its whole run (`msvcrt.locking` on Windows, `fcntl.flock`
+elsewhere) and fails fast if another operator holds it; `--dry-run` takes no lock. A finished `disarm` moves the file to `<name>.<stamp>.restored`.
 
 Standard library only. Exit 0 on success, 1 on an API or state error, 2 on bad arguments.
 """
@@ -52,12 +55,14 @@ Standard library only. Exit 0 on success, 1 on an API or state error, 2 on bad a
 from __future__ import annotations
 
 import argparse
+import contextlib
 import copy
 import datetime as _dt
 import http.client
 import json
 import os
 import sys
+import tempfile
 import urllib.error
 import urllib.request
 from dataclasses import dataclass, field
@@ -368,12 +373,53 @@ def load_state(path: Path) -> dict[str, Any]:
 
 
 def _atomic_write(path: Path, text: str) -> None:
-    """Write via a temp file in the same directory, then `os.replace`: the state file is the only
-    recovery record, so a crash mid-write must leave the previous complete version, never a
-    truncated one."""
-    tmp = path.with_name(path.name + ".tmp")
-    tmp.write_text(text, encoding="utf-8")
-    os.replace(tmp, path)
+    """Write via a uniquely named temp file in the same directory, then `os.replace`: the state
+    file is the only recovery record, so a crash mid-write must leave the previous complete
+    version, never a truncated one, and two writers can never share a temp file."""
+    fd, tmp = tempfile.mkstemp(dir=str(path.parent), prefix=path.name + ".", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write(text)
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.replace(tmp, path)
+    except BaseException:
+        with contextlib.suppress(OSError):
+            os.unlink(tmp)
+        raise
+
+
+@contextlib.contextmanager
+def state_lock(state_path: Path):
+    """Hold `<state>.lock` for a whole arm or disarm, so two operators cannot interleave
+    checkpoints on the same record. Fails fast when another process holds it. `msvcrt.locking`
+    on Windows (the documented way to run this script here), `fcntl.flock` elsewhere."""
+    lock_path = state_path.with_name(state_path.name + ".lock")
+    fh = open(lock_path, "a+", encoding="utf-8")
+    try:
+        try:
+            if os.name == "nt":
+                import msvcrt
+                fh.seek(0)
+                msvcrt.locking(fh.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                import fcntl
+                fcntl.flock(fh.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError:
+            raise KillSwitchError(f"{lock_path} is held by another arm or disarm; wait for it to finish") from None
+        yield
+    finally:
+        with contextlib.suppress(OSError):
+            if os.name == "nt":
+                fh.seek(0)
+                msvcrt.locking(fh.fileno(), msvcrt.LK_UNLCK, 1)
+            else:
+                fcntl.flock(fh.fileno(), fcntl.LOCK_UN)
+        fh.close()
+
+
+def _locked_unless_dry_run(state_path: Path, dry_run: bool):
+    return contextlib.nullcontext() if dry_run else state_lock(state_path)
 
 
 def write_state(path: Path, api_url: str, company_id: str, plan: Plan) -> None:
@@ -442,6 +488,12 @@ def cmd_status(client: PaperclipClient, company_id: str, state_path: Path) -> in
 
 def cmd_arm(client: PaperclipClient, company_id: str, state_path: Path, names: list[str] | None,
             include_protected: bool, dry_run: bool, force: bool, as_json: bool) -> int:
+    with _locked_unless_dry_run(state_path, dry_run):
+        return _arm(client, company_id, state_path, names, include_protected, dry_run, force, as_json)
+
+
+def _arm(client: PaperclipClient, company_id: str, state_path: Path, names: list[str] | None,
+         include_protected: bool, dry_run: bool, force: bool, as_json: bool) -> int:
     if state_path.exists() and not dry_run and not force:
         raise KillSwitchError(f"{state_path} exists: the switch is already armed (disarm first or pass --force)")
     agents, routines = fetch(client, company_id)
@@ -470,6 +522,11 @@ def cmd_arm(client: PaperclipClient, company_id: str, state_path: Path, names: l
 
 
 def cmd_disarm(client: PaperclipClient, state_path: Path, dry_run: bool, as_json: bool) -> int:
+    with _locked_unless_dry_run(state_path, dry_run):
+        return _disarm(client, state_path, dry_run, as_json)
+
+
+def _disarm(client: PaperclipClient, state_path: Path, dry_run: bool, as_json: bool) -> int:
     state = load_state(state_path)
     plan = plan_disarm(state)
     print(render_plan(plan, as_json))

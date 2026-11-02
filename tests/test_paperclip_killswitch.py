@@ -472,7 +472,8 @@ def test_state_writes_are_atomic_and_the_archive_is_filled_after_the_rename(tmp_
 
     monkeypatch.setattr(ks.os, "replace", replace)
     ks._atomic_write(state, "new record")
-    assert seen == [("state.json.tmp", "state.json")] and state.read_text(encoding="utf-8") == "new record"
+    assert [dst for _, dst in seen] == ["state.json"] and state.read_text(encoding="utf-8") == "new record"
+    assert seen[0][0].startswith("state.json.") and seen[0][0].endswith(".tmp")
     assert not state.with_name("state.json.tmp").exists()
     state.unlink()
 
@@ -488,6 +489,46 @@ def test_state_writes_are_atomic_and_the_archive_is_filled_after_the_rename(tmp_
     (archived,) = tmp_path.glob("state.json.*.restored")
     record = json.loads(archived.read_text(encoding="utf-8"))
     assert len(record["actions"]) == 10 and len(record["disarm"]) == 10
+
+
+def test_lock_serialises_arm_and_disarm_but_not_dry_run(tmp_path: Path, capsys):
+    client = FakeClient(AGENTS, ROUTINES)
+    state = tmp_path / "state.json"
+    with ks.state_lock(state):                       # another operator is mid-operation
+        with pytest.raises(ks.KillSwitchError, match=r"state\.json\.lock is held by another"):
+            ks.cmd_arm(client, "co", state, None, False, False, False, False)
+        assert not state.exists() and all(c[0] == "GET" for c in client.calls)
+        assert ks.cmd_arm(client, "co", state, None, False, True, False, False) == 0   # dry run: no lock
+        assert "dry run: nothing written" in capsys.readouterr().out
+    assert ks.cmd_arm(client, "co", state, None, False, False, False, False) == 0     # lock released
+    with ks.state_lock(state):
+        with pytest.raises(ks.KillSwitchError, match="held by another"):
+            ks.cmd_disarm(client, state, False, False)
+        assert client.agents["id-caine"]["status"] == "paused"
+        assert ks.cmd_disarm(client, state, True, False) == 0                          # dry run: no lock
+    assert ks.cmd_disarm(client, state, False, False) == 0
+    assert state.with_name("state.json.lock").exists()
+
+
+def test_atomic_writes_use_unique_temp_files(tmp_path: Path, monkeypatch):
+    import threading
+    state = tmp_path / "state.json"
+    temps: list[str] = []
+    real_replace = ks.os.replace
+
+    def replace(src, dst):
+        temps.append(Path(src).name)
+        return real_replace(src, dst)
+
+    monkeypatch.setattr(ks.os, "replace", replace)
+    threads = [threading.Thread(target=ks._atomic_write, args=(state, json.dumps({"n": i}))) for i in range(8)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+    assert len(set(temps)) == 8 and all(n.startswith("state.json.") and n.endswith(".tmp") for n in temps)
+    assert json.loads(state.read_text(encoding="utf-8"))["n"] in range(8)      # always one complete record
+    assert list(tmp_path.glob("*.tmp")) == []
 
 
 def test_client_needs_a_key_and_never_reads_it_from_argv():
