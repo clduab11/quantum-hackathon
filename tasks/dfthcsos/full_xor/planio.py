@@ -9,7 +9,7 @@ def plan_from_dict(d):
  if set(d)!=required:raise ValueError('bad saved Plan fields')
  ints=('addresses','batch','brot','low_bits','parity_scratch')
  if any(type(d[k])is not int for k in ints):raise ValueError('noninteger saved Plan routing')
- if d['addresses']<1 or(d['batch'],d['brot'],d['low_bits'])!=(5,8,4)or d['parity_scratch']not in(0,2):raise ValueError('unsupported carry Plan layout')
+ if d['addresses']<1 or(d['batch'],d['low_bits'])!=(5,4)or d['brot']not in(7,8)or d['parity_scratch']not in(0,2):raise ValueError('unsupported carry Plan layout')
  pure={}
  for k,v in d['pure'].items():
   kk=int(k)
