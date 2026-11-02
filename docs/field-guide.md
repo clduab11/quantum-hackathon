@@ -209,6 +209,9 @@ Public score: **19.20572** (submission-011, anonymous leaderboard read 2026-11-0
 teams; the local fixed-salt figure matched it. Leader 27.99617 (Breaking1800); last paid place (6th) 26.80320. The
 field is moving faster than we are: since the 2026-10-29 read our score rose from 18.39 to 19.21 while the rank fell
 from 848 of 1,501 to 1,404 of 2,052 and the prize line rose from 24.74 to 26.80.
+The ledger record of this read (`ledger/evidence/submission-011/kaggle-public-score.json` and the leaderboard block
+of `ledger/standing.yaml`, which feeds the status page) lands with PR #81 (`op-vqcc/ledger-reconcile-1102`), not with
+this guide; until that merges, `main` still records the 2026-10-29 read.
 
 What the gap means: reaching the prize line from 19.21 needs the product of the three ratios to grow 2.72×
 (26.80/19.21 cubed), i.e. about 1.40× on every task or the equivalent concentrated on one. Matching the best public
