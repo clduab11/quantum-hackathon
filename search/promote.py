@@ -16,6 +16,10 @@ Selection: among programs whose full official verification passed with ratio abo
      artifacts.json, sha256s.json, a draft candidate manifest built with ledger/run_manifest.py (salt label
      from configs/gates/default.yaml) and HANDOFF.md.
 
+It also prints ``DISCOVERY:`` lines, the verified rows for READY hand-offs and at most three negative
+results (the most promising programs the official verifier rejected, one per distinct rejection), and
+appends them to ``<run>/discovery_lines.md``. search/DISCOVERY.md itself stays hand-curated: paste from there.
+
 promote.py touches no register, queue or manifest directory and commits nothing: shipping stays with
 Paperclip and the board (AGENTS.md). Hand-off folders hold .kmb/.npz binaries and are git-ignored.
 """
@@ -199,14 +203,101 @@ def expected_files(artifacts: dict[str, Any]) -> dict[str, str]:
     return {str(k): str(v) for k, v in (files or {}).items()}
 
 
-def discovery_entry(handoff_id: str, verifier: dict[str, Any], program: dict[str, Any]) -> str:
-    notes = [line.strip() for line in evaluator.extract_notes(program["code"]).splitlines() if line.strip()]
+def _last_note(code: str) -> str:
+    notes = [line.strip() for line in evaluator.extract_notes(code).splitlines() if line.strip()]
     last = notes[-1] if notes else "(no NOTES line)"
     last = re.sub(r"^\d{4}-\d{2}-\d{2}:?\s*", "", last)  # the row carries its own date
     if len(last) > 140:
         last = last[:140].rsplit(" ", 1)[0] + " ..."
-    return (f"| {time.strftime('%Y-%m-%d')} | search {handoff_id}: {last} | {verifier['toffoli_count']:,.0f} | "
-            f"{verifier['num_qubits']} | {verifier['ratio']:.6f} | search/promote.py, full verifier |")
+    return last
+
+
+def discovery_entry(handoff_id: str, verifier: dict[str, Any], program: dict[str, Any]) -> str:
+    return (f"| {time.strftime('%Y-%m-%d')} | search {handoff_id}: {_last_note(program['code'])} | "
+            f"{verifier['toffoli_count']:,.0f} | {verifier['num_qubits']} | {verifier['ratio']:.6f} | "
+            "search/promote.py, full verifier |")
+
+
+# --- negative results ----------------------------------------------------------------------------
+
+
+NEGATIVE_LINES_MAX = 3
+
+
+def failure_reason(program: dict[str, Any]) -> str:
+    """The verifier's rejection text for a program that reached stage 2 or 3 without passing."""
+    artifacts: dict[str, Any] = {}
+    raw = program.get("artifacts_json") or program.get("artifacts")
+    if isinstance(raw, str):
+        try:
+            artifacts = json.loads(raw)
+        except ValueError:
+            artifacts = {}
+    elif isinstance(raw, dict):
+        artifacts = raw
+    summary = str(artifacts.get("summary") or "")
+    fails = [line.strip() for line in summary.splitlines() if "FAIL" in line]
+    if fails:
+        return fails[-1]
+    metrics = program.get("metrics") or {}
+    return f"stage {int(metrics.get('stage_reached') or 0)} reached without a pass"
+
+
+def negative_candidates(programs: list[dict[str, Any]], limit: int = NEGATIVE_LINES_MAX) -> list[dict[str, Any]]:
+    """Programs the official verifier rejected: stage 2 or 3 reached, stage 3 not passed.
+
+    The most promising first (highest predicted ratio), one per distinct rejection text, at most
+    ``limit``. These are the negatives worth a DISCOVERY line: layouts the model should not retry
+    under the same assumptions.
+    """
+    chosen: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    ordered = sorted(programs, key=lambda p: (-float((p.get("metrics") or {}).get("predicted_ratio") or 0.0),
+                                              p.get("iteration_found") or 0, str(p.get("id", ""))))
+    for program in ordered:
+        metrics = program.get("metrics") or {}
+        if metrics.get("stage_reached", 0) < 2 or metrics.get("stage3_passed", 0) >= 1:
+            continue
+        reason = failure_reason(program)
+        if reason in seen:
+            continue
+        seen.add(reason)
+        chosen.append(program)
+        if len(chosen) >= limit:
+            break
+    return chosen
+
+
+def negative_entry(program: dict[str, Any], run_name: str, checkpoint_name: str) -> str:
+    """A negative-result line in the form of DISCOVERY.md's 'Negatives' section, with its assumption."""
+    metrics = program.get("metrics") or {}
+    reason = failure_reason(program)
+    if len(reason) > 160:
+        reason = reason[:160].rsplit(" ", 1)[0] + " ..."
+    tag = f"search {run_name}-{checkpoint_name}-{str(program.get('id', ''))[:8]}"
+    return (f"DISCOVERY: - {time.strftime('%Y-%m-%d')} {_last_note(program.get('code', ''))}: {reason} ({tag}; "
+            f"predicted ratio {float(metrics.get('predicted_ratio') or 0.0):.4f}, J {int(metrics.get('batch_size') or 0)}, "
+            f"brot {int(metrics.get('brot') or 0)}). Assumes this run's declared factor, fixed salt and shot counts; "
+            "the full official verifier is the judge.")
+
+
+def emit_discovery_lines(run_dir: Path, checkpoint_name: str, lines: list[str]) -> Path | None:
+    """Print ``DISCOVERY:`` lines and append them to ``<run>/discovery_lines.md``.
+
+    search/DISCOVERY.md is never written here: it stays hand-curated.
+    """
+    for line in lines:
+        print(line)
+    if not lines:
+        return None
+    target = Path(run_dir) / "discovery_lines.md"
+    try:
+        with target.open("a", encoding="utf-8") as stream:
+            stream.write(f"\n## {time.strftime('%Y-%m-%d %H:%M')} search/promote.py {checkpoint_name}\n\n")
+            stream.write("\n".join(lines) + "\n")
+    except OSError:
+        return None
+    return target
 
 
 def write_handoff(program: dict[str, Any], checkpoint: Path, out_root: Path, factor: dict[str, Any],
@@ -357,7 +448,12 @@ def main(argv: list[str] | None = None) -> int:
     for program in elites:
         m = program["metrics"]
         print(f"  {program['id'][:8]} ratio {m['ratio']:.6f} T {m['t']:.0f} Q {m['q']:.0f} iteration {program.get('iteration_found')}")
+    run_dir = checkpoint.parents[1] if len(checkpoint.parents) > 1 else checkpoint.parent
+    negatives = negative_candidates(programs)
+    negative_lines = [negative_entry(p, run_dir.name, checkpoint.name) for p in negatives]
+    print(f"{len(negative_lines)} negative result(s) for the run's discovery_lines.md (max {NEGATIVE_LINES_MAX})")
     if args.dry_run or not elites:
+        emit_discovery_lines(run_dir, checkpoint.name, negative_lines)  # negatives need no rebuild
         return 0
     factor = evaluator.factor_config()
     results = []
@@ -372,6 +468,9 @@ def main(argv: list[str] | None = None) -> int:
         print("\nDISCOVERY.md entries (paste under 'Verified results'):")
         for r in ready:
             print(r["discovery_entry"])
+    print()
+    emit_discovery_lines(run_dir, checkpoint.name,
+                         [f"DISCOVERY: {r['discovery_entry']}" for r in ready] + negative_lines)
     failed = [r for r in results if not str(r.get("status", "")).startswith(("READY", "SKIP"))]
     return 1 if failed else 0
 

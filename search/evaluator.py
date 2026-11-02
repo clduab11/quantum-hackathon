@@ -18,10 +18,18 @@ result, the verifier JSON and stderr so the model can read why a program failed.
 
 The salt is the fixed public label PRA171_LOCAL_PUBLIC_FIXED_SALT_0001 and the shot counts are fixed;
 nothing here searches over seeds or salts (AGENTS.md).
+
+Memo. Verifier results and whole-program results go through search/memo.py, persisted under
+$SEARCH_RUN_DIR/verifier_memo.jsonl, so an identical program source (same SHA-256) is answered without a
+build and an identical circuit family without a verifier run; negative outcomes (a FAIL, a timeout, a
+crashed child) are kept too and never re-run. Stage 0, a syntax check, runs before the build subprocess,
+and the full verifier is only reached through a reduced-stage PASS, in-process and in the ``--verify-json``
+child alike.
 """
 from __future__ import annotations
 
 import argparse
+import ast
 import hashlib
 import json
 import math
@@ -52,10 +60,13 @@ REPO_ROOT = SEARCH_DIR.parent
 if str(REPO_ROOT) not in sys.path:  # `tasks.*` imports, whether run as a script or inside an OpenEvolve worker
     sys.path.insert(0, str(REPO_ROOT))
 from search.fitness import combined_score as dense_combined_score, log_safe  # noqa: E402
-from search.memo import VerifierMemo, settings_digest, verification_key  # noqa: E402
+from search.memo import (  # noqa: E402
+    MEMO_FILENAME, VerifierMemo, program_key, program_sha256, settings_digest, verification_key,
+)
 
 DEFAULT_DATA = "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation"
-_VERIFY_MEMO = VerifierMemo()
+_VERIFY_MEMO = VerifierMemo()  # persisted under $SEARCH_RUN_DIR (or $SEARCH_MEMO_PATH); in-process without either
+_EVALUATOR_FINGERPRINT: str | None = None
 
 BASELINE_COST = 3355599588.3155365
 SALT = "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001"
@@ -166,6 +177,41 @@ def extract_notes(code: str) -> str:
     return match.group(1).strip() if match else ""
 
 
+def _evaluator_fingerprint() -> str:
+    """Short digest of the scoring code, bound into program-memo keys so a scoring change misses."""
+    global _EVALUATOR_FINGERPRINT
+    if _EVALUATOR_FINGERPRINT is None:
+        digest = hashlib.sha256()
+        for name in ("evaluator.py", "fitness.py"):
+            try:
+                digest.update((SEARCH_DIR / name).read_bytes())
+            except OSError:
+                pass
+        _EVALUATOR_FINGERPRINT = digest.hexdigest()[:16]
+    return _EVALUATOR_FINGERPRINT
+
+
+# --- stage 0: static checks on the source, before any subprocess -------------------------------
+
+
+def stage0_checks(program_path: str | Path) -> list[str]:
+    """Problems that make running the program pointless: unreadable, empty, or not valid Python."""
+    path = Path(program_path)
+    try:
+        source = path.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError) as exc:
+        return [f"stage 0: cannot read the program: {exc}"]
+    if not source.strip():
+        return ["stage 0: the program is empty"]
+    try:
+        ast.parse(source, filename=str(path))
+    except SyntaxError as exc:
+        return [f"stage 0: syntax error: {exc.msg} (line {exc.lineno})"]
+    except (ValueError, RecursionError) as exc:
+        return [f"stage 0: cannot parse the program: {type(exc).__name__}: {exc}"]
+    return []
+
+
 # --- the build (stage 1) -----------------------------------------------------------------------
 
 
@@ -203,6 +249,12 @@ def run_program(program_path: str) -> Build:
     build = Build(program_path=program_path, program_sha256=sha256_file(Path(program_path)),
                   outdir=outdir, chemistry=outdir / "dfthcsos")
     started = time.monotonic()
+    problems = stage0_checks(program_path)  # stage 0 first: a program that does not parse is never executed
+    build.stage_seconds["stage0"] = round(time.monotonic() - started, 3)
+    if problems:
+        build.error = "; ".join(problems)
+        build.seconds = time.monotonic() - started
+        return build
     try:
         cfg = factor_config()
     except Exception as exc:  # a misconfigured factor is an evaluator problem, not the program's
@@ -324,10 +376,10 @@ def _submission_identity(chemistry: Path) -> str:
     return ""
 
 
-def verify_family_isolated(chemistry: Path, shots_per_address: int, timeout: float = VERIFY_TIMEOUT) -> dict[str, Any]:
-    """``verify_family`` in a child process with a hard timeout (OpenEvolve cannot cancel a thread)."""
+def _verify_key(chemistry: Path, shots_per_address: int, timeout: float) -> bytes:
+    """Memo key of one official verification of the family under ``chemistry``."""
     mode = "smoke" if os.environ.get("SEARCH_SMOKE") == "1" else "full"
-    key = verification_key(
+    return verification_key(
         task="dfthcsos",
         mode=mode,
         circuit_fingerprint=_family_fingerprint(chemistry),
@@ -335,20 +387,48 @@ def verify_family_isolated(chemistry: Path, shots_per_address: int, timeout: flo
         verifier_settings=settings_digest({"salt": SALT, "timeout": timeout}),
         submission_id=_submission_identity(chemistry),
     )
+
+
+def _gated_by_reduced(reduced: dict[str, Any], shots_per_address: int) -> dict[str, Any]:
+    """The answer to a full-verification request made before the reduced stage of the same family passed."""
+    gated = {k: v for k, v in reduced.items() if k != "memo_hit"}
+    gated.update(status="FAIL", shots_per_address=shots_per_address, salt=SALT,
+                 gated=(f"full verification ({shots_per_address} shots/address) needs a reduced PASS first; the "
+                        f"reduced stage ({REDUCED_SHOTS} shots/address) returned {reduced.get('status')}: "
+                        f"{reduced.get('error')}"))
+    gated.setdefault("error", gated["gated"])
+    return gated
+
+
+def verify_family_isolated(chemistry: Path, shots_per_address: int, timeout: float = VERIFY_TIMEOUT) -> dict[str, Any]:
+    """``verify_family`` in a child process with a hard timeout (OpenEvolve cannot cancel a thread).
+
+    Goes through the persistent memo first (a PASS, a FAIL, a timeout and a crashed child are all
+    remembered), and never reaches the full verifier unless the reduced stage of the same family
+    passed: a request for more than ``REDUCED_SHOTS`` recalls or runs the reduced verification first.
+    """
+    key = _verify_key(chemistry, shots_per_address, timeout)
     cached = _VERIFY_MEMO.get(key)
     if cached is not None:
         hit = dict(cached)
         hit["memo_hit"] = True
         return hit
+    if int(shots_per_address) > REDUCED_SHOTS:
+        reduced = verify_family_isolated(chemistry, REDUCED_SHOTS, timeout)
+        if reduced.get("status") != "PASS":
+            return _gated_by_reduced(reduced, shots_per_address)
     started = time.monotonic()
-    cmd = [sys.executable, str(Path(__file__).resolve()), "--verify-json", str(chemistry), str(shots_per_address)]
+    cmd = [sys.executable, str(Path(__file__).resolve()), "--verify-json", str(chemistry), str(shots_per_address),
+           str(timeout)]
     env = {**os.environ, "PYTHONPATH": str(REPO_ROOT), "OPENBLAS_NUM_THREADS": os.environ.get("OPENBLAS_NUM_THREADS", "2")}
     try:
         proc = subprocess.run(cmd, cwd=REPO_ROOT, env=env, capture_output=True, text=True, timeout=timeout)
     except subprocess.TimeoutExpired:
-        return {"status": "FAIL", "shots_per_address": shots_per_address, "salt": SALT,
-                "error": f"verifier exceeded {timeout:.0f} s (the reference family takes 35 s; this one is too "
-                         "slow to simulate)", "seconds": round(time.monotonic() - started, 2)}
+        payload = {"status": "FAIL", "shots_per_address": shots_per_address, "salt": SALT,
+                   "error": f"verifier exceeded {timeout:.0f} s (the reference family takes 35 s; this one is too "
+                            "slow to simulate)", "seconds": round(time.monotonic() - started, 2)}
+        _VERIFY_MEMO.set(key, payload, negative=True)  # a family too slow to simulate is never simulated again
+        return payload
     payload = None
     for line in reversed(proc.stdout.strip().splitlines()):
         if line.startswith("{"):
@@ -358,11 +438,30 @@ def verify_family_isolated(chemistry: Path, shots_per_address: int, timeout: flo
             except ValueError:
                 continue
     if not isinstance(payload, dict) or "status" not in payload:
-        return {"status": "FAIL", "shots_per_address": shots_per_address, "salt": SALT,
-                "error": f"verifier child exited {proc.returncode} without a result: {proc.stderr.strip()[-800:]}",
-                "seconds": round(time.monotonic() - started, 2)}
+        payload = {"status": "FAIL", "shots_per_address": shots_per_address, "salt": SALT,
+                   "error": f"verifier child exited {proc.returncode} without a result: {proc.stderr.strip()[-800:]}",
+                   "seconds": round(time.monotonic() - started, 2)}
+        _VERIFY_MEMO.set(key, payload, negative=True)
+        return payload
+    payload.pop("memo_hit", None)  # the child may have answered from the shared file; this process still missed
     _VERIFY_MEMO.set(key, payload)
     return payload
+
+
+def verify_json_child(chemistry: Path, shots_per_address: int, timeout: float = VERIFY_TIMEOUT) -> dict[str, Any]:
+    """The ``--verify-json`` child: the same memo and the same reduced-before-full gate as the parent."""
+    key = _verify_key(chemistry, shots_per_address, timeout)
+    cached = _VERIFY_MEMO.get(key)
+    if cached is not None:
+        return {**cached, "memo_hit": True}
+    if int(shots_per_address) > REDUCED_SHOTS:
+        reduced_key = _verify_key(chemistry, REDUCED_SHOTS, timeout)
+        reduced = _VERIFY_MEMO.get(reduced_key)
+        if reduced is None:
+            reduced = _VERIFY_MEMO.set(reduced_key, verify_family(chemistry, REDUCED_SHOTS))
+        if reduced.get("status") != "PASS":
+            return _gated_by_reduced(reduced, shots_per_address)
+    return _VERIFY_MEMO.set(key, verify_family(chemistry, shots_per_address))
 
 
 def verify_family(chemistry: Path, shots_per_address: int) -> dict[str, Any]:
@@ -531,7 +630,9 @@ def assemble(build: Build) -> EvaluationResult:
 
 
 def record_evaluation(build: Build, result: EvaluationResult, final_stage: int) -> None:
-    """One JSON record per evaluation under $SEARCH_RUN_DIR/evals (read by search/stats.py)."""
+    """One JSON record per evaluation under $SEARCH_RUN_DIR/evals (read by search/stats.py), and the
+    program-source memo entry that answers an identical program next time."""
+    remember_program(build, result, final_stage)
     run_dir = os.environ.get("SEARCH_RUN_DIR")
     if not run_dir:
         return
@@ -571,6 +672,63 @@ def _build_for(program_path: str) -> Build:
     return build
 
 
+# --- the program memo: identical sources are never rebuilt ------------------------------------
+
+
+def _program_mode() -> str:
+    return "smoke" if os.environ.get("SEARCH_SMOKE") == "1" else "full"
+
+
+def program_memo_key(program_path: str) -> bytes | None:
+    """Memo key for the whole evaluation of one program source, or ``None`` when it cannot be bound.
+
+    Binds the program text, the declared factor input, shots, salt, size caps and a digest of the
+    scoring code. An evaluator misconfiguration (unreadable or mismatched factor) yields no key, so
+    it is never cached as the program's own failure.
+    """
+    digest = program_sha256(program_path)
+    if digest is None:
+        return None
+    try:
+        factor = factor_config()
+    except Exception:  # noqa: BLE001
+        return None
+    settings = settings_digest({
+        "salt": SALT, "reduced_shots": REDUCED_SHOTS, "full_shots": FULL_SHOTS,
+        "factor_sha256": factor["sha256"], "source_brot": factor["source_brot"], "qubit_cap": QUBIT_CAP,
+        "max_instructions": MAX_INSTRUCTIONS, "max_static_toffoli": MAX_STATIC_TOFFOLI,
+        "evaluator": _evaluator_fingerprint(),
+    })
+    return program_key(task="dfthcsos", mode=_program_mode(), program_sha256=digest, settings=settings)
+
+
+def cached_program_result(program_path: str) -> EvaluationResult | None:
+    """The recorded result of an identical program source, if the memo holds one: no build, no verifier."""
+    if str(program_path) in _BUILDS:  # this path is being evaluated right now; finish that
+        return None
+    key = program_memo_key(program_path)
+    if key is None:
+        return None
+    cached = _VERIFY_MEMO.get(key)
+    if not isinstance(cached, dict) or not isinstance(cached.get("metrics"), dict):
+        return None
+    artifacts = {str(k): v for k, v in (cached.get("artifacts") or {}).items()}
+    artifacts["memo_hit"] = (f"program source sha256 {str(cached.get('program_sha256') or '')[:12]} was evaluated "
+                             f"before (final stage {cached.get('final_stage')}); its result is reused without a build")
+    return EvaluationResult(metrics=dict(cached["metrics"]), artifacts=artifacts)
+
+
+def remember_program(build: Build, result: EvaluationResult, final_stage: int) -> None:
+    """Store the terminal result of ``build`` under its program-source key (negative unless stage 3 passed)."""
+    key = program_memo_key(build.program_path)
+    if key is None:
+        return
+    _VERIFY_MEMO.set(key, {
+        "metrics": dict(result.metrics), "artifacts": dict(result.artifacts), "final_stage": int(final_stage),
+        "program_sha256": build.program_sha256, "problems": list(build.problems),
+    }, negative=not result.metrics.get("stage3_passed"))
+
+
 # --- OpenEvolve entry points -------------------------------------------------------------------
 
 
@@ -590,8 +748,11 @@ def _failed_result(program_path: str, stage: int, exc: BaseException) -> Evaluat
 
 
 def evaluate_stage1(program_path: str) -> EvaluationResult:
-    """OpenEvolve stage 1: build + static proxy."""
+    """OpenEvolve stage 1: stage-0 syntax check, build + static proxy; an identical source answers from the memo."""
     try:
+        cached = cached_program_result(program_path)
+        if cached is not None:
+            return cached
         sweep_stale_outputs()
         build = _build_for(program_path)
         result = assemble(build)
@@ -606,6 +767,9 @@ def evaluate_stage1(program_path: str) -> EvaluationResult:
 def evaluate_stage2(program_path: str) -> EvaluationResult:
     """OpenEvolve stage 2: reduced official verifier."""
     try:
+        cached = cached_program_result(program_path)
+        if cached is not None:
+            return cached
         build = _build_for(program_path)
         if not build.static_ok:
             result = assemble(build)
@@ -624,8 +788,11 @@ def evaluate_stage2(program_path: str) -> EvaluationResult:
 
 
 def evaluate_stage3(program_path: str) -> EvaluationResult:
-    """OpenEvolve stage 3: full official verifier."""
+    """OpenEvolve stage 3: full official verifier, reached only through a reduced PASS."""
     try:
+        cached = cached_program_result(program_path)
+        if cached is not None:
+            return cached
         build = _build_for(program_path)
         if build.static_ok:
             if build.reduced is None:  # direct call without stage 2
@@ -656,15 +823,22 @@ def evaluate(program_path: str) -> EvaluationResult:
 def main(argv: list[str] | None = None) -> int:
     """CLI entry for evaluating one program or a verify-json child."""
     argv = sys.argv[1:] if argv is None else argv
-    if argv[:1] == ["--verify-json"]:  # child process of verify_family_isolated
-        print(json.dumps(verify_family(Path(argv[1]), int(argv[2])), default=str))
+    if argv[:1] == ["--verify-json"]:  # child process of verify_family_isolated: same memo, same reduced gate
+        timeout = float(argv[3]) if len(argv) > 3 else VERIFY_TIMEOUT
+        print(json.dumps(verify_json_child(Path(argv[1]), int(argv[2]), timeout), default=str))
         return 0
     parser = argparse.ArgumentParser(description="Evaluate one dfthcsos search program the way the loop does.")
     parser.add_argument("program", type=Path)
     parser.add_argument("--keep", action="store_true", help="keep the build directory (also SEARCH_KEEP_OUTPUTS=1)")
+    parser.add_argument("--no-memo", action="store_true",
+                        help="neither read nor write the verifier/program memo (also SEARCH_MEMO_DISABLE=1)")
     args = parser.parse_args(argv)
     if args.keep:
         os.environ["SEARCH_KEEP_OUTPUTS"] = "1"
+    if args.no_memo:
+        os.environ["SEARCH_MEMO_DISABLE"] = "1"
+    elif not os.environ.get("SEARCH_RUN_DIR"):  # outside a run the scratch directory holds the memo; the child shares it
+        os.environ.setdefault("SEARCH_MEMO_PATH", str(scratch_root() / MEMO_FILENAME))
     result = evaluate(str(args.program))
     print(json.dumps({"metrics": result.metrics, "artifacts": result.artifacts}, indent=1))
     return 0 if result.metrics.get("stage3_passed") else 1

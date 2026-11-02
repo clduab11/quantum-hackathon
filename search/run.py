@@ -3,8 +3,9 @@
 
     uv run python search/run.py --provider codex --iterations 40
     uv run python search/run.py --provider claude --output search/runs/claude-a --resume
+    uv run python search/run.py --provider local --iterations 40     # local OpenAI-compatible gateway
 
-The launcher installs the subscription providers (search/providers.py), composes the system prompt
+The launcher installs the providers (search/providers.py), composes the system prompt
 from prompts/system_message.txt plus the current DISCOVERY.md, and always writes a final checkpoint when
 the loop stops (OpenEvolve itself only checkpoints every ``checkpoint_interval`` iterations and skips the
 final one on Ctrl-C or SIGTERM).
@@ -133,8 +134,9 @@ def build_parser() -> argparse.ArgumentParser:
                         help="run stages 0/1/3 on the seed once (no LLM, no stage-2 official verify)")
     parser.add_argument("--smoke-repeats", type=int, default=1,
                         help="repeats for the smoke median timing (default: 1)")
-    parser.add_argument("--provider", choices=["claude", "codex"], default=None,
-                        help="claude = Claude Max via `claude -p`; codex = ChatGPT/Codex via `codex app-server`")
+    parser.add_argument("--provider", choices=["claude", "codex", "local"], default=None,
+                        help="claude = Claude Max via `claude -p`; codex = ChatGPT/Codex via `codex app-server`; "
+                             "local = an OpenAI-compatible gateway (config_local.yaml, default http://127.0.0.1:4000/v1)")
     parser.add_argument("--config", type=Path, help="OpenEvolve YAML (default search/config_<provider>.yaml)")
     parser.add_argument("--iterations", type=int, help="iterations to run now (default: config max_iterations)")
     parser.add_argument("--output", type=Path, help="run directory (default search/runs/<provider>-<timestamp>)")
@@ -186,7 +188,7 @@ def main(argv: list[str] | None = None) -> int:
     config = load_config(str(config_path))
     installed = providers.install(config)
     if not installed:
-        print(f"no supported provider in {config_path}: set llm.provider to claude_code or codex_app_server",
+        print(f"no supported provider in {config_path}: set llm.provider to claude_code, codex_app_server or local",
               file=sys.stderr)
         return 2
     if args.parallel:
