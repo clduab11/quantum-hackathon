@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Subscription-backed LLM providers for the search loop. No API keys, no API spend.
+"""LLM providers for the search loop: two subscriptions (no API keys, no API spend) and a local gateway.
 
 claude_code
     One ``claude -p`` call per generation on the Claude Max OAuth session, stripped of tools, settings,
@@ -15,21 +15,35 @@ codex_app_server
     ``codex app-server generate-json-schema`` (0.158.0); OpenEvolve's unreleased adapter informed the
     method names (notices/40-search.txt).
 
+local
+    One OpenAI-compatible ``POST {base_url}/chat/completions`` per generation against a local gateway, by
+    default the LiteLLM proxy the Paperclip hermes agents use (``http://127.0.0.1:4000/v1``; ``llm.api_base``
+    in the YAML moves it and ``SEARCH_LOCAL_BASE_URL`` overrides both). The model id comes from the config; the gateway key
+    from ``SEARCH_LOCAL_API_KEY`` or ``LITELLM_API_KEY`` and is never logged. Cost is recorded as 0. The
+    prompt goes through untouched, so OpenEvolve's SEARCH/REPLACE diff format and the ``# EVOLVE-BLOCK``
+    confinement (``diff_based_evolution`` / ``enforce_evolve_blocks`` in config_local.yaml, the templates in
+    prompts/) apply exactly as for the two subscription providers.
+
 search/run.py installs these through ``LLMModelConfig.init_client``, which OpenEvolve pickles into its
-worker processes, so the YAML keeps ``provider: claude_code`` / ``provider: codex_app_server``. Every
-call appends one line to ``$SEARCH_RUN_DIR/llm_calls.jsonl`` for search/stats.py.
+worker processes, so the YAML keeps ``provider: claude_code`` / ``provider: codex_app_server`` /
+``provider: local``. Every call appends one line to ``$SEARCH_RUN_DIR/llm_calls.jsonl`` for search/stats.py.
 """
 from __future__ import annotations
 
 import asyncio
+import ipaddress
 import json
 import logging
 import os
 import queue
+import socket
 import subprocess
 import tempfile
 import threading
 import time
+import urllib.error
+import urllib.parse
+import urllib.request
 from collections import deque
 from pathlib import Path
 from typing import Any
@@ -416,6 +430,187 @@ class CodexAppServerLLM(_SubscriptionLLM):
             session.close()
 
 
+# --- local OpenAI-compatible gateway (LiteLLM) ----------------------------------------------------
+
+
+DEFAULT_LOCAL_BASE_URL = "http://127.0.0.1:4000/v1"
+LOOPBACK_HOSTS = ("localhost",)
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    """Refuse every redirect: a 3xx must not carry the bearer key or the prompt to another origin."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: D102 - urllib hook
+        return None
+
+
+def is_loopback_host(host: str | None) -> bool:
+    """True for ``localhost`` or a literal loopback IP address; a DNS name such as ``127.example.test`` is not."""
+    if not host:
+        return False
+    host = host.lower()
+    if host in LOOPBACK_HOSTS:
+        return True
+    try:
+        return ipaddress.ip_address(host).is_loopback
+    except ValueError:
+        return False
+
+
+def _opener_for(url: str) -> urllib.request.OpenerDirector:
+    """An opener that never follows redirects and, for a loopback gateway, never goes through a proxy.
+
+    ``http_proxy`` without a matching ``no_proxy`` would otherwise send the loopback request, bearer key
+    and prompt included, to the proxy in cleartext. Non-loopback requests keep urllib's proxy handling.
+    """
+    handlers: list[urllib.request.BaseHandler] = [_NoRedirect()]
+    if is_loopback_host(urllib.parse.urlsplit(url).hostname):
+        handlers.insert(0, urllib.request.ProxyHandler({}))
+    return urllib.request.build_opener(*handlers)
+
+
+def _post_json(url: str, headers: dict[str, str], body: bytes, timeout: float) -> tuple[int, bytes]:
+    """POST ``body`` and return (HTTP status, response bytes); an error or redirect status is returned, not followed.
+
+    Tests replace this function; nothing else in the provider touches the network.
+    """
+    request = urllib.request.Request(url, data=body, headers=headers, method="POST")
+    try:
+        with _opener_for(url).open(request, timeout=timeout) as response:
+            return int(response.status), response.read()
+    except urllib.error.HTTPError as exc:
+        return int(exc.code), exc.read() or b""
+
+
+def check_gateway_url(base_url: str, *, credentialed: bool) -> str | None:
+    """Why ``base_url`` may not be used, or ``None``: http(s) only, and cleartext only to loopback when a key is sent."""
+    parts = urllib.parse.urlsplit(base_url)
+    if parts.scheme not in ("http", "https") or not parts.hostname:
+        return f"gateway URL {base_url!r} must be http(s)://host[:port]/path"
+    loopback = is_loopback_host(parts.hostname)
+    if credentialed and parts.scheme == "http" and not loopback:
+        return (f"gateway URL {base_url!r} is cleartext http to a non-loopback host; the API key and the prompt "
+                "would travel unencrypted. Use https:// or a loopback address")
+    return None
+
+
+class LocalOpenAILLM(_SubscriptionLLM):
+    """Chat completions against a local OpenAI-compatible gateway; see the module docstring."""
+
+    provider = "local"
+    default_model = "local-coder"
+
+    def __init__(self, model_cfg: Any = None):
+        super().__init__(model_cfg)
+        # The environment overrides the YAML (config_local.yaml documents SEARCH_LOCAL_BASE_URL as the runtime override).
+        base = os.environ.get("SEARCH_LOCAL_BASE_URL") or _cfg(model_cfg, "api_base", None) or DEFAULT_LOCAL_BASE_URL
+        self.base_url = str(base).rstrip("/")
+        self.api_key = self._resolve_key(_cfg(model_cfg, "api_key", None))
+        self.max_tokens = _cfg(model_cfg, "max_tokens", None)
+        self.temperature = _cfg(model_cfg, "temperature", None)
+        self.top_p = _cfg(model_cfg, "top_p", None)
+        self.reasoning_effort = getattr(model_cfg, "reasoning_effort", None)
+
+    @staticmethod
+    def _resolve_key(configured: Any) -> str:
+        """The gateway key: the environment first; a configured value only when it is not the OpenAI key."""
+        for var in ("SEARCH_LOCAL_API_KEY", "LITELLM_API_KEY"):
+            value = os.environ.get(var)
+            if value:
+                return value
+        configured = str(configured or "")
+        if configured and configured != os.environ.get("OPENAI_API_KEY", ""):
+            return configured
+        return ""
+
+    def request_body(self, system: str, user: str) -> dict[str, Any]:
+        messages: list[dict[str, str]] = []
+        if system:
+            messages.append({"role": "system", "content": system})
+        messages.append({"role": "user", "content": user})
+        body: dict[str, Any] = {"model": self.model, "messages": messages, "stream": False}
+        if self.max_tokens:
+            body["max_tokens"] = int(self.max_tokens)
+        if self.temperature is not None:
+            body["temperature"] = float(self.temperature)
+        if self.top_p is not None:
+            body["top_p"] = float(self.top_p)
+        if self.reasoning_effort:
+            body["reasoning_effort"] = str(self.reasoning_effort)
+        return body
+
+    def request(self, system: str, user: str) -> tuple[str, dict[str, str], bytes]:
+        """(url, headers, body) of the chat-completions call for one generation."""
+        problem = check_gateway_url(self.base_url, credentialed=bool(self.api_key))
+        if problem:
+            raise NoRetry(problem)
+        headers = {"Content-Type": "application/json", "Accept": "application/json"}
+        if self.api_key:
+            headers["Authorization"] = f"Bearer {self.api_key}"
+        body = json.dumps(self.request_body(system, user)).encode("utf-8")
+        return f"{self.base_url}/chat/completions", headers, body
+
+    def parse_response(self, raw: bytes) -> tuple[str, dict[str, Any]]:
+        try:
+            payload = json.loads(raw.decode("utf-8", "replace"))
+        except ValueError:
+            raise RuntimeError(f"{self.base_url} returned no JSON: {raw[:300]!r}")
+        if not isinstance(payload, dict):
+            raise RuntimeError(f"{self.base_url} returned {type(payload).__name__}, not a completion object")
+        if payload.get("error"):
+            error = payload["error"]
+            message = str(error.get("message") if isinstance(error, dict) else error)[:600]
+            raise RateLimited(message) if looks_rate_limited(message) else RuntimeError(f"gateway error: {message}")
+        choices = payload.get("choices") or []
+        first = choices[0] if choices and isinstance(choices[0], dict) else {}
+        content = (first.get("message") or {}).get("content")
+        if isinstance(content, list):  # some servers return content parts
+            content = "".join(str(part.get("text", "")) for part in content if isinstance(part, dict))
+        text = str(content or "").strip()
+        if not text:
+            raise RuntimeError(f"{self.base_url} returned an empty completion (finish_reason {first.get('finish_reason')})")
+        usage = payload.get("usage") or {}
+        prompt_tokens = int(usage.get("prompt_tokens", 0) or 0)
+        completion_tokens = int(usage.get("completion_tokens", 0) or 0)
+        prompt_details = usage.get("prompt_tokens_details") or {}
+        completion_details = usage.get("completion_tokens_details") or {}
+        last_usage = {
+            "prompt_tokens": prompt_tokens, "completion_tokens": completion_tokens,
+            "total_tokens": int(usage.get("total_tokens", 0) or (prompt_tokens + completion_tokens)),
+            "cached_input_tokens": int(prompt_details.get("cached_tokens", 0) or 0),
+            "reasoning_tokens": int(completion_details.get("reasoning_tokens", 0) or 0),
+            "model": payload.get("model") or self.model, "cost_usd": 0.0,
+            "finish_reason": first.get("finish_reason"),
+        }
+        return text, last_usage
+
+    def _call(self, system: str, user: str, timeout: int) -> tuple[str, dict[str, Any]]:
+        url, headers, body = self.request(system, user)
+        try:
+            status, raw = _post_json(url, headers, body, timeout)
+        except urllib.error.URLError as exc:
+            if isinstance(exc.reason, (socket.timeout, TimeoutError)):
+                raise asyncio.TimeoutError(f"{self.base_url} did not answer within {timeout} s")
+            raise RuntimeError(f"cannot reach {self.base_url}: {exc.reason}")
+        except (socket.timeout, TimeoutError):
+            raise asyncio.TimeoutError(f"{self.base_url} did not answer within {timeout} s")
+        detail = raw.decode("utf-8", "replace").strip()[-600:]
+        if 300 <= status < 400:
+            raise NoRetry(f"HTTP {status}: {self.base_url} redirected the request; redirects are refused so the key "
+                          "and the prompt never leave the configured gateway origin. Point api_base at the final URL")
+        if status == 429 or (status >= 400 and looks_rate_limited(detail)):
+            raise RateLimited(f"HTTP {status} from {self.base_url}: {detail}")
+        if status in (401, 403):
+            raise NoRetry(f"HTTP {status}: {self.base_url} rejected the request; set SEARCH_LOCAL_API_KEY to a key "
+                          "the gateway accepts")
+        if status == 404:
+            raise NoRetry(f"HTTP 404: model {self.model!r} is not served at {self.base_url} "
+                          f"(GET {self.base_url}/models lists the ids)")
+        if status >= 400:
+            raise RuntimeError(f"HTTP {status} from {self.base_url}: {detail}")
+        return self.parse_response(raw)
+
+
 # --- wiring --------------------------------------------------------------------------------------
 
 
@@ -427,7 +622,12 @@ def init_codex_app_server_client(model_cfg: Any) -> LLMInterface:
     return CodexAppServerLLM(model_cfg)
 
 
-PROVIDERS = {"claude_code": init_claude_code_client, "codex_app_server": init_codex_app_server_client}
+def init_local_client(model_cfg: Any) -> LLMInterface:
+    return LocalOpenAILLM(model_cfg)
+
+
+PROVIDERS = {"claude_code": init_claude_code_client, "codex_app_server": init_codex_app_server_client,
+             "local": init_local_client}
 
 
 def install(config: Any) -> list[str]:

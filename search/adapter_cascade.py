@@ -9,6 +9,11 @@ Mirrors the dfthcsos ``evaluator.py`` cascade contract:
 
 ``SEARCH_TASK`` selects the adapter. Compatible with OpenEvolve's
 ``evaluate_stage1`` / ``evaluate_stage2`` / ``evaluate_stage3`` entry points.
+
+Stage 0 (the adapter's AST parse) runs inside ``stage0_build`` before any subprocess. Verifier results
+and whole-program results share the persistent memo of search/memo.py (``$SEARCH_RUN_DIR/verifier_memo.jsonl``):
+an identical program source is answered without a build, and stage 3 refuses to run the full verifier
+unless the reduced stage of the same candidate passed.
 """
 from __future__ import annotations
 
@@ -23,7 +28,10 @@ from search.adapters import get_adapter
 from search.adapters.base import CandidateBundle, TaskAdapter
 from search.evaluator import STAGE1_THRESHOLD, STAGE2_THRESHOLD
 from search.fitness import combined_score, log_safe, rich_metrics
-from search.memo import VerifierMemo, settings_digest, verification_key
+from search.memo import (
+    VerifierMemo, code_fingerprint, program_key, program_sha256, settings_digest, sibling_sources_digest,
+    verification_key,
+)
 from search.stage_seed import generation_seed
 
 try:
@@ -35,8 +43,95 @@ except ImportError:  # pragma: no cover
         artifacts: dict = field(default_factory=dict)
 
 
-_MEMO = VerifierMemo()
+_MEMO = VerifierMemo()  # persisted under $SEARCH_RUN_DIR (or $SEARCH_MEMO_PATH); in-process without either
 _STATE: dict[str, dict[str, Any]] = {}
+_CASCADE_FINGERPRINT: str | None = None
+
+
+def _program_mode() -> str:
+    return "smoke" if os.environ.get("SEARCH_SMOKE") == "1" else "full"
+
+
+# The verifier, proxy and sample code the adapters call; a change to any of it misses the program memo.
+VERIFIER_MODULES = ("tasks.invsqrt.gates", "tasks.invsqrt.signed_digit", "tasks.dqi.algebra", "tasks.dfthcsos.gates",
+                    "dqi.verify_submission_dqi", "dfthcsos.verify", "dfthcsos.scoreinfra.circuits", "kickmix")
+
+
+def _cascade_fingerprint() -> str:
+    """Short digest of the cascade, scoring, adapter, verifier and proxy code bound into program-memo keys."""
+    global _CASCADE_FINGERPRINT
+    if _CASCADE_FINGERPRINT is None:
+        here = Path(__file__).resolve().parent
+        _CASCADE_FINGERPRINT = code_fingerprint(
+            files=[here / "adapter_cascade.py", here / "fitness.py", *sorted((here / "adapters").glob("*.py"))],
+            modules=VERIFIER_MODULES)
+    return _CASCADE_FINGERPRINT
+
+
+def _program_memo_key(program_path: str, task: str, adapter: TaskAdapter) -> bytes | None:
+    """Memo key for the whole evaluation of one program source under ``adapter``; ``None`` when unbindable.
+
+    The build runs with cwd and PYTHONPATH fixed to the repository (bound through the cascade
+    fingerprint); the one path-dependent input left is the program's own directory, which Python puts
+    first on ``sys.path``, so the digest of its sibling ``.py`` files is bound too (empty for OpenEvolve's
+    one-file temp directories).
+    """
+    digest = program_sha256(program_path)
+    if digest is None:
+        return None
+    try:
+        settings = settings_digest({
+            **dict(adapter.verifier_settings() or {}),
+            "reduced_shots": adapter.reduced_shots(), "full_shots": adapter.full_shots(),
+            "cascade": _cascade_fingerprint(), "siblings": sibling_sources_digest(program_path),
+        })
+        return program_key(task=task, mode=_program_mode(), program_sha256=digest, settings=settings)
+    except Exception:  # noqa: BLE001 - an adapter that cannot describe its settings gets no program memo
+        return None
+
+
+def _cached_program_result(program_path: str, task: str, adapter: TaskAdapter) -> EvaluationResult | None:
+    """The recorded result of an identical program source, if the memo holds one: no build, no verifier."""
+    if _state_key(str(program_path), task) in _STATE:  # this path is mid-cascade; finish that
+        return None
+    key = _program_memo_key(program_path, task, adapter)
+    if key is None:
+        return None
+    cached = _MEMO.get(key)
+    if not isinstance(cached, dict) or not isinstance(cached.get("metrics"), dict):
+        return None
+    artifacts = {str(k): str(v) for k, v in (cached.get("artifacts") or {}).items()}
+    artifacts["memo_hit"] = (f"program source sha256 {str(cached.get('program_sha256') or '')[:12]} was evaluated "
+                             f"before (final stage {cached.get('final_stage')}); its result is reused without a build")
+    return EvaluationResult(metrics=dict(cached["metrics"]), artifacts=artifacts)
+
+
+def _remember(program_path: str, task: str, adapter: TaskAdapter, result: EvaluationResult, final_stage: int) -> None:
+    """Store a terminal cascade result under the program-source key (negative unless stage 3 passed)."""
+    key = _program_memo_key(program_path, task, adapter)
+    if key is None:
+        return
+    _MEMO.set(key, {
+        "metrics": dict(result.metrics), "artifacts": dict(result.artifacts), "final_stage": int(final_stage),
+        "program_sha256": program_sha256(program_path), "task": task,
+    }, negative=not result.metrics.get("stage3_passed"))
+
+
+def _reduced_passed(reduced: dict[str, Any] | None) -> bool:
+    """The reduced verifier's explicit pass verdict, the only key to stage 3.
+
+    Adapters that emit ``reduced_pass`` (invsqrt, dfthcsos) are judged by it. The DQI adapter emits
+    the failure count instead, and its contract is zero failures: one failed shot out of 1,536 is a
+    FAIL even though ``fraction_correct`` is above 0.99. Without either field only a perfect
+    ``fraction_correct`` of 1.0 counts.
+    """
+    if not reduced or reduced.get("error"):
+        return False
+    if "reduced_pass" in reduced:
+        return bool(reduced["reduced_pass"])
+    if "k_failures" in reduced:
+        return float(reduced.get("k_failures") or 0.0) == 0.0 and float(reduced.get("fraction_correct") or 0.0) >= 1.0
+    return float(reduced.get("fraction_correct") or 0.0) >= 1.0
 
 
 def _task_name(task: str | None = None) -> str:
@@ -140,6 +235,9 @@ def evaluate_stage1(program_path: str, task: str | None = None) -> EvaluationRes
     task = _task_name(task)
     try:
         adapter = _adapter_for(task)
+        cached = _cached_program_result(program_path, task, adapter)
+        if cached is not None:
+            return cached
         program = Path(program_path)
         bundle = adapter.stage0_build(program)
         sample = {"feasible": False, "fraction_correct": 0.0, "max_error_over_tol": 9.0,
@@ -161,6 +259,7 @@ def evaluate_stage1(program_path: str, task: str | None = None) -> EvaluationRes
                             artifacts={"report": bundle.report})
         if result.metrics["combined_score"] < STAGE1_THRESHOLD:
             _cleanup(str(program), task)
+            _remember(program_path, task, adapter, result, final_stage=1)
         return result
     except Exception as exc:  # noqa: BLE001
         return _failed_result(program_path, task, 1, exc)
@@ -173,6 +272,9 @@ def evaluate_stage2(program_path: str, task: str | None = None) -> EvaluationRes
         key = _state_key(str(program_path), task)
         state = _STATE.get(key)
         if state is None:
+            cached = _cached_program_result(program_path, task, _adapter_for(task))
+            if cached is not None:
+                return cached
             evaluate_stage1(program_path, task=task)
             state = _STATE.get(key)
             if state is None:
@@ -192,6 +294,7 @@ def evaluate_stage2(program_path: str, task: str | None = None) -> EvaluationRes
             fields = _score_fields(task, sample, None, adapter, bundle)
             result = _to_result(task, fields, stage_reached=1, problems=list(bundle.problems))
             _cleanup(program_path, task)
+            _remember(program_path, task, adapter, result, final_stage=1)
             return result
 
         mode = "smoke" if (bundle.report or {}).get("smoke_package_sample") else "full"
@@ -200,7 +303,8 @@ def evaluate_stage2(program_path: str, task: str | None = None) -> EvaluationRes
             mode=mode,
             circuit_fingerprint=adapter.fingerprint(bundle) + b"|reduced",
             shots=adapter.reduced_shots(),
-            verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "reduced"}),
+            verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "reduced",
+                                               "code": _cascade_fingerprint()}),
             submission_id=adapter.submission_identity(bundle),
         )
         cached = _MEMO.get(memo_key)
@@ -215,8 +319,10 @@ def evaluate_stage2(program_path: str, task: str | None = None) -> EvaluationRes
         fields = _score_fields(task, sample, reduced, adapter, bundle)
         result = _to_result(task, fields, stage_reached=2, problems=[],
                             artifacts={"reduced": reduced})
+        result.metrics["stage2_passed"] = 1.0 if _reduced_passed(reduced) else 0.0  # the verdict, not the fraction
         if result.metrics["combined_score"] < STAGE2_THRESHOLD:
             _cleanup(program_path, task)
+            _remember(program_path, task, adapter, result, final_stage=2)
         return result
     except Exception as exc:  # noqa: BLE001
         return _failed_result(program_path, task, 2, exc)
@@ -228,6 +334,10 @@ def evaluate_stage3(program_path: str, task: str | None = None) -> EvaluationRes
     try:
         key = _state_key(str(program_path), task)
         state = _STATE.get(key)
+        if state is None:
+            cached = _cached_program_result(program_path, task, _adapter_for(task))
+            if cached is not None:
+                return cached
         if state is None or state.get("reduced") is None:
             evaluate_stage2(program_path, task=task)
             state = _STATE.get(key)
@@ -247,6 +357,19 @@ def evaluate_stage3(program_path: str, task: str | None = None) -> EvaluationRes
             fields = _score_fields(task, sample, None, adapter, bundle)
             result = _to_result(task, fields, stage_reached=1, problems=list(bundle.problems))
             _cleanup(program_path, task)
+            _remember(program_path, task, adapter, result, final_stage=1)
+            return result
+
+        reduced = state.get("reduced")
+        if not _reduced_passed(reduced):  # the full verifier is reached only through a reduced PASS
+            fields = _score_fields(task, sample, reduced, adapter, bundle)
+            result = _to_result(task, fields, stage_reached=2 if reduced else 1, problems=[], artifacts={
+                "reduced": reduced,
+                "gated": "full verification needs a reduced-stage PASS first; the reduced stage did not pass",
+            })
+            result.metrics["stage2_passed"] = 0.0  # a failed verdict is a failed stage 2, whatever the fraction
+            _cleanup(program_path, task)
+            _remember(program_path, task, adapter, result, final_stage=2)
             return result
 
         mode = "smoke" if (bundle.report or {}).get("smoke_package_sample") else "full"
@@ -255,7 +378,8 @@ def evaluate_stage3(program_path: str, task: str | None = None) -> EvaluationRes
             mode=mode,
             circuit_fingerprint=adapter.fingerprint(bundle) + b"|full",
             shots=adapter.full_shots(),
-            verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "full"}),
+            verifier_settings=settings_digest({**adapter.verifier_settings(), "stage": "full",
+                                               "code": _cascade_fingerprint()}),
             submission_id=adapter.submission_identity(bundle),
         )
         cached = _MEMO.get(memo_key)
@@ -269,6 +393,7 @@ def evaluate_stage3(program_path: str, task: str | None = None) -> EvaluationRes
         result = _to_result(task, fields, stage_reached=3, problems=[],
                             artifacts={"verified": verified})
         _cleanup(program_path, task)
+        _remember(program_path, task, adapter, result, final_stage=3)
         return result
     except Exception as exc:  # noqa: BLE001
         return _failed_result(program_path, task, 3, exc)

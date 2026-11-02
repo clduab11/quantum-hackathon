@@ -1,0 +1,67 @@
+# OpenEvolve configuration: dfthcsos search on a local OpenAI-compatible gateway (the LiteLLM proxy the
+# Paperclip hermes agents use at http://127.0.0.1:4000/v1; no subscription, no per-token spend). Launch with
+# `uv run python search/run.py --provider local`. A clone of config_codex.yaml with the provider swapped:
+# the cascade thresholds, the diff format (SEARCH/REPLACE inside the EVOLVE block) and the database are the same.
+# search/run.py replaces prompt.system_message with prompts/system_message.txt + DISCOVERY.md and installs
+# the `local` provider from search/providers.py. The gateway key comes from $SEARCH_LOCAL_API_KEY (or
+# $LITELLM_API_KEY) at run time and is never written here.
+
+max_iterations: 100000
+checkpoint_interval: 5
+log_level: INFO
+# null: a seeded sampler makes every worker draw the same model sequence (config_codex.yaml). Parent
+# sampling stays seeded through database.random_seed (42).
+random_seed: null
+language: python
+diff_based_evolution: true      # SEARCH/REPLACE edits inside the EVOLVE block, as for the other providers
+enforce_evolve_blocks: true     # edits outside EVOLVE-BLOCK-START/END are reverted
+max_code_length: 24000
+
+llm:
+  provider: local
+  api_base: http://127.0.0.1:4000/v1   # override at run time with SEARCH_LOCAL_BASE_URL
+  timeout: 900
+  retries: 2
+  retry_delay: 30
+  max_tokens: 16000
+  models:
+    # `name` is a model id the gateway serves (GET <api_base>/models lists them); cheap local coders are
+    # the point of this config, so one model carries the whole weight. Add a second entry for ideation.
+    # local-ornith-35b = Cyber-Tiel-Coder-35B-A3B on the Unsloth server (the only local coder-tuned id, free);
+    # the paid routed alternative is `array/coding` (auto router to hosted coding models).
+    - name: local-ornith-35b
+      weight: 1.0
+      max_budget_usd: 0         # local: no per-call budget (the provider records cost_usd 0)
+
+prompt:
+  template_dir: prompts
+  system_message: system_message   # replaced at launch by run.py
+  num_top_programs: 3
+  num_diverse_programs: 2
+  include_artifacts: true
+  max_artifact_bytes: 16384
+  suggest_simplification_after_chars: 20000
+
+database:
+  population_size: 200
+  archive_size: 50
+  num_islands: 3
+  migration_interval: 20
+  migration_rate: 0.1
+  elite_selection_ratio: 0.1
+  exploration_ratio: 0.3
+  exploitation_ratio: 0.6
+  feature_dimensions: [log_toffoli, log_qubits]  # MAP-Elites on log T / log Q (§6.2)
+  feature_bins: 10
+  log_prompts: true
+  max_snapshot_artifacts: null  # OpenEvolve's default (100) is below population_size: parents past the first
+                                # 100 programs would lose their evaluator artifacts in the prompt
+
+evaluator:
+  timeout: 900
+  max_retries: 0
+  cascade_evaluation: true
+  cascade_thresholds: [0.05, 0.49]  # unchanged: below reduced-PASS ceiling (~0.495); feasible band starts at 0.5
+  parallel_evaluations: 2       # = concurrent gateway calls and verifier runs; raise once the local model keeps up
+  enable_artifacts: true
+  use_llm_feedback: false
