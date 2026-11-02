@@ -52,8 +52,10 @@ Q is the logical-qubit count and Toffoli the Toffoli count, both per shot.
   qubit for gates breaks even at roughly C/Q Toffoli-equivalents (about 100 at Q = 100, C = 10,000).
 - For `dqi` a 1 % saving in qubits is worth about 2 % because Q is squared. Workspace discipline (register
   liveness, reuse, early release) is the lever, before the repetition factor R even enters.
-- For `dfthcsos` a local circuit win can lose: a factorisation that shrinks the ANGLE lookups but raises Λ (or
-  raises E_gap, which sits far below Λ here) raises `λ_eff`, so the cost goes up and the score goes down. Angle lookups are about 88 % of the reference T and the
+- For `dfthcsos`, compare the full product `λ_eff × T × Q` before keeping or rejecting a factorisation: shrinking
+  the ANGLE lookups lowers T and Q, but a refit that raises Λ (or raises E_gap while E_gap < Λ, which holds for the
+  reference values) raises `λ_eff`, and whichever change is larger decides the score; a higher `λ_eff` alone does
+  not make the cost go up. Angle lookups are about 88 % of the reference T and the
   inner-prep temporaries about 75 % of its Q (`tasks/dfthcsos/README.md`), so the ANGLE circuits are the main
   lever, but the classical fit, the tree and the QROM layout are one joint objective.
 
@@ -64,16 +66,17 @@ Q is the logical-qubit count and Toffoli the Toffoli count, both per shot.
   three passing circuits.
 - `invsqrt`: 64 shots per x over x = 1..3,133,452, i.e. 200,540,928 shots, and **zero failures** are allowed.
   Tolerance is 2⁻²⁴·β/√x turns. Exactly one register.
-- `dqi`: 102,400 shots; failures are allowed and priced through ε⁺. The first failure costs about +0.45 %.
+- `dqi`: 102,400 shots; failures are allowed and priced through ε⁺, which must stay below 1/16 (where R(ε)
+  diverges; `docs/ledger-schema.md`). The first failure costs about +0.45 %.
 - `dfthcsos`: 64 shots per QROM address, so the full count depends on the submitted circuits: 254,464 shots for
   the reference (the figure in `docs/ledger-schema.md`), 36,608 for the default gate profile (572 addresses) and
-  78,080 for submission-011 (`expected_shots` in `configs/gates/`). Rejected if the Hamiltonian error is above
-  20 mHa, Λ ≤ 49.0 or E_gap ≤ 3.914898 Ha. Any ANGLE circuit wider than 128 qubits is rejected; 128 itself is allowed and our circuits use exactly 128.
+  78,080 for submission-011 (`expected_shots` in `configs/gates/`). Rejected if either Hamiltonian error (`error_1` or
+  `error_2`, checked independently in `tasks/dfthcsos/checks.py`) is above 20 mHa, Λ ≤ 49.0 or E_gap ≤ 3.914898 Ha. Any ANGLE circuit wider than 128 qubits is rejected; 128 itself is allowed and our circuits use exactly 128.
   The `angle_k_*` files are numbered from 0 with no gaps and `submission.npz` must hold `U`, `W`, `H2_I`,
   `H1_I`, `Hsym_lower` and `tree_edges`.
 - Zip layout: `invsqrt.kmb|kmx`, `dqi.kmb|kmx`, `dfthcsos/angle_k_<i>.kmb|kmx` plus `dfthcsos/submission.npz`.
 - Official scoring takes roughly 45 minutes per submission; our house cap is 3 uploads per UTC day, checked by
-  the ledger before the upload (`AGENTS.md`).
+  the ledger before the upload (`AGENTS.md`); Kaggle itself allows 5 (`maxDailySubmissions`, D-PRA202-14).
 
 ## 4. How verification works, and why grinding is pointless
 
@@ -192,17 +195,22 @@ thing, test, record, promote only reproducible deltas) is what the ledger enforc
 1. Reference identity and fixed-salt calibration: `harness/calibrate_reference.py`, `harness/reference_identity.py`.
 2. One hypothesis per branch and per pull request, cut from `main` (`AGENTS.md`, merge queue).
 3. Local score of a zip: `harness/score_local.py` (G0 preflight, full verification, task costs, geometric mean).
-4. Gates G0–G5 on every candidate (`ledger/gates/`), ending in G5: the whole zip is rebuilt byte for byte from
-   the committed generator and the declared, hash-pinned inputs.
-5. Every run leaves a manifest with the candidate id, parent, commit, hashes, verifier results, costs and the
-   keep/discard decision (`docs/ledger-schema.md`); failed hypotheses stay in `docs/decisions/` for good.
+4. Gates G0–G5 on every candidate (`ledger/gates/`). G3 compares the verified shot counts with the
+   `expected_shots` of the selected gate configuration (`configs/gates/*.yaml`: the default expects 36,608 dfthcsos
+   shots, the B143 chemistry candidate's own configuration 78,080), so a candidate run against the wrong
+   configuration fails G3 on the count alone. G5 rebuilds the whole zip byte for byte from the committed generator
+   and the declared, hash-pinned inputs.
+5. Every run leaves a manifest with the candidate id, parent, commit, hashes, verifier results and costs
+   (`docs/ledger-schema.md`); the keep/discard decision is a row in `docs/decisions/`, where failed hypotheses
+   stay for good.
 6. Upload only through `ledger.scorecard` (reserve → upload → record), 3 per UTC day, john-wick only.
 
 Candidate gate before anything is called ready: official verifier passes at full shot count; ancillas clean;
 cost recomputed from the exact serialised artefact; beats its parent under the official metric; deterministic
 rebuild from a clean environment; licence and public-notebook duties understood. Archive gate: correct names and
 folders, no numbering gaps, all `submission.npz` arrays present, every ANGLE circuit ≤ 128 qubits, the zip reopens
-and re-verifies after packaging, and the submission log records UTC time and the remaining daily quota.
+and re-verifies after packaging, and the submission log records UTC time; `ledger.scorecard --check-slot` computes the remaining daily quota from
+recorded submissions and pending reservations rather than storing it.
 
 ## 9. Where we stand (leaderboard read 2026-11-02; ledger record in PR #81)
 
@@ -215,7 +223,9 @@ Public score: **19.20572** (submission-011, anonymous leaderboard read 2026-11-0
 teams; the local fixed-salt figure matched it. Leader 27.99617 (Breaking1800); last paid place (6th) 26.80320. The
 field is moving faster than we are: since the 2026-10-29 read our score rose from 18.39 to 19.21 while the rank fell
 from 848 of 1,501 to 1,404 of 2,052 and the prize line rose from 24.74 to 26.80.
-The ledger record of this read (`ledger/evidence/submission-011/kaggle-public-score.json` and the leaderboard block
+The figures were read externally from the public leaderboard page
+(<https://www.kaggle.com/competitions/google-verifiable-quantum-circuit-compilation/leaderboard>) at
+2026-11-02T17:47Z. The ledger record of this read (`ledger/evidence/submission-011/kaggle-public-score.json` and the leaderboard block
 of `ledger/standing.yaml`, which feeds the status page) lands with PR #81 (`op-vqcc/ledger-reconcile-1102`), not with
 this guide; until that merges, `main` still records the 2026-10-29 read.
 

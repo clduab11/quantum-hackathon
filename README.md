@@ -24,7 +24,8 @@ A short field guide; the full, sourced version is [docs/field-guide.md](docs/fie
   `dqi` prices failures through ε⁺ (102,400 shots); `dfthcsos` is rejected above 20 mHa Hamiltonian error, at
   Λ ≤ 49.0 or E_gap ≤ 3.914898 Ha, and any ANGLE circuit wider than 128 qubits is rejected.
 - **Verification is salted** (Fiat–Shamir hash of the submission), so seed or nonce grinding is wasted compute
-  and banned here. Official scoring takes about 45 minutes; we upload at most 3 times per UTC day.
+  and banned here. Official scoring takes about 45 minutes; our house cap is 3 uploads per UTC day
+  (`AGENTS.md`; Kaggle itself allows 5).
 - **Strategy follows from the metric:** optimise percentage reductions (halving one task ≈ cutting all three
   by 20.6 %), attack peak qubit count first on `dqi`, and treat the chemistry factorisation, Givens tree and
   QROM layout as one objective because a local circuit win can raise λ_eff.
