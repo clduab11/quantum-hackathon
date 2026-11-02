@@ -627,6 +627,12 @@ def test_local_provider_refuses_cleartext_keys_off_loopback_and_redirects(monkey
     assert providers.check_gateway_url("http://localhost:4000/v1", credentialed=True) is None
     assert "cleartext" in providers.check_gateway_url("http://127.example.test/v1", credentialed=True)  # a DNS name
     assert not providers.is_loopback_host("127.example.test") and not providers.is_loopback_host("")
+    # regression: a DNS name that merely starts with "127." is remote; with a key set it is refused over plain http,
+    # while the literal loopback forms (IPv4, bracketed IPv6, localhost) are accepted
+    with pytest.raises(providers.NoRetry, match="cleartext"):
+        _local_llm(providers, api_base="http://127.example.com", api_key="k").request("s", "u")
+    for accepted in ("http://127.0.0.1:4000", "http://[::1]:4000", "http://localhost:4000"):
+        assert _local_llm(providers, api_base=accepted, api_key="k").request("s", "u")[0] == accepted + "/chat/completions"
     # a loopback gateway bypasses http_proxy; any other host keeps urllib's proxy handling
     monkeypatch.setenv("http_proxy", "http://proxy.test:3128")
     monkeypatch.delenv("no_proxy", raising=False)
