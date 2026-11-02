@@ -18,7 +18,7 @@ codex_app_server
 local
     One OpenAI-compatible ``POST {base_url}/chat/completions`` per generation against a local gateway, by
     default the LiteLLM proxy the Paperclip hermes agents use (``http://127.0.0.1:4000/v1``; ``llm.api_base``
-    in the YAML or ``SEARCH_LOCAL_BASE_URL`` moves it). The model id comes from the config; the gateway key
+    in the YAML moves it and ``SEARCH_LOCAL_BASE_URL`` overrides both). The model id comes from the config; the gateway key
     from ``SEARCH_LOCAL_API_KEY`` or ``LITELLM_API_KEY`` and is never logged. Cost is recorded as 0. The
     prompt goes through untouched, so OpenEvolve's SEARCH/REPLACE diff format and the ``# EVOLVE-BLOCK``
     confinement (``diff_based_evolution`` / ``enforce_evolve_blocks`` in config_local.yaml, the templates in
@@ -31,6 +31,7 @@ worker processes, so the YAML keeps ``provider: claude_code`` / ``provider: code
 from __future__ import annotations
 
 import asyncio
+import ipaddress
 import json
 import logging
 import os
@@ -433,7 +434,7 @@ class CodexAppServerLLM(_SubscriptionLLM):
 
 
 DEFAULT_LOCAL_BASE_URL = "http://127.0.0.1:4000/v1"
-LOOPBACK_HOSTS = ("localhost", "127.0.0.1", "::1")
+LOOPBACK_HOSTS = ("localhost",)
 
 
 class _NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -443,7 +444,29 @@ class _NoRedirect(urllib.request.HTTPRedirectHandler):
         return None
 
 
-_OPENER = urllib.request.build_opener(_NoRedirect())
+def is_loopback_host(host: str | None) -> bool:
+    """True for ``localhost`` or a literal loopback IP address; a DNS name such as ``127.example.test`` is not."""
+    if not host:
+        return False
+    host = host.lower()
+    if host in LOOPBACK_HOSTS:
+        return True
+    try:
+        return ipaddress.ip_address(host).is_loopback
+    except ValueError:
+        return False
+
+
+def _opener_for(url: str) -> urllib.request.OpenerDirector:
+    """An opener that never follows redirects and, for a loopback gateway, never goes through a proxy.
+
+    ``http_proxy`` without a matching ``no_proxy`` would otherwise send the loopback request, bearer key
+    and prompt included, to the proxy in cleartext. Non-loopback requests keep urllib's proxy handling.
+    """
+    handlers: list[urllib.request.BaseHandler] = [_NoRedirect()]
+    if is_loopback_host(urllib.parse.urlsplit(url).hostname):
+        handlers.insert(0, urllib.request.ProxyHandler({}))
+    return urllib.request.build_opener(*handlers)
 
 
 def _post_json(url: str, headers: dict[str, str], body: bytes, timeout: float) -> tuple[int, bytes]:
@@ -453,7 +476,7 @@ def _post_json(url: str, headers: dict[str, str], body: bytes, timeout: float) -
     """
     request = urllib.request.Request(url, data=body, headers=headers, method="POST")
     try:
-        with _OPENER.open(request, timeout=timeout) as response:
+        with _opener_for(url).open(request, timeout=timeout) as response:
             return int(response.status), response.read()
     except urllib.error.HTTPError as exc:
         return int(exc.code), exc.read() or b""
@@ -464,8 +487,7 @@ def check_gateway_url(base_url: str, *, credentialed: bool) -> str | None:
     parts = urllib.parse.urlsplit(base_url)
     if parts.scheme not in ("http", "https") or not parts.hostname:
         return f"gateway URL {base_url!r} must be http(s)://host[:port]/path"
-    host = parts.hostname.lower()
-    loopback = host in LOOPBACK_HOSTS or host.startswith("127.")
+    loopback = is_loopback_host(parts.hostname)
     if credentialed and parts.scheme == "http" and not loopback:
         return (f"gateway URL {base_url!r} is cleartext http to a non-loopback host; the API key and the prompt "
                 "would travel unencrypted. Use https:// or a loopback address")
@@ -480,7 +502,8 @@ class LocalOpenAILLM(_SubscriptionLLM):
 
     def __init__(self, model_cfg: Any = None):
         super().__init__(model_cfg)
-        base = _cfg(model_cfg, "api_base", None) or os.environ.get("SEARCH_LOCAL_BASE_URL") or DEFAULT_LOCAL_BASE_URL
+        # The environment overrides the YAML (config_local.yaml documents SEARCH_LOCAL_BASE_URL as the runtime override).
+        base = os.environ.get("SEARCH_LOCAL_BASE_URL") or _cfg(model_cfg, "api_base", None) or DEFAULT_LOCAL_BASE_URL
         self.base_url = str(base).rstrip("/")
         self.api_key = self._resolve_key(_cfg(model_cfg, "api_key", None))
         self.max_tokens = _cfg(model_cfg, "max_tokens", None)

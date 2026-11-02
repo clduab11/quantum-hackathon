@@ -107,6 +107,27 @@ def program_sha256(path: str | Path) -> str | None:
         return None
 
 
+def sibling_sources_digest(path: str | Path) -> str:
+    """Digest of the other ``.py`` files beside ``path`` (name and content), or ``""`` when there are none.
+
+    A script's own directory is first on ``sys.path``, so sibling modules are the one input a program's
+    text does not capture; the evaluators bind this into the program memo key. OpenEvolve writes each
+    program alone into a temp directory, so the loop pays nothing for it.
+    """
+    program = Path(path)
+    digest = hashlib.sha256()
+    found = False
+    try:
+        for sibling in sorted(program.parent.glob("*.py")):
+            if sibling.name == program.name or not sibling.is_file():
+                continue
+            digest.update(sibling.name.encode("utf-8") + b"\0" + sibling.read_bytes() + b"\0")
+            found = True
+    except OSError:
+        return ""
+    return digest.hexdigest()[:16] if found else ""
+
+
 def program_key(*, task: str, mode: str, program_sha256: str, settings: str = "") -> bytes:
     """Memo key for the whole evaluation of one program source.
 
@@ -251,16 +272,20 @@ class VerifierMemo:
         return None
 
     def set(self, key_material: bytes, value: Any, *, negative: bool | None = None) -> Any:
-        """Store ``value`` under ``key_material`` and return it.
+        """Store ``value`` under ``key_material`` and return the stored value.
 
-        ``negative`` marks a verifier rejection, timeout or crash; left ``None`` it is inferred
-        from the value's ``status`` / ``error`` fields.
+        The first writer wins, in this process and on disk, exactly as in ``get_or_set``: when another
+        worker already persisted the key, its value is kept and returned instead of ``value``.
+        ``negative`` marks a verifier rejection, timeout or crash; left ``None`` it is inferred from
+        the value's ``status`` / ``error`` fields.
         """
         if memo_disabled():
             return value
         key = circuit_digest(key_material)
         with self._lock:
             self._refresh()
+            if key in self._store:
+                return self._store[key]
             self._put(key, value, negative)
             return value
 

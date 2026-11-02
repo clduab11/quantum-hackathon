@@ -29,7 +29,8 @@ from search.adapters.base import CandidateBundle, TaskAdapter
 from search.evaluator import STAGE1_THRESHOLD, STAGE2_THRESHOLD
 from search.fitness import combined_score, log_safe, rich_metrics
 from search.memo import (
-    VerifierMemo, code_fingerprint, program_key, program_sha256, settings_digest, verification_key,
+    VerifierMemo, code_fingerprint, program_key, program_sha256, settings_digest, sibling_sources_digest,
+    verification_key,
 )
 from search.stage_seed import generation_seed
 
@@ -68,7 +69,13 @@ def _cascade_fingerprint() -> str:
 
 
 def _program_memo_key(program_path: str, task: str, adapter: TaskAdapter) -> bytes | None:
-    """Memo key for the whole evaluation of one program source under ``adapter``; ``None`` when unbindable."""
+    """Memo key for the whole evaluation of one program source under ``adapter``; ``None`` when unbindable.
+
+    The build runs with cwd and PYTHONPATH fixed to the repository (bound through the cascade
+    fingerprint); the one path-dependent input left is the program's own directory, which Python puts
+    first on ``sys.path``, so the digest of its sibling ``.py`` files is bound too (empty for OpenEvolve's
+    one-file temp directories).
+    """
     digest = program_sha256(program_path)
     if digest is None:
         return None
@@ -76,7 +83,7 @@ def _program_memo_key(program_path: str, task: str, adapter: TaskAdapter) -> byt
         settings = settings_digest({
             **dict(adapter.verifier_settings() or {}),
             "reduced_shots": adapter.reduced_shots(), "full_shots": adapter.full_shots(),
-            "cascade": _cascade_fingerprint(),
+            "cascade": _cascade_fingerprint(), "siblings": sibling_sources_digest(program_path),
         })
         return program_key(task=task, mode=_program_mode(), program_sha256=digest, settings=settings)
     except Exception:  # noqa: BLE001 - an adapter that cannot describe its settings gets no program memo
@@ -111,10 +118,20 @@ def _remember(program_path: str, task: str, adapter: TaskAdapter, result: Evalua
 
 
 def _reduced_passed(reduced: dict[str, Any] | None) -> bool:
-    """The reduced stage counts as passed on ``reduced_pass`` or a fraction_correct of at least 0.99 (staged.py's rule)."""
-    if not reduced:
+    """The reduced verifier's explicit pass verdict, the only key to stage 3.
+
+    Adapters that emit ``reduced_pass`` (invsqrt, dfthcsos) are judged by it. The DQI adapter emits
+    the failure count instead, and its contract is zero failures: one failed shot out of 1,536 is a
+    FAIL even though ``fraction_correct`` is above 0.99. Without either field only a perfect
+    ``fraction_correct`` of 1.0 counts.
+    """
+    if not reduced or reduced.get("error"):
         return False
-    return bool(reduced.get("reduced_pass")) or float(reduced.get("fraction_correct") or 0.0) >= 0.99
+    if "reduced_pass" in reduced:
+        return bool(reduced["reduced_pass"])
+    if "k_failures" in reduced:
+        return float(reduced.get("k_failures") or 0.0) == 0.0 and float(reduced.get("fraction_correct") or 0.0) >= 1.0
+    return float(reduced.get("fraction_correct") or 0.0) >= 1.0
 
 
 def _task_name(task: str | None = None) -> str:

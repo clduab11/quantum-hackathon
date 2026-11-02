@@ -61,7 +61,8 @@ if str(REPO_ROOT) not in sys.path:  # `tasks.*` imports, whether run as a script
     sys.path.insert(0, str(REPO_ROOT))
 from search.fitness import combined_score as dense_combined_score, log_safe  # noqa: E402
 from search.memo import (  # noqa: E402
-    MEMO_FILENAME, VerifierMemo, code_fingerprint, program_key, program_sha256, settings_digest, verification_key,
+    MEMO_FILENAME, VerifierMemo, code_fingerprint, program_key, program_sha256, settings_digest,
+    sibling_sources_digest, verification_key,
 )
 
 DEFAULT_DATA = "/home/cld-main/work/vqcc-data/google-verifiable-quantum-circuit-compilation"
@@ -694,9 +695,11 @@ def _program_mode() -> str:
 def program_memo_key(program_path: str) -> bytes | None:
     """Memo key for the whole evaluation of one program source, or ``None`` when it cannot be bound.
 
-    Binds the program text, the declared factor input, shots, salt, size caps and a digest of the
-    scoring code. An evaluator misconfiguration (unreadable or mismatched factor) yields no key, so
-    it is never cached as the program's own failure.
+    Binds the program text, the declared factor input, shots, salt, size caps, a digest of the
+    scoring, proxy and verifier code, and the program's sibling ``.py`` files (the only path-dependent
+    input: the build runs with cwd and PYTHONPATH fixed to the repository). An evaluator
+    misconfiguration (unreadable or mismatched factor) yields no key, so it is never cached as the
+    program's own failure.
     """
     digest = program_sha256(program_path)
     if digest is None:
@@ -709,7 +712,7 @@ def program_memo_key(program_path: str) -> bytes | None:
         "salt": SALT, "reduced_shots": REDUCED_SHOTS, "full_shots": FULL_SHOTS,
         "factor_sha256": factor["sha256"], "source_brot": factor["source_brot"], "qubit_cap": QUBIT_CAP,
         "max_instructions": MAX_INSTRUCTIONS, "max_static_toffoli": MAX_STATIC_TOFFOLI,
-        "evaluator": _evaluator_fingerprint(),
+        "evaluator": _evaluator_fingerprint(), "siblings": sibling_sources_digest(program_path),
     })
     return program_key(task="dfthcsos", mode=_program_mode(), program_sha256=digest, settings=settings)
 

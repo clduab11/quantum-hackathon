@@ -98,6 +98,32 @@ def test_memo_sees_lines_another_worker_appended(tmp_path):
     assert len(path.read_text(encoding="utf-8").splitlines()) == 1
 
 
+def test_memo_set_keeps_the_first_writer_in_process_and_on_disk(tmp_path):
+    path = tmp_path / "memo.jsonl"
+    a, b = VerifierMemo(path), VerifierMemo(path)
+    a.set(b"k", {"status": "PASS", "who": "a"})
+    assert b.set(b"k", {"status": "FAIL", "who": "b"}) == {"status": "PASS", "who": "a"}  # a's line was already on disk
+    assert b.get(b"k")["who"] == "a" and b.negative_hits == 0
+    memo = VerifierMemo()  # in-process only: the same rule
+    assert memo.set(b"k", {"who": 1}) == {"who": 1} and memo.set(b"k", {"who": 2}) == {"who": 1}
+
+
+def test_program_key_binds_sibling_modules(tmp_path):
+    from search.memo import sibling_sources_digest
+
+    alone = tmp_path / "alone"
+    alone.mkdir()
+    program = alone / "prog.py"
+    program.write_text("import helper\n", encoding="utf-8")
+    assert sibling_sources_digest(program) == ""  # OpenEvolve's one-file temp directory: nothing to bind
+    (alone / "helper.py").write_text("X = 1\n", encoding="utf-8")
+    first = sibling_sources_digest(program)
+    assert first and first == sibling_sources_digest(program)
+    (alone / "helper.py").write_text("X = 2\n", encoding="utf-8")
+    assert sibling_sources_digest(program) != first
+    assert sibling_sources_digest(tmp_path / "missing" / "prog.py") == ""
+
+
 def test_code_fingerprint_tracks_files_and_module_sources(tmp_path):
     from search.memo import code_fingerprint
 
@@ -132,6 +158,9 @@ def test_program_key_binds_source_task_mode_and_settings(tmp_path):
 
 
 def _crashing_program(path: Path, code: int = 3) -> Path:
+    """One program alone in its own directory, as OpenEvolve lays them out (the memo binds sibling modules)."""
+    path = path.parent / path.stem / path.name
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(f"import sys\nprint('boom', file=sys.stderr)\nraise SystemExit({code})\n", encoding="utf-8")
     return path
 
@@ -175,13 +204,17 @@ def test_identical_program_sources_are_not_rebuilt(tmp_path, monkeypatch):
     ev2 = _evaluator(tmp_path, monkeypatch)
     real_run2 = ev2.run_program
     monkeypatch.setattr(ev2, "run_program", lambda p: pytest.fail("the memo should answer without a build"))
-    third = ev2.evaluate_stage1(str(_crashing_program(tmp_path / "c.py")))
+    third_path = _crashing_program(tmp_path / "c.py")
+    third = ev2.evaluate_stage1(str(third_path))
     assert third.metrics["combined_score"] == first.metrics["combined_score"] and "memo_hit" in third.artifacts
     assert ev2._VERIFY_MEMO.negative_hits == 1  # a stage-1 failure is a negative result
     for stage in (ev2.evaluate_stage2, ev2.evaluate_stage3):  # every stage answers the same way
-        assert "memo_hit" in stage(str(tmp_path / "c.py")).artifacts
-
+        assert "memo_hit" in stage(str(third_path)).artifacts
+    sibling = third_path.parent / "helper.py"  # a sibling module changes the environment: no reuse
+    sibling.write_text("X = 1\n", encoding="utf-8")
     monkeypatch.setattr(ev2, "run_program", real_run2)
+    assert "memo_hit" not in ev2.evaluate_stage1(str(third_path)).artifacts
+
     fourth = ev2.evaluate_stage1(str(_crashing_program(tmp_path / "d.py", code=4)))  # a different source misses
     assert "exited 4" in fourth.artifacts["summary"] and "memo_hit" not in fourth.artifacts
 
@@ -415,6 +448,44 @@ def test_cascade_stage3_refuses_the_full_verifier_without_a_reduced_pass(tmp_pat
     assert cascade._STATE == {} and not bundle.outdir.exists()
 
 
+def test_cascade_reduced_pass_requires_the_verifier_verdict():
+    from search.adapter_cascade import _reduced_passed
+
+    # DQI: zero failures is the contract; one failed shot out of 1,536 is a FAIL whatever the fraction says
+    assert not _reduced_passed({"k_failures": 1.0, "fraction_correct": 1.0 - 1 / 1536, "verification_stage": "reduced"})
+    assert _reduced_passed({"k_failures": 0.0, "fraction_correct": 1.0, "verification_stage": "reduced"})
+    assert not _reduced_passed({"k_failures": 0.0, "fraction_correct": 1.0, "error": "verify crashed"})
+    # invsqrt / dfthcsos: the explicit verdict wins over the fraction either way
+    assert not _reduced_passed({"reduced_pass": False, "fraction_correct": 1.0})
+    assert _reduced_passed({"reduced_pass": True, "fraction_correct": 0.99})
+    # no verdict field at all: only a perfect fraction counts
+    assert not _reduced_passed({"fraction_correct": 0.995}) and _reduced_passed({"fraction_correct": 1.0})
+    assert not _reduced_passed(None) and not _reduced_passed({})
+
+
+def test_cascade_stage3_blocks_dqi_with_one_failed_reduced_shot(tmp_path, monkeypatch):
+    from search import adapter_cascade as cascade
+
+    monkeypatch.setattr(cascade, "_STATE", {})
+    monkeypatch.setattr(cascade, "_MEMO", VerifierMemo())
+    program = tmp_path / "prog.py"
+    bundle = _cascade_bundle(tmp_path, program)
+    bundle.task = "dqi"
+    adapter = _cascade_adapter(bundle, reduced_fc=1.0)
+    adapter.stage2_verify_reduced.return_value = {  # what DqiAdapter returns for max_k == 1 at 1,536 shots
+        **adapter.stage2_verify_reduced.return_value, "fraction_correct": 1.0 - 1 / 1536, "k_failures": 1.0,
+        "eps_plus": 1 / 1536, "max_error_over_tol": 100.0 / 1536, "phase_wrong_fraction": 1 / 1536}
+    del adapter.stage2_verify_reduced.return_value["reduced_pass"]
+    monkeypatch.setattr(cascade, "_adapter_for", lambda t, generation=0: adapter)
+    cascade._STATE[cascade._state_key(str(program), "dqi")] = {
+        "bundle": bundle, "sample": adapter.stage1_sample.return_value,
+        "reduced": adapter.stage2_verify_reduced.return_value, "verified": None, "adapter_task": "dqi"}
+    result = cascade.evaluate_stage3(str(program), task="dqi")
+    adapter.stage2_verify_full.assert_not_called()
+    assert result.metrics["stage3_passed"] == 0.0 and result.metrics["feasible"] == 0.0
+    assert "reduced-stage PASS" in result.artifacts["gated"]
+
+
 def test_cascade_answers_identical_program_sources_from_the_memo(tmp_path, monkeypatch):
     from search import adapter_cascade as cascade
 
@@ -422,9 +493,10 @@ def test_cascade_answers_identical_program_sources_from_the_memo(tmp_path, monke
     monkeypatch.delenv("SEARCH_SMOKE", raising=False)
     monkeypatch.setattr(cascade, "_STATE", {})
     monkeypatch.setattr(cascade, "_MEMO", VerifierMemo(tmp_path / "memo.jsonl"))
-    prog_a, prog_b = tmp_path / "a.py", tmp_path / "b.py"
-    prog_a.write_text("x = 1\n", encoding="utf-8")
-    prog_b.write_text("x = 1\n", encoding="utf-8")
+    prog_a, prog_b = tmp_path / "a" / "a.py", tmp_path / "b" / "b.py"  # one program per directory, as OpenEvolve does
+    for program in (prog_a, prog_b):
+        program.parent.mkdir()
+        program.write_text("x = 1\n", encoding="utf-8")
     adapter = _cascade_adapter(_cascade_bundle(tmp_path, prog_a), reduced_fc=0.0)
     monkeypatch.setattr(cascade, "_adapter_for", lambda t, generation=0: adapter)
 
@@ -440,7 +512,8 @@ def test_cascade_answers_identical_program_sources_from_the_memo(tmp_path, monke
     assert adapter.stage0_build.call_count == 1 and "memo_hit" in third.artifacts
     assert cascade._MEMO.negative_hits == 1 and cascade._STATE == {}
 
-    prog_c = tmp_path / "c.py"
+    prog_c = tmp_path / "c" / "c.py"
+    prog_c.parent.mkdir()
     prog_c.write_text("x = 2\n", encoding="utf-8")
     adapter.stage0_build.return_value = _cascade_bundle(tmp_path, prog_c)
     assert "memo_hit" not in cascade.evaluate(str(prog_c), task="invsqrt").artifacts
@@ -505,9 +578,10 @@ def test_local_provider_takes_the_base_url_from_config_and_never_forwards_the_op
     assert "Authorization" not in headers
     assert json.loads(body)["messages"][0] == {"role": "system", "content": "s"}
     assert _local_llm(providers, api_key="from-yaml").request("s", "u")[1]["Authorization"] == "Bearer from-yaml"
+    assert _local_llm(providers, api_base="http://cfg.test/v1").base_url == "http://cfg.test/v1"
     monkeypatch.setenv("SEARCH_LOCAL_BASE_URL", "http://other.test:1234/v1")
     assert _local_llm(providers).base_url == "http://other.test:1234/v1"
-    assert _local_llm(providers, api_base="http://cfg.test/v1").base_url == "http://cfg.test/v1"
+    assert _local_llm(providers, api_base="http://cfg.test/v1").base_url == "http://other.test:1234/v1"  # env wins
     assert json.loads(_local_llm(providers).request("", "u")[2])["messages"] == [{"role": "user", "content": "u"}]
 
 
@@ -548,7 +622,24 @@ def test_local_provider_refuses_cleartext_keys_off_loopback_and_redirects(monkey
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
     providers = load("providers")
     assert providers.check_gateway_url("http://127.0.0.1:4000/v1", credentialed=True) is None
+    assert providers.check_gateway_url("http://127.1.2.3:4000/v1", credentialed=True) is None
+    assert providers.check_gateway_url("http://[::1]:4000/v1", credentialed=True) is None
     assert providers.check_gateway_url("http://localhost:4000/v1", credentialed=True) is None
+    assert "cleartext" in providers.check_gateway_url("http://127.example.test/v1", credentialed=True)  # a DNS name
+    assert not providers.is_loopback_host("127.example.test") and not providers.is_loopback_host("")
+    # a loopback gateway bypasses http_proxy; any other host keeps urllib's proxy handling
+    monkeypatch.setenv("http_proxy", "http://proxy.test:3128")
+    monkeypatch.delenv("no_proxy", raising=False)
+    import urllib.request
+    # an empty ProxyHandler defines no *_open method, so urllib keeps it out of .handlers: no proxy at all
+    local = [h for h in providers._opener_for("http://127.0.0.1:4000/v1/chat/completions").handlers
+             if isinstance(h, urllib.request.ProxyHandler)]
+    assert local == []
+    remote = [h for h in providers._opener_for("https://gateway.test/v1/chat/completions").handlers
+              if isinstance(h, urllib.request.ProxyHandler)]
+    assert remote and any(h.proxies.get("http") == "http://proxy.test:3128" for h in remote)
+    assert all(any(isinstance(h, providers._NoRedirect) for h in providers._opener_for(u).handlers)
+               for u in ("http://127.0.0.1:4000/v1/x", "https://gateway.test/v1/x"))
     assert providers.check_gateway_url("https://gateway.test/v1", credentialed=True) is None
     assert providers.check_gateway_url("http://gateway.test/v1", credentialed=False) is None
     assert "cleartext" in providers.check_gateway_url("http://gateway.test/v1", credentialed=True)
@@ -561,7 +652,6 @@ def test_local_provider_refuses_cleartext_keys_off_loopback_and_redirects(monkey
         _local_llm(providers, api_base="file:///etc/passwd").request("s", "u")
     # the opener used by _post_json refuses redirects outright
     assert providers._NoRedirect().redirect_request(None, None, 302, "Found", {}, "https://elsewhere.test/") is None
-    assert any(isinstance(h, providers._NoRedirect) for h in providers._OPENER.handlers)
 
 
 def test_local_config_loads_and_installs_the_local_provider():
