@@ -39,7 +39,7 @@ tracks:
       # measured point is the shipped Q84 circuit at 13.24, which is the value shown here.
       - label: A square-root circuit with fewer qubits (not achieved)
         value: 13.24
-        state: verified
+        state: shipped
         note: >-
           Negative result: storage changes alone cannot reach 68 qubits or fewer. The measured
           13.24 is the shipped 84-qubit circuit, not a smaller one.
