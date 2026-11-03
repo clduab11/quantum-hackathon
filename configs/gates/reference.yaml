@@ -89,7 +89,8 @@ generators:
 
 # Declared competition-package inputs, relative to the package root and SHA-256 pinned. G5 stages
 # exactly these files into an otherwise empty VQCC_DATA for the generators, so nothing else from
-# the package can be read or copied. A circuit (.kmb) can never be declared here (R10). An output
+# the package can be read or copied. A circuit (.kmb) can never be declared here unless its kind is
+# vendored_circuit (D-PRA341-01, R10). An output
 # byte-identical to a declared input is recorded per task as `copied`; the factorization below is
 # the one input that may ship as a recorded copy (Chris's ruling on PRA-211; D-PRA211-05).
 inputs:

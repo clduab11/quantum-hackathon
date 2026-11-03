@@ -82,8 +82,9 @@ generators:
 
 # Declared competition-package inputs (PRA-211). G5 runs every generator with VQCC_DATA pointing
 # at a staging directory that holds only these SHA-256-pinned files. A circuit (.kmb) can never be
-# declared here: R10 requires every submitted circuit to be generated, and a .kmb output that is a
-# byte copy of a declared input fails G5. An output byte-identical to a declared non-circuit input
+# declared here unless its kind is vendored_circuit (D-PRA341-01): R10 requires every other submitted
+# circuit to be generated, and a .kmb output that is a byte copy of any other declared input fails G5.
+# An output byte-identical to a declared non-circuit input
 # is recorded per task as `copied` and accepted (Chris's ruling on PRA-211; D-PRA211-05). The
 # factor below is Gluzdov v8, declared by PRA-245. The package_root for this
 # candidate is /home/cld-main/work/vqcc-data; G5 stages only this pinned input.

@@ -56,6 +56,7 @@ its cost and baseline.
 | `submitted_at_utc` | str \| null | Submission time (UTC); the day it counts against the cap |
 | `python_version`, `platform`, `cli_command` | str | Run provenance |
 | `notes` | str | Free text |
+| `declared_inputs` | map | Declared inputs copied from the gate config when a pipeline or G5 re-run starts (`{task: [{path, sha256, ...}]}`). Kind `vendored_circuit` also carries `source_url`, `version`, `licence` and `licence_record` (D-PRA341-01). Older manifests omit the field and load as `{}` |
 
 ### Task record
 
@@ -118,7 +119,7 @@ The licence is a record for the end-of-hackathon credits and licensure pass; G5 
 | G2 | Fast proxy: invsqrt exhaustive numpy mirror; dqi subsampled shots; dfthcsos `heuristic_costs` + error/Λ/E_gap (`tasks.<task>.gates:g2_proxy`) | yes, with reason | generator owner |
 | G3 | Full local verifier at full shots (`harness.score_local:score_submission`); folds results into the manifest as evidence | no | P0-4 |
 | G4 | Measured geometric mean strictly beats the parent and the best measured archived candidate | yes, with reason | ledger |
-| G5 | No reference-only parent; clean 40-hex generator commit; zip holds exactly the manifest's files and is their deterministic build; clean `git worktree` at `generator_commit` regenerates every file byte for byte with `VQCC_DATA` pointing at a staging directory that holds only the config's declared, SHA-256-pinned `inputs`; an output byte-identical to a declared input is recorded as `copied`: a copied circuit fails and a circuit can never be a declared input, a copied non-circuit input (the declared dfthcsos factorization) is accepted (R10, PRA-211, D-PRA211-05) | no | ledger |
+| G5 | No reference-only parent; clean 40-hex generator commit; zip holds exactly the manifest's files and is their deterministic build; clean `git worktree` at `generator_commit` regenerates every file byte for byte with `VQCC_DATA` pointing at a staging directory that holds only the config's declared, SHA-256-pinned `inputs`; an output byte-identical to a declared input is recorded as `copied`: a copied circuit fails unless that input is kind `vendored_circuit` and the shipped file is byte-identical to the source pinned by URL, version and SHA-256 with the licence-record ticket set (D-PRA341-01); any other circuit still cannot be a declared input; a copied non-circuit input (the declared dfthcsos factorization) is accepted (R10, PRA-211, D-PRA211-05, D-PRA341-01) | no | ledger |
 
 Rules enforced by the runner:
 
@@ -128,8 +129,9 @@ Rules enforced by the runner:
 - A gate's results are folded into the manifest all or nothing: a G3 that fails part-way leaves no task `measured`.
 - An unsafe, corrupt, encrypted or unsupported zip is a G0 FAIL.
 - **Shipping rule** (`RunManifest.shipping_problems`, used by the queue and by `record_submission`): every gate G0–G5
-  cleared on the current zip, G0/G3/G5 real PASS records (never WAIVED, even in a hand-edited manifest), and every
-  task measured. Only zips that meet it enter `ledger/queue/`.
+  cleared on the current zip, G0/G3/G5 real PASS records (never WAIVED, even in a hand-edited manifest), every
+  task measured, and every `vendored_circuit` carrying a licence-record ticket (D-PRA341-01). Only zips that meet it
+  enter `ledger/queue/`.
 
 Hook contracts:
 
@@ -142,10 +144,13 @@ Hook contracts:
   directory, `{python}` this interpreter. Outputs use the manifest's relative paths. The generator's `VQCC_DATA` is a
   staging directory holding only the config's `inputs:` (`{task: [{path, sha256}]}`, paths relative to the package
   root), copied there after a hash check; nothing else from the competition package is visible. A circuit (`.kmb`) can
-  never be a declared input. The rebuild record lists per task `identical` (every file matches the manifest) and
-  `copied` (outputs whose bytes equal a declared input), and `copied_inputs` overall. A copied circuit is a FAIL even
-  when every byte matches the manifest; a copied non-circuit input is accepted and stays visible in the record
-  (Chris's ruling on PRA-211; D-PRA211-05). `uv run python -m ledger.gates.runner rerun --generator-commit <sha>` repeats G5 on a recorded
+  be a declared input only as kind `vendored_circuit`, which also carries `source_url`, `version`, `licence` and
+  `licence_record` (D-PRA341-01). The rebuild record lists per task `identical` (every file matches the manifest) and
+  `copied` (outputs whose bytes equal a declared input), `copied_inputs` for accepted non-circuit copies, and
+  `vendored_circuits` for shipped circuits that match a vendored pin. A copied circuit is a FAIL even when every byte
+  matches the manifest, unless it is that vendored pin; a copied non-circuit input is accepted and stays visible in
+  the record (Chris's ruling on PRA-211; D-PRA211-05). A vendored circuit whose bytes differ from the pin fails, and
+  a blank licence record fails G5 and is a shipping problem. `uv run python -m ledger.gates.runner rerun --generator-commit <sha>` repeats G5 on a recorded
   manifest with the generators at that commit and appends the record; the manifest's `generator_commit` is unchanged.
 
 ## Submissions (R6)

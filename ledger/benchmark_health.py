@@ -12,9 +12,10 @@ with `VQCC_DATA` pointing at a staging directory that holds only the config's de
 SHA-256-pinned inputs (PRA-211), so a generator cannot read any other competition-package file.
 An output byte-identical to a declared input is a copied package file, not a generated one, and
 is recorded per task as `copied`. R10 is about circuits: a copied circuit (`.kmb`) fails the
-check and a circuit can never be a declared input; a declared non-circuit input (the dfthcsos
-factorization `.npz`) may ship as a recorded copy (Chris's ruling on PRA-211, 2026-10-25;
-D-PRA211-05).
+check and a circuit can never be a declared input, except a `vendored_circuit` whose shipped
+bytes match the pinned licensed source and whose licence-record ticket is set (D-PRA341-01).
+A declared non-circuit input (the dfthcsos factorization `.npz`) may ship as a recorded copy
+(Chris's ruling on PRA-211, 2026-10-25; D-PRA211-05).
 """
 
 from __future__ import annotations
@@ -33,8 +34,11 @@ from typing import Any
 
 from ledger.run_manifest import (
     GATE_IDS,
+    LICENCES,
+    NEVER_SHIPPED_LICENCES,
     REPO_ROOT,
     TASKS,
+    VENDORED_CIRCUIT,
     GateRecord,
     Provenance,
     RunManifest,
@@ -42,6 +46,7 @@ from ledger.run_manifest import (
     create_manifest,
     read_manifest,
     sha256_file,
+    vendored_circuit_licence_problems,
     write_manifest,
 )
 
@@ -54,13 +59,75 @@ PACKAGE_ROOT = Path(os.environ.get(
 
 # Submitted circuits are kickmix binaries. R10 requires every one of them to be generated, so a
 # circuit can never be a declared input, and a generator output with this suffix whose bytes equal
-# a declared input fails G5. A non-circuit declared input may be copied (D-PRA211-05).
+# a declared input fails G5, unless that input is a vendored_circuit (D-PRA341-01). A non-circuit
+# declared input may be copied (D-PRA211-05).
 CIRCUIT_SUFFIXES = (".kmb",)
+# Licences a vendored circuit may name. reference-only and no-licence never qualify; "own" is
+# Praxen code, not a borrowed source. Any other accepted label still needs the adjudicator's
+# licence-record ticket before the zip may ship.
+VENDORED_LICENCES = tuple(
+    lic for lic in LICENCES if lic not in NEVER_SHIPPED_LICENCES and lic not in {"no-licence", "own"}
+)
+# The Schur origin repo has no licence, and the k256.dev dqi artifact stays reference-only.
+BANNED_SOURCE_MARKERS = ("jday96314", "k256.dev")
 
 
 def is_circuit(path: str | Path) -> bool:
     """True for a submitted circuit file (by suffix); these must always be generated (R10)."""
     return Path(path).suffix.lower() in CIRCUIT_SUFFIXES
+
+
+def input_kind(entry: dict[str, Any]) -> str:
+    """Declared-input kind. Absent means a competition-package input (PRA-211)."""
+    return str(entry.get("kind") or "package")
+
+
+def declared_input_problems(task: str, entry: dict[str, Any]) -> list[str]:
+    """Schema problems for one declared input.
+
+    A blank `licence_record` is not a schema problem: the manifest records it and
+    `shipping_problems` reports it (D-PRA341-01).
+    """
+    rel = str(entry.get("path", ""))
+    kind = input_kind(entry)
+    problems: list[str] = []
+    if kind not in ("package", VENDORED_CIRCUIT):
+        problems.append(f"{task}: input kind {kind!r} is not 'package' or {VENDORED_CIRCUIT!r}")
+    if not rel or rel.startswith(("/", "\\")) or ".." in Path(rel).parts:
+        problems.append(f"{task}: input path {rel!r} must be relative to the package root "
+                        "and contain no '..'")
+    if not re.fullmatch(r"[0-9a-f]{64}", str(entry.get("sha256", ""))):
+        problems.append(f"{task}: input {rel} needs a 64-hex sha256 pin")
+    if kind == VENDORED_CIRCUIT:
+        if rel and not is_circuit(rel):
+            problems.append(f"{task}: vendored_circuit {rel!r} must be a circuit file")
+        url = entry.get("source_url")
+        url_text = "" if url is None else str(url).strip()
+        if not url_text.startswith("https://"):
+            problems.append(f"{task}: vendored_circuit {rel} needs an https source_url")
+        else:
+            lowered = url_text.lower()
+            for marker in BANNED_SOURCE_MARKERS:
+                if marker in lowered:
+                    problems.append(
+                        f"{task}: vendored_circuit source {url_text} is banned ({marker}) "
+                        "(D-PRA341-01)"
+                    )
+        if not str(entry.get("version") or "").strip():
+            problems.append(f"{task}: vendored_circuit {rel} needs a version")
+        licence = str(entry.get("licence") or "")
+        if licence not in VENDORED_LICENCES:
+            problems.append(
+                f"{task}: vendored_circuit licence {licence!r} is not a licence the record "
+                "can carry (D-PRA341-01)"
+            )
+    elif is_circuit(rel):
+        problems.append(
+            f"{task}: input {rel} is a circuit file; R10 requires every submitted circuit to be "
+            "generated, so a circuit cannot be a declared input unless its kind is "
+            f"{VENDORED_CIRCUIT} (D-PRA211-05, D-PRA341-01)"
+        )
+    return problems
 
 
 class InputError(ValueError):
@@ -99,13 +166,10 @@ def stage_inputs(
     staged: dict[str, str] = {}
     for task, entries in (inputs or {}).items():
         for entry in entries:
-            rel = str(entry["path"])
-            if Path(rel).is_absolute() or ".." in Path(rel).parts:
-                raise InputError(f"{task}: input path {rel!r} must be relative, without '..'")
-            if is_circuit(rel):
-                raise InputError(f"{task}: declared input {rel!r} is a circuit file; R10 requires "
-                                 "every submitted circuit to be generated, so a circuit cannot be "
-                                 "a declared input (D-PRA211-05)")
+            rel = str(entry.get("path", ""))
+            schema = declared_input_problems(task, entry)
+            if schema:
+                raise InputError("; ".join(schema))
             src = Path(package_root) / rel
             if not src.is_file():
                 raise InputError(f"{task}: declared input {src} is missing")
@@ -139,8 +203,10 @@ def rebuild_in_clean_worktree(
     The generators run with `VQCC_DATA` set to a staging directory holding only the declared
     `inputs` (see `stage_inputs`). Each task's record lists `copied`: the outputs whose bytes
     equal a declared input. Every file must be identical to the manifest. A copied output that
-    is a circuit (`is_circuit`) fails: R10 requires every submitted circuit to be generated. A
-    copied non-circuit input is accepted and listed in `copied_inputs` (D-PRA211-05).
+    is a circuit (`is_circuit`) fails, unless that input is a `vendored_circuit`: then the
+    shipped file must be byte-identical to the pinned source and the licence-record ticket must
+    be set (D-PRA341-01). A copied non-circuit input is accepted and listed in `copied_inputs`
+    (D-PRA211-05). `vendored_circuits` maps each matching shipped circuit to its source path.
     """
     if not re.fullmatch(r"[0-9a-f]{40}", commit or ""):
         return {"status": f"FAIL: generator commit {commit!r} is not a clean 40-hex commit"}
@@ -152,6 +218,8 @@ def rebuild_in_clean_worktree(
     staging = tmp / "package"
     tasks: dict[str, Any] = {}
     staged: dict[str, str] = {}
+    byte_gaps: list[str] = []
+    vendored_circuits: dict[str, str] = {}
     try:
         staging.mkdir()
         staged = stage_inputs(inputs or {}, staging, package_root)
@@ -173,6 +241,18 @@ def rebuild_in_clean_worktree(
             diffs = diff_hashes(expected[task], actual)
             copied = {rel: staged[digest] for rel, digest in sorted(actual.items())
                       if digest in staged}
+            for entry in (inputs or {}).get(task, []):
+                if input_kind(entry) != VENDORED_CIRCUIT:
+                    continue
+                matched = [rel for rel, digest in sorted(actual.items())
+                           if digest == entry.get("sha256") and is_circuit(rel)]
+                if not matched:
+                    byte_gaps.append(
+                        f"{task}: vendored circuit {entry.get('path', '?')} is not "
+                        "byte-identical to the pinned source"
+                    )
+                for rel in matched:
+                    vendored_circuits[rel] = str(entry.get("path", ""))
             identical = proc.returncode == 0 and not any(diffs.values())
             tasks[task] = {
                 "identical": identical,
@@ -198,17 +278,27 @@ def rebuild_in_clean_worktree(
     bad = [t for t, r in tasks.items() if not r["identical"]]
     if bad:
         problems.append(f"rebuild differs for {', '.join(bad)}")
-    copied_circuits = [f"{rel} ({task}, copy of package {src})"
-                       for task, r in tasks.items() for rel, src in r["copied"].items()
-                       if is_circuit(rel)]
+    by_path = {str(entry.get("path")): entry
+               for entries in (inputs or {}).values() for entry in entries}
+    copied_circuits = []
+    for task, record in tasks.items():
+        for rel, src in record["copied"].items():
+            if not is_circuit(rel):
+                continue
+            entry = by_path.get(src)
+            if entry is not None and input_kind(entry) == VENDORED_CIRCUIT:
+                continue
+            copied_circuits.append(f"{rel} ({task}, copy of package {src})")
     if copied_circuits:
         problems.append("copied competition-package circuits, not generated (R10): "
                         + "; ".join(copied_circuits))
+    problems.extend(byte_gaps)
+    problems.extend(vendored_circuit_licence_problems(inputs))
     copied_inputs = {rel: src for r in tasks.values() for rel, src in r["copied"].items()
                      if not is_circuit(rel)}
     status = "PASS" if not problems else "FAIL: " + "; ".join(problems)
     return {"status": status, "commit": commit, "inputs": staged, "copied_inputs": copied_inputs,
-            "tasks": tasks}
+            "vendored_circuits": vendored_circuits, "tasks": tasks}
 
 
 # --- Ledger self-checks -----------------------------------------------------------------------

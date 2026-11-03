@@ -46,6 +46,11 @@ KINDS = ("candidate", "submission")
 LICENCES = ("Apache-2.0", "CC-BY-4.0", "own", "no-licence", "reference-only")
 NEVER_SHIPPED_LICENCES = frozenset({"reference-only"})
 
+# A borrowed circuit may be a declared input only under this kind (D-PRA341-01). Any other
+# circuit copy still fails G5. The licence-record ticket is the-adjudicator's filing; a blank
+# one is a shipping problem, not a schema error, so the manifest can record it.
+VENDORED_CIRCUIT = "vendored_circuit"
+
 GATE_STATUSES = ("PASS", "FAIL", "WAIVED")
 GATE_IDS = ("G0", "G1", "G2", "G3", "G4", "G5")
 # Gates that must have actually passed (never waived) before a zip is queued or submitted.
@@ -160,6 +165,10 @@ class RunManifest:
     platform: str = ""
     cli_command: str = ""
     notes: str = ""
+    # Declared inputs copied from the gate config (`{task: [entry, ...]}`). Kind
+    # `vendored_circuit` carries source_url, version, licence, sha256 and licence_record
+    # (D-PRA341-01). Older manifests omit it and load as an empty map.
+    declared_inputs: dict[str, list[dict[str, Any]]] = field(default_factory=dict)
 
     @property
     def geometric_mean(self) -> float | None:
@@ -200,7 +209,9 @@ class RunManifest:
         """Why this candidate may not be queued or submitted; empty if it may.
 
         Every gate must be cleared on the current zip, G0/G3/G5 must be real PASS records
-        (never waived, even in a hand-edited manifest), and every task must be measured.
+        (never waived, even in a hand-edited manifest), every task must be measured, and every
+        `vendored_circuit` declared input must name the-adjudicator's licence-record ticket
+        (D-PRA341-01).
         """
         problems = [f"{g} not cleared on the current zip" for g in GATE_IDS
                     if not self.gate_cleared(g)]
@@ -210,10 +221,33 @@ class RunManifest:
                 problems.append(f"{gate} is {record.status}, it must PASS")
         if not self.is_measured():
             problems.append("not every task is measured")
+        problems.extend(vendored_circuit_licence_problems(self.declared_inputs))
         return problems
 
 
 # --- Arithmetic -------------------------------------------------------------------------------
+
+
+def licence_record_of(entry: dict[str, Any]) -> str:
+    """The adjudicator's licence-record ticket id on a declared input, or "" if it is unset."""
+    raw = entry.get("licence_record")
+    if raw is None:
+        return ""
+    return str(raw).strip()
+
+
+def vendored_circuit_licence_problems(inputs: dict[str, list[dict[str, Any]]] | None) -> list[str]:
+    """One problem per `vendored_circuit` whose licence-record ticket is blank (D-PRA341-01)."""
+    found = []
+    for task, entries in (inputs or {}).items():
+        for entry in entries or []:
+            if str(entry.get("kind") or "") != VENDORED_CIRCUIT:
+                continue
+            if not licence_record_of(entry):
+                found.append(
+                    f"vendored_circuit {task} {entry.get('path', '?')} has no licence record"
+                )
+    return found
 
 
 def compute_ratio(baseline_cost: float | None, cost: float | None) -> float | None:

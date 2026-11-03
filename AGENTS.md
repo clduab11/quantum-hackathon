@@ -54,6 +54,11 @@ john-wick squash-merges pull requests one after another and never resolves a con
   copy of a competition-package circuit fails G5 (Chris's ruling on PRA-169, 2026-10-25; D-PRA211-01). A circuit can
   never be a declared input. A declared non-circuit input (the dfthcsos factorization `.npz`) may ship as a recorded
   copy (Chris's ruling on PRA-211, 2026-10-25; D-PRA211-05).
+- Until prize time, D-PRA341-01 is the one exception: a declared input of kind `vendored_circuit` (Apache-2.0, or
+  another licence the-adjudicator accepts, pinned by URL, version and SHA-256, with the licence-record ticket filed
+  before upload). G5 passes that circuit only when the shipped file is byte-identical to the pin. The jday96314 Schur
+  origin repo and the k256.dev dqi artifact stay banned. Any circuit that is not a `vendored_circuit` still fails G5.
+  Own generators (PRA-310, PRA-313) replace each vendored circuit before January.
 - Parents (Apache-2.0 notebooks, CC-BY-4.0 Zenodo code) are recorded in the ledger with URL and licence.
 - The k256.dev dqi artifact is reference only and is never shipped.
 
