@@ -1,0 +1,16 @@
+Upstream invsqrt NOTICE excerpt, mrmeows dataset v8, lines 1-8.
+The first-person statements below are mrmeows's, not Praxen's.
+
+NOTICE for circuits/ (release 21.0 update of the 20.39 release, Apache-2.0)
+
+invsqrt.kmb (sha256 0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6; the 20.0565x build, two executed Toffolis fewer than the 20.032x build 3ed5f7fb... documented below)
+  My build. The 63 qubit polynomial core descends from the public lineage of Dmitrii Gluzdov, Phuc Thai (DePie
+  EXP-222/225a/226a) and Akmal Xodarev (busyaprime, 78 qubits), with marsyas's contributions upstream. The direct phase
+  taps, history caches, joint coefficient decoder, derivative-bit reuse, Gray-basis normalization and guard-bit phase
+  correction are mine. sources/invsqrt_20p032_verified_source.zip rebuilds it byte for byte and keeps the upstream
+  attribution and the SDK license under source/.
+
+Praxen correction: the selected 20.0565x source package is
+sources/invsqrt_20p056_verified_source/invsqrt_20p056505_complete/.
+The inherited NOTICE above still names the 20.032 predecessor.
+Praxen distributes the accepted circuit unchanged under D-PRA341-01.

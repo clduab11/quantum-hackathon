@@ -1,0 +1,14 @@
+{
+  "zip_path": "/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/pra325-invsqrt-vendored-63q.zip",
+  "zip_sha256": "a0c0d32fa323b75f2d5d77bf2ef25456ac1d0d45850e65d86a1c880c7e2f64f4",
+  "zip_size": 31542030,
+  "geometric_mean": 22.05859829244158,
+  "gates": [
+    {
+      "gate": "G5",
+      "status": "PASS",
+      "reason": ""
+    }
+  ],
+  "shipping_problems": []
+}
