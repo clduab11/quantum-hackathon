@@ -33,6 +33,8 @@ def resources(circuit):
 def build_from_fit(fitted, storage_mode=None):
     if storage_mode not in (None, 'affine', 'future', 'product'):
         raise ValueError(f'Unknown storage mode: {storage_mode}')
+    if fitted.get('params', [9, 19, 26, 2, [5]]) != [9, 19, 26, 2, [5]]:
+        raise ValueError('Experimental precision must not enter the default generator')
     cfg = Config()
     tables = {(e,a): fitted['rows'][128*e+a] for e in range(2) for a in range(128)}
     # Recompute instead of trusting a passed flag supplied by a caller.

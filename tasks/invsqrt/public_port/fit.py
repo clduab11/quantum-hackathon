@@ -14,12 +14,25 @@ from pathlib import Path
 from .model import Config, certificate, interpolation_values, pipeline, rd
 
 
-def fit_group(e, group, group_bits=3, fraction_bits=3):
+def anchor_center(values, cfg):
+    """Center the anchor search after the output quantizer's downward bias.
+
+    Both NumPy and Torch expose amin/amax; keep the arithmetic identical.
+    The subsequent even-anchor search still enforces the virtual-low bit.
+    """
+    if hasattr(values, 'amin'):
+        low, high = values.amin(1), values.amax(1)
+    else:
+        low, high = values.min(axis=1), values.max(axis=1)
+    return (low + high)/2 + ((1 << cfg.gy)-1)/2
+
+
+def fit_group(e, group, group_bits=3, fraction_bits=3, cfg=None):
     import torch
 
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA is required; CPU-only fitting is not authorized")
-    cfg = Config()
+    cfg = Config() if cfg is None else cfg
     size = 1 << group_bits
     mid = 1 + (group + .5) * size / 128
     scale = 2 ** ((e-1)/2)
@@ -48,7 +61,7 @@ def fit_group(e, group, group_bits=3, fraction_bits=3):
         for k2 in sorted(k for i, k in needed if i == low):
             r, q = pipeline(cfg, k2, k1, d[None, :])
             values = target + q
-            center = (values.amin(1) + values.amax(1))/2 + 1.5
+            center = anchor_center(values, cfg)
             anchor = 2 * torch.floor(center/2).to(torch.int64)
             # Deterministic order: k1, then even k0 ascending, as in the source.
             scores, anchors = [], []
@@ -73,13 +86,14 @@ def fit_group(e, group, group_bits=3, fraction_bits=3):
     return dict(score=score, base=base, step=step, rows=[row[1:] for row in rows])
 
 
-def fit_tables(group_bits=3, fraction_bits=3, threshold=.95):
+def fit_tables(group_bits=3, fraction_bits=3, threshold=.95, cfg=None):
     """Refine only groups that miss the stated error bound; never fit to a salt."""
+    cfg = Config() if cfg is None else cfg
     size = 1 << group_bits
     tables, encoding, scores, groups = {}, {}, [], []
 
     def visit(e, group, bits):
-        fit = fit_group(e, group, bits, fraction_bits)
+        fit = fit_group(e, group, bits, fraction_bits, cfg=cfg)
         print(json.dumps(dict(parity=e, group=group, group_bits=bits, score=fit['score'])), flush=True)
         if fit['score'] > threshold and bits:
             visit(e, group*2, bits-1)
@@ -104,10 +118,10 @@ def fit_tables(group_bits=3, fraction_bits=3, threshold=.95):
         for group in range(128//size):
             visit(e, group, group_bits)
     encoded = [encoding[e,a] for e in range(2) for a in range(128)]
-    return dict(params=[9, 19, 26, 2, [5]], rows=[tables[e,a] for e in range(2) for a in range(128)],
+    return dict(params=[cfg.f2, cfg.f1, cfg.fyr, cfg.gy, list(cfg.drop2)], rows=[tables[e,a] for e in range(2) for a in range(128)],
                 interpolation=dict(fraction_bits=fraction_bits, remainder_bits=group_bits,
                                    step_width=max(1, max(s.bit_length() for _,s in encoded)), rows=encoded),
-                normalized_worst=max(scores), certificate=certificate(Config(), tables),
+                normalized_worst=max(scores), certificate=certificate(cfg, tables),
                 device='cuda', refinement_threshold=threshold, groups=groups)
 
 
