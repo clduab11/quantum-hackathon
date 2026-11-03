@@ -69,5 +69,8 @@ G0–G4 manifest and ran real G5 on the same zip using persistent scratch:
 TMPDIR=/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/tmp OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONPATH=. uv run python ledger/evidence/pra325-invsqrt-vendored-63q/run_candidate.py
 ```
 
-G5 PASS; `shipping_problems()` returned `[]`. The manifest retains the detailed
-rebuild record and the original G0–G4 evidence. No upload occurred.
+G5 PASS; `shipping_problems()` returned `[]`. G5 was then repeated successfully
+on published generator commit `f4987444ac5b11ce485df40c871bc2df50404f21`;
+the manifest retains both rebuild records and the original G0–G4 evidence.
+The integrated suite passed (600 passed, 11 skipped), and the register check
+passed. No upload occurred.

@@ -260,16 +260,100 @@
       "status": "PASS",
       "timestamp_utc": "2026-11-03T03:35:59.389800+00:00",
       "zip_sha256": "a0c0d32fa323b75f2d5d77bf2ef25456ac1d0d45850e65d86a1c880c7e2f64f4"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "f4987444ac5b11ce485df40c871bc2df50404f21",
+          "copied_inputs": {
+            "dfthcsos/submission.npz": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+          },
+          "inputs": {
+            "0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6": "inputs/mrmeows/qcc-1375-open-circuits-v8/invsqrt.kmb",
+            "aef36d39b83bbbf696e909884218f6c02f067baef14a29de1c41306bc1f6395b": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+          },
+          "status": "PASS",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "/home/cld-main/work/wt-pra325/.venv/bin/python3",
+                "-m",
+                "tasks.dfthcsos.b143",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/tmp/ledger-rebuild-n1vaajuv/out/dfthcsos"
+              ],
+              "copied": {
+                "dfthcsos/submission.npz": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "/home/cld-main/work/wt-pra325/.venv/bin/python3",
+                "-m",
+                "tasks.dqi.generate_fused",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/tmp/ledger-rebuild-n1vaajuv/out/dqi"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": "onds\": 73.47739267349243}\n{\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 74.12229776382446}\n{\"path\": \"/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/tmp/dqi-fused-17ytpeot/dqi.kmb\", \"sha256\": \"7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6\", \"T_static\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"num_bits\": 107242, \"stages\": [{\"name\": \"mask_projection\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2388214, \"seconds\": 3.5839200019836426}, {\"name\": \"initial\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2719156, \"seconds\": 4.329752445220947}, {\"name\": \"extract\", \"T\": 87040, \"cumulative_T\": 87040, \"Q\": 889, \"num_ops\": 9255442, \"seconds\": 12.271766901016235}, {\"name\": \"synthesis\", \"T\": 44654, \"cumulative_T\": 131694, \"Q\": 889, \"num_ops\": 15098735, \"seconds\": 20.69196653366089}, {\"name\": \"convert_lookahead\", \"T\": 69220, \"cumulative_T\": 200914, \"Q\": 889, \"num_ops\": 18094594, \"seconds\": 23.870047330856323}, {\"name\": \"scan\", \"T\": 44275, \"cumulative_T\": 245189, \"Q\": 889, \"num_ops\": 41588664, \"seconds\": 49.64455986022949}, {\"name\": \"unconvert_lookahead\", \"T\": 70342, \"cumulative_T\": 315531, \"Q\": 889, \"num_ops\": 44642141, \"seconds\": 53.13860511779785}, {\"name\": \"unsynthesis\", \"T\": 53803, \"cumulative_T\": 369334, \"Q\": 889, \"num_ops\": 51008234, \"seconds\": 61.204153060913086}, {\"name\": \"unextract\", \"T\": 117997, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59500420, \"seconds\": 72.52047419548035}, {\"name\": \"uninitial\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59831421, \"seconds\": 73.47739267349243}, {\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 74.12229776382446}], \"seconds\": 76.06826186180115, \"scope\": \"STATIC compiled counts include mutually exclusive classical branches; confluent Hermite extraction, zero-power retained-norm synthesis, short-Hankel monic-root guarded h2 conversion, classical mask projection; no verifier cost claimed\"}\n"
+            },
+            "invsqrt": {
+              "argv": [
+                "/home/cld-main/work/wt-pra325/.venv/bin/python3",
+                "-m",
+                "tasks.invsqrt.vendored.generate",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/tmp/ledger-rebuild-n1vaajuv/out/invsqrt"
+              ],
+              "copied": {
+                "invsqrt.kmb": "inputs/mrmeows/qcc-1375-open-circuits-v8/invsqrt.kmb"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          },
+          "vendored_circuits": {
+            "invsqrt.kmb": "inputs/mrmeows/qcc-1375-open-circuits-v8/invsqrt.kmb"
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-03T03:38:03.369970+00:00",
+      "zip_sha256": "a0c0d32fa323b75f2d5d77bf2ef25456ac1d0d45850e65d86a1c880c7e2f64f4"
     }
   ],
-  "generator_commit": "88cd3469f864cddb555d73f075f597411657044f",
+  "generator_commit": "f4987444ac5b11ce485df40c871bc2df50404f21",
   "geometric_mean": 22.05859829244158,
   "git_branch": "op-vqcc/pra325-invsqrt-vendored-63q",
   "kaggle_submission_id": null,
   "kickmix_build_id": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
   "kind": "candidate",
   "manifest_id": "76b087d7-dc3e-44ef-bb06-d41123ecec87",
-  "notes": "PRA-325: submission-011 with only invsqrt.kmb changed. Fixed salt, full shots; no upload.",
+  "notes": "PRA-325: submission-011 with only invsqrt.kmb changed. Fixed salt, full shots; no upload.\nRepeat G5 on published generator commit.",
   "operator": "584bb41d-d054-474a-b560-d2394375afcf",
   "parent_candidate_id": "pra309-chem-8-143-60",
   "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64",
