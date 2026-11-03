@@ -1,0 +1,495 @@
+{
+  "candidate_id": "pra325-invsqrt-vendored-63q",
+  "cli_command": "ledger/evidence/pra325-invsqrt-vendored-63q/run_candidate.py --stop-after G4",
+  "declared_inputs": {
+    "dfthcsos": [
+      {
+        "path": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz",
+        "sha256": "aef36d39b83bbbf696e909884218f6c02f067baef14a29de1c41306bc1f6395b"
+      }
+    ],
+    "invsqrt": [
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "PRA-346",
+        "path": "inputs/mrmeows/qcc-1375-open-circuits-v8/invsqrt.kmb",
+        "sha256": "0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6",
+        "source_url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits/versions/8",
+        "version": "8"
+      }
+    ]
+  },
+  "gates": [
+    {
+      "details": {},
+      "evidence_sha256": null,
+      "gate": "G0",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-29T05:41:48.875148+00:00",
+      "zip_sha256": "a0c0d32fa323b75f2d5d77bf2ef25456ac1d0d45850e65d86a1c880c7e2f64f4"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "batch": 0,
+            "num_qubits": 126,
+            "products": 225,
+            "sha256": "d0f7e6bf8057b171c22a0cbef041ccecf1334fb17e968fd924286ff70d66d08a",
+            "status": "PASS",
+            "toffoli_per_call": 305
+          },
+          "dqi": {
+            "domain": 4096,
+            "inverse_toffolis": 66,
+            "mul_xor_toffolis": 42,
+            "pinned_files": 62,
+            "status": "PASS"
+          },
+          "invsqrt": {
+            "num_qubits": 63,
+            "sha256": "0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6",
+            "static_toffoli": 1416,
+            "status": "PASS"
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G1",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-29T05:41:50.090479+00:00",
+      "zip_sha256": "a0c0d32fa323b75f2d5d77bf2ef25456ac1d0d45850e65d86a1c880c7e2f64f4"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "E_gap": 3.914902197284391,
+            "Lambda": 305.662648282956,
+            "brot": 8,
+            "error_1": 0.01582999310172256,
+            "error_2": 0.01999880580061996,
+            "estimated_cost": 343172572.78225887,
+            "estimated_qubits": 430,
+            "estimated_toffoli": 16366,
+            "heuristic_qubits": 390,
+            "heuristic_toffoli": 7930,
+            "lambda_eff": 48.76425214813735,
+            "parity": false,
+            "resources": {
+              "angles_persistent_qubits": 40,
+              "angles_qubits": 128,
+              "angles_selection_qubits": 11,
+              "angles_temporary_qubits": 77,
+              "angles_toffoli": 8436,
+              "angles_toffoli_per_pass": 4218.0,
+              "angles_within_cap": true,
+              "brot": 8,
+              "givens_rotations_toffoli": 2250,
+              "heuristic_persistent_qubits": 86,
+              "heuristic_qubits": 390,
+              "heuristic_temporary_qubits": 304,
+              "heuristic_toffoli": 7930,
+              "inner_state_prep_persistent_qubits": 44,
+              "inner_state_prep_qubits": 348,
+              "inner_state_prep_temporary_qubits": 304,
+              "inner_state_prep_toffoli": 5311,
+              "keep_bits": 10,
+              "outer_state_prep_persistent_qubits": 42,
+              "outer_state_prep_qubits": 138,
+              "outer_state_prep_temporary_qubits": 96,
+              "outer_state_prep_toffoli": 369,
+              "persistent_qubits": 126,
+              "qubits": 430,
+              "temporary_qubits": 304,
+              "toffoli": 16366
+            },
+            "status": "PASS"
+          },
+          "dqi": {
+            "failures": 0,
+            "num_qubits": 889,
+            "parity": false,
+            "shots": 1536,
+            "status": "PASS",
+            "toffoli_count": 474307.765625
+          },
+          "invsqrt": {
+            "circuit_sha256": "0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6",
+            "max_toffoli_count": 1416,
+            "num_ops": 46610,
+            "num_qubits": 63,
+            "parity": false,
+            "reaction_depth": 792,
+            "rotation_count": 41.0,
+            "rotation_eps": 2.434041522412152e-13,
+            "scope": "x=1..1536, one shot per input",
+            "score": 103552.37423984725,
+            "status": "PASS",
+            "t_count": 1.0,
+            "toffoli_count": 1348.59765625,
+            "toffoli_equivalent": 1643.6884799975755,
+            "verified_shots": 1536,
+            "worst_error_over_tolerance": 0.9993237694056958,
+            "worst_x": 161
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G2",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-29T05:43:44.442782+00:00",
+      "zip_sha256": "a0c0d32fa323b75f2d5d77bf2ef25456ac1d0d45850e65d86a1c880c7e2f64f4"
+    },
+    {
+      "details": {
+        "geometric_mean": 22.05859829244158
+      },
+      "evidence_sha256": "17d27a3a99cc30a1f6c283fa171a38f1d47d2c74165834868b502d9be74f91cf",
+      "gate": "G3",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-29T05:48:35.734041+00:00",
+      "zip_sha256": "a0c0d32fa323b75f2d5d77bf2ef25456ac1d0d45850e65d86a1c880c7e2f64f4"
+    },
+    {
+      "details": {
+        "archive_best": {
+          "candidate_id": "pra309-chem-8-143-60",
+          "geometric_mean": 19.205727125145224
+        },
+        "geometric_mean": 22.05859829244158,
+        "invsqrt_floor": 20.0,
+        "parent": 19.205727125145224,
+        "unchanged_tasks": [
+          "dqi",
+          "dfthcsos"
+        ]
+      },
+      "evidence_sha256": null,
+      "gate": "G4",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-10-29T05:48:35.794988+00:00",
+      "zip_sha256": "a0c0d32fa323b75f2d5d77bf2ef25456ac1d0d45850e65d86a1c880c7e2f64f4"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "88cd3469f864cddb555d73f075f597411657044f",
+          "copied_inputs": {
+            "dfthcsos/submission.npz": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+          },
+          "inputs": {
+            "0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6": "inputs/mrmeows/qcc-1375-open-circuits-v8/invsqrt.kmb",
+            "aef36d39b83bbbf696e909884218f6c02f067baef14a29de1c41306bc1f6395b": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+          },
+          "status": "PASS",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "/home/cld-main/work/wt-pra325/.venv/bin/python3",
+                "-m",
+                "tasks.dfthcsos.b143",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/tmp/ledger-rebuild-5oz6si3r/out/dfthcsos"
+              ],
+              "copied": {
+                "dfthcsos/submission.npz": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "/home/cld-main/work/wt-pra325/.venv/bin/python3",
+                "-m",
+                "tasks.dqi.generate_fused",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/tmp/ledger-rebuild-5oz6si3r/out/dqi"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": "conds\": 93.53603029251099}\n{\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 95.39588379859924}\n{\"path\": \"/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/tmp/dqi-fused-qbk8ydky/dqi.kmb\", \"sha256\": \"7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6\", \"T_static\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"num_bits\": 107242, \"stages\": [{\"name\": \"mask_projection\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2388214, \"seconds\": 2.9876112937927246}, {\"name\": \"initial\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2719156, \"seconds\": 3.758552312850952}, {\"name\": \"extract\", \"T\": 87040, \"cumulative_T\": 87040, \"Q\": 889, \"num_ops\": 9255442, \"seconds\": 12.065435409545898}, {\"name\": \"synthesis\", \"T\": 44654, \"cumulative_T\": 131694, \"Q\": 889, \"num_ops\": 15098735, \"seconds\": 19.37052345275879}, {\"name\": \"convert_lookahead\", \"T\": 69220, \"cumulative_T\": 200914, \"Q\": 889, \"num_ops\": 18094594, \"seconds\": 22.95372223854065}, {\"name\": \"scan\", \"T\": 44275, \"cumulative_T\": 245189, \"Q\": 889, \"num_ops\": 41588664, \"seconds\": 53.73084378242493}, {\"name\": \"unconvert_lookahead\", \"T\": 70342, \"cumulative_T\": 315531, \"Q\": 889, \"num_ops\": 44642141, \"seconds\": 59.08143448829651}, {\"name\": \"unsynthesis\", \"T\": 53803, \"cumulative_T\": 369334, \"Q\": 889, \"num_ops\": 51008234, \"seconds\": 71.46472644805908}, {\"name\": \"unextract\", \"T\": 117997, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59500420, \"seconds\": 89.31954169273376}, {\"name\": \"uninitial\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59831421, \"seconds\": 93.53603029251099}, {\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 95.39588379859924}], \"seconds\": 134.68144154548645, \"scope\": \"STATIC compiled counts include mutually exclusive classical branches; confluent Hermite extraction, zero-power retained-norm synthesis, short-Hankel monic-root guarded h2 conversion, classical mask projection; no verifier cost claimed\"}\n"
+            },
+            "invsqrt": {
+              "argv": [
+                "/home/cld-main/work/wt-pra325/.venv/bin/python3",
+                "-m",
+                "tasks.invsqrt.vendored.generate",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/tmp/ledger-rebuild-5oz6si3r/out/invsqrt"
+              ],
+              "copied": {
+                "invsqrt.kmb": "inputs/mrmeows/qcc-1375-open-circuits-v8/invsqrt.kmb"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          },
+          "vendored_circuits": {
+            "invsqrt.kmb": "inputs/mrmeows/qcc-1375-open-circuits-v8/invsqrt.kmb"
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-03T03:35:59.389800+00:00",
+      "zip_sha256": "a0c0d32fa323b75f2d5d77bf2ef25456ac1d0d45850e65d86a1c880c7e2f64f4"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "f4987444ac5b11ce485df40c871bc2df50404f21",
+          "copied_inputs": {
+            "dfthcsos/submission.npz": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+          },
+          "inputs": {
+            "0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6": "inputs/mrmeows/qcc-1375-open-circuits-v8/invsqrt.kmb",
+            "aef36d39b83bbbf696e909884218f6c02f067baef14a29de1c41306bc1f6395b": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+          },
+          "status": "PASS",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "/home/cld-main/work/wt-pra325/.venv/bin/python3",
+                "-m",
+                "tasks.dfthcsos.b143",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/tmp/ledger-rebuild-n1vaajuv/out/dfthcsos"
+              ],
+              "copied": {
+                "dfthcsos/submission.npz": "inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "/home/cld-main/work/wt-pra325/.venv/bin/python3",
+                "-m",
+                "tasks.dqi.generate_fused",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/tmp/ledger-rebuild-n1vaajuv/out/dqi"
+              ],
+              "copied": {},
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": "onds\": 73.47739267349243}\n{\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 74.12229776382446}\n{\"path\": \"/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/tmp/dqi-fused-17ytpeot/dqi.kmb\", \"sha256\": \"7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6\", \"T_static\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"num_bits\": 107242, \"stages\": [{\"name\": \"mask_projection\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2388214, \"seconds\": 3.5839200019836426}, {\"name\": \"initial\", \"T\": 0, \"cumulative_T\": 0, \"Q\": 840, \"num_ops\": 2719156, \"seconds\": 4.329752445220947}, {\"name\": \"extract\", \"T\": 87040, \"cumulative_T\": 87040, \"Q\": 889, \"num_ops\": 9255442, \"seconds\": 12.271766901016235}, {\"name\": \"synthesis\", \"T\": 44654, \"cumulative_T\": 131694, \"Q\": 889, \"num_ops\": 15098735, \"seconds\": 20.69196653366089}, {\"name\": \"convert_lookahead\", \"T\": 69220, \"cumulative_T\": 200914, \"Q\": 889, \"num_ops\": 18094594, \"seconds\": 23.870047330856323}, {\"name\": \"scan\", \"T\": 44275, \"cumulative_T\": 245189, \"Q\": 889, \"num_ops\": 41588664, \"seconds\": 49.64455986022949}, {\"name\": \"unconvert_lookahead\", \"T\": 70342, \"cumulative_T\": 315531, \"Q\": 889, \"num_ops\": 44642141, \"seconds\": 53.13860511779785}, {\"name\": \"unsynthesis\", \"T\": 53803, \"cumulative_T\": 369334, \"Q\": 889, \"num_ops\": 51008234, \"seconds\": 61.204153060913086}, {\"name\": \"unextract\", \"T\": 117997, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59500420, \"seconds\": 72.52047419548035}, {\"name\": \"uninitial\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59831421, \"seconds\": 73.47739267349243}, {\"name\": \"restore_masks\", \"T\": 0, \"cumulative_T\": 487331, \"Q\": 889, \"num_ops\": 59925608, \"seconds\": 74.12229776382446}], \"seconds\": 76.06826186180115, \"scope\": \"STATIC compiled counts include mutually exclusive classical branches; confluent Hermite extraction, zero-power retained-norm synthesis, short-Hankel monic-root guarded h2 conversion, classical mask projection; no verifier cost claimed\"}\n"
+            },
+            "invsqrt": {
+              "argv": [
+                "/home/cld-main/work/wt-pra325/.venv/bin/python3",
+                "-m",
+                "tasks.invsqrt.vendored.generate",
+                "--out",
+                "/home/cld-main/work/vqcc-data/pra325-invsqrt-vendored-63q/tmp/ledger-rebuild-n1vaajuv/out/invsqrt"
+              ],
+              "copied": {
+                "invsqrt.kmb": "inputs/mrmeows/qcc-1375-open-circuits-v8/invsqrt.kmb"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          },
+          "vendored_circuits": {
+            "invsqrt.kmb": "inputs/mrmeows/qcc-1375-open-circuits-v8/invsqrt.kmb"
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-03T03:38:03.369970+00:00",
+      "zip_sha256": "a0c0d32fa323b75f2d5d77bf2ef25456ac1d0d45850e65d86a1c880c7e2f64f4"
+    }
+  ],
+  "generator_commit": "f4987444ac5b11ce485df40c871bc2df50404f21",
+  "geometric_mean": 22.05859829244158,
+  "git_branch": "op-vqcc/pra325-invsqrt-vendored-63q",
+  "kaggle_submission_id": null,
+  "kickmix_build_id": "c66b3216c4029e0cdfd09054306aa0feadf53ab2f50c1164e37f752874e5005e",
+  "kind": "candidate",
+  "manifest_id": "76b087d7-dc3e-44ef-bb06-d41123ecec87",
+  "notes": "PRA-325: submission-011 with only invsqrt.kmb changed. Fixed salt, full shots; no upload.\nRepeat G5 on published generator commit.",
+  "operator": "584bb41d-d054-474a-b560-d2394375afcf",
+  "parent_candidate_id": "pra309-chem-8-143-60",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64",
+  "python_version": "3.13.13",
+  "qualtran_pin": null,
+  "salt_label": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+  "schema_version": "1",
+  "source_candidate_id": null,
+  "submitted_at_utc": null,
+  "tasks": {
+    "dfthcsos": {
+      "baseline_cost": 3355599588.3155365,
+      "cost": 343172572.78225887,
+      "eps_plus": null,
+      "evidence": [
+        "17d27a3a99cc30a1f6c283fa171a38f1d47d2c74165834868b502d9be74f91cf"
+      ],
+      "failures": null,
+      "files": {
+        "dfthcsos/angle_k_0.kmb": "d0f7e6bf8057b171c22a0cbef041ccecf1334fb17e968fd924286ff70d66d08a",
+        "dfthcsos/angle_k_1.kmb": "468475d7214894af0616870bdce211799bc2e97682699c97f89d5afbc20824f8",
+        "dfthcsos/angle_k_10.kmb": "2aa48c950a5d0850ddd544886eb5720f4a92f0b7cf496f182f4b9b9a980a8de7",
+        "dfthcsos/angle_k_11.kmb": "78c041703bbc43f795ae4ab9224a15e2a6dc97d60c76cf9927226de6c959a466",
+        "dfthcsos/angle_k_12.kmb": "e43da6265070311362619ce8c57f780e41f519d0be0590049bba8c2c885c41fd",
+        "dfthcsos/angle_k_13.kmb": "fbdac0002c7cd3e66487f966ccac1edf2ac40f628fb7d22af048c1ce66f60219",
+        "dfthcsos/angle_k_14.kmb": "8b6d5738e981696154031d1f7c71b90fcde08ffd2fea1ae8525b545fd2c6c5c1",
+        "dfthcsos/angle_k_2.kmb": "f31de4b7672f853cbecc21be77e30cb6e1ecc837a5d4680ffee77fe7d147bf14",
+        "dfthcsos/angle_k_3.kmb": "3b175fb0abaa7e20fe22d021c77cb27e16658fd088d6f78bf307286e50319736",
+        "dfthcsos/angle_k_4.kmb": "2990dbbf6177c166e32426803dd6f2a969659238b580a8500b9359cb12252ab2",
+        "dfthcsos/angle_k_5.kmb": "b4d36019132b43661850f984cf8eb723482cfb0af7eeb4cadb0964b6cc103e2a",
+        "dfthcsos/angle_k_6.kmb": "5c0bd4a2cd9436c925569a33044bac964653709b38a84d1df57e15bb2d60d6c6",
+        "dfthcsos/angle_k_7.kmb": "dead802918d2183ecb2d3c96d6ea1df5ba7e5240d3a20cf63dbfc8fa146bb05f",
+        "dfthcsos/angle_k_8.kmb": "d2e22516ab580482d755dca2f1f999cb2acb83cffda74df0ef1d7f0531fa3a73",
+        "dfthcsos/angle_k_9.kmb": "663497ad211daa8803a60e1cfff5d4e760499f971054c2908fe3a59489aa597c",
+        "dfthcsos/submission.npz": "aef36d39b83bbbf696e909884218f6c02f067baef14a29de1c41306bc1f6395b"
+      },
+      "measured": true,
+      "metrics": {
+        "E_gap": 3.914902197284391,
+        "Lambda": 305.662648282956,
+        "angles_qubits": 128,
+        "batch_size": 5,
+        "brot": 8,
+        "error_1": 0.01582999310172256,
+        "error_2": 0.01999880580061996,
+        "lambda_eff": 48.76425214813735,
+        "num_circuits": 15,
+        "persistent_qubits": 126,
+        "submission_sha256": "c88f058efddd1b273a7161ebdb57740ff3da36452acf337995c19ff67951a414",
+        "temporary_qubits": 304
+      },
+      "num_qubits": 430,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Declared non-circuit factor submission.npz SHA-256 aef36d39b83bbbf696e909884218f6c02f067baef14a29de1c41306bc1f6395b, somejoint/qcc-our-chemistry-b143-c60-xor2 version 1, licence field Apache 2.0, copied under D-PRA211-05. The fit is not in the published source. All 15 circuits regenerated by the ported full-XOR J=5 compiler (notebook somejoint/quantum-circuits-22-67-local-gm-full-xor-chem v18, Apache-2.0) from committed plans; no certificate or circuit input. Full rows: ledger/manifests/inputs/pra309-chem-8-143-60.json; notices/30-dfthcsos.txt.",
+        "parent_url": "https://www.kaggle.com/datasets/somejoint/qcc-our-chemistry-b143-c60-xor2"
+      },
+      "ratio": 9.778169511363153,
+      "rotation_count": null,
+      "shots": 78080,
+      "t_count": null,
+      "task": "dfthcsos",
+      "toffoli_count": 16366.0,
+      "verifier_sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+    },
+    "dqi": {
+      "baseline_cost": 24439465632206.816,
+      "cost": 446550365194.16925,
+      "eps_plus": 0.0008660587301657926,
+      "evidence": [
+        "17d27a3a99cc30a1f6c283fa171a38f1d47d2c74165834868b502d9be74f91cf"
+      ],
+      "failures": 0,
+      "files": {
+        "dqi.kmb": "7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "7beea291a5de36ef2b4fb50585b2f8d7cce02d3c575b491cf5dcc93e9d9655f6",
+        "empirical_error_rate": 0.0,
+        "log2_delta": -128.0,
+        "max_toffoli_count": 487331,
+        "mean_error_weight": 31.046737331746634,
+        "phase_errors": 0,
+        "repetition_factor": 1.1912604648115832,
+        "value_errors": 0
+      },
+      "num_qubits": 889,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Kernel 140675727 v12 (Agniv Banerjee, SomeJoint), source 18d6760953783bec316ddb46266a1b5ccc50c291fbf47ec35f87c73f4d0cf2ac. build.py closure vendored verbatim under tasks/dqi/fused/source/. Design lineage: rebuilt from a pseudocode description of the Schur decoder (jday96314/QuantumAI, no licence; card aba6c540, D-PRA269-01, D-PRA273-01); recorded, not gated. See tasks/dqi/fused/PROVENANCE.md. No circuit input.",
+        "parent_url": "https://www.kaggle.com/code/somejoint/quantum-circuits-21-34-local-gm-fused-dqi"
+      },
+      "ratio": 54.72947182918558,
+      "rotation_count": null,
+      "shots": 102400,
+      "t_count": null,
+      "task": "dqi",
+      "toffoli_count": 474307.7251367188,
+      "verifier_sha256": "f14274bc0943fb9769ddb01131be6063191a15009fe1caf1d4bdd9fd25194e65"
+    },
+    "invsqrt": {
+      "baseline_cost": 2076774.233715282,
+      "cost": 103546.24877647778,
+      "eps_plus": null,
+      "evidence": [
+        "17d27a3a99cc30a1f6c283fa171a38f1d47d2c74165834868b502d9be74f91cf"
+      ],
+      "failures": 0,
+      "files": {
+        "invsqrt.kmb": "0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6",
+        "max_toffoli_count": 1416,
+        "rotation_eps": 2.434041480874084e-13,
+        "toffoli_equivalent": 1643.5912504202822,
+        "worst_error_over_tolerance": 0.9993237694056958,
+        "worst_x": 161
+      },
+      "num_qubits": 63,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Unchanged vendored circuit under D-PRA341-01. mrmeows dataset v8 circuits/invsqrt.kmb, SHA-256 0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6. Licence ACCEPT: PRA-346, comment 1f89b270-3343-4d27-83b2-af6a7a9fc517. Five upstream credits and LICENSE preserved in tasks/invsqrt/vendored/. No own-generator claim; no Schur or k256 artifact.",
+        "parent_url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits/versions/8"
+      },
+      "ratio": 20.056489329694145,
+      "rotation_count": 41.0,
+      "shots": 200540928,
+      "t_count": 1.0,
+      "task": "invsqrt",
+      "toffoli_count": 1348.5004265313862,
+      "verifier_sha256": "ddef520dec6b68d1cf0a6f328ddd36d79eb84570b9192cf3f7acaf073f06733a"
+    }
+  },
+  "timestamp_utc": "2026-10-29T05:41:45.650217+00:00",
+  "zip_sha256": "a0c0d32fa323b75f2d5d77bf2ef25456ac1d0d45850e65d86a1c880c7e2f64f4"
+}

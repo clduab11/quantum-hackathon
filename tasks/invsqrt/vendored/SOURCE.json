@@ -1,0 +1,17 @@
+{
+  "kind": "vendored_circuit",
+  "owner": "mrmeows",
+  "slug": "qcc-1375-open-circuits",
+  "version": "8",
+  "member": "circuits/invsqrt.kmb",
+  "source_url": "https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits/versions/8",
+  "download_url": "https://www.kaggle.com/api/v1/datasets/download/mrmeows/qcc-1375-open-circuits/circuits%2Finvsqrt.kmb?datasetVersionNumber=8",
+  "path": "inputs/mrmeows/qcc-1375-open-circuits-v8/invsqrt.kmb",
+  "sha256": "0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6",
+  "size_bytes": 459891,
+  "licence": "Apache-2.0",
+  "licence_record": "PRA-346",
+  "licence_record_comment": "1f89b270-3343-4d27-83b2-af6a7a9fc517",
+  "licence_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+  "upstream_notice_sha256": "77a796583fe58d2b3e850b7e849cf0822ecffb0cd28e1d8f4a8c79d4f94b147f"
+}

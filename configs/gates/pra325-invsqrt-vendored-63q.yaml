@@ -1,0 +1,80 @@
+# PRA-325: submission-011 with only the accepted invsqrt member changed.
+# G5 verifies the accepted vendored circuit against its pinned source.
+schema: 1
+salt_label: PRA171_LOCAL_PUBLIC_FIXED_SALT_0001
+gates:
+- id: G0
+  name: pre-flight (metric-only file checks, no simulation)
+  check: ledger.gates.checks:g0_preflight
+  waivable: false
+  params:
+    hook: ledger.gates.g0_preflight:preflight
+- id: G1
+  name: smoke on small instances
+  check: ledger.gates.checks:per_task
+  waivable: false
+  params:
+    hooks:
+      invsqrt: tasks.invsqrt.vendored.gates:g1_smoke
+      dqi: tasks.dqi.fused.gates:g1_smoke
+      dfthcsos: tasks.dfthcsos.b143_gates:g1_smoke
+- id: G2
+  name: fast proxy
+  check: ledger.gates.checks:per_task
+  waivable: false
+  params:
+    hooks:
+      invsqrt: tasks.invsqrt.vendored.gates:g2_proxy
+      dqi: tasks.dqi.gates:g2_proxy
+      dfthcsos: tasks.dfthcsos.gates:g2_proxy
+- id: G3
+  name: full local verifier
+  check: ledger.gates.checks:g3_full_verifier
+  waivable: false
+  params:
+    hook: harness.score_local:score_submission
+    expected_shots:
+      invsqrt: 200540928
+      dqi: 102400
+      dfthcsos: 78080
+- id: G4
+  name: strict improvement over parent and archive
+  check: tasks.invsqrt.vendored.gates:g4_floor
+  waivable: false
+- id: G5
+  name: byte-identical rebuild from a clean worktree + provenance
+  check: ledger.gates.checks:g5_rebuild_and_provenance
+  waivable: false
+  params:
+    timeout_seconds: 7200
+generators:
+  invsqrt:
+  - '{python}'
+  - -m
+  - tasks.invsqrt.vendored.generate
+  - --out
+  - '{out}'
+  dqi:
+  - '{python}'
+  - -m
+  - tasks.dqi.generate_fused
+  - --out
+  - '{out}'
+  dfthcsos:
+  - '{python}'
+  - -m
+  - tasks.dfthcsos.b143
+  - --out
+  - '{out}'
+inputs:
+  invsqrt:
+  - kind: vendored_circuit
+    path: inputs/mrmeows/qcc-1375-open-circuits-v8/invsqrt.kmb
+    sha256: 0766a111a76f241aa57fbbed466436d743be13436943ddb0628c291ca07d67d6
+    source_url: https://www.kaggle.com/datasets/mrmeows/qcc-1375-open-circuits/versions/8
+    version: "8"
+    licence: Apache-2.0
+    licence_record: PRA-346
+  dfthcsos:
+  - path: inputs/somejoint/qcc-our-chemistry-b143-c60-xor2-v1/submission.npz
+    sha256: aef36d39b83bbbf696e909884218f6c02f067baef14a29de1c41306bc1f6395b
