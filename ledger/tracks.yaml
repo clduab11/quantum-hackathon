@@ -20,29 +20,27 @@ tracks:
     aim: >-
       Upload only circuits that pass every check, and rebuild the best public designs in our own
       code.
-    updated_at_utc: "2026-11-02T17:47:39+00:00"
+    updated_at_utc: "2026-11-13T13:44:49+00:00"
     figures:
-      # submission-011 manifest (D-PRA341-02); invsqrt and dqi unchanged from submission-010.
+      # submission-012 manifest: the syed3000 v12 public portfolio, Apache-2.0, shipped unchanged as
+      # vendored_circuit inputs (D-PRA341-01). Our own best per circuit, from submission-011, is in
+      # each note. PRA-285's negative result (D-PRA285-01: storage changes alone cannot reach
+      # Q <= 68) stays in the decisions register; its 13.24 figure left this page once a public
+      # 46-qubit circuit shipped.
       - label: Square-root circuit (invsqrt)
-        value: 13.24
+        value: 25.91
         state: shipped
+        note: A licensed public circuit; our own best is 13.24.
       - label: Decoder circuit (dqi)
-        value: 54.73
+        value: 67.18
         state: shipped
-        note: The best public design, built from its published source.
+        note: Same public set; our own rebuild is 54.73.
       - label: Chemistry circuit (dfthcsos)
-        value: 9.78
+        value: 11.31
         state: shipped
-        note: Our own circuits, built from the best published description of the molecule.
-      # PRA-285, finished 2026-10-27 as a negative result (D-PRA285-01, merged #70): storage and
-      # uncompute changes alone cannot reach Q <= 68 (no circuit at 68 qubits or fewer); the only
-      # measured point is the shipped Q84 circuit at 13.24, which is the value shown here.
-      - label: A square-root circuit with fewer qubits (not achieved)
-        value: 13.24
-        state: shipped
-        note: >-
-          Negative result: storage changes alone cannot reach 68 qubits or fewer. The measured
-          13.24 is the shipped 84-qubit circuit, not a smaller one.
+        note: Same public set; our own best is 9.78.
+      - label: Rebuild the shipped public circuits in our own code
+        state: in work
 
   - id: B
     name: Chemistry engine
@@ -65,11 +63,12 @@ tracks:
     aim: >-
       Make the decoder circuit (dqi) cheaper than any published version, starting from the best
       public one once the ship lane has rebuilt it.
-    updated_at_utc: "2026-10-27T19:09:24+00:00"
+    updated_at_utc: "2026-11-13T13:44:49+00:00"
     figures:
-      # submission-009 manifest (D-PRA202-34).
-      - label: Our best decoder so far
-        value: 54.73
+      # submission-012 manifest: the public portfolio's decoder, shipped unchanged. Our own rebuild
+      # of the earlier best public decoder (submission-009 to -011) measured 54.73.
+      - label: Best public decoder, shipped unchanged
+        value: 67.18
         state: shipped
       - label: A decoder beyond the best public one
         state: in work

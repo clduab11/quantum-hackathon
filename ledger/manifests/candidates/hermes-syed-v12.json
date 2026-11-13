@@ -1,0 +1,618 @@
+{
+  "candidate_id": "hermes-syed-v12",
+  "cli_command": "ledger/evidence/hermes-syed-v12/run_candidate.py --package-root C:/Users/cld-main/Desktop/ops/quantum-hackathon-phase0-data",
+  "declared_inputs": {
+    "dfthcsos": [
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_0.kmb",
+        "sha256": "ce7ebaf342c5b49f7d539637359fb8a282718fb3057e7b25dd193f2a6a4b8974",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_1.kmb",
+        "sha256": "3eac70665f021b0e304106fd62749277d4d69db775df008aacd6d950e4934193",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_2.kmb",
+        "sha256": "c3e1454e29a05c3c28bcfd16c2aee02340b5d439d9466774424fedf0ed7601d1",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_3.kmb",
+        "sha256": "d26b576ae789b0471ec6c11b7317c7c69eb3d7190472af8120ccf25cf217a8ea",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_4.kmb",
+        "sha256": "2efacc9d944aa5a855acf780e6bbc3c07af16c0275eb9549bb24adc70acca344",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_5.kmb",
+        "sha256": "7e4ed9a363c8f56d85410185c7b4449211788bc61e81b3dc7cbdd10ab7ce8a42",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_6.kmb",
+        "sha256": "26ab1d5df8132bbc28e068a4eef0b247ea21a96fa4034f89a6d1bf306f07e284",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_7.kmb",
+        "sha256": "1ae98642315e7aaedfde99773af4ae48198bf8b4f2e11e97883d6aa1bfe12bee",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_8.kmb",
+        "sha256": "e69c554c360c709e52126a6f773afeaa3564da7be0927d6293665f342203771f",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_9.kmb",
+        "sha256": "38848ce19bd553e4007a454d9b7d392d05ac105cf4b269f41521bd1003bf838e",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_10.kmb",
+        "sha256": "fdb67807154e35d9f41471c22b38bbc3ed07e5c93efef30a57f0599fb8400ff7",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_11.kmb",
+        "sha256": "d22baf8e2d294165618bcee40d958ef2806f0b35352c8b92e0d201aff3269c37",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_12.kmb",
+        "sha256": "b1b6af502f4bf02e521ab888600f645aa5a5bed028290466b54a835423eb2517",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_13.kmb",
+        "sha256": "1843d7993215656e4e0eee69169966ba269d544bc0b90e855e4ed5e6e113accc",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_14.kmb",
+        "sha256": "b763f0cd2fdeaaa31e7811084e51fde5d51575b036fa22854fb28172c1712a8e",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      },
+      {
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__submission.npz",
+        "sha256": "6418ec8e10b1a8da967ee26278434f9ac950474741185f4d61363e17a03da77f"
+      }
+    ],
+    "dqi": [
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dqi.kmb",
+        "sha256": "7cbe8ecf6f6e9743529b574f019504bb1712ce06fbb570c719ce9d9e2c914cd9",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      }
+    ],
+    "invsqrt": [
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+        "path": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/invsqrt.kmb",
+        "sha256": "321aff83636214196daa9cbc9dcc9c5e12a155bcff8d9989e98b8cee40935177",
+        "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+        "version": "12"
+      }
+    ]
+  },
+  "gates": [
+    {
+      "details": {},
+      "evidence_sha256": null,
+      "gate": "G0",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-13T06:24:02.995662+00:00",
+      "zip_sha256": "55ee2315fddb8622401fe616e6bcebacf9cffc87ce8c064dadc9d990dec2528c"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "qubits": 9,
+            "status": "PASS"
+          },
+          "dqi": {
+            "modulus": 4179,
+            "primitive_element": 2,
+            "product": 233,
+            "qubits": 36,
+            "status": "PASS",
+            "toffoli": 63
+          },
+          "invsqrt": {
+            "max_qubits": 46,
+            "num_qubits": 46,
+            "sha256": "321aff83636214196daa9cbc9dcc9c5e12a155bcff8d9989e98b8cee40935177",
+            "static_toffoli": 1599,
+            "status": "PASS"
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G1",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-13T06:24:03.089858+00:00",
+      "zip_sha256": "55ee2315fddb8622401fe616e6bcebacf9cffc87ce8c064dadc9d990dec2528c"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "E_gap": 3.914898200000607,
+            "Lambda": 282.9736002829144,
+            "brot": 8,
+            "error_1": 0.019610371288992016,
+            "error_2": 0.01999877989285481,
+            "estimated_cost": 296635967.5935997,
+            "estimated_qubits": 427,
+            "estimated_toffoli": 14810,
+            "heuristic_qubits": 387,
+            "heuristic_toffoli": 6662,
+            "lambda_eff": 46.907347493481,
+            "parity": false,
+            "resources": {
+              "angles_persistent_qubits": 40,
+              "angles_qubits": 128,
+              "angles_selection_qubits": 11,
+              "angles_temporary_qubits": 77,
+              "angles_toffoli": 8148,
+              "angles_toffoli_per_pass": 4074.0,
+              "angles_within_cap": true,
+              "brot": 8,
+              "givens_rotations_toffoli": 2250,
+              "heuristic_persistent_qubits": 84,
+              "heuristic_qubits": 387,
+              "heuristic_temporary_qubits": 303,
+              "heuristic_toffoli": 6662,
+              "inner_state_prep_persistent_qubits": 44,
+              "inner_state_prep_qubits": 347,
+              "inner_state_prep_temporary_qubits": 303,
+              "inner_state_prep_toffoli": 4095,
+              "keep_bits": 10,
+              "outer_state_prep_persistent_qubits": 40,
+              "outer_state_prep_qubits": 130,
+              "outer_state_prep_temporary_qubits": 90,
+              "outer_state_prep_toffoli": 317,
+              "persistent_qubits": 124,
+              "qubits": 427,
+              "temporary_qubits": 303,
+              "toffoli": 14810
+            },
+            "status": "PASS"
+          },
+          "dqi": {
+            "failures": 0,
+            "num_qubits": 889,
+            "parity": false,
+            "shots": 1536,
+            "status": "PASS",
+            "toffoli_count": 383155.466796875
+          },
+          "invsqrt": {
+            "circuit_sha256": "321aff83636214196daa9cbc9dcc9c5e12a155bcff8d9989e98b8cee40935177",
+            "max_toffoli_count": 1599,
+            "num_ops": 34789,
+            "num_qubits": 46,
+            "parity": false,
+            "reaction_depth": 1322,
+            "rotation_count": 33.0,
+            "rotation_eps": 4.480093839111824e-11,
+            "scope": "x=1..1536, one shot per input",
+            "score": 78852.1344170659,
+            "status": "PASS",
+            "t_count": 1.0,
+            "toffoli_count": 1511.376953125,
+            "toffoli_equivalent": 1714.1768351536066,
+            "verified_shots": 1536,
+            "worst_error_over_tolerance": 0.7513279870269562,
+            "worst_x": 992
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G2",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-13T06:24:43.190981+00:00",
+      "zip_sha256": "55ee2315fddb8622401fe616e6bcebacf9cffc87ce8c064dadc9d990dec2528c"
+    },
+    {
+      "details": {
+        "result": {
+          "status": "FAIL: Baseline environment differs: recalibrate with the same imports and public salt."
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G3",
+      "reason": "Baseline environment differs: recalibrate with the same imports and public salt.",
+      "status": "FAIL",
+      "timestamp_utc": "2026-11-13T06:24:44.227567+00:00",
+      "zip_sha256": "55ee2315fddb8622401fe616e6bcebacf9cffc87ce8c064dadc9d990dec2528c"
+    },
+    {
+      "details": {
+        "geometric_mean": 27.00208481418463
+      },
+      "evidence_sha256": "77af56e05fb286bd7e1b56bbc10862e13274192b761828f5ee302ed9b4b7017e",
+      "gate": "G3",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-13T07:38:20.889650+00:00",
+      "zip_sha256": "55ee2315fddb8622401fe616e6bcebacf9cffc87ce8c064dadc9d990dec2528c"
+    },
+    {
+      "details": {
+        "archive_best": {
+          "candidate_id": "pra325-invsqrt-vendored-63q",
+          "geometric_mean": 22.05859829244158
+        },
+        "geometric_mean": 27.00208481418463,
+        "parent": 22.05859829244158
+      },
+      "evidence_sha256": null,
+      "gate": "G4",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-13T07:38:21.407305+00:00",
+      "zip_sha256": "55ee2315fddb8622401fe616e6bcebacf9cffc87ce8c064dadc9d990dec2528c"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "6890d0f19a10b94f3f7111743a4520d23c07c2e6",
+          "copied_inputs": {
+            "dfthcsos/submission.npz": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__submission.npz"
+          },
+          "inputs": {
+            "1843d7993215656e4e0eee69169966ba269d544bc0b90e855e4ed5e6e113accc": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_13.kmb",
+            "1ae98642315e7aaedfde99773af4ae48198bf8b4f2e11e97883d6aa1bfe12bee": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_7.kmb",
+            "26ab1d5df8132bbc28e068a4eef0b247ea21a96fa4034f89a6d1bf306f07e284": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_6.kmb",
+            "2efacc9d944aa5a855acf780e6bbc3c07af16c0275eb9549bb24adc70acca344": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_4.kmb",
+            "321aff83636214196daa9cbc9dcc9c5e12a155bcff8d9989e98b8cee40935177": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/invsqrt.kmb",
+            "38848ce19bd553e4007a454d9b7d392d05ac105cf4b269f41521bd1003bf838e": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_9.kmb",
+            "3eac70665f021b0e304106fd62749277d4d69db775df008aacd6d950e4934193": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_1.kmb",
+            "6418ec8e10b1a8da967ee26278434f9ac950474741185f4d61363e17a03da77f": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__submission.npz",
+            "7cbe8ecf6f6e9743529b574f019504bb1712ce06fbb570c719ce9d9e2c914cd9": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dqi.kmb",
+            "7e4ed9a363c8f56d85410185c7b4449211788bc61e81b3dc7cbdd10ab7ce8a42": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_5.kmb",
+            "b1b6af502f4bf02e521ab888600f645aa5a5bed028290466b54a835423eb2517": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_12.kmb",
+            "b763f0cd2fdeaaa31e7811084e51fde5d51575b036fa22854fb28172c1712a8e": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_14.kmb",
+            "c3e1454e29a05c3c28bcfd16c2aee02340b5d439d9466774424fedf0ed7601d1": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_2.kmb",
+            "ce7ebaf342c5b49f7d539637359fb8a282718fb3057e7b25dd193f2a6a4b8974": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_0.kmb",
+            "d22baf8e2d294165618bcee40d958ef2806f0b35352c8b92e0d201aff3269c37": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_11.kmb",
+            "d26b576ae789b0471ec6c11b7317c7c69eb3d7190472af8120ccf25cf217a8ea": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_3.kmb",
+            "e69c554c360c709e52126a6f773afeaa3564da7be0927d6293665f342203771f": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_8.kmb",
+            "fdb67807154e35d9f41471c22b38bbc3ed07e5c93efef30a57f0599fb8400ff7": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_10.kmb"
+          },
+          "status": "PASS",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "C:\\Users\\cld-main\\Desktop\\github-projects\\quantum-hackathon\\.venv\\Scripts\\python.exe",
+                "-m",
+                "tasks.public_portfolio.generate",
+                "--task",
+                "dfthcsos",
+                "--out",
+                "C:\\Users\\cld-main\\AppData\\Local\\hermes\\cache\\scratch\\ledger-rebuild-fb281k2s\\out\\dfthcsos"
+              ],
+              "copied": {
+                "dfthcsos/angle_k_0.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_0.kmb",
+                "dfthcsos/angle_k_1.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_1.kmb",
+                "dfthcsos/angle_k_10.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_10.kmb",
+                "dfthcsos/angle_k_11.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_11.kmb",
+                "dfthcsos/angle_k_12.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_12.kmb",
+                "dfthcsos/angle_k_13.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_13.kmb",
+                "dfthcsos/angle_k_14.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_14.kmb",
+                "dfthcsos/angle_k_2.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_2.kmb",
+                "dfthcsos/angle_k_3.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_3.kmb",
+                "dfthcsos/angle_k_4.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_4.kmb",
+                "dfthcsos/angle_k_5.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_5.kmb",
+                "dfthcsos/angle_k_6.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_6.kmb",
+                "dfthcsos/angle_k_7.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_7.kmb",
+                "dfthcsos/angle_k_8.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_8.kmb",
+                "dfthcsos/angle_k_9.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_9.kmb",
+                "dfthcsos/submission.npz": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__submission.npz"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "C:\\Users\\cld-main\\Desktop\\github-projects\\quantum-hackathon\\.venv\\Scripts\\python.exe",
+                "-m",
+                "tasks.public_portfolio.generate",
+                "--task",
+                "dqi",
+                "--out",
+                "C:\\Users\\cld-main\\AppData\\Local\\hermes\\cache\\scratch\\ledger-rebuild-fb281k2s\\out\\dqi"
+              ],
+              "copied": {
+                "dqi.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dqi.kmb"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "invsqrt": {
+              "argv": [
+                "C:\\Users\\cld-main\\Desktop\\github-projects\\quantum-hackathon\\.venv\\Scripts\\python.exe",
+                "-m",
+                "tasks.public_portfolio.generate",
+                "--task",
+                "invsqrt",
+                "--out",
+                "C:\\Users\\cld-main\\AppData\\Local\\hermes\\cache\\scratch\\ledger-rebuild-fb281k2s\\out\\invsqrt"
+              ],
+              "copied": {
+                "invsqrt.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/invsqrt.kmb"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          },
+          "vendored_circuits": {
+            "dfthcsos/angle_k_0.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_0.kmb",
+            "dfthcsos/angle_k_1.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_1.kmb",
+            "dfthcsos/angle_k_10.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_10.kmb",
+            "dfthcsos/angle_k_11.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_11.kmb",
+            "dfthcsos/angle_k_12.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_12.kmb",
+            "dfthcsos/angle_k_13.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_13.kmb",
+            "dfthcsos/angle_k_14.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_14.kmb",
+            "dfthcsos/angle_k_2.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_2.kmb",
+            "dfthcsos/angle_k_3.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_3.kmb",
+            "dfthcsos/angle_k_4.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_4.kmb",
+            "dfthcsos/angle_k_5.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_5.kmb",
+            "dfthcsos/angle_k_6.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_6.kmb",
+            "dfthcsos/angle_k_7.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_7.kmb",
+            "dfthcsos/angle_k_8.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_8.kmb",
+            "dfthcsos/angle_k_9.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dfthcsos__angle_k_9.kmb",
+            "dqi.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/dqi.kmb",
+            "invsqrt.kmb": "inputs/syed3000/vqcc-own-circuit-portfolio-v12/invsqrt.kmb"
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-13T07:38:41.588170+00:00",
+      "zip_sha256": "55ee2315fddb8622401fe616e6bcebacf9cffc87ce8c064dadc9d990dec2528c"
+    }
+  ],
+  "generator_commit": "6890d0f19a10b94f3f7111743a4520d23c07c2e6",
+  "geometric_mean": 27.00208481418463,
+  "git_branch": "op-vqcc/hermes-syed-v12",
+  "kaggle_submission_id": null,
+  "kickmix_build_id": "cf84657d91fb53d7558872ac64969dd5ad88d0bf7fdd8ae5f7e00b8c95fdf4cc",
+  "kind": "candidate",
+  "manifest_id": "9bf1c755-dba9-4155-ac71-2d10b82b25b5",
+  "notes": "Apache-2.0 vendored circuits, pinned by URL, version and SHA-256; the author's own-work and no-public-code statements are recorded, not certified by this repository.",
+  "operator": "unknown",
+  "parent_candidate_id": "pra325-invsqrt-vendored-63q",
+  "platform": "Windows-11-AMD64",
+  "python_version": "3.13.12",
+  "qualtran_pin": null,
+  "salt_label": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+  "schema_version": "1",
+  "source_candidate_id": null,
+  "submitted_at_utc": null,
+  "tasks": {
+    "dfthcsos": {
+      "baseline_cost": 3355599588.3155365,
+      "cost": 296635967.5935997,
+      "eps_plus": null,
+      "evidence": [
+        "77af56e05fb286bd7e1b56bbc10862e13274192b761828f5ee302ed9b4b7017e"
+      ],
+      "failures": null,
+      "files": {
+        "dfthcsos/angle_k_0.kmb": "ce7ebaf342c5b49f7d539637359fb8a282718fb3057e7b25dd193f2a6a4b8974",
+        "dfthcsos/angle_k_1.kmb": "3eac70665f021b0e304106fd62749277d4d69db775df008aacd6d950e4934193",
+        "dfthcsos/angle_k_10.kmb": "fdb67807154e35d9f41471c22b38bbc3ed07e5c93efef30a57f0599fb8400ff7",
+        "dfthcsos/angle_k_11.kmb": "d22baf8e2d294165618bcee40d958ef2806f0b35352c8b92e0d201aff3269c37",
+        "dfthcsos/angle_k_12.kmb": "b1b6af502f4bf02e521ab888600f645aa5a5bed028290466b54a835423eb2517",
+        "dfthcsos/angle_k_13.kmb": "1843d7993215656e4e0eee69169966ba269d544bc0b90e855e4ed5e6e113accc",
+        "dfthcsos/angle_k_14.kmb": "b763f0cd2fdeaaa31e7811084e51fde5d51575b036fa22854fb28172c1712a8e",
+        "dfthcsos/angle_k_2.kmb": "c3e1454e29a05c3c28bcfd16c2aee02340b5d439d9466774424fedf0ed7601d1",
+        "dfthcsos/angle_k_3.kmb": "d26b576ae789b0471ec6c11b7317c7c69eb3d7190472af8120ccf25cf217a8ea",
+        "dfthcsos/angle_k_4.kmb": "2efacc9d944aa5a855acf780e6bbc3c07af16c0275eb9549bb24adc70acca344",
+        "dfthcsos/angle_k_5.kmb": "7e4ed9a363c8f56d85410185c7b4449211788bc61e81b3dc7cbdd10ab7ce8a42",
+        "dfthcsos/angle_k_6.kmb": "26ab1d5df8132bbc28e068a4eef0b247ea21a96fa4034f89a6d1bf306f07e284",
+        "dfthcsos/angle_k_7.kmb": "1ae98642315e7aaedfde99773af4ae48198bf8b4f2e11e97883d6aa1bfe12bee",
+        "dfthcsos/angle_k_8.kmb": "e69c554c360c709e52126a6f773afeaa3564da7be0927d6293665f342203771f",
+        "dfthcsos/angle_k_9.kmb": "38848ce19bd553e4007a454d9b7d392d05ac105cf4b269f41521bd1003bf838e",
+        "dfthcsos/submission.npz": "6418ec8e10b1a8da967ee26278434f9ac950474741185f4d61363e17a03da77f"
+      },
+      "measured": true,
+      "metrics": {
+        "E_gap": 3.914898200000607,
+        "Lambda": 282.9736002829144,
+        "angles_qubits": 128,
+        "batch_size": 5,
+        "brot": 8,
+        "error_1": 0.019610371288992016,
+        "error_2": 0.01999877989285481,
+        "lambda_eff": 46.907347493481,
+        "num_circuits": 15,
+        "persistent_qubits": 124,
+        "submission_sha256": "ebdf11d79863ff91e46ed620a7340ee0aeb178276dbd622ef8edc463d42cf8f8",
+        "temporary_qubits": 303
+      },
+      "num_qubits": 427,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Apache-2.0 vendored circuits, pinned by URL, version and SHA-256; the author's own-work and no-public-code statements are recorded, not certified by this repository.",
+        "parent_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12"
+      },
+      "ratio": 11.312180432929868,
+      "rotation_count": null,
+      "shots": 78080,
+      "t_count": null,
+      "task": "dfthcsos",
+      "toffoli_count": 14810.0,
+      "verifier_sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+    },
+    "dqi": {
+      "baseline_cost": 24439465632206.816,
+      "cost": 363800079945.19495,
+      "eps_plus": 0.0009488155716079551,
+      "evidence": [
+        "77af56e05fb286bd7e1b56bbc10862e13274192b761828f5ee302ed9b4b7017e"
+      ],
+      "failures": 2,
+      "files": {
+        "dqi.kmb": "7cbe8ecf6f6e9743529b574f019504bb1712ce06fbb570c719ce9d9e2c914cd9"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "7cbe8ecf6f6e9743529b574f019504bb1712ce06fbb570c719ce9d9e2c914cd9",
+        "empirical_error_rate": 1.953125e-05,
+        "log2_delta": -128.0,
+        "max_toffoli_count": 384003,
+        "mean_error_weight": 31.046737331746634,
+        "phase_errors": 0,
+        "repetition_factor": 1.2013880602795501,
+        "value_errors": 2
+      },
+      "num_qubits": 889,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Apache-2.0 vendored circuits, pinned by URL, version and SHA-256; the author's own-work and no-public-code statements are recorded, not certified by this repository.",
+        "parent_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12"
+      },
+      "ratio": 67.17828549099968,
+      "rotation_count": null,
+      "shots": 102400,
+      "t_count": null,
+      "task": "dqi",
+      "toffoli_count": 383156.28759765625,
+      "verifier_sha256": "f14274bc0943fb9769ddb01131be6063191a15009fe1caf1d4bdd9fd25194e65"
+    },
+    "invsqrt": {
+      "baseline_cost": 2076774.233715282,
+      "cost": 80162.75511623152,
+      "eps_plus": null,
+      "evidence": [
+        "77af56e05fb286bd7e1b56bbc10862e13274192b761828f5ee302ed9b4b7017e"
+      ],
+      "failures": 0,
+      "files": {
+        "invsqrt.kmb": "321aff83636214196daa9cbc9dcc9c5e12a155bcff8d9989e98b8cee40935177"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "321aff83636214196daa9cbc9dcc9c5e12a155bcff8d9989e98b8cee40935177",
+        "max_toffoli_count": 1599,
+        "rotation_eps": 6.418510368591089e-13,
+        "toffoli_equivalent": 1742.668589483294,
+        "worst_error_over_tolerance": 0.973575996935943,
+        "worst_x": 54566
+      },
+      "num_qubits": 46,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Apache-2.0 vendored circuits, pinned by URL, version and SHA-256; the author's own-work and no-public-code statements are recorded, not certified by this repository.",
+        "parent_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12"
+      },
+      "ratio": 25.906971768922805,
+      "rotation_count": 33.0,
+      "shots": 200540928,
+      "t_count": 1.0,
+      "task": "invsqrt",
+      "toffoli_count": 1511.570530021682,
+      "verifier_sha256": "ddef520dec6b68d1cf0a6f328ddd36d79eb84570b9192cf3f7acaf073f06733a"
+    }
+  },
+  "timestamp_utc": "2026-11-13T06:23:58.471860+00:00",
+  "zip_sha256": "55ee2315fddb8622401fe616e6bcebacf9cffc87ce8c064dadc9d990dec2528c"
+}

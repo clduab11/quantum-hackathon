@@ -1,0 +1,13 @@
+{
+  "candidate_id": "hermes-syed-v12",
+  "error": "upload raised CalledProcessError: Command '['C:/Users/cld-main/Desktop/github-projects/quantum-hackathon/.venv/Scripts/python.exe', 'C:/Users/cld-main/AppData/Local/hermes/cache/scratch/kaggle_submit_and_ref.py', 'submission-012 hermes-syed-v12 zip 55ee2315 Syed v12 public portfolio Apache-2.0 vendored local GM 27.0021', 'ledger\\\\queue\\\\hermes-syed-v12.zip']' returned non-zero exit status 1.",
+  "operator": "unknown",
+  "outcome": "failed",
+  "reason": "Uploader wrapper exited 1 before any Kaggle row appeared; kaggle competitions submissions showed no new submission at 07:44, 07:47 and 07:48 UTC. CLI output was discarded by the wrapper; retry logs it.",
+  "reservation_id": "1a003bba-0ec1-4184-a267-f5e5d0af86a8",
+  "reserved_at_utc": "2026-11-13T07:42:46.237624+00:00",
+  "resolved_at_utc": "2026-11-13T07:48:57.625272+00:00",
+  "slot": 1,
+  "utc_day": "2026-11-13",
+  "zip_sha256": "55ee2315fddb8622401fe616e6bcebacf9cffc87ce8c064dadc9d990dec2528c"
+}

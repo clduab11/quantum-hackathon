@@ -12,29 +12,31 @@
 schema: 1
 
 leaderboard:
-  # 2026-11-02 anonymous public-board read at 17:47:39Z (2052 rows) from Chris's Claude Code
-  # session, reconciling submission-011 (Kaggle ref 57759974, public 19.20572). Prior standing was
-  # the PRA-343 / PRA-347 read at 2026-10-29T05:37:01Z (rank 848 of 1501 at 18.39393; #1 26.14113;
-  # #6 24.74409). The field grew and the top moved up; our best public entry is submission-011.
-  read_at_utc: "2026-11-02T17:47:39+00:00"
-  our_score: 19.20572         # our public score when the rank was read
-  rank: 1404
-  teams: 2052
-  leader_score: 27.99617
+  # 2026-11-13 public-board CSV downloaded with the Kaggle CLI at 13:44:49Z (2976 rows), after
+  # submission-012 (Kaggle ref 58301234, public 27.00209) scored. 542 is Kaggle's own Rank field;
+  # 60 teams share 27.00209. Prior standing was the 2026-11-02 read (rank 1404 of 2052 at 19.20572;
+  # #1 27.99617; #6 26.80320). Our best public entry is submission-012.
+  read_at_utc: "2026-11-13T13:44:49+00:00"
+  our_score: 27.00209         # our public score when the rank was read
+  rank: 542
+  teams: 2976
+  leader_score: 29.90871
   prize_line_place: 6         # last paid place (D-PRA202-14)
-  prize_line_score: 26.80320
+  prize_line_score: 28.56411
 
 best_public_per_task:
   # Kaggle publishes no per-task scores. Since 2026-10-27 these are our own measurements of the
   # best public circuits we could find, at our fixed salt with the official verifiers (D-PRA202-33),
-  # so they are still a floor on the true best (the top teams publish nothing):
-  #   invsqrt 20.06: mrmeows' 63-qubit hybrid circuit, carried in the somejoint and heliosli bundles.
-  #   dqi 54.73: the 889-qubit decoder in the same two bundles (0 value / 0 phase errors at our salt).
-  #   dfthcsos 8.91: heliosli's J5 ANGLE circuits on mrmeows' C59 table.
-  read_at_utc: "2026-10-27T09:42:00+00:00"
-  invsqrt: 20.06
-  dqi: 54.73
-  dfthcsos: 8.91
+  # so they are still a floor on the true best (the top teams publish nothing). Since 2026-11-13 the
+  # floor is the syed3000 vqcc-own-circuit-portfolio v12 (Apache-2.0), measured in full by the
+  # submission-012 G3 run (ledger/evidence/hermes-syed-v12/G3.json):
+  #   invsqrt 25.91: the 46-qubit circuit (earlier floor 20.06, mrmeows' 63-qubit hybrid).
+  #   dqi 67.18: the 889-qubit decoder, 2 value / 0 phase errors at our salt (earlier floor 54.73).
+  #   dfthcsos 11.31: the 15 ANGLE circuits on the portfolio's factor table (earlier floor 8.91).
+  read_at_utc: "2026-11-13T07:38:20+00:00"
+  invsqrt: 25.91
+  dqi: 67.18
+  dfthcsos: 11.31
 
 submission_notes:
   submission-001: The unchanged reference circuits, to prove our upload pipeline end to end.
@@ -48,6 +50,7 @@ submission_notes:
   submission-009: Cheaper decoder (dqi) and square-root (invsqrt) circuits.
   submission-010: "Only change: a cheaper chemistry circuit (dfthcsos), from a better description of the molecule."
   submission-011: "Only change: a cheaper chemistry circuit (dfthcsos), from a denser description of the molecule."
+  submission-012: All three circuits replaced by a licensed public set, copied unchanged.
 
 # The public Kaggle notebook, once it is published. null hides the link.
 notebook_url: null
