@@ -32,7 +32,7 @@ def check_members(archive: zipfile.ZipFile) -> None:
         raise UnsafeArchive("zip has duplicate paths")
     for member in members:
         path = PurePosixPath(member.filename)
-        if path.is_absolute() or ".." in path.parts or "\\" in member.filename:
+        if path.is_absolute() or ".." in path.parts or "\\" in member.orig_filename:
             raise UnsafeArchive(f"zip has an unsafe path: {member.filename!r}")
         mode = member.external_attr >> 16
         if stat.S_IFMT(mode) not in (0, stat.S_IFREG, stat.S_IFDIR):

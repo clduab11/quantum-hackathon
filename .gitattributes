@@ -1,0 +1,15 @@
+# Preserve source-map hashes and append-only register bytes on Windows.
+# Host-native CRLF conversion changes pinned inputs even when git reports clean.
+* text=auto eol=lf
+
+# These historical evidence blobs contain CRLF in Git; preserve their exact bytes.
+ledger/manifests/index-legacy.csv -text
+docs/research/dfthcsos-factorization/notes/input_sha256.tsv -text
+docs/research/dfthcsos-factorization/notes/section8_reproduction.json -text
+
+# Binary competition artifacts are never line-normalized (and are not committed).
+*.kmb -text
+*.npz -text
+*.zip -text
+*.png -text
+*.pdf -text

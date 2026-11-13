@@ -10,6 +10,7 @@ dependencies = [
     "pandas",
     "scipy",
     "pyyaml",
+    "kickmix==1.0.0; sys_platform == 'win32'",
 ]
 
 [dependency-groups]

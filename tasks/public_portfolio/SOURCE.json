@@ -1,0 +1,160 @@
+{
+  "kind": "vendored_circuit",
+  "owner": "syed3000",
+  "slug": "vqcc-own-circuit-portfolio",
+  "version": "12",
+  "source_url": "https://www.kaggle.com/datasets/syed3000/vqcc-own-circuit-portfolio/versions/12",
+  "input_dir": "inputs/syed3000/vqcc-own-circuit-portfolio-v12",
+  "licence": "Apache-2.0",
+  "licence_record": "ledger/evidence/hermes-syed-v12/provenance.md",
+  "licence_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+  "readme_sha256": "f705cd243e22775f128ac4761cd3c3a49b8ae0400ef416f765964bc282635c6e",
+  "sha256sums_sha256": "0324a756234ec6f0900b31543267618410f888ed7fb1a5d32c4eaf5885f25964",
+  "sha256sums_entries": 23,
+  "files": [
+    {
+      "dataset_file": "invsqrt.kmb",
+      "task": "invsqrt",
+      "output": "invsqrt.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "321aff83636214196daa9cbc9dcc9c5e12a155bcff8d9989e98b8cee40935177",
+      "size_bytes": 291626
+    },
+    {
+      "dataset_file": "dqi.kmb",
+      "task": "dqi",
+      "output": "dqi.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "7cbe8ecf6f6e9743529b574f019504bb1712ce06fbb570c719ce9d9e2c914cd9",
+      "size_bytes": 455590024
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_0.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_0.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "ce7ebaf342c5b49f7d539637359fb8a282718fb3057e7b25dd193f2a6a4b8974",
+      "size_bytes": 407750
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_1.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_1.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "3eac70665f021b0e304106fd62749277d4d69db775df008aacd6d950e4934193",
+      "size_bytes": 420156
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_2.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_2.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "c3e1454e29a05c3c28bcfd16c2aee02340b5d439d9466774424fedf0ed7601d1",
+      "size_bytes": 421220
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_3.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_3.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "d26b576ae789b0471ec6c11b7317c7c69eb3d7190472af8120ccf25cf217a8ea",
+      "size_bytes": 415439
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_4.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_4.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "2efacc9d944aa5a855acf780e6bbc3c07af16c0275eb9549bb24adc70acca344",
+      "size_bytes": 366414
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_5.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_5.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "7e4ed9a363c8f56d85410185c7b4449211788bc61e81b3dc7cbdd10ab7ce8a42",
+      "size_bytes": 364423
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_6.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_6.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "26ab1d5df8132bbc28e068a4eef0b247ea21a96fa4034f89a6d1bf306f07e284",
+      "size_bytes": 367137
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_7.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_7.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "1ae98642315e7aaedfde99773af4ae48198bf8b4f2e11e97883d6aa1bfe12bee",
+      "size_bytes": 372920
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_8.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_8.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "e69c554c360c709e52126a6f773afeaa3564da7be0927d6293665f342203771f",
+      "size_bytes": 353772
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_9.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_9.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "38848ce19bd553e4007a454d9b7d392d05ac105cf4b269f41521bd1003bf838e",
+      "size_bytes": 359601
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_10.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_10.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "fdb67807154e35d9f41471c22b38bbc3ed07e5c93efef30a57f0599fb8400ff7",
+      "size_bytes": 360179
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_11.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_11.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "d22baf8e2d294165618bcee40d958ef2806f0b35352c8b92e0d201aff3269c37",
+      "size_bytes": 360339
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_12.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_12.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "b1b6af502f4bf02e521ab888600f645aa5a5bed028290466b54a835423eb2517",
+      "size_bytes": 359705
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_13.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_13.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "1843d7993215656e4e0eee69169966ba269d544bc0b90e855e4ed5e6e113accc",
+      "size_bytes": 359237
+    },
+    {
+      "dataset_file": "dfthcsos__angle_k_14.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_14.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "b763f0cd2fdeaaa31e7811084e51fde5d51575b036fa22854fb28172c1712a8e",
+      "size_bytes": 361106
+    },
+    {
+      "dataset_file": "dfthcsos__submission.npz",
+      "task": "dfthcsos",
+      "output": "dfthcsos/submission.npz",
+      "kind": "package_input",
+      "sha256": "6418ec8e10b1a8da967ee26278434f9ac950474741185f4d61363e17a03da77f",
+      "size_bytes": 1847692
+    }
+  ]
+}

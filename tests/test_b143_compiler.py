@@ -99,7 +99,7 @@ def test_bundle_config_changes_only_chemistry_from_submission_010():
         if gate['id'] == 'G4':
             gate['check'] = 'tasks.dfthcsos.b143_gates:g4_floor'
     base['generators']['dfthcsos'] = ['{python}', '-m', 'tasks.dfthcsos.b143', '--out', '{out}']
-    base['inputs']['dfthcsos'] = [{'path': str(b143.INPUT_PATH), 'sha256': b143.INPUT_SHA256}]
+    base['inputs']['dfthcsos'] = [{'path': b143.INPUT_PATH.as_posix(), 'sha256': b143.INPUT_SHA256}]
     path = ROOT / 'configs/gates/pra309-chem-8-143-60.yaml'
     assert yaml.safe_load(path.read_text()) == base
     config = load_config(path)

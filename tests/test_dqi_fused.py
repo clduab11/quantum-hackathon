@@ -24,7 +24,7 @@ def test_vendored_files_are_verbatim_and_pinned():
 
 
 def test_vendored_set_is_exactly_the_pinned_closure():
-    on_disk = {str(p.relative_to(PORT)) for p in (PORT / 'source').rglob('*') if p.is_file()}
+    on_disk = {p.relative_to(PORT).as_posix() for p in (PORT / 'source').rglob('*') if p.is_file()}
     pinned = {item['file'] for item in SOURCE_MAP['files'] if item['file'].startswith('source/')}
     assert on_disk == pinned
     assert sum(name.endswith('.py') for name in pinned) == 54  # build.py + 53 imported modules

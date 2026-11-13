@@ -43,7 +43,7 @@ def test_shipping_config_pins_factor_precision_batch_and_full_shots():
     from ledger.gates.runner import load_config
     config = load_config()
     assert config.inputs['dfthcsos'] == [
-        {'path': str(shipping.INPUT_PATH), 'sha256': shipping.INPUT_SHA256}]
+        {'path': shipping.INPUT_PATH.as_posix(), 'sha256': shipping.INPUT_SHA256}]
     assert config.generators['dfthcsos'] == [
         '{python}', '-m', 'tasks.dfthcsos.shipping', '--out', '{out}', '--batch-size', '10']
     assert config.generators['dqi'][1] == 'tasks/dqi/generate_jfraction.py'

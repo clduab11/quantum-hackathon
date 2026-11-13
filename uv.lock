@@ -501,6 +501,18 @@ wheels = [
 ]
 
 [[package]]
+name = "kickmix"
+version = "1.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy", marker = "sys_platform == 'win32'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/52/2e/0767045af37d74ca768ff110dc1118c40f36391f1fab8909540c42f33a58/kickmix-1.0.0.tar.gz", hash = "sha256:d8d5006e52b80222eee20e9e79e45fa99c1f3595bacdd4156638ce1e1dc69461", size = 226368, upload-time = "2026-10-27T22:22:54.434Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a7/63/f52ef617a04a064e82e16dec72b21dc7ce38a62f6bcb26092c5a6757b453/kickmix-1.0.0-cp313-cp313-win_amd64.whl", hash = "sha256:d5ac9b393f1227011c08307063962221f0fa6b4165f9ecf09d0d2d7c39db73b2", size = 714858, upload-time = "2026-10-27T22:22:45.97Z" },
+]
+
+[[package]]
 name = "markupsafe"
 version = "3.0.4"
 source = { registry = "https://pypi.org/simple" }
@@ -1097,6 +1109,7 @@ name = "quantum-hackathon"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "kickmix", marker = "sys_platform == 'win32'" },
     { name = "numpy" },
     { name = "pandas" },
     { name = "pyyaml" },
@@ -1122,6 +1135,7 @@ search = [
 
 [package.metadata]
 requires-dist = [
+    { name = "kickmix", marker = "sys_platform == 'win32'", specifier = "==1.0.0" },
     { name = "numpy" },
     { name = "pandas" },
     { name = "pyyaml" },
