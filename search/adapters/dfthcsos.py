@@ -272,7 +272,7 @@ class DfthcsosAdapter(TaskAdapter):
             "task": "dfthcsos",
             "toffoli_count": source.get("toffoli_count", 0.0),
             "qubit_count": source.get("qubit_count", 0.0),
-            "lambda_eff": source.get("lambda_eff", 1.0),
+            "lambda_eff": source.get("lambda_eff"),
             "error_1": source.get("error_1", 0.0),
             "error_2": source.get("error_2", 0.0),
             "E_gap": source.get("E_gap", 0.0),

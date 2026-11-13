@@ -523,9 +523,9 @@ def score_policy(static_ok: bool, predicted_ratio: float | None,
         res = {
             "feasible": True,
             "task": "dfthcsos",
-            "toffoli_count": num(full.get("toffoli_count"), resources.get("t", REFERENCE_T)),
-            "qubit_count": num(full.get("num_qubits"), resources.get("q", REFERENCE_Q)),
-            "lambda_eff": num(full.get("lambda_eff"), 1.0),
+            "toffoli_count": full.get("toffoli_count"),
+            "qubit_count": full.get("num_qubits"),
+            "lambda_eff": full.get("lambda_eff"),
         }
         return dense_combined_score(res, task="dfthcsos")
     # Graded infeasibility from whatever we know so far.

@@ -55,10 +55,10 @@ def graded_violation(res: Mapping[str, Any]) -> float:
 
 
 def log_cost_terms(task: str, res: Mapping[str, Any]) -> dict[str, float]:
-    """Fill the log-cost ingredients the task needs; missing keys default safely.
+    """Fill diagnostic log-cost terms, with defaults for incomplete proxy records.
 
-    ``lambda_eff`` is floored at 1.0 after the finite-value fallback so a missing,
-    zero, or invalid value cannot improve the feasible score.
+    These defaults are not cost evidence. ``combined_score`` validates selected
+    terms separately before admitting a record to the feasible band.
     """
     toffoli = max(_finite(res.get("toffoli_count"), 0.0), 1.0)
     qubits = max(_finite(res.get("qubit_count", res.get("num_qubits")), 0.0), 1.0)
@@ -97,8 +97,8 @@ def combined_score(res: Mapping[str, Any], *, task: str | None = None,
                    log_min: float = LOG_COST_MIN, log_max: float = LOG_COST_MAX) -> float:
     """Deb-layered scalar used as OpenEvolve's ``combined_score``.
 
-    ``res["feasible"]`` is the only gate into the feasible band. Stage-1 sample
-    metrics may populate the violation terms, but they must not set feasible.
+    Only a feasible record with complete finite cost evidence enters the upper
+    band. Stage-1 sample metrics must not set feasible.
     """
     if not res.get("feasible"):
         # Strictly below the feasible floor even when every graded term is zero
@@ -109,10 +109,36 @@ def combined_score(res: Mapping[str, Any], *, task: str | None = None,
     resolved_task = task or str(res.get("task") or "")
     if not resolved_task:
         raise ValueError("combined_score needs task=... or res['task']")
+    if resolved_task not in TASK_LOG_COST:
+        raise ValueError(f"unknown task {resolved_task!r}; expected one of {sorted(TASK_LOG_COST)}")
+
+    def cost_number(value: Any, positive: bool = False) -> float:
+        try:
+            number = float(value)
+        except (TypeError, ValueError, OverflowError):
+            raise ValueError("feasible cost evidence must be finite") from None
+        if isinstance(value, bool) or not math.isfinite(number) or (positive and number <= 0):
+            raise ValueError("feasible cost evidence must be finite and positive")
+        return number
+
     if "log_cost" in res and res["log_cost"] is not None:
-        cost = _finite(res["log_cost"])
+        cost = cost_number(res["log_cost"])
     else:
-        cost = task_log_cost(resolved_task, res)
+        raw_fields = {
+            "log_toffoli": ("toffoli_count",),
+            "log_qubits": ("qubit_count", "num_qubits"),
+            "log_cost_c": ("cost_c", "toffoli_count"),
+            "log_lambda_eff": ("lambda_eff",),
+            "log_r_eps": ("r_eps", "R_eps"),
+        }
+        for term in dict.fromkeys(TASK_LOG_COST[resolved_task]):
+            if res.get(term) is not None:
+                cost_number(res[term])
+            else:
+                value = next((res[field] for field in raw_fields[term] if field in res), None)
+                cost_number(value, positive=True)
+        # Validate first, then preserve the existing floors and override semantics.
+        cost = cost_number(task_log_cost(resolved_task, res))
     return feasible_score(cost, log_min=log_min, log_max=log_max)
 
 

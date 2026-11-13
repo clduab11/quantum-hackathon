@@ -190,7 +190,7 @@ class DqiAdapter(TaskAdapter):
             "qubit_count": source.get("qubit_count", 0.0),
             "k_failures": source.get("k_failures", 0.0),
             "eps_plus": source.get("eps_plus", 0.0),
-            "r_eps": source.get("r_eps", 1.0),
+            "r_eps": source.get("r_eps"),
             "fraction_correct": source.get("fraction_correct", 0.0),
             "max_error_over_tol": source.get("max_error_over_tol", 0.0),
             "ancilla_dirty_fraction": source.get("ancilla_dirty_fraction", 0.0),
