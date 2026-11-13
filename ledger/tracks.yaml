@@ -20,44 +20,44 @@ tracks:
     aim: >-
       Upload only circuits that pass every check, and rebuild the best public designs in our own
       code.
-    updated_at_utc: "2026-11-02T17:47:39+00:00"
+    updated_at_utc: "2026-11-13T21:54:55+00:00"
     figures:
-      # submission-011 manifest (D-PRA341-02); invsqrt and dqi unchanged from submission-010.
+      # submission-013 manifest: the three-notebook public mix (ahoirg V25 invsqrt, areebbb V8 dqi,
+      # atakanaldemir V19 dfthcsos), Apache-2.0 per each notebook page, shipped unchanged as
+      # vendored_circuit inputs (D-PRA341-01, D-HERMES-20261113-01). Our own best per circuit, from
+      # submission-011, is in each note. PRA-285's negative result (D-PRA285-01: storage changes
+      # alone cannot reach Q <= 68) stays in the decisions register.
       - label: Square-root circuit (invsqrt)
-        value: 13.24
+        value: 26.37
         state: shipped
+        note: A licensed public circuit; our own best is 13.24.
       - label: Decoder circuit (dqi)
-        value: 54.73
+        value: 67.85
         state: shipped
-        note: The best public design, built from its published source.
+        note: A licensed public circuit; our own rebuild is 54.73.
       - label: Chemistry circuit (dfthcsos)
-        value: 9.78
+        value: 11.36
         state: shipped
-        note: Our own circuits, built from the best published description of the molecule.
-      # PRA-285, finished 2026-10-27 as a negative result (D-PRA285-01, merged #70): storage and
-      # uncompute changes alone cannot reach Q <= 68 (no circuit at 68 qubits or fewer); the only
-      # measured point is the shipped Q84 circuit at 13.24, which is the value shown here.
-      - label: A square-root circuit with fewer qubits (not achieved)
-        value: 13.24
-        state: shipped
-        note: >-
-          Negative result: storage changes alone cannot reach 68 qubits or fewer. The measured
-          13.24 is the shipped 84-qubit circuit, not a smaller one.
+        note: A licensed public circuit; our own best is 9.78.
+      - label: Rebuild the shipped public circuits in our own code
+        state: in work
 
   - id: B
     name: Chemistry engine
     aim: >-
       Describe the molecule's energy more compactly, so the chemistry circuit (dfthcsos) gets
       cheaper while staying accurate enough to pass.
-    updated_at_utc: "2026-10-26T06:30:00+00:00"
+    updated_at_utc: "2026-11-13T21:54:55+00:00"
     figures:
-      # D-PRA237-02: full 254,464-shot verifier PASS, ratio 1.0966038528404063.
-      - label: Best chemistry circuit that passes the verifier
-        value: 1.10
-        state: verified
-        note: Too small a gain to upload; this track aims for 6 or better.
-      # PRA-251, waiting on the GPU refit (PRA-246).
-      - label: Faster fitting on a graphics card, aiming for 6 to 10
+      # submission-013: atakanaldemir V19's public chemistry circuit, shipped unchanged (G3 ratio
+      # 11.3610; submission-012's v12 circuit measured 11.3122).
+      # D-PRA237-02's 1.10 (our own first verified chemistry circuit) stays in the decisions
+      # register; our own best since then is 9.78 (track A note). The second item replaces the
+      # GPU-refit item (PRA-251 / PRA-246): on 2026-11-13 Chris approved a CPU refit instead.
+      - label: Shipped chemistry circuit, a licensed public one
+        value: 11.36
+        state: shipped
+      - label: A cheaper chemistry circuit from a CPU refit of its factor table
         state: in work
 
   - id: C
@@ -65,11 +65,13 @@ tracks:
     aim: >-
       Make the decoder circuit (dqi) cheaper than any published version, starting from the best
       public one once the ship lane has rebuilt it.
-    updated_at_utc: "2026-10-27T19:09:24+00:00"
+    updated_at_utc: "2026-11-13T21:54:55+00:00"
     figures:
-      # submission-009 manifest (D-PRA202-34).
-      - label: Our best decoder so far
-        value: 54.73
+      # submission-013 manifest: areebbb V8's public decoder, shipped unchanged (submission-012's v12
+      # decoder measured 67.18). Our own rebuild of the earlier best public decoder (submission-009
+      # to -011) measured 54.73.
+      - label: Best public decoder, shipped unchanged
+        value: 67.85
         state: shipped
       - label: A decoder beyond the best public one
         state: in work

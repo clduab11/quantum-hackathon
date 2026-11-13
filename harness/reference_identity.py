@@ -9,7 +9,7 @@ MANIFEST = Path(__file__).resolve().parents[1] / 'ledger/p0-4-artifacts.yaml'
 
 def expected_reference():
     rows = yaml.safe_load(MANIFEST.read_text())['reference_files']
-    return {str(Path(row['path']).relative_to('sample_submission')):
+    return {Path(row['path']).relative_to('sample_submission').as_posix():
             {'bytes': row['bytes'], 'sha256': row['sha256']} for row in rows}
 
 

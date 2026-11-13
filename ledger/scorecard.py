@@ -30,6 +30,7 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import os
 import re
 import shlex
 import subprocess
@@ -332,6 +333,56 @@ def submit(
                              reservation=reservation)
 
 
+def split_upload_command(command: str, *, windows: bool | None = None) -> list[str]:
+    """Split the `--upload-command` shell words into an argv.
+
+    POSIX rules (`shlex.split`) treat a backslash as an escape, which eats every separator of a
+    Windows path like `C:\\Python\\python.exe`. Windows uses the C runtime quoting rules
+    paired with `subprocess.list2cmdline`: backslashes are literal except immediately before
+    a double quote, and single quotes are always literal. No shell is invoked.
+    Raises ValueError for an empty command or an unbalanced quote, before any reservation.
+    """
+    if windows is None:
+        windows = os.name == "nt"
+    if not windows:
+        argv = shlex.split(command)
+    else:
+        argv = []
+        index = 0
+        while index < len(command):
+            if command[index] in ' \t':
+                index += 1
+                continue
+            word = []
+            quoted = False
+            while index < len(command) and (quoted or command[index] not in ' \t'):
+                backslashes = 0
+                while index < len(command) and command[index] == '\\':
+                    backslashes += 1
+                    index += 1
+                if index < len(command) and command[index] == '"':
+                    word.extend('\\' * (backslashes // 2))
+                    if backslashes % 2:
+                        word.append('"')
+                    elif quoted and index + 1 < len(command) and command[index + 1] == '"':
+                        word.append('"')
+                        index += 1
+                    else:
+                        quoted = not quoted
+                    index += 1
+                else:
+                    word.extend('\\' * backslashes)
+                    if index < len(command) and (quoted or command[index] not in ' \t'):
+                        word.append(command[index])
+                        index += 1
+            if quoted:
+                raise ValueError('No closing quotation in --upload-command')
+            argv.append(''.join(word))
+    if not argv:
+        raise ValueError("empty --upload-command")
+    return argv
+
+
 def command_uploader(argv: Sequence[str]) -> Uploader:
     """An uploader that runs `argv` with the zip path appended and takes the last non-empty
     stdout line as the Kaggle submission id. A non-zero exit raises CalledProcessError."""
@@ -486,7 +537,8 @@ def main(argv: list[str] | None = None) -> int:
             print(f"reserved slot {held.slot} of {DAILY_CAP} for {held.utc_day} (UTC): {held.path}")
         elif args.command == "submit":
             recorded = submit(read_manifest(args.candidate), args.zip,
-                              command_uploader(shlex.split(args.upload_command)), root=args.root)
+                              command_uploader(split_upload_command(args.upload_command)),
+                              root=args.root)
             print(f"recorded {recorded.candidate_id} (Kaggle {recorded.kaggle_submission_id})")
         elif args.command == "record":
             recorded = record_submission(read_manifest(args.candidate), args.kaggle_id,

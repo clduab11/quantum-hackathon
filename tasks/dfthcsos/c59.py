@@ -61,7 +61,7 @@ def generate(out, *, data=DEFAULT_DATA, dry_run=False):
     factor = destination / 'submission.npz'
     shutil.copyfile(source, factor)
     paths = [factor, *write_family([c for c, _ in built], destination)]
-    report['files'] = {str(p.relative_to(out)): dict(sha256=sha256_file(p), size=p.stat().st_size)
+    report['files'] = {p.relative_to(out).as_posix(): dict(sha256=sha256_file(p), size=p.stat().st_size)
                        for p in paths}
     return report
 

@@ -1,0 +1,30 @@
+ss..........ss.......................................................... [  9%]
+.......................................................ssss.ss.......... [ 19%]
+.................................s...................................... [ 29%]
+.......................s................................................ [ 39%]
+........................................................................ [ 49%]
+........................................................................ [ 59%]
+........................................................................ [ 69%]
+........................................................................ [ 79%]
+........................................................................ [ 89%]
+........................................................................ [ 99%]
+.                                                                        [100%]
+============================== warnings summary ===============================
+tests/test_search_local_memo.py::test_memo_first_writer_is_atomic_across_processes
+  C:\Users\cld-main\Desktop\ops\quantum-hackathon-phase0-data\worktrees\hermes-syed-v12\tests\test_search_local_memo.py:160: UserWarning: memo race test: a single worker ({'w0'}) won every key; contention was not exercised
+    warnings.warn(f"memo race test: a single worker ({winners}) won every key; contention was not exercised",
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_fit_jax.py:5: could not import 'jax': No module named 'jax'
+SKIPPED [1] tests\test_fit_jax_driver.py:6: could not import 'jax': No module named 'jax'
+SKIPPED [1] tests\test_fit_jax_margin.py:4: could not import 'jax': No module named 'jax'
+SKIPPED [1] tests\test_run_notebook.py:8: could not import 'nbformat': No module named 'nbformat'
+SKIPPED [2] tests\test_b143_compiler.py:19: declared B143 input not staged at C:\Users\cld-main\Desktop\github-projects\quantum-hackathon\google-verifiable-quantum-circuit-compilation\inputs\somejoint\qcc-our-chemistry-b143-c60-xor2-v1\submission.npz
+SKIPPED [2] tests\test_c59_compiler.py:17: declared C59 input not staged at \home\cld-main\work\vqcc-data\inputs\mrmeows\qcc-1375-v8-C59-submission.npz
+SKIPPED [4] tests\test_factor_fit_v4.py:67: could not import 'torch': No module named 'torch'
+SKIPPED [1] tests\test_factor_gpu.py:25: optional gpu group
+SKIPPED [1] tests\test_factor_gpu.py:33: optional gpu group
+SKIPPED [1] tests\test_full_xor_planner.py:237: declared B143 input not staged at C:\Users\cld-main\Desktop\github-projects\quantum-hackathon\google-verifiable-quantum-circuit-compilation\inputs\somejoint\qcc-our-chemistry-b143-c60-xor2-v1\submission.npz
+SKIPPED [1] tests\test_invsqrt_public_port.py:45: could not import 'torch': No module named 'torch'
+709 passed, 16 skipped, 1 warning in 227.55s (0:03:47)

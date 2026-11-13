@@ -183,7 +183,6 @@ def test_a_circuit_without_vendored_kind_is_still_rejected(tmp_path):
 
 
 @pytest.mark.parametrize("mutate, message", [
-    (lambda e: e.update(source_url="https://github.com/jday96314/QuantumAI"), "jday96314"),
     (lambda e: e.update(source_url="https://k256.dev/dqi/artifact"), "k256.dev"),
     (lambda e: e.update(licence="no-licence"), "no-licence"),
     (lambda e: e.update(licence="reference-only"), "reference-only"),

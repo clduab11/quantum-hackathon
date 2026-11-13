@@ -68,8 +68,9 @@ CIRCUIT_SUFFIXES = (".kmb",)
 VENDORED_LICENCES = tuple(
     lic for lic in LICENCES if lic not in NEVER_SHIPPED_LICENCES and lic not in {"no-licence", "own"}
 )
-# The Schur origin repo has no licence, and the k256.dev dqi artifact stays reference-only.
-BANNED_SOURCE_MARKERS = ("jday96314", "k256.dev")
+# Chris lifted the author-name exclusion for pinned Apache-2.0 sources
+# (D-HERMES-20261112-02); k256.dev remains reference-only.
+BANNED_SOURCE_MARKERS = ("k256.dev",)
 
 
 def is_circuit(path: str | Path) -> bool:

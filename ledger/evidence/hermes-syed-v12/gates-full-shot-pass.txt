@@ -1,0 +1,19 @@
+Verifying invsqrt (full shots)...
+Verifying dqi (full shots)...
+Verifying dfthcsos (full shots)...
+G3 PASS 
+G4 PASS 
+G5 PASS 
+{
+ "manifest": "C:\\Users\\cld-main\\Desktop\\ops\\quantum-hackathon-phase0-data\\worktrees\\hermes-syed-v12\\ledger\\manifests\\candidates\\hermes-syed-v12.json",
+ "gates": {
+  "G0": "PASS",
+  "G1": "PASS",
+  "G2": "PASS",
+  "G3": "PASS",
+  "G4": "PASS",
+  "G5": "PASS"
+ },
+ "geometric_mean": 27.00208481418463,
+ "shipping_problems": []
+}

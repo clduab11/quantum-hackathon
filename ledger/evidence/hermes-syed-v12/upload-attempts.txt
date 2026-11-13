@@ -1,0 +1,15 @@
+--- 2026-11-13T07:49:08Z submit ledger\queue\hermes-syed-v12.zip
+rc=1
+STDOUT:
+Warning: Looks like you're using an outdated `kaggle` version (installed: 2.2.4), please consider upgrading to the latest version (2.2.5)
+
+STDERR:
+400 Client Error: Bad Request for url: https://api.kaggle.com/v1/competitions.CompetitionApiService/CreateSubmission
+
+--- 2026-11-13T07:52:57Z submit ledger\queue\hermes-syed-v12.zip as C:/Users/cld-main/Desktop/ops/quantum-hackathon-phase0-data\upload-stage\29280\submission.zip sha256 55ee2315fddb8622401fe616e6bcebacf9cffc87ce8c064dadc9d990dec2528c
+rc=0
+STDOUT:
+Warning: Looks like you're using an outdated `kaggle` version (installed: 2.2.4), please consider upgrading to the latest version (2.2.5)
+Successfully submitted to Google Quantum AI - Verifiable Quantum Circuit Compilation
+STDERR:
+

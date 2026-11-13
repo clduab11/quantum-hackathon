@@ -44,7 +44,7 @@ def generate(out, *, factorization=None, source_brot=12, brot=12, batch_size=9,
     return dict(factorization_sha256=sha256_file(source), source_brot=source_brot,
                 brot=brot, batch_size=batch_size, bank_bits=bank_bits, scratch=scratch,
                 pebble_degree=pebble_degree, circuits=[r for _, r in built],
-                files={str(p.relative_to(out)): dict(sha256=sha256_file(p), size=p.stat().st_size)
+                files={p.relative_to(out).as_posix(): dict(sha256=sha256_file(p), size=p.stat().st_size)
                        for p in paths})
 
 

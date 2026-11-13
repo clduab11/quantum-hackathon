@@ -1,0 +1,21 @@
+G0 PASS 
+G1 PASS 
+G2 PASS 
+G3 FAIL 
+{
+ "manifest": "C:\\Users\\cld-main\\Desktop\\ops\\quantum-hackathon-phase0-data\\worktrees\\hermes-syed-v12\\ledger\\manifests\\candidates\\hermes-syed-v12.json",
+ "gates": {
+  "G0": "PASS",
+  "G1": "PASS",
+  "G2": "PASS",
+  "G3": "FAIL"
+ },
+ "geometric_mean": null,
+ "shipping_problems": [
+  "G3 not cleared on the current zip",
+  "G4 not cleared on the current zip",
+  "G5 not cleared on the current zip",
+  "G3 is FAIL, it must PASS",
+  "not every task is measured"
+ ]
+}

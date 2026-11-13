@@ -1,0 +1,14 @@
+{
+  "candidate_id": "hermes-syed-v12",
+  "error": "",
+  "kaggle_submission_id": "58301234",
+  "operator": "unknown",
+  "outcome": "recorded",
+  "reservation_id": "9f468e37-a764-48c5-8c01-bad514c752f9",
+  "reserved_at_utc": "2026-11-13T07:52:56.076341+00:00",
+  "resolved_at_utc": "2026-11-13T07:53:03.898431+00:00",
+  "slot": 1,
+  "submission_id": "submission-012",
+  "utc_day": "2026-11-13",
+  "zip_sha256": "55ee2315fddb8622401fe616e6bcebacf9cffc87ce8c064dadc9d990dec2528c"
+}
