@@ -1,5 +1,8 @@
 # SPDX-License-Identifier: Apache-2.0
-"""G1/G2 hooks for the pinned syed3000 v12 invsqrt circuit (46 qubits at most).
+"""G1/G2 hooks for a pinned public invsqrt circuit (46 qubits at most).
+
+``g1_invsqrt``/``g2_invsqrt`` check the syed3000 v12 pin (SOURCE.json); ``g1_mix_invsqrt``/
+``g2_mix_invsqrt`` check the three-source mix pin (MIX-20261113.json, D-HERMES-20261113-01).
 
 dqi and dfthcsos reuse the existing hooks unchanged (tasks.dqi.gates, tasks.dfthcsos.gates).
 Those two G1 smokes are builder smoke tests that ignore the submission directory, and the G2
@@ -12,7 +15,9 @@ import hashlib
 from dataclasses import replace
 from pathlib import Path
 
-from .generate import PIN
+from .generate import PIN, load_pin
+
+MIX_PIN_NAME = 'MIX-20261113.json'
 
 SALT = 'PRA171_LOCAL_PUBLIC_FIXED_SALT_0001'
 MAX_QUBITS = 46
@@ -23,14 +28,18 @@ SPEC_MAX_X = 1536
 SPEC_SHOTS_PER_X = 1
 
 
-def _pinned_invsqrt() -> dict:
-    (entry,) = [f for f in PIN['files'] if f['task'] == 'invsqrt']
+def mix_pin() -> dict:
+    return load_pin(MIX_PIN_NAME)
+
+
+def _pinned_invsqrt(pin: dict | None = None) -> dict:
+    (entry,) = [f for f in (PIN if pin is None else pin)['files'] if f['task'] == 'invsqrt']
     return entry
 
 
-def _checked_path(submission_dir) -> tuple[Path | None, str | None, dict]:
+def _checked_path(submission_dir, pin: dict | None = None) -> tuple[Path | None, str | None, dict]:
     """The shipped invsqrt.kmb if it is the pinned file, streamed so the whole file is never loaded."""
-    entry = _pinned_invsqrt()
+    entry = _pinned_invsqrt(pin)
     path = Path(submission_dir) / entry['output']
     try:
         digest, size = hashlib.sha256(), 0
@@ -46,9 +55,9 @@ def _checked_path(submission_dir) -> tuple[Path | None, str | None, dict]:
     return path, None, entry
 
 
-def g1_invsqrt(submission_dir) -> dict:
+def g1_invsqrt(submission_dir, pin: dict | None = None) -> dict:
     import kickmix as km
-    path, problem, entry = _checked_path(submission_dir)
+    path, problem, entry = _checked_path(submission_dir, pin)
     if problem:
         return {'status': problem}
     circuit = km.Circuit.from_file(str(path))
@@ -66,12 +75,20 @@ def _bounded_spec(spec_cls):
     return replace(spec_cls.for_n_p(SPEC_N_P), max_x=SPEC_MAX_X, shots_per_x=SPEC_SHOTS_PER_X)
 
 
-def g2_invsqrt(submission_dir) -> dict:
-    smoke = g1_invsqrt(submission_dir)
+def g2_invsqrt(submission_dir, pin: dict | None = None) -> dict:
+    smoke = g1_invsqrt(submission_dir, pin)
     if smoke['status'] != 'PASS':
         return smoke
     import kickmix as km
     from invsqrt.verify_submission_invsqrt import ProblemSpecInvSqrt, verify
-    circuit = km.Circuit.from_file(str(Path(submission_dir) / _pinned_invsqrt()['output']))
+    circuit = km.Circuit.from_file(str(Path(submission_dir) / _pinned_invsqrt(pin)['output']))
     result = verify(circuit, _bounded_spec(ProblemSpecInvSqrt), salt=SALT, max_workers=1)
     return {**result, 'parity': False, 'scope': f'x=1..{SPEC_MAX_X}, one shot per input'}
+
+
+def g1_mix_invsqrt(submission_dir) -> dict:
+    return g1_invsqrt(submission_dir, mix_pin())
+
+
+def g2_mix_invsqrt(submission_dir) -> dict:
+    return g2_invsqrt(submission_dir, mix_pin())

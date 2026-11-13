@@ -1,0 +1,212 @@
+# Hermes candidate hermes-mix-20261113: a three-source public mix (D-HERMES-20261113-01).
+# invsqrt from ahoirg V25, dqi from areebbb V8, dfthcsos (angles + factor) from atakanaldemir V19,
+# all Apache-2.0 Kaggle notebooks pinned by URL, version and SHA-256 in
+# tasks/public_portfolio/MIX-20261113.json. 17 circuits are vendored_circuit inputs (D-PRA341-01);
+# G5 passes each only when the shipped file is byte-identical to its pin. The factor .npz is a
+# declared non-circuit input (D-PRA211-05). Nothing here is an own-generator claim.
+# G0, G3, G4 and G5 are byte-for-byte the hermes-syed-v12 gates; no gate is waived. The only
+# change is the invsqrt G1/G2 hook, which checks the mix pin instead of the v12 pin.
+# Provenance: ledger/evidence/hermes-mix-20261113/provenance.md.
+schema: 1
+salt_label: PRA171_LOCAL_PUBLIC_FIXED_SALT_0001
+gates:
+- id: G0
+  name: pre-flight (metric-only file checks, no simulation)
+  check: ledger.gates.checks:g0_preflight
+  waivable: false
+  params:
+    hook: ledger.gates.g0_preflight:preflight
+- id: G1
+  name: smoke on small instances
+  check: ledger.gates.checks:per_task
+  waivable: false
+  params:
+    hooks:
+      invsqrt: tasks.public_portfolio.gates:g1_mix_invsqrt
+      dqi: tasks.dqi.gates:g1_smoke
+      dfthcsos: tasks.dfthcsos.gates:g1_smoke
+- id: G2
+  name: fast proxy
+  check: ledger.gates.checks:per_task
+  waivable: false
+  params:
+    hooks:
+      invsqrt: tasks.public_portfolio.gates:g2_mix_invsqrt
+      dqi: tasks.dqi.gates:g2_proxy
+      dfthcsos: tasks.dfthcsos.gates:g2_proxy
+- id: G3
+  name: full local verifier
+  check: ledger.gates.checks:g3_full_verifier
+  waivable: false
+  params:
+    hook: harness.score_local:score_submission
+    expected_shots:
+      invsqrt: 200540928
+      dqi: 102400
+      dfthcsos: 78080
+- id: G4
+  name: strict improvement over parent and archive
+  check: ledger.gates.checks:g4_strict_improvement
+  waivable: false
+- id: G5
+  name: byte-identical rebuild from a clean worktree + provenance
+  check: ledger.gates.checks:g5_rebuild_and_provenance
+  waivable: false
+  params:
+    timeout_seconds: 7200
+generators:
+  invsqrt:
+  - '{python}'
+  - -m
+  - tasks.public_portfolio.generate
+  - --pin
+  - MIX-20261113.json
+  - --task
+  - invsqrt
+  - --out
+  - '{out}'
+  dqi:
+  - '{python}'
+  - -m
+  - tasks.public_portfolio.generate
+  - --pin
+  - MIX-20261113.json
+  - --task
+  - dqi
+  - --out
+  - '{out}'
+  dfthcsos:
+  - '{python}'
+  - -m
+  - tasks.public_portfolio.generate
+  - --pin
+  - MIX-20261113.json
+  - --task
+  - dfthcsos
+  - --out
+  - '{out}'
+inputs:
+  invsqrt:
+  - kind: vendored_circuit
+    path: inputs/ahoirg/qcc-submit-verify-and-package-v25/invsqrt.kmb
+    sha256: 4560ac0c017bf6d1bf27c73320f2e30c247a2a18143d58ff92a601f8bc20b218
+    source_url: https://www.kaggle.com/code/ahoirg/qcc-submit-verify-and-package
+    version: "25"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  dqi:
+  - kind: vendored_circuit
+    path: inputs/areebbb/qai-fewer-toffolis-same-qubits-lb-27-11042-v8/dqi.kmb
+    sha256: 821bf8d157c03c3e868a0099b0ab1438cfba664ab1bc6fec3210654099b672a3
+    source_url: https://www.kaggle.com/code/areebbb/qai-fewer-toffolis-same-qubits-lb-27-11042
+    version: "8"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  dfthcsos:
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_0.kmb
+    sha256: 6de2263fd8fec08b292fbfa28256e6ae2ec154d562d2a23f251ed73ebf72c307
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_1.kmb
+    sha256: 72441bd102c19182020971625cb5ed2bd15295bd68f404b1c298f49cbdf7e365
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_2.kmb
+    sha256: 4f2a0e2c1dbb50f6f80f512a007a09749776243068b2f1ded0547d51d253dfdd
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_3.kmb
+    sha256: 2b7d2a3b491fcdd24fc0fa5d571af37eb0ec0dc7ace8511a2c17f78d222201d3
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_4.kmb
+    sha256: 36aa71eda15079d667b8899d86852b620ca9b79e42a129b2541dbe5771559f43
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_5.kmb
+    sha256: 24e00cc686d7c77c08659c30a3246e45ab2843da17c461c0ca869b80a2735799
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_6.kmb
+    sha256: b6f5d04a4ce3f83b7edeac2757f273d31fa1023a8c36ac5b51ba8213af47534f
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_7.kmb
+    sha256: d7fdb33739cecefc698b89fbebe484ac7b9980c6c98a0b89fb31421ba3b87211
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_8.kmb
+    sha256: 5a1bbec912aca17bec21aed486fec540be47db9e739ea51dee85e01bb0cdb620
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_9.kmb
+    sha256: 741b39f754917ece2a6c7b62b2d22e847641b9ecabe59a16bfaefc77fffdb6e8
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_10.kmb
+    sha256: 6ea51da00b346e193c5cb547032bacec4f5f9205eb087732389be9126bcf8f6b
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_11.kmb
+    sha256: c53b1ede451efffba10cf667749b2dbec0fa4cd73b87e8b0f78d141920fbd063
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_12.kmb
+    sha256: 4dd120c4e2e908965101cd4268982d3141eba13507409ee56ff42271b3e16bd4
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_13.kmb
+    sha256: ada8c4e6ffbd3ac856af2a75e342b66be4403c5d3f828c0821ec902ea7387425
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - kind: vendored_circuit
+    path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_14.kmb
+    sha256: 9a60cb59c602f05b058a4a4c463773b5fb9cb334afbee72c493d380945b7926b
+    source_url: https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5
+    version: "19"
+    licence: Apache-2.0
+    licence_record: ledger/evidence/hermes-mix-20261113/provenance.md
+  - path: inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__submission.npz
+    sha256: b9dbe922ddeeaa9b547557bc273f9ed0f8c8870a00ad019ad9352024318c2800
