@@ -106,16 +106,16 @@ def test_malformed_standing_fails_the_build(change):
 def test_page_reads_the_ledger_and_the_standing_file(tmp_path: Path):
     page = build(tmp_path / "public").read_text(encoding="utf-8")
     text = _text(page)
-    # The rank was read at 27.00209 (2026-11-13 15:33:13Z CLI read, after submission-012 scored).
-    assert "Our public score is 27.00209, rank 579 of 2986 teams on 13 November 2026." in text
+    # The rank was read at 27.28993 (2026-11-13 21:54:55Z CLI read, after submission-013 scored).
+    assert "Our public score is 27.28993, rank 140 of 3002 teams on 13 November 2026." in text
     assert "The leader scores 29.90871." in text
     assert "(6th) scores 28.56411" in text
-    assert "invsqrt 25.91 25.91 1.0" in text      # ours, best public, reference
-    assert "dqi 67.18 67.18 1.0" in text
-    assert "dfthcsos 11.31 11.31 1.0" in text    # latest scored upload (submission-012)
+    assert "invsqrt 26.37 26.37 1.0" in text      # ours, best public, reference
+    assert "dqi 67.85 67.85 1.0" in text
+    assert "dfthcsos 11.36 11.36 1.0" in text    # latest scored upload (submission-013)
     assert text.count("waiting for Kaggle") == 0  # every upload has its public score
     for score in ("1.00000", "2.40948", "5.68935", "6.77899", "10.89339", "11.30048", "13.76646",
-                  "16.90171", "17.71949", "18.39393", "19.20572", "27.00209"):
+                  "16.90171", "17.71949", "18.39393", "19.20572", "27.00209", "27.28993"):
         assert score in text
     assert "20 January 2027" in text
 
@@ -149,14 +149,13 @@ def test_page_is_one_plain_screen(tmp_path: Path):
 def test_circuit_draws_the_latest_upload_from_the_ledger(tmp_path: Path):
     page = build(tmp_path / "public").read_text(encoding="utf-8")
     svg = page[page.index("<svg"):page.index("</svg>")]
-    # submission-012: every gate passed on the uploaded zip; G1 and G2 are per circuit. Its G3 has
-    # an earlier FAIL record on the same zip; the latest record (PASS) is the one drawn.
+    # submission-013: every gate passed on the uploaded zip; G1 and G2 are per circuit.
     assert '<g class="gate pass"><title>G0, all circuits: Passed</title>' in svg
     assert '<g class="gate pass"><title>G2 dqi: Passed</title>' in svg
     assert '<g class="gate pass"><title>G3, all circuits: Passed</title>' in svg
     assert '<g class="gate pass"><title>G5, all circuits: Passed</title>' in svg
     assert "notrun" not in svg and "fail" not in svg
-    for ratio in (">25.91</text>", ">67.18</text>", ">11.31</text>"):
+    for ratio in (">26.37</text>", ">67.85</text>", ">11.36</text>"):
         assert ratio in svg
     assert svg.count('class="inner"') == 3            # G0, G3, G5 are never waived
     text = _text(page)
@@ -311,7 +310,7 @@ def test_unscored_upload_waits_and_the_rank_says_when_it_is_stale():
     text = _text(render_page(shipped, _standing(), {"s-1": 9.5}))
     assert "waiting for Kaggle" in text
     # The latest scored upload is s-1, whose score differs from the one the rank was read at.
-    assert "Our public score is 9.50000, rank 579 of 2986 teams on 13 November 2026, before this " \
+    assert "Our public score is 9.50000, rank 140 of 3002 teams on 13 November 2026, before this " \
            "score came in." in text
 
 

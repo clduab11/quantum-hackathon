@@ -1,0 +1,32 @@
+{
+  "candidate_id": "submission-013",
+  "commands": [
+    "kaggle competitions submissions google-verifiable-quantum-circuit-compilation --csv (Kaggle CLI 2.2.4, Chris's configured account); row ref 58321543 copied to ledger/evidence/hermes-mix-20261113/kaggle-result.csv",
+    "kaggle competitions leaderboard google-verifiable-quantum-circuit-compilation --download (public leaderboard CSV read 2026-11-13T21:54:55Z, 3002 rows; our row matched on TeamId 17188255)"
+  ],
+  "kaggle": {
+    "competition": "google-verifiable-quantum-circuit-compilation",
+    "date": "2026-11-13T21:26:56.300Z",
+    "description": "submission-013 hermes-mix-20261113 zip d82625a2 ahoirg V25 invsqrt + areebbb V8 dqi + atakanaldemir V19 chemistry, Apache-2.0 vendored, local GM 27.2899",
+    "fileName": "submission.zip",
+    "publicScore": "27.28993",
+    "ref": 58321543,
+    "status": "COMPLETE",
+    "totalBytes": 49289018
+  },
+  "kind": "kaggle_public_score",
+  "leaderboard": {
+    "leader_score": "29.90871",
+    "prize_line_place": 6,
+    "prize_line_score": "28.56411",
+    "rank": 140,
+    "read_at_utc": "2026-11-13T21:54:55+00:00",
+    "teams": 3002
+  },
+  "local_geometric_mean": 27.289927495685724,
+  "notes": "Public score read back with the Kaggle CLI after the single upload attempt (status COMPLETE at the 21:52:21Z poll). Kaggle public 27.28993 equals the local fixed-salt G3 geometric mean 27.289927495685724 to the printed digits. submission-NNN.json manifests are never rewritten (docs/ledger-schema.md), so the score is recorded here. The circuits are the three-notebook public mix (ahoirg V25 invsqrt, areebbb V8 dqi, atakanaldemir V19 dfthcsos), Apache 2.0 as stated on each notebook page, shipped as vendored_circuit inputs (D-PRA341-01, D-HERMES-20261113-01), not our own synthesis; the full licence review is due before 2027-01-20. totalBytes is the local candidate zip size from the ledger. Rank 140 is Kaggle's own Rank field in the 21:54:55Z download; 104 teams score higher and 36 teams (us included) share 27.28993, and the rank moves as the board does. No salt grinding follows.",
+  "operator": "clduab11 (Chris Dukes; Hermes Agent session)",
+  "source_candidate_id": "hermes-mix-20261113",
+  "timestamp_utc": "2026-11-13T21:54:55+00:00",
+  "zip_sha256": "d82625a236b378293a755487e3c83d66401042ba6473bca9e0710c6b0d425665"
+}

@@ -20,25 +20,25 @@ tracks:
     aim: >-
       Upload only circuits that pass every check, and rebuild the best public designs in our own
       code.
-    updated_at_utc: "2026-11-13T13:44:49+00:00"
+    updated_at_utc: "2026-11-13T21:54:55+00:00"
     figures:
-      # submission-012 manifest: the syed3000 v12 public portfolio, Apache-2.0, shipped unchanged as
-      # vendored_circuit inputs (D-PRA341-01). Our own best per circuit, from submission-011, is in
-      # each note. PRA-285's negative result (D-PRA285-01: storage changes alone cannot reach
-      # Q <= 68) stays in the decisions register; its 13.24 figure left this page once a public
-      # 46-qubit circuit shipped.
+      # submission-013 manifest: the three-notebook public mix (ahoirg V25 invsqrt, areebbb V8 dqi,
+      # atakanaldemir V19 dfthcsos), Apache-2.0 per each notebook page, shipped unchanged as
+      # vendored_circuit inputs (D-PRA341-01, D-HERMES-20261113-01). Our own best per circuit, from
+      # submission-011, is in each note. PRA-285's negative result (D-PRA285-01: storage changes
+      # alone cannot reach Q <= 68) stays in the decisions register.
       - label: Square-root circuit (invsqrt)
-        value: 25.91
+        value: 26.37
         state: shipped
         note: A licensed public circuit; our own best is 13.24.
       - label: Decoder circuit (dqi)
-        value: 67.18
+        value: 67.85
         state: shipped
-        note: Same public set; our own rebuild is 54.73.
+        note: A licensed public circuit; our own rebuild is 54.73.
       - label: Chemistry circuit (dfthcsos)
-        value: 11.31
+        value: 11.36
         state: shipped
-        note: Same public set; our own best is 9.78.
+        note: A licensed public circuit; our own best is 9.78.
       - label: Rebuild the shipped public circuits in our own code
         state: in work
 
@@ -47,14 +47,15 @@ tracks:
     aim: >-
       Describe the molecule's energy more compactly, so the chemistry circuit (dfthcsos) gets
       cheaper while staying accurate enough to pass.
-    updated_at_utc: "2026-11-13T15:33:13+00:00"
+    updated_at_utc: "2026-11-13T21:54:55+00:00"
     figures:
-      # submission-012: the v12 public chemistry circuit, shipped unchanged (G3 ratio 11.3122).
+      # submission-013: atakanaldemir V19's public chemistry circuit, shipped unchanged (G3 ratio
+      # 11.3610; submission-012's v12 circuit measured 11.3122).
       # D-PRA237-02's 1.10 (our own first verified chemistry circuit) stays in the decisions
       # register; our own best since then is 9.78 (track A note). The second item replaces the
       # GPU-refit item (PRA-251 / PRA-246): on 2026-11-13 Chris approved a CPU refit instead.
       - label: Shipped chemistry circuit, a licensed public one
-        value: 11.31
+        value: 11.36
         state: shipped
       - label: A cheaper chemistry circuit from a CPU refit of its factor table
         state: in work
@@ -64,12 +65,13 @@ tracks:
     aim: >-
       Make the decoder circuit (dqi) cheaper than any published version, starting from the best
       public one once the ship lane has rebuilt it.
-    updated_at_utc: "2026-11-13T13:44:49+00:00"
+    updated_at_utc: "2026-11-13T21:54:55+00:00"
     figures:
-      # submission-012 manifest: the public portfolio's decoder, shipped unchanged. Our own rebuild
-      # of the earlier best public decoder (submission-009 to -011) measured 54.73.
+      # submission-013 manifest: areebbb V8's public decoder, shipped unchanged (submission-012's v12
+      # decoder measured 67.18). Our own rebuild of the earlier best public decoder (submission-009
+      # to -011) measured 54.73.
       - label: Best public decoder, shipped unchanged
-        value: 67.18
+        value: 67.85
         state: shipped
       - label: A decoder beyond the best public one
         state: in work
