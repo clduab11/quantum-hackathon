@@ -47,15 +47,16 @@ tracks:
     aim: >-
       Describe the molecule's energy more compactly, so the chemistry circuit (dfthcsos) gets
       cheaper while staying accurate enough to pass.
-    updated_at_utc: "2026-10-26T06:30:00+00:00"
+    updated_at_utc: "2026-11-13T15:33:13+00:00"
     figures:
-      # D-PRA237-02: full 254,464-shot verifier PASS, ratio 1.0966038528404063.
-      - label: Best chemistry circuit that passes the verifier
-        value: 1.10
-        state: verified
-        note: Too small a gain to upload; this track aims for 6 or better.
-      # PRA-251, waiting on the GPU refit (PRA-246).
-      - label: Faster fitting on a graphics card, aiming for 6 to 10
+      # submission-012: the v12 public chemistry circuit, shipped unchanged (G3 ratio 11.3122).
+      # D-PRA237-02's 1.10 (our own first verified chemistry circuit) stays in the decisions
+      # register; our own best since then is 9.78 (track A note). The second item replaces the
+      # GPU-refit item (PRA-251 / PRA-246): on 2026-11-13 Chris approved a CPU refit instead.
+      - label: Shipped chemistry circuit, a licensed public one
+        value: 11.31
+        state: shipped
+      - label: A cheaper chemistry circuit from a CPU refit of its factor table
         state: in work
 
   - id: C

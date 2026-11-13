@@ -106,8 +106,8 @@ def test_malformed_standing_fails_the_build(change):
 def test_page_reads_the_ledger_and_the_standing_file(tmp_path: Path):
     page = build(tmp_path / "public").read_text(encoding="utf-8")
     text = _text(page)
-    # The rank was read at 27.00209 (2026-11-13 CLI read after submission-012 scored).
-    assert "Our public score is 27.00209, rank 542 of 2976 teams on 13 November 2026." in text
+    # The rank was read at 27.00209 (2026-11-13 15:33:13Z CLI read, after submission-012 scored).
+    assert "Our public score is 27.00209, rank 579 of 2986 teams on 13 November 2026." in text
     assert "The leader scores 29.90871." in text
     assert "(6th) scores 28.56411" in text
     assert "invsqrt 25.91 25.91 1.0" in text      # ours, best public, reference
@@ -118,6 +118,14 @@ def test_page_reads_the_ledger_and_the_standing_file(tmp_path: Path):
                   "16.90171", "17.71949", "18.39393", "19.20572", "27.00209"):
         assert score in text
     assert "20 January 2027" in text
+
+
+def test_g5_words_cover_pinned_public_circuits(tmp_path: Path):
+    """G5 also passes a licensed public circuit that matches its pinned source byte for byte
+    (D-PRA341-01), so the page must not say every upload is rebuilt from our code."""
+    text = _text(build(tmp_path / "public").read_text(encoding="utf-8"))
+    assert "Rebuilt from our code:" not in text
+    assert "or its pinned licensed source, byte for byte" in text
 
 
 def test_page_is_one_plain_screen(tmp_path: Path):
@@ -303,7 +311,7 @@ def test_unscored_upload_waits_and_the_rank_says_when_it_is_stale():
     text = _text(render_page(shipped, _standing(), {"s-1": 9.5}))
     assert "waiting for Kaggle" in text
     # The latest scored upload is s-1, whose score differs from the one the rank was read at.
-    assert "Our public score is 9.50000, rank 542 of 2976 teams on 13 November 2026, before this " \
+    assert "Our public score is 9.50000, rank 579 of 2986 teams on 13 November 2026, before this " \
            "score came in." in text
 
 

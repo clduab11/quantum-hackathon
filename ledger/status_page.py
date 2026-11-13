@@ -350,7 +350,7 @@ GATE_WORDS = {
     "G2": "Quick estimate: a fast check of each circuit's cost and accuracy",
     "G3": "Google's verifier: the competition's own checker, run in full on our machine",
     "G4": "Real gain: cheaper than everything we had before",
-    "G5": "Rebuilt from our code: a clean rebuild matches the upload byte for byte",
+    "G5": "Source match: each circuit matches our own rebuild, or its pinned licensed source, byte for byte",
 }
 
 
