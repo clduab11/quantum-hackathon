@@ -67,6 +67,7 @@ import json
 import os
 import sys
 import tempfile
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -428,7 +429,16 @@ def _atomic_write(path: Path, text: str) -> None:
             fh.write(text)
             fh.flush()
             os.fsync(fh.fileno())
-        os.replace(tmp, path)
+        # NTFS can briefly deny replacement while another writer closes the target.
+        # Retry only Windows sharing/access conflicts, always with the same complete file.
+        for attempt in range(8):
+            try:
+                os.replace(tmp, path)
+                break
+            except PermissionError as exc:
+                if getattr(exc, "winerror", None) not in (5, 32, 33) or attempt == 7:
+                    raise
+                time.sleep(0.01 * (attempt + 1))
     except BaseException:
         with contextlib.suppress(OSError):
             os.unlink(tmp)

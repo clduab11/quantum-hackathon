@@ -177,7 +177,7 @@ def generate(out: Path, factorization: Path, source_brot: int) -> dict:
         "toffoli_like_static_total": sum(c["toffoli_like_static"] for c in per_circuit),
         "circuits": per_circuit, "factorization_sha256": sha256_file(factorization),
         "npz_is_byte_copy": byte_copy,
-        "files": {str(p.relative_to(out)): {"sha256": sha256_file(p), "size": p.stat().st_size} for p in paths},
+        "files": {p.relative_to(out).as_posix(): {"sha256": sha256_file(p), "size": p.stat().st_size} for p in paths},
     }
 
 

@@ -72,7 +72,7 @@ def run(args):
     if not np.array_equal(params['tree_edges'], quantize.EDGES):
         raise ValueError('QAT requires the published log-depth tree')
     sources = [Path(__file__), Path(__file__).with_name('factor_resume.py'), *sorted((Path(__file__).parent/'gpu_fit').glob('*.py'))]
-    hashes = {str(p.relative_to(Path(__file__).parent)): sha256(p) for p in sources}
+    hashes = {p.relative_to(Path(__file__).parent).as_posix(): sha256(p) for p in sources}
     resumed = None
     if args.resume_continuous:
         from tasks.dfthcsos.factor_resume import load_continuous
@@ -136,7 +136,7 @@ def run(args):
     reporter.report.update(complete=True, continuous_error=continuous_error,
         passed_8bit=any(r['bits']==8 and not r['problems'] for r in reporter.report['rows']),
         quantisation='completed' if continuous_error<=.030 else 'source_30mHa_gate_failed')
-    if hashes != {str(p.relative_to(Path(__file__).parent)): sha256(p) for p in sources}:
+    if hashes != {p.relative_to(Path(__file__).parent).as_posix(): sha256(p) for p in sources}:
         raise ValueError('fitting source changed during run; retain partial evidence and repeat')
     reporter.save()
     (args.out/'report.json').write_text(json_text(reporter.report))

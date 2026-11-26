@@ -26,15 +26,17 @@ import hashlib
 import re
 import sys
 from dataclasses import dataclass
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
-CLOSED_DECISIONS = Path("docs") / "DECISIONS.md"
-DECISIONS_DIR = Path("docs") / "decisions"
-NOTICE = Path("NOTICE")
-NOTICES_DIR = Path("notices")
-LEGACY_INDEX = Path("ledger") / "manifests" / "index-legacy.csv"
+# Register paths are report text ("docs/decisions/<id>.md"), so they stay POSIX on every host;
+# `root / CONSTANT` still resolves to a native path.
+CLOSED_DECISIONS = PurePosixPath("docs/DECISIONS.md")
+DECISIONS_DIR = PurePosixPath("docs/decisions")
+NOTICE = PurePosixPath("NOTICE")
+NOTICES_DIR = PurePosixPath("notices")
+LEGACY_INDEX = PurePosixPath("ledger/manifests/index-legacy.csv")
 
 # SHA-256 of the closed register's table rows ("| 20..." lines, joined with "\n") and of the
 # legacy index file. A branch that appends to either fails `check` and is told where the entry
@@ -80,7 +82,7 @@ def decision_rows(root: Path = REPO_ROOT) -> list[DecisionRow]:
     rows = []
     for line in closed_rows(root):
         cells = split_row(line)
-        rows.append(DecisionRow(cells[0], cells[1], line, str(CLOSED_DECISIONS)))
+        rows.append(DecisionRow(cells[0], cells[1], line, CLOSED_DECISIONS.as_posix()))
     fragments = []
     for path in sorted((root / DECISIONS_DIR).glob("*.md")):
         lines = [ln for ln in path.read_text(encoding="utf-8").splitlines() if ln.strip()]

@@ -16,7 +16,7 @@ def unpack(archive):
                 path = PurePosixPath(member.filename)
                 mode = stat.S_IFMT(member.external_attr >> 16)
                 if (not path.parts or path.is_absolute() or '..' in path.parts
-                        or '\\' in member.filename or str(path) in seen
+                        or '\\' in member.orig_filename or str(path) in seen
                         or mode not in (0, stat.S_IFREG, stat.S_IFDIR)):
                     raise ValueError(f'Unsafe or duplicate ZIP path: {member.filename!r}')
                 seen.add(str(path))

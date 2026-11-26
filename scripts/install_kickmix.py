@@ -23,9 +23,14 @@ def main():
         target = path_file()
         data = args.data.resolve()
         contents = path_contents(data)
-        binary = data / 'kickmix/kickmix.so'
-        if hashlib.sha256(binary.read_bytes()).hexdigest() != BINARY_SHA256:
-            raise ValueError('kickmix SHA-256 differs from inventory; review its ABI first.')
+        if sys.platform == 'win32':
+            import importlib.metadata
+            if importlib.metadata.version('kickmix') != '1.0.0':
+                raise ValueError('Windows requires kickmix==1.0.0 from uv sync.')
+        else:
+            binary = data / 'kickmix/kickmix.so'
+            if hashlib.sha256(binary.read_bytes()).hexdigest() != BINARY_SHA256:
+                raise ValueError('kickmix SHA-256 differs from inventory; review its ABI first.')
         if not (data / 'verifiers/dqi/verify_submission_dqi.py').is_file():
             raise ValueError('Data directory must contain the supplied verifiers/.')
         if existing_matches(target, contents):

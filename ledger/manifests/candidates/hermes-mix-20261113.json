@@ -1,0 +1,611 @@
+{
+  "candidate_id": "hermes-mix-20261113",
+  "cli_command": "ledger/evidence/hermes-mix-20261113/run_candidate.py",
+  "declared_inputs": {
+    "dfthcsos": [
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_0.kmb",
+        "sha256": "6de2263fd8fec08b292fbfa28256e6ae2ec154d562d2a23f251ed73ebf72c307",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_1.kmb",
+        "sha256": "72441bd102c19182020971625cb5ed2bd15295bd68f404b1c298f49cbdf7e365",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_2.kmb",
+        "sha256": "4f2a0e2c1dbb50f6f80f512a007a09749776243068b2f1ded0547d51d253dfdd",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_3.kmb",
+        "sha256": "2b7d2a3b491fcdd24fc0fa5d571af37eb0ec0dc7ace8511a2c17f78d222201d3",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_4.kmb",
+        "sha256": "36aa71eda15079d667b8899d86852b620ca9b79e42a129b2541dbe5771559f43",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_5.kmb",
+        "sha256": "24e00cc686d7c77c08659c30a3246e45ab2843da17c461c0ca869b80a2735799",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_6.kmb",
+        "sha256": "b6f5d04a4ce3f83b7edeac2757f273d31fa1023a8c36ac5b51ba8213af47534f",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_7.kmb",
+        "sha256": "d7fdb33739cecefc698b89fbebe484ac7b9980c6c98a0b89fb31421ba3b87211",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_8.kmb",
+        "sha256": "5a1bbec912aca17bec21aed486fec540be47db9e739ea51dee85e01bb0cdb620",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_9.kmb",
+        "sha256": "741b39f754917ece2a6c7b62b2d22e847641b9ecabe59a16bfaefc77fffdb6e8",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_10.kmb",
+        "sha256": "6ea51da00b346e193c5cb547032bacec4f5f9205eb087732389be9126bcf8f6b",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_11.kmb",
+        "sha256": "c53b1ede451efffba10cf667749b2dbec0fa4cd73b87e8b0f78d141920fbd063",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_12.kmb",
+        "sha256": "4dd120c4e2e908965101cd4268982d3141eba13507409ee56ff42271b3e16bd4",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_13.kmb",
+        "sha256": "ada8c4e6ffbd3ac856af2a75e342b66be4403c5d3f828c0821ec902ea7387425",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_14.kmb",
+        "sha256": "9a60cb59c602f05b058a4a4c463773b5fb9cb334afbee72c493d380945b7926b",
+        "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+        "version": "19"
+      },
+      {
+        "path": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__submission.npz",
+        "sha256": "b9dbe922ddeeaa9b547557bc273f9ed0f8c8870a00ad019ad9352024318c2800"
+      }
+    ],
+    "dqi": [
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/areebbb/qai-fewer-toffolis-same-qubits-lb-27-11042-v8/dqi.kmb",
+        "sha256": "821bf8d157c03c3e868a0099b0ab1438cfba664ab1bc6fec3210654099b672a3",
+        "source_url": "https://www.kaggle.com/code/areebbb/qai-fewer-toffolis-same-qubits-lb-27-11042",
+        "version": "8"
+      }
+    ],
+    "invsqrt": [
+      {
+        "kind": "vendored_circuit",
+        "licence": "Apache-2.0",
+        "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+        "path": "inputs/ahoirg/qcc-submit-verify-and-package-v25/invsqrt.kmb",
+        "sha256": "4560ac0c017bf6d1bf27c73320f2e30c247a2a18143d58ff92a601f8bc20b218",
+        "source_url": "https://www.kaggle.com/code/ahoirg/qcc-submit-verify-and-package",
+        "version": "25"
+      }
+    ]
+  },
+  "gates": [
+    {
+      "details": {},
+      "evidence_sha256": null,
+      "gate": "G0",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-13T20:22:30.622096+00:00",
+      "zip_sha256": "d82625a236b378293a755487e3c83d66401042ba6473bca9e0710c6b0d425665"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "qubits": 9,
+            "status": "PASS"
+          },
+          "dqi": {
+            "modulus": 4179,
+            "primitive_element": 2,
+            "product": 233,
+            "qubits": 36,
+            "status": "PASS",
+            "toffoli": 63
+          },
+          "invsqrt": {
+            "max_qubits": 46,
+            "num_qubits": 46,
+            "sha256": "4560ac0c017bf6d1bf27c73320f2e30c247a2a18143d58ff92a601f8bc20b218",
+            "static_toffoli": 1552,
+            "status": "PASS"
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G1",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-13T20:22:30.720191+00:00",
+      "zip_sha256": "d82625a236b378293a755487e3c83d66401042ba6473bca9e0710c6b0d425665"
+    },
+    {
+      "details": {
+        "tasks": {
+          "dfthcsos": {
+            "E_gap": 3.914898003000417,
+            "Lambda": 282.8324870280249,
+            "brot": 8,
+            "error_1": 0.019999997999999998,
+            "error_2": 0.01999999799999986,
+            "estimated_cost": 295360007.9919914,
+            "estimated_qubits": 427,
+            "estimated_toffoli": 14750,
+            "heuristic_qubits": 387,
+            "heuristic_toffoli": 6662,
+            "lambda_eff": 46.89556749763687,
+            "parity": false,
+            "resources": {
+              "angles_persistent_qubits": 40,
+              "angles_qubits": 128,
+              "angles_selection_qubits": 11,
+              "angles_temporary_qubits": 77,
+              "angles_toffoli": 8088,
+              "angles_toffoli_per_pass": 4044.0,
+              "angles_within_cap": true,
+              "brot": 8,
+              "givens_rotations_toffoli": 2250,
+              "heuristic_persistent_qubits": 84,
+              "heuristic_qubits": 387,
+              "heuristic_temporary_qubits": 303,
+              "heuristic_toffoli": 6662,
+              "inner_state_prep_persistent_qubits": 44,
+              "inner_state_prep_qubits": 347,
+              "inner_state_prep_temporary_qubits": 303,
+              "inner_state_prep_toffoli": 4095,
+              "keep_bits": 10,
+              "outer_state_prep_persistent_qubits": 40,
+              "outer_state_prep_qubits": 130,
+              "outer_state_prep_temporary_qubits": 90,
+              "outer_state_prep_toffoli": 317,
+              "persistent_qubits": 124,
+              "qubits": 427,
+              "temporary_qubits": 303,
+              "toffoli": 14750
+            },
+            "status": "PASS"
+          },
+          "dqi": {
+            "failures": 0,
+            "num_qubits": 889,
+            "parity": false,
+            "shots": 1536,
+            "status": "PASS",
+            "toffoli_count": 382600.8391927083
+          },
+          "invsqrt": {
+            "circuit_sha256": "4560ac0c017bf6d1bf27c73320f2e30c247a2a18143d58ff92a601f8bc20b218",
+            "max_toffoli_count": 1552,
+            "num_ops": 23877,
+            "num_qubits": 46,
+            "parity": false,
+            "reaction_depth": 1336,
+            "rotation_count": 33.0,
+            "rotation_eps": 5.491093635147097e-11,
+            "scope": "x=1..1536, one shot per input",
+            "score": 77374.73696185,
+            "status": "PASS",
+            "t_count": 1.0,
+            "toffoli_count": 1480.6158854166667,
+            "toffoli_equivalent": 1682.059499170652,
+            "verified_shots": 1536,
+            "worst_error_over_tolerance": 0.6460264028233513,
+            "worst_x": 1338
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G2",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-13T20:23:18.162291+00:00",
+      "zip_sha256": "d82625a236b378293a755487e3c83d66401042ba6473bca9e0710c6b0d425665"
+    },
+    {
+      "details": {
+        "geometric_mean": 27.289927495685724
+      },
+      "evidence_sha256": "ffe5716a848a3a0d5f4f71a17d4a3ad13f2e403f8299fa7311a8aa1c3f1e5f7f",
+      "gate": "G3",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-13T21:25:13.922906+00:00",
+      "zip_sha256": "d82625a236b378293a755487e3c83d66401042ba6473bca9e0710c6b0d425665"
+    },
+    {
+      "details": {
+        "archive_best": {
+          "candidate_id": "hermes-syed-v12",
+          "geometric_mean": 27.00208481418463
+        },
+        "geometric_mean": 27.289927495685724,
+        "parent": 27.00208481418463
+      },
+      "evidence_sha256": null,
+      "gate": "G4",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-13T21:25:14.139586+00:00",
+      "zip_sha256": "d82625a236b378293a755487e3c83d66401042ba6473bca9e0710c6b0d425665"
+    },
+    {
+      "details": {
+        "rebuild": {
+          "commit": "84ace33df544d5084ff3b8cec111fc3e74268348",
+          "copied_inputs": {
+            "dfthcsos/submission.npz": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__submission.npz"
+          },
+          "inputs": {
+            "24e00cc686d7c77c08659c30a3246e45ab2843da17c461c0ca869b80a2735799": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_5.kmb",
+            "2b7d2a3b491fcdd24fc0fa5d571af37eb0ec0dc7ace8511a2c17f78d222201d3": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_3.kmb",
+            "36aa71eda15079d667b8899d86852b620ca9b79e42a129b2541dbe5771559f43": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_4.kmb",
+            "4560ac0c017bf6d1bf27c73320f2e30c247a2a18143d58ff92a601f8bc20b218": "inputs/ahoirg/qcc-submit-verify-and-package-v25/invsqrt.kmb",
+            "4dd120c4e2e908965101cd4268982d3141eba13507409ee56ff42271b3e16bd4": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_12.kmb",
+            "4f2a0e2c1dbb50f6f80f512a007a09749776243068b2f1ded0547d51d253dfdd": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_2.kmb",
+            "5a1bbec912aca17bec21aed486fec540be47db9e739ea51dee85e01bb0cdb620": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_8.kmb",
+            "6de2263fd8fec08b292fbfa28256e6ae2ec154d562d2a23f251ed73ebf72c307": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_0.kmb",
+            "6ea51da00b346e193c5cb547032bacec4f5f9205eb087732389be9126bcf8f6b": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_10.kmb",
+            "72441bd102c19182020971625cb5ed2bd15295bd68f404b1c298f49cbdf7e365": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_1.kmb",
+            "741b39f754917ece2a6c7b62b2d22e847641b9ecabe59a16bfaefc77fffdb6e8": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_9.kmb",
+            "821bf8d157c03c3e868a0099b0ab1438cfba664ab1bc6fec3210654099b672a3": "inputs/areebbb/qai-fewer-toffolis-same-qubits-lb-27-11042-v8/dqi.kmb",
+            "9a60cb59c602f05b058a4a4c463773b5fb9cb334afbee72c493d380945b7926b": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_14.kmb",
+            "ada8c4e6ffbd3ac856af2a75e342b66be4403c5d3f828c0821ec902ea7387425": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_13.kmb",
+            "b6f5d04a4ce3f83b7edeac2757f273d31fa1023a8c36ac5b51ba8213af47534f": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_6.kmb",
+            "b9dbe922ddeeaa9b547557bc273f9ed0f8c8870a00ad019ad9352024318c2800": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__submission.npz",
+            "c53b1ede451efffba10cf667749b2dbec0fa4cd73b87e8b0f78d141920fbd063": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_11.kmb",
+            "d7fdb33739cecefc698b89fbebe484ac7b9980c6c98a0b89fb31421ba3b87211": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_7.kmb"
+          },
+          "status": "PASS",
+          "tasks": {
+            "dfthcsos": {
+              "argv": [
+                "C:\\Users\\cld-main\\Desktop\\github-projects\\quantum-hackathon\\.venv\\Scripts\\python.exe",
+                "-m",
+                "tasks.public_portfolio.generate",
+                "--pin",
+                "MIX-20261113.json",
+                "--task",
+                "dfthcsos",
+                "--out",
+                "C:\\Users\\cld-main\\AppData\\Local\\hermes\\cache\\scratch\\ledger-rebuild-ye63pkxf\\out\\dfthcsos"
+              ],
+              "copied": {
+                "dfthcsos/angle_k_0.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_0.kmb",
+                "dfthcsos/angle_k_1.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_1.kmb",
+                "dfthcsos/angle_k_10.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_10.kmb",
+                "dfthcsos/angle_k_11.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_11.kmb",
+                "dfthcsos/angle_k_12.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_12.kmb",
+                "dfthcsos/angle_k_13.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_13.kmb",
+                "dfthcsos/angle_k_14.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_14.kmb",
+                "dfthcsos/angle_k_2.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_2.kmb",
+                "dfthcsos/angle_k_3.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_3.kmb",
+                "dfthcsos/angle_k_4.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_4.kmb",
+                "dfthcsos/angle_k_5.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_5.kmb",
+                "dfthcsos/angle_k_6.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_6.kmb",
+                "dfthcsos/angle_k_7.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_7.kmb",
+                "dfthcsos/angle_k_8.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_8.kmb",
+                "dfthcsos/angle_k_9.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_9.kmb",
+                "dfthcsos/submission.npz": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__submission.npz"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "dqi": {
+              "argv": [
+                "C:\\Users\\cld-main\\Desktop\\github-projects\\quantum-hackathon\\.venv\\Scripts\\python.exe",
+                "-m",
+                "tasks.public_portfolio.generate",
+                "--pin",
+                "MIX-20261113.json",
+                "--task",
+                "dqi",
+                "--out",
+                "C:\\Users\\cld-main\\AppData\\Local\\hermes\\cache\\scratch\\ledger-rebuild-ye63pkxf\\out\\dqi"
+              ],
+              "copied": {
+                "dqi.kmb": "inputs/areebbb/qai-fewer-toffolis-same-qubits-lb-27-11042-v8/dqi.kmb"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            },
+            "invsqrt": {
+              "argv": [
+                "C:\\Users\\cld-main\\Desktop\\github-projects\\quantum-hackathon\\.venv\\Scripts\\python.exe",
+                "-m",
+                "tasks.public_portfolio.generate",
+                "--pin",
+                "MIX-20261113.json",
+                "--task",
+                "invsqrt",
+                "--out",
+                "C:\\Users\\cld-main\\AppData\\Local\\hermes\\cache\\scratch\\ledger-rebuild-ye63pkxf\\out\\invsqrt"
+              ],
+              "copied": {
+                "invsqrt.kmb": "inputs/ahoirg/qcc-submit-verify-and-package-v25/invsqrt.kmb"
+              },
+              "diffs": {
+                "changed": [],
+                "extra": [],
+                "missing": []
+              },
+              "identical": true,
+              "returncode": 0,
+              "stderr_tail": ""
+            }
+          },
+          "vendored_circuits": {
+            "dfthcsos/angle_k_0.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_0.kmb",
+            "dfthcsos/angle_k_1.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_1.kmb",
+            "dfthcsos/angle_k_10.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_10.kmb",
+            "dfthcsos/angle_k_11.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_11.kmb",
+            "dfthcsos/angle_k_12.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_12.kmb",
+            "dfthcsos/angle_k_13.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_13.kmb",
+            "dfthcsos/angle_k_14.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_14.kmb",
+            "dfthcsos/angle_k_2.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_2.kmb",
+            "dfthcsos/angle_k_3.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_3.kmb",
+            "dfthcsos/angle_k_4.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_4.kmb",
+            "dfthcsos/angle_k_5.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_5.kmb",
+            "dfthcsos/angle_k_6.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_6.kmb",
+            "dfthcsos/angle_k_7.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_7.kmb",
+            "dfthcsos/angle_k_8.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_8.kmb",
+            "dfthcsos/angle_k_9.kmb": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19/dfthcsos__angle_k_9.kmb",
+            "dqi.kmb": "inputs/areebbb/qai-fewer-toffolis-same-qubits-lb-27-11042-v8/dqi.kmb",
+            "invsqrt.kmb": "inputs/ahoirg/qcc-submit-verify-and-package-v25/invsqrt.kmb"
+          }
+        }
+      },
+      "evidence_sha256": null,
+      "gate": "G5",
+      "reason": "",
+      "status": "PASS",
+      "timestamp_utc": "2026-11-13T21:25:37.345180+00:00",
+      "zip_sha256": "d82625a236b378293a755487e3c83d66401042ba6473bca9e0710c6b0d425665"
+    }
+  ],
+  "generator_commit": "84ace33df544d5084ff3b8cec111fc3e74268348",
+  "geometric_mean": 27.289927495685724,
+  "git_branch": "op-vqcc/hermes-syed-v12",
+  "kaggle_submission_id": null,
+  "kickmix_build_id": "cf84657d91fb53d7558872ac64969dd5ad88d0bf7fdd8ae5f7e00b8c95fdf4cc",
+  "kind": "candidate",
+  "manifest_id": "8134f13f-ca05-47f0-be46-e784822f6829",
+  "notes": "Apache-2.0 vendored circuits from public Kaggle notebook outputs, pinned by URL, version and SHA-256; the authors' credits and own-work statements are recorded, not certified by this repository. Full licence review deferred to before 2027-01-20 (D-HERMES-20261113-01).",
+  "operator": "unknown",
+  "parent_candidate_id": "hermes-syed-v12",
+  "platform": "Windows-11-AMD64",
+  "python_version": "3.13.12",
+  "qualtran_pin": null,
+  "salt_label": "PRA171_LOCAL_PUBLIC_FIXED_SALT_0001",
+  "schema_version": "1",
+  "source_candidate_id": null,
+  "submitted_at_utc": null,
+  "tasks": {
+    "dfthcsos": {
+      "baseline_cost": 3355599588.3155365,
+      "cost": 295360007.9919914,
+      "eps_plus": null,
+      "evidence": [
+        "ffe5716a848a3a0d5f4f71a17d4a3ad13f2e403f8299fa7311a8aa1c3f1e5f7f"
+      ],
+      "failures": null,
+      "files": {
+        "dfthcsos/angle_k_0.kmb": "6de2263fd8fec08b292fbfa28256e6ae2ec154d562d2a23f251ed73ebf72c307",
+        "dfthcsos/angle_k_1.kmb": "72441bd102c19182020971625cb5ed2bd15295bd68f404b1c298f49cbdf7e365",
+        "dfthcsos/angle_k_10.kmb": "6ea51da00b346e193c5cb547032bacec4f5f9205eb087732389be9126bcf8f6b",
+        "dfthcsos/angle_k_11.kmb": "c53b1ede451efffba10cf667749b2dbec0fa4cd73b87e8b0f78d141920fbd063",
+        "dfthcsos/angle_k_12.kmb": "4dd120c4e2e908965101cd4268982d3141eba13507409ee56ff42271b3e16bd4",
+        "dfthcsos/angle_k_13.kmb": "ada8c4e6ffbd3ac856af2a75e342b66be4403c5d3f828c0821ec902ea7387425",
+        "dfthcsos/angle_k_14.kmb": "9a60cb59c602f05b058a4a4c463773b5fb9cb334afbee72c493d380945b7926b",
+        "dfthcsos/angle_k_2.kmb": "4f2a0e2c1dbb50f6f80f512a007a09749776243068b2f1ded0547d51d253dfdd",
+        "dfthcsos/angle_k_3.kmb": "2b7d2a3b491fcdd24fc0fa5d571af37eb0ec0dc7ace8511a2c17f78d222201d3",
+        "dfthcsos/angle_k_4.kmb": "36aa71eda15079d667b8899d86852b620ca9b79e42a129b2541dbe5771559f43",
+        "dfthcsos/angle_k_5.kmb": "24e00cc686d7c77c08659c30a3246e45ab2843da17c461c0ca869b80a2735799",
+        "dfthcsos/angle_k_6.kmb": "b6f5d04a4ce3f83b7edeac2757f273d31fa1023a8c36ac5b51ba8213af47534f",
+        "dfthcsos/angle_k_7.kmb": "d7fdb33739cecefc698b89fbebe484ac7b9980c6c98a0b89fb31421ba3b87211",
+        "dfthcsos/angle_k_8.kmb": "5a1bbec912aca17bec21aed486fec540be47db9e739ea51dee85e01bb0cdb620",
+        "dfthcsos/angle_k_9.kmb": "741b39f754917ece2a6c7b62b2d22e847641b9ecabe59a16bfaefc77fffdb6e8",
+        "dfthcsos/submission.npz": "b9dbe922ddeeaa9b547557bc273f9ed0f8c8870a00ad019ad9352024318c2800"
+      },
+      "measured": true,
+      "metrics": {
+        "E_gap": 3.914898003000417,
+        "Lambda": 282.8324870280249,
+        "angles_qubits": 128,
+        "batch_size": 5,
+        "brot": 8,
+        "error_1": 0.019999997999999998,
+        "error_2": 0.01999999799999986,
+        "lambda_eff": 46.89556749763687,
+        "num_circuits": 15,
+        "persistent_qubits": 124,
+        "submission_sha256": "94f0083020c896026e7faebf1a4e32c05de8a5a628807177c04f03d058dbeea2",
+        "temporary_qubits": 303
+      },
+      "num_qubits": 427,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Apache-2.0 vendored circuits from public Kaggle notebook outputs, pinned by URL, version and SHA-256; the authors' credits and own-work statements are recorded, not certified by this repository. Full licence review deferred to before 2027-01-20 (D-HERMES-20261113-01).",
+        "parent_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5"
+      },
+      "ratio": 11.361049219657804,
+      "rotation_count": null,
+      "shots": 78080,
+      "t_count": null,
+      "task": "dfthcsos",
+      "toffoli_count": 14750.0,
+      "verifier_sha256": "0775be7a528922367caebe9e4d051d6199811f1aefeaa4b793eaaa4621b8ec9d"
+    },
+    "dqi": {
+      "baseline_cost": 24439465632206.816,
+      "cost": 360209722458.61554,
+      "eps_plus": 0.0008660587301657926,
+      "evidence": [
+        "ffe5716a848a3a0d5f4f71a17d4a3ad13f2e403f8299fa7311a8aa1c3f1e5f7f"
+      ],
+      "failures": 0,
+      "files": {
+        "dqi.kmb": "821bf8d157c03c3e868a0099b0ab1438cfba664ab1bc6fec3210654099b672a3"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "821bf8d157c03c3e868a0099b0ab1438cfba664ab1bc6fec3210654099b672a3",
+        "empirical_error_rate": 0.0,
+        "log2_delta": -128.0,
+        "max_toffoli_count": 383414,
+        "mean_error_weight": 31.046737331746634,
+        "phase_errors": 0,
+        "repetition_factor": 1.1912604648115832,
+        "value_errors": 0
+      },
+      "num_qubits": 889,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Apache-2.0 vendored circuits from public Kaggle notebook outputs, pinned by URL, version and SHA-256; the authors' credits and own-work statements are recorded, not certified by this repository. Full licence review deferred to before 2027-01-20 (D-HERMES-20261113-01).",
+        "parent_url": "https://www.kaggle.com/code/areebbb/qai-fewer-toffolis-same-qubits-lb-27-11042"
+      },
+      "ratio": 67.84787891174888,
+      "rotation_count": null,
+      "shots": 102400,
+      "t_count": null,
+      "task": "dqi",
+      "toffoli_count": 382600.1887988281,
+      "verifier_sha256": "f14274bc0943fb9769ddb01131be6063191a15009fe1caf1d4bdd9fd25194e65"
+    },
+    "invsqrt": {
+      "baseline_cost": 2076774.233715282,
+      "cost": 78765.64938067834,
+      "eps_plus": null,
+      "evidence": [
+        "ffe5716a848a3a0d5f4f71a17d4a3ad13f2e403f8299fa7311a8aa1c3f1e5f7f"
+      ],
+      "failures": 0,
+      "files": {
+        "invsqrt.kmb": "4560ac0c017bf6d1bf27c73320f2e30c247a2a18143d58ff92a601f8bc20b218"
+      },
+      "measured": true,
+      "metrics": {
+        "circuit_sha256": "4560ac0c017bf6d1bf27c73320f2e30c247a2a18143d58ff92a601f8bc20b218",
+        "max_toffoli_count": 1552,
+        "rotation_eps": 6.001556136705218e-13,
+        "toffoli_equivalent": 1712.2967256669206,
+        "worst_error_over_tolerance": 0.9494158703926416,
+        "worst_x": 228663
+      },
+      "num_qubits": 46,
+      "provenance": {
+        "licence": "Apache-2.0",
+        "notes": "Apache-2.0 vendored circuits from public Kaggle notebook outputs, pinned by URL, version and SHA-256; the authors' credits and own-work statements are recorded, not certified by this repository. Full licence review deferred to before 2027-01-20 (D-HERMES-20261113-01).",
+        "parent_url": "https://www.kaggle.com/code/ahoirg/qcc-submit-verify-and-package"
+      },
+      "ratio": 26.366496690430722,
+      "rotation_count": 33.0,
+      "shots": 200540928,
+      "t_count": 1.0,
+      "task": "invsqrt",
+      "toffoli_count": 1480.7509794908299,
+      "verifier_sha256": "ddef520dec6b68d1cf0a6f328ddd36d79eb84570b9192cf3f7acaf073f06733a"
+    }
+  },
+  "timestamp_utc": "2026-11-13T20:22:25.292784+00:00",
+  "zip_sha256": "d82625a236b378293a755487e3c83d66401042ba6473bca9e0710c6b0d425665"
+}

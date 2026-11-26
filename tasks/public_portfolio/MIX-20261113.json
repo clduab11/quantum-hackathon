@@ -1,0 +1,207 @@
+{
+  "kind": "vendored_circuit",
+  "name": "hermes-mix-20261113",
+  "licence": "Apache-2.0",
+  "licence_record": "ledger/evidence/hermes-mix-20261113/provenance.md",
+  "decision": "D-HERMES-20261113-01",
+  "note": "Each file is byte-identical to the same member of its source notebook output zip. The 15 angle circuits are also byte-identical to maoxin123 qcc-v25-coded-word-chemistry V6, whose chemistry the Atakan V19 notebook credits.",
+  "sources": {
+    "ahoirg-v25": {
+      "owner": "ahoirg",
+      "slug": "qcc-submit-verify-and-package",
+      "version": "25",
+      "source_url": "https://www.kaggle.com/code/ahoirg/qcc-submit-verify-and-package",
+      "input_dir": "inputs/ahoirg/qcc-submit-verify-and-package-v25",
+      "licence": "Apache-2.0",
+      "output_zip": "notebook-output-submission.zip",
+      "output_zip_sha256": "cd4f78ebff47fdacfa7130c852569233c4eee38a1e3c9299cf67a19f38118b5e",
+      "output_zip_size_bytes": 49294967
+    },
+    "areebbb-v8": {
+      "owner": "areebbb",
+      "slug": "qai-fewer-toffolis-same-qubits-lb-27-11042",
+      "version": "8",
+      "source_url": "https://www.kaggle.com/code/areebbb/qai-fewer-toffolis-same-qubits-lb-27-11042",
+      "input_dir": "inputs/areebbb/qai-fewer-toffolis-same-qubits-lb-27-11042-v8",
+      "licence": "Apache-2.0",
+      "output_zip": "notebook-output-submission.zip",
+      "output_zip_sha256": "86e4300cb2bef05944bbe8cb4f802f56f4c2481aaa73f579d7d51b808065e147",
+      "output_zip_size_bytes": 49130877
+    },
+    "atakanaldemir-v19": {
+      "owner": "atakanaldemir",
+      "slug": "quantum-circuits-iso-gap-dqi-h5",
+      "version": "19",
+      "source_url": "https://www.kaggle.com/code/atakanaldemir/quantum-circuits-iso-gap-dqi-h5",
+      "input_dir": "inputs/atakanaldemir/quantum-circuits-iso-gap-dqi-h5-v19",
+      "licence": "Apache-2.0",
+      "output_zip": "notebook-output-submission.zip",
+      "output_zip_sha256": "52214b4a51aff0149e32f400d1dfcc414fb0e70f315c090637fdde1e75d23055",
+      "output_zip_size_bytes": 49289018
+    }
+  },
+  "files": [
+    {
+      "source": "ahoirg-v25",
+      "dataset_file": "invsqrt.kmb",
+      "task": "invsqrt",
+      "output": "invsqrt.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "4560ac0c017bf6d1bf27c73320f2e30c247a2a18143d58ff92a601f8bc20b218",
+      "size_bytes": 198590
+    },
+    {
+      "source": "areebbb-v8",
+      "dataset_file": "dqi.kmb",
+      "task": "dqi",
+      "output": "dqi.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "821bf8d157c03c3e868a0099b0ab1438cfba664ab1bc6fec3210654099b672a3",
+      "size_bytes": 455584321
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_0.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_0.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "6de2263fd8fec08b292fbfa28256e6ae2ec154d562d2a23f251ed73ebf72c307",
+      "size_bytes": 181417
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_1.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_1.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "72441bd102c19182020971625cb5ed2bd15295bd68f404b1c298f49cbdf7e365",
+      "size_bytes": 419554
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_2.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_2.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "4f2a0e2c1dbb50f6f80f512a007a09749776243068b2f1ded0547d51d253dfdd",
+      "size_bytes": 159130
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_3.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_3.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "2b7d2a3b491fcdd24fc0fa5d571af37eb0ec0dc7ace8511a2c17f78d222201d3",
+      "size_bytes": 417882
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_4.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_4.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "36aa71eda15079d667b8899d86852b620ca9b79e42a129b2541dbe5771559f43",
+      "size_bytes": 352678
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_5.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_5.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "24e00cc686d7c77c08659c30a3246e45ab2843da17c461c0ca869b80a2735799",
+      "size_bytes": 351034
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_6.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_6.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "b6f5d04a4ce3f83b7edeac2757f273d31fa1023a8c36ac5b51ba8213af47534f",
+      "size_bytes": 356091
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_7.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_7.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "d7fdb33739cecefc698b89fbebe484ac7b9980c6c98a0b89fb31421ba3b87211",
+      "size_bytes": 351214
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_8.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_8.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "5a1bbec912aca17bec21aed486fec540be47db9e739ea51dee85e01bb0cdb620",
+      "size_bytes": 348595
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_9.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_9.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "741b39f754917ece2a6c7b62b2d22e847641b9ecabe59a16bfaefc77fffdb6e8",
+      "size_bytes": 347033
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_10.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_10.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "6ea51da00b346e193c5cb547032bacec4f5f9205eb087732389be9126bcf8f6b",
+      "size_bytes": 349146
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_11.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_11.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "c53b1ede451efffba10cf667749b2dbec0fa4cd73b87e8b0f78d141920fbd063",
+      "size_bytes": 352676
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_12.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_12.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "4dd120c4e2e908965101cd4268982d3141eba13507409ee56ff42271b3e16bd4",
+      "size_bytes": 350286
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_13.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_13.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "ada8c4e6ffbd3ac856af2a75e342b66be4403c5d3f828c0821ec902ea7387425",
+      "size_bytes": 347322
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__angle_k_14.kmb",
+      "task": "dfthcsos",
+      "output": "dfthcsos/angle_k_14.kmb",
+      "kind": "vendored_circuit",
+      "sha256": "9a60cb59c602f05b058a4a4c463773b5fb9cb334afbee72c493d380945b7926b",
+      "size_bytes": 355502
+    },
+    {
+      "source": "atakanaldemir-v19",
+      "dataset_file": "dfthcsos__submission.npz",
+      "task": "dfthcsos",
+      "output": "dfthcsos/submission.npz",
+      "kind": "package_input",
+      "sha256": "b9dbe922ddeeaa9b547557bc273f9ed0f8c8870a00ad019ad9352024318c2800",
+      "size_bytes": 1847692
+    }
+  ]
+}

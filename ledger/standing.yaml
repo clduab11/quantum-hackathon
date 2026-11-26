@@ -12,29 +12,32 @@
 schema: 1
 
 leaderboard:
-  # 2026-11-02 anonymous public-board read at 17:47:39Z (2052 rows) from Chris's Claude Code
-  # session, reconciling submission-011 (Kaggle ref 57759974, public 19.20572). Prior standing was
-  # the PRA-343 / PRA-347 read at 2026-10-29T05:37:01Z (rank 848 of 1501 at 18.39393; #1 26.14113;
-  # #6 24.74409). The field grew and the top moved up; our best public entry is submission-011.
-  read_at_utc: "2026-11-02T17:47:39+00:00"
-  our_score: 19.20572         # our public score when the rank was read
-  rank: 1404
-  teams: 2052
-  leader_score: 27.99617
+  # 2026-11-13 public-board CSV downloaded with the Kaggle CLI at 21:54:55Z (3002 rows), after
+  # submission-013 (Kaggle ref 58321543, public 27.28993) scored. 140 is Kaggle's own Rank field;
+  # 104 teams score higher and 36 teams (us included) share 27.28993. The 15:33:13Z read had rank
+  # 579 of 2986 at 27.00209 (submission-012). Prior standing was the 2026-11-02 read (rank 1404 of
+  # 2052 at 19.20572; #1 27.99617; #6 26.80320). Our best public entry is submission-013.
+  read_at_utc: "2026-11-13T21:54:55+00:00"
+  our_score: 27.28993         # our public score when the rank was read
+  rank: 140
+  teams: 3002
+  leader_score: 29.90871
   prize_line_place: 6         # last paid place (D-PRA202-14)
-  prize_line_score: 26.80320
+  prize_line_score: 28.56411
 
 best_public_per_task:
   # Kaggle publishes no per-task scores. Since 2026-10-27 these are our own measurements of the
   # best public circuits we could find, at our fixed salt with the official verifiers (D-PRA202-33),
-  # so they are still a floor on the true best (the top teams publish nothing):
-  #   invsqrt 20.06: mrmeows' 63-qubit hybrid circuit, carried in the somejoint and heliosli bundles.
-  #   dqi 54.73: the 889-qubit decoder in the same two bundles (0 value / 0 phase errors at our salt).
-  #   dfthcsos 8.91: heliosli's J5 ANGLE circuits on mrmeows' C59 table.
-  read_at_utc: "2026-10-27T09:42:00+00:00"
-  invsqrt: 20.06
-  dqi: 54.73
-  dfthcsos: 8.91
+  # so they are still a floor on the true best (the top teams publish nothing). Since 2026-11-13
+  # 21:25Z the floor is the three-notebook public mix (Apache-2.0 per each notebook page), measured
+  # in full by the submission-013 G3 run (ledger/evidence/hermes-mix-20261113/G3.json):
+  #   invsqrt 26.37: ahoirg V25's 46-qubit circuit (earlier floor 25.91, syed3000 v12).
+  #   dqi 67.85: areebbb V8's 889-qubit decoder, 0 value / 0 phase errors at our salt (was 67.18).
+  #   dfthcsos 11.36: atakanaldemir V19's factor table on the 15 ANGLE circuits (was 11.31).
+  read_at_utc: "2026-11-13T21:25:13+00:00"
+  invsqrt: 26.37
+  dqi: 67.85
+  dfthcsos: 11.36
 
 submission_notes:
   submission-001: The unchanged reference circuits, to prove our upload pipeline end to end.
@@ -48,6 +51,8 @@ submission_notes:
   submission-009: Cheaper decoder (dqi) and square-root (invsqrt) circuits.
   submission-010: "Only change: a cheaper chemistry circuit (dfthcsos), from a better description of the molecule."
   submission-011: "Only change: a cheaper chemistry circuit (dfthcsos), from a denser description of the molecule."
+  submission-012: All three circuits replaced by a licensed public set, copied unchanged.
+  submission-013: "All three circuits replaced by cheaper licensed public ones, copied unchanged from three public notebooks."
 
 # The public Kaggle notebook, once it is published. null hides the link.
 notebook_url: null

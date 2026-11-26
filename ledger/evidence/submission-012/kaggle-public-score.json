@@ -1,0 +1,32 @@
+{
+  "candidate_id": "submission-012",
+  "commands": [
+    "kaggle competitions submissions google-verifiable-quantum-circuit-compilation --csv (Kaggle CLI 2.2.4, Chris's configured account); row ref 58301234 copied to ledger/evidence/hermes-syed-v12/kaggle-result.csv",
+    "kaggle competitions leaderboard google-verifiable-quantum-circuit-compilation --download (public leaderboard CSV read 2026-11-13T13:44:49Z, 2976 rows; our row matched on TeamId 17188255)"
+  ],
+  "kaggle": {
+    "competition": "google-verifiable-quantum-circuit-compilation",
+    "date": "2026-11-13T07:53:01.243Z",
+    "description": "submission-012 hermes-syed-v12 zip 55ee2315 Syed v12 public portfolio Apache-2.0 vendored local GM 27.0021",
+    "fileName": "submission.zip",
+    "publicScore": "27.00209",
+    "ref": 58301234,
+    "status": "COMPLETE",
+    "totalBytes": 49305565
+  },
+  "kind": "kaggle_public_score",
+  "leaderboard": {
+    "leader_score": "29.90871",
+    "prize_line_place": 6,
+    "prize_line_score": "28.56411",
+    "rank": 542,
+    "read_at_utc": "2026-11-13T13:44:49+00:00",
+    "teams": 2976
+  },
+  "local_geometric_mean": 27.00208481418463,
+  "notes": "Public score read back with the Kaggle CLI after upload attempt 3 (the first two attempts were rejected with HTTP 400 because the staged file was not named submission.zip; their reservations are reconciled as failed). Kaggle public 27.00209 equals the local fixed-salt G3 geometric mean 27.00208481418463 to the printed digits. submission-NNN.json manifests are never rewritten (docs/ledger-schema.md), so the score is recorded here. The circuits are the Apache-2.0 syed3000 v12 public portfolio shipped as vendored_circuit inputs (D-PRA341-01), not our own synthesis. totalBytes is the local candidate zip size from the ledger. Rank 542 is Kaggle's own Rank field in the 13:44:49Z download; 60 teams share 27.00209, and the rank moves as the board does. No salt grinding follows.",
+  "operator": "clduab11 (Chris Dukes; Hermes Agent session)",
+  "source_candidate_id": "hermes-syed-v12",
+  "timestamp_utc": "2026-11-13T13:44:49+00:00",
+  "zip_sha256": "55ee2315fddb8622401fe616e6bcebacf9cffc87ce8c064dadc9d990dec2528c"
+}

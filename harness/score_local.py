@@ -2,6 +2,7 @@
 import argparse
 import json
 import math
+import os
 from pathlib import Path
 import sys
 
@@ -11,6 +12,11 @@ from harness.runtime import DATA, LOCAL_SALT, load_metric
 from harness.reference_identity import expected_reference
 from harness.verification import emit, fingerprint, report, verify_all
 from ledger.gates.g0_preflight import preflight_zip, parse_submission
+
+
+def baseline_path():
+    """Select calibration storage without changing its strict validation."""
+    return Path(os.environ.get('VQCC_BASELINE', str(DATA.parent / 'reference-baseline.jsonl')))
 
 
 def load_baseline(path):
@@ -42,7 +48,7 @@ def score_submission(submission_dir: Path, *, salt_label: str, shot_divisor: int
         if salt_label != LOCAL_SALT or shot_divisor != 1:
             raise ValueError('Only the fixed public salt and shot_divisor=1 are supported.')
         checked = parse_submission(submission_dir)
-        baselines = load_baseline(DATA.parent / 'reference-baseline.jsonl')
+        baselines = load_baseline(baseline_path())
         environment = fingerprint()
         tasks = {}
         for name, result, seconds in verify_all(checked):
@@ -68,7 +74,7 @@ def main():
         'Requires v10 metric, kickmix, data and a full local reference calibration. '
         'Only scratch extraction is written. Any failure exits 1; no total score is emitted.'))
     parser.add_argument('submission', type=Path)
-    parser.add_argument('--baseline', type=Path, default=DATA.parent / 'reference-baseline.jsonl')
+    parser.add_argument('--baseline', type=Path, default=baseline_path())
     args = parser.parse_args()
     try:
         metric = load_metric()

@@ -1,0 +1,14 @@
+{
+  "candidate_id": "hermes-mix-20261113",
+  "error": "",
+  "kaggle_submission_id": "58321543",
+  "operator": "unknown",
+  "outcome": "recorded",
+  "reservation_id": "56007098-b936-4182-86e4-622a0871237a",
+  "reserved_at_utc": "2026-11-13T21:26:49.092272+00:00",
+  "resolved_at_utc": "2026-11-13T21:26:59.509450+00:00",
+  "slot": 2,
+  "submission_id": "submission-013",
+  "utc_day": "2026-11-13",
+  "zip_sha256": "d82625a236b378293a755487e3c83d66401042ba6473bca9e0710c6b0d425665"
+}

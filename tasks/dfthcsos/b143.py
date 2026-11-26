@@ -124,7 +124,7 @@ def generate(out, *, data=DEFAULT_DATA, dry_run=False):
         path = destination / f"angle_k_{row['batch']}.kmb"
         path.write_bytes(blob)
         paths.append(path)
-    report['files'] = {str(path.relative_to(out)): dict(sha256=sha256_file(path), size=path.stat().st_size)
+    report['files'] = {path.relative_to(out).as_posix(): dict(sha256=sha256_file(path), size=path.stat().st_size)
                        for path in paths}
     return report
 

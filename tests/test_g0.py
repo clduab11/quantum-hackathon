@@ -117,7 +117,13 @@ def test_recursive_discovery_and_macos_metadata(tmp_path):
 
 @pytest.mark.parametrize('name', ['../escape', '/absolute', 'a\\b'])
 def test_unsafe_archive_names(tmp_path, name):
-    path = rewrite(archive(tmp_path), {name: b''})
+    # Windows zipfile normalizes backslashes while writing; corrupt the raw name
+    # afterwards so the reader really receives the unsafe on-disk ZIP entry.
+    if '\\' in name:
+        path = rewrite(archive(tmp_path), {'a_b': b''})
+        path.write_bytes(path.read_bytes().replace(b'a_b', name.encode()))
+    else:
+        path = rewrite(archive(tmp_path), {name: b''})
     with pytest.raises(ValueError, match='Unsafe'):
         with preflight_zip(path):
             pytest.fail('unsafe archive passed')

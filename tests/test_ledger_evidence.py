@@ -87,7 +87,7 @@ def test_collect_verifier_evidence_chains_hashes(tmp_path: Path):
     tasks = {t: _record(t) for t in TASKS}
     manifest = create_manifest(candidate_id="c1", tasks=tasks, zip_sha256="ab" * 32)
     log = tmp_path / "run.log"
-    log.write_text("verifier output\n")
+    log.write_text("verifier output\n", newline="\n")
     digest = collect_verifier_evidence(
         manifest, "G3", ledger_fakes.summaries(), logs=[log], log_root=tmp_path,
         baseline_costs=ledger_fakes.BASELINES, root=tmp_path / "evidence")
@@ -128,8 +128,11 @@ def test_build_zip_is_deterministic(tmp_path: Path):
 @pytest.mark.parametrize("name", ["../escape.kmb", "/abs.kmb", "dir\\file.kmb"])
 def test_safe_extract_rejects_unsafe_paths(tmp_path: Path, name: str):
     bad = tmp_path / "bad.zip"
+    stored_name = name.replace("\\", "_")
     with zipfile.ZipFile(bad, "w") as archive:
-        archive.writestr(name, b"x")
+        archive.writestr(stored_name, b"x")
+    # ZipInfo normalizes backslashes on Windows even before writing.
+    bad.write_bytes(bad.read_bytes().replace(stored_name.encode(), name.encode()))
     with pytest.raises(UnsafeArchive, match="unsafe path"):
         safe_extract(bad, tmp_path / "out")
 

@@ -106,7 +106,7 @@ def test_candidate_config_and_compiler_smoke():
     from tasks.dfthcsos import rustad
     from tasks.dfthcsos.rustad_gates import g1_smoke
     config = load_config(Path('configs/gates/pra280-rustad.yaml'))
-    assert config.inputs['dfthcsos'] == [{'path': str(rustad.INPUT_PATH), 'sha256': rustad.INPUT_SHA256}]
+    assert config.inputs['dfthcsos'] == [{'path': rustad.INPUT_PATH.as_posix(), 'sha256': rustad.INPUT_SHA256}]
     assert config.spec('G3').params['expected_shots']['dfthcsos'] == 1366 * 64
     assert config.generators['dfthcsos'][2] == 'tasks.dfthcsos.rustad'
     assert all(not spec.waivable for spec in config.gates)

@@ -454,7 +454,7 @@ def test_committed_configs_declare_only_the_pinned_factorization_input():
     for name in ("default.yaml", "reference.yaml"):
         config = load_config(CONFIG_DIR / name)
         from tasks.dfthcsos.shipping import INPUT_PATH, INPUT_SHA256
-        expected = {'path': str(INPUT_PATH), 'sha256': INPUT_SHA256} if name == 'default.yaml' else {
+        expected = {'path': INPUT_PATH.as_posix(), 'sha256': INPUT_SHA256} if name == 'default.yaml' else {
             'path': 'sample_submission/dfthcsos/submission.npz',
             'sha256': '14d5cc25eb3bf82a9ccb87c811db28d127bef6d28697dd190dc1e875de3bfe69'}
         assert config.inputs == {"dfthcsos": [expected]}, name
