@@ -18,9 +18,9 @@ tracks:
   - id: A
     name: Ship lane
     aim: >-
-      Upload only circuits that pass every check, and rebuild the best public designs in our own
-      code.
-    updated_at_utc: "2026-11-13T21:54:55+00:00"
+      Start from the best licensed public circuits, test them many times, and upload only what
+      passes. Our own code no longer has to generate every circuit.
+    updated_at_utc: "2026-11-26T22:05:00+00:00"
     figures:
       # submission-013 manifest: the three-notebook public mix (ahoirg V25 invsqrt, areebbb V8 dqi,
       # atakanaldemir V19 dfthcsos), Apache-2.0 per each notebook page, shipped unchanged as
@@ -39,7 +39,8 @@ tracks:
         value: 11.36
         state: shipped
         note: A licensed public circuit; our own best is 9.78.
-      - label: Rebuild the shipped public circuits in our own code
+      # 2026-11-26 reset (Linear PRX-330, PRX-334); the invsqrt qubit cut is PRX-331.
+      - label: Rebuild and retest the best public set (33.26)
         state: in work
 
   - id: B
@@ -47,7 +48,7 @@ tracks:
     aim: >-
       Describe the molecule's energy more compactly, so the chemistry circuit (dfthcsos) gets
       cheaper while staying accurate enough to pass.
-    updated_at_utc: "2026-11-13T21:54:55+00:00"
+    updated_at_utc: "2026-11-26T22:05:00+00:00"
     figures:
       # submission-013: atakanaldemir V19's public chemistry circuit, shipped unchanged (G3 ratio
       # 11.3610; submission-012's v12 circuit measured 11.3122).
@@ -57,15 +58,16 @@ tracks:
       - label: Shipped chemistry circuit, a licensed public one
         value: 11.36
         state: shipped
-      - label: A cheaper chemistry circuit from a CPU refit of its factor table
+      # 2026-11-26 reset (Linear PRX-333): the best public chemistry circuit states 13.47.
+      - label: Beat the best public chemistry circuit, 13.47
         state: in work
 
   - id: C
     name: Beyond the public decoder
     aim: >-
       Make the decoder circuit (dqi) cheaper than any published version, starting from the best
-      public one once the ship lane has rebuilt it.
-    updated_at_utc: "2026-11-13T21:54:55+00:00"
+      public one, by removing qubits.
+    updated_at_utc: "2026-11-26T22:05:00+00:00"
     figures:
       # submission-013 manifest: areebbb V8's public decoder, shipped unchanged (submission-012's v12
       # decoder measured 67.18). Our own rebuild of the earlier best public decoder (submission-009
@@ -73,7 +75,8 @@ tracks:
       - label: Best public decoder, shipped unchanged
         value: 67.85
         state: shipped
-      - label: A decoder beyond the best public one
+      # 2026-11-26 reset (Linear PRX-332): the best public decoder states 80.10 at 900 qubits.
+      - label: A decoder with fewer than 900 qubits
         state: in work
 
   - id: D
