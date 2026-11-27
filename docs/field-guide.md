@@ -133,8 +133,9 @@ gates of compute–copy–uncompute patterns.
 Prizes total $150,000: leaderboard $50k / $25k / $10k / $5k / $5k / $5k for places 1–6, plus $10k
 Mid-Competition Milestone, $10k Longest Leader and three $10k single-task prizes (fusion, combinatorial
 optimisation, chemistry). Every additional prize carries the same licensing, reproducibility and documentation
-duties as the main prizes. R10 in `AGENTS.md` therefore requires every shipped circuit to be regenerated from a
-committed generator with every parent recorded with URL and licence, and G5 enforces the byte-for-byte rebuild.
+duties as the main prizes. R10 required every shipped circuit to be regenerated from a committed generator; Chris
+retired it on 2026-11-26 (D-HERMES-20261126-01). Outside circuits may now ship as pinned `vendored_circuit` inputs,
+as is or augmented by our code, each with its licence and credit recorded, and G5 still enforces pins and rebuilds.
 Today's generators are ports of Apache-2.0 public notebooks: the board ruled on 2026-10-29 (D-PRA341-02) that
 these ship now while own generators are built in parallel, because the host's generator rule applies at prize
 time, and the invsqrt coefficient calibration's licence is recorded as unresolved in `tasks/invsqrt/PROVENANCE.md`.

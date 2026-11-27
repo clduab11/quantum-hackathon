@@ -107,12 +107,12 @@ def test_page_reads_the_ledger_and_the_standing_file(tmp_path: Path):
     page = build(tmp_path / "public").read_text(encoding="utf-8")
     text = _text(page)
     # The rank was read at 27.28993 (2026-11-13 21:54:55Z CLI read, after submission-013 scored).
-    assert "Our public score is 27.28993, rank 140 of 3002 teams on 13 November 2026." in text
-    assert "The leader scores 29.90871." in text
-    assert "(6th) scores 28.56411" in text
-    assert "invsqrt 26.37 26.37 1.0" in text      # ours, best public, reference
-    assert "dqi 67.85 67.85 1.0" in text
-    assert "dfthcsos 11.36 11.36 1.0" in text    # latest scored upload (submission-013)
+    assert "Our public score is 27.28993, rank 1888 of 3784 teams on 26 November 2026." in text
+    assert "The leader scores 34.50408." in text
+    assert "(6th) scores 33.53418" in text
+    assert "invsqrt 26.37 34.09 1.0" in text      # ours, best public, reference
+    assert "dqi 67.85 80.10 1.0" in text
+    assert "dfthcsos 11.36 13.47 1.0" in text    # latest scored upload (submission-013)
     assert text.count("waiting for Kaggle") == 0  # every upload has its public score
     for score in ("1.00000", "2.40948", "5.68935", "6.77899", "10.89339", "11.30048", "13.76646",
                   "16.90171", "17.71949", "18.39393", "19.20572", "27.00209", "27.28993"):
@@ -310,7 +310,7 @@ def test_unscored_upload_waits_and_the_rank_says_when_it_is_stale():
     text = _text(render_page(shipped, _standing(), {"s-1": 9.5}))
     assert "waiting for Kaggle" in text
     # The latest scored upload is s-1, whose score differs from the one the rank was read at.
-    assert "Our public score is 9.50000, rank 140 of 3002 teams on 13 November 2026, before this " \
+    assert "Our public score is 9.50000, rank 1888 of 3784 teams on 26 November 2026, before this " \
            "score came in." in text
 
 
